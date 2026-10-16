@@ -1,0 +1,1382 @@
+{
+  "checked_at": "2026-10-16T08:43:37.257535+00:00",
+  "production_readiness": "NOT READY",
+  "staging_deployed": false,
+  "native_fixture_database": "doccraft_phase4_1bda425fac15",
+  "native_statuses": {
+    "PASS": 216,
+    "BLOCKED": 2
+  },
+  "regression_statuses": {
+    "PASS": 17,
+    "BLOCKED": 1,
+    "FAIL": 2
+  },
+  "all_records": {
+    "PASS": 247,
+    "BLOCKED": 15,
+    "FAIL": 6,
+    "NOT RUN": 2
+  },
+  "check_records_overlap": true,
+  "groq": {
+    "attempts": 8,
+    "conservative_reserved_usd": 0.04091519999999999,
+    "returned_usage_estimate_usd": 0.00027645,
+    "billing_statement_verified": false,
+    "further_paid_calls": "DISABLED by owner",
+    "workflow_acceptance": "FAIL: successful tool persistence not verified"
+  },
+  "checks": [
+    {
+      "source": "native-stack",
+      "check": "auth checked-in PostgreSQL migrations applied",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "chat checked-in PostgreSQL migrations applied",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "payment checked-in PostgreSQL migrations applied",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "quota checked-in PostgreSQL migrations applied",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "auth local startup",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "chat local startup",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "quota local startup",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "payment local startup",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "document local startup",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "admin local startup",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "sidecar local startup",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "gateway local startup",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "notification local startup",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "analytics local startup",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "auth dependency readiness",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "chat dependency readiness",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "quota dependency readiness",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "payment dependency readiness",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "document dependency readiness",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "admin dependency readiness",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "gateway dependency readiness",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "notification dependency readiness",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "analytics dependency readiness",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Redis default user is disabled",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Redis TLS endpoint rejects plaintext traffic",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Redis Chat identity denied foreign-key",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Redis Chat identity denied payment-queue",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Redis Chat identity denied config-update",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Redis Chat identity denied privileged-command",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Redis Chat identity denied automation-channel",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Redis payment config cache is read-only",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Redis payment cannot publish privileged config invalidations",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Redis quota config cache is read-only",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Redis quota cannot publish privileged config invalidations",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Redis gateway config cache is read-only",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Redis gateway cannot publish privileged config invalidations",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Document cannot read Auth verification or reset email jobs",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Internal auth rejects old secret and forged identity headers",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Internal quota rejects old secret and forged identity headers",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Internal payment rejects old secret and forged identity headers",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Internal chat rejects old secret and forged identity headers",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Internal notification rejects old secret and forged identity headers",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Internal analytics rejects old secret and forged identity headers",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Internal admin rejects old secret and forged identity headers",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Internal sidecar rejects old secret and forged identity headers",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Service authorization chat \u2192 quota POST /v1/quota/override expects 403",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Service authorization payment \u2192 auth PATCH /internal/users/fixture/status expects 403",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Service authorization payment \u2192 auth GET /internal/users/stats-by-plan expects 403",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Service authorization chat \u2192 analytics GET /v1/analytics/overview expects 403",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Service authorization gateway \u2192 admin-api GET /api/v1/internal/config expects 403",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Service authorization notification \u2192 admin-api GET /api/v1/internal/config/plans expects 403",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Service authorization admin-api \u2192 analytics GET /v1/analytics/overview expects 200",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Service authorization notification \u2192 admin-api GET /api/v1/admin/notifications/config/public expects 200",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Sandboxed Chromium rendering",
+      "status": "BLOCKED"
+    },
+    {
+      "source": "native-stack",
+      "check": "Service authorization document \u2192 pdf GET /ready expects 503",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Service authorization admin-api \u2192 chat GET /api/internal/status/keys expects 200",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Service authorization chat \u2192 admin-api GET /api/v1/internal/config/ai_model_routing expects 200",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Python receiver rejects exact replay using real Redis",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Service authorization admin-api \u2192 auth GET /internal/users expects 200",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Node receiver rejects exact replay using real Redis",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Service authorization document \u2192 pdf POST /generate expects 401",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Unsigned document queue job rejected before processing",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Unsigned payment-webhook queue job rejected before processing",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Registration, stored verification challenge, verification and login through gateway",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Refresh credentials are stored only as digests",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Canvas layout persists without changing canonical business values",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Canvas ownership and stale writes are rejected",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Guest draft and canvas migrate atomically to the authenticated account",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Guest transfer is idempotent and cannot be stolen by another account",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Profile update survives authenticated reload",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Persisted administrator password + one-time code sign-in",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Isolated test rate policy persists through admin configuration",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Admin rolling allowance reaches authenticated user quota",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Unified admin override persists plan and quota into user APIs",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Override removal survives subsequent billing plan synchronization",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Admin announcement reaches the authenticated user feed",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Disabled announcement disappears from fresh user feed",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Admin template withdrawal reaches Document catalog and rejects Chat alias selection",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Admin template publication restores actual downstream availability",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "PostgreSQL connection uses validated TLS",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "PostgreSQL rejects plaintext",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "PostgreSQL rejects untrusted CA",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Concurrent authentication failures atomically lock the account at five attempts",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Actual worker death rolls back payment business writes, event claim and outbox together",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Twelve concurrent payment replays after worker death commit one claim and one durable outbox effect",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Uploaded company template remains unavailable before review",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Reviewed owner-only template is available only to the uploaded account",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Owner-scoped uploaded rendering escapes document input and denies direct preview IDOR",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Administrator can publish an immutable new version publicly",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Template rollback restores the private version and removes public availability",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "User billing and administrator UI receive the same free decision",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Authoritative free override reaches Quota",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "User billing and administrator UI receive the same pro decision",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Authoritative pro override reaches Quota",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "User billing and administrator UI receive the same max decision",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Authoritative max override reaches Quota",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Expired admin override restores baseline without cache delay",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Concurrent real-database duplicate reservations consume one unit",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Redis quota cache loss restores durable count",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "First metered request starts exactly twenty-hour account window",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Concurrent duplicate refunds restore exactly one unit",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Delayed refund from an expired window cannot reduce current allowance usage",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Direct service cannot use a forged Max claim to bypass a zero allowance or erase usage on downgrade",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "invoice multi-turn committed SSE update",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "invoice duplicate turn replay",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "invoice multi-turn committed SSE update",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "invoice duplicate turn replay",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "invoice admin MCP resource read",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "invoice chat fields persist after reload",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "invoice document and session deletion persist",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "quotation multi-turn committed SSE update",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "quotation duplicate turn replay",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "quotation multi-turn committed SSE update",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "quotation duplicate turn replay",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "quotation admin MCP resource read",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "quotation chat fields persist after reload",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "quotation document and session deletion persist",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "proposal multi-turn committed SSE update",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "proposal duplicate turn replay",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "proposal multi-turn committed SSE update",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "proposal duplicate turn replay",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "proposal admin MCP resource read",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "proposal chat fields persist after reload",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "proposal document and session deletion persist",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "receipt multi-turn committed SSE update",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "receipt duplicate turn replay",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "receipt multi-turn committed SSE update",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "receipt duplicate turn replay",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "receipt admin MCP resource read",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "receipt chat fields persist after reload",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "receipt document and session deletion persist",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "purchase_order multi-turn committed SSE update",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "purchase_order duplicate turn replay",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "purchase_order multi-turn committed SSE update",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "purchase_order duplicate turn replay",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "purchase_order admin MCP resource read",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "purchase_order chat fields persist after reload",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "purchase_order document and session deletion persist",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "PostgreSQL duplicate reservations consume one unit",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "PostgreSQL concurrent duplicate refunds preserve other reservation",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Chat cannot refund a Document-owned quota reservation",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Delayed daily reset preserves current-day reservations in real Redis",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Admin currency and prices reach public pricing",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Annual hosted checkout uses configured LKR price and annual cadence",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Signed PayHere fixture is durably accepted by real Redis queue",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Signed callback activates server-bound owner and annual subscription",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Tampered PayHere custom fields cannot grant another user paid access",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Concurrent duplicate signed callbacks are acknowledged",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Duplicate signed callback deliveries produce one persisted invoice",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Changing unsigned PayHere IDs cannot create another invoice",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Analytics reads currency-safe revenue through its scoped Payment identity",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Financial reporting separates LKR from USD and normalizes annual revenue",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Verified invoice receipt survives duplicate events and lost downstream acknowledgement",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Bounded concurrent authenticated native workflow completes without errors",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Payment restart reconstructs a lost Redis delivery from the durable inbox",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Admin plan change reaches an already-active paid subscriber",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Admin suspension invalidates an existing user access token",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Admin reactivation restores permitted access",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Actual user/admin browser workflows",
+      "status": "BLOCKED"
+    },
+    {
+      "source": "native-stack",
+      "check": "Logout invalidates refresh sessions when the browser omits the refresh credential",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Logged-out token denied at auth boundary",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Logged-out token denied at gateway boundary",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Logged-out token denied at chat boundary",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Logged-out token denied at quota boundary",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Logged-out token denied at payment boundary",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Logged-out token denied at document boundary",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Logged-out token denied at notification boundary",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Admin JWT rejects a token signed with the old user secret",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Admin session inventory contains the actual signed session",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Admin logout revokes the persisted JWT session",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Auth outage fails closed at gateway without losing persisted documents",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Auth restart restores permitted access using stored identity",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Replay store outage rejects protected gateway requests",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Redis resumes without losing revocation and quota state",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "auth runtime role cannot create tables",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "chat runtime role cannot create tables",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "chat runtime role cannot mutate Auth identities",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "chat runtime role cannot read Auth credentials",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "payment runtime role cannot create tables",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "payment runtime role cannot mutate Auth identities",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "payment runtime role cannot read Auth credentials",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "quota runtime role cannot create tables",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "quota runtime role cannot mutate Auth identities",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "quota runtime role cannot read Auth credentials",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "document runtime role cannot create tables",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "document runtime role cannot mutate Auth identities",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "document runtime role cannot read Auth credentials",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "notification runtime role cannot create tables",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "notification runtime role cannot mutate Auth identities",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "notification runtime role cannot read Auth credentials",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "analytics runtime role cannot create tables",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "analytics runtime role cannot mutate Auth identities",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "analytics runtime role cannot read Auth credentials",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "admin-api runtime role cannot create tables",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "admin-api runtime role cannot mutate Auth identities",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "admin-api runtime role cannot read Auth credentials",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "auth restarts with restricted runtime database role",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "quota restarts with restricted runtime database role",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "chat restarts with restricted runtime database role",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "payment restarts with restricted runtime database role",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "notification restarts with restricted runtime database role",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "admin restarts with restricted runtime database role",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "analytics restarts with restricted runtime database role",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "document restarts with restricted runtime database role",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Authenticated workflow survives restricted-role restart",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Administrator soft-purge and retry work with scoped roles and Auth-owned credential invalidation",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Notification acknowledges a PostgreSQL receipt before Redis projection",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Payment outbox completes automation only after an idempotent durable Admin receipt",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Complete Redis data loss preserves the PostgreSQL allowance and existing reset boundary",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Node rejects captured service credential after replay-store data loss",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Python rejects captured service credential after replay-store data loss",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Fresh signed requests and durable quota refunds work after empty Redis restart",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Acknowledged billing automation survives total Redis loss as pending PostgreSQL work",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Pending billing notification reconstructs after complete Redis loss and scrubs completed payload",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Completed notification receipt suppresses replay and rejects changed-payload key reuse",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Recovered billing automation commits its action outcome once after Redis loss",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Stored notification metadata redacts account verification tokens",
+      "status": "PASS"
+    },
+    {
+      "source": "native-stack",
+      "check": "Dependency-ordered process shutdown is bounded without forced kill",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "backend-build",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "user-build",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "admin-build",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "user-lint",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "admin-lint",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "auth-tests",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "payment-tests",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "quota-tests",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "chat-shared-user-tests",
+      "status": "BLOCKED"
+    },
+    {
+      "source": "regression",
+      "check": "gateway-notification-tests",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "admin-tests",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "document-tests",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "analytics-tests",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "shared-python-tests",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "backend-dependencies",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "user-dependencies",
+      "status": "FAIL"
+    },
+    {
+      "source": "regression",
+      "check": "admin-dependencies",
+      "status": "FAIL"
+    },
+    {
+      "source": "regression",
+      "check": "user-runtime-dependencies",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "admin-runtime-dependencies",
+      "status": "PASS"
+    },
+    {
+      "source": "regression",
+      "check": "python-dependencies",
+      "status": "PASS"
+    },
+    {
+      "source": "offline-artifacts",
+      "check": "staging-generate",
+      "status": "PASS"
+    },
+    {
+      "source": "offline-artifacts",
+      "check": "staging-offline-checks",
+      "status": "PASS"
+    },
+    {
+      "source": "offline-artifacts",
+      "check": "notification-build-assets",
+      "status": "PASS"
+    },
+    {
+      "source": "offline-artifacts",
+      "check": "backend-source-sbom",
+      "status": "PASS"
+    },
+    {
+      "source": "offline-artifacts",
+      "check": "user-source-sbom",
+      "status": "PASS"
+    },
+    {
+      "source": "offline-artifacts",
+      "check": "admin-source-sbom",
+      "status": "PASS"
+    },
+    {
+      "source": "offline-artifacts",
+      "check": "braces-registry",
+      "status": "PASS"
+    },
+    {
+      "source": "live-groq-contract",
+      "check": "bounded simple extraction live completion",
+      "status": "FAIL"
+    },
+    {
+      "source": "live-groq-contract",
+      "check": "Simple live extraction commits through MCP",
+      "status": "FAIL"
+    },
+    {
+      "source": "live-groq-contract",
+      "check": "Real provider MCP tool execution occurred",
+      "status": "FAIL"
+    },
+    {
+      "source": "live-groq-contract",
+      "check": "Live requests stay within explicit approval",
+      "status": "PASS"
+    },
+    {
+      "source": "provider-inventory",
+      "check": "See groq-live.json",
+      "status": "PASS"
+    },
+    {
+      "source": "provider-inventory",
+      "check": "BLOCKED: approved staging resource/action unavailable",
+      "status": "FAIL"
+    },
+    {
+      "source": "provider-inventory",
+      "check": "BLOCKED: approved staging resource/action unavailable",
+      "status": "BLOCKED"
+    },
+    {
+      "source": "provider-inventory",
+      "check": "BLOCKED: approved staging resource/action unavailable",
+      "status": "BLOCKED"
+    },
+    {
+      "source": "provider-inventory",
+      "check": "BLOCKED: approved staging resource/action unavailable",
+      "status": "BLOCKED"
+    },
+    {
+      "source": "provider-inventory",
+      "check": "BLOCKED: approved staging resource/action unavailable",
+      "status": "BLOCKED"
+    },
+    {
+      "source": "provider-inventory",
+      "check": "BLOCKED: approved staging resource/action unavailable",
+      "status": "BLOCKED"
+    },
+    {
+      "source": "backup-restore.json",
+      "check": "backup-restore.json",
+      "status": "BLOCKED"
+    },
+    {
+      "source": "bounded-load.json",
+      "check": "bounded-load.json",
+      "status": "PASS"
+    },
+    {
+      "source": "credential-hygiene.json",
+      "check": "credential-hygiene.json",
+      "status": "PASS"
+    },
+    {
+      "source": "paid-call-denial-test.json",
+      "check": "paid-call-denial-test.json",
+      "status": "PASS"
+    },
+    {
+      "source": "documentation-links.json",
+      "check": "documentation-links.json",
+      "status": "PASS"
+    },
+    {
+      "source": "release-acceptance",
+      "check": "Actual Docker images built",
+      "status": "NOT RUN"
+    },
+    {
+      "source": "release-acceptance",
+      "check": "Actual container startup",
+      "status": "BLOCKED"
+    },
+    {
+      "source": "release-acceptance",
+      "check": "Container SBOM/vulnerability scans",
+      "status": "BLOCKED"
+    },
+    {
+      "source": "release-acceptance",
+      "check": "Sanitized legacy copy migrations",
+      "status": "BLOCKED"
+    },
+    {
+      "source": "release-acceptance",
+      "check": "Actual user/admin browser workflows",
+      "status": "BLOCKED"
+    },
+    {
+      "source": "release-acceptance",
+      "check": "PDF export/render/watermark acceptance",
+      "status": "BLOCKED"
+    },
+    {
+      "source": "release-acceptance",
+      "check": "External payment/email/storage/Firebase workflows",
+      "status": "BLOCKED"
+    },
+    {
+      "source": "release-acceptance",
+      "check": "Production deployment",
+      "status": "NOT RUN"
+    },
+    {
+      "source": "repository",
+      "check": "Phase 4 evidence preserved",
+      "status": "PASS"
+    }
+  ]
+}

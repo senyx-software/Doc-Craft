@@ -1,0 +1,175 @@
+generator client {
+  provider      = "prisma-client-js"
+  output        = "../src/generated/prisma"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+  engineType    = "library"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model DocumentType {
+  id                 String              @id @default(uuid())
+  name               String              @unique
+  slotSchema         Json                @default("[]")
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  sessions           ChatSession[]
+  generatedDocuments GeneratedDocument[]
+  templates          Template[]
+
+  @@map("document_types")
+}
+
+// One guest identity can be claimed by exactly one authenticated account.
+model GuestMigration {
+  guestId   String   @id
+  userId    String
+  sessionIds Json    @default("[]")
+  createdAt DateTime @default(now())
+
+  @@map("guest_migrations")
+}
+
+model Template {
+  id                  String              @id @default(uuid())
+  documentTypeId      String
+  name                String
+  thumbnailUrl        String
+  htmlPath            String
+  isPremium           Boolean             @default(false)
+  colorPalettePresets Json                @default("[]")
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+  sessions            ChatSession[]
+  generatedDocuments  GeneratedDocument[]
+  documentType        DocumentType        @relation(fields: [documentTypeId], references: [id])
+
+  @@index([documentTypeId])
+  @@map("templates")
+}
+
+model ChatSession {
+  id              String              @id @default(uuid())
+  userId          String
+  title           String              @default("Untitled Session")
+  isArchived      Boolean             @default(false)
+  documentTypeId  String
+  templateId      String
+  status          ChatSessionStatus   @default(ACTIVE)
+  slots           Json                @default("{}")
+  accentColor     String?
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+  completedAt     DateTime?
+  expiresAt       DateTime?
+  /// User-preferred Claude model for this session (e.g. "claude-sonnet-4-5").
+  /// When set, the model router respects it but may still escalate to a
+  /// higher-tier model for final document generation.
+  modelPreference String?
+  aiUsages        AIUsage[]
+  messages        ChatMessage[]
+  documentType    DocumentType        @relation(fields: [documentTypeId], references: [id])
+  template        Template            @relation(fields: [templateId], references: [id])
+  generatedDocs   GeneratedDocument[]
+  toolExecutions  ToolExecution[]
+
+  @@index([userId])
+  @@index([userId, isArchived, createdAt])
+  @@index([status])
+  @@index([documentTypeId])
+  @@index([templateId])
+  @@index([createdAt])
+  @@map("chat_sessions")
+}
+
+model ChatMessage {
+  id                     String      @id @default(uuid())
+  sessionId              String
+  role                   MessageRole
+  content                String
+  metadata               Json?
+  flaggedPromptInjection Boolean     @default(false)
+  createdAt              DateTime    @default(now())
+  session                ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@index([createdAt])
+  @@map("chat_messages")
+}
+
+model GeneratedDocument {
+  id             String       @id @default(uuid())
+  userId         String
+  sessionId      String
+  templateId     String
+  documentTypeId String
+  documentNumber String?      @unique
+  slots          Json         @default("{}")
+  status         String
+  pdfUrl         String?
+  fileName       String?
+  watermarked    Boolean      @default(false)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  generatedAt    DateTime?
+  documentType   DocumentType @relation(fields: [documentTypeId], references: [id])
+  session        ChatSession  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  template       Template     @relation(fields: [templateId], references: [id])
+
+  @@index([userId])
+  @@index([sessionId])
+  @@index([templateId])
+  @@index([documentTypeId])
+  @@map("generated_documents")
+}
+
+model ToolExecution {
+  id         String      @id @default(uuid())
+  sessionId  String
+  toolName   String
+  input      Json        @default("{}")
+  output     Json?
+  status     String
+  durationMs Int?
+  error      String?
+  createdAt  DateTime    @default(now())
+  session    ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@index([toolName])
+  @@map("tool_executions")
+}
+
+model AIUsage {
+  id               String      @id @default(uuid())
+  sessionId        String
+  model            String
+  provider         String
+  promptTokens     Int
+  completionTokens Int
+  totalTokens      Int
+  estimatedCost    Float?
+  responseTimeMs   Int?
+  createdAt        DateTime    @default(now())
+  session          ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@map("ai_usages")
+}
+
+enum ChatSessionStatus {
+  ACTIVE
+  COMPLETED
+  ABANDONED
+  EXPIRED
+}
+
+enum MessageRole {
+  USER
+  ASSISTANT
+  SYSTEM
+  TOOL
+}

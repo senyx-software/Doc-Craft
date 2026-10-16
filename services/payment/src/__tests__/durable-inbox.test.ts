@@ -1,0 +1,22 @@
+vi.mock('../services/payment-outbox.service.js',()=>({dispatchPaymentOutbox:vi.fn(async()=>{}),applyDurableDelivery:vi.fn()}));
+import {beforeEach,afterEach,expect,it,vi} from 'vitest';
+const mocks=vi.hoisted(()=>({save:vi.fn(),list:vi.fn(),add:vi.fn(),job:vi.fn()}));
+vi.mock('../db/prisma.js',()=>({prisma:{webhookDelivery:{upsert:mocks.save,findMany:mocks.list}}}));
+vi.mock('../db/redis.js',()=>({getRedis:()=>({})}));
+vi.mock('../services/paddle.service.js',()=>({processPaddleEvent:vi.fn()}));
+vi.mock('../services/payhere.service.js',()=>({processPayhereWebhook:vi.fn()}));
+vi.mock('bullmq',()=>({Queue:class {on(){}async close(){}add=mocks.add;getJob=mocks.job;},Worker:class {}}));
+import {enqueueWebhookJob,reconcileWebhookDeliveries,stopWebhookWorker} from '../queues/payment-webhook.queue.js';
+const delivery={id:'stored',name:'event',payload:{gateway:'paddle',eventId:'event',eventType:'unknown',data:{}},completedAt:null};
+beforeEach(()=>{vi.resetAllMocks();mocks.save.mockResolvedValue(delivery);mocks.list.mockResolvedValue([delivery]);});
+afterEach(async()=>{await stopWebhookWorker();});
+it('retains a verified callback durably when Redis delivery fails',async()=>{
+ mocks.add.mockRejectedValue(new Error('Redis offline'));
+ await expect(enqueueWebhookJob(delivery.payload as any,'event')).resolves.toBeUndefined();
+ await vi.waitFor(()=>expect(mocks.add).toHaveBeenCalledOnce());
+ expect(mocks.save).toHaveBeenCalledOnce();
+ expect(mocks.save.mock.invocationCallOrder[0]).toBeLessThan(mocks.add.mock.invocationCallOrder[0]);
+});
+it('rebuilds missing delivery jobs from the durable inbox after restart',async()=>{await reconcileWebhookDeliveries();expect(mocks.add).toHaveBeenCalledWith('event',expect.objectContaining({authorization:expect.any(String)}),{jobId:'stored'});});
+it('does not requeue completed inbox entries',async()=>{mocks.save.mockResolvedValue({...delivery,completedAt:new Date()});await enqueueWebhookJob(delivery.payload as any,'event');expect(mocks.add).not.toHaveBeenCalled();});
+it('retains exhausted poison messages for reconciliation without unbounded automatic retries',async()=>{const retry=vi.fn();mocks.job.mockResolvedValue({getState:async()=>'failed',attemptsMade:10,retry});await reconcileWebhookDeliveries();expect(retry).not.toHaveBeenCalled();expect(mocks.add).not.toHaveBeenCalled();});

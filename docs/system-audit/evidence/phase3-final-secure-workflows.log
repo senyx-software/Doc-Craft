@@ -1,0 +1,13 @@
+PASS auth checked-in PostgreSQL migrations applied
+PASS chat checked-in PostgreSQL migrations applied
+PASS payment checked-in PostgreSQL migrations applied
+PASS quota checked-in PostgreSQL migrations applied
+PASS auth local startup
+PASS chat local startup
+PASS quota local startup
+PASS payment local startup
+PASS document local startup
+PASS admin local startup
+PASS sidecar local startup
+PASS gateway local startup
+notification exited during startup

@@ -1,0 +1,4 @@
+# Use the authenticated root topology (Docker Compose 2.20+).
+# The former standalone stacks exposed unauthenticated Redis and cannot satisfy service identity checks.
+include:
+  - ../../docker-compose.yml

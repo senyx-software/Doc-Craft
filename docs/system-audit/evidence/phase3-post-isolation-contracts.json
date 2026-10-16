@@ -1,0 +1,14 @@
+{
+  "id": "phase3-post-isolation-contracts",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "test:chat"
+  ],
+  "started_utc": "2026-10-15T14:21:39.483762+00:00",
+  "seconds": 7.03,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-post-isolation-contracts.log"
+}

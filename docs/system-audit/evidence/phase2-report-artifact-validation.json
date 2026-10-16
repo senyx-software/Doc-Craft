@@ -1,0 +1,13 @@
+{
+  "id": "phase2-report-artifact-validation",
+  "cwd": ".",
+  "command": [
+    ".venv-local/bin/python",
+    "scripts/system_audit_validate.py"
+  ],
+  "started_utc": "2026-10-15T13:24:53.048699+00:00",
+  "seconds": 0.08,
+  "exit_code": 1,
+  "result": "FAIL",
+  "log": "evidence/phase2-report-artifact-validation.log"
+}

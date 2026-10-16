@@ -1,0 +1,31 @@
+/*
+ * Card styles — composed from Tailwind utility classes (@apply), using the
+ * brand/surface/shadow scale defined in tailwind.config.js.
+ */
+
+@layer components {
+  .card {
+    @apply bg-appSurface border border-appBorder rounded-xl shadow-3;
+  }
+
+  /* Kept as an explicit always-light alias for call sites that want it regardless of theme. */
+  .card-light {
+    @apply bg-white border border-gray-200 rounded-xl shadow-3;
+  }
+
+  .card-interactive {
+    @apply card transition-all duration-200 hover:border-brand-500/50 hover:shadow-4 hover:-translate-y-0.5 cursor-pointer;
+  }
+
+  .card-header {
+    @apply flex items-center justify-between px-6 py-4 border-b border-appBorder;
+  }
+
+  .card-body {
+    @apply px-6 py-4;
+  }
+
+  .card-footer {
+    @apply flex items-center justify-end gap-3 px-6 py-4 border-t border-appBorder;
+  }
+}

@@ -1,0 +1,267 @@
+npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown user config "tmp". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> doccraft-payment@1.0.0 test
+> vitest run
+
+
+ RUN  v4.1.10 /home/eranda/Projects/doc-craft/services/payment
+
+ ❯ src/__tests__/routing.test.ts (8 tests | 8 failed) 36ms
+     × routes LK customers to PayHere 17ms
+     × routes US customers to Paddle 2ms
+     × routes DE customers to Paddle 2ms
+     × routes lowercase "lk" to PayHere (case-insensitive) 2ms
+     × returns checkout_url and form_data for LK 3ms
+     × returns a paddle.com checkout_url for non-LK 1ms
+     × routes an LK customer to Paddle when admin disables PayHere 4ms
+     × honors an admin-forced default_payment_provider regardless of country 1ms
+ ❯ src/__tests__/payment-config.test.ts (3 tests | 2 failed) 60ms
+     × resolves seed fallback plans when Redis config is missing 51ms
+     × merges live Admin-managed pricing and feature flags dynamically 5ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 10 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/__tests__/payment-config.test.ts > Payment Service Admin Config Integration > resolves seed fallback plans when Redis config is missing
+Error: Authoritative plan configuration unavailable
+ ❯ listPlans src/services/plan.service.ts:59:43
+     57| export async function listPlans() {
+     58|   const configs = await paymentConfigClient.getPlansConfig();
+     59|   if (!Object.keys(configs).length) throw new Error('Authoritative pla…
+       |                                           ^
+     60|   const stored = await prisma.plan.findMany({ orderBy: { name: 'asc' }…
+     61|   return stored.filter(plan => configs[plan.name] && (!configs[plan.na…
+ ❯ src/__tests__/payment-config.test.ts:33:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯
+
+ FAIL  src/__tests__/payment-config.test.ts > Payment Service Admin Config Integration > merges live Admin-managed pricing and feature flags dynamically
+AssertionError: expected undefined to be 39 // Object.is equality
+
+- Expected:
+39
+
++ Received:
+undefined
+
+ ❯ src/__tests__/payment-config.test.ts:62:35
+     60|     const proPlan = await getPlanByName('pro');
+     61|     expect(proPlan).toBeDefined();
+     62|     expect(proPlan?.priceMonthly).toBe(39.0);
+       |                                   ^
+     63|     expect(proPlan?.priceYearly).toBe(390.0);
+     64|     expect(proPlan?.features.watermark).toBe(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/10]⎯
+
+ FAIL  src/__tests__/routing.test.ts > createCheckout — country routing > routes LK customers to PayHere
+AssertionError: expected "vi.fn()" to be called with arguments: [ ObjectContaining{…} ]
+
+Received:
+
+  1st vi.fn() call:
+
+  [
+-   ObjectContaining {
+-     "gateway": "payhere",
++   {
++     "error": "currency_provider_mismatch",
++     "message": "Selected billing provider does not support the configured plan currency",
+    },
+  ]
+
+
+Number of calls: 1
+
+ ❯ src/__tests__/routing.test.ts:88:18
+     86|     const { res, json } = makeRes();
+     87|     await createCheckout(makeReq('LK'), res);
+     88|     expect(json).toHaveBeenCalledWith(expect.objectContaining({ gatewa…
+       |                  ^
+     89|   });
+     90|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/10]⎯
+
+ FAIL  src/__tests__/routing.test.ts > createCheckout — country routing > routes US customers to Paddle
+AssertionError: expected "vi.fn()" to be called with arguments: [ ObjectContaining{…} ]
+
+Received:
+
+  1st vi.fn() call:
+
+  [
+-   ObjectContaining {
+-     "gateway": "paddle",
++   {
++     "error": "currency_provider_mismatch",
++     "message": "Selected billing provider does not support the configured plan currency",
+    },
+  ]
+
+
+Number of calls: 1
+
+ ❯ src/__tests__/routing.test.ts:94:18
+     92|     const { res, json } = makeRes();
+     93|     await createCheckout(makeReq('US'), res);
+     94|     expect(json).toHaveBeenCalledWith(expect.objectContaining({ gatewa…
+       |                  ^
+     95|   });
+     96|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/10]⎯
+
+ FAIL  src/__tests__/routing.test.ts > createCheckout — country routing > routes DE customers to Paddle
+AssertionError: expected "vi.fn()" to be called with arguments: [ ObjectContaining{…} ]
+
+Received:
+
+  1st vi.fn() call:
+
+  [
+-   ObjectContaining {
+-     "gateway": "paddle",
++   {
++     "error": "currency_provider_mismatch",
++     "message": "Selected billing provider does not support the configured plan currency",
+    },
+  ]
+
+
+Number of calls: 1
+
+ ❯ src/__tests__/routing.test.ts:100:18
+     98|     const { res, json } = makeRes();
+     99|     await createCheckout(makeReq('DE'), res);
+    100|     expect(json).toHaveBeenCalledWith(expect.objectContaining({ gatewa…
+       |                  ^
+    101|   });
+    102|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/10]⎯
+
+ FAIL  src/__tests__/routing.test.ts > createCheckout — country routing > routes lowercase "lk" to PayHere (case-insensitive)
+AssertionError: expected "vi.fn()" to be called with arguments: [ ObjectContaining{…} ]
+
+Received:
+
+  1st vi.fn() call:
+
+  [
+-   ObjectContaining {
+-     "gateway": "payhere",
++   {
++     "error": "currency_provider_mismatch",
++     "message": "Selected billing provider does not support the configured plan currency",
+    },
+  ]
+
+
+Number of calls: 1
+
+ ❯ src/__tests__/routing.test.ts:106:18
+    104|     const { res, json } = makeRes();
+    105|     await createCheckout(makeReq('lk'), res);
+    106|     expect(json).toHaveBeenCalledWith(expect.objectContaining({ gatewa…
+       |                  ^
+    107|   });
+    108|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/10]⎯
+
+ FAIL  src/__tests__/routing.test.ts > createCheckout — country routing > returns checkout_url and form_data for LK
+AssertionError: expected { …(2) } to have property "checkout_url"
+ ❯ src/__tests__/routing.test.ts:113:18
+    111|     await createCheckout(makeReq('LK'), res);
+    112|     const call = json.mock.calls[0][0];
+    113|     expect(call).toHaveProperty('checkout_url');
+       |                  ^
+    114|     expect(call).toHaveProperty('form_data');
+    115|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/10]⎯
+
+ FAIL  src/__tests__/routing.test.ts > createCheckout — country routing > returns a paddle.com checkout_url for non-LK
+AssertionError: expected { …(2) } to have property "checkout_url"
+ ❯ src/__tests__/routing.test.ts:121:18
+    119|     await createCheckout(makeReq('SG'), res);
+    120|     const call = json.mock.calls[0][0];
+    121|     expect(call).toHaveProperty('checkout_url');
+       |                  ^
+    122|     expect(call.checkout_url).toContain('paddle.com');
+    123|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/10]⎯
+
+ FAIL  src/__tests__/routing.test.ts > createCheckout — Admin-managed gateway settings override country routing > routes an LK customer to Paddle when admin disables PayHere
+AssertionError: expected "vi.fn()" to be called with arguments: [ ObjectContaining{…} ]
+
+Received:
+
+  1st vi.fn() call:
+
+  [
+-   ObjectContaining {
+-     "gateway": "paddle",
++   {
++     "error": "currency_provider_mismatch",
++     "message": "Selected billing provider does not support the configured plan currency",
+    },
+  ]
+
+
+Number of calls: 1
+
+ ❯ src/__tests__/routing.test.ts:136:18
+    134|     const { res, json } = makeRes();
+    135|     await createCheckout(makeReq('LK'), res);
+    136|     expect(json).toHaveBeenCalledWith(expect.objectContaining({ gatewa…
+       |                  ^
+    137|   });
+    138|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/10]⎯
+
+ FAIL  src/__tests__/routing.test.ts > createCheckout — Admin-managed gateway settings override country routing > honors an admin-forced default_payment_provider regardless of country
+AssertionError: expected "vi.fn()" to be called with arguments: [ ObjectContaining{…} ]
+
+Received:
+
+  1st vi.fn() call:
+
+  [
+-   ObjectContaining {
+-     "gateway": "paddle",
++   {
++     "error": "currency_provider_mismatch",
++     "message": "Selected billing provider does not support the configured plan currency",
+    },
+  ]
+
+
+Number of calls: 1
+
+ ❯ src/__tests__/routing.test.ts:148:18
+    146|     const { res, json } = makeRes();
+    147|     await createCheckout(makeReq('LK'), res);
+    148|     expect(json).toHaveBeenCalledWith(expect.objectContaining({ gatewa…
+       |                  ^
+    149|   });
+    150| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/10]⎯
+
+
+ Test Files  2 failed | 7 passed (9)
+      Tests  10 failed | 43 passed (53)
+   Start at  12:06:23
+   Duration  1.07s (transform 1.14s, setup 221ms, import 3.23s, tests 193ms, environment 1ms)
+
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /home/eranda/Projects/doc-craft/services/payment
+npm error workspace doccraft-payment@1.0.0
+npm error location /home/eranda/Projects/doc-craft/services/payment
+npm error command failed
+npm error command sh -c vitest run

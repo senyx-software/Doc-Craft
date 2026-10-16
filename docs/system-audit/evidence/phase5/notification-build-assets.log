@@ -1,0 +1,1 @@
+{"status":"PASS","checks":["compiled payment receipt renders currency and escapes input","verification, reset and welcome HTML packaged"],"external_requests":0}

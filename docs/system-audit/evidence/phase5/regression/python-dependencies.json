@@ -1,0 +1,15 @@
+{
+  "id": "python-dependencies",
+  "command": [
+    "/home/eranda/Projects/doc-craft/.venv-local/bin/pip-audit",
+    "--local",
+    "--format",
+    "json"
+  ],
+  "cwd": ".",
+  "started_utc": "2026-10-16T08:25:55.001940+00:00",
+  "seconds": 1.23,
+  "exit_code": 0,
+  "status": "PASS",
+  "log": "docs/system-audit/evidence/phase5/regression/python-dependencies.log"
+}

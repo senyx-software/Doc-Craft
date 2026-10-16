@@ -1,0 +1,13 @@
+{
+  "id": "phase3-signed-queue-stack",
+  "cwd": ".",
+  "command": [
+    ".venv-local/bin/python",
+    "scripts/system_audit_phase3_stack.py"
+  ],
+  "started_utc": "2026-10-15T14:05:49.626245+00:00",
+  "seconds": 11.76,
+  "exit_code": 1,
+  "result": "FAIL",
+  "log": "evidence/phase3-signed-queue-stack.log"
+}

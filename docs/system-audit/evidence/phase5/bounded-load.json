@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "scope": "Bounded native TLS authenticated read workload; no provider calls or metered generations. Not an approved production capacity or SLO benchmark.",
+  "requests": 72,
+  "concurrency": 12,
+  "http_statuses": {
+    "200": 72
+  },
+  "seconds": 3.631,
+  "requests_per_second": 19.83,
+  "latency_ms": {
+    "p50": 639.87,
+    "p95": 830.0,
+    "max": 881.69
+  }
+}

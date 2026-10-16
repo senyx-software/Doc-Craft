@@ -1,0 +1,272 @@
+@import './styles/design-tokens.css';
+@import './styles/typography.css';
+@import './styles/buttons.css';
+@import './styles/cards.css';
+@import './styles/tables.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-family-base);
+    background-color: var(--background);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  ::selection {
+    background-color: rgba(126, 76, 224, 0.3);
+    color: var(--accent-violet-600);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(100, 116, 139, 0.4);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 116, 139, 0.6);
+  }
+
+  /* Chrome/Safari force their own light autofill background (yellow or a
+     pale blue) regardless of page theme, which is how a dark-mode input
+     ends up with a glaring light patch once a browser/password manager
+     autofills it. The only reliable override is this inset box-shadow
+     trick — background-color itself can't win against autofill styles. */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--text-primary);
+    -webkit-box-shadow: 0 0 0 1000px var(--background) inset;
+    box-shadow: 0 0 0 1000px var(--background) inset;
+    transition: background-color 9999s ease-in-out 0s;
+  }
+}
+
+@layer components {
+  /* Glass Card — light frosted glass by default (Figma's product screens are
+     light-by-default), dark frosted glass under .dark. */
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-xl border border-gray-200/50 rounded-2xl shadow-4
+           dark:bg-white/5 dark:border-white/10;
+  }
+
+  /* Kept as an explicit always-light alias for call sites that want it regardless of theme. */
+  .glass-card-light {
+    @apply bg-white/80 backdrop-blur-xl border border-gray-200/50 rounded-2xl shadow-4;
+  }
+
+  /* Input Styles — fully rounded pill, matching Figma's search/input treatment. */
+  .input-field {
+    @apply w-full px-5 py-3 bg-appBg border border-appBorder rounded-full text-appTextPrimary
+           placeholder:text-appTextSecondary focus:outline-none focus:border-brand-500 focus:ring-2
+           focus:ring-brand-500/20 transition-all duration-200;
+  }
+
+  /* Custom Select Styles */
+  select.input-field {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    padding-right: 2.5rem;
+  }
+
+  select.input-field option {
+    background-color: var(--neutral-fill-contrast-500);
+    color: var(--neutral-fill-base-500);
+    padding: 12px;
+  }
+
+  .input-field-light {
+    @apply w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-gray-900
+           placeholder:text-gray-400 focus:outline-none focus:border-brand-500 focus:ring-2
+           focus:ring-brand-500/20 transition-all duration-200;
+  }
+
+  /* Chat Bubble — light theme, matching Figma's chat surface. */
+  .chat-bubble-ai {
+    @apply bg-appSurface border border-appBorder rounded-2xl rounded-tl-md px-4 py-3
+           text-appTextPrimary max-w-[85%] animate-fade-in;
+  }
+
+  .chat-bubble-user {
+    @apply bg-brand-400 rounded-2xl rounded-tr-md px-4 py-3 text-white max-w-[85%]
+           ml-auto animate-fade-in;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-violet-400 via-accent-purple-400 to-accent-pink-400;
+  }
+
+  /* Document preview container */
+  .preview-container {
+    @apply bg-white rounded-xl shadow-6 overflow-hidden;
+    min-height: 600px;
+  }
+
+  /* Sidebar */
+  .sidebar-panel {
+    @apply fixed top-0 right-0 h-full w-80 bg-surface-600 border-l border-surface-300
+           shadow-6 z-50 overflow-y-auto;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  .badge-free {
+    @apply badge bg-appBorder text-appTextSecondary;
+  }
+
+  .badge-pro {
+    @apply badge bg-gradient-to-r from-accent-amber-400 to-accent-amber-500 text-white;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-appBorder my-6;
+  }
+
+  /* Tooltip-style label */
+  .field-label {
+    @apply block text-body-sm font-medium text-appTextSecondary mb-1.5;
+  }
+}
+
+@layer utilities {
+  /* Gradient backgrounds */
+  .bg-hero-gradient {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(126, 76, 224, 0.15), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 50%, rgba(162, 49, 219, 0.08), transparent),
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(33, 110, 187, 0.08), transparent);
+  }
+
+  .bg-mesh-gradient {
+    background:
+      radial-gradient(at 40% 20%, rgba(126, 76, 224, 0.12) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgba(162, 49, 219, 0.08) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, rgba(33, 110, 187, 0.08) 0px, transparent 50%);
+  }
+
+  /* Stagger animation delays */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+
+  /* Rotated vertical text utility for collapsed panels */
+  .vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    white-space: nowrap;
+  }
+
+
+  /* Claude-style warm dark theme for the builder page */
+  .dark .chatgpt-theme {
+    --background: #1a1915 !important;
+    --surface: #22211d !important;
+    --border: rgba(255, 255, 255, 0.07) !important;
+    --text-primary: #ececdc !important;
+    --text-secondary: #9d9d8e !important;
+  }
+
+  /* Claude chat panel utility classes */
+  .claude-chat-bg {
+    background-color: #1a1915;
+  }
+  .dark .claude-chat-bg {
+    background-color: #1a1915;
+  }
+
+  .claude-text-primary {
+    color: #ececdc;
+  }
+  .dark .claude-text-primary,
+  .chatgpt-theme .claude-text-primary {
+    color: #ececdc;
+  }
+
+  .claude-text-secondary {
+    color: #9d9d8e;
+  }
+  .dark .claude-text-secondary,
+  .chatgpt-theme .claude-text-secondary {
+    color: #9d9d8e;
+  }
+
+  /* Input container — subtle warm border, slightly lighter surface */
+  .claude-input-container {
+    background-color: #2c2b26;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: border-color 0.2s ease;
+  }
+  .claude-input-container:focus-within {
+    border-color: rgba(255, 255, 255, 0.22);
+  }
+
+  /* Icon/text buttons in the chat panel */
+  .claude-icon-btn {
+    color: #9d9d8e;
+  }
+  .claude-icon-btn:hover {
+    color: #ececdc;
+    background-color: rgba(255, 255, 255, 0.07);
+  }
+
+  /* Send arrow button */
+  .claude-send-btn {
+    background-color: #cc7d3a;
+    color: #fff;
+  }
+  .claude-send-btn:hover:not(:disabled) {
+    background-color: #d98a47;
+  }
+
+  /* Chat bubbles in Claude style */
+  .dark .chatgpt-theme .chat-bubble-ai,
+  .chatgpt-theme .chat-bubble-ai {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: #ececdc !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .dark .chatgpt-theme .chat-bubble-user,
+  .chatgpt-theme .chat-bubble-user {
+    background-color: #2c2b26 !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    color: #ececdc !important;
+    border-radius: 12px !important;
+  }
+}

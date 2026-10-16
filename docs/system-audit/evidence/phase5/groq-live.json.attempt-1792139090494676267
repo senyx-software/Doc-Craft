@@ -1,0 +1,197 @@
+{
+  "checked_at": "2026-10-16T08:22:42.577Z",
+  "scope": "Actual approved Groq completions through application provider router, real MCP SDK transport and real PostgreSQL; native fixture stack, not deployed containers",
+  "checks": [
+    {
+      "workflow": "initial extraction live completion",
+      "status": "FAIL",
+      "evidence": {
+        "errors": [
+          {
+            "code": "PROVIDER_TOOL_REJECTED",
+            "phase": "provider"
+          }
+        ],
+        "live_attempts": 4
+      }
+    },
+    {
+      "workflow": "Live extracted fields persist in PostgreSQL",
+      "status": "FAIL",
+      "evidence": {
+        "slots": {}
+      }
+    },
+    {
+      "workflow": "correction and long-session continuity live completion",
+      "status": "FAIL",
+      "evidence": {
+        "errors": [
+          {
+            "code": "PROVIDER_TOOL_REJECTED",
+            "phase": "provider"
+          }
+        ],
+        "live_attempts": 5
+      }
+    },
+    {
+      "workflow": "Live correction persists and preserves document identity",
+      "status": "FAIL",
+      "evidence": {
+        "slots": {}
+      }
+    },
+    {
+      "workflow": "Live line-item update and discount persist",
+      "status": "FAIL",
+      "evidence": {
+        "slots": {}
+      }
+    },
+    {
+      "workflow": "pending confirmation live completion",
+      "status": "FAIL",
+      "evidence": {
+        "errors": [
+          {
+            "code": "PROVIDER_RATE_LIMITED",
+            "phase": "provider"
+          }
+        ],
+        "live_attempts": 7
+      }
+    },
+    {
+      "workflow": "Requested confirmation leaves committed client intact",
+      "status": "FAIL",
+      "evidence": {
+        "pending": {
+          "kind": "ask",
+          "field": "businessName",
+          "question": "What is the business or company name?"
+        }
+      }
+    },
+    {
+      "workflow": "Real provider MCP tool execution occurred",
+      "status": "FAIL",
+      "evidence": {
+        "tools": [
+          {
+            "turn": "pending confirmation",
+            "name": "update_slots",
+            "isError": true
+          }
+        ]
+      }
+    },
+    {
+      "workflow": "Live requests stay within explicit approval",
+      "status": "PASS",
+      "evidence": {
+        "attempts": 7,
+        "reserved_usd": 0.035800799999999994,
+        "observed_usd": 0.00014782500000000003
+      }
+    }
+  ],
+  "tools": [
+    {
+      "turn": "pending confirmation",
+      "name": "update_slots",
+      "isError": true
+    }
+  ],
+  "budget": {
+    "request_limit": 8,
+    "usd_limit": 0.1,
+    "model": "openai/gpt-oss-20b",
+    "price_per_million": {
+      "input": 0.075,
+      "output": 0.3
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "request_bytes": 7394,
+        "max_output_tokens": 2048,
+        "worst_case_reserved_usd": 0.0051144,
+        "error_type": "TypeError"
+      },
+      {
+        "attempt": 2,
+        "request_bytes": 11404,
+        "max_output_tokens": 2048,
+        "worst_case_reserved_usd": 0.0051144,
+        "error_type": "TypeError"
+      },
+      {
+        "attempt": 3,
+        "request_bytes": 7844,
+        "max_output_tokens": 2048,
+        "worst_case_reserved_usd": 0.0051144,
+        "error_type": "TypeError"
+      },
+      {
+        "attempt": 4,
+        "request_bytes": 7394,
+        "max_output_tokens": 2048,
+        "worst_case_reserved_usd": 0.0051144,
+        "http_status": 400,
+        "latency_ms": 1661,
+        "request_id": "req_01m51wwnzbe5z95v5exrnz355n",
+        "tool_names": []
+      },
+      {
+        "attempt": 5,
+        "request_bytes": 11404,
+        "max_output_tokens": 2048,
+        "worst_case_reserved_usd": 0.0051144,
+        "http_status": 400,
+        "latency_ms": 977,
+        "request_id": "req_01m51wwqn4enptgz6htyvv2wsg",
+        "tool_names": []
+      },
+      {
+        "attempt": 6,
+        "request_bytes": 7844,
+        "max_output_tokens": 2048,
+        "worst_case_reserved_usd": 0.0051144,
+        "http_status": 200,
+        "latency_ms": 626,
+        "request_id": "req_01m51wwrsgegzvx4eaeexcb0tt",
+        "usage": {
+          "queue_time": 0.340499625,
+          "prompt_tokens": 1727,
+          "prompt_time": 0.086298654,
+          "completion_tokens": 61,
+          "completion_time": 0.063030987,
+          "total_tokens": 1788,
+          "total_time": 0.149329641,
+          "completion_tokens_details": {
+            "reasoning_tokens": 14
+          }
+        },
+        "finish_reason": "tool_calls",
+        "tool_names": [
+          "update_slots"
+        ]
+      },
+      {
+        "attempt": 7,
+        "request_bytes": 8734,
+        "max_output_tokens": 2048,
+        "worst_case_reserved_usd": 0.0051144,
+        "http_status": 429,
+        "latency_ms": 128,
+        "request_id": "req_01m51wwsj7ed2sjxjbyxry6vc1",
+        "tool_names": []
+      }
+    ],
+    "reserved_usd": 0.035800799999999994,
+    "observed_usd": 0.00014782500000000003
+  },
+  "claude": "BLOCKED: no staging key/project authorized",
+  "browser": "BLOCKED: host sandbox unavailable"
+}

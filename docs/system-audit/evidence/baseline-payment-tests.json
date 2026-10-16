@@ -1,0 +1,16 @@
+{
+  "id": "baseline-payment-tests",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "-w",
+    "doccraft-payment"
+  ],
+  "started_utc": "2026-10-15T05:46:15.837328+00:00",
+  "seconds": 3.87,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/baseline-payment-tests.log"
+}

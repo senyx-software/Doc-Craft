@@ -1,0 +1,14 @@
+{
+  "id": "chat-shared-user-tests",
+  "command": [
+    "npm",
+    "run",
+    "test:chat"
+  ],
+  "cwd": ".",
+  "started_utc": "2026-10-16T08:25:43.105396+00:00",
+  "seconds": 9.53,
+  "exit_code": 1,
+  "status": "BLOCKED",
+  "log": "docs/system-audit/evidence/phase5/regression/chat-shared-user-tests.log"
+}

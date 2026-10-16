@@ -1,0 +1,3 @@
+[PostHog] error uploading: HTTPConnectionPool(host='127.0.0.1', port=9): Max retries exceeded with url: /batch/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [Errno 111] Connection refused"))
+[PostHog] error uploading: HTTPConnectionPool(host='127.0.0.1', port=9): Max retries exceeded with url: /batch/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [Errno 111] Connection refused"))
+[PostHog] error uploading: HTTPConnectionPool(host='127.0.0.1', port=9): Max retries exceeded with url: /batch/ (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [Errno 111] Connection refused"))

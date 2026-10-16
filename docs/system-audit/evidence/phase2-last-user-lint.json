@@ -1,0 +1,14 @@
+{
+  "id": "phase2-last-user-lint",
+  "cwd": "user-frontend",
+  "command": [
+    "npm",
+    "run",
+    "lint"
+  ],
+  "started_utc": "2026-10-15T13:28:46.700660+00:00",
+  "seconds": 14.41,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-last-user-lint.log"
+}

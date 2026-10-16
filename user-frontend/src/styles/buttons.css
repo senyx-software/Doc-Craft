@@ -1,0 +1,48 @@
+/*
+ * Button styles — composed entirely from Tailwind utility classes (@apply),
+ * using the brand/surface/accent scale defined in tailwind.config.js
+ * (sourced from design-tokens.css). No raw hex values here.
+ */
+
+@layer components {
+  /* Figma's Accents Applications page: shade 400 is the base colour for
+     buttons/CTAs/selected states; 500 is for high-contrast borders/text. */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-400 text-white
+           font-semibold rounded-full hover:bg-brand-500 active:bg-brand-500
+           transition-all duration-200 shadow-3 hover:shadow-4 hover:-translate-y-0.5
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0
+           disabled:hover:shadow-3;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-appSurface text-appTextPrimary
+           font-semibold rounded-full hover:bg-appBorder active:bg-appBorder
+           transition-all duration-200 border border-appBorder
+           hover:-translate-y-0.5;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-appTextSecondary
+           font-medium rounded-full hover:text-appTextPrimary hover:bg-appSurface
+           transition-all duration-200;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-transparent
+           text-brand-300 font-semibold rounded-full border-2 border-brand-500/50
+           hover:bg-brand-500/10 hover:border-brand-400
+           transition-all duration-200 hover:-translate-y-0.5;
+  }
+
+  .btn-google {
+    @apply inline-flex items-center justify-center gap-3 w-full px-6 py-3 bg-white text-gray-700
+           font-semibold rounded-full border border-gray-200 hover:bg-gray-50 hover:shadow-md
+           transition-all duration-200;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-danger text-white
+           font-semibold rounded-full hover:opacity-90 transition-all duration-200;
+  }
+}

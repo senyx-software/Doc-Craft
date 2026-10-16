@@ -1,0 +1,16 @@
+{
+  "id": "final-payment-tests",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "-w",
+    "doccraft-payment"
+  ],
+  "started_utc": "2026-10-15T06:08:33.137665+00:00",
+  "seconds": 3.67,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/final-payment-tests.log"
+}

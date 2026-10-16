@@ -1,0 +1,324 @@
+[
+  {
+    "document_type": "invoice",
+    "template": "classic",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 41685,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer",
+      "8.63"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true,
+      "8.63": true
+    },
+    "artifact": "pdf-invoice-classic.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "document_type": "invoice",
+    "template": "grid-bordered",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 69202,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer",
+      "8.63"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true,
+      "8.63": true
+    },
+    "artifact": "pdf-invoice-grid-bordered.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "document_type": "invoice",
+    "template": "minimal",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 45780,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer",
+      "8.63"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true,
+      "8.63": true
+    },
+    "artifact": "pdf-invoice-minimal.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "document_type": "invoice",
+    "template": "modern",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 48626,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer",
+      "8.63"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true,
+      "8.63": true
+    },
+    "artifact": "pdf-invoice-modern.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "document_type": "invoice",
+    "template": "odoo-community",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 68809,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer",
+      "8.63"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true,
+      "8.63": true
+    },
+    "artifact": "pdf-invoice-odoo-community.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "document_type": "proposal",
+    "template": "classic",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 34098,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true
+    },
+    "artifact": "pdf-proposal-classic.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "document_type": "proposal",
+    "template": "minimal",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 44468,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true
+    },
+    "artifact": "pdf-proposal-minimal.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "document_type": "proposal",
+    "template": "modern",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 42551,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true
+    },
+    "artifact": "pdf-proposal-modern.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "document_type": "purchase_order",
+    "template": "classic",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 38453,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer",
+      "8.63"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true,
+      "8.63": true
+    },
+    "artifact": "pdf-purchase_order-classic.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "document_type": "purchase_order",
+    "template": "minimal",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 46838,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer",
+      "8.63"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true,
+      "8.63": true
+    },
+    "artifact": "pdf-purchase_order-minimal.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "document_type": "purchase_order",
+    "template": "modern",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 49574,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer",
+      "8.63"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true,
+      "8.63": true
+    },
+    "artifact": "pdf-purchase_order-modern.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "document_type": "quotation",
+    "template": "classic",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 38817,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer",
+      "8.63"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true,
+      "8.63": true
+    },
+    "artifact": "pdf-quotation-classic.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "document_type": "quotation",
+    "template": "minimal",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 46567,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer",
+      "8.63"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true,
+      "8.63": true
+    },
+    "artifact": "pdf-quotation-minimal.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "document_type": "quotation",
+    "template": "modern",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 49094,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer",
+      "8.63"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true,
+      "8.63": true
+    },
+    "artifact": "pdf-quotation-modern.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "document_type": "receipt",
+    "template": "classic",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 56355,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer",
+      "8.63"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true,
+      "8.63": true
+    },
+    "artifact": "pdf-receipt-classic.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "document_type": "receipt",
+    "template": "minimal",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 39997,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer",
+      "8.63"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true,
+      "8.63": true
+    },
+    "artifact": "pdf-receipt-minimal.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "document_type": "receipt",
+    "template": "modern",
+    "status": "PASS",
+    "pages": 1,
+    "bytes": 81433,
+    "expected_text": [
+      "Nexora",
+      "Audit Customer",
+      "8.63"
+    ],
+    "text_found": {
+      "Nexora": true,
+      "Audit Customer": true,
+      "8.63": true
+    },
+    "artifact": "pdf-receipt-modern.pdf",
+    "method": "Actual template render + local HTTP sidecar + Chromium PDF + extracted text"
+  },
+  {
+    "scenario": "Renderer blocks active scripts and internal network fetches",
+    "status": "PASS",
+    "trap_requests": 0
+  }
+]

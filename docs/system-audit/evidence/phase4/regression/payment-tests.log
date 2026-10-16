@@ -1,0 +1,18 @@
+npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown user config "tmp". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> doccraft-payment@1.0.0 test
+> vitest run
+
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - `__dirname` (vitest.config.ts:7:31). Use `import.meta.dirname` instead
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v5.0.5 /home/eranda/Projects/doc-craft/services/payment
+
+
+ Test Files  14 passed (14)
+      Tests  78 passed (78)
+   Start at  13:04:17
+   Duration  1.75s (setup 45%, import 35%, transform 12%, tests 5%, worker 3%)
+

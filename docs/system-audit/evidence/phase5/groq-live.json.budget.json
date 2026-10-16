@@ -1,0 +1,114 @@
+{
+  "request_limit": 8,
+  "usd_limit": 0.1,
+  "model": "openai/gpt-oss-20b",
+  "price_per_million": {
+    "input": 0.075,
+    "output": 0.3
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "request_bytes": 7394,
+      "max_output_tokens": 2048,
+      "worst_case_reserved_usd": 0.0051144,
+      "error_type": "TypeError"
+    },
+    {
+      "attempt": 2,
+      "request_bytes": 11404,
+      "max_output_tokens": 2048,
+      "worst_case_reserved_usd": 0.0051144,
+      "error_type": "TypeError"
+    },
+    {
+      "attempt": 3,
+      "request_bytes": 7844,
+      "max_output_tokens": 2048,
+      "worst_case_reserved_usd": 0.0051144,
+      "error_type": "TypeError"
+    },
+    {
+      "attempt": 4,
+      "request_bytes": 7394,
+      "max_output_tokens": 2048,
+      "worst_case_reserved_usd": 0.0051144,
+      "http_status": 400,
+      "latency_ms": 1661,
+      "request_id": "req_01m51wwnzbe5z95v5exrnz355n",
+      "tool_names": []
+    },
+    {
+      "attempt": 5,
+      "request_bytes": 11404,
+      "max_output_tokens": 2048,
+      "worst_case_reserved_usd": 0.0051144,
+      "http_status": 400,
+      "latency_ms": 977,
+      "request_id": "req_01m51wwqn4enptgz6htyvv2wsg",
+      "tool_names": []
+    },
+    {
+      "attempt": 6,
+      "request_bytes": 7844,
+      "max_output_tokens": 2048,
+      "worst_case_reserved_usd": 0.0051144,
+      "http_status": 200,
+      "latency_ms": 626,
+      "request_id": "req_01m51wwrsgegzvx4eaeexcb0tt",
+      "usage": {
+        "queue_time": 0.340499625,
+        "prompt_tokens": 1727,
+        "prompt_time": 0.086298654,
+        "completion_tokens": 61,
+        "completion_time": 0.063030987,
+        "total_tokens": 1788,
+        "total_time": 0.149329641,
+        "completion_tokens_details": {
+          "reasoning_tokens": 14
+        }
+      },
+      "finish_reason": "tool_calls",
+      "tool_names": [
+        "update_slots"
+      ]
+    },
+    {
+      "attempt": 7,
+      "request_bytes": 8734,
+      "max_output_tokens": 2048,
+      "worst_case_reserved_usd": 0.0051144,
+      "http_status": 429,
+      "latency_ms": 128,
+      "request_id": "req_01m51wwsj7ed2sjxjbyxry6vc1",
+      "tool_names": []
+    },
+    {
+      "attempt": 8,
+      "request_bytes": 7199,
+      "max_output_tokens": 2048,
+      "worst_case_reserved_usd": 0.0051144,
+      "http_status": 200,
+      "latency_ms": 899,
+      "request_id": "req_01m51x0qrte3j8vkzwfgjhbcz6",
+      "usage": {
+        "queue_time": 0.384809194,
+        "prompt_tokens": 1587,
+        "prompt_time": 0.085461597,
+        "completion_tokens": 32,
+        "completion_time": 0.032442901,
+        "total_tokens": 1619,
+        "total_time": 0.117904498,
+        "completion_tokens_details": {
+          "reasoning_tokens": 7
+        }
+      },
+      "finish_reason": "tool_calls",
+      "tool_names": [
+        "update_slots"
+      ]
+    }
+  ],
+  "reserved_usd": 0.04091519999999999,
+  "observed_usd": 0.00027645
+}

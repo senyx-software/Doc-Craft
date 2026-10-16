@@ -1,0 +1,61 @@
+........................................................................ [ 52%]
+.................................F..............................         [100%]
+=================================== FAILURES ===================================
+_________________ test_staff_cannot_modify_own_role_or_status __________________
+
+    def test_staff_cannot_modify_own_role_or_status():
+        staff_id = _invite_test_staff("self_edit_attempt@doccraft.app")
+        self_token = create_admin_access_token(staff_id, "self_edit_attempt@doccraft.app", "Support Staff", ["*"], is_super_admin=True)
+    
+        # This request has full permissions, so — unlike the permission-boundary
+        # test above — it actually reaches require_totp_2fa: the invited staffer
+        # needs a real, matching secret too, not just a random one.
+        self_secret = pyotp.random_base32()
+        invited_account = admin_user_repository.get_by_id(staff_id)
+        invited_account.totp_enabled = True
+        invited_account.totp_secret = self_secret
+        admin_user_repository.save(invited_account)
+    
+        self_headers = {
+            "Authorization": f"Bearer {self_token}",
+            "X-Admin-2FA": action_code(self_secret),
+            "X-Forwarded-For": "127.0.0.1",
+        }
+    
+        res = client.patch(f"/api/v1/admin/staff/{staff_id}", json={"status": "active"}, headers=self_headers)
+        assert res.status_code == 422
+    
+        res2 = client.delete(f"/api/v1/admin/staff/{staff_id}", headers=self_headers)
+>       assert res2.status_code == 422
+E       assert 403 == 422
+E        +  where 403 = <Response [403 Forbidden]>.status_code
+
+tests/test_rbac_engine.py:222: AssertionError
+----------------------------- Captured stdout call -----------------------------
+[EmailService] Notification service unreachable ([Errno 111] Connection refused), falling back to direct Resend dispatch.
+[EmailService] Mock transport: staff invitation suppressed
+=============================== warnings summary ===============================
+../../.venv-local/lib/python3.13/site-packages/fastapi/testclient.py:1
+  /home/eranda/Projects/doc-craft/.venv-local/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+tests/test_phase2_mutations.py: 4 warnings
+tests/test_phase3_budgets.py: 1 warning
+tests/test_plans_api.py: 3 warnings
+tests/test_security_and_api.py: 1 warning
+tests/test_users_api.py: 1 warning
+  /home/eranda/Projects/doc-craft/.venv-local/lib/python3.13/site-packages/starlette/_exception_handler.py:59: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+    response = await handler(conn, exc)  # type: ignore[arg-type]
+
+tests/test_plans_api.py::test_system_plans_seeded_and_protected_from_archival
+  /home/eranda/Projects/doc-craft/services/admin-api/app/api/v1/plans.py:174: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+    raise ValidationException(f"Built-in system plan '{plan.code}' cannot be archived")
+
+tests/test_rbac_engine.py::test_staff_cannot_modify_own_role_or_status
+  /home/eranda/Projects/doc-craft/services/admin-api/app/api/v1/rbac.py:284: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+    raise ValidationException("You cannot change your own role or status. Ask another Super Admin to do this.")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_rbac_engine.py::test_staff_cannot_modify_own_role_or_status
+1 failed, 135 passed, 13 warnings in 30.30s

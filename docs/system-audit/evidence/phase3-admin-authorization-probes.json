@@ -1,0 +1,13 @@
+{
+  "id": "phase3-admin-authorization-probes",
+  "cwd": ".",
+  "command": [
+    ".venv-local/bin/python",
+    "scripts/system_audit_api.py"
+  ],
+  "started_utc": "2026-10-15T14:14:16.682991+00:00",
+  "seconds": 4.08,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-admin-authorization-probes.log"
+}

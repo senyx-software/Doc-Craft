@@ -1,0 +1,117 @@
+/*
+ * Structural classes for the invoice/document layout pattern documented in
+ * .agents/invoice-templates.md. Scoped under `.invoice-doc` so it can never
+ * leak into the rest of the app's Tailwind-based styling.
+ *
+ * Note: actual invoice HTML is currently generated server-side by
+ * services/document (Puppeteer) and injected via dangerouslySetInnerHTML
+ * (see components/builder/DocumentPreview.tsx) — these classes aren't wired
+ * into that pipeline. They're the reference implementation for whoever
+ * builds a React-native invoice renderer, or for porting to
+ * services/document's own templates.
+ */
+
+.invoice-doc {
+  width: var(--invoice-page-width);
+  min-height: var(--invoice-page-height);
+  background: var(--invoice-page-bg);
+  color: var(--invoice-text-primary);
+  font-family: var(--invoice-font-family);
+  font-size: var(--invoice-font-size-body);
+  font-weight: var(--invoice-font-weight-regular);
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.invoice-doc__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.invoice-doc__meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.invoice-doc__label {
+  font-weight: var(--invoice-font-weight-medium);
+  color: var(--invoice-text-muted);
+  font-size: var(--invoice-font-size-body);
+  margin-bottom: 2px;
+}
+
+.invoice-doc__value {
+  font-weight: var(--invoice-font-weight-semibold);
+  color: var(--invoice-text-primary);
+}
+
+.invoice-doc__billed-to {
+  margin-bottom: 24px;
+}
+
+.invoice-doc__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+
+.invoice-doc__table-head {
+  font-size: var(--invoice-font-size-table-head);
+  font-weight: var(--invoice-font-weight-semibold);
+  color: var(--invoice-text-muted);
+  text-transform: uppercase;
+  text-align: left;
+  border-bottom: 1px solid var(--invoice-text-faint);
+  padding-bottom: 6px;
+}
+
+.invoice-doc__table-row {
+  border-bottom: 1px solid rgba(139, 145, 158, 0.2);
+}
+
+.invoice-doc__table-cell {
+  padding: 8px 0;
+  font-weight: var(--invoice-font-weight-medium);
+}
+
+.invoice-doc__totals {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  margin-bottom: 32px;
+}
+
+.invoice-doc__total-row {
+  display: flex;
+  gap: 24px;
+  font-size: var(--invoice-font-size-total-sm);
+}
+
+.invoice-doc__grand-total {
+  font-size: var(--invoice-font-size-total-lg);
+  font-weight: var(--invoice-font-weight-bold);
+}
+
+/* Optional highlight bar for "Total due" — accent varies per template,
+   pick one of --invoice-accent-* from tokens.css (see Invoice 2 / 3). */
+.invoice-doc__total-highlight {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-radius: 6px;
+  color: #ffffff;
+  font-weight: var(--invoice-font-weight-semibold);
+  background: linear-gradient(90deg, var(--invoice-accent-blue-1), var(--invoice-accent-blue-2));
+}
+
+.invoice-doc__footer {
+  color: var(--invoice-text-muted);
+  font-size: var(--invoice-font-size-body);
+  padding-top: 16px;
+  border-top: 1px solid rgba(139, 145, 158, 0.2);
+}

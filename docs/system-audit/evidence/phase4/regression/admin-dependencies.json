@@ -1,0 +1,14 @@
+{
+  "id": "admin-dependencies",
+  "command": [
+    "npm",
+    "audit",
+    "--json"
+  ],
+  "cwd": "admin",
+  "started_utc": "2026-10-16T07:34:30.238194+00:00",
+  "seconds": 1.09,
+  "exit_code": 1,
+  "status": "OPEN_FINDINGS",
+  "log": "docs/system-audit/evidence/phase4/regression/admin-dependencies.log"
+}

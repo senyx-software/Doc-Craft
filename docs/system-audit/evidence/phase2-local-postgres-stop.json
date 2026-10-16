@@ -1,0 +1,19 @@
+{
+  "id": "phase2-local-postgres-stop",
+  "cwd": ".",
+  "command": [
+    "env",
+    "LD_LIBRARY_PATH=/tmp/doccraft-phase2-pg/package/native/lib",
+    "/tmp/doccraft-phase2-pg/package/native/bin/pg_ctl",
+    "-D",
+    "/tmp/doccraft-phase2-pg/data",
+    "stop",
+    "-m",
+    "fast"
+  ],
+  "started_utc": "2026-10-15T13:35:50.180425+00:00",
+  "seconds": 0.1,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-local-postgres-stop.log"
+}

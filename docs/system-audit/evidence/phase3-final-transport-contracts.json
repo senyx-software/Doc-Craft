@@ -1,0 +1,16 @@
+{
+  "id": "phase3-final-transport-contracts",
+  "cwd": ".",
+  "command": [
+    "node",
+    "--test",
+    "shared/tests/request-ip.test.mjs",
+    "shared/tests/pg-tls.test.mjs",
+    "shared/tests/redact.test.mjs"
+  ],
+  "started_utc": "2026-10-15T14:23:30.468154+00:00",
+  "seconds": 0.42,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-final-transport-contracts.log"
+}

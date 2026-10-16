@@ -1,0 +1,16 @@
+{
+  "id": "phase2-analytics-tests",
+  "cwd": "services/analytics",
+  "command": [
+    "/home/eranda/Projects/doc-craft/.venv-local/bin/python",
+    "-m",
+    "pytest",
+    "tests",
+    "-q"
+  ],
+  "started_utc": "2026-10-15T06:29:47.343536+00:00",
+  "seconds": 2.65,
+  "exit_code": 2,
+  "result": "FAIL",
+  "log": "evidence/phase2-analytics-tests.log"
+}

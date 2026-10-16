@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: #1a1a1a; margin: 0; padding: 20px; background-color: #f7f6f0; }
+    .page-container { width: 100%; border: 2px solid #2d2d2d; display: flex; min-height: 800px; }
+    .left-col { width: 220px; border-right: 2px solid #2d2d2d; display: flex; flex-direction: column; }
+    .right-col { flex: 1; display: flex; flex-direction: column; }
+    .section-box { border-bottom: 2px solid #2d2d2d; padding: 12px 14px; }
+    .section-box.no-border { border-bottom: none; }
+    .label { font-size: 8.5px; font-weight: 700; color: #555555; text-transform: uppercase; margin-bottom: 3px; }
+    .title-h1 { font-size: 34px; font-weight: 900; letter-spacing: -0.5px; color: #1a1a1a; margin: 0; text-transform: uppercase; }
+    .val-bold { font-size: 11px; font-weight: 700; color: #1a1a1a; margin: 0; }
+    .val-main { font-size: 10px; font-weight: 800; color: #1a1a1a; margin: 0; }
+    .text-sub { font-size: 8.5px; color: #555555; margin: 1px 0; }
+    .boxed-digits { display: flex; gap: 2px; justify-content: flex-end; }
+    .digit-box { width: 14px; height: 16px; border: 1px solid #2d2d2d; background: #ffffff; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; }
+    table { width: 100%; border-collapse: collapse; border-bottom: 2px solid #2d2d2d; }
+    th { background: #dcdbd6; border-bottom: 2px solid #2d2d2d; padding: 8px 10px; font-size: 9.5px; font-weight: 800; color: #1a1a1a; text-transform: uppercase; }
+    td { padding: 8px 10px; font-size: 9.5px; font-weight: 700; color: #1a1a1a; border-bottom: 1px solid #2d2d2d; }
+    .total-banner { background: #1a1a1a; color: #ffffff; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; }
+</style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- LEFT COLUMN -->
+        <div class="left-col">
+            <div class="section-box">
+                <h1 class="title-h1">INVOICE</h1>
+            </div>
+            <div class="section-box">
+                <div class="label">ISSUED ON</div>
+                <div class="val-bold">{{ issueDate if issueDate else 'DD / MM / YYYY' }}</div>
+            </div>
+            <div class="section-box">
+                <div class="label">PAYABLE TO</div>
+                <div class="val-main">{{ senderName if senderName else 'FIRST LAST' }}</div>
+                <div class="text-sub">Entity Name</div>
+                {% if senderAddress %}<div class="text-sub">{{ senderAddress | e | replace('\n', '<br>') | safe }}</div>{% endif %}
+                {% if senderEmail %}<div class="val-bold" style="font-size: 8.5px; margin-top: 4px;">{{ senderEmail }}</div>{% endif %}
+            </div>
+            <div class="section-box">
+                <div class="label">BILLED TO</div>
+                <div class="val-main">{{ clientName if clientName else 'FIRST LAST' }}</div>
+                <div class="text-sub">Entity Name</div>
+                {% if clientCompany %}<div class="text-sub" style="text-decoration: underline;">website.com</div>{% endif %}
+                {% if clientAddress %}<div class="text-sub">{{ clientAddress | e | replace('\n', '<br>') | safe }}</div>{% endif %}
+                {% if clientEmail %}<div class="val-bold" style="font-size: 8.5px; margin-top: 4px;">{{ clientEmail }}</div>{% endif %}
+            </div>
+            <div class="section-box">
+                <div class="label">PAYMENT INFORMATION</div>
+                <div style="font-size: 9.5px; font-weight: 800; margin-bottom: 2px;">BANK TRANSFER</div>
+                <div class="text-sub">Account Holder Name: NAME</div>
+                <div class="text-sub">Account Number: 012345678910</div>
+                <div class="text-sub" style="margin-bottom: 6px;">IFSC Code: ABC0122333</div>
+                <div style="font-size: 9.5px; font-weight: 800; margin-bottom: 2px;">PAYPAL</div>
+                <div class="val-bold" style="font-size: 8px; margin-bottom: 6px;">paypal.me/username</div>
+                <div style="font-size: 9.5px; font-weight: 800; margin-bottom: 2px;">UPI</div>
+                <div class="val-bold" style="font-size: 8px; margin-bottom: 6px;">UPI ID: yourupid@bank</div>
+                <div style="width: 48px; height: 48px; border: 1px solid #2d2d2d; background: #ffffff; display: flex; align-items: center; justify-content: center;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.5">
+                        <path d="M3 3h6v6H3zM15 3h6v6h-6zM3 15h6v6H3zM14 14h2v2h-2zM18 14h3v3h-3zM14 18h3v3h-3zM19 19h2v2h-2z" />
+                    </svg>
+                </div>
+                <div style="font-size: 7px; color: #555555; margin-top: 4px;">Scan to pay with any UPI app</div>
+            </div>
+            <div class="section-box no-border" style="flex: 1;">
+                <div style="font-size: 10px; font-weight: 800; margin-bottom: 4px; text-transform: uppercase;">GOT ANY QUESTIONS?</div>
+                <div class="label">CONTACT DETAILS</div>
+                <div class="val-main" style="font-size: 9px;">FIRST LAST</div>
+                <div class="text-sub">Entity Name</div>
+                <div class="text-sub" style="text-decoration: underline;">website.com</div>
+                <div class="text-sub">you@gmail.com</div>
+                <div class="text-sub" style="margin-bottom: 6px;">+1 98765 43210</div>
+                <div style="display: flex; gap: 8px; font-size: 10px;">
+                    <span>📷</span> <span>𝕏</span> <span>in</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="right-col">
+            <div class="section-box" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <div class="label">INVOICE TO</div>
+                    <div style="font-size: 13px; font-weight: 800;">{{ clientName if clientName else 'ENTITY NAME' }}</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="label">INVOICE NUMBER</div>
+                    <div class="boxed-digits">
+                        {% set num = (invoiceNumber if invoiceNumber else '000000') %}
+                        {% for digit in num %}
+                        <span class="digit-box">{{ digit }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-box">
+                <div style="font-size: 10.5px; font-weight: 800; text-transform: uppercase; margin-bottom: 4px;">PROJECT DESCRIPTION</div>
+                <div style="font-size: 8.5px; color: #555555; line-height: 1.4;">
+                    {{ notes if notes else 'A brief overview of the project, including its objectives and scope. This section should summarize what the project entailed and the services provided.' }}
+                </div>
+            </div>
+
+            <div style="flex: 1; display: flex; flex-direction: column;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="text-align: left; border-right: 2px solid #2d2d2d;">BILLABLE ITEMS</th>
+                            <th style="text-align: center; width: 45px; border-right: 2px solid #2d2d2d;">QTY.</th>
+                            <th style="text-align: right; width: 95px;">AMOUNT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in lineItems %}
+                        <tr>
+                            <td style="border-right: 2px solid #2d2d2d;">{{ item.description }}</td>
+                            <td style="text-align: center; border-right: 2px solid #2d2d2d;">{{ "%02d" | format(item.quantity | int) }}</td>
+                            <td style="text-align: right;">{{ currencySymbol }}{{ item.total | money(currency, locale) }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <div style="flex: 1; min-height: 40px;"></div>
+
+                <div style="border-top: 2px solid #2d2d2d; border-bottom: 1px solid #2d2d2d; padding: 7px 12px; display: flex; justify-content: space-between;">
+                    <span style="font-size: 9px; font-weight: 800; text-transform: uppercase;">SUBTOTAL</span>
+                    <span style="font-size: 10px; font-weight: 800;">{{ currencySymbol }}{{ subtotal | money(currency, locale) }}</span>
+                </div>
+
+                <div style="border-bottom: 2px solid #2d2d2d; padding: 7px 12px; display: flex; justify-content: space-between;">
+                    <div>
+                        <span style="font-size: 9px; font-weight: 800; text-transform: uppercase;">GST AND TAXES</span>
+                        <span style="font-size: 8px; color: #555555; margin-left: 6px;">• {{ taxRate if taxRate else 18 }}% of Subtotal</span>
+                    </div>
+                    <span style="font-size: 10px; font-weight: 800;">{{ currencySymbol }}{{ taxAmount | money(currency, locale) }}</span>
+                </div>
+
+                <div class="total-banner">
+                    <span style="font-size: 12px; font-weight: 900; letter-spacing: 0.5px; text-transform: uppercase;">TOTAL</span>
+                    <span style="font-size: 14px; font-weight: 900;">{{ currencySymbol }}{{ totalAmount | money(currency, locale) }}</span>
+                </div>
+
+                <div style="padding: 10px 12px;">
+                    <div class="label">PAYMENT TERMS</div>
+                    <div style="font-size: 8px; color: #555555; line-height: 1.35;">Please make the payment within 14 days from receiving the invoice without any deductions.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

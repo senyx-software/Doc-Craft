@@ -1,0 +1,281 @@
+{
+  "seconds": 11.38,
+  "database": "doccraft_phase3_7ef956d8f2eb",
+  "checks": [
+    {
+      "id": "P2-I001",
+      "workflow": "auth checked-in PostgreSQL migrations applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database; real prisma migrate deploy"
+    },
+    {
+      "id": "P2-I002",
+      "workflow": "chat checked-in PostgreSQL migrations applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database; real prisma migrate deploy"
+    },
+    {
+      "id": "P2-I003",
+      "workflow": "payment checked-in PostgreSQL migrations applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database; real prisma migrate deploy"
+    },
+    {
+      "id": "P2-I004",
+      "workflow": "quota checked-in PostgreSQL migrations applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database; real prisma migrate deploy"
+    },
+    {
+      "id": "P2-I005",
+      "workflow": "auth local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I006",
+      "workflow": "chat local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I007",
+      "workflow": "quota local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I008",
+      "workflow": "payment local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I009",
+      "workflow": "document local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I010",
+      "workflow": "admin local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I011",
+      "workflow": "sidecar local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I012",
+      "workflow": "gateway local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I013",
+      "workflow": "notification local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I014",
+      "workflow": "analytics local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I015",
+      "workflow": "Registration, stored verification challenge, verification and login through gateway",
+      "status": "VERIFIED",
+      "category": "Authentication",
+      "evidence": "Two isolated users; email transport is local fixture"
+    },
+    {
+      "id": "P2-I016",
+      "workflow": "Profile update survives authenticated reload",
+      "status": "VERIFIED",
+      "category": "API",
+      "evidence": null
+    },
+    {
+      "id": "P2-I017",
+      "workflow": "Persisted administrator password + one-time code sign-in",
+      "status": "VERIFIED",
+      "category": "Authentication",
+      "evidence": "Real HTTP + PostgreSQL"
+    },
+    {
+      "id": "P2-I018",
+      "workflow": "Isolated test rate policy persists through admin configuration",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": "500 authenticated requests/minute for accelerated fixture workflows"
+    },
+    {
+      "id": "P2-I019",
+      "workflow": "Admin daily allowance reaches authenticated user quota",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": {
+        "limit": 20
+      }
+    },
+    {
+      "id": "P2-I020",
+      "workflow": "Unified admin override persists plan and quota into user APIs",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": null
+    },
+    {
+      "id": "P2-I021",
+      "workflow": "Override removal survives subsequent billing plan synchronization",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": {
+        "limit": 500
+      }
+    },
+    {
+      "id": "P2-I022",
+      "workflow": "Admin announcement reaches the authenticated user feed",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": null
+    },
+    {
+      "id": "P2-I023",
+      "workflow": "Disabled announcement disappears from fresh user feed",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": null
+    },
+    {
+      "id": "P2-I024",
+      "workflow": "invoice multi-turn committed SSE update",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": {
+        "turnId": "4f89459f-ddc5-4869-be73-1b1953553dc9",
+        "provider": "deterministic parser; live AI not exercised"
+      }
+    },
+    {
+      "id": "P2-I025",
+      "workflow": "invoice duplicate turn replay",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I026",
+      "workflow": "invoice multi-turn committed SSE update",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": {
+        "turnId": "d42d0e3e-07fe-4e34-ae70-924bc926c1ed",
+        "provider": "deterministic parser; live AI not exercised"
+      }
+    },
+    {
+      "id": "P2-I027",
+      "workflow": "invoice duplicate turn replay",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I028",
+      "workflow": "invoice admin MCP resource read",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": "MCP initialize \u2192 initialized notification \u2192 resources/read over actual private HTTP"
+    },
+    {
+      "id": "P2-I029",
+      "workflow": "invoice chat fields persist after reload",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I030",
+      "workflow": "invoice real Redis queue \u2192 worker \u2192 Chromium \u2192 persisted PDF",
+      "status": "UNRESOLVED",
+      "category": "PDF",
+      "evidence": {
+        "status": "failed",
+        "documentId": "af28dd3c-2d57-539b-8c8f-c39366dc21c1"
+      }
+    },
+    {
+      "workflow": "Stack execution stopped",
+      "status": "UNRESOLVED",
+      "evidence": "invoice real Redis queue \u2192 worker \u2192 Chromium \u2192 persisted PDF: {'status': 'failed', 'documentId': 'af28dd3c-2d57-539b-8c8f-c39366dc21c1'}"
+    }
+  ],
+  "external_providers": "NOT TESTED; synthetic credentials, no real communications or charges",
+  "cleanup": [
+    {
+      "service": "redis",
+      "exit_code": 0
+    },
+    {
+      "service": "auth",
+      "exit_code": 0
+    },
+    {
+      "service": "quota",
+      "exit_code": 0
+    },
+    {
+      "service": "chat",
+      "exit_code": 0
+    },
+    {
+      "service": "payment",
+      "exit_code": 0
+    },
+    {
+      "service": "notification",
+      "exit_code": 143
+    },
+    {
+      "service": "sidecar",
+      "exit_code": 143
+    },
+    {
+      "service": "admin",
+      "exit_code": -15
+    },
+    {
+      "service": "analytics",
+      "exit_code": -15
+    },
+    {
+      "service": "document",
+      "exit_code": -15
+    },
+    {
+      "service": "gateway",
+      "exit_code": 0
+    }
+  ]
+}

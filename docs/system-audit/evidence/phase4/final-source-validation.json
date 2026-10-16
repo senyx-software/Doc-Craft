@@ -1,0 +1,13 @@
+{
+  "manifest_hash_mismatches": [],
+  "new_file_trailing_whitespace": [],
+  "possible_secret_paths_without_values": [],
+  "private_paths_ignored": {
+    ".local/staging-final-verified/compose.yaml": true,
+    ".local/staging-final-verified/tls/ca.key": true,
+    "doccraft.env": true,
+    ".venv-local/pyvenv.cfg": true
+  },
+  "git_diff_scope": "Git history/index was missing on continuation; no tracked-diff success claimed. Saved content baseline plus hash verification used.",
+  "status": "PASS"
+}

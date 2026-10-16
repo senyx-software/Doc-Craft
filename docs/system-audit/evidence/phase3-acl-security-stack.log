@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/eranda/Projects/doc-craft/scripts/system_audit_phase3_stack.py", line 444, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/home/eranda/Projects/doc-craft/scripts/system_audit_phase3_stack.py", line 71, in main
+    redis_envs=generate_redis(scratch/'credentials','127.0.0.1',redis_port)
+  File "/home/eranda/Projects/doc-craft/scripts/create_redis_credentials.py", line 54, in generate
+    write_private(directory/(identity+'.env'),value)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/eranda/Projects/doc-craft/scripts/create_redis_credentials.py", line 37, in write_private
+    with path.open('x',opener=lambda path,flags:os.open(path,flags,0o600)) as output: output.write(text)
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Path.open() got an unexpected keyword argument 'opener'

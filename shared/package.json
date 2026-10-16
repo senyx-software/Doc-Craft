@@ -1,0 +1,9 @@
+{
+  "name": "doccraft-shared-security",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "jose": "5.10.0",
+    "ioredis": "5.11.1"
+  }
+}

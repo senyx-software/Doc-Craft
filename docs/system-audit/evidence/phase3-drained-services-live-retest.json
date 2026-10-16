@@ -1,0 +1,13 @@
+{
+  "id": "phase3-drained-services-live-retest",
+  "cwd": ".",
+  "command": [
+    ".venv-local/bin/python",
+    "scripts/system_audit_phase3_stack.py"
+  ],
+  "started_utc": "2026-10-15T14:19:39.061813+00:00",
+  "seconds": 82.53,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-drained-services-live-retest.log"
+}

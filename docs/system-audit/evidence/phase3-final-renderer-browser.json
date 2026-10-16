@@ -1,0 +1,13 @@
+{
+  "id": "phase3-final-renderer-browser",
+  "cwd": ".",
+  "command": [
+    ".venv-local/bin/python",
+    "scripts/system_audit_phase3_probes.py"
+  ],
+  "started_utc": "2026-10-15T14:21:37.119940+00:00",
+  "seconds": 216.99,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-final-renderer-browser.log"
+}

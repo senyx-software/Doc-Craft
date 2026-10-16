@@ -1,0 +1,13 @@
+{
+  "id": "phase3-api-denials",
+  "cwd": ".",
+  "command": [
+    ".venv-local/bin/python",
+    "scripts/system_audit_api.py"
+  ],
+  "started_utc": "2026-10-15T17:58:22.400088+00:00",
+  "seconds": 2.59,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-api-denials.log"
+}

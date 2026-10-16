@@ -1,0 +1,8 @@
+npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown user config "tmp". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> user-frontend@0.0.0 build
+> tsc -b && vite build
+
+src/pages/dashboard/DashboardSupportPage.tsx(166,127): error TS2345: Argument of type '"refund" | "contact" | "override" | "issue"' is not assignable to parameter of type 'SetStateAction<"ticket" | "refund" | "contact" | "override">'.
+  Type '"issue"' is not assignable to type 'SetStateAction<"ticket" | "refund" | "contact" | "override">'.

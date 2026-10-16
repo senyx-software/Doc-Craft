@@ -1,0 +1,16 @@
+[
+  {
+    "scenario": "Admin plan quota update reaches an already-cached Node consumer over real Redis pub/sub",
+    "status": "PASS",
+    "initial_limit": 7,
+    "updated_limit": 12,
+    "elapsed_seconds": 0.017,
+    "persistence": "Disposable SQLite plan row and real Redis key verified",
+    "user_effect": "Quota client's returned generation allowance updated",
+    "limitations": "Prisma/PostgreSQL quota counter and browser quota widget are outside this probe"
+  },
+  {
+    "scenario": "Plan update survives a new admin API read",
+    "status": "PASS"
+  }
+]

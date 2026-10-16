@@ -1,0 +1,16 @@
+{
+  "id": "phase3-final-user-build",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "build",
+    "--prefix",
+    "user-frontend"
+  ],
+  "started_utc": "2026-10-15T14:13:11.069662+00:00",
+  "seconds": 30.0,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-final-user-build.log"
+}

@@ -1,0 +1,5 @@
+/* Invoice/document design unit — import this (not the individual files)
+ * wherever an invoice/document preview is rendered. Not loaded by the app's
+ * main index.css; this is a deliberately separate design unit. */
+@import './tokens.css';
+@import './components.css';

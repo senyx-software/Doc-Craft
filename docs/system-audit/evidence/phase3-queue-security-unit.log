@@ -1,0 +1,15 @@
+✔ Auth email producer interoperates with Notification consumer (6.668387ms)
+✔ queue worker rejects unsigned (1.868664ms)
+✔ queue worker rejects wrong-queue (1.380234ms)
+✔ queue worker rejects wrong-id (1.424838ms)
+✔ queue worker rejects wrong-name (1.395462ms)
+✔ queue worker rejects signature (1.332863ms)
+✔ Chat cannot publish email or payment payloads with its service keys (1.367389ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 278.302719

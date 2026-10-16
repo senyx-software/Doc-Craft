@@ -1,0 +1,14 @@
+{
+  "id": "phase2-final-valid-account-regression",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "test:chat"
+  ],
+  "started_utc": "2026-10-15T13:28:45.540396+00:00",
+  "seconds": 8.52,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-final-valid-account-regression.log"
+}

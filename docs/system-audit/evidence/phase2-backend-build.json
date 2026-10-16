@@ -1,0 +1,14 @@
+{
+  "id": "phase2-backend-build",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "build"
+  ],
+  "started_utc": "2026-10-15T06:43:48.500478+00:00",
+  "seconds": 15.61,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-backend-build.log"
+}

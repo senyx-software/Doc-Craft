@@ -1,0 +1,189 @@
+{
+  "checked_at": "2026-10-16T08:24:52.535Z",
+  "scope": "Actual approved Groq completions through application provider router, real MCP SDK transport and real PostgreSQL; native fixture stack, not deployed containers",
+  "checks": [
+    {
+      "workflow": "bounded simple extraction live completion",
+      "status": "FAIL",
+      "evidence": {
+        "errors": [
+          {
+            "code": "PROVIDER_FAILED",
+            "phase": "provider"
+          }
+        ],
+        "live_attempts": 8
+      }
+    },
+    {
+      "workflow": "Simple live extraction commits through MCP",
+      "status": "FAIL",
+      "evidence": {
+        "slots": {}
+      }
+    },
+    {
+      "workflow": "Real provider MCP tool execution occurred",
+      "status": "FAIL",
+      "evidence": {
+        "tools": [
+          {
+            "turn": "bounded simple extraction",
+            "name": "update_slots",
+            "isError": true,
+            "synthetic_arguments": {
+              "requestField": "clientName"
+            },
+            "synthetic_result": [
+              {
+                "type": "text",
+                "text": "{\"code\":\"EVIDENCE_REJECTED\",\"phase\":\"tool\",\"status\":422,\"retryable\":false,\"message\":\"Please provide the exact value you want to save.\",\"outcome\":\"failure\",\"hint\":\"Correct the tool arguments using the literal current user facts. Preserve leading zeros. Extract supplied values instead of requestField when a value is present. Do not invent or expand bank names. Unrelated valid changes are already saved.\"}"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "workflow": "Live requests stay within explicit approval",
+      "status": "PASS",
+      "evidence": {
+        "attempts": 8,
+        "reserved_usd": 0.04091519999999999,
+        "observed_usd": 0.00027645
+      }
+    }
+  ],
+  "tools": [
+    {
+      "turn": "bounded simple extraction",
+      "name": "update_slots",
+      "isError": true,
+      "synthetic_arguments": {
+        "requestField": "clientName"
+      },
+      "synthetic_result": [
+        {
+          "type": "text",
+          "text": "{\"code\":\"EVIDENCE_REJECTED\",\"phase\":\"tool\",\"status\":422,\"retryable\":false,\"message\":\"Please provide the exact value you want to save.\",\"outcome\":\"failure\",\"hint\":\"Correct the tool arguments using the literal current user facts. Preserve leading zeros. Extract supplied values instead of requestField when a value is present. Do not invent or expand bank names. Unrelated valid changes are already saved.\"}"
+        }
+      ]
+    }
+  ],
+  "budget": {
+    "request_limit": 8,
+    "usd_limit": 0.1,
+    "model": "openai/gpt-oss-20b",
+    "price_per_million": {
+      "input": 0.075,
+      "output": 0.3
+    },
+    "attempts": [
+      {
+        "attempt": 1,
+        "request_bytes": 7394,
+        "max_output_tokens": 2048,
+        "worst_case_reserved_usd": 0.0051144,
+        "error_type": "TypeError"
+      },
+      {
+        "attempt": 2,
+        "request_bytes": 11404,
+        "max_output_tokens": 2048,
+        "worst_case_reserved_usd": 0.0051144,
+        "error_type": "TypeError"
+      },
+      {
+        "attempt": 3,
+        "request_bytes": 7844,
+        "max_output_tokens": 2048,
+        "worst_case_reserved_usd": 0.0051144,
+        "error_type": "TypeError"
+      },
+      {
+        "attempt": 4,
+        "request_bytes": 7394,
+        "max_output_tokens": 2048,
+        "worst_case_reserved_usd": 0.0051144,
+        "http_status": 400,
+        "latency_ms": 1661,
+        "request_id": "req_01m51wwnzbe5z95v5exrnz355n",
+        "tool_names": []
+      },
+      {
+        "attempt": 5,
+        "request_bytes": 11404,
+        "max_output_tokens": 2048,
+        "worst_case_reserved_usd": 0.0051144,
+        "http_status": 400,
+        "latency_ms": 977,
+        "request_id": "req_01m51wwqn4enptgz6htyvv2wsg",
+        "tool_names": []
+      },
+      {
+        "attempt": 6,
+        "request_bytes": 7844,
+        "max_output_tokens": 2048,
+        "worst_case_reserved_usd": 0.0051144,
+        "http_status": 200,
+        "latency_ms": 626,
+        "request_id": "req_01m51wwrsgegzvx4eaeexcb0tt",
+        "usage": {
+          "queue_time": 0.340499625,
+          "prompt_tokens": 1727,
+          "prompt_time": 0.086298654,
+          "completion_tokens": 61,
+          "completion_time": 0.063030987,
+          "total_tokens": 1788,
+          "total_time": 0.149329641,
+          "completion_tokens_details": {
+            "reasoning_tokens": 14
+          }
+        },
+        "finish_reason": "tool_calls",
+        "tool_names": [
+          "update_slots"
+        ]
+      },
+      {
+        "attempt": 7,
+        "request_bytes": 8734,
+        "max_output_tokens": 2048,
+        "worst_case_reserved_usd": 0.0051144,
+        "http_status": 429,
+        "latency_ms": 128,
+        "request_id": "req_01m51wwsj7ed2sjxjbyxry6vc1",
+        "tool_names": []
+      },
+      {
+        "attempt": 8,
+        "request_bytes": 7199,
+        "max_output_tokens": 2048,
+        "worst_case_reserved_usd": 0.0051144,
+        "http_status": 200,
+        "latency_ms": 899,
+        "request_id": "req_01m51x0qrte3j8vkzwfgjhbcz6",
+        "usage": {
+          "queue_time": 0.384809194,
+          "prompt_tokens": 1587,
+          "prompt_time": 0.085461597,
+          "completion_tokens": 32,
+          "completion_time": 0.032442901,
+          "total_tokens": 1619,
+          "total_time": 0.117904498,
+          "completion_tokens_details": {
+            "reasoning_tokens": 7
+          }
+        },
+        "finish_reason": "tool_calls",
+        "tool_names": [
+          "update_slots"
+        ]
+      }
+    ],
+    "reserved_usd": 0.04091519999999999,
+    "observed_usd": 0.00027645
+  },
+  "claude": "BLOCKED: no staging key/project authorized",
+  "browser": "BLOCKED: host sandbox unavailable"
+}

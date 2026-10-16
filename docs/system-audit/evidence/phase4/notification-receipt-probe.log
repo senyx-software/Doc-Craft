@@ -1,0 +1,1 @@
+{"status":"VERIFIED","checks":["idempotent durable identity","conflicting identity rejected","first provider attempt allowed","expired uncertain attempt held for reconciliation"],"external_requests":0}

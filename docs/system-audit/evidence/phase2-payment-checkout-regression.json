@@ -1,0 +1,16 @@
+{
+  "id": "phase2-payment-checkout-regression",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "-w",
+    "doccraft-payment"
+  ],
+  "started_utc": "2026-10-15T06:39:01.367768+00:00",
+  "seconds": 1.73,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-payment-checkout-regression.log"
+}

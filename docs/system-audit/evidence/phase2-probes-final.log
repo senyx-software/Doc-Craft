@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/eranda/Projects/doc-craft/scripts/system_audit_phase2_probes.py", line 103, in <module>
+    main()
+    ~~~~^^
+  File "/home/eranda/Projects/doc-craft/scripts/system_audit_phase2_probes.py", line 62, in main
+    assert health["activeRenders"] == 0 and health["maxRenders"] == 2, health
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'status': 'ok', 'activeRenders': 1, 'maxRenders': 2}

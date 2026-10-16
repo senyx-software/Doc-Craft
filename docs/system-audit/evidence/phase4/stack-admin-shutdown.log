@@ -1,0 +1,101 @@
+INFO:     Started server process [45045]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://127.0.0.1:42063 (Press CTRL+C to quit)
+[cache_manager] Connected to configured Redis endpoint
+[plan_repository] Seeded 4 plans into Redis
+[AutomationQueue] Connected to configured Redis endpoint
+INFO:     127.0.0.1:57246 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57246 - "GET /ready HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57252 - "GET /api/v1/internal/entitlements/586ea176-cfbe-4f49-ac23-d5adefa025a4 HTTP/1.1" 200 OK
+[EmailService] Notification service queued OTP email for phase2-admin@example.com (verify_email)
+INFO:     127.0.0.1:57246 - "POST /api/v1/admin/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57246 - "POST /api/v1/admin/auth/verify-login-code HTTP/1.1" 200 OK
+[EmailService] Notification service queued OTP email for phase2-admin@example.com (verify_email)
+INFO:     127.0.0.1:57246 - "POST /api/v1/admin/auth/request-action-code HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57246 - "POST /api/v1/admin/gdpr/purge HTTP/1.1" 200 OK
+[EmailService] Notification service queued OTP email for phase2-admin@example.com (verify_email)
+INFO:     127.0.0.1:57246 - "POST /api/v1/admin/auth/request-action-code HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57246 - "POST /api/v1/admin/gdpr/purge HTTP/1.1" 200 OK
+[EmailService] Notification service queued OTP email for phase2-admin@example.com (verify_email)
+INFO:     127.0.0.1:57246 - "POST /api/v1/admin/auth/request-action-code HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57246 - "PUT /api/v1/admin/notifications/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57262 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36240 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38218 - "POST /api/v1/internal/automation/events HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38230 - "GET /api/v1/internal/entitlements/586ea176-cfbe-4f49-ac23-d5adefa025a4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38230 - "GET /api/v1/internal/entitlements/586ea176-cfbe-4f49-ac23-d5adefa025a4 HTTP/1.1" 200 OK
+[EventSubscriber] Redis connection error: Error 111 connecting to 127.0.0.1:41715. Connect call failed ('127.0.0.1', 41715).. Reconnecting in 5s…
+[AutomationWorker] Error in main loop: Connection closed by server.
+INFO:     127.0.0.1:38242 - "GET /api/v1/internal/entitlements/586ea176-cfbe-4f49-ac23-d5adefa025a4 HTTP/1.1" 200 OK
+[EmailService] Notification service queued OTP email for phase2-admin@example.com (verify_email)
+INFO:     127.0.0.1:38244 - "POST /api/v1/admin/auth/request-action-code HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38244 - "PUT /api/v1/admin/notifications/settings HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59986 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59986 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59986 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59986 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59986 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59986 - "GET /api/v1/admin/notifications/config/public HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [45045]

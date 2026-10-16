@@ -1,0 +1,16 @@
+{
+  "id": "phase2-final-admin-validation",
+  "cwd": "services/admin-api",
+  "command": [
+    "../../.venv-local/bin/python",
+    "-m",
+    "pytest",
+    "tests",
+    "-q"
+  ],
+  "started_utc": "2026-10-15T13:27:14.791293+00:00",
+  "seconds": 20.34,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-final-admin-validation.log"
+}

@@ -1,0 +1,149 @@
+src/components/common/AdminTopbar.tsx(128,24): error TS2345: Argument of type 'NotificationLog[]' is not assignable to parameter of type 'SetStateAction<FailedNotification[]>'.
+  Type 'NotificationLog[]' is not assignable to type 'FailedNotification[]'.
+    Type 'NotificationLog' is not assignable to type 'FailedNotification'.
+      Types of property 'recipient' are incompatible.
+        Type 'string | undefined' is not assignable to type 'string'.
+          Type 'undefined' is not assignable to type 'string'.
+src/pages/UserDetailPage.tsx(85,17): error TS2345: Argument of type '{ id: string; fullName: string; email: string; plan: string; status: "active"; createdAt: string; quota: number; authProvider: string; }' is not assignable to parameter of type 'SetStateAction<Customer | null>'.
+  Property 'isGuest' is missing in type '{ id: string; fullName: string; email: string; plan: string; status: "active"; createdAt: string; quota: number; authProvider: string; }' but required in type 'Customer'.
+src/pages/UserDetailPage.tsx(148,91): error TS2551: Property 'createdDate' does not exist on type 'Customer'. Did you mean 'createdAt'?
+src/pages/UserDetailPage.tsx(278,50): error TS2345: Argument of type 'string' is not assignable to parameter of type 'SetStateAction<"active" | "suspended" | "banned">'.
+src/pages/subviews/AnalyticsView.tsx(143,70): error TS18046: 'res' is of type 'unknown'.
+src/pages/subviews/AnalyticsView.tsx(646,40): error TS2339: Property 'registration_to_activation' does not exist on type 'ConversionStats'.
+src/pages/subviews/AnalyticsView.tsx(652,40): error TS2339: Property 'activation_to_power' does not exist on type 'ConversionStats'.
+src/pages/subviews/AnalyticsView.tsx(658,40): error TS2339: Property 'overall_paid_conversion' does not exist on type 'ConversionStats'.
+src/pages/subviews/AnalyticsView.tsx(671,42): error TS2339: Property 'registration_to_activation' does not exist on type 'ConversionStats'.
+src/pages/subviews/AnalyticsView.tsx(672,44): error TS2339: Property 'activation_to_power' does not exist on type 'ConversionStats'.
+src/pages/subviews/AnalyticsView.tsx(673,42): error TS2339: Property 'overall_paid_conversion' does not exist on type 'ConversionStats'.
+src/pages/subviews/AutomationsView.tsx(136,30): error TS7006: Parameter 'r' implicitly has an 'any' type.
+src/pages/subviews/AutomationsView.tsx(367,25): error TS2353: Object literal may only specify known properties, and 'error' does not exist in type 'AutomationPreview | AutomationPreview[] | ((prevState: AutomationPreview | AutomationPreview[] | null) => AutomationPreview | ... 1 more ... | null)'.
+src/pages/subviews/ConfigView.tsx(329,82): error TS2339: Property 'admin_id' does not exist on type 'ConfigHistory'.
+src/pages/subviews/CostLedgerView.tsx(173,30): error TS7006: Parameter 'row' implicitly has an 'any' type.
+src/pages/subviews/GenerationsView.tsx(186,63): error TS2339: Property 'color' does not exist on type '{ name: string; count: number; free?: number | undefined; pro?: number | undefined; }'.
+src/pages/subviews/GenerationsView.tsx(223,24): error TS2339: Property 'email' does not exist on type '{ user: string; user_id?: string | undefined; count: number; plan?: string | undefined; }'.
+src/pages/subviews/GenerationsView.tsx(224,24): error TS2339: Property 'id' does not exist on type '{ user: string; user_id?: string | undefined; count: number; plan?: string | undefined; }'.
+src/pages/subviews/GenerationsView.tsx(225,37): error TS2339: Property 'date' does not exist on type '{ user: string; user_id?: string | undefined; count: number; plan?: string | undefined; }'.
+src/pages/subviews/GenerationsView.tsx(246,33): error TS2339: Property 'id' does not exist on type '{ user: string; user_id?: string | undefined; count: number; plan?: string | undefined; }'.
+src/pages/subviews/GenerationsView.tsx(247,80): error TS2339: Property 'id' does not exist on type '{ user: string; user_id?: string | undefined; count: number; plan?: string | undefined; }'.
+src/pages/subviews/GenerationsView.tsx(248,78): error TS2339: Property 'email' does not exist on type '{ user: string; user_id?: string | undefined; count: number; plan?: string | undefined; }'.
+src/pages/subviews/GenerationsView.tsx(375,54): error TS2339: Property 'step' does not exist on type '{ stage: string; count: number; percentage?: number | undefined; }'.
+src/pages/subviews/GenerationsView.tsx(378,71): error TS2339: Property 'rate' does not exist on type '{ stage: string; count: number; percentage?: number | undefined; }'.
+src/pages/subviews/HomeView.tsx(142,48): error TS2551: Property 'createdAt' does not exist on type 'NotificationLog'. Did you mean 'created_at'?
+src/pages/subviews/HomeView.tsx(144,33): error TS2339: Property 'gateway' does not exist on type 'NotificationLog'.
+src/pages/subviews/HomeView.tsx(156,49): error TS2339: Property 'timestamp' does not exist on type 'AutomationExecution'.
+src/pages/subviews/HomeView.tsx(158,58): error TS2367: This comparison appears to be unintentional because the types '"failed" | "retrying" | "dead_letter"' and '"completed"' have no overlap.
+src/pages/subviews/HomeView.tsx(161,74): error TS2339: Property 'event' does not exist on type 'AutomationExecution'.
+src/pages/subviews/HomeView.tsx(202,48): error TS2367: This comparison appears to be unintentional because the types 'string' and 'number' have no overlap.
+src/pages/subviews/HomeView.tsx(331,92): error TS2339: Property 'text' does not exist on type 'Announcement'.
+src/pages/subviews/HomeView.tsx(332,112): error TS2339: Property 'date' does not exist on type 'Announcement'.
+src/pages/subviews/HomeView.tsx(334,65): error TS2345: Argument of type 'string' is not assignable to parameter of type 'number'.
+src/pages/subviews/InfrastructureView.tsx(49,36): error TS2339: Property 'sessions' does not exist on type 'McpResources'.
+src/pages/subviews/InfrastructureView.tsx(50,38): error TS2339: Property 'templates' does not exist on type 'McpResources'.
+src/pages/subviews/InfrastructureView.tsx(51,40): error TS2339: Property 'error' does not exist on type 'McpResources'.
+src/pages/subviews/InfrastructureView.tsx(51,64): error TS2339: Property 'error' does not exist on type 'McpResources'.
+src/pages/subviews/InfrastructureView.tsx(318,26): error TS2345: Argument of type '{ name: string; status: string; url?: string | undefined; latency_ms?: number | undefined; }[]' is not assignable to parameter of type 'SetStateAction<MicroserviceHealth[]>'.
+  Type '{ name: string; status: string; url?: string | undefined; latency_ms?: number | undefined; }[]' is not assignable to type 'MicroserviceHealth[]'.
+    Type '{ name: string; status: string; url?: string | undefined; latency_ms?: number | undefined; }' is missing the following properties from type 'MicroserviceHealth': port, uptime_pct
+src/pages/subviews/NotificationsView.tsx(118,22): error TS2345: Argument of type '{ status: string; id: string; email?: string | undefined; recipient?: string | undefined; to?: string | undefined; type: string; subject?: string | undefined; created_at: string; timestamp?: string | undefined; ... 4 more ...; retry_count?: number | undefined; }[]' is not assignable to parameter of type 'SetStateAction<(NotificationLog & { date: string; })[]>'.
+  Type '{ status: string; id: string; email?: string | undefined; recipient?: string | undefined; to?: string | undefined; type: string; subject?: string | undefined; created_at: string; timestamp?: string | undefined; ... 4 more ...; retry_count?: number | undefined; }[]' is not assignable to type '(NotificationLog & { date: string; })[]'.
+    Type '{ status: string; id: string; email?: string; recipient?: string; to?: string; type: string; subject?: string; created_at: string; timestamp?: string; error?: string; error_message?: string; payload?: unknown; sent_at?: string; retry_count?: number; }' is not assignable to type 'NotificationLog & { date: string; }'.
+      Property 'date' is missing in type '{ status: string; id: string; email?: string; recipient?: string; to?: string; type: string; subject?: string; created_at: string; timestamp?: string; error?: string; error_message?: string; payload?: unknown; sent_at?: string; retry_count?: number; }' but required in type '{ date: string; }'.
+src/pages/subviews/NotificationsView.tsx(352,71): error TS2339: Property 'gateway' does not exist on type 'NotificationLog & { date: string; }'.
+src/pages/subviews/NotificationsView.tsx(367,9): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
+src/pages/subviews/NotificationsView.tsx(374,94): error TS2339: Property 'id' does not exist on type '{}'.
+src/pages/subviews/NotificationsView.tsx(383,89): error TS2339: Property 'recipient' does not exist on type '{}'.
+src/pages/subviews/NotificationsView.tsx(387,95): error TS2339: Property 'type' does not exist on type '{}'.
+src/pages/subviews/NotificationsView.tsx(391,56): error TS2339: Property 'status' does not exist on type '{}'.
+src/pages/subviews/NotificationsView.tsx(391,101): error TS2339: Property 'status' does not exist on type '{}'.
+src/pages/subviews/NotificationsView.tsx(392,43): error TS2339: Property 'status' does not exist on type '{}'.
+src/pages/subviews/NotificationsView.tsx(397,81): error TS2339: Property 'timestamp' does not exist on type '{}'.
+src/pages/subviews/NotificationsView.tsx(404,56): error TS2339: Property 'payload' does not exist on type '{}'.
+src/pages/subviews/PromotionsView.tsx(267,43): error TS2339: Property 'is_expired' does not exist on type 'Coupon'.
+src/pages/subviews/PromotionsView.tsx(268,37): error TS2769: No overload matches this call.
+  Overload 1 of 4, '(value: string | number | Date): Date', gave the following error.
+    Argument of type 'string | undefined' is not assignable to parameter of type 'string | number | Date'.
+      Type 'undefined' is not assignable to type 'string | number | Date'.
+  Overload 2 of 4, '(value: string | number): Date', gave the following error.
+    Argument of type 'string | undefined' is not assignable to parameter of type 'string | number'.
+      Type 'undefined' is not assignable to type 'string | number'.
+src/pages/subviews/PromotionsView.tsx(463,89): error TS2551: Property 'started_at' does not exist on type 'Trial'. Did you mean 'starts_at'?
+src/pages/subviews/PromotionsView.tsx(465,43): error TS2339: Property 'is_expired' does not exist on type 'Trial'.
+src/pages/subviews/PromotionsView.tsx(465,90): error TS2339: Property 'expires_at' does not exist on type 'Trial'.
+src/pages/subviews/SecurityView.tsx(397,28): error TS2339: Property 'ip' does not exist on type 'IpLog'.
+src/pages/subviews/SecurityView.tsx(398,10): error TS2339: Property 'user_email' does not exist on type 'IpLog'.
+src/pages/subviews/SecurityView.tsx(398,28): error TS2339: Property 'user' does not exist on type 'IpLog'.
+src/pages/subviews/SecurityView.tsx(402,52): error TS2339: Property 'ip' does not exist on type 'IpLog'.
+src/pages/subviews/SecurityView.tsx(403,36): error TS2339: Property 'user_email' does not exist on type 'IpLog'.
+src/pages/subviews/SecurityView.tsx(403,54): error TS2339: Property 'user' does not exist on type 'IpLog'.
+src/pages/subviews/SecurityView.tsx(405,59): error TS2339: Property 'date' does not exist on type 'IpLog'.
+src/pages/subviews/SecurityView.tsx(411,28): error TS2339: Property 'ip' does not exist on type 'RateLimitLog'.
+src/pages/subviews/SecurityView.tsx(412,10): error TS2339: Property 'user_email' does not exist on type 'RateLimitLog'.
+src/pages/subviews/SecurityView.tsx(412,28): error TS2339: Property 'user' does not exist on type 'RateLimitLog'.
+src/pages/subviews/SecurityView.tsx(416,52): error TS2339: Property 'ip' does not exist on type 'RateLimitLog'.
+src/pages/subviews/SecurityView.tsx(417,36): error TS2339: Property 'user_email' does not exist on type 'RateLimitLog'.
+src/pages/subviews/SecurityView.tsx(417,54): error TS2339: Property 'user' does not exist on type 'RateLimitLog'.
+src/pages/subviews/SecurityView.tsx(419,59): error TS2339: Property 'date' does not exist on type 'RateLimitLog'.
+src/pages/subviews/SecurityView.tsx(440,10): error TS2551: Property 'reporter_email' does not exist on type 'AbuseReport'. Did you mean 'reporter_id'?
+src/pages/subviews/SecurityView.tsx(441,10): error TS2551: Property 'target_user_email' does not exist on type 'AbuseReport'. Did you mean 'target_user_id'?
+src/pages/subviews/SecurityView.tsx(445,40): error TS2551: Property 'reporter_email' does not exist on type 'AbuseReport'. Did you mean 'reporter_id'?
+src/pages/subviews/SecurityView.tsx(446,38): error TS2551: Property 'target_user_email' does not exist on type 'AbuseReport'. Did you mean 'target_user_id'?
+src/pages/subviews/SecurityView.tsx(454,8): error TS2339: Property 'user_email' does not exist on type 'SecuritySession'.
+src/pages/subviews/SecurityView.tsx(454,24): error TS2339: Property 'user' does not exist on type 'SecuritySession'.
+src/pages/subviews/SecurityView.tsx(455,24): error TS2339: Property 'ip' does not exist on type 'SecuritySession'.
+src/pages/subviews/SecurityView.tsx(456,8): error TS2339: Property 'device_agent' does not exist on type 'SecuritySession'.
+src/pages/subviews/SecurityView.tsx(459,36): error TS2339: Property 'user_email' does not exist on type 'SecuritySession'.
+src/pages/subviews/SecurityView.tsx(459,54): error TS2339: Property 'user' does not exist on type 'SecuritySession'.
+src/pages/subviews/SecurityView.tsx(460,52): error TS2339: Property 'ip' does not exist on type 'SecuritySession'.
+src/pages/subviews/SecurityView.tsx(461,38): error TS2339: Property 'device_agent' does not exist on type 'SecuritySession'.
+src/pages/subviews/SecurityView.tsx(491,94): error TS2339: Property 'ip' does not exist on type 'IpLog'.
+src/pages/subviews/SecurityView.tsx(493,89): error TS2339: Property 'user_email' does not exist on type 'IpLog'.
+src/pages/subviews/SecurityView.tsx(493,107): error TS2339: Property 'user' does not exist on type 'IpLog'.
+src/pages/subviews/SecurityView.tsx(495,115): error TS2339: Property 'user_agent' does not exist on type 'IpLog'.
+src/pages/subviews/SecurityView.tsx(495,133): error TS2339: Property 'agent' does not exist on type 'IpLog'.
+src/pages/subviews/SecurityView.tsx(496,136): error TS2339: Property 'date' does not exist on type 'IpLog'.
+src/pages/subviews/SecurityView.tsx(531,74): error TS2339: Property 'ip' does not exist on type 'RateLimitLog'.
+src/pages/subviews/SecurityView.tsx(533,89): error TS2339: Property 'user_email' does not exist on type 'RateLimitLog'.
+src/pages/subviews/SecurityView.tsx(533,107): error TS2339: Property 'user' does not exist on type 'RateLimitLog'.
+src/pages/subviews/SecurityView.tsx(535,92): error TS2339: Property 'user_agent' does not exist on type 'RateLimitLog'.
+src/pages/subviews/SecurityView.tsx(535,110): error TS2339: Property 'agent' does not exist on type 'RateLimitLog'.
+src/pages/subviews/SecurityView.tsx(536,136): error TS2339: Property 'date' does not exist on type 'RateLimitLog'.
+src/pages/subviews/SecurityView.tsx(618,74): error TS2551: Property 'target_user_email' does not exist on type 'AbuseReport'. Did you mean 'target_user_id'?
+src/pages/subviews/SecurityView.tsx(621,73): error TS2551: Property 'reporter_email' does not exist on type 'AbuseReport'. Did you mean 'reporter_id'?
+src/pages/subviews/SecurityView.tsx(670,88): error TS2339: Property 'user_email' does not exist on type 'SecuritySession'.
+src/pages/subviews/SecurityView.tsx(670,107): error TS2339: Property 'user' does not exist on type 'SecuritySession'.
+src/pages/subviews/SecurityView.tsx(671,110): error TS2339: Property 'ip' does not exist on type 'SecuritySession'.
+src/pages/subviews/SecurityView.tsx(673,51): error TS2339: Property 'device_agent' does not exist on type 'SecuritySession'.
+src/pages/subviews/SecurityView.tsx(821,12): error TS2339: Property 'title' does not exist on type 'SecurityAlert'.
+src/pages/subviews/SecurityView.tsx(822,12): error TS2339: Property 'details' does not exist on type 'SecurityAlert'.
+src/pages/subviews/SecurityView.tsx(839,90): error TS2339: Property 'title' does not exist on type 'SecurityAlert'.
+src/pages/subviews/SecurityView.tsx(842,82): error TS2339: Property 'details' does not exist on type 'SecurityAlert'.
+src/pages/subviews/SettingsView.tsx(242,24): error TS2345: Argument of type '{ secret: string; otpauth_url: string; qr_code?: string | undefined; }' is not assignable to parameter of type 'SetStateAction<{ totp_secret: string; provisioning_uri: string; qr_code_hint: string; qr_code_url: string; } | null>'.
+src/pages/subviews/SettingsView.tsx(402,16): error TS2339: Property 'invite_email_sent' does not exist on type 'Staff'.
+src/pages/subviews/SubscriptionsView.tsx(123,28): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/pages/subviews/SubscriptionsView.tsx(139,40): error TS2551: Property 'userId' does not exist on type 'Invoice'. Did you mean 'user_id'?
+src/pages/subviews/SubscriptionsView.tsx(143,43): error TS2551: Property 'createdAt' does not exist on type 'Invoice'. Did you mean 'created_at'?
+src/pages/subviews/SubscriptionsView.tsx(234,32): error TS7006: Parameter 'd' implicitly has an 'any' type.
+src/pages/subviews/SubscriptionsView.tsx(327,44): error TS2551: Property 'userId' does not exist on type 'Invoice'. Did you mean 'user_id'?
+src/pages/subviews/SubscriptionsView.tsx(384,44): error TS2551: Property 'userId' does not exist on type 'Invoice'. Did you mean 'user_id'?
+src/pages/subviews/SubscriptionsView.tsx(387,54): error TS2551: Property 'gatewayInvoiceId' does not exist on type 'Invoice'. Did you mean 'gateway_invoice_id'?
+src/pages/subviews/SubscriptionsView.tsx(520,46): error TS2551: Property 'userId' does not exist on type 'Invoice'. Did you mean 'user_id'?
+src/pages/subviews/SubscriptionsView.tsx(567,69): error TS2322: Type 'string' is not assignable to type 'number'.
+src/pages/subviews/SubscriptionsView.tsx(573,69): error TS2322: Type 'string' is not assignable to type 'number'.
+src/pages/subviews/SubscriptionsView.tsx(579,69): error TS2322: Type 'string' is not assignable to type 'number'.
+src/pages/subviews/SupportView.tsx(29,18): error TS7006: Parameter 'd' implicitly has an 'any' type.
+src/pages/subviews/SupportView.tsx(110,23): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/pages/subviews/SupportView.tsx(267,93): error TS2339: Property 'user_email' does not exist on type 'SupportItem'.
+src/pages/subviews/SupportView.tsx(384,93): error TS2339: Property 'user_email' does not exist on type 'SupportItem'.
+src/pages/subviews/SupportView.tsx(386,96): error TS2339: Property 'gateway' does not exist on type 'SupportItem'.
+src/pages/subviews/SupportView.tsx(578,93): error TS2339: Property 'user_email' does not exist on type 'SupportItem'.
+src/pages/subviews/SupportView.tsx(581,29): error TS2339: Property 'requested_quota' does not exist on type 'SupportItem'.
+src/pages/subviews/SupportView.tsx(582,113): error TS2339: Property 'requested_quota' does not exist on type 'SupportItem'.
+src/pages/subviews/UsersView.tsx(271,25): error TS2339: Property 'sessionToken' does not exist on type 'Customer'.
+src/pages/subviews/UsersView.tsx(272,22): error TS2339: Property 'ip' does not exist on type 'Customer'.
+src/pages/subviews/UsersView.tsx(273,23): error TS2339: Property 'location' does not exist on type 'Customer'.
+src/pages/subviews/UsersView.tsx(508,45): error TS2339: Property 'sessionToken' does not exist on type 'Customer'.
+src/pages/subviews/UsersView.tsx(509,45): error TS2339: Property 'ip' does not exist on type 'Customer'.
+src/pages/subviews/UsersView.tsx(510,44): error TS2339: Property 'location' does not exist on type 'Customer'.
+src/pages/subviews/UsersView.tsx(511,42): error TS2339: Property 'device' does not exist on type 'Customer'.
+src/pages/subviews/UsersView.tsx(513,45): error TS2339: Property 'generatedDocs' does not exist on type 'Customer'.
+src/pages/subviews/UsersView.tsx(514,47): error TS2339: Property 'state' does not exist on type 'Customer'.

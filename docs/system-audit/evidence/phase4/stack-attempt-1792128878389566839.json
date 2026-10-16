@@ -1,0 +1,623 @@
+{
+  "seconds": 20.3,
+  "database": "doccraft_phase4_19fbed896edf",
+  "checks": [
+    {
+      "id": "P4-I001",
+      "workflow": "auth checked-in PostgreSQL migrations applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database; real prisma migrate deploy"
+    },
+    {
+      "id": "P4-I002",
+      "workflow": "chat checked-in PostgreSQL migrations applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database; real prisma migrate deploy"
+    },
+    {
+      "id": "P4-I003",
+      "workflow": "payment checked-in PostgreSQL migrations applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database; real prisma migrate deploy"
+    },
+    {
+      "id": "P4-I004",
+      "workflow": "quota checked-in PostgreSQL migrations applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database; real prisma migrate deploy"
+    },
+    {
+      "id": "P4-I005",
+      "workflow": "auth local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P4-I006",
+      "workflow": "chat local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P4-I007",
+      "workflow": "quota local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P4-I008",
+      "workflow": "payment local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P4-I009",
+      "workflow": "document local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P4-I010",
+      "workflow": "admin local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P4-I011",
+      "workflow": "sidecar local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P4-I012",
+      "workflow": "gateway local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P4-I013",
+      "workflow": "notification local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P4-I014",
+      "workflow": "analytics local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P4-I015",
+      "workflow": "Redis default user is disabled",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I016",
+      "workflow": "Redis Chat identity denied foreign-key",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I017",
+      "workflow": "Redis Chat identity denied payment-queue",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I018",
+      "workflow": "Redis Chat identity denied config-update",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I019",
+      "workflow": "Redis Chat identity denied privileged-command",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I020",
+      "workflow": "Redis Chat identity denied automation-channel",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I021",
+      "workflow": "Redis payment config cache is read-only",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I022",
+      "workflow": "Redis payment cannot publish privileged config invalidations",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I023",
+      "workflow": "Redis quota config cache is read-only",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I024",
+      "workflow": "Redis quota cannot publish privileged config invalidations",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I025",
+      "workflow": "Redis gateway config cache is read-only",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I026",
+      "workflow": "Redis gateway cannot publish privileged config invalidations",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I027",
+      "workflow": "Document cannot read Auth verification or reset email jobs",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I028",
+      "workflow": "Internal auth rejects old secret and forged identity headers",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 401
+      }
+    },
+    {
+      "id": "P4-I029",
+      "workflow": "Internal quota rejects old secret and forged identity headers",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 401
+      }
+    },
+    {
+      "id": "P4-I030",
+      "workflow": "Internal payment rejects old secret and forged identity headers",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 401
+      }
+    },
+    {
+      "id": "P4-I031",
+      "workflow": "Internal chat rejects old secret and forged identity headers",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 401
+      }
+    },
+    {
+      "id": "P4-I032",
+      "workflow": "Internal notification rejects old secret and forged identity headers",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 401
+      }
+    },
+    {
+      "id": "P4-I033",
+      "workflow": "Internal analytics rejects old secret and forged identity headers",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 401
+      }
+    },
+    {
+      "id": "P4-I034",
+      "workflow": "Internal admin rejects old secret and forged identity headers",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 401
+      }
+    },
+    {
+      "id": "P4-I035",
+      "workflow": "Internal sidecar rejects old secret and forged identity headers",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 401
+      }
+    },
+    {
+      "id": "P4-I036",
+      "workflow": "Service authorization chat \u2192 quota POST /v1/quota/override expects 403",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 403
+      }
+    },
+    {
+      "id": "P4-I037",
+      "workflow": "Service authorization payment \u2192 auth PATCH /internal/users/fixture/status expects 403",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 403
+      }
+    },
+    {
+      "id": "P4-I038",
+      "workflow": "Service authorization payment \u2192 auth GET /internal/users/stats-by-plan expects 403",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 403
+      }
+    },
+    {
+      "id": "P4-I039",
+      "workflow": "Service authorization chat \u2192 analytics GET /v1/analytics/overview expects 403",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 403
+      }
+    },
+    {
+      "id": "P4-I040",
+      "workflow": "Service authorization gateway \u2192 admin-api GET /api/v1/internal/config expects 403",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 403
+      }
+    },
+    {
+      "id": "P4-I041",
+      "workflow": "Service authorization notification \u2192 admin-api GET /api/v1/internal/config/plans expects 403",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 403
+      }
+    },
+    {
+      "id": "P4-I042",
+      "workflow": "Service authorization admin-api \u2192 analytics GET /v1/analytics/overview expects 200",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 200
+      }
+    },
+    {
+      "id": "P4-I043",
+      "workflow": "Service authorization notification \u2192 admin-api GET /api/v1/admin/notifications/config/public expects 200",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 200
+      }
+    },
+    {
+      "workflow": "Sandboxed Chromium rendering",
+      "status": "BLOCKED",
+      "evidence": "Renderer readiness failed with browser sandbox enabled; see sidecar error log"
+    },
+    {
+      "id": "P4-I045",
+      "workflow": "Service authorization document \u2192 pdf GET /ready expects 503",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 503
+      }
+    },
+    {
+      "id": "P4-I046",
+      "workflow": "Service authorization admin-api \u2192 chat GET /api/internal/status/keys expects 200",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 200
+      }
+    },
+    {
+      "id": "P4-I047",
+      "workflow": "Service authorization chat \u2192 admin-api GET /api/v1/internal/config/ai_model_routing expects 200",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 200
+      }
+    },
+    {
+      "id": "P4-I048",
+      "workflow": "Python receiver rejects exact replay using real Redis",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I049",
+      "workflow": "Service authorization admin-api \u2192 auth GET /internal/users expects 200",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 200
+      }
+    },
+    {
+      "id": "P4-I050",
+      "workflow": "Node receiver rejects exact replay using real Redis",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I051",
+      "workflow": "Service authorization document \u2192 pdf POST /generate expects 401",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "actual": 401
+      }
+    },
+    {
+      "id": "P4-I052",
+      "workflow": "Unsigned document queue job rejected before processing",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "failure": "Signed queue job required"
+      }
+    },
+    {
+      "id": "P4-I053",
+      "workflow": "Unsigned payment-webhook queue job rejected before processing",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": {
+        "failure": "Signed queue job required"
+      }
+    },
+    {
+      "id": "P4-I054",
+      "workflow": "Registration, stored verification challenge, verification and login through gateway",
+      "status": "VERIFIED",
+      "category": "Authentication",
+      "evidence": "Two isolated users; email transport is local fixture"
+    },
+    {
+      "id": "P4-I055",
+      "workflow": "Refresh credentials are stored only as digests",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I056",
+      "workflow": "Canvas layout persists without changing canonical business values",
+      "status": "VERIFIED",
+      "category": "Functionality",
+      "evidence": null
+    },
+    {
+      "id": "P4-I057",
+      "workflow": "Canvas ownership and stale writes are rejected",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I058",
+      "workflow": "Guest draft and canvas migrate atomically to the authenticated account",
+      "status": "VERIFIED",
+      "category": "Functionality",
+      "evidence": null
+    },
+    {
+      "id": "P4-I059",
+      "workflow": "Guest transfer is idempotent and cannot be stolen by another account",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P4-I060",
+      "workflow": "Profile update survives authenticated reload",
+      "status": "VERIFIED",
+      "category": "API",
+      "evidence": null
+    },
+    {
+      "id": "P4-I061",
+      "workflow": "Persisted administrator password + one-time code sign-in",
+      "status": "VERIFIED",
+      "category": "Authentication",
+      "evidence": "Real HTTP + PostgreSQL"
+    },
+    {
+      "id": "P4-I062",
+      "workflow": "Isolated test rate policy persists through admin configuration",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": "500 authenticated requests/minute for accelerated fixture workflows"
+    },
+    {
+      "id": "P4-I063",
+      "workflow": "Admin rolling allowance reaches authenticated user quota",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": {
+        "limit": 20
+      }
+    },
+    {
+      "id": "P4-I064",
+      "workflow": "Unified admin override persists plan and quota into user APIs",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": null
+    },
+    {
+      "id": "P4-I065",
+      "workflow": "Override removal survives subsequent billing plan synchronization",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": {
+        "limit": 10
+      }
+    },
+    {
+      "id": "P4-I066",
+      "workflow": "Admin announcement reaches the authenticated user feed",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": null
+    },
+    {
+      "id": "P4-I067",
+      "workflow": "Disabled announcement disappears from fresh user feed",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": null
+    },
+    {
+      "id": "P4-I068",
+      "workflow": "Admin template withdrawal reaches Document catalog and rejects Chat alias selection",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": null
+    },
+    {
+      "id": "P4-I069",
+      "workflow": "Admin template publication restores actual downstream availability",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": null
+    },
+    {
+      "id": "P4-I070",
+      "workflow": "Authoritative free override reaches Quota",
+      "status": "VERIFIED",
+      "category": "Entitlements",
+      "evidence": {
+        "limit": 20
+      }
+    },
+    {
+      "id": "P4-I071",
+      "workflow": "Authoritative pro override reaches Quota",
+      "status": "VERIFIED",
+      "category": "Entitlements",
+      "evidence": {
+        "limit": 10
+      }
+    },
+    {
+      "id": "P4-I072",
+      "workflow": "Authoritative max override reaches Quota",
+      "status": "VERIFIED",
+      "category": "Entitlements",
+      "evidence": {
+        "limit": 25
+      }
+    },
+    {
+      "id": "P4-I073",
+      "workflow": "Expired admin override restores baseline without cache delay",
+      "status": "VERIFIED",
+      "category": "Entitlements",
+      "evidence": null
+    },
+    {
+      "workflow": "Stack execution stopped",
+      "status": "UNRESOLVED",
+      "evidence": "DELETE admin/api/v1/users/7cd5a4e2-45ec-40b2-af8f-55ac95d2fde1/entitlements: expected 204, received 200: {\"entitlements\":{\"version\":1,\"user_id\":\"7cd5a4e2-45ec-40b2-af8f-55ac95d2fde1\",\"account_enabled\":true,\"plan\":\"free\",\"subscription_status\":\"none\",\"subscription_expires_at\":null,\"source\":\"baseline\",\"override_expires_at\":null,\"daily_quota\":20,\"custom_logo\":false,\"custom_branding\":false,\"premium_templates\":false,\"pdf_watermark\":true,\"priority_processing"
+    }
+  ],
+  "external_providers": "NOT TESTED; synthetic credentials, no real communications or charges",
+  "cleanup": [
+    {
+      "service": "redis",
+      "exit_code": 0
+    },
+    {
+      "service": "auth",
+      "exit_code": 0
+    },
+    {
+      "service": "quota",
+      "exit_code": 143
+    },
+    {
+      "service": "chat",
+      "exit_code": 0
+    },
+    {
+      "service": "payment",
+      "exit_code": 143
+    },
+    {
+      "service": "notification",
+      "exit_code": 0
+    },
+    {
+      "service": "sidecar",
+      "exit_code": 143
+    },
+    {
+      "service": "admin",
+      "exit_code": -15
+    },
+    {
+      "service": "analytics",
+      "exit_code": -15
+    },
+    {
+      "service": "document",
+      "exit_code": -15
+    },
+    {
+      "service": "gateway",
+      "exit_code": 0
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "phase2-last-admin-lint",
+  "cwd": "admin",
+  "command": [
+    "npm",
+    "run",
+    "lint"
+  ],
+  "started_utc": "2026-10-15T13:27:15.953651+00:00",
+  "seconds": 9.53,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-last-admin-lint.log"
+}

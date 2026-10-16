@@ -1,0 +1,16 @@
+{
+  "id": "phase2-final-quota-route-regression",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "-w",
+    "doccraft-quota"
+  ],
+  "started_utc": "2026-10-15T13:25:32.469061+00:00",
+  "seconds": 1.18,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-final-quota-route-regression.log"
+}

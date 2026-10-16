@@ -1,0 +1,14 @@
+{
+  "id": "phase2-last-admin-build",
+  "cwd": "admin",
+  "command": [
+    "npm",
+    "run",
+    "build"
+  ],
+  "started_utc": "2026-10-15T13:27:17.129050+00:00",
+  "seconds": 11.5,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-last-admin-build.log"
+}

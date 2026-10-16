@@ -1,0 +1,142 @@
+{
+  "seconds": 10.93,
+  "database": "doccraft_phase3_11dee1186e70",
+  "checks": [
+    {
+      "id": "P3-I001",
+      "workflow": "auth checked-in PostgreSQL migrations applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database; real prisma migrate deploy"
+    },
+    {
+      "id": "P3-I002",
+      "workflow": "chat checked-in PostgreSQL migrations applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database; real prisma migrate deploy"
+    },
+    {
+      "id": "P3-I003",
+      "workflow": "payment checked-in PostgreSQL migrations applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database; real prisma migrate deploy"
+    },
+    {
+      "id": "P3-I004",
+      "workflow": "quota checked-in PostgreSQL migrations applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database; real prisma migrate deploy"
+    },
+    {
+      "id": "P3-I005",
+      "workflow": "auth local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P3-I006",
+      "workflow": "chat local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P3-I007",
+      "workflow": "quota local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P3-I008",
+      "workflow": "payment local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P3-I009",
+      "workflow": "document local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P3-I010",
+      "workflow": "admin local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P3-I011",
+      "workflow": "sidecar local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P3-I012",
+      "workflow": "gateway local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "workflow": "Stack execution stopped",
+      "status": "UNRESOLVED",
+      "evidence": "notification exited during startup"
+    }
+  ],
+  "external_providers": "NOT TESTED; synthetic credentials, no real communications or charges",
+  "cleanup": [
+    {
+      "service": "redis",
+      "exit_code": 0
+    },
+    {
+      "service": "auth",
+      "exit_code": 0
+    },
+    {
+      "service": "quota",
+      "exit_code": 143
+    },
+    {
+      "service": "chat",
+      "exit_code": 0
+    },
+    {
+      "service": "payment",
+      "exit_code": 143
+    },
+    {
+      "service": "notification",
+      "exit_code": 1
+    },
+    {
+      "service": "sidecar",
+      "exit_code": 143
+    },
+    {
+      "service": "admin",
+      "exit_code": -15
+    },
+    {
+      "service": "analytics",
+      "exit_code": -15
+    },
+    {
+      "service": "document",
+      "exit_code": -15
+    },
+    {
+      "service": "gateway",
+      "exit_code": 0
+    }
+  ]
+}

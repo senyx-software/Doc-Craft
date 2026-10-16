@@ -1,0 +1,57 @@
+/*
+ * Invoice / document template tokens — sourced from Figma "Invoice Templates
+ * (Community)" (Templates - 2023 page) via the Figma REST API.
+ *
+ * This is a SEPARATE design unit from ../design-tokens.css (the app UI).
+ * Invoices are a print/document context (Inter font, fixed A4 page, no dark
+ * mode) — do not mix these into the app's brand/surface Tailwind scale.
+ * See .agents/invoice-templates.md for the full reference.
+ *
+ * Not auto-loaded by index.css — import explicitly wherever invoice/document
+ * previews are rendered (e.g. components/builder/DocumentPreview.tsx),
+ * scoped under a wrapper class so it can't leak into the rest of the app:
+ *
+ *   .invoice-doc { ...uses these vars via invoiceTemplates/components.css... }
+ */
+
+:root {
+  /* ---- Page ---- */
+  --invoice-page-width: 595px;  /* A4 @ 72dpi */
+  --invoice-page-height: 842px;
+  --invoice-page-bg: #f9fafc;
+  --invoice-surface: #ffffff;
+
+  /* ---- Text ---- */
+  --invoice-text-primary: #1a1c21;
+  --invoice-text-muted: #5e6470;
+  --invoice-text-faint: #8b919e;
+
+  /* ---- Accent (varies per template — these are examples pulled from
+     actual Figma variants, not a single universal invoice brand color) ---- */
+  --invoice-accent-orange: #e87117;   /* Invoice 1 family */
+  --invoice-accent-blue-1: #1f82de;   /* Invoice 2 "Total due" bar, dark stop */
+  --invoice-accent-blue-2: #3598f3;   /* Invoice 2 "Total due" bar, light stop */
+  --invoice-accent-indigo-1: #4358d1; /* Invoice 3 family, dark stop */
+  --invoice-accent-indigo-2: #4c63ed; /* Invoice 3 family, light stop */
+
+  /* ---- Legacy "2018 Templates" family (Old page) — distinct purple/magenta
+     branding + pale-yellow payment-details highlight. Kept separate since
+     it's a visually distinct template set, not a shade of the 2023 family. ---- */
+  --invoice-2018-text-dark: #222234;
+  --invoice-2018-text-muted: #6f6f84;
+  --invoice-2018-accent-purple-1: #7a0fc8;
+  --invoice-2018-accent-purple-2: #8d19e2;
+  --invoice-2018-accent-purple-light: #bcb0c4;
+  --invoice-2018-highlight-yellow: #fff9b9;
+
+  /* ---- Typography (Inter, not Poppins — distinct from the app UI) ---- */
+  --invoice-font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --invoice-font-size-table-head: 8px;
+  --invoice-font-size-body: 10px;
+  --invoice-font-size-total-sm: 10px;
+  --invoice-font-size-total-lg: 20px;
+  --invoice-font-weight-regular: 400;
+  --invoice-font-weight-medium: 500;
+  --invoice-font-weight-semibold: 600;
+  --invoice-font-weight-bold: 700;
+}

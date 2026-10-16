@@ -1,0 +1,14 @@
+{
+  "id": "phase2-chat-regression",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "test:chat"
+  ],
+  "started_utc": "2026-10-15T06:43:48.510985+00:00",
+  "seconds": 7.14,
+  "exit_code": 1,
+  "result": "FAIL",
+  "log": "evidence/phase2-chat-regression.log"
+}

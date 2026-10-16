@@ -1,0 +1,1 @@
+export const safeLoggerOptions:{redact:{paths:string[];censor:string};serializers:{req:(request:any)=>{[key:string]:unknown;method?:string;url?:string};err:(error:any)=>{type:string;message:string;stack:string;code?:string;statusCode?:number}}};

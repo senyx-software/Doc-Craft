@@ -1,0 +1,14 @@
+{
+  "id": "phase3-root-regression-retest",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "test:chat"
+  ],
+  "started_utc": "2026-10-15T14:05:47.291360+00:00",
+  "seconds": 6.46,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-root-regression-retest.log"
+}

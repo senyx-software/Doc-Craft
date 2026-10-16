@@ -1,0 +1,13 @@
+{
+  "id": "phase2-renderer-browser-regression",
+  "cwd": ".",
+  "command": [
+    ".venv-local/bin/python",
+    "scripts/system_audit_phase2_probes.py"
+  ],
+  "started_utc": "2026-10-15T12:14:17.805444+00:00",
+  "seconds": 43.41,
+  "exit_code": 1,
+  "result": "FAIL",
+  "log": "evidence/phase2-renderer-browser-regression.log"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "phase2-admin-mutation-regression",
+  "cwd": "services/admin-api",
+  "command": [
+    "../../.venv-local/bin/python",
+    "-m",
+    "pytest",
+    "tests",
+    "-q"
+  ],
+  "started_utc": "2026-10-15T12:41:07.891666+00:00",
+  "seconds": 20.76,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-admin-mutation-regression.log"
+}

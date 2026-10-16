@@ -1,0 +1,119 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")     // Pooler URL (6543) — used at runtime
+  directUrl = env("DIRECT_URL")       // Direct URL (5432) — used for migrations
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  passwordHash  String?
+  fullName      String?
+  avatarUrl     String?
+  authProvider        String    @default("email")
+  plan                String    @default("free")
+  twoFactorEnabled    Boolean   @default(false)
+  lastTotpStep        BigInt @default(-1)
+  totpSecret          String?
+  pendingTotpSecret   String?
+  backupCodes         String?
+  failedLoginAttempts Int       @default(0)
+  lockedUntil         DateTime?
+  timezone            String?
+  userClass           String    @default("freelancer")
+  isGuest             Boolean   @default(false)
+  status              String    @default("active")
+  lastLoginAt         DateTime?
+  deletedAt           DateTime?
+  refreshTokenHash    String?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+  emailVerified              Boolean   @default(false)
+  verificationToken          String?   @unique
+  verificationTokenExpiresAt DateTime?
+
+  sessions      Session[]
+  passwordResets PasswordReset[]
+
+  @@map("users")
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  userId       String
+  refreshToken String   @unique
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model PasswordReset {
+  id        String   @id @default(uuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("password_resets")
+}
+
+// Real per-login device/location record — populated at every successful
+// login (password, 2FA, and Google OAuth) from the request's real IP and
+// User-Agent header. deviceType/browser/os come from parsing the real UA
+// string (ua-parser-js); country comes from a real offline MaxMind-derived
+// GeoIP lookup (geoip-lite) — never a guess or a fixed split.
+model LoginEvent {
+  id         String   @id @default(uuid())
+  userId     String
+  ipAddress  String
+  userAgent  String?
+  deviceType String?  // desktop | mobile | tablet
+  browser    String?
+  os         String?
+  country    String?
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+  @@index([createdAt])
+  @@map("login_events")
+}
+
+// Admin-managed referral program. Created and converted by an admin action
+// (via admin-api) rather than an automatic hook in the public signup flow —
+// keeps referral tracking additive and never able to block/break registration.
+model Referral {
+  id            String    @id @default(uuid())
+  referrerUserId String
+  referredEmail String
+  code          String
+  status        String    @default("pending") // pending | converted
+  rewardGranted Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  convertedAt   DateTime?
+
+  @@index([referrerUserId])
+  @@index([status])
+  @@map("referrals")
+}
+
+model AccessRevocation {
+  key String @id
+  revokedAt DateTime @default(now())
+  expiresAt DateTime
+  @@index([expiresAt])
+  @@map("access_revocations")
+}

@@ -1,0 +1,14 @@
+{
+  "id": "phase3-backend-build",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "build"
+  ],
+  "started_utc": "2026-10-15T18:00:33.742586+00:00",
+  "seconds": 11.93,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-backend-build.log"
+}

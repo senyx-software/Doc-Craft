@@ -1,0 +1,16 @@
+{
+  "id": "phase2-admin-tests",
+  "cwd": "services/admin-api",
+  "command": [
+    "/home/eranda/Projects/doc-craft/.venv-local/bin/python",
+    "-m",
+    "pytest",
+    "tests",
+    "-q"
+  ],
+  "started_utc": "2026-10-15T06:28:52.199378+00:00",
+  "seconds": 23.36,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-admin-tests.log"
+}

@@ -1,0 +1,87 @@
+// Prisma schema for the DocCraft quota service.
+// Each user has exactly one Quota row (1-1 with User in auth service).
+// Redis is the hot-path counter; this table is for audit, admin overrides, and
+// reset history. The `used` field here is synced after every increment and reset.
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")     // Pooler URL (6543) — used at runtime
+  directUrl = env("DIRECT_URL")       // Direct URL (5432) — used for migrations
+}
+
+model Quota {
+  id                  String   @id @default(uuid())
+  userId              String   @unique
+  used                Int      @default(0)
+  limit               Int      @default(3)         // 3 for free, overridden for pro/admin
+  periodStart         DateTime @default(now())
+  resetsAt            DateTime                      // daily midnight UTC
+  overrideLimit       Int?
+  overrideReason      String?
+  overriddenByAdminId String?
+  updatedAt           DateTime @updatedAt
+
+  @@index([userId])
+  @@map("quotas")
+}
+
+model QuotaResetLog {
+  id          String   @id @default(uuid())
+  resetAt     DateTime @default(now())
+  usersReset  Int      @default(0)          // count of quota rows reset
+  triggeredBy String   @default("cron")    // "cron" | "admin" | "system"
+
+  @@map("quota_reset_logs")
+}
+
+// Immutable audit trail for privileged actions performed in this service.
+// Currently records admin quota overrides (action = "quota.override"). Rows are
+// insert-only — never updated or deleted — so the trail is tamper-evident.
+model AuditLog {
+  id          String   @id @default(uuid())
+  action      String                        // e.g. "quota.override"
+  targetType  String                        // e.g. "user"
+  targetId    String                        // the user the action applied to
+  actorId     String                        // admin who performed the action
+  reason      String                        // mandatory justification
+  requires2FA Boolean  @default(false)      // action was one that required 2FA (enforced upstream)
+  metadata    Json     @default("{}")
+  createdAt   DateTime @default(now())
+
+  @@index([targetId])
+  @@index([action])
+  @@map("quota_audit_logs")
+}
+
+// Durable, service-owned receipts survive Redis loss and retain retry identity across days.
+model QuotaReservation {
+  id String @id
+  userId String
+  reservationId String
+  day String
+  createdAt DateTime @default(now())
+  refundedAt DateTime?
+  @@index([userId, day])
+  @@map("quota_reservations")
+}
+model QuotaDailyUsage {
+  userId String
+  day String
+  used Int @default(0)
+  @@id([userId, day])
+  @@map("quota_daily_usage")
+}
+
+model QuotaWindow {
+  userId String @id
+  windowId String
+  startsAt DateTime
+  endsAt DateTime
+  used Int @default(0)
+  @@map("quota_windows")
+}

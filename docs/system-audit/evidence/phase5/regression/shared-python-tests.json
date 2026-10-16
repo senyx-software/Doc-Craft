@@ -1,0 +1,16 @@
+{
+  "id": "shared-python-tests",
+  "command": [
+    "/home/eranda/Projects/doc-craft/.venv-local/bin/python",
+    "-m",
+    "pytest",
+    "shared/tests",
+    "-q"
+  ],
+  "cwd": ".",
+  "started_utc": "2026-10-16T08:25:51.386262+00:00",
+  "seconds": 2.01,
+  "exit_code": 0,
+  "status": "PASS",
+  "log": "docs/system-audit/evidence/phase5/regression/shared-python-tests.log"
+}

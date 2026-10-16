@@ -1,0 +1,13 @@
+{
+  "id": "browser-error-states",
+  "cwd": ".",
+  "command": [
+    "node",
+    "scripts/system_audit_browser.cjs"
+  ],
+  "started_utc": "2026-10-15T05:57:59.933756+00:00",
+  "seconds": 184.05,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/browser-error-states.log"
+}

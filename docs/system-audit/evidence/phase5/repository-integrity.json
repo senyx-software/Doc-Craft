@@ -1,0 +1,17 @@
+{
+  "checked_utc": "2026-10-16T08:09:23.866658+00:00",
+  "branch": "feature/rbac",
+  "head_commit_exists": false,
+  "tracked_files": 0,
+  "remotes": [
+    {
+      "name": "remote.origin.url",
+      "host": "github.com",
+      "contains_embedded_credential": false
+    }
+  ],
+  "baseline_files": 878,
+  "phase4_evidence_files_preserved": 177,
+  "history_restored": false,
+  "committed_or_pushed": false
+}

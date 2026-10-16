@@ -1,0 +1,16 @@
+{
+  "id": "interim-user-build",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "build",
+    "--prefix",
+    "user-frontend"
+  ],
+  "started_utc": "2026-10-15T05:54:43.476588+00:00",
+  "seconds": 16.23,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/interim-user-build.log"
+}

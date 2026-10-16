@@ -1,0 +1,40 @@
+/*
+ * Base typography — maps HTML elements to the Figma type scale via Tailwind
+ * utilities (@apply), so unstyled markup already matches the design system.
+ * For one-off usage in components, use the utility classes directly, e.g.
+ * className="text-heading-h3 font-semibold" (see fontSize in tailwind.config.js).
+ */
+
+@layer base {
+  body {
+    @apply font-base text-paragraph-base;
+  }
+
+  h1 {
+    @apply text-heading-h1 font-semibold;
+  }
+
+  h2 {
+    @apply text-heading-h2 font-semibold;
+  }
+
+  h3 {
+    @apply text-heading-h3 font-semibold;
+  }
+
+  h4 {
+    @apply text-heading-h4 font-semibold;
+  }
+
+  h5 {
+    @apply text-heading-h5 font-semibold;
+  }
+
+  h6 {
+    @apply text-heading-h6 font-semibold;
+  }
+
+  p {
+    @apply text-paragraph-base;
+  }
+}

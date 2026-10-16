@@ -1,0 +1,15 @@
+{
+  "id": "phase3-final-admin-security",
+  "cwd": "services/admin-api",
+  "command": [
+    "../../.venv-local/bin/python",
+    "-m",
+    "pytest",
+    "-q"
+  ],
+  "started_utc": "2026-10-15T14:19:00.554225+00:00",
+  "seconds": 24.56,
+  "exit_code": 1,
+  "result": "FAIL",
+  "log": "evidence/phase3-final-admin-security.log"
+}

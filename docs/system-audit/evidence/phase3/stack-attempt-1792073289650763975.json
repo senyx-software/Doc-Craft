@@ -1,0 +1,776 @@
+{
+  "seconds": 47.27,
+  "database": "doccraft_phase3_790c3e748754",
+  "checks": [
+    {
+      "id": "P2-I001",
+      "workflow": "auth checked-in PostgreSQL migrations applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database; real prisma migrate deploy"
+    },
+    {
+      "id": "P2-I002",
+      "workflow": "chat checked-in PostgreSQL migrations applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database; real prisma migrate deploy"
+    },
+    {
+      "id": "P2-I003",
+      "workflow": "payment checked-in PostgreSQL migrations applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database; real prisma migrate deploy"
+    },
+    {
+      "id": "P2-I004",
+      "workflow": "quota checked-in PostgreSQL migrations applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database; real prisma migrate deploy"
+    },
+    {
+      "id": "P2-I005",
+      "workflow": "auth local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I006",
+      "workflow": "chat local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I007",
+      "workflow": "quota local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I008",
+      "workflow": "payment local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I009",
+      "workflow": "document local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I010",
+      "workflow": "admin local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I011",
+      "workflow": "sidecar local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I012",
+      "workflow": "gateway local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I013",
+      "workflow": "notification local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I014",
+      "workflow": "analytics local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I015",
+      "workflow": "Registration, stored verification challenge, verification and login through gateway",
+      "status": "VERIFIED",
+      "category": "Authentication",
+      "evidence": "Two isolated users; email transport is local fixture"
+    },
+    {
+      "id": "P2-I016",
+      "workflow": "Profile update survives authenticated reload",
+      "status": "VERIFIED",
+      "category": "API",
+      "evidence": null
+    },
+    {
+      "id": "P2-I017",
+      "workflow": "Persisted administrator password + one-time code sign-in",
+      "status": "VERIFIED",
+      "category": "Authentication",
+      "evidence": "Real HTTP + PostgreSQL"
+    },
+    {
+      "id": "P2-I018",
+      "workflow": "Isolated test rate policy persists through admin configuration",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": "500 authenticated requests/minute for accelerated fixture workflows"
+    },
+    {
+      "id": "P2-I019",
+      "workflow": "Admin daily allowance reaches authenticated user quota",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": {
+        "limit": 20
+      }
+    },
+    {
+      "id": "P2-I020",
+      "workflow": "Unified admin override persists plan and quota into user APIs",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": null
+    },
+    {
+      "id": "P2-I021",
+      "workflow": "Override removal survives subsequent billing plan synchronization",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": {
+        "limit": 500
+      }
+    },
+    {
+      "id": "P2-I022",
+      "workflow": "Admin announcement reaches the authenticated user feed",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": null
+    },
+    {
+      "id": "P2-I023",
+      "workflow": "Disabled announcement disappears from fresh user feed",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": null
+    },
+    {
+      "id": "P2-I024",
+      "workflow": "invoice multi-turn committed SSE update",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": {
+        "turnId": "3065f0b4-66d4-46ea-af77-59ba7470f6d7",
+        "provider": "deterministic parser; live AI not exercised"
+      }
+    },
+    {
+      "id": "P2-I025",
+      "workflow": "invoice duplicate turn replay",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I026",
+      "workflow": "invoice multi-turn committed SSE update",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": {
+        "turnId": "c11258c1-bbc2-49ad-a8ef-df7218cc4cc4",
+        "provider": "deterministic parser; live AI not exercised"
+      }
+    },
+    {
+      "id": "P2-I027",
+      "workflow": "invoice duplicate turn replay",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I028",
+      "workflow": "invoice admin MCP resource read",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": "MCP initialize \u2192 initialized notification \u2192 resources/read over actual private HTTP"
+    },
+    {
+      "id": "P2-I029",
+      "workflow": "invoice chat fields persist after reload",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I030",
+      "workflow": "invoice real Redis queue \u2192 worker \u2192 Chromium \u2192 persisted PDF",
+      "status": "VERIFIED",
+      "category": "PDF",
+      "evidence": {
+        "status": "completed",
+        "documentId": "f3ca6c77-3aeb-5f1d-bc8c-2a7819318b9d"
+      }
+    },
+    {
+      "id": "P2-I031",
+      "workflow": "invoice exported PDF contains persisted chat edits",
+      "status": "VERIFIED",
+      "category": "PDF",
+      "evidence": {
+        "sha256": "65d072482ce3efa669956d22196228ad6aadd33c5972a7d4d640608df7dca997"
+      }
+    },
+    {
+      "id": "P2-I032",
+      "workflow": "invoice PDF preserves calculated tax-inclusive total",
+      "status": "VERIFIED",
+      "category": "PDF",
+      "evidence": {
+        "expected_total": "43.89",
+        "quantity": 2,
+        "unit_price": "19.95",
+        "tax_percent": 10
+      }
+    },
+    {
+      "id": "P2-I033",
+      "workflow": "invoice cross-user document access denied",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P2-I034",
+      "workflow": "invoice document and session deletion persist",
+      "status": "VERIFIED",
+      "category": "API",
+      "evidence": null
+    },
+    {
+      "id": "P2-I035",
+      "workflow": "quotation multi-turn committed SSE update",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": {
+        "turnId": "79edd8f1-f9a6-4ea7-8084-5535d655f87b",
+        "provider": "deterministic parser; live AI not exercised"
+      }
+    },
+    {
+      "id": "P2-I036",
+      "workflow": "quotation duplicate turn replay",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I037",
+      "workflow": "quotation multi-turn committed SSE update",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": {
+        "turnId": "de70341b-f296-4aaf-b3ec-685db3380606",
+        "provider": "deterministic parser; live AI not exercised"
+      }
+    },
+    {
+      "id": "P2-I038",
+      "workflow": "quotation duplicate turn replay",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I039",
+      "workflow": "quotation admin MCP resource read",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": "MCP initialize \u2192 initialized notification \u2192 resources/read over actual private HTTP"
+    },
+    {
+      "id": "P2-I040",
+      "workflow": "quotation chat fields persist after reload",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I041",
+      "workflow": "quotation real Redis queue \u2192 worker \u2192 Chromium \u2192 persisted PDF",
+      "status": "VERIFIED",
+      "category": "PDF",
+      "evidence": {
+        "status": "completed",
+        "documentId": "a2b4261c-a4f7-5422-876f-ec556e29d1d9"
+      }
+    },
+    {
+      "id": "P2-I042",
+      "workflow": "quotation exported PDF contains persisted chat edits",
+      "status": "VERIFIED",
+      "category": "PDF",
+      "evidence": {
+        "sha256": "3938a426cd2f8ad19124cab6e20f6bda90415d17f22b6884fb2389bb20a3489d"
+      }
+    },
+    {
+      "id": "P2-I043",
+      "workflow": "quotation PDF preserves calculated tax-inclusive total",
+      "status": "VERIFIED",
+      "category": "PDF",
+      "evidence": {
+        "expected_total": "43.89",
+        "quantity": 2,
+        "unit_price": "19.95",
+        "tax_percent": 10
+      }
+    },
+    {
+      "id": "P2-I044",
+      "workflow": "quotation cross-user document access denied",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P2-I045",
+      "workflow": "quotation document and session deletion persist",
+      "status": "VERIFIED",
+      "category": "API",
+      "evidence": null
+    },
+    {
+      "id": "P2-I046",
+      "workflow": "proposal multi-turn committed SSE update",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": {
+        "turnId": "e27ce22a-3352-40a0-aa80-9584731b9ce8",
+        "provider": "deterministic parser; live AI not exercised"
+      }
+    },
+    {
+      "id": "P2-I047",
+      "workflow": "proposal duplicate turn replay",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I048",
+      "workflow": "proposal multi-turn committed SSE update",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": {
+        "turnId": "068cf4b5-b4e8-4b53-a10c-1d8426163390",
+        "provider": "deterministic parser; live AI not exercised"
+      }
+    },
+    {
+      "id": "P2-I049",
+      "workflow": "proposal duplicate turn replay",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I050",
+      "workflow": "proposal admin MCP resource read",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": "MCP initialize \u2192 initialized notification \u2192 resources/read over actual private HTTP"
+    },
+    {
+      "id": "P2-I051",
+      "workflow": "proposal chat fields persist after reload",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I052",
+      "workflow": "proposal real Redis queue \u2192 worker \u2192 Chromium \u2192 persisted PDF",
+      "status": "VERIFIED",
+      "category": "PDF",
+      "evidence": {
+        "status": "completed",
+        "documentId": "8b4ba030-2df2-52c1-ba34-ded9a3503304"
+      }
+    },
+    {
+      "id": "P2-I053",
+      "workflow": "proposal exported PDF contains persisted chat edits",
+      "status": "VERIFIED",
+      "category": "PDF",
+      "evidence": {
+        "sha256": "432710d90a84b5b619be52edc300ce5a7b7c1ab249a7d240147b8ee4f1655e8e"
+      }
+    },
+    {
+      "id": "P2-I054",
+      "workflow": "proposal cross-user document access denied",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P2-I055",
+      "workflow": "proposal document and session deletion persist",
+      "status": "VERIFIED",
+      "category": "API",
+      "evidence": null
+    },
+    {
+      "id": "P2-I056",
+      "workflow": "receipt multi-turn committed SSE update",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": {
+        "turnId": "38a849c3-964f-4aab-b30f-0bb508bbb28b",
+        "provider": "deterministic parser; live AI not exercised"
+      }
+    },
+    {
+      "id": "P2-I057",
+      "workflow": "receipt duplicate turn replay",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I058",
+      "workflow": "receipt multi-turn committed SSE update",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": {
+        "turnId": "823a78db-c95b-41e9-896d-2b08cf49db90",
+        "provider": "deterministic parser; live AI not exercised"
+      }
+    },
+    {
+      "id": "P2-I059",
+      "workflow": "receipt duplicate turn replay",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I060",
+      "workflow": "receipt admin MCP resource read",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": "MCP initialize \u2192 initialized notification \u2192 resources/read over actual private HTTP"
+    },
+    {
+      "id": "P2-I061",
+      "workflow": "receipt chat fields persist after reload",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I062",
+      "workflow": "receipt real Redis queue \u2192 worker \u2192 Chromium \u2192 persisted PDF",
+      "status": "VERIFIED",
+      "category": "PDF",
+      "evidence": {
+        "status": "completed",
+        "documentId": "58f97c99-3e51-5d69-9c86-95179ca1d5dd"
+      }
+    },
+    {
+      "id": "P2-I063",
+      "workflow": "receipt exported PDF contains persisted chat edits",
+      "status": "VERIFIED",
+      "category": "PDF",
+      "evidence": {
+        "sha256": "bdee858c2b0eafd5344dbbe3751ffa6c7ad5f840ee527c619343b880081a6653"
+      }
+    },
+    {
+      "id": "P2-I064",
+      "workflow": "receipt PDF preserves calculated tax-inclusive total",
+      "status": "VERIFIED",
+      "category": "PDF",
+      "evidence": {
+        "expected_total": "43.89",
+        "quantity": 2,
+        "unit_price": "19.95",
+        "tax_percent": 10
+      }
+    },
+    {
+      "id": "P2-I065",
+      "workflow": "receipt cross-user document access denied",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P2-I066",
+      "workflow": "receipt document and session deletion persist",
+      "status": "VERIFIED",
+      "category": "API",
+      "evidence": null
+    },
+    {
+      "id": "P2-I067",
+      "workflow": "purchase_order multi-turn committed SSE update",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": {
+        "turnId": "da819e60-3c56-4b52-8f44-b2dbe0d6e53d",
+        "provider": "deterministic parser; live AI not exercised"
+      }
+    },
+    {
+      "id": "P2-I068",
+      "workflow": "purchase_order duplicate turn replay",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I069",
+      "workflow": "purchase_order multi-turn committed SSE update",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": {
+        "turnId": "c38b68a2-0f23-4959-bdd9-1d77cdd397ad",
+        "provider": "deterministic parser; live AI not exercised"
+      }
+    },
+    {
+      "id": "P2-I070",
+      "workflow": "purchase_order duplicate turn replay",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I071",
+      "workflow": "purchase_order admin MCP resource read",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": "MCP initialize \u2192 initialized notification \u2192 resources/read over actual private HTTP"
+    },
+    {
+      "id": "P2-I072",
+      "workflow": "purchase_order chat fields persist after reload",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I073",
+      "workflow": "purchase_order real Redis queue \u2192 worker \u2192 Chromium \u2192 persisted PDF",
+      "status": "VERIFIED",
+      "category": "PDF",
+      "evidence": {
+        "status": "completed",
+        "documentId": "ab4f9038-ad24-5ce5-82bd-5bd1b256b77c"
+      }
+    },
+    {
+      "id": "P2-I074",
+      "workflow": "purchase_order exported PDF contains persisted chat edits",
+      "status": "VERIFIED",
+      "category": "PDF",
+      "evidence": {
+        "sha256": "6d4df6cefa812dd9bb48373289ce2b8f45ee71104692f35eaef53cbb813a31cf"
+      }
+    },
+    {
+      "id": "P2-I075",
+      "workflow": "purchase_order PDF preserves calculated tax-inclusive total",
+      "status": "VERIFIED",
+      "category": "PDF",
+      "evidence": {
+        "expected_total": "43.89",
+        "quantity": 2,
+        "unit_price": "19.95",
+        "tax_percent": 10
+      }
+    },
+    {
+      "id": "P2-I076",
+      "workflow": "purchase_order cross-user document access denied",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P2-I077",
+      "workflow": "purchase_order document and session deletion persist",
+      "status": "VERIFIED",
+      "category": "API",
+      "evidence": null
+    },
+    {
+      "id": "P2-I078",
+      "workflow": "Real Redis duplicate reservations consume one unit",
+      "status": "VERIFIED",
+      "category": "Quota",
+      "evidence": null
+    },
+    {
+      "id": "P2-I079",
+      "workflow": "Real Redis concurrent duplicate refunds preserve other reservation",
+      "status": "VERIFIED",
+      "category": "Quota",
+      "evidence": null
+    },
+    {
+      "id": "P2-I080",
+      "workflow": "Admin currency and prices reach public pricing",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": null
+    },
+    {
+      "id": "P2-I081",
+      "workflow": "Annual hosted checkout uses configured LKR price and annual cadence",
+      "status": "VERIFIED",
+      "category": "Billing",
+      "evidence": "Local sandbox form construction; no provider request/charge"
+    },
+    {
+      "id": "P2-I082",
+      "workflow": "Signed PayHere fixture is durably accepted by real Redis queue",
+      "status": "VERIFIED",
+      "category": "Billing",
+      "evidence": {
+        "http_status": 200
+      }
+    },
+    {
+      "id": "P2-I083",
+      "workflow": "Signed callback activates server-bound owner and annual subscription",
+      "status": "VERIFIED",
+      "category": "Billing",
+      "evidence": "Unbound custom_1/custom_2 intentionally point to a different fixture user/plan"
+    },
+    {
+      "id": "P2-I084",
+      "workflow": "Tampered PayHere custom fields cannot grant another user paid access",
+      "status": "VERIFIED",
+      "category": "Security",
+      "evidence": null
+    },
+    {
+      "id": "P2-I085",
+      "workflow": "Concurrent duplicate signed callbacks are acknowledged",
+      "status": "VERIFIED",
+      "category": "Billing",
+      "evidence": null
+    },
+    {
+      "id": "P2-I086",
+      "workflow": "Duplicate signed callback deliveries produce one persisted invoice",
+      "status": "VERIFIED",
+      "category": "Billing",
+      "evidence": {
+        "invoices": 1
+      }
+    },
+    {
+      "id": "P2-I087",
+      "workflow": "Admin plan change reaches an already-active paid subscriber",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": {
+        "limit": 44
+      }
+    },
+    {
+      "id": "P2-I088",
+      "workflow": "Admin suspension invalidates an existing user access token",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": null
+    },
+    {
+      "id": "P2-I089",
+      "workflow": "Admin reactivation restores permitted access",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": null
+    },
+    {
+      "id": "P2-I090",
+      "workflow": "Live user/admin browser integration",
+      "status": "VERIFIED",
+      "category": "Browser",
+      "evidence": "See browser-integration.json"
+    }
+  ],
+  "external_providers": "NOT TESTED; synthetic credentials, no real communications or charges",
+  "cleanup": [
+    {
+      "service": "redis",
+      "exit_code": 0
+    },
+    {
+      "service": "auth",
+      "exit_code": 0
+    },
+    {
+      "service": "quota",
+      "exit_code": 0
+    },
+    {
+      "service": "chat",
+      "exit_code": 0
+    },
+    {
+      "service": "payment",
+      "exit_code": 0
+    },
+    {
+      "service": "notification",
+      "exit_code": 143
+    },
+    {
+      "service": "sidecar",
+      "exit_code": -9
+    },
+    {
+      "service": "admin",
+      "exit_code": -15
+    },
+    {
+      "service": "analytics",
+      "exit_code": -15
+    },
+    {
+      "service": "document",
+      "exit_code": -15
+    },
+    {
+      "service": "gateway",
+      "exit_code": 0
+    },
+    {
+      "service": "user-ui",
+      "exit_code": 0
+    },
+    {
+      "service": "admin-ui",
+      "exit_code": 0
+    }
+  ]
+}

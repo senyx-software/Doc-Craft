@@ -1,0 +1,15 @@
+{
+  "id": "phase3-analytics-unit",
+  "cwd": "services/analytics",
+  "command": [
+    "../../.venv-local/bin/python",
+    "-m",
+    "pytest",
+    "-q"
+  ],
+  "started_utc": "2026-10-15T14:04:08.087340+00:00",
+  "seconds": 2.72,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-analytics-unit.log"
+}

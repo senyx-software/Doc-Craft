@@ -1,0 +1,60 @@
+{
+  "database": "isolated temporary PostgreSQL 18",
+  "schema_source": "Prisma migrate diff from current schemas; not proof of existing deployment migration compatibility",
+  "checks": [
+    {
+      "check": "auth schema application",
+      "status": "PASS"
+    },
+    {
+      "check": "chat schema application",
+      "status": "PASS"
+    },
+    {
+      "check": "payment schema application",
+      "status": "PASS"
+    },
+    {
+      "check": "quota schema application",
+      "status": "PASS"
+    },
+    {
+      "check": "admin plan persistence beside Payment plans",
+      "status": "PASS"
+    },
+    {
+      "check": "Payment and Quota schemas unchanged after repeated admin initialization",
+      "status": "PASS"
+    },
+    {
+      "check": "admin_plans independent table accessible",
+      "status": "PASS",
+      "rows": 1
+    },
+    {
+      "check": "admin_coupons independent table accessible",
+      "status": "PASS",
+      "rows": 0
+    },
+    {
+      "check": "admin_audit_logs independent table accessible",
+      "status": "PASS",
+      "rows": 0
+    },
+    {
+      "check": "plans independent table accessible",
+      "status": "PASS",
+      "rows": 0
+    },
+    {
+      "check": "coupons independent table accessible",
+      "status": "PASS",
+      "rows": 0
+    },
+    {
+      "check": "audit_logs independent table accessible",
+      "status": "PASS",
+      "rows": 0
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "workflow": "Admin UI currency/price edit, second factor, database persistence, reload",
+    "status": "VERIFIED",
+    "method": "Chromium against actual isolated APIs + PostgreSQL; no API interception"
+  },
+  {
+    "workflow": "Admin inspection UI reads a persisted session through read-only MCP",
+    "status": "VERIFIED",
+    "method": "Chromium against actual isolated APIs + PostgreSQL; no API interception"
+  },
+  {
+    "workflow": "Admin price edit reaches actual user pricing UI",
+    "status": "VERIFIED",
+    "method": "Chromium against actual isolated APIs + PostgreSQL; no API interception"
+  },
+  {
+    "workflow": "User pricing remains current after browser reload",
+    "status": "VERIFIED",
+    "method": "Chromium against actual isolated APIs + PostgreSQL; no API interception"
+  },
+  {
+    "workflow": "Canvas position edit persists through the actual user control",
+    "status": "VERIFIED",
+    "evidence": "Click element → ArrowRight → autosave HTTP PUT → PostgreSQL",
+    "method": "Chromium against actual isolated APIs + PostgreSQL; no API interception"
+  },
+  {
+    "workflow": "Canvas presentation survives actual browser reload",
+    "status": "VERIFIED",
+    "evidence": "Fresh API state hydrates the saved position",
+    "method": "Chromium against actual isolated APIs + PostgreSQL; no API interception"
+  },
+  {
+    "workflow": "Browser canvas PDF downloads after server confirmation",
+    "status": "VERIFIED",
+    "evidence": "DocCraft-invoice-1702.pdf",
+    "method": "Chromium against actual isolated APIs + PostgreSQL; no API interception"
+  },
+  {
+    "workflow": "Guest account sign-in executes the authorized draft transfer",
+    "status": "VERIFIED",
+    "evidence": "Actual guest login form; browser credentials change after server ownership transfer",
+    "method": "Chromium against actual isolated APIs + PostgreSQL; no API interception"
+  },
+  {
+    "workflow": "Guest browser draft retains its values under the real account owner",
+    "status": "VERIFIED",
+    "method": "Chromium against actual isolated APIs + PostgreSQL; no API interception"
+  },
+  {
+    "workflow": "Pricing page fits a mobile viewport",
+    "status": "VERIFIED",
+    "method": "Chromium against actual isolated APIs + PostgreSQL; no API interception"
+  },
+  {
+    "workflow": "Live integration browser pages have no uncaught script errors",
+    "status": "VERIFIED",
+    "evidence": [],
+    "method": "Chromium against actual isolated APIs + PostgreSQL; no API interception"
+  }
+]

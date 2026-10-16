@@ -1,0 +1,12 @@
+{
+  "recorded_at": "2026-10-16T08:27:25.870555+00:00",
+  "initial_groq": {
+    "project": "existing configured project explicitly approved for staging",
+    "max_attempts": 8,
+    "max_usd": 0.1,
+    "scope": "synthetic completion/MCP tests"
+  },
+  "further_paid_calls": "DISABLED by explicit owner reply after initial allowance",
+  "external_emails_payments_accounts": "No approved staging sender/test recipient, merchant or live-account action; none performed",
+  "secrets_recorded": false
+}

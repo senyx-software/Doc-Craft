@@ -1,0 +1,16 @@
+{
+  "id": "phase2-document-regression",
+  "cwd": "services/document",
+  "command": [
+    "/home/eranda/Projects/doc-craft/.venv-local/bin/python",
+    "-m",
+    "pytest",
+    "tests",
+    "-q"
+  ],
+  "started_utc": "2026-10-15T06:43:48.504679+00:00",
+  "seconds": 4.5,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-document-regression.log"
+}

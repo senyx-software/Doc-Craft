@@ -1,0 +1,70 @@
+npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown user config "tmp". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> doccraft-payment@1.0.0 test
+> vitest run
+
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - `__dirname` (vitest.config.ts:7:31). Use `import.meta.dirname` instead
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v5.0.5 /home/eranda/Projects/doc-craft/services/payment
+
+stdout | src/__tests__/checkout-security.test.ts > binds signed callback effects to stored ownership and cadence, ignoring unbound custom fields
+[payment/payhere] Processing order owned-order, status 2
+
+stdout | src/__tests__/checkout-security.test.ts > does not mark a webhook processed when billing history persistence fails
+[payment/payhere] Processing order owned-order, status 2
+
+ ❯ src/__tests__/checkout-security.test.ts (7 tests | 2 failed) 41ms
+   × binds signed callback effects to stored ownership and cadence, ignoring unbound custom fields 12ms
+   × does not mark a webhook processed when billing history persistence fails 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/__tests__/checkout-security.test.ts > binds signed callback effects to stored ownership and cadence, ignoring unbound custom fields
+TypeError: Cannot read properties of undefined (reading '0')
+ ❯ src/__tests__/checkout-security.test.ts:23:49
+     21| it('binds signed callback effects to stored ownership and cadence, ign…
+     22|   await processPayhereWebhook(payload);
+     23|   const activation = mock.activate.mock.calls[0][0];
+       |                                                 ^
+     24|   expect(activation.userId).toBe('checkout-owner');
+     25|   expect(activation.planId).toBe('owned-plan');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/__tests__/checkout-security.test.ts > does not mark a webhook processed when billing history persistence fails
+AssertionError: promise resolved "undefined" instead of rejecting
+
+- Expected:
+Error {
+  "message": "rejected promise",
+}
+
++ Received:
+undefined
+
+ ❯ src/__tests__/checkout-security.test.ts:46:47
+     44| it('does not mark a webhook processed when billing history persistence…
+     45|   mock.invoice.mockRejectedValueOnce(new Error('invoice storage unavai…
+     46|   await expect(processPayhereWebhook(payload)).rejects.toThrow('invoic…
+       |                                               ^
+     47|   expect(mock.processed).not.toHaveBeenCalled();
+     48| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed | 11 passed (12)
+      Tests  2 failed | 65 passed (67)
+   Start at  10:50:26
+   Duration  1.37s (setup 45%, import 32%, transform 15%, tests 5%, worker 3%)
+
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /home/eranda/Projects/doc-craft/services/payment
+npm error workspace doccraft-payment@1.0.0
+npm error location /home/eranda/Projects/doc-craft/services/payment
+npm error command failed
+npm error command sh -c vitest run

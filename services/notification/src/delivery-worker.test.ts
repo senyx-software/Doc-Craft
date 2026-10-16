@@ -1,0 +1,21 @@
+import {beforeEach,expect,it,vi} from 'vitest';
+const state=vi.hoisted(()=>({processors:[] as any[],send:vi.fn(),pending:vi.fn(),complete:vi.fn()}));
+vi.mock('bullmq',()=>({Worker:class{constructor(_name:string,processor:any){state.processors.push(processor);}close=async()=>{};},DelayedError:class extends Error{}}));
+vi.mock('ioredis',()=>({Redis:class{quit=async()=>{};}}));
+vi.mock('../../../shared/queue-auth.mjs',()=>({verifiedJob:async()=>({durableDeliveryId:'receipt'})}));
+vi.mock('./services/email.service.js',()=>({sendEmail:state.send,fetchAdminConfig:async()=>({settings:{}})}));
+vi.mock('./services/db.service.js',()=>({checkNotificationPreference:async()=>true,logNotification:async()=>{}}));
+vi.mock('./services/delivery-inbox.service.js',()=>({pendingDelivery:state.pending,completeDelivery:state.complete}));
+import {startEmailWorker} from './worker.js';
+beforeEach(()=>{state.processors.length=0;state.send.mockReset();state.pending.mockReset();state.complete.mockReset();});
+it('a crash after provider acceptance retries with the same provider key and completed receipts suppress resend',async()=>{
+ startEmailWorker();const processor=state.processors[2];const job={id:'receipt',name:'renewal'};
+ state.pending.mockResolvedValue({id:'receipt',type:'renewal',payload:{userId:'owner',email:'fixture@example.com'}});
+ state.send.mockResolvedValue({id:'synthetic-provider-receipt'});
+ state.complete.mockRejectedValueOnce(new Error('Database unavailable after provider acknowledgement')).mockResolvedValue(undefined);
+ await expect(processor(job)).rejects.toThrow('Database unavailable');
+ await processor(job);
+ expect(state.send).toHaveBeenCalledTimes(2);
+ expect(state.send.mock.calls.map(call=>call[2])).toEqual(['doccraft-email_queue_notification-receipt','doccraft-email_queue_notification-receipt']);
+ state.pending.mockResolvedValue(undefined);await processor(job);expect(state.send).toHaveBeenCalledTimes(2);
+});

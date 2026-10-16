@@ -1,0 +1,2021 @@
+{
+  "version": 1,
+  "templates": {
+    "invoice-classic": {
+      "id": "invoice-classic",
+      "name": "Classic Invoice",
+      "type": "invoice",
+      "variant": "classic",
+      "description": "Standard business invoice template",
+      "slots": [
+        "invoiceNumber",
+        "issueDate",
+        "dueDate",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "lineItems",
+        "subtotal",
+        "taxRate",
+        "taxAmount",
+        "totalAmount",
+        "notes",
+        "paymentInstructions",
+        "logo"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress",
+          "senderEmail",
+          "senderPhone"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "invoice",
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "invoice-modern": {
+      "id": "invoice-modern",
+      "name": "Modern Invoice",
+      "type": "invoice",
+      "variant": "modern",
+      "description": "Sleek, modern business invoice template with clean styling",
+      "slots": [
+        "invoiceNumber",
+        "issueDate",
+        "dueDate",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "lineItems",
+        "subtotal",
+        "taxRate",
+        "taxAmount",
+        "totalAmount",
+        "notes",
+        "paymentInstructions",
+        "logo"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress",
+          "senderEmail",
+          "senderPhone"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "invoice",
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "invoice-minimal": {
+      "id": "invoice-minimal",
+      "name": "Minimalist Invoice",
+      "type": "invoice",
+      "variant": "minimal",
+      "description": "Clean, minimalist invoice template for simple transactions",
+      "slots": [
+        "invoiceNumber",
+        "issueDate",
+        "dueDate",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "lineItems",
+        "subtotal",
+        "taxRate",
+        "taxAmount",
+        "totalAmount",
+        "notes",
+        "paymentInstructions",
+        "logo"
+      ],
+      "schema": {
+        "required": [],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "invoice",
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "invoice-grid-bordered": {
+      "id": "invoice-grid-bordered",
+      "name": "Grid Bordered Invoice",
+      "type": "invoice",
+      "variant": "grid-bordered",
+      "description": "Grid bordered invoice template with boxed invoice digits and black total banner",
+      "slots": [
+        "invoiceNumber",
+        "issueDate",
+        "dueDate",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "lineItems",
+        "subtotal",
+        "taxRate",
+        "taxAmount",
+        "totalAmount",
+        "notes",
+        "paymentInstructions",
+        "logo"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress",
+          "senderEmail",
+          "senderPhone"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "invoice",
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_invoice_2023_08": {
+      "id": "tmpl_invoice_2023_08",
+      "name": "Invoice 8 (Grid Bordered)",
+      "type": "invoice",
+      "variant": "grid-bordered",
+      "description": "Grid bordered invoice template with boxed invoice digits and black total banner",
+      "slots": [
+        "invoiceNumber",
+        "issueDate",
+        "dueDate",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "lineItems",
+        "subtotal",
+        "taxRate",
+        "taxAmount",
+        "totalAmount",
+        "notes",
+        "paymentInstructions",
+        "logo"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress",
+          "senderEmail",
+          "senderPhone"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "invoice",
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "invoice-odoo-community": {
+      "id": "invoice-odoo-community",
+      "name": "Invoice 2 (Odoo Community)",
+      "type": "invoice",
+      "variant": "odoo-community",
+      "description": "Odoo Community Invoice 2 template with teal sidebar, recipient block, and account data banner",
+      "slots": [
+        "invoiceNumber",
+        "issueDate",
+        "dueDate",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "lineItems",
+        "subtotal",
+        "taxRate",
+        "taxAmount",
+        "totalAmount",
+        "notes",
+        "paymentInstructions",
+        "logo"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress",
+          "senderEmail",
+          "senderPhone"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "invoice",
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_invoice_odoo_community": {
+      "id": "tmpl_invoice_odoo_community",
+      "name": "Invoice 2 (Odoo Community)",
+      "type": "invoice",
+      "variant": "odoo-community",
+      "description": "Odoo Community Invoice 2 template with teal sidebar, recipient block, and account data banner",
+      "slots": [
+        "invoiceNumber",
+        "issueDate",
+        "dueDate",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "lineItems",
+        "subtotal",
+        "taxRate",
+        "taxAmount",
+        "totalAmount",
+        "notes",
+        "paymentInstructions",
+        "logo"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress",
+          "senderEmail",
+          "senderPhone"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "invoice",
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "quotation-classic": {
+      "id": "quotation-classic",
+      "name": "Classic Quotation",
+      "type": "quotation",
+      "variant": "classic",
+      "description": "Standard business price quote template",
+      "slots": [
+        "quoteNumber",
+        "issueDate",
+        "validUntil",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "lineItems",
+        "subtotal",
+        "taxRate",
+        "taxAmount",
+        "totalAmount",
+        "notes",
+        "paymentTerms",
+        "logo"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "quotation-modern": {
+      "id": "quotation-modern",
+      "name": "Modern Quotation",
+      "type": "quotation",
+      "variant": "modern",
+      "description": "Sleek, modern business price quote template",
+      "slots": [
+        "quoteNumber",
+        "issueDate",
+        "validUntil",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "lineItems",
+        "subtotal",
+        "taxRate",
+        "taxAmount",
+        "totalAmount",
+        "notes",
+        "paymentTerms",
+        "logo"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "quotation-minimal": {
+      "id": "quotation-minimal",
+      "name": "Minimalist Quotation",
+      "type": "quotation",
+      "variant": "minimal",
+      "description": "Clean, minimalist business price quote template",
+      "slots": [
+        "quoteNumber",
+        "issueDate",
+        "validUntil",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "lineItems",
+        "subtotal",
+        "taxRate",
+        "taxAmount",
+        "totalAmount",
+        "notes",
+        "paymentTerms",
+        "logo"
+      ],
+      "schema": {
+        "required": [],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "proposal-classic": {
+      "id": "proposal-classic",
+      "name": "Classic Proposal",
+      "type": "proposal",
+      "variant": "classic",
+      "description": "Standard business project proposal template",
+      "slots": [
+        "proposalTitle",
+        "issueDate",
+        "validUntil",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "executiveSummary",
+        "scopeOfWork",
+        "projectTimeline",
+        "pricingDetails",
+        "logo"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "proposal"
+      ],
+      "supportsDiscount": true
+    },
+    "proposal-modern": {
+      "id": "proposal-modern",
+      "name": "Modern Proposal",
+      "type": "proposal",
+      "variant": "modern",
+      "description": "Sleek, modern business project proposal template",
+      "slots": [
+        "proposalTitle",
+        "issueDate",
+        "validUntil",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "executiveSummary",
+        "scopeOfWork",
+        "projectTimeline",
+        "pricingDetails",
+        "logo"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "proposal"
+      ],
+      "supportsDiscount": true
+    },
+    "proposal-minimal": {
+      "id": "proposal-minimal",
+      "name": "Minimalist Proposal",
+      "type": "proposal",
+      "variant": "minimal",
+      "description": "Clean, minimalist business project proposal template",
+      "slots": [
+        "proposalTitle",
+        "issueDate",
+        "validUntil",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "executiveSummary",
+        "scopeOfWork",
+        "projectTimeline",
+        "pricingDetails",
+        "logo"
+      ],
+      "schema": {
+        "required": [],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "proposal"
+      ],
+      "supportsDiscount": true
+    },
+    "receipt-classic": {
+      "id": "receipt-classic",
+      "name": "Classic Receipt",
+      "type": "receipt",
+      "variant": "classic",
+      "description": "Standard business payment receipt template",
+      "slots": [
+        "receiptNumber",
+        "paymentDate",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "amountPaid",
+        "paymentMethod",
+        "notes",
+        "referenceNumber",
+        "logo"
+      ],
+      "schema": {
+        "required": [],
+        "conditional": [],
+        "questions": {}
+      },
+      "documentTypes": [
+        "receipt"
+      ],
+      "supportsDiscount": false
+    },
+    "receipt-modern": {
+      "id": "receipt-modern",
+      "name": "Modern Receipt",
+      "type": "receipt",
+      "variant": "modern",
+      "description": "Sleek, modern business payment receipt template",
+      "slots": [
+        "receiptNumber",
+        "paymentDate",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "amountPaid",
+        "paymentMethod",
+        "notes",
+        "referenceNumber",
+        "logo"
+      ],
+      "schema": {
+        "required": [],
+        "conditional": [],
+        "questions": {}
+      },
+      "documentTypes": [
+        "receipt"
+      ],
+      "supportsDiscount": false
+    },
+    "receipt-minimal": {
+      "id": "receipt-minimal",
+      "name": "Minimalist Receipt",
+      "type": "receipt",
+      "variant": "minimal",
+      "description": "Clean, minimalist business payment receipt template",
+      "slots": [
+        "receiptNumber",
+        "paymentDate",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "amountPaid",
+        "paymentMethod",
+        "notes",
+        "referenceNumber",
+        "logo"
+      ],
+      "schema": {
+        "required": [],
+        "conditional": [],
+        "questions": {}
+      },
+      "documentTypes": [
+        "receipt"
+      ],
+      "supportsDiscount": false
+    },
+    "purchaseOrder-classic": {
+      "id": "purchaseOrder-classic",
+      "name": "Classic Purchase Order",
+      "type": "purchase_order",
+      "variant": "classic",
+      "description": "Standard business purchase order template",
+      "slots": [
+        "poNumber",
+        "issueDate",
+        "deliveryDate",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "lineItems",
+        "subtotal",
+        "taxRate",
+        "taxAmount",
+        "totalAmount",
+        "notes",
+        "shippingInstructions",
+        "logo"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress"
+        ],
+        "conditional": [
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          },
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "purchase_order"
+      ],
+      "supportsDiscount": true
+    },
+    "purchaseOrder-modern": {
+      "id": "purchaseOrder-modern",
+      "name": "Modern Purchase Order",
+      "type": "purchase_order",
+      "variant": "modern",
+      "description": "Sleek, modern business purchase order template",
+      "slots": [
+        "poNumber",
+        "issueDate",
+        "deliveryDate",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "lineItems",
+        "subtotal",
+        "taxRate",
+        "taxAmount",
+        "totalAmount",
+        "notes",
+        "shippingInstructions",
+        "logo"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress"
+        ],
+        "conditional": [
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          },
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "purchase_order"
+      ],
+      "supportsDiscount": true
+    },
+    "purchaseOrder-minimal": {
+      "id": "purchaseOrder-minimal",
+      "name": "Minimalist Purchase Order",
+      "type": "purchase_order",
+      "variant": "minimal",
+      "description": "Clean, minimalist business purchase order template",
+      "slots": [
+        "poNumber",
+        "issueDate",
+        "deliveryDate",
+        "senderName",
+        "senderEmail",
+        "senderPhone",
+        "senderAddress",
+        "clientName",
+        "clientCompany",
+        "clientAddress",
+        "lineItems",
+        "subtotal",
+        "taxRate",
+        "taxAmount",
+        "totalAmount",
+        "notes",
+        "shippingInstructions",
+        "logo"
+      ],
+      "schema": {
+        "required": [],
+        "conditional": [
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          },
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "purchase_order"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_receipt_purchase_ui": {
+      "id": "tmpl_receipt_purchase_ui",
+      "name": "tmpl_receipt_purchase_ui",
+      "type": "receipt",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "paymentMethod"
+      ],
+      "schema": {
+        "required": [],
+        "conditional": [],
+        "questions": {}
+      },
+      "documentTypes": [
+        "receipt"
+      ],
+      "supportsDiscount": false
+    },
+    "tmpl_quotation_modern": {
+      "id": "tmpl_quotation_modern",
+      "name": "tmpl_quotation_modern",
+      "type": "quotation",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_invoice_2023_01": {
+      "id": "tmpl_invoice_2023_01",
+      "name": "tmpl_invoice_2023_01",
+      "type": "invoice",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress",
+          "senderEmail",
+          "senderPhone"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "invoice",
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_quotation_executive": {
+      "id": "tmpl_quotation_executive",
+      "name": "tmpl_quotation_executive",
+      "type": "quotation",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_receipt_compact": {
+      "id": "tmpl_receipt_compact",
+      "name": "tmpl_receipt_compact",
+      "type": "receipt",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "paymentMethod"
+      ],
+      "schema": {
+        "required": [],
+        "conditional": [],
+        "questions": {}
+      },
+      "documentTypes": [
+        "receipt"
+      ],
+      "supportsDiscount": false
+    },
+    "tmpl_purchase_order_corporate": {
+      "id": "tmpl_purchase_order_corporate",
+      "name": "tmpl_purchase_order_corporate",
+      "type": "purchase_order",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "purchase_order"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_invoice_2023_52": {
+      "id": "tmpl_invoice_2023_52",
+      "name": "tmpl_invoice_2023_52",
+      "type": "invoice",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress",
+          "senderEmail",
+          "senderPhone"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "invoice",
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_purchase_order_cyan_clean": {
+      "id": "tmpl_purchase_order_cyan_clean",
+      "name": "tmpl_purchase_order_cyan_clean",
+      "type": "purchase_order",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "purchase_order"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_receipt_mobile_app_ui": {
+      "id": "tmpl_receipt_mobile_app_ui",
+      "name": "tmpl_receipt_mobile_app_ui",
+      "type": "receipt",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "paymentMethod"
+      ],
+      "schema": {
+        "required": [],
+        "conditional": [],
+        "questions": {}
+      },
+      "documentTypes": [
+        "receipt"
+      ],
+      "supportsDiscount": false
+    },
+    "tmpl_purchase_order_templatelab": {
+      "id": "tmpl_purchase_order_templatelab",
+      "name": "tmpl_purchase_order_templatelab",
+      "type": "purchase_order",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "purchase_order"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_invoice_2018_02": {
+      "id": "tmpl_invoice_2018_02",
+      "name": "tmpl_invoice_2018_02",
+      "type": "invoice",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress",
+          "senderEmail",
+          "senderPhone"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "invoice",
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_receipt_grid_bordered": {
+      "id": "tmpl_receipt_grid_bordered",
+      "name": "tmpl_receipt_grid_bordered",
+      "type": "receipt",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "paymentMethod"
+      ],
+      "schema": {
+        "required": [],
+        "conditional": [],
+        "questions": {}
+      },
+      "documentTypes": [
+        "receipt"
+      ],
+      "supportsDiscount": false
+    },
+    "tmpl_invoice_2023_03": {
+      "id": "tmpl_invoice_2023_03",
+      "name": "tmpl_invoice_2023_03",
+      "type": "invoice",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress",
+          "senderEmail",
+          "senderPhone"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "invoice",
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_purchase_order_classic": {
+      "id": "tmpl_purchase_order_classic",
+      "name": "tmpl_purchase_order_classic",
+      "type": "purchase_order",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "purchase_order"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_purchase_order_minimal_grid": {
+      "id": "tmpl_purchase_order_minimal_grid",
+      "name": "tmpl_purchase_order_minimal_grid",
+      "type": "purchase_order",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "purchase_order"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_invoice_2023_02": {
+      "id": "tmpl_invoice_2023_02",
+      "name": "tmpl_invoice_2023_02",
+      "type": "invoice",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress",
+          "senderEmail",
+          "senderPhone"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "invoice",
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_proposal_corporate": {
+      "id": "tmpl_proposal_corporate",
+      "name": "tmpl_proposal_corporate",
+      "type": "proposal",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "proposal"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_purchase_order_standard": {
+      "id": "tmpl_purchase_order_standard",
+      "name": "tmpl_purchase_order_standard",
+      "type": "purchase_order",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "purchase_order"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_purchase_order_global_company": {
+      "id": "tmpl_purchase_order_global_company",
+      "name": "tmpl_purchase_order_global_company",
+      "type": "purchase_order",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "purchase_order"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_invoice_2018_01": {
+      "id": "tmpl_invoice_2018_01",
+      "name": "tmpl_invoice_2018_01",
+      "type": "invoice",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress",
+          "senderEmail",
+          "senderPhone"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "invoice",
+        "quotation"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_proposal_modern": {
+      "id": "tmpl_proposal_modern",
+      "name": "tmpl_proposal_modern",
+      "type": "proposal",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "dueDate"
+      ],
+      "schema": {
+        "required": [
+          "senderAddress",
+          "clientAddress"
+        ],
+        "conditional": [
+          {
+            "field": "accountDetails",
+            "whenField": "paymentMethod",
+            "values": [
+              "bank transfer",
+              "cheque"
+            ]
+          },
+          {
+            "field": "taxRate",
+            "whenField": "taxStatus",
+            "values": [
+              "taxable"
+            ]
+          }
+        ],
+        "questions": {}
+      },
+      "documentTypes": [
+        "proposal"
+      ],
+      "supportsDiscount": true
+    },
+    "tmpl_receipt_official": {
+      "id": "tmpl_receipt_official",
+      "name": "tmpl_receipt_official",
+      "type": "receipt",
+      "variant": "classic",
+      "slots": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "notesAndTerms",
+        "accountDetails",
+        "paymentMethod"
+      ],
+      "schema": {
+        "required": [],
+        "conditional": [],
+        "questions": {}
+      },
+      "documentTypes": [
+        "receipt"
+      ],
+      "supportsDiscount": false
+    }
+  }
+}

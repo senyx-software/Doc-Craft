@@ -1,0 +1,15 @@
+{
+  "id": "phase3-document-queue-retest",
+  "cwd": "services/document",
+  "command": [
+    "../../.venv-local/bin/python",
+    "-m",
+    "pytest",
+    "-q"
+  ],
+  "started_utc": "2026-10-15T14:11:56.050246+00:00",
+  "seconds": 5.45,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-document-queue-retest.log"
+}

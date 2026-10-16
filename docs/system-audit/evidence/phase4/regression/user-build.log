@@ -1,0 +1,44 @@
+npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown user config "tmp". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> user-frontend@0.0.0 build
+> tsc -b && vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 2537 modules transformed.
+rendering chunks...
+[plugin vite:reporter] 
+(!) /home/eranda/Projects/doc-craft/user-frontend/src/store/authStore.ts is dynamically imported by /home/eranda/Projects/doc-craft/user-frontend/src/api/ai.ts, /home/eranda/Projects/doc-craft/user-frontend/src/api/ai.ts, /home/eranda/Projects/doc-craft/user-frontend/src/api/client.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/chatStore.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/documentStore.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/quotaStore.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/quotaStore.ts but also statically imported by /home/eranda/Projects/doc-craft/user-frontend/src/App.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/components/common/Announcements.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/components/common/Navbar.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/components/dashboard/ProfileIdentityCard.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/components/dashboard/ProfileSecurityCard.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/hooks/useUserDocuments.ts, /home/eranda/Projects/doc-craft/user-frontend/src/middleware/GuestRoute.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/middleware/ProtectedRoute.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/pages/BuilderPage.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/pages/LandingPage.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/pages/LoginPage.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/pages/PasswordResetPage.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/pages/PricingPage.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/pages/RegisterPage.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/pages/dashboard/DashboardSupportPage.tsx, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /home/eranda/Projects/doc-craft/user-frontend/src/api/ai.ts is dynamically imported by /home/eranda/Projects/doc-craft/user-frontend/src/store/documentStore.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/documentStore.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/documentStore.ts but also statically imported by /home/eranda/Projects/doc-craft/user-frontend/src/hooks/useUserDocuments.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/chatStore.ts, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /home/eranda/Projects/doc-craft/user-frontend/src/store/chatStore.ts is dynamically imported by /home/eranda/Projects/doc-craft/user-frontend/src/store/authStore.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/authStore.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/documentStore.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/documentStore.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/documentStore.ts but also statically imported by /home/eranda/Projects/doc-craft/user-frontend/src/App.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/components/builder/ChatAttachments.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/components/builder/ChatMessage.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/components/builder/ChatPanel.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/components/builder/TemplateSelector.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/pages/BuilderPage.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/store/documentStore.ts, /home/eranda/Projects/doc-craft/user-frontend/src/utils/dashboardActions.ts, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /home/eranda/Projects/doc-craft/user-frontend/src/store/documentStore.ts is dynamically imported by /home/eranda/Projects/doc-craft/user-frontend/src/store/chatStore.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/chatStore.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/chatStore.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/chatStore.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/chatStore.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/chatStore.ts, /home/eranda/Projects/doc-craft/user-frontend/src/store/chatStore.ts but also statically imported by /home/eranda/Projects/doc-craft/user-frontend/src/App.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/components/builder/ChatMessage.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/components/builder/ChatPanel.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/components/builder/TemplateSelector.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/pages/BuilderPage.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/utils/dashboardActions.ts, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /home/eranda/Projects/doc-craft/user-frontend/src/store/quotaStore.ts is dynamically imported by /home/eranda/Projects/doc-craft/user-frontend/src/store/documentStore.ts but also statically imported by /home/eranda/Projects/doc-craft/user-frontend/src/components/builder/TemplateSelector.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/components/dashboard/ProfileIdentityCard.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/components/dashboard/ProfileQuotaCard.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/components/dashboard/ProfileSubscriptionCard.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/components/shared/GuestDownloadModal.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/components/shared/UpgradeModal.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/pages/BuilderPage.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/pages/PricingPage.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/pages/dashboard/DashboardBillingPage.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/pages/dashboard/DashboardOverviewPage.tsx, /home/eranda/Projects/doc-craft/user-frontend/src/pages/dashboard/DashboardProfileSettingsPage.tsx, dynamic import will not move module into another chunk.
+
+computing gzip size...
+dist/index.html                              1.08 kB │ gzip:   0.57 kB
+dist/assets/chat-bg-DNk7F5GZ.svg            69.70 kB │ gzip:  28.35 kB
+dist/assets/logo-left-DHAmWStC.png         112.28 kB
+dist/assets/logo-left1-D5psV_Sr.png        126.97 kB
+dist/assets/hero-Ba2pgPIw.mp4            6,529.50 kB
+dist/assets/index-BPWL3hf9.css              78.52 kB │ gzip:  13.65 kB
+dist/assets/purify.es-18JuyMri.js           30.12 kB │ gzip:  11.48 kB
+dist/assets/index.es-LumoiQwG.js           158.83 kB │ gzip:  52.93 kB
+dist/assets/html2canvas.esm-DXEQVQnt.js    201.04 kB │ gzip:  47.07 kB
+dist/assets/jspdf.es.min-D4tTgzQn.js       386.01 kB │ gzip: 124.94 kB
+dist/assets/html2pdf-3Ds3oEBC.js           975.75 kB │ gzip: 278.57 kB
+dist/assets/index-Czlam9DW.js            1,376.97 kB │ gzip: 329.37 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 13.72s

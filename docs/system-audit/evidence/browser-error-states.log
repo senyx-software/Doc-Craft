@@ -1,0 +1,5 @@
+Admin browser routes checked: 20/81
+Admin browser routes checked: 40/81
+Admin browser routes checked: 60/81
+Admin browser routes checked: 80/81
+{"scenarios":96,"passed":96,"failed":0,"limitations":"API requests were intercepted; these are rendering/error-state checks, not live end-to-end proofs."}

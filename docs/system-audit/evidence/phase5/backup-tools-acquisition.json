@@ -1,0 +1,10 @@
+{
+  "recorded_at": "2026-10-16T08:41:49.910811+00:00",
+  "status": "BLOCKED",
+  "operation": "Download official PostgreSQL 17.10 source to build missing task-local dump/restore clients",
+  "source": "https://ftp.postgresql.org/pub/source/v17.10/postgresql-17.10.tar.bz2",
+  "error_type": "httpx.ReadTimeout",
+  "verified_archive_obtained": false,
+  "clients_installed": false,
+  "security_checks_bypassed": false
+}

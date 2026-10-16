@@ -1,0 +1,8 @@
+{
+  "checked_at": "2026-10-16T08:41:50.155079+00:00",
+  "task_owned_native_tls_postgres_stopped": true,
+  "exit_code": 0,
+  "fixture_databases_retained": true,
+  "other_instances_touched": false,
+  "native_service_cleanup": "See stack-integration.json cleanup and bounded shutdown assertions"
+}

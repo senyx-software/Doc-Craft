@@ -1,0 +1,200 @@
+/*
+ * Design tokens sourced from Figma — "Fusion AI Assistant UI Kit (Community)"
+ * (Colour System, Foundation pages) via the Figma REST API.
+ * Consumed by tailwind.config.js (theme.extend) so components use plain
+ * Tailwind utility classes (bg-brand-500, shadow-3, rounded-lg, ...) instead
+ * of hardcoded values. Only edit by re-running the Figma sync.
+ *
+ * Colors are stored as space-separated "R G B" triplets (not hex) so Tailwind
+ * can apply opacity modifiers, e.g. bg-brand-500/20 -> rgb(var(--x) / 0.2).
+ */
+
+:root {
+  /* ---- Accent families (10), shade 200 (lightest) -> 600 (most saturated/darkest) ---- */
+  --accent-red-600: 235 160 155;
+  --accent-red-500: 192 45 35;
+  --accent-red-400: 204 47 36;
+  --accent-red-300: 214 85 76;
+  --accent-red-200: 225 122 115;
+  --accent-red-100: 225 122 115;
+
+  --accent-amber-600: 228 165 123;
+  --accent-amber-500: 155 82 28;
+  --accent-amber-400: 166 87 29;
+  --accent-amber-300: 187 113 60;
+  --accent-amber-200: 207 139 92;
+  --accent-amber-100: 207 139 92;
+
+  --accent-brown-600: 225 168 105;
+  --accent-brown-500: 142 90 26;
+  --accent-brown-400: 152 95 27;
+  --accent-brown-300: 176 119 53;
+  --accent-brown-200: 201 144 79;
+  --accent-brown-100: 201 144 79;
+
+  --accent-green-600: 41 205 107;
+  --accent-green-500: 22 117 72;
+  --accent-green-400: 22 124 73;
+  --accent-green-300: 28 151 84;
+  --accent-green-200: 35 178 96;
+  --accent-green-100: 35 178 96;
+
+  --accent-teal-600: 40 199 193;
+  --accent-teal-500: 23 112 124;
+  --accent-teal-400: 22 119 128;
+  --accent-teal-300: 28 146 150;
+  --accent-teal-200: 34 172 171;
+  --accent-teal-100: 34 172 171;
+
+  --accent-blue-600: 117 187 227;
+  --accent-blue-500: 34 102 183;
+  --accent-blue-400: 33 110 187;
+  --accent-blue-300: 61 136 200;
+  --accent-blue-200: 89 161 214;
+  --accent-blue-100: 89 161 214;
+
+  --accent-indigo-600: 164 176 237;
+  --accent-indigo-500: 88 80 222;
+  --accent-indigo-400: 90 90 226;
+  --accent-indigo-300: 115 119 230;
+  --accent-indigo-200: 139 147 233;
+  --accent-indigo-100: 139 147 233;
+
+  --accent-violet-600: 181 171 238;
+  --accent-violet-500: 125 64 217;
+  --accent-violet-400: 126 76 224;
+  --accent-violet-300: 144 108 229;
+  --accent-violet-200: 163 139 233;
+  --accent-violet-100: 163 139 233;
+
+  --accent-purple-600: 199 165 237;
+  --accent-purple-500: 157 44 201;
+  --accent-purple-400: 162 49 219;
+  --accent-purple-300: 174 88 225;
+  --accent-purple-200: 187 126 231;
+  --accent-purple-100: 187 126 231;
+
+  --accent-pink-600: 235 154 200;
+  --accent-pink-500: 193 36 78;
+  --accent-pink-400: 205 36 93;
+  --accent-pink-300: 215 75 129;
+  --accent-pink-200: 225 115 164;
+  --accent-pink-100: 225 115 164;
+
+  /* ---- Neutrals: fill-base (light scale, for light surfaces) ---- */
+  --neutral-fill-base-100: 255 255 255;
+  --neutral-fill-base-200: 250 249 250;
+  --neutral-fill-base-300: 245 244 246;
+  --neutral-fill-base-400: 239 238 241;
+  --neutral-fill-base-500: 234 233 236;
+  --neutral-fill-base-600: 224 222 227;
+
+  /* ---- Neutrals: fill-contrast (dark scale, for dark surfaces) ---- */
+  --neutral-fill-contrast-100: 60 57 66;
+  --neutral-fill-contrast-200: 55 52 60;
+  --neutral-fill-contrast-300: 50 47 55;
+  --neutral-fill-contrast-400: 45 42 50;
+  --neutral-fill-contrast-500: 40 38 44;
+  --neutral-fill-contrast-600: 35 33 39;
+
+  /* ---- Stroke colours ---- */
+  --stroke-base: 255 255 255;
+  --stroke-contrast: 60 57 66;
+
+  /* ---- Alt colours (semi-transparent, glassmorphism borders/tints) ---- */
+  --alt-base-rgb: 24 0 72;
+  --alt-base-600: 0.44;
+  --alt-base-500: 0.32;
+  --alt-base-400: 0.24;
+  --alt-base-300: 0.16;
+  --alt-base-200: 0.08;
+  --alt-base-100: 0.04;
+
+  --alt-contrast-rgb: 255 255 255;
+  --alt-contrast-600: 0.32;
+  --alt-contrast-500: 0.24;
+  --alt-contrast-400: 0.16;
+  --alt-contrast-300: 0.12;
+  --alt-contrast-200: 0.08;
+  --alt-contrast-100: 0.04;
+
+  /* ---- Semantic (brand = violet, danger = red, success = green, warning = amber) ---- */
+  --color-primary-rgb: var(--accent-violet-400);
+  --color-primary-hover-rgb: var(--accent-violet-500);
+  --color-primary-subtle-rgb: var(--accent-violet-100);
+  --color-success-rgb: var(--accent-green-400);
+  --color-warning-rgb: var(--accent-amber-400);
+  --color-error-rgb: var(--accent-red-400);
+  /* Figma doesn't define a distinct "info" accent; blue is the conventional stand-in. */
+  --color-info-rgb: var(--accent-blue-400);
+
+  --color-primary: rgb(var(--color-primary-rgb));
+  --color-primary-hover: rgb(var(--color-primary-hover-rgb));
+  --color-primary-subtle: rgb(var(--color-primary-subtle-rgb));
+  --color-success: rgb(var(--color-success-rgb));
+  --color-warning: rgb(var(--color-warning-rgb));
+  --color-error: rgb(var(--color-error-rgb));
+  --color-info: rgb(var(--color-info-rgb));
+
+  /* ---- Typography (Poppins, per Foundation / typography page) ---- */
+  --font-family-base: 'Poppins', system-ui, -apple-system, sans-serif;
+
+  /* ---- Shadows: elevate/layer-1..6 at the /500 (0.32 alpha) opacity tier ---- */
+  --shadow-color: 14, 0, 41;
+  --shadow-1: 0 0.75px 0.5px rgba(var(--shadow-color), 0.32);
+  --shadow-2: 0 1px 2px -1px rgba(var(--shadow-color), 0.32), 0 1px 4px -1px rgba(var(--shadow-color), 0.32);
+  --shadow-3: 0 2px 4px -2px rgba(var(--shadow-color), 0.32), 0 4px 6px -2px rgba(var(--shadow-color), 0.32);
+  --shadow-4: 0 4px 6px -4px rgba(var(--shadow-color), 0.32), 0 10px 15px -3px rgba(var(--shadow-color), 0.32);
+  --shadow-5: 0 12px 10px -6px rgba(var(--shadow-color), 0.32), 0 20px 25px -5px rgba(var(--shadow-color), 0.32);
+  --shadow-6: 0 23px 28px -7px rgba(var(--shadow-color), 0.32), 0 16px 10px -7px rgba(var(--shadow-color), 0.32), 0 24px 48px -10px rgba(var(--shadow-color), 0.32);
+
+  /* ---- Radii (Foundation / radii page) ---- */
+  --radius-none: 0px;
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 40px;
+  --radius-round: 999px;
+
+  /* ---- Spacing (Foundation / spacing page) ---- */
+  --space-4xs: 4px;
+  --space-3xs: 6px;
+  --space-2xs: 8px;
+  --space-xs: 12px;
+  --space-sm: 16px;
+  --space-base: 20px;
+  --space-md: 24px;
+  --space-lg: 28px;
+  --space-xl: 32px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+  --space-4xl: 60px;
+  --space-5xl: 72px;
+
+  /* ---- App shell background: the actual page bg used in Figma's real
+     screens (Modules > Stacked App Layout, both Light Mode and Dark Mode
+     instances), NOT the abstract Colour System swatch ramp. ---- */
+  --app-shell-bg-light: 234 233 236;  /* #eae9ec */
+  --app-shell-bg-dark: 15 14 17;      /* #0f0e11 */
+
+  /* ---- App semantic surface tokens: LIGHT MODE IS THE DEFAULT (:root),
+     per Figma's actual product screens (fill-base / stroke-base). ---- */
+  --background: rgb(var(--app-shell-bg-light));
+  --surface: rgb(var(--neutral-fill-base-100));
+  --border: rgb(var(--neutral-fill-base-600));
+  --text-primary: rgb(var(--neutral-fill-contrast-600));
+  --text-secondary: rgb(var(--neutral-fill-contrast-300));
+  --document-surface: rgb(var(--neutral-fill-base-100));
+}
+
+/* ---- App semantic surface tokens: dark mode (opt-in via .dark) ---- */
+.dark {
+  --background: rgb(var(--app-shell-bg-dark));
+  --surface: rgb(var(--neutral-fill-contrast-500));
+  --border: rgba(var(--alt-contrast-rgb), var(--alt-contrast-300));
+  --text-primary: rgb(var(--neutral-fill-base-100));
+  --text-secondary: rgba(var(--alt-contrast-rgb), var(--alt-contrast-600));
+  --document-surface: rgb(var(--neutral-fill-base-100));
+}

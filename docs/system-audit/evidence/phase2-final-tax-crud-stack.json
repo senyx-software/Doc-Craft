@@ -1,0 +1,13 @@
+{
+  "id": "phase2-final-tax-crud-stack",
+  "cwd": ".",
+  "command": [
+    ".venv-local/bin/python",
+    "scripts/system_audit_phase2_stack.py"
+  ],
+  "started_utc": "2026-10-15T13:28:49.179809+00:00",
+  "seconds": 43.33,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-final-tax-crud-stack.log"
+}

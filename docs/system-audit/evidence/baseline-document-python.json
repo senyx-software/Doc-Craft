@@ -1,0 +1,16 @@
+{
+  "id": "baseline-document-python",
+  "cwd": "services/document",
+  "command": [
+    "/home/eranda/Projects/doc-craft/.venv-local/bin/python",
+    "-m",
+    "pytest",
+    "tests",
+    "-q"
+  ],
+  "started_utc": "2026-10-15T05:47:10.623968+00:00",
+  "seconds": 3.2,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/baseline-document-python.log"
+}

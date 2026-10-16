@@ -1,0 +1,15 @@
+{
+  "id": "phase2-new-policy-security",
+  "cwd": ".",
+  "command": [
+    "node_modules/.bin/vitest",
+    "run",
+    "services/chat/src/services/__tests__/plan-policy.test.ts",
+    "services/chat/src/routes/__tests__/internal-resources.test.ts"
+  ],
+  "started_utc": "2026-10-15T12:16:48.690070+00:00",
+  "seconds": 1.29,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-new-policy-security.log"
+}

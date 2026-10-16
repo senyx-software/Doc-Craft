@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; margin: 40px; line-height: 1.6; }
+    .header { border-bottom: 3px solid #4a5568; padding-bottom: 20px; margin-bottom: 40px; }
+    .title { font-size: 36px; font-weight: bold; color: #2d3748; }
+    .subtitle { font-size: 20px; color: #718096; margin-top: 5px; }
+    .meta { display: flex; justify-content: space-between; margin-bottom: 40px; background-color: #f7fafc; padding: 15px 20px; border-radius: 5px; }
+    h2 { color: #2d3748; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px; margin-top: 30px; }
+    .content-block { margin-bottom: 30px; }
+</style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">{{ proposalTitle }}</div>
+        <div class="subtitle">Project Proposal</div>
+    </div>
+
+    <div class="meta">
+        <div>
+            <strong>Prepared By:</strong> {{ senderName }}<br>
+            <strong>Date:</strong> {{ issueDate }}
+        </div>
+        <div style="text-align: right;">
+            <strong>Prepared For:</strong> {{ clientName }}
+        </div>
+    </div>
+
+    <div class="content-block">
+        <h2>Executive Summary</h2>
+        <p>{{ executiveSummary | e | replace('\n', '<br>') | safe }}</p>
+    </div>
+
+    <div class="content-block">
+        <h2>Scope of Work</h2>
+        <p>{{ scopeOfWork | e | replace('\n', '<br>') | safe }}</p>
+    </div>
+</body>
+</html>

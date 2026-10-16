@@ -1,0 +1,15 @@
+npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown user config "tmp". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> doccraft-payment@1.0.0 test
+> vitest run
+
+
+ RUN  v4.1.10 /home/eranda/Projects/doc-craft/services/payment
+
+
+ Test Files  10 passed (10)
+      Tests  62 passed (62)
+   Start at  19:46:25
+   Duration  1.78s (transform 1.79s, setup 2.79s, import 3.56s, tests 244ms, environment 2ms)
+

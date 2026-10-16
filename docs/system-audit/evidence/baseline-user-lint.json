@@ -1,0 +1,16 @@
+{
+  "id": "baseline-user-lint",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "lint",
+    "--prefix",
+    "user-frontend"
+  ],
+  "started_utc": "2026-10-15T05:46:15.891505+00:00",
+  "seconds": 17.52,
+  "exit_code": 1,
+  "result": "FAIL",
+  "log": "evidence/baseline-user-lint.log"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "backend-build",
+  "command": [
+    "npm",
+    "run",
+    "build"
+  ],
+  "cwd": ".",
+  "started_utc": "2026-10-16T08:25:13.270785+00:00",
+  "seconds": 30.27,
+  "exit_code": 0,
+  "status": "PASS",
+  "log": "docs/system-audit/evidence/phase5/regression/backend-build.log"
+}

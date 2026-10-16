@@ -1,0 +1,15 @@
+{
+  "id": "auth-tests",
+  "command": [
+    "npm",
+    "test",
+    "-w",
+    "doccraft-auth"
+  ],
+  "cwd": ".",
+  "started_utc": "2026-10-16T07:34:14.963097+00:00",
+  "seconds": 1.75,
+  "exit_code": 0,
+  "status": "PASS",
+  "log": "docs/system-audit/evidence/phase4/regression/auth-tests.log"
+}

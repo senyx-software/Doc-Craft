@@ -1,0 +1,13 @@
+{
+  "id": "phase3-live-security-complete",
+  "cwd": ".",
+  "command": [
+    ".venv-local/bin/python",
+    "scripts/system_audit_phase3_stack.py"
+  ],
+  "started_utc": "2026-10-15T14:14:41.594162+00:00",
+  "seconds": 59.25,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-live-security-complete.log"
+}

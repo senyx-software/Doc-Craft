@@ -1,0 +1,14 @@
+{
+  "id": "phase3-final-pdf-isolation-build",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "build"
+  ],
+  "started_utc": "2026-10-15T14:20:51.325302+00:00",
+  "seconds": 13.54,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-final-pdf-isolation-build.log"
+}

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/eranda/Projects/doc-craft/scripts/system_audit_phase2_probes.py", line 103, in <module>
+    main()
+    ~~~~^^
+  File "/home/eranda/Projects/doc-craft/scripts/system_audit_phase2_probes.py", line 53, in main
+    run("pdf-regression", [str(ROOT / ".venv-local/bin/python"), "scripts/system_audit_pdf.py"])
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/eranda/Projects/doc-craft/scripts/system_audit_phase2_probes.py", line 48, in run
+    raise RuntimeError(f"{name} failed; see retained log")
+RuntimeError: pdf-regression failed; see retained log

@@ -1,0 +1,16 @@
+{
+  "id": "phase3-shared-python-tests",
+  "cwd": ".",
+  "command": [
+    ".venv-local/bin/python",
+    "-m",
+    "pytest",
+    "shared/tests/test_request_limits.py",
+    "-q"
+  ],
+  "started_utc": "2026-10-15T17:59:46.023273+00:00",
+  "seconds": 0.59,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-shared-python-tests.log"
+}

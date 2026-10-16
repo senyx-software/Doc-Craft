@@ -1,0 +1,317 @@
+{
+  "scope": "Offline artifacts only; no image build, container startup or provider workflow verified",
+  "checks": [
+    {
+      "check": "private staging output",
+      "passed": true
+    },
+    {
+      "check": "no CA signing key mounted",
+      "passed": true
+    },
+    {
+      "check": "separate internal backend",
+      "passed": true
+    },
+    {
+      "check": "gateway has no host listener",
+      "passed": true
+    },
+    {
+      "check": "gateway requires TLS",
+      "passed": true
+    },
+    {
+      "check": "gateway authenticated Redis TLS",
+      "passed": true
+    },
+    {
+      "check": "gateway never receives owner database credentials",
+      "passed": true
+    },
+    {
+      "check": "gateway receives only its service identity",
+      "passed": true
+    },
+    {
+      "check": "auth has no host listener",
+      "passed": true
+    },
+    {
+      "check": "auth requires TLS",
+      "passed": true
+    },
+    {
+      "check": "auth authenticated Redis TLS",
+      "passed": true
+    },
+    {
+      "check": "auth never receives owner database credentials",
+      "passed": true
+    },
+    {
+      "check": "auth receives only its service identity",
+      "passed": true
+    },
+    {
+      "check": "notification has no host listener",
+      "passed": true
+    },
+    {
+      "check": "notification requires TLS",
+      "passed": true
+    },
+    {
+      "check": "notification authenticated Redis TLS",
+      "passed": true
+    },
+    {
+      "check": "notification never receives owner database credentials",
+      "passed": true
+    },
+    {
+      "check": "notification receives only its service identity",
+      "passed": true
+    },
+    {
+      "check": "document has no host listener",
+      "passed": true
+    },
+    {
+      "check": "document requires TLS",
+      "passed": true
+    },
+    {
+      "check": "document authenticated Redis TLS",
+      "passed": true
+    },
+    {
+      "check": "document never receives owner database credentials",
+      "passed": true
+    },
+    {
+      "check": "document receives only its service identity",
+      "passed": true
+    },
+    {
+      "check": "payment has no host listener",
+      "passed": true
+    },
+    {
+      "check": "payment requires TLS",
+      "passed": true
+    },
+    {
+      "check": "payment authenticated Redis TLS",
+      "passed": true
+    },
+    {
+      "check": "payment never receives owner database credentials",
+      "passed": true
+    },
+    {
+      "check": "payment receives only its service identity",
+      "passed": true
+    },
+    {
+      "check": "quota has no host listener",
+      "passed": true
+    },
+    {
+      "check": "quota requires TLS",
+      "passed": true
+    },
+    {
+      "check": "quota authenticated Redis TLS",
+      "passed": true
+    },
+    {
+      "check": "quota never receives owner database credentials",
+      "passed": true
+    },
+    {
+      "check": "quota receives only its service identity",
+      "passed": true
+    },
+    {
+      "check": "chat has no host listener",
+      "passed": true
+    },
+    {
+      "check": "chat requires TLS",
+      "passed": true
+    },
+    {
+      "check": "chat authenticated Redis TLS",
+      "passed": true
+    },
+    {
+      "check": "chat never receives owner database credentials",
+      "passed": true
+    },
+    {
+      "check": "chat receives only its service identity",
+      "passed": true
+    },
+    {
+      "check": "analytics has no host listener",
+      "passed": true
+    },
+    {
+      "check": "analytics requires TLS",
+      "passed": true
+    },
+    {
+      "check": "analytics authenticated Redis TLS",
+      "passed": true
+    },
+    {
+      "check": "analytics never receives owner database credentials",
+      "passed": true
+    },
+    {
+      "check": "analytics receives only its service identity",
+      "passed": true
+    },
+    {
+      "check": "admin-api has no host listener",
+      "passed": true
+    },
+    {
+      "check": "admin-api requires TLS",
+      "passed": true
+    },
+    {
+      "check": "admin-api authenticated Redis TLS",
+      "passed": true
+    },
+    {
+      "check": "admin-api never receives owner database credentials",
+      "passed": true
+    },
+    {
+      "check": "admin-api receives only its service identity",
+      "passed": true
+    },
+    {
+      "check": "pdf has no host listener",
+      "passed": true
+    },
+    {
+      "check": "pdf requires TLS",
+      "passed": true
+    },
+    {
+      "check": "pdf authenticated Redis TLS",
+      "passed": true
+    },
+    {
+      "check": "pdf never receives owner database credentials",
+      "passed": true
+    },
+    {
+      "check": "pdf receives only its service identity",
+      "passed": true
+    },
+    {
+      "check": "PDF isolated without added capabilities",
+      "passed": true
+    },
+    {
+      "check": "postgres has no host listener",
+      "passed": true
+    },
+    {
+      "check": "postgres has no external egress",
+      "passed": true
+    },
+    {
+      "check": "redis has no host listener",
+      "passed": true
+    },
+    {
+      "check": "redis has no external egress",
+      "passed": true
+    },
+    {
+      "check": "user-ui has no host listener",
+      "passed": true
+    },
+    {
+      "check": "admin-ui has no host listener",
+      "passed": true
+    },
+    {
+      "check": "migrate-node has no host listener",
+      "passed": true
+    },
+    {
+      "check": "migrate-python has no host listener",
+      "passed": true
+    },
+    {
+      "check": "provision-roles has no host listener",
+      "passed": true
+    },
+    {
+      "check": "payment certificate chain and hostname validation",
+      "passed": true
+    },
+    {
+      "check": "quota certificate chain and hostname validation",
+      "passed": true
+    },
+    {
+      "check": "auth certificate chain and hostname validation",
+      "passed": true
+    },
+    {
+      "check": "notification certificate chain and hostname validation",
+      "passed": true
+    },
+    {
+      "check": "gateway certificate chain and hostname validation",
+      "passed": true
+    },
+    {
+      "check": "edge certificate chain and hostname validation",
+      "passed": true
+    },
+    {
+      "check": "document certificate chain and hostname validation",
+      "passed": true
+    },
+    {
+      "check": "analytics certificate chain and hostname validation",
+      "passed": true
+    },
+    {
+      "check": "chat certificate chain and hostname validation",
+      "passed": true
+    },
+    {
+      "check": "postgres certificate chain and hostname validation",
+      "passed": true
+    },
+    {
+      "check": "pdf certificate chain and hostname validation",
+      "passed": true
+    },
+    {
+      "check": "redis certificate chain and hostname validation",
+      "passed": true
+    },
+    {
+      "check": "admin-api certificate chain and hostname validation",
+      "passed": true
+    },
+    {
+      "check": "wrong service hostname is rejected",
+      "passed": true
+    },
+    {
+      "check": "Docker Compose configuration validation",
+      "passed": true
+    }
+  ]
+}

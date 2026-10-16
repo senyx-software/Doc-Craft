@@ -1,0 +1,50 @@
+[
+  {
+    "id": "pdf-native-credential-isolation",
+    "status": "PASS",
+    "scope": "Actual renderer child starts without database, provider or user signing credentials; only renderer identity and Redis account are passed"
+  },
+  {
+    "id": "pdf-regression",
+    "command": [
+      "/home/eranda/Projects/doc-craft/.venv-local/bin/python",
+      "scripts/system_audit_pdf.py"
+    ],
+    "cwd": ".",
+    "status": "PASS"
+  },
+  {
+    "id": "renderer-capacity",
+    "status": "PASS",
+    "http_statuses": [
+      200,
+      200,
+      503,
+      503,
+      503,
+      503,
+      503,
+      503
+    ],
+    "health": {
+      "status": "ok",
+      "activeRenders": 0,
+      "maxRenders": 2
+    },
+    "scope": "Eight concurrent local render requests, explicit overload response, released slots; not a production capacity benchmark"
+  },
+  {
+    "id": "renderer-browser-recovery",
+    "status": "PASS",
+    "scope": "Killed only the owned sidecar's Chromium child; readiness relaunched Chromium and next PDF rendered"
+  },
+  {
+    "id": "browser-error-regression",
+    "command": [
+      "node",
+      "scripts/system_audit_browser.cjs"
+    ],
+    "cwd": ".",
+    "status": "PASS"
+  }
+]

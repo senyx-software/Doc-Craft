@@ -1,0 +1,16 @@
+{
+  "id": "phase3-auth-regression",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "-w",
+    "doccraft-auth"
+  ],
+  "started_utc": "2026-10-15T14:03:44.296213+00:00",
+  "seconds": 1.78,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-auth-regression.log"
+}

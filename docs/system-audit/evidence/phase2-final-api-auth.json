@@ -1,0 +1,15 @@
+{
+  "id": "phase2-final-api-auth",
+  "cwd": ".",
+  "command": [
+    "env",
+    "AUDIT_EVIDENCE_DIR=/home/eranda/Projects/doc-craft/docs/system-audit/evidence/phase2",
+    ".venv-local/bin/python",
+    "scripts/system_audit_api.py"
+  ],
+  "started_utc": "2026-10-15T12:13:19.345571+00:00",
+  "seconds": 3.05,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-final-api-auth.log"
+}

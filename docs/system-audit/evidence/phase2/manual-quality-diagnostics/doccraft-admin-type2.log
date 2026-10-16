@@ -1,0 +1,18 @@
+src/components/common/AdminTopbar.tsx(128,24): error TS2345: Argument of type 'NotificationLog[]' is not assignable to parameter of type 'SetStateAction<FailedNotification[]>'.
+  Type 'NotificationLog[]' is not assignable to type 'FailedNotification[]'.
+    Type 'NotificationLog' is not assignable to type 'FailedNotification'.
+      Types of property 'recipient' are incompatible.
+        Type 'string | undefined' is not assignable to type 'string'.
+          Type 'undefined' is not assignable to type 'string'.
+src/pages/subviews/AnalyticsView.tsx(142,70): error TS18046: 'res' is of type 'unknown'.
+src/pages/subviews/InfrastructureView.tsx(49,36): error TS2339: Property 'sessions' does not exist on type 'McpResources'.
+src/pages/subviews/InfrastructureView.tsx(50,38): error TS2339: Property 'templates' does not exist on type 'McpResources'.
+src/pages/subviews/InfrastructureView.tsx(51,40): error TS2339: Property 'error' does not exist on type 'McpResources'.
+src/pages/subviews/InfrastructureView.tsx(51,64): error TS2339: Property 'error' does not exist on type 'McpResources'.
+src/pages/subviews/InfrastructureView.tsx(318,26): error TS2345: Argument of type '{ name: string; status: string; url?: string | undefined; latency_ms?: number | undefined; }[]' is not assignable to parameter of type 'SetStateAction<MicroserviceHealth[]>'.
+  Type '{ name: string; status: string; url?: string | undefined; latency_ms?: number | undefined; }[]' is not assignable to type 'MicroserviceHealth[]'.
+    Type '{ name: string; status: string; url?: string | undefined; latency_ms?: number | undefined; }' is missing the following properties from type 'MicroserviceHealth': port, uptime_pct
+src/pages/subviews/PackagesView.tsx(174,9): error TS2322: Type 'string' is not assignable to type '"USD" | "LKR" | undefined'.
+src/pages/subviews/PackagesView.tsx(242,20): error TS2345: Argument of type 'Record<string, unknown>' is not assignable to parameter of type 'SetStateAction<Record<string, { max_model?: string | undefined; groq_models?: string[] | undefined; }>>'.
+src/pages/subviews/SettingsView.tsx(242,24): error TS2345: Argument of type '{ secret: string; otpauth_url: string; qr_code?: string | undefined; }' is not assignable to parameter of type 'SetStateAction<{ totp_secret: string; provisioning_uri: string; qr_code_hint: string; qr_code_url: string; } | null>'.
+src/pages/subviews/SettingsView.tsx(402,16): error TS2339: Property 'invite_email_sent' does not exist on type 'Staff'.

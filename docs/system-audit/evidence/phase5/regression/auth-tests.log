@@ -1,0 +1,15 @@
+npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown user config "tmp". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> doccraft-auth@1.0.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /home/eranda/Projects/doc-craft/services/auth
+
+
+ Test Files  8 passed (8)
+      Tests  38 passed (38)
+   Start at  13:55:35
+   Duration  1.78s (import 50%, transform 32%, tests 16%, worker 2%)
+

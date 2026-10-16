@@ -1,0 +1,27 @@
+
+ RUN  v5.0.5 /home/eranda/Projects/doc-craft
+
+ ❯ user-frontend/src/utils/__tests__/exportAlignment.test.ts (1 test | 1 failed) 3537ms
+   × PDF rasterization matches browser text baselines with Tailwind image resets and preserves artwork 3535ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  user-frontend/src/utils/__tests__/exportAlignment.test.ts > PDF rasterization matches browser text baselines with Tailwind image resets and preserves artwork
+Error: Failed to launch the browser process:  Code: null
+
+stderr:
+[18412:18412:1016/112449.555365:FATAL:zygote_host_impl_linux.cc(128)] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.
+[1016/112449.555549:ERROR:scoped_ptrace_attach.cc(27)] ptrace: Operation not permitted (1)
+
+TROUBLESHOOTING: https://pptr.dev/troubleshooting
+
+ ❯ ChildProcess.onClose node_modules/@puppeteer/browsers/src/launch.ts:556:11
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  11:24:49
+   Duration  3.91s (tests 94%, import 5%, transform 1%)
+

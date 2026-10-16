@@ -1,0 +1,16 @@
+{
+  "id": "phase2-quota-tests",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "-w",
+    "doccraft-quota"
+  ],
+  "started_utc": "2026-10-15T06:32:45.598509+00:00",
+  "seconds": 1.33,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-quota-tests.log"
+}

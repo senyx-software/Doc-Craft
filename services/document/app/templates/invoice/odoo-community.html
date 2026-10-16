@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+    @page {
+        size: A4;
+        margin: 0;
+    }
+    body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: #2d3748;
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+        -webkit-print-color-adjust: exact;
+    }
+    .page-container {
+        display: flex;
+        min-height: 100vh;
+        box-sizing: border-box;
+    }
+    .left-accent-bar {
+        width: 24px;
+        background-color: #0097b2;
+        min-height: 100vh;
+        flex-shrink: 0;
+    }
+    .content-area {
+        flex: 1;
+        padding: 40px 48px;
+        display: flex;
+        flex-direction: column;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 40px;
+    }
+    .brand-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .brand-name {
+        font-size: 26px;
+        font-weight: 800;
+        color: #0097b2;
+        margin: 0;
+    }
+    .brand-divider {
+        font-size: 24px;
+        color: #cbd5e0;
+    }
+    .doc-type-label {
+        font-size: 24px;
+        font-weight: 700;
+        color: #2d3748;
+    }
+    .header-meta {
+        text-align: right;
+        font-size: 11px;
+        color: #4a5568;
+    }
+    .header-meta strong {
+        font-size: 10px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: #718096;
+        display: block;
+        margin-bottom: 2px;
+    }
+    .header-meta div {
+        font-weight: 600;
+        color: #1a202c;
+        margin-bottom: 8px;
+    }
+    
+    .addresses {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 36px;
+        gap: 32px;
+    }
+    .recipient-box {
+        width: 48%;
+    }
+    .sender-box {
+        width: 48%;
+        text-align: right;
+    }
+    .section-label {
+        font-size: 10px;
+        font-weight: 800;
+        color: #718096;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+    .party-name {
+        font-size: 13px;
+        font-weight: 800;
+        color: #1a202c;
+        margin-bottom: 4px;
+    }
+    .party-details {
+        font-size: 11px;
+        color: #4a5568;
+        line-height: 1.45;
+    }
+
+    table.items-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 24px;
+    }
+    table.items-table th {
+        text-align: left;
+        padding: 10px 0;
+        font-size: 10px;
+        font-weight: 800;
+        color: #0097b2;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #e2e8f0;
+    }
+    table.items-table td {
+        padding: 12px 0;
+        font-size: 11px;
+        color: #2d3748;
+        border-bottom: 1px solid #edf2f7;
+    }
+
+    .totals-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 36px;
+    }
+    .totals-table {
+        width: 240px;
+        border-collapse: collapse;
+    }
+    .totals-table td {
+        padding: 4px 0;
+        font-size: 11px;
+        color: #4a5568;
+    }
+    .totals-table tr.total-row td {
+        padding-top: 10px;
+        font-size: 16px;
+        font-weight: 800;
+        color: #0097b2;
+    }
+
+    .account-data-container {
+        margin-bottom: 32px;
+    }
+    .account-data-banner {
+        background-color: #0097b2;
+        color: #ffffff;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        padding: 6px 12px;
+        margin-bottom: 10px;
+    }
+    .account-data-body {
+        font-size: 11px;
+        color: #4a5568;
+        line-height: 1.5;
+    }
+    .account-data-body strong {
+        color: #1a202c;
+    }
+
+    .notes-section {
+        margin-bottom: 40px;
+    }
+    .notes-title {
+        font-size: 11px;
+        font-weight: 800;
+        color: #1a202c;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+    }
+    .notes-text {
+        font-size: 11px;
+        color: #4a5568;
+        line-height: 1.5;
+        white-space: pre-wrap;
+    }
+
+    .spacer {
+        flex: 1;
+    }
+
+    .footer {
+        border-top: 1px solid #e2e8f0;
+        padding-top: 16px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 9px;
+        color: #718096;
+        line-height: 1.4;
+    }
+</style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- Left Accent Sidebar -->
+        <div class="left-accent-bar"></div>
+
+        <!-- Main Content Area -->
+        <div class="content-area">
+            <!-- Header -->
+            <div class="header">
+                <div class="brand-title">
+                    {% if logo %}
+                    <img src="{{ logo }}" style="max-height: 48px;" />
+                    {% else %}
+                    <h1 class="brand-name">{{ senderName or '' }}</h1>
+                    <span class="brand-divider">|</span>
+                    <span class="doc-type-label">Invoice</span>
+                    {% endif %}
+                </div>
+                <div class="header-meta">
+                    <strong>INVOICE NO.</strong>
+                    <div>{{ invoiceNumber or '' }}</div>
+                    <strong>INVOICE DATE</strong>
+                    <div>{{ issueDate or '' }}</div>
+                </div>
+            </div>
+
+            <!-- Recipient & Sender -->
+            <div class="addresses">
+                <div class="recipient-box">
+                    <div class="section-label">RECIPIENT</div>
+                    <div class="party-name">{{ clientName or '' }}</div>
+                    <div class="party-details">
+                        {% if clientCompany %}<div>{{ clientCompany }}</div>{% endif %}
+                        {% if clientAddress %}<div>{{ clientAddress | e | replace('\n', '<br>') | safe }}</div>{% endif %}
+                        {% if clientVat %}<div>VAT no.: {{ clientVat }}</div>{% endif %}
+                        {% if clientEmail %}<div style="margin-top: 4px;">@ {{ clientEmail }}</div>{% endif %}
+                        {% if clientPhone %}<div>m {{ clientPhone }}</div>{% endif %}
+                    </div>
+                </div>
+                <div class="sender-box">
+                    <div class="party-name">{{ senderName or '' }}</div>
+                    <div class="party-details">
+                        {% if senderAddress %}<div>{{ senderAddress | e | replace('\n', '<br>') | safe }}</div>{% endif %}
+                        {% if taxId %}<div>VAT no.: {{ taxId }}</div>{% endif %}
+                        {% if senderEmail %}<div style="margin-top: 4px;">@ {{ senderEmail }}</div>{% endif %}
+                        {% if senderPhone %}<div>m {{ senderPhone }}</div>{% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Items Table -->
+            <table class="items-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">DESCRIPTION</th>
+                        <th style="text-align: center; width: 15%;">QTY</th>
+                        <th style="text-align: center; width: 15%;">UNIT PRICE</th>
+                        <th style="text-align: right; width: 20%;">AMOUNT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in lineItems %}
+                    <tr>
+                        <td style="font-weight: 600;">{{ item.description }}</td>
+                        <td style="text-align: center; color: #4a5568;">{{ item.quantity }}</td>
+                        <td style="text-align: center; color: #4a5568;">{{ currencySymbol }}{{ item.unitPrice | money(currency, locale) }}</td>
+                        <td style="text-align: right; font-weight: 700;">{{ currencySymbol }}{{ item.total | money(currency, locale) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- Totals -->
+            <div class="totals-wrapper">
+                <table class="totals-table">
+                    <tr>
+                        <td>SUBTOTAL</td>
+                        <td style="text-align: right; font-weight: 600;">{{ currencySymbol }}{{ subtotal | money(currency, locale) }}</td>
+                    </tr>
+                    {% if discountAmount %}<tr><td>Discount{% if discountFixedAmount is defined %} (fixed){% else %} ({{ discountRate }}%){% endif %}</td><td style="text-align: right;">−{{ currencySymbol }}{{ discountAmount | money(currency, locale) }}</td></tr>{% endif %}
+                    {% if taxRate %}
+                    <tr>
+                        <td style="color: #0097b2; font-weight: 600;">TAX ({{ taxRate }}%)</td>
+                        <td style="text-align: right; font-weight: 600;">{{ currencySymbol }}{{ taxAmount | money(currency, locale) }}</td>
+                    </tr>
+                    {% endif %}
+                    <tr class="total-row">
+                        <td>TOTAL</td>
+                        <td style="text-align: right;">{{ currencySymbol }}{{ totalAmount | money(currency, locale) }}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Account Data Box -->
+            <div class="account-data-container">
+                <div class="account-data-banner">ACCOUNT DATA</div>
+                <div class="account-data-body">
+                    {{ accountDetails | e | replace("\n", "<br>") | safe }}
+                </div>
+            </div>
+
+            <div class="spacer"></div>
+
+            <!-- Notes Section -->
+            {% if notes or notesAndTerms %}
+            <div class="notes-section">
+                <div class="notes-title">NOTES</div>
+                <div class="notes-text">{{ notes or notesAndTerms }}</div>
+            </div>
+            {% endif %}
+
+            <!-- Footer -->
+            <div class="footer">
+                <div>
+                    <strong>{{ senderName or '' }}</strong><br>
+                    {{ senderAddress or '' }}
+                </div>
+                <div style="text-align: center;">
+                    @ {{ senderEmail or '' }}<br>
+                    m {{ senderPhone or '' }}
+                </div>
+                <div style="text-align: right;">
+                    <strong>CO. VAT</strong><br>
+                    {{ taxId or '' }}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

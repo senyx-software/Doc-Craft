@@ -1,0 +1,300 @@
+{
+  "checks": [
+    {
+      "id": "backend-build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-10-16T07:33:59.738369+00:00",
+      "seconds": 23.09,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/backend-build.log"
+    },
+    {
+      "id": "user-build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "user-frontend",
+      "started_utc": "2026-10-16T07:33:59.739002+00:00",
+      "seconds": 22.93,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/user-build.log"
+    },
+    {
+      "id": "admin-build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "admin",
+      "started_utc": "2026-10-16T07:33:59.740483+00:00",
+      "seconds": 15.22,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/admin-build.log"
+    },
+    {
+      "id": "user-lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "cwd": "user-frontend",
+      "started_utc": "2026-10-16T07:33:59.741882+00:00",
+      "seconds": 12.12,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/user-lint.log"
+    },
+    {
+      "id": "admin-lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "cwd": "admin",
+      "started_utc": "2026-10-16T07:34:11.859484+00:00",
+      "seconds": 14.73,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/admin-lint.log"
+    },
+    {
+      "id": "auth-tests",
+      "command": [
+        "npm",
+        "test",
+        "-w",
+        "doccraft-auth"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-10-16T07:34:14.963097+00:00",
+      "seconds": 1.75,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/auth-tests.log"
+    },
+    {
+      "id": "payment-tests",
+      "command": [
+        "npm",
+        "test",
+        "-w",
+        "doccraft-payment"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-10-16T07:34:16.714809+00:00",
+      "seconds": 2.43,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/payment-tests.log"
+    },
+    {
+      "id": "quota-tests",
+      "command": [
+        "npm",
+        "test",
+        "-w",
+        "doccraft-quota"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-10-16T07:34:19.144229+00:00",
+      "seconds": 1.46,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/quota-tests.log"
+    },
+    {
+      "id": "chat-shared-user-tests",
+      "command": [
+        "npm",
+        "run",
+        "test:chat"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-10-16T07:34:20.608387+00:00",
+      "seconds": 8.95,
+      "exit_code": 1,
+      "status": "BLOCKED",
+      "log": "docs/system-audit/evidence/phase4/regression/chat-shared-user-tests.log"
+    },
+    {
+      "id": "gateway-notification-tests",
+      "command": [
+        "node_modules/.bin/vitest",
+        "run",
+        "services/gateway/src",
+        "services/notification/src"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-10-16T07:34:22.666913+00:00",
+      "seconds": 1.79,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/gateway-notification-tests.log"
+    },
+    {
+      "id": "admin-tests",
+      "command": [
+        "/home/eranda/Projects/doc-craft/.venv-local/bin/python",
+        "-m",
+        "pytest",
+        "services/admin-api/tests",
+        "-q"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-10-16T07:34:22.833766+00:00",
+      "seconds": 28.54,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/admin-tests.log"
+    },
+    {
+      "id": "document-tests",
+      "command": [
+        "/home/eranda/Projects/doc-craft/.venv-local/bin/python",
+        "-m",
+        "pytest",
+        "services/document/tests",
+        "-q"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-10-16T07:34:24.459799+00:00",
+      "seconds": 4.75,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/document-tests.log"
+    },
+    {
+      "id": "analytics-tests",
+      "command": [
+        "/home/eranda/Projects/doc-craft/.venv-local/bin/python",
+        "-m",
+        "pytest",
+        "tests",
+        "-q"
+      ],
+      "cwd": "services/analytics",
+      "started_utc": "2026-10-16T07:34:26.589004+00:00",
+      "seconds": 2.87,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/analytics-tests.log"
+    },
+    {
+      "id": "shared-python-tests",
+      "command": [
+        "/home/eranda/Projects/doc-craft/.venv-local/bin/python",
+        "-m",
+        "pytest",
+        "shared/tests",
+        "-q"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-10-16T07:34:29.208718+00:00",
+      "seconds": 1.03,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/shared-python-tests.log"
+    },
+    {
+      "id": "backend-dependencies",
+      "command": [
+        "npm",
+        "audit",
+        "--json"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-10-16T07:34:29.455521+00:00",
+      "seconds": 0.99,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/backend-dependencies.log"
+    },
+    {
+      "id": "user-dependencies",
+      "command": [
+        "npm",
+        "audit",
+        "--json"
+      ],
+      "cwd": "user-frontend",
+      "started_utc": "2026-10-16T07:34:29.561130+00:00",
+      "seconds": 1.2,
+      "exit_code": 1,
+      "status": "OPEN_FINDINGS",
+      "log": "docs/system-audit/evidence/phase4/regression/user-dependencies.log"
+    },
+    {
+      "id": "admin-dependencies",
+      "command": [
+        "npm",
+        "audit",
+        "--json"
+      ],
+      "cwd": "admin",
+      "started_utc": "2026-10-16T07:34:30.238194+00:00",
+      "seconds": 1.09,
+      "exit_code": 1,
+      "status": "OPEN_FINDINGS",
+      "log": "docs/system-audit/evidence/phase4/regression/admin-dependencies.log"
+    },
+    {
+      "id": "user-runtime-dependencies",
+      "command": [
+        "npm",
+        "audit",
+        "--omit=dev",
+        "--json"
+      ],
+      "cwd": "user-frontend",
+      "started_utc": "2026-10-16T07:34:30.450376+00:00",
+      "seconds": 0.91,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/user-runtime-dependencies.log"
+    },
+    {
+      "id": "admin-runtime-dependencies",
+      "command": [
+        "npm",
+        "audit",
+        "--omit=dev",
+        "--json"
+      ],
+      "cwd": "admin",
+      "started_utc": "2026-10-16T07:34:30.758412+00:00",
+      "seconds": 0.96,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/admin-runtime-dependencies.log"
+    },
+    {
+      "id": "python-dependencies",
+      "command": [
+        "/home/eranda/Projects/doc-craft/.venv-local/bin/pip-audit",
+        "--local",
+        "--format",
+        "json"
+      ],
+      "cwd": ".",
+      "started_utc": "2026-10-16T07:34:31.325282+00:00",
+      "seconds": 1.05,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/system-audit/evidence/phase4/regression/python-dependencies.log"
+    }
+  ],
+  "production_readiness": "NOT READY"
+}

@@ -1,0 +1,183 @@
+// Prisma schema for the DocCraft payment service.
+//
+// Models:
+//   Plan           — subscription plan definitions (Free / Pro)
+//   Subscription   — per-user active subscription (Paddle or PayHere)
+//   BillingInvoice — payment history from webhook events
+//   Coupon         — discount codes with usage tracking
+//   WebhookEvent   — idempotency store to prevent duplicate webhook processing
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")     // Pooler URL (6543) — used at runtime
+  directUrl = env("DIRECT_URL")       // Direct URL (5432) — used for migrations
+}
+
+// ─── Plan ────────────────────────────────────────────────────────────────────
+
+model Plan {
+  id             String   @id @default(uuid())
+  name           String   @unique   // 'free' | 'pro'
+  priceMonthly   Float?             // LKR 990
+  priceYearly    Float?             // LKR 9,000
+  // Paddle price IDs (null for free plan)
+  paddlePriceMonthlyId String?
+  paddlePriceYearlyId  String?
+  // Features JSON blob — documentsPerDay, watermark, customLogo, etc.
+  features       Json     @default("{}")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  subscriptions  Subscription[]
+
+  @@map("plans")
+}
+
+// ─── Subscription ─────────────────────────────────────────────────────────────
+
+model Subscription {
+  id                    String    @id @default(uuid())
+  userId                String    @unique
+  planId                String
+  // Which payment gateway was used
+  gateway               String    // 'paddle' | 'payhere'
+  // Paddle-specific IDs (set when gateway = 'paddle')
+  paddleCustomerId      String?
+  paddleSubscriptionId  String?   @unique
+  // PayHere-specific IDs (set when gateway = 'payhere')
+  payhereSubscriptionId String?   @unique
+  payhereOrderId        String?
+  payhereSyncAt         DateTime?
+  status                String    @default("active")  // active | past_due | cancelled
+  currentPeriodStart    DateTime
+  currentPeriodEnd      DateTime
+  billingAmountMinor    Int?
+  billingCurrency       String?
+  billingCycle          String?
+  cancelAtPeriodEnd     Boolean   @default(false)
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  cancelledAt           DateTime?
+
+  plan     Plan             @relation(fields: [planId], references: [id])
+  invoices BillingInvoice[]
+
+  @@index([userId])
+  @@index([status])
+  @@map("subscriptions")
+}
+
+// ─── BillingInvoice ──────────────────────────────────────────────────────────
+
+model BillingInvoice {
+  id             String    @id @default(uuid())
+  userId         String
+  subscriptionId String
+  // Gateway-side invoice reference
+  gatewayInvoiceId String   @unique  // Paddle transaction ID or PayHere order_id
+  gateway        String              // 'paddle' | 'payhere'
+  amount         Float
+  currency       String    @default("LKR")
+  status         String              // paid | open | failed | refunded
+  pdfUrl         String?
+  createdAt      DateTime  @default(now())
+  paidAt         DateTime?
+
+  subscription   Subscription @relation(fields: [subscriptionId], references: [id])
+
+  @@index([userId])
+  @@map("billing_invoices")
+}
+
+// ─── Coupon ──────────────────────────────────────────────────────────────────
+
+model Coupon {
+  id           String    @id @default(uuid())
+  code         String    @unique
+  discountType String              // 'percent' | 'fixed'
+  value        Float
+  expiresAt    DateTime
+  usageLimit   Int?
+  usageCount   Int       @default(0)
+  createdAt    DateTime  @default(now())
+  deletedAt    DateTime?
+
+  @@index([code])
+  @@map("coupons")
+}
+
+// ─── WebhookEvent ─────────────────────────────────────────────────────────────
+// Idempotency store — prevents duplicate side effects when a webhook is
+// delivered more than once by Paddle or PayHere.
+
+model WebhookEvent {
+  id          String   @id @default(uuid())
+  eventId     String   @unique  // Paddle event ID or PayHere md5 hash key
+  gateway     String            // 'paddle' | 'payhere'
+  eventType   String
+  processedAt DateTime @default(now())
+
+  @@index([eventId])
+  @@map("webhook_events")
+}
+
+// Durable inbox/outbox: acknowledge verified callbacks only after PostgreSQL
+// accepts them. Redis is a delivery accelerator and can be rebuilt from here.
+model WebhookDelivery {
+  id          String    @id
+  name        String
+  payload     Json
+  createdAt   DateTime  @default(now())
+  completedAt DateTime?
+
+  @@index([completedAt, createdAt])
+  @@map("webhook_deliveries")
+}
+
+// Checkout ownership, amount and cadence are server-bound. PayHere's signature
+// does not authenticate custom_1/custom_2, so IPNs must never trust those fields.
+model CheckoutIntent {
+  orderId      String   @id
+  userId       String
+  planId       String
+  billingCycle String
+  amountMinor  Int
+  currency     String
+  createdAt    DateTime @default(now())
+
+  @@index([userId])
+  @@map("checkout_intents")
+}
+
+model PaymentOutbox {
+  id String @id
+  kind String
+  payload Json
+  attempts Int @default(0)
+  nextAttemptAt DateTime @default(now()) @db.Timestamptz(3)
+  completedAt DateTime? @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+  @@index([completedAt,nextAttemptAt])
+  @@map("payment_outbox")
+}
+model ProviderCursor {
+  id String @id
+  occurredAt DateTime
+  eventId String
+  @@map("payment_provider_cursors")
+}
+
+model BillingAdjustment {
+  providerId String @id
+  invoiceId String
+  amountMinor Int
+  currency String
+  createdAt DateTime @default(now())
+  @@index([invoiceId])
+  @@map("billing_adjustments")
+}

@@ -1,0 +1,15 @@
+{
+  "id": "quota-tests",
+  "command": [
+    "npm",
+    "test",
+    "-w",
+    "doccraft-quota"
+  ],
+  "cwd": ".",
+  "started_utc": "2026-10-16T07:34:19.144229+00:00",
+  "seconds": 1.46,
+  "exit_code": 0,
+  "status": "PASS",
+  "log": "docs/system-audit/evidence/phase4/regression/quota-tests.log"
+}

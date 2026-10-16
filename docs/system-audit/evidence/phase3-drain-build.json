@@ -1,0 +1,14 @@
+{
+  "id": "phase3-drain-build",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "build"
+  ],
+  "started_utc": "2026-10-15T14:18:08.931507+00:00",
+  "seconds": 15.1,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-drain-build.log"
+}

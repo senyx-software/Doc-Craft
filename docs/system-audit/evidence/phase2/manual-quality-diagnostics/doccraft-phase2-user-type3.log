@@ -1,0 +1,12 @@
+npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown user config "tmp". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> user-frontend@0.0.0 build
+> tsc -b && vite build
+
+src/hooks/useUserDocuments.ts(5,24): error TS2305: Module '"../../../shared/document-contract.mjs"' has no exported member 'formatMoney'.
+src/hooks/useUserDocuments.ts(39,49): error TS18047: 'result' is possibly 'null'.
+src/pages/dashboard/DashboardOverviewPage.tsx(18,20): error TS2552: Cannot find name 'useNavigate'. Did you mean 'navigate'?
+src/utils/invoiceElements.ts(109,35): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'string | undefined'.
+src/utils/invoiceElements.ts(2660,52): error TS2345: Argument of type '{}' is not assignable to parameter of type 'string'.
+src/utils/templateRenderer.ts(3927,39): error TS2345: Argument of type '{}' is not assignable to parameter of type 'string'.

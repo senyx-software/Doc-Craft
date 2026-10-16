@@ -1,0 +1,1036 @@
+{
+  "version": 3,
+  "fields": {
+    "businessName": {
+      "label": "business or company name",
+      "type": "string",
+      "aliases": [
+        "business_name",
+        "companyName",
+        "company_name",
+        "senderName",
+        "sender_name",
+        "buyerName",
+        "buyer_name",
+        "organization",
+        "business",
+        "company"
+      ],
+      "question": "What is the business or company name?",
+      "format": "name",
+      "party": "sender",
+      "editLabels": [
+        "company name",
+        "business name"
+      ],
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "businessName"
+    },
+    "clientName": {
+      "label": "client name",
+      "type": "string",
+      "aliases": [
+        "client_name",
+        "recipientName",
+        "recipient_name",
+        "customerName",
+        "customer_name",
+        "vendorName",
+        "vendor_name",
+        "supplierName",
+        "supplier_name",
+        "payerName",
+        "client"
+      ],
+      "question": "What is the client name?",
+      "format": "name",
+      "party": "recipient",
+      "editLabels": [
+        "client name",
+        "recipient name",
+        "customer name"
+      ],
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "clientName"
+    },
+    "invoiceNumber": {
+      "label": "document reference number",
+      "type": "string",
+      "aliases": [
+        "invoice_number",
+        "documentNumber",
+        "document_number",
+        "quoteNumber",
+        "quote_number",
+        "receiptNumber",
+        "receipt_number",
+        "poNumber",
+        "po_number",
+        "proposalId"
+      ],
+      "question": "What is the document reference number?",
+      "format": "preserve",
+      "editLabels": [
+        "invoice number"
+      ],
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "invoiceNumber"
+    },
+    "issueDate": {
+      "label": "issue date",
+      "type": "date",
+      "aliases": [
+        "issue_date",
+        "quoteDate",
+        "receiptDate",
+        "paymentDate",
+        "poDate",
+        "date"
+      ],
+      "question": "What is the issue date? (YYYY-MM-DD, or today)",
+      "format": "preserve",
+      "editLabels": [
+        "invoice date"
+      ],
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "issueDate"
+    },
+    "dueDate": {
+      "label": "due or validity date",
+      "type": "date",
+      "aliases": [
+        "due_date",
+        "validUntil",
+        "expiryDate",
+        "deliveryDate"
+      ],
+      "question": "What is the due or validity date?",
+      "dependsOn": [
+        "issueDate"
+      ],
+      "format": "preserve",
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "dueDate"
+    },
+    "lineItems": {
+      "label": "line items",
+      "type": "items",
+      "aliases": [
+        "line_items",
+        "items"
+      ],
+      "question": "What are the items or services, quantities and unit prices?",
+      "itemLimits": {
+        "maxQuantity": 1000000000.0,
+        "maxUnitPrice": 1000000000000.0,
+        "maxSubtotal": 1000000000000.0,
+        "maxDiscountRate": 100
+      },
+      "format": "preserve",
+      "itemFormat": {
+        "description": "title"
+      },
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "lineItems"
+    },
+    "currency": {
+      "label": "currency",
+      "type": "currency",
+      "aliases": [
+        "currency_code",
+        "currencyCode",
+        "currency_symbol",
+        "currencySymbol"
+      ],
+      "question": "What currency should this document use? (e.g. LKR, USD, EUR)",
+      "format": "preserve",
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "currency"
+    },
+    "senderAddress": {
+      "label": "business address",
+      "type": "string",
+      "aliases": [
+        "sender_address",
+        "business_address",
+        "address",
+        "businessAddress",
+        "officeAddress",
+        "companyAddress"
+      ],
+      "question": "What is the business address?",
+      "skippable": true,
+      "format": "address",
+      "party": "sender",
+      "editLabels": [
+        "business address",
+        "company address"
+      ],
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "senderAddress",
+      "offerWhenComplete": true,
+      "appendable": true
+    },
+    "senderEmail": {
+      "label": "business email",
+      "type": "email",
+      "aliases": [
+        "sender_email",
+        "business_email",
+        "email",
+        "businessEmail"
+      ],
+      "question": "What is the business email?",
+      "skippable": true,
+      "format": "email",
+      "party": "sender",
+      "editLabels": [
+        "business email",
+        "company email"
+      ],
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "senderEmail",
+      "offerWhenComplete": true
+    },
+    "senderPhone": {
+      "label": "business phone",
+      "type": "phone",
+      "aliases": [
+        "sender_phone",
+        "business_phone",
+        "phone",
+        "businessPhone"
+      ],
+      "question": "What is the business phone?",
+      "skippable": true,
+      "format": "preserve",
+      "party": "sender",
+      "editLabels": [
+        "business phone number",
+        "company contact",
+        "my phone",
+        "our phone"
+      ],
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "senderPhone",
+      "offerWhenComplete": true
+    },
+    "clientAddress": {
+      "label": "client address",
+      "type": "string",
+      "aliases": [
+        "client_address",
+        "recipientAddress",
+        "customerAddress",
+        "recipient address",
+        "customer address"
+      ],
+      "question": "What is the client address?",
+      "skippable": true,
+      "format": "address",
+      "party": "recipient",
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "clientAddress",
+      "offerWhenComplete": true,
+      "appendable": true
+    },
+    "clientEmail": {
+      "label": "client email",
+      "type": "email",
+      "aliases": [
+        "client_email",
+        "recipientEmail",
+        "customerEmail",
+        "recipient email",
+        "customer email"
+      ],
+      "question": "What is the client email?",
+      "skippable": true,
+      "format": "email",
+      "party": "recipient",
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "clientEmail",
+      "offerWhenComplete": true
+    },
+    "clientPhone": {
+      "label": "client phone",
+      "type": "phone",
+      "aliases": [
+        "client_phone",
+        "recipientPhone",
+        "customerPhone",
+        "recipient phone",
+        "customer phone"
+      ],
+      "question": "What is the client phone?",
+      "skippable": true,
+      "format": "preserve",
+      "party": "recipient",
+      "editLabels": [
+        "client phone number",
+        "recipient phone number"
+      ],
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "clientPhone",
+      "offerWhenComplete": true
+    },
+    "subject": {
+      "label": "project or service description",
+      "type": "string",
+      "aliases": [
+        "project_description",
+        "projectDescription",
+        "proposalTitle",
+        "scopeOfWork"
+      ],
+      "question": "What is the project or service description?",
+      "skippable": true,
+      "format": "title",
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "subject",
+      "appendable": true
+    },
+    "businessServices": {
+      "label": "business services",
+      "type": "string",
+      "aliases": [
+        "business_services",
+        "services",
+        "specialization"
+      ],
+      "question": "What is the business services?",
+      "skippable": true,
+      "format": "title",
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "businessServices",
+      "appendable": true
+    },
+    "taxRate": {
+      "label": "tax rate",
+      "type": "number",
+      "aliases": [
+        "tax_rate"
+      ],
+      "question": "What is the tax rate (%)? Zero is valid.",
+      "skippable": true,
+      "min": 0,
+      "max": 100,
+      "format": "preserve",
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "taxRate"
+    },
+    "notesAndTerms": {
+      "label": "notes and terms",
+      "type": "string",
+      "aliases": [
+        "notes_and_terms",
+        "terms",
+        "notes"
+      ],
+      "question": "What is the notes and terms?",
+      "skippable": true,
+      "format": "sentence",
+      "editLabels": [
+        "note",
+        "notes and terms",
+        "note text"
+      ],
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "notesAndTerms",
+      "offerWhenComplete": true,
+      "appendable": true
+    },
+    "accountDetails": {
+      "label": "bank account details",
+      "type": "string",
+      "aliases": [
+        "account_details",
+        "bankDetails",
+        "bank_details",
+        "paymentInstructions",
+        "accountData",
+        "account_data",
+        "bank details",
+        "bank account details"
+      ],
+      "question": "What is the bank account details?",
+      "skippable": true,
+      "format": "bank",
+      "editLabels": [
+        "bank details",
+        "bank account",
+        "bank account details",
+        "account data"
+      ],
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "accountDetails",
+      "offerWhenComplete": true,
+      "appendable": true
+    },
+    "paymentMethod": {
+      "label": "payment method",
+      "type": "string",
+      "aliases": [
+        "payment_method"
+      ],
+      "question": "What is the payment method?",
+      "format": "preserve",
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "paymentMethod",
+      "offerWhenComplete": true
+    },
+    "referenceNumber": {
+      "label": "transaction reference",
+      "type": "string",
+      "aliases": [
+        "reference_number"
+      ],
+      "question": "What is the transaction reference?",
+      "skippable": true,
+      "format": "preserve",
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "referenceNumber"
+    },
+    "discountRate": {
+      "label": "discount rate",
+      "type": "number",
+      "aliases": [
+        "discount_rate",
+        "discountPercent",
+        "discountPercentage"
+      ],
+      "question": "What discount percentage should apply?",
+      "skippable": true,
+      "min": 0,
+      "max": 100,
+      "format": "preserve",
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "discountRate"
+    },
+    "taxStatus": {
+      "label": "tax applicability",
+      "type": "string",
+      "aliases": [
+        "tax_status",
+        "taxApplicable"
+      ],
+      "question": "Does tax apply, or is this document tax exempt?",
+      "skippable": true,
+      "enum": [
+        "taxable",
+        "exempt",
+        "not applicable"
+      ],
+      "format": "lower",
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "taxStatus"
+    },
+    "locale": {
+      "label": "document locale",
+      "type": "string",
+      "aliases": [
+        "documentLocale"
+      ],
+      "question": "Which locale should format numbers and dates?",
+      "skippable": true,
+      "format": "preserve",
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "locale"
+    },
+    "dateFormat": {
+      "label": "date format",
+      "type": "string",
+      "aliases": [
+        "date_format"
+      ],
+      "question": "Which date format should the document use?",
+      "skippable": true,
+      "enum": [
+        "YYYY-MM-DD",
+        "DD/MM/YYYY",
+        "MM/DD/YYYY"
+      ],
+      "format": "preserve",
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "dateFormat"
+    },
+    "senderTaxId": {
+      "label": "business tax identifier",
+      "type": "string",
+      "aliases": [
+        "sender_tax_id",
+        "businessTaxId",
+        "taxId"
+      ],
+      "question": "What is the business tax identifier?",
+      "format": "preserve",
+      "party": "sender",
+      "skippable": true,
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "senderTaxId"
+    },
+    "clientTaxId": {
+      "label": "recipient tax identifier",
+      "type": "string",
+      "aliases": [
+        "client_tax_id",
+        "clientVat"
+      ],
+      "question": "What is the recipient tax identifier?",
+      "format": "preserve",
+      "party": "recipient",
+      "skippable": true,
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "clientTaxId"
+    },
+    "paymentTerms": {
+      "label": "payment terms",
+      "type": "string",
+      "aliases": [
+        "payment_terms",
+        "paymentTerm"
+      ],
+      "question": "What payment terms should appear on the document?",
+      "skippable": true,
+      "format": "sentence",
+      "editLabels": [
+        "payment terms"
+      ],
+      "appendable": true,
+      "offerWhenComplete": true,
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "paymentTerms"
+    },
+    "discountFixedAmount": {
+      "label": "fixed discount amount",
+      "type": "number",
+      "aliases": [
+        "discount_fixed_amount",
+        "fixedDiscount",
+        "fixedDiscountAmount"
+      ],
+      "question": "What fixed discount amount should apply in the document currency?",
+      "skippable": true,
+      "min": 0,
+      "max": 1000000000000,
+      "format": "preserve",
+      "editLabels": [
+        "fixed discount",
+        "discount amount"
+      ],
+      "editable": true,
+      "defaultPolicy": "never_invent",
+      "clearPolicy": "only_when_optional",
+      "templateBinding": "discountFixedAmount"
+    }
+  },
+  "documents": {
+    "invoice": {
+      "label": "Invoice",
+      "required": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "dueDate",
+        "lineItems",
+        "currency"
+      ],
+      "optional": [
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "subject",
+        "businessServices",
+        "taxRate",
+        "notesAndTerms",
+        "accountDetails",
+        "locale",
+        "dateFormat",
+        "taxStatus",
+        "discountRate",
+        "paymentMethod",
+        "senderTaxId",
+        "clientTaxId",
+        "paymentTerms",
+        "discountFixedAmount"
+      ],
+      "questions": {},
+      "conditional": [
+        {
+          "field": "taxRate",
+          "whenField": "taxStatus",
+          "values": [
+            "taxable"
+          ]
+        },
+        {
+          "field": "accountDetails",
+          "whenField": "paymentMethod",
+          "values": [
+            "bank transfer",
+            "cheque"
+          ]
+        }
+      ]
+    },
+    "quotation": {
+      "label": "Quotation",
+      "required": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "dueDate",
+        "lineItems",
+        "currency"
+      ],
+      "optional": [
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "subject",
+        "businessServices",
+        "taxRate",
+        "notesAndTerms",
+        "accountDetails",
+        "locale",
+        "dateFormat",
+        "taxStatus",
+        "discountRate",
+        "paymentMethod",
+        "senderTaxId",
+        "clientTaxId",
+        "paymentTerms",
+        "discountFixedAmount"
+      ],
+      "questions": {
+        "dueDate": "Until when is this quotation valid?"
+      },
+      "conditional": [
+        {
+          "field": "taxRate",
+          "whenField": "taxStatus",
+          "values": [
+            "taxable"
+          ]
+        },
+        {
+          "field": "accountDetails",
+          "whenField": "paymentMethod",
+          "values": [
+            "bank transfer",
+            "cheque"
+          ]
+        }
+      ]
+    },
+    "proposal": {
+      "label": "Proposal",
+      "required": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "subject",
+        "dueDate",
+        "lineItems",
+        "currency"
+      ],
+      "optional": [
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "businessServices",
+        "taxRate",
+        "notesAndTerms",
+        "accountDetails",
+        "locale",
+        "dateFormat",
+        "taxStatus",
+        "discountRate",
+        "paymentMethod",
+        "senderTaxId",
+        "clientTaxId",
+        "paymentTerms",
+        "discountFixedAmount"
+      ],
+      "questions": {
+        "subject": "What is the proposal title or project scope?",
+        "dueDate": "Until when is this proposal valid?"
+      },
+      "conditional": [
+        {
+          "field": "taxRate",
+          "whenField": "taxStatus",
+          "values": [
+            "taxable"
+          ]
+        },
+        {
+          "field": "accountDetails",
+          "whenField": "paymentMethod",
+          "values": [
+            "bank transfer",
+            "cheque"
+          ]
+        }
+      ]
+    },
+    "purchase_order": {
+      "label": "Purchase order",
+      "required": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "dueDate",
+        "lineItems",
+        "currency"
+      ],
+      "optional": [
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "subject",
+        "businessServices",
+        "taxRate",
+        "notesAndTerms",
+        "accountDetails",
+        "locale",
+        "dateFormat",
+        "taxStatus",
+        "discountRate",
+        "paymentMethod",
+        "senderTaxId",
+        "clientTaxId",
+        "paymentTerms",
+        "discountFixedAmount"
+      ],
+      "questions": {
+        "businessName": "What is your company / buyer name?",
+        "clientName": "Who is the vendor or supplier?",
+        "dueDate": "What is the delivery date?"
+      },
+      "conditional": [
+        {
+          "field": "taxRate",
+          "whenField": "taxStatus",
+          "values": [
+            "taxable"
+          ]
+        },
+        {
+          "field": "accountDetails",
+          "whenField": "paymentMethod",
+          "values": [
+            "bank transfer",
+            "cheque"
+          ]
+        }
+      ]
+    },
+    "receipt": {
+      "label": "Receipt",
+      "required": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "lineItems",
+        "currency",
+        "paymentMethod"
+      ],
+      "optional": [
+        "senderAddress",
+        "senderEmail",
+        "senderPhone",
+        "clientAddress",
+        "clientEmail",
+        "clientPhone",
+        "subject",
+        "businessServices",
+        "taxRate",
+        "notesAndTerms",
+        "accountDetails",
+        "referenceNumber",
+        "locale",
+        "dateFormat",
+        "taxStatus",
+        "senderTaxId",
+        "clientTaxId",
+        "paymentTerms",
+        "discountFixedAmount",
+        "discountRate"
+      ],
+      "questions": {},
+      "conditional": [
+        {
+          "field": "referenceNumber",
+          "whenField": "paymentMethod",
+          "values": [
+            "bank transfer",
+            "cheque"
+          ]
+        },
+        {
+          "field": "taxRate",
+          "whenField": "taxStatus",
+          "values": [
+            "taxable"
+          ]
+        }
+      ]
+    }
+  },
+  "formatting": {
+    "brands": [
+      "iPhone",
+      "eBay",
+      "OpenAI"
+    ],
+    "acronyms": [
+      "AI",
+      "API",
+      "VAT",
+      "USD",
+      "LKR",
+      "EUR",
+      "GBP",
+      "INR",
+      "LLC",
+      "LTD",
+      "BOC"
+    ],
+    "currencyDigits": {
+      "JPY": 0,
+      "USD": 2,
+      "LKR": 2,
+      "EUR": 2,
+      "GBP": 2,
+      "INR": 2,
+      "AUD": 2,
+      "CAD": 2,
+      "NZD": 2,
+      "CNY": 2,
+      "SGD": 2,
+      "AED": 2
+    },
+    "defaultLocale": "en-US",
+    "locales": [
+      "en-US",
+      "en-GB",
+      "en-LK",
+      "de-DE",
+      "fr-FR",
+      "ja-JP"
+    ],
+    "currencyAliases": {
+      "$": "USD",
+      "usd": "USD",
+      "lkr": "LKR",
+      "rs": "LKR",
+      "rs.": "LKR",
+      "eur": "EUR",
+      "\u20ac": "EUR",
+      "gbp": "GBP",
+      "\u00a3": "GBP",
+      "inr": "INR",
+      "\u20b9": "INR",
+      "aud": "AUD",
+      "cad": "CAD",
+      "jpy": "JPY"
+    },
+    "currencySymbols": {
+      "USD": "$",
+      "LKR": "Rs. ",
+      "EUR": "\u20ac",
+      "GBP": "\u00a3",
+      "INR": "\u20b9",
+      "JPY": "\u00a5"
+    },
+    "relativeWeekdayPolicy": "next_occurrence"
+  },
+  "financial": {
+    "discountFields": [
+      "discountRate",
+      "discountFixedAmount"
+    ],
+    "discountOrder": "line_item_then_document_then_tax",
+    "fixedDiscountMaximum": "subtotal",
+    "itemDiscountField": "discountRate",
+    "lineItemCalculations": {
+      "grossTotal": {
+        "op": "multiply",
+        "args": [
+          {
+            "ref": "quantity"
+          },
+          {
+            "ref": "unitPrice"
+          }
+        ]
+      },
+      "discountAmount": {
+        "op": "percent",
+        "args": [
+          {
+            "ref": "grossTotal"
+          },
+          {
+            "ref": "discountRate",
+            "validated": true,
+            "fallback": 0
+          }
+        ]
+      },
+      "total": {
+        "op": "subtract",
+        "args": [
+          {
+            "ref": "grossTotal"
+          },
+          {
+            "ref": "discountAmount"
+          }
+        ]
+      }
+    },
+    "documentCalculations": {
+      "subtotal": {
+        "op": "sumItems",
+        "field": "total"
+      },
+      "discountAmount": {
+        "op": "coalesce",
+        "args": [
+          {
+            "op": "validFixed",
+            "args": [
+              {
+                "ref": "discountFixedAmount"
+              },
+              {
+                "ref": "subtotal"
+              }
+            ]
+          },
+          {
+            "op": "percent",
+            "args": [
+              {
+                "ref": "subtotal"
+              },
+              {
+                "ref": "discountRate",
+                "validated": true,
+                "fallback": 0
+              }
+            ]
+          }
+        ]
+      },
+      "taxableAmount": {
+        "op": "subtract",
+        "args": [
+          {
+            "ref": "subtotal"
+          },
+          {
+            "ref": "discountAmount"
+          }
+        ]
+      },
+      "taxAmount": {
+        "op": "percent",
+        "args": [
+          {
+            "ref": "taxableAmount"
+          },
+          {
+            "ref": "taxRate",
+            "validated": true,
+            "fallback": 0
+          }
+        ]
+      },
+      "totalDue": {
+        "op": "add",
+        "args": [
+          {
+            "ref": "taxableAmount"
+          },
+          {
+            "ref": "taxAmount"
+          }
+        ]
+      }
+    }
+  }
+}

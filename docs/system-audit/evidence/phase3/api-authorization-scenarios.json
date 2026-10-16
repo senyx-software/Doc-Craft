@@ -1,0 +1,1145 @@
+[
+  {
+    "test_id": "API-AUTH-001",
+    "route": "/api/v1/admin/auth/change-password",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-002",
+    "route": "/api/v1/admin/auth/totp/setup",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-003",
+    "route": "/api/v1/admin/auth/totp/verify",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-004",
+    "route": "/api/v1/admin/auth/totp/disable",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-005",
+    "route": "/api/v1/admin/auth/request-action-code",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-006",
+    "route": "/api/v1/admin/auth/me",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-007",
+    "route": "/api/v1/admin/auth/me",
+    "method": "PATCH",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-008",
+    "route": "/api/v1/admin/auth/logout",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-009",
+    "route": "/api/v1/admin/roles",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-010",
+    "route": "/api/v1/admin/roles",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-011",
+    "route": "/api/v1/admin/roles/{role_id}",
+    "method": "PATCH",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-012",
+    "route": "/api/v1/admin/roles/{role_id}",
+    "method": "DELETE",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-013",
+    "route": "/api/v1/admin/permissions",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-014",
+    "route": "/api/v1/admin/staff",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-015",
+    "route": "/api/v1/admin/staff/invite",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-016",
+    "route": "/api/v1/admin/staff/{staff_id}",
+    "method": "PATCH",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-017",
+    "route": "/api/v1/admin/staff/{staff_id}",
+    "method": "DELETE",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-018",
+    "route": "/api/v1/admin/audit-logs",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-019",
+    "route": "/api/v1/admin/audit-logs/all",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-020",
+    "route": "/api/v1/admin/audit-logs/{log_id}",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-021",
+    "route": "/api/v1/admin/security/alerts",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-022",
+    "route": "/api/v1/admin/security/alerts/{alert_id}/resolve",
+    "method": "PATCH",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-023",
+    "route": "/api/v1/admin/security/sessions",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-024",
+    "route": "/api/v1/admin/security/sessions/{session_id}",
+    "method": "DELETE",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-025",
+    "route": "/api/v1/admin/security/ip-logs",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-026",
+    "route": "/api/v1/admin/security/rate-limits",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-027",
+    "route": "/api/v1/admin/security/bot-logs",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-028",
+    "route": "/api/v1/admin/security/abuse-reports",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-029",
+    "route": "/api/v1/admin/security/abuse-reports/{report_id}/resolve",
+    "method": "PATCH",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-030",
+    "route": "/api/v1/admin/security/bot-detection-event",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-031",
+    "route": "/api/v1/admin/security/rate-limit-violation",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-032",
+    "route": "/api/v1/admin/security/auto-suspend",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-033",
+    "route": "/api/v1/admin/security/api-keys",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-034",
+    "route": "/api/v1/admin/plans",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-035",
+    "route": "/api/v1/admin/plans",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-036",
+    "route": "/api/v1/admin/plans/performance",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-037",
+    "route": "/api/v1/admin/plans/{plan_id}",
+    "method": "PATCH",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-038",
+    "route": "/api/v1/admin/plans/{plan_id}/archive",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-039",
+    "route": "/api/v1/admin/users/{user_id}/quota-override",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-040",
+    "route": "/api/v1/admin/users/{user_id}/quota-override",
+    "method": "DELETE",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-041",
+    "route": "/api/v1/admin/coupons",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-042",
+    "route": "/api/v1/admin/coupons",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-043",
+    "route": "/api/v1/admin/coupons/{coupon_id}/archive",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-044",
+    "route": "/api/v1/admin/trials",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-045",
+    "route": "/api/v1/admin/trials",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-046",
+    "route": "/api/v1/admin/trials/{trial_id}/extend",
+    "method": "PATCH",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-047",
+    "route": "/api/v1/admin/trials/{trial_id}/end",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-048",
+    "route": "/api/v1/admin/subscriptions",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-049",
+    "route": "/api/v1/admin/subscriptions/stats",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-050",
+    "route": "/api/v1/admin/revenue",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-051",
+    "route": "/api/v1/admin/invoices",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-052",
+    "route": "/api/v1/admin/failed-payments",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-053",
+    "route": "/api/v1/admin/refunds",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-054",
+    "route": "/api/v1/admin/cost-ledger",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-055",
+    "route": "/api/v1/admin/cost-ledger",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-056",
+    "route": "/api/v1/admin/cost-ledger/{entry_id}",
+    "method": "DELETE",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-057",
+    "route": "/api/v1/admin/cost-ledger/summary",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-058",
+    "route": "/api/v1/admin/promotions/ab-tests",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-059",
+    "route": "/api/v1/admin/promotions/referrals",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-060",
+    "route": "/api/v1/admin/promotions/referrals",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-061",
+    "route": "/api/v1/admin/promotions/referrals/{referral_id}/convert",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-062",
+    "route": "/api/v1/admin/automation/rules",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-063",
+    "route": "/api/v1/admin/automation/rules",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-064",
+    "route": "/api/v1/admin/automation/rules/{rule_id}",
+    "method": "PATCH",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-065",
+    "route": "/api/v1/admin/automation/rules/{rule_id}",
+    "method": "DELETE",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-066",
+    "route": "/api/v1/admin/automation/rules/{rule_id}/dry-run",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-067",
+    "route": "/api/v1/admin/automation/dry-run",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-068",
+    "route": "/api/v1/admin/automation/events/emit",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-069",
+    "route": "/api/v1/admin/automation/execution-logs",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-070",
+    "route": "/api/v1/admin/analytics/overview",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-071",
+    "route": "/api/v1/admin/analytics/revenue",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-072",
+    "route": "/api/v1/admin/analytics/generations",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-073",
+    "route": "/api/v1/admin/analytics/generations/detailed",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-074",
+    "route": "/api/v1/admin/analytics/journey",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-075",
+    "route": "/api/v1/admin/analytics/users",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-076",
+    "route": "/api/v1/admin/analytics/traffic",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-077",
+    "route": "/api/v1/admin/analytics/posthog/config",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-078",
+    "route": "/api/v1/admin/analytics/button-clicks",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-079",
+    "route": "/api/v1/admin/analytics/page-duration",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-080",
+    "route": "/api/v1/admin/analytics/events",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-081",
+    "route": "/api/v1/admin/notifications/email-logs",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-082",
+    "route": "/api/v1/admin/notifications/failed",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-083",
+    "route": "/api/v1/admin/notifications/history",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-084",
+    "route": "/api/v1/admin/notifications/status",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-085",
+    "route": "/api/v1/admin/notifications/announcements",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-086",
+    "route": "/api/v1/admin/notifications/announcements",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-087",
+    "route": "/api/v1/admin/notifications/announcements/{announcement_id}",
+    "method": "PATCH",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-088",
+    "route": "/api/v1/admin/notifications/announcements/{announcement_id}",
+    "method": "DELETE",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-089",
+    "route": "/api/v1/admin/notifications/templates",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-090",
+    "route": "/api/v1/admin/notifications/templates",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-091",
+    "route": "/api/v1/admin/notifications/templates/{template_id}",
+    "method": "PUT",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-092",
+    "route": "/api/v1/admin/notifications/templates/{template_id}",
+    "method": "DELETE",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-093",
+    "route": "/api/v1/admin/notifications/settings",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-094",
+    "route": "/api/v1/admin/notifications/settings",
+    "method": "PUT",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-095",
+    "route": "/api/v1/admin/notifications/config/public",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-096",
+    "route": "/api/v1/admin/support/sessions/{session_id}",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-097",
+    "route": "/api/v1/admin/support/tickets",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-098",
+    "route": "/api/v1/admin/support/tickets/{ticket_id}",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-099",
+    "route": "/api/v1/admin/support/tickets/{ticket_id}",
+    "method": "PATCH",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-100",
+    "route": "/api/v1/admin/support/tickets/{ticket_id}/resolve",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-101",
+    "route": "/api/v1/admin/support/refunds",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-102",
+    "route": "/api/v1/admin/support/refunds/{refund_id}",
+    "method": "PATCH",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-103",
+    "route": "/api/v1/admin/support/contact",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-104",
+    "route": "/api/v1/admin/support/contact/{contact_id}",
+    "method": "PATCH",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-105",
+    "route": "/api/v1/admin/support/plan-overrides",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-106",
+    "route": "/api/v1/admin/support/plan-overrides/{override_id}",
+    "method": "PATCH",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-107",
+    "route": "/api/v1/admin/support/plan-overrides/{override_id}/approve",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-108",
+    "route": "/api/v1/admin/gdpr/export",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-109",
+    "route": "/api/v1/admin/gdpr/purge",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-110",
+    "route": "/api/v1/admin/reports/users-csv",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-111",
+    "route": "/api/v1/admin/infrastructure/mcp/sessions",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-112",
+    "route": "/api/v1/admin/infrastructure/mcp/templates",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-113",
+    "route": "/api/v1/admin/infrastructure/health",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-114",
+    "route": "/api/v1/users/",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-115",
+    "route": "/api/v1/users/{user_id}",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-116",
+    "route": "/api/v1/users/{user_id}/status",
+    "method": "PATCH",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-117",
+    "route": "/api/v1/users/{user_id}/plan",
+    "method": "PATCH",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-118",
+    "route": "/api/v1/users/{user_id}/quota",
+    "method": "PATCH",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-119",
+    "route": "/api/v1/users/{user_id}/override",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-120",
+    "route": "/api/v1/admin/templates",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-121",
+    "route": "/api/v1/admin/templates/{template_id}/publish",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-122",
+    "route": "/api/v1/admin/templates/{template_id}/withdraw",
+    "method": "POST",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-123",
+    "route": "/api/v1/internal/config/{domain}",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-124",
+    "route": "/api/v1/internal/config",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-125",
+    "route": "/api/v1/admin/config/{domain}",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-126",
+    "route": "/api/v1/admin/config/{domain}",
+    "method": "PUT",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  },
+  {
+    "test_id": "API-AUTH-127",
+    "route": "/api/v1/admin/config/{domain}/history",
+    "method": "GET",
+    "expected": "401 or 403 before any protected handler executes",
+    "actual": 401,
+    "status": "PASS",
+    "methodology": "Actual mounted FastAPI app via in-process HTTP with disposable SQLite; no token"
+  }
+]

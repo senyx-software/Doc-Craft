@@ -1,0 +1,15 @@
+{
+  "id": "phase3-document-signed-queue-unit",
+  "cwd": "services/document",
+  "command": [
+    "../../.venv-local/bin/python",
+    "-m",
+    "pytest",
+    "-q"
+  ],
+  "started_utc": "2026-10-15T14:08:51.077810+00:00",
+  "seconds": 5.09,
+  "exit_code": 1,
+  "result": "FAIL",
+  "log": "evidence/phase3-document-signed-queue-unit.log"
+}

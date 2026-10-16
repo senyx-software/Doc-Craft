@@ -1,0 +1,14 @@
+{
+  "id": "phase2-last-user-build",
+  "cwd": "user-frontend",
+  "command": [
+    "npm",
+    "run",
+    "build"
+  ],
+  "started_utc": "2026-10-15T13:28:47.928896+00:00",
+  "seconds": 19.84,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase2-last-user-build.log"
+}

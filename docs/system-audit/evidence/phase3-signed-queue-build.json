@@ -1,0 +1,14 @@
+{
+  "id": "phase3-signed-queue-build",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "build"
+  ],
+  "started_utc": "2026-10-15T14:05:35.585732+00:00",
+  "seconds": 17.62,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-signed-queue-build.log"
+}

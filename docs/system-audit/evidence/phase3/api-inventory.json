@@ -1,0 +1,2098 @@
+[
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/overview",
+    "file": "services/admin-api/app/api/v1/analytics.py",
+    "line": 28,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/revenue",
+    "file": "services/admin-api/app/api/v1/analytics.py",
+    "line": 50,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/generations",
+    "file": "services/admin-api/app/api/v1/analytics.py",
+    "line": 71,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/generations/detailed",
+    "file": "services/admin-api/app/api/v1/analytics.py",
+    "line": 77,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/journey",
+    "file": "services/admin-api/app/api/v1/analytics.py",
+    "line": 83,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/users",
+    "file": "services/admin-api/app/api/v1/analytics.py",
+    "line": 92,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/traffic",
+    "file": "services/admin-api/app/api/v1/analytics.py",
+    "line": 98,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/posthog/config",
+    "file": "services/admin-api/app/api/v1/analytics.py",
+    "line": 112,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/button-clicks",
+    "file": "services/admin-api/app/api/v1/analytics.py",
+    "line": 168,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/page-duration",
+    "file": "services/admin-api/app/api/v1/analytics.py",
+    "line": 183,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/events",
+    "file": "services/admin-api/app/api/v1/analytics.py",
+    "line": 195,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/all",
+    "file": "services/admin-api/app/api/v1/audit.py",
+    "line": 46,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/{log_id}",
+    "file": "services/admin-api/app/api/v1/audit.py",
+    "line": 56,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/login",
+    "file": "services/admin-api/app/api/v1/auth.py",
+    "line": 42,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/verify-login-code",
+    "file": "services/admin-api/app/api/v1/auth.py",
+    "line": 91,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/forgot-password",
+    "file": "services/admin-api/app/api/v1/auth.py",
+    "line": 199,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/reset-password",
+    "file": "services/admin-api/app/api/v1/auth.py",
+    "line": 231,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/change-password",
+    "file": "services/admin-api/app/api/v1/auth.py",
+    "line": 279,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/totp/setup",
+    "file": "services/admin-api/app/api/v1/auth.py",
+    "line": 302,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/totp/verify",
+    "file": "services/admin-api/app/api/v1/auth.py",
+    "line": 324,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/totp/disable",
+    "file": "services/admin-api/app/api/v1/auth.py",
+    "line": 362,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/request-action-code",
+    "file": "services/admin-api/app/api/v1/auth.py",
+    "line": 394,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/me",
+    "file": "services/admin-api/app/api/v1/auth.py",
+    "line": 428,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "path": "/me",
+    "file": "services/admin-api/app/api/v1/auth.py",
+    "line": 443,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/logout",
+    "file": "services/admin-api/app/api/v1/auth.py",
+    "line": 474,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/rules",
+    "file": "services/admin-api/app/api/v1/automation.py",
+    "line": 28,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/rules",
+    "file": "services/admin-api/app/api/v1/automation.py",
+    "line": 38,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "path": "/rules/{rule_id}",
+    "file": "services/admin-api/app/api/v1/automation.py",
+    "line": 67,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "path": "/rules/{rule_id}",
+    "file": "services/admin-api/app/api/v1/automation.py",
+    "line": 94,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/rules/{rule_id}/dry-run",
+    "file": "services/admin-api/app/api/v1/automation.py",
+    "line": 121,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/dry-run",
+    "file": "services/admin-api/app/api/v1/automation.py",
+    "line": 136,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/events/emit",
+    "file": "services/admin-api/app/api/v1/automation.py",
+    "line": 163,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/execution-logs",
+    "file": "services/admin-api/app/api/v1/automation.py",
+    "line": 194,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/api/v1/internal/config/{domain}",
+    "file": "services/admin-api/app/api/v1/config.py",
+    "line": 18,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/api/v1/internal/config",
+    "file": "services/admin-api/app/api/v1/config.py",
+    "line": 30,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/api/v1/admin/config/{domain}",
+    "file": "services/admin-api/app/api/v1/config.py",
+    "line": 39,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PUT",
+    "path": "/api/v1/admin/config/{domain}",
+    "file": "services/admin-api/app/api/v1/config.py",
+    "line": 55,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/api/v1/admin/config/{domain}/history",
+    "file": "services/admin-api/app/api/v1/config.py",
+    "line": 90,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "path": "/{entry_id}",
+    "file": "services/admin-api/app/api/v1/cost_ledger.py",
+    "line": 87,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/summary",
+    "file": "services/admin-api/app/api/v1/cost_ledger.py",
+    "line": 111,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/export",
+    "file": "services/admin-api/app/api/v1/gdpr.py",
+    "line": 59,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/purge",
+    "file": "services/admin-api/app/api/v1/gdpr.py",
+    "line": 127,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/mcp/sessions",
+    "file": "services/admin-api/app/api/v1/infrastructure.py",
+    "line": 75,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/mcp/templates",
+    "file": "services/admin-api/app/api/v1/infrastructure.py",
+    "line": 108,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/health",
+    "file": "services/admin-api/app/api/v1/infrastructure.py",
+    "line": 134,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/email-logs",
+    "file": "services/admin-api/app/api/v1/notifications.py",
+    "line": 80,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/failed",
+    "file": "services/admin-api/app/api/v1/notifications.py",
+    "line": 188,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/history",
+    "file": "services/admin-api/app/api/v1/notifications.py",
+    "line": 194,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/status",
+    "file": "services/admin-api/app/api/v1/notifications.py",
+    "line": 200,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/announcements",
+    "file": "services/admin-api/app/api/v1/notifications.py",
+    "line": 239,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/announcements",
+    "file": "services/admin-api/app/api/v1/notifications.py",
+    "line": 245,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "path": "/announcements/{announcement_id}",
+    "file": "services/admin-api/app/api/v1/notifications.py",
+    "line": 269,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "path": "/announcements/{announcement_id}",
+    "file": "services/admin-api/app/api/v1/notifications.py",
+    "line": 290,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/templates",
+    "file": "services/admin-api/app/api/v1/notifications.py",
+    "line": 314,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/templates",
+    "file": "services/admin-api/app/api/v1/notifications.py",
+    "line": 320,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PUT",
+    "path": "/templates/{template_id}",
+    "file": "services/admin-api/app/api/v1/notifications.py",
+    "line": 345,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "path": "/templates/{template_id}",
+    "file": "services/admin-api/app/api/v1/notifications.py",
+    "line": 366,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/settings",
+    "file": "services/admin-api/app/api/v1/notifications.py",
+    "line": 390,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PUT",
+    "path": "/settings",
+    "file": "services/admin-api/app/api/v1/notifications.py",
+    "line": 396,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/config/public",
+    "file": "services/admin-api/app/api/v1/notifications.py",
+    "line": 420,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/plans",
+    "file": "services/admin-api/app/api/v1/plans.py",
+    "line": 29,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/plans/performance",
+    "file": "services/admin-api/app/api/v1/plans.py",
+    "line": 39,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/plans",
+    "file": "services/admin-api/app/api/v1/plans.py",
+    "line": 71,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "path": "/plans/{plan_id}",
+    "file": "services/admin-api/app/api/v1/plans.py",
+    "line": 119,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/plans/{plan_id}/archive",
+    "file": "services/admin-api/app/api/v1/plans.py",
+    "line": 161,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/users/{user_id}/quota-override",
+    "file": "services/admin-api/app/api/v1/plans.py",
+    "line": 202,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "path": "/users/{user_id}/quota-override",
+    "file": "services/admin-api/app/api/v1/plans.py",
+    "line": 239,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/coupons",
+    "file": "services/admin-api/app/api/v1/plans.py",
+    "line": 288,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/coupons",
+    "file": "services/admin-api/app/api/v1/plans.py",
+    "line": 297,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/coupons/{coupon_id}/archive",
+    "file": "services/admin-api/app/api/v1/plans.py",
+    "line": 327,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/trials",
+    "file": "services/admin-api/app/api/v1/plans.py",
+    "line": 368,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/trials",
+    "file": "services/admin-api/app/api/v1/plans.py",
+    "line": 377,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "path": "/trials/{trial_id}/extend",
+    "file": "services/admin-api/app/api/v1/plans.py",
+    "line": 401,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/trials/{trial_id}/end",
+    "file": "services/admin-api/app/api/v1/plans.py",
+    "line": 426,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/ab-tests",
+    "file": "services/admin-api/app/api/v1/promotions.py",
+    "line": 28,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/referrals",
+    "file": "services/admin-api/app/api/v1/promotions.py",
+    "line": 43,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/referrals",
+    "file": "services/admin-api/app/api/v1/promotions.py",
+    "line": 55,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/referrals/{referral_id}/convert",
+    "file": "services/admin-api/app/api/v1/promotions.py",
+    "line": 82,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/roles",
+    "file": "services/admin-api/app/api/v1/rbac.py",
+    "line": 69,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/roles",
+    "file": "services/admin-api/app/api/v1/rbac.py",
+    "line": 77,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "path": "/roles/{role_id}",
+    "file": "services/admin-api/app/api/v1/rbac.py",
+    "line": 108,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "path": "/roles/{role_id}",
+    "file": "services/admin-api/app/api/v1/rbac.py",
+    "line": 147,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/permissions",
+    "file": "services/admin-api/app/api/v1/rbac.py",
+    "line": 177,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/staff",
+    "file": "services/admin-api/app/api/v1/rbac.py",
+    "line": 184,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/staff/invite",
+    "file": "services/admin-api/app/api/v1/rbac.py",
+    "line": 202,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "path": "/staff/{staff_id}",
+    "file": "services/admin-api/app/api/v1/rbac.py",
+    "line": 268,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "path": "/staff/{staff_id}",
+    "file": "services/admin-api/app/api/v1/rbac.py",
+    "line": 330,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/users-csv",
+    "file": "services/admin-api/app/api/v1/reports.py",
+    "line": 22,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/alerts",
+    "file": "services/admin-api/app/api/v1/security.py",
+    "line": 39,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "path": "/alerts/{alert_id}/resolve",
+    "file": "services/admin-api/app/api/v1/security.py",
+    "line": 48,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/sessions",
+    "file": "services/admin-api/app/api/v1/security.py",
+    "line": 68,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "path": "/sessions/{session_id}",
+    "file": "services/admin-api/app/api/v1/security.py",
+    "line": 76,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/ip-logs",
+    "file": "services/admin-api/app/api/v1/security.py",
+    "line": 96,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/rate-limits",
+    "file": "services/admin-api/app/api/v1/security.py",
+    "line": 105,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/bot-logs",
+    "file": "services/admin-api/app/api/v1/security.py",
+    "line": 114,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/abuse-reports",
+    "file": "services/admin-api/app/api/v1/security.py",
+    "line": 122,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "path": "/abuse-reports/{report_id}/resolve",
+    "file": "services/admin-api/app/api/v1/security.py",
+    "line": 131,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/bot-detection-event",
+    "file": "services/admin-api/app/api/v1/security.py",
+    "line": 151,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/rate-limit-violation",
+    "file": "services/admin-api/app/api/v1/security.py",
+    "line": 173,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/auto-suspend",
+    "file": "services/admin-api/app/api/v1/security.py",
+    "line": 194,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/api-keys",
+    "file": "services/admin-api/app/api/v1/security.py",
+    "line": 239,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/subscriptions",
+    "file": "services/admin-api/app/api/v1/subscriptions.py",
+    "line": 18,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/subscriptions/stats",
+    "file": "services/admin-api/app/api/v1/subscriptions.py",
+    "line": 33,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/revenue",
+    "file": "services/admin-api/app/api/v1/subscriptions.py",
+    "line": 45,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/invoices",
+    "file": "services/admin-api/app/api/v1/subscriptions.py",
+    "line": 57,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/failed-payments",
+    "file": "services/admin-api/app/api/v1/subscriptions.py",
+    "line": 72,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/refunds",
+    "file": "services/admin-api/app/api/v1/subscriptions.py",
+    "line": 86,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/admin/support/sessions/{session_id}",
+    "file": "services/admin-api/app/api/v1/support.py",
+    "line": 30,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/support/tickets",
+    "file": "services/admin-api/app/api/v1/support.py",
+    "line": 110,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/support/refunds",
+    "file": "services/admin-api/app/api/v1/support.py",
+    "line": 125,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/support/contact",
+    "file": "services/admin-api/app/api/v1/support.py",
+    "line": 141,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/support/plan-override-requests",
+    "file": "services/admin-api/app/api/v1/support.py",
+    "line": 154,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/admin/support/tickets",
+    "file": "services/admin-api/app/api/v1/support.py",
+    "line": 172,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/admin/support/tickets/{ticket_id}",
+    "file": "services/admin-api/app/api/v1/support.py",
+    "line": 190,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "path": "/admin/support/tickets/{ticket_id}",
+    "file": "services/admin-api/app/api/v1/support.py",
+    "line": 201,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/admin/support/tickets/{ticket_id}/resolve",
+    "file": "services/admin-api/app/api/v1/support.py",
+    "line": 220,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/admin/support/refunds",
+    "file": "services/admin-api/app/api/v1/support.py",
+    "line": 243,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "path": "/admin/support/refunds/{refund_id}",
+    "file": "services/admin-api/app/api/v1/support.py",
+    "line": 259,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/admin/support/contact",
+    "file": "services/admin-api/app/api/v1/support.py",
+    "line": 282,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "path": "/admin/support/contact/{contact_id}",
+    "file": "services/admin-api/app/api/v1/support.py",
+    "line": 298,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/admin/support/plan-overrides",
+    "file": "services/admin-api/app/api/v1/support.py",
+    "line": 319,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "path": "/admin/support/plan-overrides/{override_id}",
+    "file": "services/admin-api/app/api/v1/support.py",
+    "line": 387,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/admin/support/plan-overrides/{override_id}/approve",
+    "file": "services/admin-api/app/api/v1/support.py",
+    "line": 418,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/{template_id}/publish",
+    "file": "services/admin-api/app/api/v1/templates.py",
+    "line": 47,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/{template_id}/withdraw",
+    "file": "services/admin-api/app/api/v1/templates.py",
+    "line": 52,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/",
+    "file": "services/admin-api/app/api/v1/users.py",
+    "line": 18,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/{user_id}",
+    "file": "services/admin-api/app/api/v1/users.py",
+    "line": 50,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "path": "/{user_id}/status",
+    "file": "services/admin-api/app/api/v1/users.py",
+    "line": 82,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "path": "/{user_id}/plan",
+    "file": "services/admin-api/app/api/v1/users.py",
+    "line": 111,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "path": "/{user_id}/quota",
+    "file": "services/admin-api/app/api/v1/users.py",
+    "line": 140,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "path": "/{user_id}/override",
+    "file": "services/admin-api/app/api/v1/users.py",
+    "line": 197,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/health",
+    "file": "services/admin-api/app/main.py",
+    "line": 86,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "path": "/",
+    "file": "services/admin-api/app/main.py",
+    "line": 96,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "analytics",
+    "method": "GET",
+    "path": "/health",
+    "file": "services/analytics/app/main.py",
+    "line": 66,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "analytics",
+    "method": "POST",
+    "path": "/event",
+    "file": "services/analytics/app/routers/analytics.py",
+    "line": 14,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "analytics",
+    "method": "POST",
+    "path": "/client-event",
+    "file": "services/analytics/app/routers/analytics.py",
+    "line": 37,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "analytics",
+    "method": "GET",
+    "path": "/overview",
+    "file": "services/analytics/app/routers/analytics.py",
+    "line": 49,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "analytics",
+    "method": "GET",
+    "path": "/revenue",
+    "file": "services/analytics/app/routers/analytics.py",
+    "line": 70,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "analytics",
+    "method": "GET",
+    "path": "/generations",
+    "file": "services/analytics/app/routers/analytics.py",
+    "line": 83,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "analytics",
+    "method": "GET",
+    "path": "/users",
+    "file": "services/analytics/app/routers/analytics.py",
+    "line": 109,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "analytics",
+    "method": "GET",
+    "path": "/traffic",
+    "file": "services/analytics/app/routers/analytics.py",
+    "line": 143,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "analytics",
+    "method": "GET",
+    "path": "/journey",
+    "file": "services/analytics/app/routers/analytics.py",
+    "line": 349,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "path": "/login/google",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 12,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "path": "/guest",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 22,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "path": "/register",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 40,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "path": "/login",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 66,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "path": "/login/2fa",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 101,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "path": "/refresh",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 133,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "path": "/logout",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 156,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "path": "/password/forgot",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 179,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "path": "/password/reset",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 202,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "path": "/verify-email",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 226,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "path": "/verify-email/resend",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 251,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "path": "/me",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 275,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "PATCH",
+    "path": "/me",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 307,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "path": "/oauth/google/callback",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 346,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "path": "/2fa/enable",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 354,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "path": "/2fa/verify",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 373,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "path": "/2fa/disable",
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "line": 397,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "path": "/users",
+    "file": "services/auth/src/routes/internal.routes.ts",
+    "line": 13,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "path": "/users/:id",
+    "file": "services/auth/src/routes/internal.routes.ts",
+    "line": 31,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "PATCH",
+    "path": "/users/:id/status",
+    "file": "services/auth/src/routes/internal.routes.ts",
+    "line": 45,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "PATCH",
+    "path": "/users/:id/plan",
+    "file": "services/auth/src/routes/internal.routes.ts",
+    "line": 66,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "path": "/users/stats-by-plan",
+    "file": "services/auth/src/routes/internal.routes.ts",
+    "line": 87,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "path": "/referrals",
+    "file": "services/auth/src/routes/internal.routes.ts",
+    "line": 91,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "path": "/referrals",
+    "file": "services/auth/src/routes/internal.routes.ts",
+    "line": 95,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "PATCH",
+    "path": "/referrals/:id/convert",
+    "file": "services/auth/src/routes/internal.routes.ts",
+    "line": 111,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "path": "/verify-token",
+    "file": "services/auth/src/routes/internal.routes.ts",
+    "line": 119,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "path": "/health",
+    "file": "services/auth/src/server.ts",
+    "line": 119,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "path": "/chat/guest-migration",
+    "file": "services/chat/src/routes/chat.routes.ts",
+    "line": 28,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "path": "/chat/session",
+    "file": "services/chat/src/routes/chat.routes.ts",
+    "line": 34,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "path": "/chat/sessions",
+    "file": "services/chat/src/routes/chat.routes.ts",
+    "line": 35,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "PATCH",
+    "path": "/chat/session/:sessionId",
+    "file": "services/chat/src/routes/chat.routes.ts",
+    "line": 36,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "DELETE",
+    "path": "/chat/session/:sessionId",
+    "file": "services/chat/src/routes/chat.routes.ts",
+    "line": 37,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "PUT",
+    "path": "/chat/session/:sessionId/canvas",
+    "file": "services/chat/src/routes/chat.routes.ts",
+    "line": 38,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "path": "/chat/session/:sessionId/messages",
+    "file": "services/chat/src/routes/chat.routes.ts",
+    "line": 44,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "path": "/chat/session/:sessionId/confirm",
+    "file": "services/chat/src/routes/chat.routes.ts",
+    "line": 57,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "path": "/chat/session/:sessionId/assets",
+    "file": "services/chat/src/routes/chat.routes.ts",
+    "line": 64,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "DELETE",
+    "path": "/chat/session/:sessionId/assets",
+    "file": "services/chat/src/routes/chat.routes.ts",
+    "line": 73,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "path": "/chat/session/:sessionId/",
+    "file": "services/chat/src/routes/chat.routes.ts",
+    "line": 80,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "path": "/chat/session/:sessionId/resolve",
+    "file": "services/chat/src/routes/chat.routes.ts",
+    "line": 89,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "path": "/chat/session/:sessionId/message",
+    "file": "services/chat/src/routes/chat.routes.ts",
+    "line": 101,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "path": "/internal/resources",
+    "file": "services/chat/src/routes/internal-resources.routes.ts",
+    "line": 13,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "path": "/mcp",
+    "file": "services/chat/src/routes/mcp.routes.ts",
+    "line": 11,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "path": "/mcp/message",
+    "file": "services/chat/src/routes/mcp.routes.ts",
+    "line": 23,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "path": "/metrics",
+    "file": "services/chat/src/routes/metrics.routes.ts",
+    "line": 6,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "path": "/internal/status/keys",
+    "file": "services/chat/src/routes/status.routes.ts",
+    "line": 10,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "path": "/health",
+    "file": "services/chat/src/server.ts",
+    "line": 73,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "path": "/health",
+    "file": "services/document/app/main.py",
+    "line": 76,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "path": "/templates",
+    "file": "services/document/app/routers/document.py",
+    "line": 30,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "POST",
+    "path": "/templates/custom",
+    "file": "services/document/app/routers/document.py",
+    "line": 42,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "path": "/templates/custom",
+    "file": "services/document/app/routers/document.py",
+    "line": 83,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "path": "/templates/custom/{template_id}",
+    "file": "services/document/app/routers/document.py",
+    "line": 114,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "DELETE",
+    "path": "/templates/custom/{template_id}",
+    "file": "services/document/app/routers/document.py",
+    "line": 135,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "path": "/templates/{template_id}",
+    "file": "services/document/app/routers/document.py",
+    "line": 149,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "POST",
+    "path": "/preview",
+    "file": "services/document/app/routers/document.py",
+    "line": 171,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "POST",
+    "path": "/generate",
+    "file": "services/document/app/routers/document.py",
+    "line": 221,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "path": "/job/{job_id}",
+    "file": "services/document/app/routers/document.py",
+    "line": 350,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "path": "/history",
+    "file": "services/document/app/routers/document.py",
+    "line": 394,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "path": "/download-file/{pdf_key}",
+    "file": "services/document/app/routers/document.py",
+    "line": 436,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "path": "/{document_id}",
+    "file": "services/document/app/routers/document.py",
+    "line": 455,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "path": "/{document_id}/download",
+    "file": "services/document/app/routers/document.py",
+    "line": 484,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "POST",
+    "path": "/{document_id}/share",
+    "file": "services/document/app/routers/document.py",
+    "line": 516,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "DELETE",
+    "path": "/{document_id}",
+    "file": "services/document/app/routers/document.py",
+    "line": 554,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "path": "/shared/{share_token}",
+    "file": "services/document/app/routers/document.py",
+    "line": 577,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "path": "/health",
+    "file": "services/document/puppeteer/server.ts",
+    "line": 43,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "path": "/ready",
+    "file": "services/document/puppeteer/server.ts",
+    "line": 44,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "document",
+    "method": "POST",
+    "path": "/generate",
+    "file": "services/document/puppeteer/server.ts",
+    "line": 81,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "gateway",
+    "method": "GET",
+    "path": "/health",
+    "file": "services/gateway/src/routes/index.ts",
+    "line": 15,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "gateway",
+    "method": "GET",
+    "path": "/health/deep",
+    "file": "services/gateway/src/routes/index.ts",
+    "line": 16,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "gateway",
+    "method": "GET",
+    "path": "/docs.json",
+    "file": "services/gateway/src/swagger.ts",
+    "line": 54,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "notification",
+    "method": "GET",
+    "path": "/announcements",
+    "file": "services/notification/src/routes/notification.routes.ts",
+    "line": 15,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "notification",
+    "method": "GET",
+    "path": "/preferences",
+    "file": "services/notification/src/routes/notification.routes.ts",
+    "line": 34,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "notification",
+    "method": "PATCH",
+    "path": "/preferences",
+    "file": "services/notification/src/routes/notification.routes.ts",
+    "line": 46,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "notification",
+    "method": "POST",
+    "path": "/send",
+    "file": "services/notification/src/routes/notification.routes.ts",
+    "line": 62,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "notification",
+    "method": "GET",
+    "path": "/logs",
+    "file": "services/notification/src/routes/notification.routes.ts",
+    "line": 79,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "notification",
+    "method": "GET",
+    "path": "/logs/admin",
+    "file": "services/notification/src/routes/notification.routes.ts",
+    "line": 91,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "notification",
+    "method": "POST",
+    "path": "/webhooks/resend-status",
+    "file": "services/notification/src/routes/notification.routes.ts",
+    "line": 111,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "notification",
+    "method": "GET",
+    "path": "/health",
+    "file": "services/notification/src/server.ts",
+    "line": 21,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "path": "/",
+    "file": "services/payment/src/routes/health.routes.ts",
+    "line": 8,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "path": "/plans",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 13,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "path": "/webhook/paddle",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 26,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "path": "/webhook/payhere",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 38,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "path": "/subscribe",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 49,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "path": "/portal",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 52,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "path": "/subscription",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 55,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "path": "/cancel",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 58,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "path": "/invoices",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 61,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "path": "/coupon/validate",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 64,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "path": "/methods",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 67,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "path": "/methods",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 68,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "DELETE",
+    "path": "/methods/:id",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 69,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "path": "/methods/:id/default",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 70,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "path": "/admin/subscriptions/stats",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 76,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "path": "/admin/subscriptions",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 77,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "path": "/admin/invoices",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 80,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "path": "/admin/revenue",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 83,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "path": "/admin/revenue/trajectory",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 86,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "path": "/admin/failed-payments",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 89,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "path": "/admin/refunds",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 92,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "path": "/admin/keys/status",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 95,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "path": "/admin/coupons",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 98,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "path": "/admin/coupons",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 99,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "path": "/admin/coupons/:id/archive",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 100,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "path": "/admin/trials",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 103,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "path": "/admin/trials",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 104,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "PATCH",
+    "path": "/admin/trials/:id/extend",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 105,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "path": "/admin/trials/:id/end",
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "line": 106,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "path": "/docs.json",
+    "file": "services/payment/src/swagger.ts",
+    "line": 391,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "quota",
+    "method": "GET",
+    "path": "/",
+    "file": "services/quota/src/routes/health.routes.ts",
+    "line": 13,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "quota",
+    "method": "GET",
+    "path": "/me",
+    "file": "services/quota/src/routes/quota.routes.ts",
+    "line": 19,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "quota",
+    "method": "POST",
+    "path": "/check",
+    "file": "services/quota/src/routes/quota.routes.ts",
+    "line": 29,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "quota",
+    "method": "POST",
+    "path": "/plan/sync",
+    "file": "services/quota/src/routes/quota.routes.ts",
+    "line": 30,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "quota",
+    "method": "POST",
+    "path": "/increment",
+    "file": "services/quota/src/routes/quota.routes.ts",
+    "line": 45,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "quota",
+    "method": "POST",
+    "path": "/refund",
+    "file": "services/quota/src/routes/quota.routes.ts",
+    "line": 55,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "quota",
+    "method": "POST",
+    "path": "/reset",
+    "file": "services/quota/src/routes/quota.routes.ts",
+    "line": 64,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "quota",
+    "method": "POST",
+    "path": "/guest/check",
+    "file": "services/quota/src/routes/quota.routes.ts",
+    "line": 73,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "quota",
+    "method": "POST",
+    "path": "/guest/increment",
+    "file": "services/quota/src/routes/quota.routes.ts",
+    "line": 80,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "quota",
+    "method": "POST",
+    "path": "/override",
+    "file": "services/quota/src/routes/quota.routes.ts",
+    "line": 90,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "quota",
+    "method": "DELETE",
+    "path": "/override/:userId",
+    "file": "services/quota/src/routes/quota.routes.ts",
+    "line": 91,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "quota",
+    "method": "GET",
+    "path": "/admin/stats",
+    "file": "services/quota/src/routes/quota.routes.ts",
+    "line": 109,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  },
+  {
+    "service": "quota",
+    "method": "GET",
+    "path": "/docs.json",
+    "file": "services/quota/src/swagger.ts",
+    "line": 254,
+    "scope": "Declaration; mounted prefixes are documented in 13-INTER_SERVICE_COMMUNICATION.md"
+  }
+]

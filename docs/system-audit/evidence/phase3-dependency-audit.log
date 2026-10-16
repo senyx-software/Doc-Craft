@@ -1,0 +1,92 @@
+[
+  {
+    "component": "backend",
+    "scope": "all",
+    "exit_code": 0,
+    "counts": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "error": null,
+    "evidence": "dependencies-backend-all.json"
+  },
+  {
+    "component": "backend",
+    "scope": "production",
+    "exit_code": 0,
+    "counts": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "error": null,
+    "evidence": "dependencies-backend-production.json"
+  },
+  {
+    "component": "user",
+    "scope": "all",
+    "exit_code": 1,
+    "counts": {
+      "info": 0,
+      "low": 0,
+      "moderate": 2,
+      "high": 5,
+      "critical": 0,
+      "total": 7
+    },
+    "error": null,
+    "evidence": "dependencies-user-all.json"
+  },
+  {
+    "component": "user",
+    "scope": "production",
+    "exit_code": 0,
+    "counts": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "error": null,
+    "evidence": "dependencies-user-production.json"
+  },
+  {
+    "component": "admin",
+    "scope": "all",
+    "exit_code": 1,
+    "counts": {
+      "info": 0,
+      "low": 0,
+      "moderate": 2,
+      "high": 5,
+      "critical": 0,
+      "total": 7
+    },
+    "error": null,
+    "evidence": "dependencies-admin-all.json"
+  },
+  {
+    "component": "admin",
+    "scope": "production",
+    "exit_code": 0,
+    "counts": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "error": null,
+    "evidence": "dependencies-admin-production.json"
+  }
+]

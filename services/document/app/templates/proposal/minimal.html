@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+    body { font-family: 'Inter', sans-serif; color: #000000; margin: 0; padding: 50px; line-height: 1.6; background-color: #ffffff; }
+    .container { max-width: 800px; margin: 0 auto; }
+    .header { border-bottom: 1px solid #e2e8f0; padding-bottom: 30px; margin-bottom: 40px; }
+    .title-area h1 { font-size: 30px; font-weight: 300; letter-spacing: 1px; margin: 0; }
+    .title-area .subtitle { font-size: 14px; color: #718096; margin-top: 5px; text-transform: uppercase; letter-spacing: 1.5px; }
+    .meta { display: flex; justify-content: space-between; font-size: 13px; color: #4a5568; margin-bottom: 45px; }
+    .meta strong { color: #000000; }
+    .meta .right { text-align: right; }
+    h2 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: #a0aec0; border-bottom: 1px solid #edf2f7; padding-bottom: 8px; margin-top: 40px; margin-bottom: 15px; }
+    .content-block { margin-bottom: 35px; }
+    p { margin: 0; color: #2d3748; font-size: 14px; }
+    .logo-area { display: flex; justify-content: flex-end; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+    <div class="container">
+        {% if logo %}
+        <div class="logo-area">
+            <img src="{{ logo }}" style="max-height: 50px; filter: grayscale(100%);" />
+        </div>
+        {% endif %}
+        <div class="header">
+            <div class="title-area">
+                <h1>{{ proposalTitle }}</h1>
+                <div class="subtitle">Project Proposal</div>
+            </div>
+        </div>
+
+        <div class="meta">
+            <div>
+                <strong>Prepared By:</strong> {{ senderName }}<br>
+                Email: {{ senderEmail }}<br>
+                {% if senderPhone %}Phone: {{ senderPhone }}<br>{% endif %}
+                {% if senderAddress %}Address: {{ senderAddress | replace('\n', ', ') }}{% endif %}
+            </div>
+            <div class="right">
+                <strong>Prepared For:</strong><br>
+                {{ clientName }}<br>
+                {% if clientCompany %}{{ clientCompany }}<br>{% endif %}
+                {% if clientAddress %}{{ clientAddress | replace('\n', ', ') }}<br>{% endif %}
+                <br>
+                Date: {{ issueDate }}<br>
+                {% if validUntil %}Valid Until: {{ validUntil }}{% endif %}
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>Executive Summary</h2>
+            <p>{{ executiveSummary | e | replace('\n', '<br>') | safe }}</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Scope of Work</h2>
+            <p>{{ scopeOfWork | e | replace('\n', '<br>') | safe }}</p>
+        </div>
+
+        {% if projectTimeline %}
+        <div class="content-block">
+            <h2>Project Timeline</h2>
+            <p>{{ projectTimeline | e | replace('\n', '<br>') | safe }}</p>
+        </div>
+        {% endif %}
+
+        {% if pricingDetails %}
+        <div class="content-block">
+            <h2>Pricing & Investment</h2>
+            <p>{{ pricingDetails | e | replace('\n', '<br>') | safe }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

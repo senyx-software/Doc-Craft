@@ -1,0 +1,14 @@
+{
+  "id": "phase3-scoped-auth-build",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "build"
+  ],
+  "started_utc": "2026-10-15T13:54:03.532029+00:00",
+  "seconds": 14.87,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-scoped-auth-build.log"
+}

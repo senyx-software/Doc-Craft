@@ -1,0 +1,16 @@
+{
+  "id": "phase2-payment-tests",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "-w",
+    "doccraft-payment"
+  ],
+  "started_utc": "2026-10-15T06:36:23.146870+00:00",
+  "seconds": 1.73,
+  "exit_code": 1,
+  "result": "FAIL",
+  "log": "evidence/phase2-payment-tests.log"
+}

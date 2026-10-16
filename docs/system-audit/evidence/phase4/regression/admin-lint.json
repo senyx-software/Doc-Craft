@@ -1,0 +1,14 @@
+{
+  "id": "admin-lint",
+  "command": [
+    "npm",
+    "run",
+    "lint"
+  ],
+  "cwd": "admin",
+  "started_utc": "2026-10-16T07:34:11.859484+00:00",
+  "seconds": 14.73,
+  "exit_code": 0,
+  "status": "PASS",
+  "log": "docs/system-audit/evidence/phase4/regression/admin-lint.log"
+}

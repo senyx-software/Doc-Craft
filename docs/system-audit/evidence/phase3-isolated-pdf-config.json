@@ -1,0 +1,13 @@
+{
+  "id": "phase3-isolated-pdf-config",
+  "cwd": ".",
+  "command": [
+    ".venv-local/bin/python",
+    "scripts/system_audit_phase3_configuration.py"
+  ],
+  "started_utc": "2026-10-15T14:21:08.586381+00:00",
+  "seconds": 0.48,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-isolated-pdf-config.log"
+}

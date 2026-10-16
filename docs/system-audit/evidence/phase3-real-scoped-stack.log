@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/eranda/Projects/doc-craft/scripts/system_audit_phase3_stack.py", line 376, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/home/eranda/Projects/doc-craft/scripts/system_audit_phase3_stack.py", line 49, in main
+    control = psycopg2.connect(pg_url)
+  File "/home/eranda/Projects/doc-craft/.venv-local/lib/python3.13/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "127.0.0.1", port 55432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+

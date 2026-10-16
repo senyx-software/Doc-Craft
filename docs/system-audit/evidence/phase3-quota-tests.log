@@ -1,0 +1,15 @@
+npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown user config "tmp". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> doccraft-quota@1.0.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /home/eranda/Projects/doc-craft/services/quota
+
+
+ Test Files  6 passed (6)
+      Tests  25 passed (25)
+   Start at  23:29:51
+   Duration  804ms (setup 40%, transform 38%, import 13%, tests 7%, worker 2%)
+

@@ -1,0 +1,22 @@
+npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown user config "tmp". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> admin@0.0.0 build
+> tsc -b && vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 2438 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                          0.98 kB │ gzip:   0.52 kB
+dist/assets/logo-left-DHAmWStC.png     112.28 kB
+dist/assets/logo-left1-D5psV_Sr.png    126.97 kB
+dist/assets/index-Du7HihhN.css          53.97 kB │ gzip:   9.89 kB
+dist/assets/index-13l3T-fk.js        1,104.60 kB │ gzip: 284.43 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 11.12s

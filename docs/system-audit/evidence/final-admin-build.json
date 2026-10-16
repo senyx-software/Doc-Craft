@@ -1,0 +1,16 @@
+{
+  "id": "final-admin-build",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "build",
+    "--prefix",
+    "admin"
+  ],
+  "started_utc": "2026-10-15T05:58:46.841012+00:00",
+  "seconds": 24.58,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/final-admin-build.log"
+}

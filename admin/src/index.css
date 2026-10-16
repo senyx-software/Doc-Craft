@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap');
+@import './styles/design-tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-family-base);
+    background-color: var(--background);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  ::selection {
+    background-color: rgba(126, 76, 224, 0.3);
+    color: #7e4ce0;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(120, 120, 140, 0.3);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(120, 120, 140, 0.5);
+  }
+}
+
+@layer components {
+  /* Glass Card — Frosted glass surface matching user-frontend */
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-xl border border-gray-200/60 rounded-md shadow-sm
+           dark:bg-white/5 dark:border-white/10 dark:shadow-md transition-all duration-200;
+  }
+
+  /* Pill Input Field */
+  .input-field {
+    @apply w-full px-4 py-2.5 bg-white border border-gray-200 rounded-md text-gray-900 text-xs
+           placeholder:text-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2
+           focus:ring-purple-500/20 dark:bg-white/5 dark:border-white/10 dark:text-white
+           dark:placeholder:text-gray-500 transition-all duration-200;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-violet-500 to-indigo-500;
+  }
+
+  /* Badge Styles */
+  .badge-violet {
+    @apply bg-purple-500/10 text-purple-600 border border-purple-500/20 dark:bg-purple-400/20 dark:text-purple-300;
+  }
+
+  .badge-emerald {
+    @apply bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 dark:bg-emerald-400/20 dark:text-emerald-300;
+  }
+
+  .badge-amber {
+    @apply bg-amber-500/10 text-amber-600 border border-amber-500/20 dark:bg-amber-400/20 dark:text-amber-300;
+  }
+
+  .badge-rose {
+    @apply bg-rose-500/10 text-rose-600 border border-rose-500/20 dark:bg-rose-400/20 dark:text-rose-300;
+  }
+}
+
+@layer utilities {
+  .bg-hero-gradient {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(126, 76, 224, 0.15), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 50%, rgba(162, 49, 219, 0.08), transparent),
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(33, 110, 187, 0.08), transparent);
+  }
+
+  .bg-mesh-gradient {
+    background:
+      radial-gradient(at 40% 20%, rgba(126, 76, 224, 0.12) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgba(162, 49, 219, 0.08) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, rgba(33, 110, 187, 0.08) 0px, transparent 50%);
+  }
+}

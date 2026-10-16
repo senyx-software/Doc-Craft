@@ -1,0 +1,13 @@
+import {beforeEach,it,expect,vi} from 'vitest';
+const mocks=vi.hoisted(()=>({create:vi.fn(),sign:vi.fn()}));
+vi.mock('../db/prisma.js',()=>({prisma:{user:{create:mocks.create}}}));
+vi.mock('../services/jwt.service.js',()=>({signAccessToken:mocks.sign,signRefreshToken:vi.fn(),verifyRefreshToken:vi.fn(),getExpiresInSeconds:vi.fn(),signMfaToken:vi.fn(),verifyMfaToken:vi.fn()}));
+vi.mock('../services/firebase.service.js',()=>({verifyGoogleIdToken:vi.fn()}));
+vi.mock('../services/email.service.js',()=>({sendWelcomeEmail:vi.fn(),sendPasswordResetEmail:vi.fn(),sendVerificationEmail:vi.fn()}));
+vi.mock('../services/loginTracking.service.js',()=>({recordLoginEvent:vi.fn()}));
+vi.mock('../services/productTracking.service.js',()=>({trackProductEvent:vi.fn()}));
+import {guestLogin} from './auth.controller.js';
+let request:any,reply:any;
+beforeEach(()=>{vi.resetAllMocks();request={log:{warn:vi.fn()}};reply={status:vi.fn().mockReturnThis(),send:vi.fn().mockReturnThis()};mocks.create.mockResolvedValue({});mocks.sign.mockResolvedValue('signed-guest-token');});
+it('creates a persisted guest with the same identity and 24-hour expiry as its token',async()=>{await guestLogin(request,reply);const data=mocks.create.mock.calls[0][0].data;const response=reply.send.mock.calls[0][0];expect(data).toMatchObject({id:response.guest_user_id,plan:'guest',isGuest:true,userClass:'guest',authProvider:'guest'});expect(mocks.sign).toHaveBeenCalledWith(data.id,data.email,'guest','guest',Date.parse(response.expires_at)/1000);expect(Date.parse(response.expires_at)-Date.now()).toBeGreaterThan(86398000);expect(response.session_token).toBe('signed-guest-token');});
+it('database failure returns a recoverable error without minting an unpersisted guest identity',async()=>{mocks.create.mockRejectedValue(Object.assign(new Error('Database unavailable'),{code:'P1001'}));await guestLogin(request,reply);expect(reply.status).toHaveBeenCalledWith(503);expect(mocks.sign).not.toHaveBeenCalled();expect(reply.send).toHaveBeenCalledWith({error:'Guest sign-in is temporarily unavailable. Please try again.'});});

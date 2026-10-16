@@ -1,0 +1,14 @@
+{
+  "id": "phase3-build-scoped-adapters",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "build"
+  ],
+  "started_utc": "2026-10-15T13:55:38.846820+00:00",
+  "seconds": 15.05,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-build-scoped-adapters.log"
+}

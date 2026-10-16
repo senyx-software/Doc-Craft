@@ -1,0 +1,58 @@
+{
+  "checked_at": "2026-10-16T08:15:27.843836+00:00",
+  "docker": {
+    "status": "BLOCKED",
+    "command": [
+      "/run/host/usr/bin/docker",
+      "--host",
+      "unix:///var/run/docker.sock",
+      "info",
+      "--format",
+      "{{.ServerVersion}}"
+    ],
+    "exit_code": 1,
+    "output": "\nfailed to connect to the docker API at unix:///var/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /var/run/docker.sock: connect: no such file or directory\n"
+  },
+  "user_namespaces": {
+    "command": [
+      "unshare",
+      "-Ur",
+      "true"
+    ],
+    "exit_code": 1,
+    "output": "unshare: unshare failed: Operation not permitted\n"
+  },
+  "host_portal": {
+    "command": [
+      "flatpak-spawn",
+      "--host",
+      "/bin/true"
+    ],
+    "exit_code": 1,
+    "output": "Portal call failed: org.freedesktop.DBus.Error.ServiceUnknown\nHint: --host only works when the Flatpak is allowed to talk to org.freedesktop.Flatpak\n"
+  },
+  "chromium": {
+    "status": "BLOCKED",
+    "command": [
+      "/home/eranda/.cache/puppeteer/chrome/linux-131.0.6778.204/chrome-linux64/chrome",
+      "--headless",
+      "--disable-gpu",
+      "--dump-dom",
+      "about:blank"
+    ],
+    "exit_code": -6,
+    "output": "[48859:48859:1016/134524.754167:FATAL:zygote_host_impl_linux.cc(128)] No usable sandbox! If you are running on Ubuntu 23.10+ or another Linux distro that has disabled unprivileged user namespaces with AppArmor, see https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md. Otherwise see https://chromium.googlesource.com/chromium/src/+/main/docs/linux/suid_sandbox_development.md for more information on developing with the (older) SUID sandbox. If you want to live dangerously and need an immediate workaround, you can try using --no-sandbox.\n[1016/134524.754314:ERROR:scoped_ptrace_attach.cc(27)] ptrace: Operation not permitted (1)\n"
+  },
+  "process_security": [
+    "CapEff:\t0000000000000000",
+    "NoNewPrivs:\t1",
+    "Seccomp:\t2"
+  ],
+  "socket_presence": {
+    "/var/run/docker.sock": false,
+    "/run/docker.sock": false,
+    "/run/user/1000/docker.sock": false,
+    "/run/host/var/run/docker.sock": false
+  },
+  "security_bypasses_used": false
+}

@@ -1,0 +1,25 @@
+{
+  "database": "doccraft_migrations_77c24d72",
+  "results": [
+    {
+      "service": "auth",
+      "exit_code": 0,
+      "output": "Environment variables loaded from .env\nPrisma schema loaded from services/auth/prisma/schema.prisma\nDatasource \"db\": PostgreSQL database \"doccraft_migrations_77c24d72\", schema \"public\" at \"127.0.0.1:55432\"\n\n4 migrations found in prisma/migrations\n\nApplying migration `20260711140351_init`\nApplying migration `20260713095926_add_srs_user_fields`\nApplying migration `20260829160000_add_referrals`\nApplying migration `20260830120000_add_login_events`\n\nThe following migration(s) have been applied:\n\nmigrations/\n  \u2514\u2500 20260711140351_init/\n    \u2514\u2500 migration.sql\n  \u2514\u2500 20260713095926_add_srs_user_fields/\n    \u2514\u2500 migration.sql\n  \u2514\u2500 20260829160000_add_referrals/\n    \u2514\u2500 migration.sql\n  \u2514\u2500 20260830120000_add_login_events/\n    \u2514\u2500 migration.sql\n      \nAll migrations have been successfully applied.\n\n"
+    },
+    {
+      "service": "chat",
+      "exit_code": 0,
+      "output": "Environment variables loaded from .env\nPrisma schema loaded from services/chat/prisma/schema.prisma\nDatasource \"db\": PostgreSQL database \"doccraft_migrations_77c24d72\", schema \"public\" at \"127.0.0.1:55432\"\n\n2 migrations found in prisma/migrations\n\nApplying migration `20260712180115_init`\nApplying migration `20260716_add_model_preference`\n\nThe following migration(s) have been applied:\n\nmigrations/\n  \u2514\u2500 20260712180115_init/\n    \u2514\u2500 migration.sql\n  \u2514\u2500 20260716_add_model_preference/\n    \u2514\u2500 migration.sql\n      \nAll migrations have been successfully applied.\n\n"
+    },
+    {
+      "service": "payment",
+      "exit_code": 0,
+      "output": "Environment variables loaded from .env\nPrisma schema loaded from services/payment/prisma/schema.prisma\nDatasource \"db\": PostgreSQL database \"doccraft_migrations_77c24d72\", schema \"public\" at \"127.0.0.1:55432\"\n\n2 migrations found in prisma/migrations\n\nApplying migration `202610150001_payment_initial`\nApplying migration `202610150002_checkout_intents`\n\nThe following migration(s) have been applied:\n\nmigrations/\n  \u2514\u2500 202610150001_payment_initial/\n    \u2514\u2500 migration.sql\n  \u2514\u2500 202610150002_checkout_intents/\n    \u2514\u2500 migration.sql\n      \nAll migrations have been successfully applied.\n\n"
+    },
+    {
+      "service": "quota",
+      "exit_code": 0,
+      "output": "Environment variables loaded from .env\nPrisma schema loaded from services/quota/prisma/schema.prisma\nDatasource \"db\": PostgreSQL database \"doccraft_migrations_77c24d72\", schema \"public\" at \"127.0.0.1:55432\"\n\n1 migration found in prisma/migrations\n\nApplying migration `202610150001_quota_initial`\n\nThe following migration(s) have been applied:\n\nmigrations/\n  \u2514\u2500 202610150001_quota_initial/\n    \u2514\u2500 migration.sql\n      \nAll migrations have been successfully applied.\n\n"
+    }
+  ]
+}

@@ -1,0 +1,1198 @@
+................................FF.....................F..FF..F....FF.   [100%]
+=================================== FAILURES ===================================
+_ test_generation_preserves_authoritative_assets_and_ignores_client_media_injection _
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+>           yield
+
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:250: in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:256: in handle_request
+    raise exc from None
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:236: in handle_request
+    response = connection.handle_request(
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:101: in handle_request
+    raise exc
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:78: in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:124: in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_backends/sync.py:207: in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+map = {<class 'TimeoutError'>: <class 'httpcore.ConnectTimeout'>, <class 'OSError'>: <class 'httpcore.ConnectError'>}
+
+    @contextlib.contextmanager
+    def map_exceptions(map: ExceptionMapping) -> typing.Iterator[None]:
+        try:
+            yield
+        except Exception as exc:  # noqa: PIE786
+            for from_exc, to_exc in map.items():
+                if isinstance(exc, from_exc):
+>                   raise to_exc(exc) from exc
+E                   httpcore.ConnectError: [Errno 111] Connection refused
+
+.venv-local/lib/python3.13/site-packages/httpcore/_exceptions.py:14: ConnectError
+
+The above exception was the direct cause of the following exception:
+
+user_id = 'u'
+
+    def get_entitlements(user_id):
+        from urllib.parse import quote
+        try:
+>           response = service_request('admin-api', 'GET', os.getenv('ADMIN_API_SERVICE_URL', 'http://localhost:3018') + '/api/v1/internal/entitlements/' + quote(user_id, safe=''), timeout=5)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+shared/entitlements.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+shared/service_auth.py:86: in service_request
+    return client.request(method, url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:914: in send
+    response = self._send_handling_auth(
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:249: in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+            yield
+        except Exception as exc:
+            mapped_exc = None
+    
+            for from_exc, to_exc in HTTPCORE_EXC_MAP.items():
+                if not isinstance(exc, from_exc):
+                    continue
+                # We want to map to the most specific exception we can find.
+                # Eg if `exc` is an `httpcore.ReadTimeout`, we want to map to
+                # `httpx.ReadTimeout`, not just `httpx.TimeoutException`.
+                if mapped_exc is None or issubclass(to_exc, mapped_exc):
+                    mapped_exc = to_exc
+    
+            if mapped_exc is None:  # pragma: no cover
+                raise
+    
+            message = str(exc)
+>           raise mapped_exc(message) from exc
+E           httpx.ConnectError: [Errno 111] Connection refused
+
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:118: ConnectError
+
+The above exception was the direct cause of the following exception:
+
+isolated = ({'lookup_status': 200, 'state': {'userId': 'u', 'documentType': 'invoice', 'readyToGenerate': True, 'canGenerate': True, ...}, 'jobs': [], 'auth': 'Bearer synthetic'}, <Mock id='140003794008256'>)
+
+    @pytest.mark.asyncio
+    async def test_generation_preserves_authoritative_assets_and_ignores_client_media_injection(isolated):
+        saved, db = isolated
+        asset = {'id':'asset_one','role':'logo','name':'logo.png','width':1,'height':1,'src':'data:image/png;base64,AAAA'}
+        saved['state']['assets'] = [asset]
+>       await document.generate_document({'documentType':'invoice','sessionId':'s','slots':{'documentAssets':[{'src':'Injected'}]}}, db=db, x_user_id='u', authorization='Bearer synthetic')
+
+services/document/tests/test_generation_integration.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+services/document/app/routers/document.py:327: in generate_document
+    policy=await asyncio.to_thread(get_entitlements,x_user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/asyncio/threads.py:25: in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/thread.py:59: in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+user_id = 'u'
+
+    def get_entitlements(user_id):
+        from urllib.parse import quote
+        try:
+            response = service_request('admin-api', 'GET', os.getenv('ADMIN_API_SERVICE_URL', 'http://localhost:3018') + '/api/v1/internal/entitlements/' + quote(user_id, safe=''), timeout=5)
+            response.raise_for_status()
+            policy = response.json()
+            bools = ('account_enabled','custom_logo','custom_branding','premium_templates','pdf_watermark','priority_processing','ai_enabled')
+            if policy.get('version') != 1 or policy.get('user_id') != user_id or any(type(policy.get(key)) is not bool for key in bools):
+                raise ValueError('Invalid entitlement contract')
+            if type(policy.get('daily_quota')) is not int or policy['daily_quota'] < -1:
+                raise ValueError('Invalid daily quota')
+            return policy
+        except Exception as error:
+>           raise HTTPException(503, 'Current entitlements cannot be verified') from error
+E           fastapi.exceptions.HTTPException: 503: Current entitlements cannot be verified
+
+shared/entitlements.py:20: HTTPException
+______ test_generation_uses_authorized_state_and_ignores_client_injection ______
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+>           yield
+
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:250: in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:256: in handle_request
+    raise exc from None
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:236: in handle_request
+    response = connection.handle_request(
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:101: in handle_request
+    raise exc
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:78: in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:124: in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_backends/sync.py:207: in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+map = {<class 'TimeoutError'>: <class 'httpcore.ConnectTimeout'>, <class 'OSError'>: <class 'httpcore.ConnectError'>}
+
+    @contextlib.contextmanager
+    def map_exceptions(map: ExceptionMapping) -> typing.Iterator[None]:
+        try:
+            yield
+        except Exception as exc:  # noqa: PIE786
+            for from_exc, to_exc in map.items():
+                if isinstance(exc, from_exc):
+>                   raise to_exc(exc) from exc
+E                   httpcore.ConnectError: [Errno 111] Connection refused
+
+.venv-local/lib/python3.13/site-packages/httpcore/_exceptions.py:14: ConnectError
+
+The above exception was the direct cause of the following exception:
+
+user_id = 'u'
+
+    def get_entitlements(user_id):
+        from urllib.parse import quote
+        try:
+>           response = service_request('admin-api', 'GET', os.getenv('ADMIN_API_SERVICE_URL', 'http://localhost:3018') + '/api/v1/internal/entitlements/' + quote(user_id, safe=''), timeout=5)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+shared/entitlements.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+shared/service_auth.py:86: in service_request
+    return client.request(method, url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:914: in send
+    response = self._send_handling_auth(
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:249: in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+            yield
+        except Exception as exc:
+            mapped_exc = None
+    
+            for from_exc, to_exc in HTTPCORE_EXC_MAP.items():
+                if not isinstance(exc, from_exc):
+                    continue
+                # We want to map to the most specific exception we can find.
+                # Eg if `exc` is an `httpcore.ReadTimeout`, we want to map to
+                # `httpx.ReadTimeout`, not just `httpx.TimeoutException`.
+                if mapped_exc is None or issubclass(to_exc, mapped_exc):
+                    mapped_exc = to_exc
+    
+            if mapped_exc is None:  # pragma: no cover
+                raise
+    
+            message = str(exc)
+>           raise mapped_exc(message) from exc
+E           httpx.ConnectError: [Errno 111] Connection refused
+
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:118: ConnectError
+
+The above exception was the direct cause of the following exception:
+
+isolated = ({'lookup_status': 200, 'state': {'userId': 'u', 'documentType': 'invoice', 'readyToGenerate': True, 'canGenerate': True, ...}, 'jobs': [], 'auth': 'Bearer synthetic'}, <Mock id='140003791976304'>)
+
+    @pytest.mark.asyncio
+    async def test_generation_uses_authorized_state_and_ignores_client_injection(isolated):
+        saved,db=isolated
+>       r=await document.generate_document({"documentType":"invoice","sessionId":"s","slots":{"businessName":"Injected"}},db=db,x_user_id="u",x_user_plan="pro",x_user_email="spoof@test",authorization="Bearer synthetic")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+services/document/tests/test_generation_integration.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+services/document/app/routers/document.py:327: in generate_document
+    policy=await asyncio.to_thread(get_entitlements,x_user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/asyncio/threads.py:25: in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/thread.py:59: in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+user_id = 'u'
+
+    def get_entitlements(user_id):
+        from urllib.parse import quote
+        try:
+            response = service_request('admin-api', 'GET', os.getenv('ADMIN_API_SERVICE_URL', 'http://localhost:3018') + '/api/v1/internal/entitlements/' + quote(user_id, safe=''), timeout=5)
+            response.raise_for_status()
+            policy = response.json()
+            bools = ('account_enabled','custom_logo','custom_branding','premium_templates','pdf_watermark','priority_processing','ai_enabled')
+            if policy.get('version') != 1 or policy.get('user_id') != user_id or any(type(policy.get(key)) is not bool for key in bools):
+                raise ValueError('Invalid entitlement contract')
+            if type(policy.get('daily_quota')) is not int or policy['daily_quota'] < -1:
+                raise ValueError('Invalid daily quota')
+            return policy
+        except Exception as error:
+>           raise HTTPException(503, 'Current entitlements cannot be verified') from error
+E           fastapi.exceptions.HTTPException: 503: Current entitlements cannot be verified
+
+shared/entitlements.py:20: HTTPException
+_ test_generation_retry_returns_same_artifact_without_duplicate_queue_or_reservation _
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+>           yield
+
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:250: in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:256: in handle_request
+    raise exc from None
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:236: in handle_request
+    response = connection.handle_request(
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:101: in handle_request
+    raise exc
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:78: in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:124: in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_backends/sync.py:207: in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+map = {<class 'TimeoutError'>: <class 'httpcore.ConnectTimeout'>, <class 'OSError'>: <class 'httpcore.ConnectError'>}
+
+    @contextlib.contextmanager
+    def map_exceptions(map: ExceptionMapping) -> typing.Iterator[None]:
+        try:
+            yield
+        except Exception as exc:  # noqa: PIE786
+            for from_exc, to_exc in map.items():
+                if isinstance(exc, from_exc):
+>                   raise to_exc(exc) from exc
+E                   httpcore.ConnectError: [Errno 111] Connection refused
+
+.venv-local/lib/python3.13/site-packages/httpcore/_exceptions.py:14: ConnectError
+
+The above exception was the direct cause of the following exception:
+
+user_id = 'u'
+
+    def get_entitlements(user_id):
+        from urllib.parse import quote
+        try:
+>           response = service_request('admin-api', 'GET', os.getenv('ADMIN_API_SERVICE_URL', 'http://localhost:3018') + '/api/v1/internal/entitlements/' + quote(user_id, safe=''), timeout=5)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+shared/entitlements.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+shared/service_auth.py:86: in service_request
+    return client.request(method, url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:914: in send
+    response = self._send_handling_auth(
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:249: in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+            yield
+        except Exception as exc:
+            mapped_exc = None
+    
+            for from_exc, to_exc in HTTPCORE_EXC_MAP.items():
+                if not isinstance(exc, from_exc):
+                    continue
+                # We want to map to the most specific exception we can find.
+                # Eg if `exc` is an `httpcore.ReadTimeout`, we want to map to
+                # `httpx.ReadTimeout`, not just `httpx.TimeoutException`.
+                if mapped_exc is None or issubclass(to_exc, mapped_exc):
+                    mapped_exc = to_exc
+    
+            if mapped_exc is None:  # pragma: no cover
+                raise
+    
+            message = str(exc)
+>           raise mapped_exc(message) from exc
+E           httpx.ConnectError: [Errno 111] Connection refused
+
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:118: ConnectError
+
+The above exception was the direct cause of the following exception:
+
+isolated = ({'lookup_status': 200, 'state': {'userId': 'u', 'documentType': 'invoice', 'readyToGenerate': True, 'canGenerate': True, ...}, 'jobs': [], 'auth': 'Bearer synthetic'}, <Mock id='140003758003536'>)
+
+    @pytest.mark.asyncio
+    async def test_generation_retry_returns_same_artifact_without_duplicate_queue_or_reservation(isolated):
+        saved, db = isolated
+        operation = "00000000-0000-4000-a000-000000000001"
+        import uuid
+        document_id = str(uuid.uuid5(uuid.NAMESPACE_URL, f"doccraft:u:s:{operation}"))
+        existing = SimpleNamespace(id=document_id, userId="u", documentType="invoice", status="pending", slots={})
+        db.query.return_value.filter.return_value.first.side_effect = [None, existing]
+        payload = {"documentType": "invoice", "sessionId": "s", "operationId": operation}
+>       first = await document.generate_document(payload, db=db, x_user_id="u", authorization="Bearer synthetic")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+services/document/tests/test_generation_integration.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+services/document/app/routers/document.py:327: in generate_document
+    policy=await asyncio.to_thread(get_entitlements,x_user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/asyncio/threads.py:25: in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/thread.py:59: in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+user_id = 'u'
+
+    def get_entitlements(user_id):
+        from urllib.parse import quote
+        try:
+            response = service_request('admin-api', 'GET', os.getenv('ADMIN_API_SERVICE_URL', 'http://localhost:3018') + '/api/v1/internal/entitlements/' + quote(user_id, safe=''), timeout=5)
+            response.raise_for_status()
+            policy = response.json()
+            bools = ('account_enabled','custom_logo','custom_branding','premium_templates','pdf_watermark','priority_processing','ai_enabled')
+            if policy.get('version') != 1 or policy.get('user_id') != user_id or any(type(policy.get(key)) is not bool for key in bools):
+                raise ValueError('Invalid entitlement contract')
+            if type(policy.get('daily_quota')) is not int or policy['daily_quota'] < -1:
+                raise ValueError('Invalid daily quota')
+            return policy
+        except Exception as error:
+>           raise HTTPException(503, 'Current entitlements cannot be verified') from error
+E           fastapi.exceptions.HTTPException: 503: Current entitlements cannot be verified
+
+shared/entitlements.py:20: HTTPException
+_______ test_queue_failure_retains_durable_request_and_retries_same_job ________
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+>           yield
+
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:250: in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:256: in handle_request
+    raise exc from None
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:236: in handle_request
+    response = connection.handle_request(
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:101: in handle_request
+    raise exc
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:78: in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:124: in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_backends/sync.py:207: in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+map = {<class 'TimeoutError'>: <class 'httpcore.ConnectTimeout'>, <class 'OSError'>: <class 'httpcore.ConnectError'>}
+
+    @contextlib.contextmanager
+    def map_exceptions(map: ExceptionMapping) -> typing.Iterator[None]:
+        try:
+            yield
+        except Exception as exc:  # noqa: PIE786
+            for from_exc, to_exc in map.items():
+                if isinstance(exc, from_exc):
+>                   raise to_exc(exc) from exc
+E                   httpcore.ConnectError: [Errno 111] Connection refused
+
+.venv-local/lib/python3.13/site-packages/httpcore/_exceptions.py:14: ConnectError
+
+The above exception was the direct cause of the following exception:
+
+user_id = 'u'
+
+    def get_entitlements(user_id):
+        from urllib.parse import quote
+        try:
+>           response = service_request('admin-api', 'GET', os.getenv('ADMIN_API_SERVICE_URL', 'http://localhost:3018') + '/api/v1/internal/entitlements/' + quote(user_id, safe=''), timeout=5)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+shared/entitlements.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+shared/service_auth.py:86: in service_request
+    return client.request(method, url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:914: in send
+    response = self._send_handling_auth(
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:249: in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+            yield
+        except Exception as exc:
+            mapped_exc = None
+    
+            for from_exc, to_exc in HTTPCORE_EXC_MAP.items():
+                if not isinstance(exc, from_exc):
+                    continue
+                # We want to map to the most specific exception we can find.
+                # Eg if `exc` is an `httpcore.ReadTimeout`, we want to map to
+                # `httpx.ReadTimeout`, not just `httpx.TimeoutException`.
+                if mapped_exc is None or issubclass(to_exc, mapped_exc):
+                    mapped_exc = to_exc
+    
+            if mapped_exc is None:  # pragma: no cover
+                raise
+    
+            message = str(exc)
+>           raise mapped_exc(message) from exc
+E           httpx.ConnectError: [Errno 111] Connection refused
+
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:118: ConnectError
+
+The above exception was the direct cause of the following exception:
+
+isolated = ({'lookup_status': 200, 'state': {'userId': 'u', 'documentType': 'invoice', 'readyToGenerate': True, 'canGenerate': True, ...}, 'jobs': []}, <Mock id='140003758002192'>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f552f9bb770>
+
+    @pytest.mark.asyncio
+    async def test_queue_failure_retains_durable_request_and_retries_same_job(isolated, monkeypatch):
+        saved, db = isolated
+        from app.models.document import Document
+        record = Document(id="saved-id", userId="u", userEmail=None, plan="free", documentType="invoice", templateId="classic", title="Draft", status="pending", slots={**saved["state"]["slots"], "_source":{"queueState":"pending"}})
+        attempts = []
+        class FlakyQueue:
+            def __init__(self, *args): pass
+            async def add(self, **kwargs):
+                attempts.append(kwargs)
+                if len(attempts) == 1: raise RuntimeError("synthetic failure")
+            async def close(self): pass
+        monkeypatch.setattr(document, "Queue", FlakyQueue)
+        with pytest.raises(document.HTTPException) as error:
+            await document._enqueue_saved_document(record, db)
+        assert error.value.status_code == 503
+        db.delete.assert_not_called()
+        assert record.slots["_source"]["queueState"] == "pending"
+>       result = await document._enqueue_saved_document(record, db)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+services/document/tests/test_generation_integration.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+services/document/app/routers/document.py:200: in _enqueue_saved_document
+    policy=await asyncio.to_thread(get_entitlements,record.userId)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/asyncio/threads.py:25: in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/thread.py:59: in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+user_id = 'u'
+
+    def get_entitlements(user_id):
+        from urllib.parse import quote
+        try:
+            response = service_request('admin-api', 'GET', os.getenv('ADMIN_API_SERVICE_URL', 'http://localhost:3018') + '/api/v1/internal/entitlements/' + quote(user_id, safe=''), timeout=5)
+            response.raise_for_status()
+            policy = response.json()
+            bools = ('account_enabled','custom_logo','custom_branding','premium_templates','pdf_watermark','priority_processing','ai_enabled')
+            if policy.get('version') != 1 or policy.get('user_id') != user_id or any(type(policy.get(key)) is not bool for key in bools):
+                raise ValueError('Invalid entitlement contract')
+            if type(policy.get('daily_quota')) is not int or policy['daily_quota'] < -1:
+                raise ValueError('Invalid daily quota')
+            return policy
+        except Exception as error:
+>           raise HTTPException(503, 'Current entitlements cannot be verified') from error
+E           fastapi.exceptions.HTTPException: 503: Current entitlements cannot be verified
+
+shared/entitlements.py:20: HTTPException
+________ test_queue_close_failure_does_not_delete_or_fail_accepted_job _________
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+>           yield
+
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:250: in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:256: in handle_request
+    raise exc from None
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:236: in handle_request
+    response = connection.handle_request(
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:101: in handle_request
+    raise exc
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:78: in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:124: in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_backends/sync.py:207: in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+map = {<class 'TimeoutError'>: <class 'httpcore.ConnectTimeout'>, <class 'OSError'>: <class 'httpcore.ConnectError'>}
+
+    @contextlib.contextmanager
+    def map_exceptions(map: ExceptionMapping) -> typing.Iterator[None]:
+        try:
+            yield
+        except Exception as exc:  # noqa: PIE786
+            for from_exc, to_exc in map.items():
+                if isinstance(exc, from_exc):
+>                   raise to_exc(exc) from exc
+E                   httpcore.ConnectError: [Errno 111] Connection refused
+
+.venv-local/lib/python3.13/site-packages/httpcore/_exceptions.py:14: ConnectError
+
+The above exception was the direct cause of the following exception:
+
+user_id = 'u'
+
+    def get_entitlements(user_id):
+        from urllib.parse import quote
+        try:
+>           response = service_request('admin-api', 'GET', os.getenv('ADMIN_API_SERVICE_URL', 'http://localhost:3018') + '/api/v1/internal/entitlements/' + quote(user_id, safe=''), timeout=5)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+shared/entitlements.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+shared/service_auth.py:86: in service_request
+    return client.request(method, url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:914: in send
+    response = self._send_handling_auth(
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:249: in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+            yield
+        except Exception as exc:
+            mapped_exc = None
+    
+            for from_exc, to_exc in HTTPCORE_EXC_MAP.items():
+                if not isinstance(exc, from_exc):
+                    continue
+                # We want to map to the most specific exception we can find.
+                # Eg if `exc` is an `httpcore.ReadTimeout`, we want to map to
+                # `httpx.ReadTimeout`, not just `httpx.TimeoutException`.
+                if mapped_exc is None or issubclass(to_exc, mapped_exc):
+                    mapped_exc = to_exc
+    
+            if mapped_exc is None:  # pragma: no cover
+                raise
+    
+            message = str(exc)
+>           raise mapped_exc(message) from exc
+E           httpx.ConnectError: [Errno 111] Connection refused
+
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:118: ConnectError
+
+The above exception was the direct cause of the following exception:
+
+isolated = ({'lookup_status': 200, 'state': {'userId': 'u', 'documentType': 'invoice', 'readyToGenerate': True, 'canGenerate': True, ...}, 'jobs': [], 'auth': 'Bearer synthetic'}, <Mock id='140003758003536'>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f552a26da20>
+
+    @pytest.mark.asyncio
+    async def test_queue_close_failure_does_not_delete_or_fail_accepted_job(isolated, monkeypatch):
+        saved, db = isolated
+        class Queue:
+            def __init__(self,*args): pass
+            async def add(self,**kwargs): saved["jobs"].append(kwargs)
+            async def close(self): raise RuntimeError("synthetic cleanup failure")
+        monkeypatch.setattr(document,"Queue",Queue)
+>       result=await document.generate_document({"documentType":"invoice","sessionId":"s"},db=db,x_user_id="u",authorization="Bearer synthetic")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+services/document/tests/test_generation_integration.py:148: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+services/document/app/routers/document.py:327: in generate_document
+    policy=await asyncio.to_thread(get_entitlements,x_user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/asyncio/threads.py:25: in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/thread.py:59: in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+user_id = 'u'
+
+    def get_entitlements(user_id):
+        from urllib.parse import quote
+        try:
+            response = service_request('admin-api', 'GET', os.getenv('ADMIN_API_SERVICE_URL', 'http://localhost:3018') + '/api/v1/internal/entitlements/' + quote(user_id, safe=''), timeout=5)
+            response.raise_for_status()
+            policy = response.json()
+            bools = ('account_enabled','custom_logo','custom_branding','premium_templates','pdf_watermark','priority_processing','ai_enabled')
+            if policy.get('version') != 1 or policy.get('user_id') != user_id or any(type(policy.get(key)) is not bool for key in bools):
+                raise ValueError('Invalid entitlement contract')
+            if type(policy.get('daily_quota')) is not int or policy['daily_quota'] < -1:
+                raise ValueError('Invalid daily quota')
+            return policy
+        except Exception as error:
+>           raise HTTPException(503, 'Current entitlements cannot be verified') from error
+E           fastapi.exceptions.HTTPException: 503: Current entitlements cannot be verified
+
+shared/entitlements.py:20: HTTPException
+_____ test_failed_document_is_not_reported_pending_when_queue_data_is_gone _____
+
+isolated = ({'lookup_status': 200, 'state': {'userId': 'u', 'documentType': 'invoice', 'readyToGenerate': True, 'canGenerate': True, ...}, 'jobs': []}, <Mock id='140003758002864'>)
+
+    @pytest.mark.asyncio
+    async def test_failed_document_is_not_reported_pending_when_queue_data_is_gone(isolated):
+        saved, db = isolated
+        db.query.return_value.filter.return_value.first.return_value = SimpleNamespace(id="doc", status="failed", pdfKey="")
+>       assert (await document.get_job_status("doc", db=db, x_user_id="u"))["status"] == "failed"
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+services/document/tests/test_generation_integration.py:178: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+services/document/app/routers/document.py:372: in get_job_status
+    if not doc or not retained(doc):
+                      ^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+document = namespace(id='doc', status='failed', pdfKey='')
+
+    def retained(document):
+>       value=(document.slots or {}).get('_source',{}).get('retainedUntil')
+               ^^^^^^^^^^^^^^
+E       AttributeError: 'types.SimpleNamespace' object has no attribute 'slots'
+
+services/document/app/services/recovery.py:10: AttributeError
+_ test_notification_failure_cannot_invalidate_a_persisted_pdf_or_refund_its_quota[pro] _
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+>           yield
+
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:250: in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:256: in handle_request
+    raise exc from None
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:236: in handle_request
+    response = connection.handle_request(
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:101: in handle_request
+    raise exc
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:78: in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:124: in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_backends/sync.py:207: in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+map = {<class 'TimeoutError'>: <class 'httpcore.ConnectTimeout'>, <class 'OSError'>: <class 'httpcore.ConnectError'>}
+
+    @contextlib.contextmanager
+    def map_exceptions(map: ExceptionMapping) -> typing.Iterator[None]:
+        try:
+            yield
+        except Exception as exc:  # noqa: PIE786
+            for from_exc, to_exc in map.items():
+                if isinstance(exc, from_exc):
+>                   raise to_exc(exc) from exc
+E                   httpcore.ConnectError: [Errno 111] Connection refused
+
+.venv-local/lib/python3.13/site-packages/httpcore/_exceptions.py:14: ConnectError
+
+The above exception was the direct cause of the following exception:
+
+user_id = 'u'
+
+    def get_entitlements(user_id):
+        from urllib.parse import quote
+        try:
+>           response = service_request('admin-api', 'GET', os.getenv('ADMIN_API_SERVICE_URL', 'http://localhost:3018') + '/api/v1/internal/entitlements/' + quote(user_id, safe=''), timeout=5)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+shared/entitlements.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+shared/service_auth.py:86: in service_request
+    return client.request(method, url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:914: in send
+    response = self._send_handling_auth(
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:249: in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+            yield
+        except Exception as exc:
+            mapped_exc = None
+    
+            for from_exc, to_exc in HTTPCORE_EXC_MAP.items():
+                if not isinstance(exc, from_exc):
+                    continue
+                # We want to map to the most specific exception we can find.
+                # Eg if `exc` is an `httpcore.ReadTimeout`, we want to map to
+                # `httpx.ReadTimeout`, not just `httpx.TimeoutException`.
+                if mapped_exc is None or issubclass(to_exc, mapped_exc):
+                    mapped_exc = to_exc
+    
+            if mapped_exc is None:  # pragma: no cover
+                raise
+    
+            message = str(exc)
+>           raise mapped_exc(message) from exc
+E           httpx.ConnectError: [Errno 111] Connection refused
+
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:118: ConnectError
+
+The above exception was the direct cause of the following exception:
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f552a4f2a50>
+plan = 'pro'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("plan", ["pro", "max"])
+    async def test_notification_failure_cannot_invalidate_a_persisted_pdf_or_refund_its_quota(monkeypatch, plan):
+        record = SimpleNamespace(id="doc",status="pending",pdfKey="",userId="u",documentType="invoice",templateId="classic",slots={},plan=plan)
+        db = Mock()
+        db.query.return_value.filter.return_value.first.return_value = record
+        monkeypatch.setattr(pdf_worker, "SessionLocal", lambda: db)
+        monkeypatch.setattr(pdf_worker, "render_template_to_html", lambda *args: "<p>Fixture</p>")
+        monkeypatch.setattr(pdf_worker, "generate_pdf_via_sidecar", AsyncMock(return_value=b"%PDF-fixture"))
+        monkeypatch.setattr(pdf_worker, "upload_pdf", lambda *args: "fixture.pdf")
+        monkeypatch.setattr(pdf_worker, "get_signed_url", lambda *args: "http://fixture.invalid/document")
+        monkeypatch.setattr(pdf_worker, "track_product_event", Mock())
+        refund = AsyncMock()
+        monkeypatch.setattr(pdf_worker, "refund_quota_unit", refund)
+        queued = []
+        class BrokenQueue:
+            def __init__(self, *args): pass
+            async def add(self, name, data, opts):
+                queued.append((name, verified_job("email_queue_document",SimpleNamespace(name=name,data=data,id=opts["jobId"]),CONFIGS["notification"])))
+                raise RuntimeError("synthetic queue outage")
+            async def close(self): pass
+        monkeypatch.setattr(pdf_worker, "Queue", BrokenQueue)
+        job = SimpleNamespace(id="doc", data={"documentId":"doc", "userId":"u", "userPlan":plan, "userEmail":"fixture@example.com", "documentType":"invoice", "title":"Fixture", "slots":{}})
+        job.name="generate_pdf"
+        job.data=signed_job("document",job.name,job.data,job.id)["data"]
+>       await pdf_worker.process_pdf_job(job, None)
+
+services/document/tests/test_worker_delivery.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+services/document/app/workers/pdf_worker.py:164: in process_pdf_job
+    raise e
+services/document/app/workers/pdf_worker.py:74: in process_pdf_job
+    policy=await asyncio.to_thread(get_entitlements,user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/asyncio/threads.py:25: in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/thread.py:59: in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+user_id = 'u'
+
+    def get_entitlements(user_id):
+        from urllib.parse import quote
+        try:
+            response = service_request('admin-api', 'GET', os.getenv('ADMIN_API_SERVICE_URL', 'http://localhost:3018') + '/api/v1/internal/entitlements/' + quote(user_id, safe=''), timeout=5)
+            response.raise_for_status()
+            policy = response.json()
+            bools = ('account_enabled','custom_logo','custom_branding','premium_templates','pdf_watermark','priority_processing','ai_enabled')
+            if policy.get('version') != 1 or policy.get('user_id') != user_id or any(type(policy.get(key)) is not bool for key in bools):
+                raise ValueError('Invalid entitlement contract')
+            if type(policy.get('daily_quota')) is not int or policy['daily_quota'] < -1:
+                raise ValueError('Invalid daily quota')
+            return policy
+        except Exception as error:
+>           raise HTTPException(503, 'Current entitlements cannot be verified') from error
+E           fastapi.exceptions.HTTPException: 503: Current entitlements cannot be verified
+
+shared/entitlements.py:20: HTTPException
+----------------------------- Captured stdout call -----------------------------
+[pdf-worker] Processing job doc
+[pdf-worker] [doc] Job failed with error: 503: Current entitlements cannot be verified
+_ test_notification_failure_cannot_invalidate_a_persisted_pdf_or_refund_its_quota[max] _
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+>           yield
+
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:250: in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:256: in handle_request
+    raise exc from None
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py:236: in handle_request
+    response = connection.handle_request(
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:101: in handle_request
+    raise exc
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:78: in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_sync/connection.py:124: in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpcore/_backends/sync.py:207: in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+map = {<class 'TimeoutError'>: <class 'httpcore.ConnectTimeout'>, <class 'OSError'>: <class 'httpcore.ConnectError'>}
+
+    @contextlib.contextmanager
+    def map_exceptions(map: ExceptionMapping) -> typing.Iterator[None]:
+        try:
+            yield
+        except Exception as exc:  # noqa: PIE786
+            for from_exc, to_exc in map.items():
+                if isinstance(exc, from_exc):
+>                   raise to_exc(exc) from exc
+E                   httpcore.ConnectError: [Errno 111] Connection refused
+
+.venv-local/lib/python3.13/site-packages/httpcore/_exceptions.py:14: ConnectError
+
+The above exception was the direct cause of the following exception:
+
+user_id = 'u'
+
+    def get_entitlements(user_id):
+        from urllib.parse import quote
+        try:
+>           response = service_request('admin-api', 'GET', os.getenv('ADMIN_API_SERVICE_URL', 'http://localhost:3018') + '/api/v1/internal/entitlements/' + quote(user_id, safe=''), timeout=5)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+shared/entitlements.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+shared/service_auth.py:86: in service_request
+    return client.request(method, url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:914: in send
+    response = self._send_handling_auth(
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:249: in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/contextlib.py:162: in __exit__
+    self.gen.throw(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    @contextlib.contextmanager
+    def map_httpcore_exceptions() -> typing.Iterator[None]:
+        global HTTPCORE_EXC_MAP
+        if len(HTTPCORE_EXC_MAP) == 0:
+            HTTPCORE_EXC_MAP = _load_httpcore_exceptions()
+        try:
+            yield
+        except Exception as exc:
+            mapped_exc = None
+    
+            for from_exc, to_exc in HTTPCORE_EXC_MAP.items():
+                if not isinstance(exc, from_exc):
+                    continue
+                # We want to map to the most specific exception we can find.
+                # Eg if `exc` is an `httpcore.ReadTimeout`, we want to map to
+                # `httpx.ReadTimeout`, not just `httpx.TimeoutException`.
+                if mapped_exc is None or issubclass(to_exc, mapped_exc):
+                    mapped_exc = to_exc
+    
+            if mapped_exc is None:  # pragma: no cover
+                raise
+    
+            message = str(exc)
+>           raise mapped_exc(message) from exc
+E           httpx.ConnectError: [Errno 111] Connection refused
+
+.venv-local/lib/python3.13/site-packages/httpx/_transports/default.py:118: ConnectError
+
+The above exception was the direct cause of the following exception:
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f552a4f3690>
+plan = 'max'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("plan", ["pro", "max"])
+    async def test_notification_failure_cannot_invalidate_a_persisted_pdf_or_refund_its_quota(monkeypatch, plan):
+        record = SimpleNamespace(id="doc",status="pending",pdfKey="",userId="u",documentType="invoice",templateId="classic",slots={},plan=plan)
+        db = Mock()
+        db.query.return_value.filter.return_value.first.return_value = record
+        monkeypatch.setattr(pdf_worker, "SessionLocal", lambda: db)
+        monkeypatch.setattr(pdf_worker, "render_template_to_html", lambda *args: "<p>Fixture</p>")
+        monkeypatch.setattr(pdf_worker, "generate_pdf_via_sidecar", AsyncMock(return_value=b"%PDF-fixture"))
+        monkeypatch.setattr(pdf_worker, "upload_pdf", lambda *args: "fixture.pdf")
+        monkeypatch.setattr(pdf_worker, "get_signed_url", lambda *args: "http://fixture.invalid/document")
+        monkeypatch.setattr(pdf_worker, "track_product_event", Mock())
+        refund = AsyncMock()
+        monkeypatch.setattr(pdf_worker, "refund_quota_unit", refund)
+        queued = []
+        class BrokenQueue:
+            def __init__(self, *args): pass
+            async def add(self, name, data, opts):
+                queued.append((name, verified_job("email_queue_document",SimpleNamespace(name=name,data=data,id=opts["jobId"]),CONFIGS["notification"])))
+                raise RuntimeError("synthetic queue outage")
+            async def close(self): pass
+        monkeypatch.setattr(pdf_worker, "Queue", BrokenQueue)
+        job = SimpleNamespace(id="doc", data={"documentId":"doc", "userId":"u", "userPlan":plan, "userEmail":"fixture@example.com", "documentType":"invoice", "title":"Fixture", "slots":{}})
+        job.name="generate_pdf"
+        job.data=signed_job("document",job.name,job.data,job.id)["data"]
+>       await pdf_worker.process_pdf_job(job, None)
+
+services/document/tests/test_worker_delivery.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+services/document/app/workers/pdf_worker.py:164: in process_pdf_job
+    raise e
+services/document/app/workers/pdf_worker.py:74: in process_pdf_job
+    policy=await asyncio.to_thread(get_entitlements,user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/asyncio/threads.py:25: in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/concurrent/futures/thread.py:59: in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+user_id = 'u'
+
+    def get_entitlements(user_id):
+        from urllib.parse import quote
+        try:
+            response = service_request('admin-api', 'GET', os.getenv('ADMIN_API_SERVICE_URL', 'http://localhost:3018') + '/api/v1/internal/entitlements/' + quote(user_id, safe=''), timeout=5)
+            response.raise_for_status()
+            policy = response.json()
+            bools = ('account_enabled','custom_logo','custom_branding','premium_templates','pdf_watermark','priority_processing','ai_enabled')
+            if policy.get('version') != 1 or policy.get('user_id') != user_id or any(type(policy.get(key)) is not bool for key in bools):
+                raise ValueError('Invalid entitlement contract')
+            if type(policy.get('daily_quota')) is not int or policy['daily_quota'] < -1:
+                raise ValueError('Invalid daily quota')
+            return policy
+        except Exception as error:
+>           raise HTTPException(503, 'Current entitlements cannot be verified') from error
+E           fastapi.exceptions.HTTPException: 503: Current entitlements cannot be verified
+
+shared/entitlements.py:20: HTTPException
+----------------------------- Captured stdout call -----------------------------
+[pdf-worker] Processing job doc
+[pdf-worker] [doc] Job failed with error: 503: Current entitlements cannot be verified
+=============================== warnings summary ===============================
+.venv-local/lib/python3.13/site-packages/fastapi/testclient.py:1
+  /home/eranda/Projects/doc-craft/.venv-local/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED services/document/tests/test_generation_integration.py::test_generation_preserves_authoritative_assets_and_ignores_client_media_injection
+FAILED services/document/tests/test_generation_integration.py::test_generation_uses_authorized_state_and_ignores_client_injection
+FAILED services/document/tests/test_generation_integration.py::test_generation_retry_returns_same_artifact_without_duplicate_queue_or_reservation
+FAILED services/document/tests/test_generation_integration.py::test_queue_failure_retains_durable_request_and_retries_same_job
+FAILED services/document/tests/test_generation_integration.py::test_queue_close_failure_does_not_delete_or_fail_accepted_job
+FAILED services/document/tests/test_generation_integration.py::test_failed_document_is_not_reported_pending_when_queue_data_is_gone
+FAILED services/document/tests/test_worker_delivery.py::test_notification_failure_cannot_invalidate_a_persisted_pdf_or_refund_its_quota[pro]
+FAILED services/document/tests/test_worker_delivery.py::test_notification_failure_cannot_invalidate_a_persisted_pdf_or_refund_its_quota[max]
+8 failed, 62 passed, 1 warning in 4.16s

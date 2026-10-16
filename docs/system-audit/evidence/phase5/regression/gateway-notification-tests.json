@@ -1,0 +1,15 @@
+{
+  "id": "gateway-notification-tests",
+  "command": [
+    "node_modules/.bin/vitest",
+    "run",
+    "services/gateway/src",
+    "services/notification/src"
+  ],
+  "cwd": ".",
+  "started_utc": "2026-10-16T08:25:43.538597+00:00",
+  "seconds": 2.55,
+  "exit_code": 0,
+  "status": "PASS",
+  "log": "docs/system-audit/evidence/phase5/regression/gateway-notification-tests.log"
+}

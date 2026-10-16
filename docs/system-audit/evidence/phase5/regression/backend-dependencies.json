@@ -1,0 +1,14 @@
+{
+  "id": "backend-dependencies",
+  "command": [
+    "npm",
+    "audit",
+    "--json"
+  ],
+  "cwd": ".",
+  "started_utc": "2026-10-16T08:25:51.783678+00:00",
+  "seconds": 1.68,
+  "exit_code": 0,
+  "status": "PASS",
+  "log": "docs/system-audit/evidence/phase5/regression/backend-dependencies.log"
+}

@@ -1,0 +1,404 @@
+{
+  "auth": [
+    {
+      "methods": [
+        "POST"
+      ],
+      "path": "^/internal/verify-token$",
+      "callers": [
+        "gateway",
+        "chat",
+        "payment",
+        "quota",
+        "notification",
+        "document",
+        "analytics"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/internal/users(?:/[^/]+)?$",
+      "callers": [
+        "admin-api"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/internal/users/(?:guest_)?[0-9a-f-]{36}$",
+      "callers": [
+        "payment"
+      ]
+    },
+    {
+      "methods": [
+        "PATCH"
+      ],
+      "path": "^/internal/users/[^/]+/plan$",
+      "callers": [
+        "payment",
+        "admin-api"
+      ]
+    },
+    {
+      "methods": [
+        "PATCH"
+      ],
+      "path": "^/internal/users/[^/]+/status$",
+      "callers": [
+        "admin-api"
+      ]
+    },
+    {
+      "methods": [
+        "GET",
+        "POST",
+        "PATCH"
+      ],
+      "path": "^/internal/referrals(?:/[^/]+/convert)?$",
+      "callers": [
+        "admin-api"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/metrics$",
+      "callers": [
+        "admin-api"
+      ]
+    },
+    {
+      "methods": [
+        "POST"
+      ],
+      "path": "^/internal/users/[^/]+/anonymize$",
+      "callers": [
+        "admin-api"
+      ]
+    }
+  ],
+  "quota": [
+    {
+      "methods": [
+        "POST"
+      ],
+      "path": "^/v1/quota/(?:check|refund)$",
+      "callers": [
+        "chat",
+        "document"
+      ]
+    },
+    {
+      "methods": [
+        "POST"
+      ],
+      "path": "^/v1/quota/plan/sync$",
+      "callers": [
+        "payment",
+        "admin-api"
+      ]
+    },
+    {
+      "methods": [
+        "POST"
+      ],
+      "path": "^/v1/quota/(?:override|reset)$",
+      "callers": [
+        "admin-api"
+      ]
+    },
+    {
+      "methods": [
+        "DELETE"
+      ],
+      "path": "^/v1/quota/override/[^/]+$",
+      "callers": [
+        "admin-api"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/v1/quota/admin/stats$",
+      "callers": [
+        "admin-api"
+      ]
+    }
+  ],
+  "payment": [
+    {
+      "methods": [
+        "GET",
+        "POST",
+        "PATCH"
+      ],
+      "path": "^/v1/payment/admin/[^?#]+$",
+      "callers": [
+        "admin-api"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/v1/payment/admin/revenue$",
+      "callers": [
+        "analytics"
+      ]
+    }
+  ],
+  "chat": [
+    {
+      "methods": [
+        "POST"
+      ],
+      "path": "^/internal/resources$",
+      "callers": [
+        "admin-api"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/(?:api/|v1/chat/api/)?internal/status/keys$",
+      "callers": [
+        "admin-api"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/(?:api/|v1/chat/api/)?metrics$",
+      "callers": [
+        "admin-api"
+      ]
+    }
+  ],
+  "notification": [
+    {
+      "methods": [
+        "POST"
+      ],
+      "path": "^/notification/send$",
+      "callers": [
+        "auth",
+        "payment",
+        "document",
+        "admin-api"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/notification/logs/admin$",
+      "callers": [
+        "admin-api"
+      ]
+    }
+  ],
+  "analytics": [
+    {
+      "methods": [
+        "POST"
+      ],
+      "path": "^/v1/analytics/(?:event|generation-event)$",
+      "callers": [
+        "auth",
+        "chat",
+        "document",
+        "payment",
+        "quota",
+        "admin-api"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/v1/analytics/[^?#]+$",
+      "callers": [
+        "admin-api"
+      ]
+    }
+  ],
+  "admin-api": [
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/api/v1/internal/config/plans$",
+      "callers": [
+        "quota",
+        "payment",
+        "chat",
+        "document"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/api/v1/internal/config/settings$",
+      "callers": [
+        "gateway",
+        "payment",
+        "auth",
+        "document"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/api/v1/internal/config/(?:ai_model_routing|mcp_tools)$",
+      "callers": [
+        "chat"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/api/v1/internal/config/branding$",
+      "callers": [
+        "notification"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/api/v1/admin/notifications/config/public$",
+      "callers": [
+        "notification"
+      ]
+    },
+    {
+      "methods": [
+        "POST"
+      ],
+      "path": "^/api/v1/admin/security/rate-limit-violation$",
+      "callers": [
+        "gateway"
+      ]
+    },
+    {
+      "methods": [
+        "POST"
+      ],
+      "path": "^/api/v1/admin/security/(?:bot-detection-event|auto-suspend)$",
+      "callers": [
+        "quota"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/api/v1/internal/config(?:/[^/]+)?$",
+      "callers": [
+        "admin-api"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/api/v1/internal/config/template_catalog$",
+      "callers": [
+        "chat",
+        "document"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/api/v1/internal/entitlements/[^/]+$",
+      "callers": [
+        "chat",
+        "document",
+        "quota",
+        "payment"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/api/v1/internal/uploaded-templates(?:/upl_[a-f0-9]{32}_v[0-9]+)?$",
+      "callers": [
+        "document",
+        "chat"
+      ]
+    },
+    {
+      "methods": [
+        "POST"
+      ],
+      "path": "^/api/v1/internal/uploaded-templates$",
+      "callers": [
+        "document"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/api/v1/internal/entitlement-plans$",
+      "callers": [
+        "payment"
+      ]
+    },
+    {
+      "methods": [
+        "POST"
+      ],
+      "path": "^/api/v1/internal/automation/events$",
+      "callers": [
+        "payment"
+      ]
+    }
+  ],
+  "pdf": [
+    {
+      "methods": [
+        "POST"
+      ],
+      "path": "^/generate$",
+      "callers": [
+        "document"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/ready$",
+      "callers": [
+        "document",
+        "admin-api"
+      ]
+    }
+  ],
+  "document": [
+    {
+      "methods": [
+        "POST"
+      ],
+      "path": "^/v1/document/internal/users/[^/]+/anonymize$",
+      "callers": [
+        "admin-api"
+      ]
+    }
+  ]
+}

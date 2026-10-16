@@ -1,0 +1,13 @@
+{
+  "id": "chromium-pdf-templates",
+  "cwd": ".",
+  "command": [
+    ".venv-local/bin/python",
+    "scripts/system_audit_pdf.py"
+  ],
+  "started_utc": "2026-10-15T06:00:28.284500+00:00",
+  "seconds": 22.68,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/chromium-pdf-templates.log"
+}

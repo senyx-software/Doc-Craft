@@ -1,0 +1,74 @@
+{
+  "generated_utc": "2026-10-15T18:07:42.770447+00:00",
+  "production_readiness": "NOT READY",
+  "stack": {
+    "passed": 160,
+    "total": 160
+  },
+  "security": {
+    "passed": 64,
+    "total": 64
+  },
+  "browser": {
+    "passed": 11,
+    "total": 11
+  },
+  "original_remaining_nine": [
+    [
+      "U-R02",
+      "PARTIAL; software pricing/reporting corrected",
+      "Cent-precision USD/LKR create/update; annual billing snapshots; separate collected revenue and monthly/annual run rates by currency; unknown legacy amounts identified",
+      "Actual admin UI price \u2192 user UI; signed local annual callback and currency totals. Provider sandbox, adjustments/refunds and historical reconciliation remain unverified."
+    ],
+    [
+      "U-R04",
+      "UNRESOLVED",
+      "Plan benefits still lack one enforced entitlement contract across every consumer",
+      "Logo/premium templates/watermark/priority/retention/Max toggles are not fully verified or consistently enforced; separate feature_flags domain remains."
+    ],
+    [
+      "U-R06",
+      "PARTIAL; bundled publication corrected",
+      "RBAC + second-factor publish/withdraw persists catalog policy; Document listing and Chat aliases enforce it; announcements already persisted",
+      "Actual downstream availability tested. Arbitrary uploaded HTML/template authoring/version approval pipeline is not implemented."
+    ],
+    [
+      "U-R07",
+      "PARTIAL; durable intake corrected",
+      "PostgreSQL webhook inbox; signed Redis delivery; startup/periodic reconstruction; bounded retry/DLQ; immutable server-bound PayHere identity",
+      "Restart reconstruction and duplicate/tampered-ID fixtures pass. Cross-service atomicity and arbitrary event ordering remain open. PayHere recurring installment identity requires Retrieval API reconciliation; it is deliberately not inferred from unsigned fields."
+    ],
+    [
+      "U-R08",
+      "PARTIAL",
+      "Service-owned reservation/refund namespaces, idempotent Lua, delayed reset cannot erase new-day Redis usage; plan transitions preserve usage",
+      "Actual concurrent reserve/refund and delayed-reset checks. Crash between reservation/document commit, refund outage repair, full Redis data loss, override expiry, and browser-export metering remain open."
+    ],
+    [
+      "U-R10",
+      "BLOCKED externally",
+      "Pairwise keys, Auth-only signing authority, separate admin/download keys and private generation/injection tooling",
+      "No production/provider credential revocation, KMS/secret-store rollout, backup or deployed rotation proof was available."
+    ],
+    [
+      "U-R11",
+      "FIXED for tested draft/layout/export paths",
+      "Dual-credential atomic guest claim; one target account; retained session pointers; actual guest login/register access; server-persisted canvas presentation; browser reload/export",
+      "Real browser guest login retains draft ownership and values; actual canvas keyboard edit persists and reloads; actual browser PDF downloads. Browser exports are still local artifacts and do not create server PDF history or enforce server generation quota."
+    ],
+    [
+      "U-R12",
+      "PARTIAL; major controls corrected",
+      "Current-account/revocation checks, persisted admin sessions, stable-role authorization, shared abuse budgets, protected reporting/configuration, TOTP replacement protection",
+      "Direct-boundary logout and role/abuse tests pass. Authenticator codes can still be reused within the accepted time window; encrypted TOTP storage and exhaustive abuse/load testing remain open."
+    ],
+    [
+      "U-R13",
+      "PARTIAL",
+      "Renderer credential/process isolation; bounded rendering/readiness/recovery; service auth/replay-store failures reject requests; payment outbox recovery",
+      "Actual Auth restart, Redis pause/resume, Chromium child restart and local overload tests. Fleet readiness, failover, full queue drain/capacity and production SLOs remain unverified."
+    ]
+  ],
+  "new_finding_groups": 23,
+  "external_providers": "NOT TESTED; no real charges/email/provider mutations"
+}

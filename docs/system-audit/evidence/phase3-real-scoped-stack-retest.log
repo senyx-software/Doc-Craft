@@ -1,0 +1,20 @@
+PASS auth checked-in PostgreSQL migrations applied
+PASS chat checked-in PostgreSQL migrations applied
+PASS payment checked-in PostgreSQL migrations applied
+PASS quota checked-in PostgreSQL migrations applied
+PASS auth local startup
+PASS chat local startup
+PASS quota local startup
+PASS payment local startup
+PASS document local startup
+PASS admin local startup
+PASS sidecar local startup
+PASS gateway local startup
+PASS notification local startup
+PASS Registration, stored verification challenge, verification and login through gateway
+PASS Profile update survives authenticated reload
+PASS Persisted administrator password + one-time code sign-in
+PASS Isolated test rate policy persists through admin configuration
+PASS Admin daily allowance reaches authenticated user quota
+PASS Unified admin override persists plan and quota into user APIs
+No module named 'shared'

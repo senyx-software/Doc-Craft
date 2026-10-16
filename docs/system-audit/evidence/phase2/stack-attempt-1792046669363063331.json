@@ -1,0 +1,235 @@
+{
+  "seconds": 14.74,
+  "database": "doccraft_phase2_9a9f360c079a",
+  "checks": [
+    {
+      "id": "P2-I001",
+      "workflow": "auth PostgreSQL schema applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database"
+    },
+    {
+      "id": "P2-I002",
+      "workflow": "chat PostgreSQL schema applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database"
+    },
+    {
+      "id": "P2-I003",
+      "workflow": "payment PostgreSQL schema applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database"
+    },
+    {
+      "id": "P2-I004",
+      "workflow": "quota PostgreSQL schema applied",
+      "status": "VERIFIED",
+      "category": "Database",
+      "evidence": "Fresh uniquely named database"
+    },
+    {
+      "id": "P2-I005",
+      "workflow": "auth local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I006",
+      "workflow": "chat local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I007",
+      "workflow": "quota local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I008",
+      "workflow": "payment local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I009",
+      "workflow": "document local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I010",
+      "workflow": "admin local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I011",
+      "workflow": "sidecar local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I012",
+      "workflow": "gateway local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I013",
+      "workflow": "notification local startup",
+      "status": "VERIFIED",
+      "category": "Infrastructure",
+      "evidence": "HTTP health endpoint"
+    },
+    {
+      "id": "P2-I014",
+      "workflow": "Registration, stored verification challenge, verification and login through gateway",
+      "status": "VERIFIED",
+      "category": "Authentication",
+      "evidence": "Two isolated users; email transport is local fixture"
+    },
+    {
+      "id": "P2-I015",
+      "workflow": "Profile update survives authenticated reload",
+      "status": "VERIFIED",
+      "category": "API",
+      "evidence": null
+    },
+    {
+      "id": "P2-I016",
+      "workflow": "Persisted administrator password + one-time code sign-in",
+      "status": "VERIFIED",
+      "category": "Authentication",
+      "evidence": "Real HTTP + PostgreSQL"
+    },
+    {
+      "id": "P2-I017",
+      "workflow": "Admin daily allowance reaches authenticated user quota",
+      "status": "VERIFIED",
+      "category": "Admin synchronization",
+      "evidence": {
+        "limit": 20
+      }
+    },
+    {
+      "id": "P2-I018",
+      "workflow": "invoice multi-turn committed SSE update",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": {
+        "turnId": "86cb850d-bf3a-43d6-b9ae-ff353fb88e87",
+        "provider": "deterministic parser; live AI not exercised"
+      }
+    },
+    {
+      "id": "P2-I019",
+      "workflow": "invoice duplicate turn replay",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I020",
+      "workflow": "invoice multi-turn committed SSE update",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": {
+        "turnId": "08c9e1a4-0d72-404d-941a-c4e15a9e9400",
+        "provider": "deterministic parser; live AI not exercised"
+      }
+    },
+    {
+      "id": "P2-I021",
+      "workflow": "invoice duplicate turn replay",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I022",
+      "workflow": "invoice chat fields persist after reload",
+      "status": "VERIFIED",
+      "category": "Chat",
+      "evidence": null
+    },
+    {
+      "id": "P2-I023",
+      "workflow": "invoice real Redis queue \u2192 worker \u2192 Chromium \u2192 persisted PDF",
+      "status": "VERIFIED",
+      "category": "PDF",
+      "evidence": {
+        "status": "completed",
+        "documentId": "33c54326-a301-501c-b590-a33edc67fabe"
+      }
+    },
+    {
+      "id": "P2-I024",
+      "workflow": "invoice exported PDF contains persisted chat edits",
+      "status": "UNRESOLVED",
+      "category": "PDF",
+      "evidence": {
+        "sha256": "631d662ff4b815a9f264cc227a454168573e61495ae51fc0c63fe5b6fc367a31"
+      }
+    },
+    {
+      "workflow": "Stack execution stopped",
+      "status": "UNRESOLVED",
+      "evidence": "invoice exported PDF contains persisted chat edits: {'sha256': '631d662ff4b815a9f264cc227a454168573e61495ae51fc0c63fe5b6fc367a31'}"
+    }
+  ],
+  "external_providers": "NOT TESTED; synthetic credentials, no real communications or charges",
+  "cleanup": [
+    {
+      "service": "redis",
+      "exit_code": 0
+    },
+    {
+      "service": "auth",
+      "exit_code": 0
+    },
+    {
+      "service": "quota",
+      "exit_code": 0
+    },
+    {
+      "service": "chat",
+      "exit_code": 0
+    },
+    {
+      "service": "payment",
+      "exit_code": 0
+    },
+    {
+      "service": "notification",
+      "exit_code": 143
+    },
+    {
+      "service": "sidecar",
+      "exit_code": 0
+    },
+    {
+      "service": "admin",
+      "exit_code": -15
+    },
+    {
+      "service": "document",
+      "exit_code": -15
+    },
+    {
+      "service": "gateway",
+      "exit_code": 0
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+/*
+ * Table styles — composed from Tailwind utility classes (@apply), using the
+ * brand/surface scale defined in tailwind.config.js.
+ */
+
+@layer components {
+  .table {
+    @apply w-full text-left border-collapse;
+  }
+
+  .table-head {
+    @apply text-body-sm font-semibold text-appTextSecondary uppercase tracking-wide;
+  }
+
+  .table-head-cell {
+    @apply px-4 py-3 border-b border-appBorder;
+  }
+
+  .table-row {
+    @apply border-b border-appBorder transition-colors duration-150 hover:bg-appSurface;
+  }
+
+  .table-cell {
+    @apply px-4 py-3 text-paragraph-base text-appTextPrimary;
+  }
+}

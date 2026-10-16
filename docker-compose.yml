@@ -1,0 +1,416 @@
+# Local development topology. TLS and deployed security controls remain release gates.
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: doccraft-redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test:
+        - CMD
+        - redis-cli
+        - --port
+        - ${REDIS_PORT}
+        - --user
+        - health
+        - ping
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    command:
+      - redis-server
+      - --port
+      - ${REDIS_PORT}
+      - --bind
+      - 0.0.0.0
+      - --protected-mode
+      - yes
+      - --aclfile
+      - /run/secrets/redis_acl
+      - --appendonly
+      - yes
+      - --appendfsync
+      - everysec
+      - --maxmemory-policy
+      - noeviction
+    env_file:
+      - .local/secrets/redis-health.env
+    secrets:
+      - source: redis_acl
+        target: redis_acl
+    networks:
+      - backend
+  gateway:
+    build:
+      context: .
+      dockerfile: services/gateway/Dockerfile
+    container_name: doccraft-gateway
+    env_file:
+      - services/gateway/gateway.env
+      - .local/secrets/gateway.env
+    environment:
+      AUTH_SERVICE_URL: http://auth:${AUTH_PORT}
+      AI_SERVICE_URL: http://chat:${CHAT_PORT}
+      DOCUMENT_SERVICE_URL: http://document:${DOCUMENT_PORT}
+      BILLING_SERVICE_URL: http://payment:${PAYMENT_PORT}
+      QUOTA_SERVICE_URL: http://quota:${QUOTA_PORT}
+      NOTIFICATION_SERVICE_URL: http://notification:${NOTIFICATION_PORT}
+      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT}
+      ADMIN_API_SERVICE_URL: http://admin-api:${ADMIN_API_PORT}
+      SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
+    ports:
+      - 127.0.0.1:${GATEWAY_PORT}:${GATEWAY_PORT}
+    depends_on:
+      redis:
+        condition: service_healthy
+      auth:
+        condition: service_started
+      chat:
+        condition: service_started
+      document:
+        condition: service_started
+      payment:
+        condition: service_started
+      quota:
+        condition: service_started
+      notification:
+        condition: service_started
+      analytics:
+        condition: service_started
+      admin-api:
+        condition: service_started
+    secrets:
+      - source: gateway_identity
+        target: service_identity
+    networks:
+      - backend
+      - egress
+      - egress
+    init: true
+    stop_grace_period: 30s
+    security_opt:
+      - no-new-privileges:true
+  auth:
+    build:
+      context: .
+      dockerfile: services/auth/Dockerfile
+    container_name: doccraft-auth
+    env_file:
+      - services/auth/auth.env
+      - .local/secrets/auth.env
+    environment:
+      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT}
+      NOTIFICATION_SERVICE_URL: http://notification:${NOTIFICATION_PORT}
+      SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
+    depends_on:
+      redis:
+        condition: service_healthy
+    secrets:
+      - source: auth_identity
+        target: service_identity
+    networks:
+      - backend
+      - egress
+      - egress
+    init: true
+    stop_grace_period: 30s
+    security_opt:
+      - no-new-privileges:true
+  quota:
+    build:
+      context: .
+      dockerfile: services/quota/Dockerfile
+    container_name: doccraft-quota
+    env_file:
+      - services/quota/quota.env
+      - .local/secrets/quota.env
+    environment:
+      AUTH_SERVICE_URL: http://auth:${AUTH_PORT}
+      ADMIN_API_SERVICE_URL: http://admin-api:${ADMIN_API_PORT}
+      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT}
+      SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
+    depends_on:
+      redis:
+        condition: service_healthy
+    secrets:
+      - source: quota_identity
+        target: service_identity
+    networks:
+      - backend
+      - egress
+    init: true
+    stop_grace_period: 30s
+    security_opt:
+      - no-new-privileges:true
+  chat:
+    build:
+      context: .
+      dockerfile: services/chat/Dockerfile
+    container_name: doccraft-chat
+    env_file:
+      - services/chat/chat.env
+      - .local/secrets/chat.env
+    environment:
+      AUTH_SERVICE_URL: http://auth:${AUTH_PORT}
+      ADMIN_API_SERVICE_URL: http://admin-api:${ADMIN_API_PORT}
+      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT}
+      AI_SERVICE_URL: http://chat:${CHAT_PORT}
+      QUOTA_SERVICE_URL: http://quota:${QUOTA_PORT}
+      SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
+    depends_on:
+      redis:
+        condition: service_healthy
+    secrets:
+      - source: chat_identity
+        target: service_identity
+    networks:
+      - backend
+      - egress
+    init: true
+    stop_grace_period: 30s
+    security_opt:
+      - no-new-privileges:true
+  document:
+    build:
+      context: .
+      dockerfile: services/document/Dockerfile
+    container_name: doccraft-document
+    env_file:
+      - services/document/document.env
+      - .local/secrets/document.env
+    environment:
+      AI_SERVICE_URL: http://chat:${CHAT_PORT}
+      QUOTA_SERVICE_URL: http://quota:${QUOTA_PORT}
+      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT}
+      AUTH_SERVICE_URL: http://auth:${AUTH_PORT}
+      GATEWAY_URL: http://gateway:${GATEWAY_PORT}
+      SIDECAR_URL: http://pdf:${DOCUMENT_SIDECAR_PORT}/generate
+      SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
+    depends_on:
+      redis:
+        condition: service_healthy
+      pdf:
+        condition: service_started
+    secrets:
+      - source: document_identity
+        target: service_identity
+    networks:
+      - backend
+      - egress
+    init: true
+    stop_grace_period: 30s
+    security_opt:
+      - no-new-privileges:true
+    command:
+      - .venv/bin/python
+      - -m
+      - uvicorn
+      - app.main:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - ${DOCUMENT_PORT}
+  payment:
+    build:
+      context: .
+      dockerfile: services/payment/Dockerfile
+    container_name: doccraft-payment
+    env_file:
+      - services/payment/payment.env
+      - .local/secrets/payment.env
+    environment:
+      QUOTA_SERVICE_URL: http://quota:${QUOTA_PORT}
+      NOTIFICATION_SERVICE_URL: http://notification:${NOTIFICATION_PORT}
+      ADMIN_API_SERVICE_URL: http://admin-api:${ADMIN_API_PORT}
+      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT}
+      AUTH_SERVICE_URL: http://auth:${AUTH_PORT}
+      SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
+    depends_on:
+      redis:
+        condition: service_healthy
+    secrets:
+      - source: payment_identity
+        target: service_identity
+    networks:
+      - backend
+      - egress
+    init: true
+    stop_grace_period: 30s
+    security_opt:
+      - no-new-privileges:true
+  notification:
+    build:
+      context: .
+      dockerfile: services/notification/Dockerfile
+    container_name: doccraft-notification
+    env_file:
+      - services/notification/notification.env
+      - .local/secrets/notification.env
+    environment:
+      AUTH_SERVICE_URL: http://auth:${AUTH_PORT}
+      ADMIN_API_URL: http://admin-api:${ADMIN_API_PORT}
+      SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
+    depends_on:
+      redis:
+        condition: service_healthy
+    secrets:
+      - source: notification_identity
+        target: service_identity
+    networks:
+      - backend
+      - egress
+    init: true
+    stop_grace_period: 30s
+    security_opt:
+      - no-new-privileges:true
+  analytics:
+    build:
+      context: .
+      dockerfile: services/analytics/Dockerfile
+    container_name: doccraft-analytics
+    env_file:
+      - services/analytics/analytics.env
+      - .local/secrets/analytics.env
+    environment:
+      SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
+    depends_on:
+      redis:
+        condition: service_healthy
+    secrets:
+      - source: analytics_identity
+        target: service_identity
+    networks:
+      - backend
+      - egress
+    init: true
+    stop_grace_period: 30s
+    security_opt:
+      - no-new-privileges:true
+  admin-api:
+    build:
+      context: .
+      dockerfile: services/admin-api/Dockerfile
+    container_name: doccraft-admin-api
+    env_file:
+      - services/admin-api/admin-api.env
+      - .local/secrets/admin-api.env
+    environment:
+      AUTH_SERVICE_URL: http://auth:${AUTH_PORT}
+      QUOTA_SERVICE_URL: http://quota:${QUOTA_PORT}
+      PAYMENT_SERVICE_URL: http://payment:${PAYMENT_PORT}
+      CHAT_SERVICE_URL: http://chat:${CHAT_PORT}
+      DOCUMENT_SERVICE_URL: http://document:${DOCUMENT_PORT}
+      NOTIFICATION_SERVICE_URL: http://notification:${NOTIFICATION_PORT}
+      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT}
+      GATEWAY_URL: http://gateway:${GATEWAY_PORT}
+      SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
+    ports:
+      - 127.0.0.1:${ADMIN_API_PORT}:${ADMIN_API_PORT}
+    depends_on:
+      redis:
+        condition: service_healthy
+    secrets:
+      - source: admin-api_identity
+        target: service_identity
+    networks:
+      - backend
+      - egress
+    init: true
+    stop_grace_period: 30s
+    security_opt:
+      - no-new-privileges:true
+  user:
+    build:
+      context: .
+      dockerfile: user-frontend/Dockerfile
+    container_name: doccraft-user-frontend
+    environment:
+      VITE_API_BASE_URL: http://localhost:${GATEWAY_PORT}/v1
+    ports:
+      - 127.0.0.1:${USER_FRONTEND_PORT}:${USER_FRONTEND_PORT}
+    volumes:
+      - ./user-frontend:/app/user-frontend
+      - /app/user-frontend/node_modules
+      - ./shared:/app/shared:ro
+    depends_on:
+      - gateway
+    networks:
+      - egress
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    container_name: doccraft-admin-frontend
+    environment:
+      VITE_API_BASE_URL: http://localhost:${GATEWAY_PORT}/v1
+      VITE_ADMIN_API_BASE_URL: http://localhost:${ADMIN_API_PORT}/api/v1
+    ports:
+      - 127.0.0.1:${ADMIN_FRONTEND_PORT}:${ADMIN_FRONTEND_PORT}
+    volumes:
+      - ./admin:/app
+      - /app/node_modules
+    depends_on:
+      - gateway
+    networks:
+      - egress
+  pdf:
+    build:
+      context: .
+      dockerfile: services/document/puppeteer/Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .local/secrets/pdf.env
+    environment:
+      NODE_ENV: production
+      SIDECAR_PORT: ${DOCUMENT_SIDECAR_PORT}
+      SIDECAR_HOST: 0.0.0.0
+      SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
+      PDF_MAX_CONCURRENT: "2"
+    secrets:
+      - source: pdf_identity
+        target: service_identity
+    networks:
+      - backend
+    init: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 768m
+    cpus: 1
+    pids_limit: 128
+    shm_size: 256m
+    stop_grace_period: 30s
+    depends_on:
+      redis:
+        condition: service_healthy
+volumes:
+  ? redis_data
+secrets:
+  gateway_identity:
+    file: .local/secrets/gateway.json
+  auth_identity:
+    file: .local/secrets/auth.json
+  quota_identity:
+    file: .local/secrets/quota.json
+  chat_identity:
+    file: .local/secrets/chat.json
+  document_identity:
+    file: .local/secrets/document.json
+  payment_identity:
+    file: .local/secrets/payment.json
+  notification_identity:
+    file: .local/secrets/notification.json
+  analytics_identity:
+    file: .local/secrets/analytics.json
+  admin-api_identity:
+    file: .local/secrets/admin-api.json
+  pdf_identity:
+    file: .local/secrets/pdf.json
+  redis_acl:
+    file: .local/secrets/redis.acl
+networks:
+  backend:
+    internal: true
+  egress: {}

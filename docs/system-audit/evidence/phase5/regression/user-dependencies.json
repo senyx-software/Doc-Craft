@@ -1,0 +1,14 @@
+{
+  "id": "user-dependencies",
+  "command": [
+    "npm",
+    "audit",
+    "--json"
+  ],
+  "cwd": "user-frontend",
+  "started_utc": "2026-10-16T08:25:52.639624+00:00",
+  "seconds": 2.36,
+  "exit_code": 1,
+  "status": "FAIL",
+  "log": "docs/system-audit/evidence/phase5/regression/user-dependencies.log"
+}

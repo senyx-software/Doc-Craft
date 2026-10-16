@@ -1,0 +1,17 @@
+.git
+**/node_modules
+**/dist
+**/.venv*
+.venv*
+**/__pycache__
+**/.pytest_cache
+.local
+**/.env
+**/.env.*
+**/*.env
+**/*.db
+**/*.sqlite*
+**/storage
+dump.rdb
+docs/system-audit/evidence
+.idea

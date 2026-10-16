@@ -1,0 +1,15 @@
+{
+  "id": "phase3-final-documents",
+  "cwd": "services/document",
+  "command": [
+    "../../.venv-local/bin/python",
+    "-m",
+    "pytest",
+    "-q"
+  ],
+  "started_utc": "2026-10-15T14:16:27.018747+00:00",
+  "seconds": 4.63,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-final-documents.log"
+}

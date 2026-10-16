@@ -1,0 +1,12 @@
+[auth] trackProductEvent('user_signed_up') failed: [TypeError: fetch failed] {
+  [cause]: Error: bad port
+      at makeNetworkError (node:internal/deps/undici/undici:11806:35)
+[auth] trackProductEvent('user_logged_in') failed: [TypeError: fetch failed] {
+  [cause]: Error: bad port
+      at makeNetworkError (node:internal/deps/undici/undici:11806:35)
+[auth] trackProductEvent('user_signed_up') failed: [TypeError: fetch failed] {
+  [cause]: Error: bad port
+      at makeNetworkError (node:internal/deps/undici/undici:11806:35)
+[auth] trackProductEvent('user_logged_in') failed: [TypeError: fetch failed] {
+  [cause]: Error: bad port
+      at makeNetworkError (node:internal/deps/undici/undici:11806:35)

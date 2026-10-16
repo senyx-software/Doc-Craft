@@ -1,0 +1,13 @@
+{
+  "id": "phase2-probes-final",
+  "cwd": ".",
+  "command": [
+    ".venv-local/bin/python",
+    "scripts/system_audit_phase2_probes.py"
+  ],
+  "started_utc": "2026-10-15T12:41:51.377494+00:00",
+  "seconds": 42.81,
+  "exit_code": 1,
+  "result": "FAIL",
+  "log": "evidence/phase2-probes-final.log"
+}

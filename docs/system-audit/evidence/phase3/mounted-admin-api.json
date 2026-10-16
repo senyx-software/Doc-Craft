@@ -1,0 +1,1098 @@
+[
+  {
+    "route": "/api/v1/admin/auth/login",
+    "method": "POST",
+    "operation_id": "login_api_v1_admin_auth_login_post",
+    "tags": [
+      "Admin Auth"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/auth/verify-login-code",
+    "method": "POST",
+    "operation_id": "verify_login_code_api_v1_admin_auth_verify_login_code_post",
+    "tags": [
+      "Admin Auth"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/auth/forgot-password",
+    "method": "POST",
+    "operation_id": "forgot_password_api_v1_admin_auth_forgot_password_post",
+    "tags": [
+      "Admin Auth"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/auth/reset-password",
+    "method": "POST",
+    "operation_id": "reset_password_api_v1_admin_auth_reset_password_post",
+    "tags": [
+      "Admin Auth"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/auth/change-password",
+    "method": "POST",
+    "operation_id": "change_password_api_v1_admin_auth_change_password_post",
+    "tags": [
+      "Admin Auth"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/auth/totp/setup",
+    "method": "POST",
+    "operation_id": "setup_totp_api_v1_admin_auth_totp_setup_post",
+    "tags": [
+      "Admin Auth"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/auth/totp/verify",
+    "method": "POST",
+    "operation_id": "verify_and_enable_totp_api_v1_admin_auth_totp_verify_post",
+    "tags": [
+      "Admin Auth"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/auth/totp/disable",
+    "method": "POST",
+    "operation_id": "disable_totp_api_v1_admin_auth_totp_disable_post",
+    "tags": [
+      "Admin Auth"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/auth/request-action-code",
+    "method": "POST",
+    "operation_id": "request_action_code_api_v1_admin_auth_request_action_code_post",
+    "tags": [
+      "Admin Auth"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/auth/me",
+    "method": "GET",
+    "operation_id": "get_my_profile_api_v1_admin_auth_me_get",
+    "tags": [
+      "Admin Auth"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/auth/me",
+    "method": "PATCH",
+    "operation_id": "update_my_profile_api_v1_admin_auth_me_patch",
+    "tags": [
+      "Admin Auth"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/auth/logout",
+    "method": "POST",
+    "operation_id": "logout_admin_api_v1_admin_auth_logout_post",
+    "tags": [
+      "Admin Auth"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/roles",
+    "method": "GET",
+    "operation_id": "list_roles_api_v1_admin_roles_get",
+    "tags": [
+      "RBAC & Staff Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/roles",
+    "method": "POST",
+    "operation_id": "create_role_api_v1_admin_roles_post",
+    "tags": [
+      "RBAC & Staff Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/roles/{role_id}",
+    "method": "PATCH",
+    "operation_id": "update_role_api_v1_admin_roles__role_id__patch",
+    "tags": [
+      "RBAC & Staff Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/roles/{role_id}",
+    "method": "DELETE",
+    "operation_id": "delete_role_api_v1_admin_roles__role_id__delete",
+    "tags": [
+      "RBAC & Staff Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/permissions",
+    "method": "GET",
+    "operation_id": "list_permissions_api_v1_admin_permissions_get",
+    "tags": [
+      "RBAC & Staff Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/staff",
+    "method": "GET",
+    "operation_id": "list_staff_api_v1_admin_staff_get",
+    "tags": [
+      "RBAC & Staff Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/staff/invite",
+    "method": "POST",
+    "operation_id": "invite_staff_api_v1_admin_staff_invite_post",
+    "tags": [
+      "RBAC & Staff Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/staff/{staff_id}",
+    "method": "PATCH",
+    "operation_id": "update_staff_api_v1_admin_staff__staff_id__patch",
+    "tags": [
+      "RBAC & Staff Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/staff/{staff_id}",
+    "method": "DELETE",
+    "operation_id": "remove_staff_api_v1_admin_staff__staff_id__delete",
+    "tags": [
+      "RBAC & Staff Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/audit-logs",
+    "method": "GET",
+    "operation_id": "search_audit_logs_api_v1_admin_audit_logs_get",
+    "tags": [
+      "Audit & Security Logs"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/audit-logs/all",
+    "method": "GET",
+    "operation_id": "get_all_audit_logs_api_v1_admin_audit_logs_all_get",
+    "tags": [
+      "Audit & Security Logs"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/audit-logs/{log_id}",
+    "method": "GET",
+    "operation_id": "get_audit_log_detail_api_v1_admin_audit_logs__log_id__get",
+    "tags": [
+      "Audit & Security Logs"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/security/alerts",
+    "method": "GET",
+    "operation_id": "list_security_alerts_api_v1_admin_security_alerts_get",
+    "tags": [
+      "Security & Compliance Control Plane"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/security/alerts/{alert_id}/resolve",
+    "method": "PATCH",
+    "operation_id": "resolve_security_alert_api_v1_admin_security_alerts__alert_id__resolve_patch",
+    "tags": [
+      "Security & Compliance Control Plane"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/security/sessions",
+    "method": "GET",
+    "operation_id": "list_active_sessions_api_v1_admin_security_sessions_get",
+    "tags": [
+      "Security & Compliance Control Plane"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/security/sessions/{session_id}",
+    "method": "DELETE",
+    "operation_id": "terminate_session_api_v1_admin_security_sessions__session_id__delete",
+    "tags": [
+      "Security & Compliance Control Plane"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/security/ip-logs",
+    "method": "GET",
+    "operation_id": "get_ip_logs_api_v1_admin_security_ip_logs_get",
+    "tags": [
+      "Security & Compliance Control Plane"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/security/rate-limits",
+    "method": "GET",
+    "operation_id": "get_rate_limit_violations_api_v1_admin_security_rate_limits_get",
+    "tags": [
+      "Security & Compliance Control Plane"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/security/bot-logs",
+    "method": "GET",
+    "operation_id": "get_bot_detection_logs_api_v1_admin_security_bot_logs_get",
+    "tags": [
+      "Security & Compliance Control Plane"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/security/abuse-reports",
+    "method": "GET",
+    "operation_id": "get_account_abuse_reports_api_v1_admin_security_abuse_reports_get",
+    "tags": [
+      "Security & Compliance Control Plane"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/security/abuse-reports/{report_id}/resolve",
+    "method": "PATCH",
+    "operation_id": "resolve_abuse_report_api_v1_admin_security_abuse_reports__report_id__resolve_patch",
+    "tags": [
+      "Security & Compliance Control Plane"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/security/bot-detection-event",
+    "method": "POST",
+    "operation_id": "report_bot_detection_event_api_v1_admin_security_bot_detection_event_post",
+    "tags": [
+      "Security & Compliance Control Plane"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/security/rate-limit-violation",
+    "method": "POST",
+    "operation_id": "report_rate_limit_violation_api_v1_admin_security_rate_limit_violation_post",
+    "tags": [
+      "Security & Compliance Control Plane"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/security/auto-suspend",
+    "method": "POST",
+    "operation_id": "auto_suspend_user_api_v1_admin_security_auto_suspend_post",
+    "tags": [
+      "Security & Compliance Control Plane"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/security/api-keys",
+    "method": "GET",
+    "operation_id": "get_api_key_status_api_v1_admin_security_api_keys_get",
+    "tags": [
+      "Security & Compliance Control Plane"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/plans",
+    "method": "GET",
+    "operation_id": "list_plans_api_v1_admin_plans_get",
+    "tags": [
+      "Plans & Billing Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/plans",
+    "method": "POST",
+    "operation_id": "create_plan_api_v1_admin_plans_post",
+    "tags": [
+      "Plans & Billing Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/plans/performance",
+    "method": "GET",
+    "operation_id": "get_plan_performance_api_v1_admin_plans_performance_get",
+    "tags": [
+      "Plans & Billing Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/plans/{plan_id}",
+    "method": "PATCH",
+    "operation_id": "update_plan_api_v1_admin_plans__plan_id__patch",
+    "tags": [
+      "Plans & Billing Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/plans/{plan_id}/archive",
+    "method": "POST",
+    "operation_id": "archive_plan_api_v1_admin_plans__plan_id__archive_post",
+    "tags": [
+      "Plans & Billing Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/users/{user_id}/quota-override",
+    "method": "POST",
+    "operation_id": "grant_user_quota_override_api_v1_admin_users__user_id__quota_override_post",
+    "tags": [
+      "Plans & Billing Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/users/{user_id}/quota-override",
+    "method": "DELETE",
+    "operation_id": "remove_user_quota_override_api_v1_admin_users__user_id__quota_override_delete",
+    "tags": [
+      "Plans & Billing Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/coupons",
+    "method": "GET",
+    "operation_id": "list_coupons_api_v1_admin_coupons_get",
+    "tags": [
+      "Plans & Billing Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/coupons",
+    "method": "POST",
+    "operation_id": "create_coupon_api_v1_admin_coupons_post",
+    "tags": [
+      "Plans & Billing Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/coupons/{coupon_id}/archive",
+    "method": "POST",
+    "operation_id": "archive_coupon_api_v1_admin_coupons__coupon_id__archive_post",
+    "tags": [
+      "Plans & Billing Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/trials",
+    "method": "GET",
+    "operation_id": "list_trials_api_v1_admin_trials_get",
+    "tags": [
+      "Plans & Billing Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/trials",
+    "method": "POST",
+    "operation_id": "start_trial_api_v1_admin_trials_post",
+    "tags": [
+      "Plans & Billing Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/trials/{trial_id}/extend",
+    "method": "PATCH",
+    "operation_id": "extend_trial_api_v1_admin_trials__trial_id__extend_patch",
+    "tags": [
+      "Plans & Billing Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/trials/{trial_id}/end",
+    "method": "POST",
+    "operation_id": "end_trial_api_v1_admin_trials__trial_id__end_post",
+    "tags": [
+      "Plans & Billing Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/subscriptions",
+    "method": "GET",
+    "operation_id": "list_all_subscriptions_api_v1_admin_subscriptions_get",
+    "tags": [
+      "Subscriptions & Billing"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/subscriptions/stats",
+    "method": "GET",
+    "operation_id": "get_subscription_stats_api_v1_admin_subscriptions_stats_get",
+    "tags": [
+      "Subscriptions & Billing"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/revenue",
+    "method": "GET",
+    "operation_id": "get_revenue_summary_api_v1_admin_revenue_get",
+    "tags": [
+      "Subscriptions & Billing"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/invoices",
+    "method": "GET",
+    "operation_id": "list_all_invoices_api_v1_admin_invoices_get",
+    "tags": [
+      "Subscriptions & Billing"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/failed-payments",
+    "method": "GET",
+    "operation_id": "list_failed_payments_api_v1_admin_failed_payments_get",
+    "tags": [
+      "Subscriptions & Billing"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/refunds",
+    "method": "GET",
+    "operation_id": "list_refunds_api_v1_admin_refunds_get",
+    "tags": [
+      "Subscriptions & Billing"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/cost-ledger",
+    "method": "GET",
+    "operation_id": "list_cost_entries_api_v1_admin_cost_ledger_get",
+    "tags": [
+      "Cost Ledger & Financial Data"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/cost-ledger",
+    "method": "POST",
+    "operation_id": "create_cost_entry_api_v1_admin_cost_ledger_post",
+    "tags": [
+      "Cost Ledger & Financial Data"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/cost-ledger/{entry_id}",
+    "method": "DELETE",
+    "operation_id": "delete_cost_entry_api_v1_admin_cost_ledger__entry_id__delete",
+    "tags": [
+      "Cost Ledger & Financial Data"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/cost-ledger/summary",
+    "method": "GET",
+    "operation_id": "get_cost_summary_api_v1_admin_cost_ledger_summary_get",
+    "tags": [
+      "Cost Ledger & Financial Data"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/promotions/ab-tests",
+    "method": "GET",
+    "operation_id": "list_ab_tests_api_v1_admin_promotions_ab_tests_get",
+    "tags": [
+      "Promotions"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/promotions/referrals",
+    "method": "GET",
+    "operation_id": "list_referrals_api_v1_admin_promotions_referrals_get",
+    "tags": [
+      "Promotions"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/promotions/referrals",
+    "method": "POST",
+    "operation_id": "create_referral_api_v1_admin_promotions_referrals_post",
+    "tags": [
+      "Promotions"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/promotions/referrals/{referral_id}/convert",
+    "method": "POST",
+    "operation_id": "convert_referral_api_v1_admin_promotions_referrals__referral_id__convert_post",
+    "tags": [
+      "Promotions"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/automation/rules",
+    "method": "GET",
+    "operation_id": "list_automation_rules_api_v1_admin_automation_rules_get",
+    "tags": [
+      "Automation & Workflow Engine"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/automation/rules",
+    "method": "POST",
+    "operation_id": "create_automation_rule_api_v1_admin_automation_rules_post",
+    "tags": [
+      "Automation & Workflow Engine"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/automation/rules/{rule_id}",
+    "method": "PATCH",
+    "operation_id": "update_automation_rule_api_v1_admin_automation_rules__rule_id__patch",
+    "tags": [
+      "Automation & Workflow Engine"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/automation/rules/{rule_id}",
+    "method": "DELETE",
+    "operation_id": "delete_automation_rule_api_v1_admin_automation_rules__rule_id__delete",
+    "tags": [
+      "Automation & Workflow Engine"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/automation/rules/{rule_id}/dry-run",
+    "method": "POST",
+    "operation_id": "dry_run_automation_rule_api_v1_admin_automation_rules__rule_id__dry_run_post",
+    "tags": [
+      "Automation & Workflow Engine"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/automation/dry-run",
+    "method": "POST",
+    "operation_id": "dry_run_any_payload_api_v1_admin_automation_dry_run_post",
+    "tags": [
+      "Automation & Workflow Engine"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/automation/events/emit",
+    "method": "POST",
+    "operation_id": "emit_domain_event_api_v1_admin_automation_events_emit_post",
+    "tags": [
+      "Automation & Workflow Engine"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/automation/execution-logs",
+    "method": "GET",
+    "operation_id": "list_execution_logs_api_v1_admin_automation_execution_logs_get",
+    "tags": [
+      "Automation & Workflow Engine"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/analytics/overview",
+    "method": "GET",
+    "operation_id": "get_analytics_overview_api_v1_admin_analytics_overview_get",
+    "tags": [
+      "Admin Analytics & PostHog"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/analytics/revenue",
+    "method": "GET",
+    "operation_id": "get_revenue_analytics_api_v1_admin_analytics_revenue_get",
+    "tags": [
+      "Admin Analytics & PostHog"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/analytics/generations",
+    "method": "GET",
+    "operation_id": "get_generation_analytics_api_v1_admin_analytics_generations_get",
+    "tags": [
+      "Admin Analytics & PostHog"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/analytics/generations/detailed",
+    "method": "GET",
+    "operation_id": "get_detailed_generation_analytics_api_v1_admin_analytics_generations_detailed_get",
+    "tags": [
+      "Admin Analytics & PostHog"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/analytics/journey",
+    "method": "GET",
+    "operation_id": "get_journey_analytics_api_v1_admin_analytics_journey_get",
+    "tags": [
+      "Admin Analytics & PostHog"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/analytics/users",
+    "method": "GET",
+    "operation_id": "get_users_analytics_api_v1_admin_analytics_users_get",
+    "tags": [
+      "Admin Analytics & PostHog"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/analytics/traffic",
+    "method": "GET",
+    "operation_id": "get_traffic_analytics_api_v1_admin_analytics_traffic_get",
+    "tags": [
+      "Admin Analytics & PostHog"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/analytics/posthog/config",
+    "method": "GET",
+    "operation_id": "get_posthog_config_api_v1_admin_analytics_posthog_config_get",
+    "tags": [
+      "Admin Analytics & PostHog"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/analytics/button-clicks",
+    "method": "GET",
+    "operation_id": "get_button_click_analytics_api_v1_admin_analytics_button_clicks_get",
+    "tags": [
+      "Admin Analytics & PostHog"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/analytics/page-duration",
+    "method": "GET",
+    "operation_id": "get_page_duration_analytics_api_v1_admin_analytics_page_duration_get",
+    "tags": [
+      "Admin Analytics & PostHog"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/analytics/events",
+    "method": "POST",
+    "operation_id": "track_posthog_event_api_v1_admin_analytics_events_post",
+    "tags": [
+      "Admin Analytics & PostHog"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/notifications/email-logs",
+    "method": "GET",
+    "operation_id": "get_email_logs_api_v1_admin_notifications_email_logs_get",
+    "tags": [
+      "Notifications & Server Settings"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/notifications/failed",
+    "method": "GET",
+    "operation_id": "get_failed_notifications_api_v1_admin_notifications_failed_get",
+    "tags": [
+      "Notifications & Server Settings"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/notifications/history",
+    "method": "GET",
+    "operation_id": "get_notification_history_api_v1_admin_notifications_history_get",
+    "tags": [
+      "Notifications & Server Settings"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/notifications/status",
+    "method": "GET",
+    "operation_id": "get_notification_status_overview_api_v1_admin_notifications_status_get",
+    "tags": [
+      "Notifications & Server Settings"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/notifications/announcements",
+    "method": "GET",
+    "operation_id": "list_announcements_api_v1_admin_notifications_announcements_get",
+    "tags": [
+      "Notifications & Server Settings"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/notifications/announcements",
+    "method": "POST",
+    "operation_id": "create_announcement_api_v1_admin_notifications_announcements_post",
+    "tags": [
+      "Notifications & Server Settings"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/notifications/announcements/{announcement_id}",
+    "method": "PATCH",
+    "operation_id": "update_announcement_api_v1_admin_notifications_announcements__announcement_id__patch",
+    "tags": [
+      "Notifications & Server Settings"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/notifications/announcements/{announcement_id}",
+    "method": "DELETE",
+    "operation_id": "delete_announcement_api_v1_admin_notifications_announcements__announcement_id__delete",
+    "tags": [
+      "Notifications & Server Settings"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/notifications/templates",
+    "method": "GET",
+    "operation_id": "get_templates_api_v1_admin_notifications_templates_get",
+    "tags": [
+      "Notifications & Server Settings"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/notifications/templates",
+    "method": "POST",
+    "operation_id": "create_template_api_v1_admin_notifications_templates_post",
+    "tags": [
+      "Notifications & Server Settings"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/notifications/templates/{template_id}",
+    "method": "PUT",
+    "operation_id": "update_template_api_v1_admin_notifications_templates__template_id__put",
+    "tags": [
+      "Notifications & Server Settings"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/notifications/templates/{template_id}",
+    "method": "DELETE",
+    "operation_id": "delete_template_api_v1_admin_notifications_templates__template_id__delete",
+    "tags": [
+      "Notifications & Server Settings"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/notifications/settings",
+    "method": "GET",
+    "operation_id": "get_server_settings_api_v1_admin_notifications_settings_get",
+    "tags": [
+      "Notifications & Server Settings"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/notifications/settings",
+    "method": "PUT",
+    "operation_id": "update_server_settings_api_v1_admin_notifications_settings_put",
+    "tags": [
+      "Notifications & Server Settings"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/notifications/config/public",
+    "method": "GET",
+    "operation_id": "get_public_notification_config_api_v1_admin_notifications_config_public_get",
+    "tags": [
+      "Notifications & Server Settings"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/support/sessions/{session_id}",
+    "method": "GET",
+    "operation_id": "inspect_support_session_api_v1_admin_support_sessions__session_id__get",
+    "tags": [
+      "Support Management"
+    ]
+  },
+  {
+    "route": "/api/v1/support/tickets",
+    "method": "POST",
+    "operation_id": "public_submit_ticket_api_v1_support_tickets_post",
+    "tags": [
+      "Support Management"
+    ]
+  },
+  {
+    "route": "/api/v1/support/refunds",
+    "method": "POST",
+    "operation_id": "public_submit_refund_api_v1_support_refunds_post",
+    "tags": [
+      "Support Management"
+    ]
+  },
+  {
+    "route": "/api/v1/support/contact",
+    "method": "POST",
+    "operation_id": "public_submit_contact_api_v1_support_contact_post",
+    "tags": [
+      "Support Management"
+    ]
+  },
+  {
+    "route": "/api/v1/support/plan-override-requests",
+    "method": "POST",
+    "operation_id": "public_submit_override_request_api_v1_support_plan_override_requests_post",
+    "tags": [
+      "Support Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/support/tickets",
+    "method": "GET",
+    "operation_id": "admin_list_tickets_api_v1_admin_support_tickets_get",
+    "tags": [
+      "Support Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/support/tickets/{ticket_id}",
+    "method": "GET",
+    "operation_id": "admin_get_ticket_api_v1_admin_support_tickets__ticket_id__get",
+    "tags": [
+      "Support Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/support/tickets/{ticket_id}",
+    "method": "PATCH",
+    "operation_id": "admin_update_ticket_api_v1_admin_support_tickets__ticket_id__patch",
+    "tags": [
+      "Support Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/support/tickets/{ticket_id}/resolve",
+    "method": "POST",
+    "operation_id": "admin_resolve_ticket_api_v1_admin_support_tickets__ticket_id__resolve_post",
+    "tags": [
+      "Support Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/support/refunds",
+    "method": "GET",
+    "operation_id": "admin_list_refunds_api_v1_admin_support_refunds_get",
+    "tags": [
+      "Support Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/support/refunds/{refund_id}",
+    "method": "PATCH",
+    "operation_id": "admin_update_refund_api_v1_admin_support_refunds__refund_id__patch",
+    "tags": [
+      "Support Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/support/contact",
+    "method": "GET",
+    "operation_id": "admin_list_contacts_api_v1_admin_support_contact_get",
+    "tags": [
+      "Support Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/support/contact/{contact_id}",
+    "method": "PATCH",
+    "operation_id": "admin_update_contact_api_v1_admin_support_contact__contact_id__patch",
+    "tags": [
+      "Support Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/support/plan-overrides",
+    "method": "GET",
+    "operation_id": "admin_list_overrides_api_v1_admin_support_plan_overrides_get",
+    "tags": [
+      "Support Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/support/plan-overrides/{override_id}",
+    "method": "PATCH",
+    "operation_id": "admin_update_override_api_v1_admin_support_plan_overrides__override_id__patch",
+    "tags": [
+      "Support Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/support/plan-overrides/{override_id}/approve",
+    "method": "POST",
+    "operation_id": "admin_approve_override_api_v1_admin_support_plan_overrides__override_id__approve_post",
+    "tags": [
+      "Support Management"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/gdpr/export",
+    "method": "GET",
+    "operation_id": "export_user_data_api_v1_admin_gdpr_export_get",
+    "tags": [
+      "GDPR & Data Compliance"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/gdpr/purge",
+    "method": "POST",
+    "operation_id": "purge_user_data_api_v1_admin_gdpr_purge_post",
+    "tags": [
+      "GDPR & Data Compliance"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/reports/users-csv",
+    "method": "GET",
+    "operation_id": "export_users_csv_api_v1_admin_reports_users_csv_get",
+    "tags": [
+      "Reports & Export"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/infrastructure/mcp/sessions",
+    "method": "GET",
+    "operation_id": "get_mcp_chat_sessions_api_v1_admin_infrastructure_mcp_sessions_get",
+    "tags": [
+      "Admin Infrastructure Monitoring"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/infrastructure/mcp/templates",
+    "method": "GET",
+    "operation_id": "get_mcp_templates_api_v1_admin_infrastructure_mcp_templates_get",
+    "tags": [
+      "Admin Infrastructure Monitoring"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/infrastructure/health",
+    "method": "GET",
+    "operation_id": "get_infrastructure_health_api_v1_admin_infrastructure_health_get",
+    "tags": [
+      "Admin Infrastructure Monitoring"
+    ]
+  },
+  {
+    "route": "/api/v1/users/",
+    "method": "GET",
+    "operation_id": "list_users_api_v1_users__get",
+    "tags": [
+      "Users"
+    ]
+  },
+  {
+    "route": "/api/v1/users/{user_id}",
+    "method": "GET",
+    "operation_id": "get_user_api_v1_users__user_id__get",
+    "tags": [
+      "Users"
+    ]
+  },
+  {
+    "route": "/api/v1/users/{user_id}/status",
+    "method": "PATCH",
+    "operation_id": "update_user_status_api_v1_users__user_id__status_patch",
+    "tags": [
+      "Users"
+    ]
+  },
+  {
+    "route": "/api/v1/users/{user_id}/plan",
+    "method": "PATCH",
+    "operation_id": "update_user_plan_api_v1_users__user_id__plan_patch",
+    "tags": [
+      "Users"
+    ]
+  },
+  {
+    "route": "/api/v1/users/{user_id}/quota",
+    "method": "PATCH",
+    "operation_id": "update_user_quota_api_v1_users__user_id__quota_patch",
+    "tags": [
+      "Users"
+    ]
+  },
+  {
+    "route": "/api/v1/users/{user_id}/override",
+    "method": "POST",
+    "operation_id": "apply_user_override_api_v1_users__user_id__override_post",
+    "tags": [
+      "Users"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/templates",
+    "method": "GET",
+    "operation_id": "list_templates_api_v1_admin_templates_get",
+    "tags": [
+      "Template publication"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/templates/{template_id}/publish",
+    "method": "POST",
+    "operation_id": "publish_api_v1_admin_templates__template_id__publish_post",
+    "tags": [
+      "Template publication"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/templates/{template_id}/withdraw",
+    "method": "POST",
+    "operation_id": "withdraw_api_v1_admin_templates__template_id__withdraw_post",
+    "tags": [
+      "Template publication"
+    ]
+  },
+  {
+    "route": "/api/v1/internal/config/{domain}",
+    "method": "GET",
+    "operation_id": "get_internal_domain_config_api_v1_internal_config__domain__get",
+    "tags": [
+      "Dynamic Config Engine"
+    ]
+  },
+  {
+    "route": "/api/v1/internal/config",
+    "method": "GET",
+    "operation_id": "get_internal_all_configs_api_v1_internal_config_get",
+    "tags": [
+      "Dynamic Config Engine"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/config/{domain}",
+    "method": "GET",
+    "operation_id": "get_admin_domain_config_api_v1_admin_config__domain__get",
+    "tags": [
+      "Dynamic Config Engine"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/config/{domain}",
+    "method": "PUT",
+    "operation_id": "update_admin_domain_config_api_v1_admin_config__domain__put",
+    "tags": [
+      "Dynamic Config Engine"
+    ]
+  },
+  {
+    "route": "/api/v1/admin/config/{domain}/history",
+    "method": "GET",
+    "operation_id": "get_domain_config_history_api_v1_admin_config__domain__history_get",
+    "tags": [
+      "Dynamic Config Engine"
+    ]
+  },
+  {
+    "route": "/health",
+    "method": "GET",
+    "operation_id": "health_check_health_get",
+    "tags": [
+      "Monitoring"
+    ]
+  },
+  {
+    "route": "/",
+    "method": "GET",
+    "operation_id": "root__get",
+    "tags": [
+      "Root"
+    ]
+  }
+]

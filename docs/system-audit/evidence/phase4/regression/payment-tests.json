@@ -1,0 +1,15 @@
+{
+  "id": "payment-tests",
+  "command": [
+    "npm",
+    "test",
+    "-w",
+    "doccraft-payment"
+  ],
+  "cwd": ".",
+  "started_utc": "2026-10-16T07:34:16.714809+00:00",
+  "seconds": 2.43,
+  "exit_code": 0,
+  "status": "PASS",
+  "log": "docs/system-audit/evidence/phase4/regression/payment-tests.log"
+}

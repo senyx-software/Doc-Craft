@@ -1,0 +1,14 @@
+{
+  "id": "phase3-final-node-source-build",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "build"
+  ],
+  "started_utc": "2026-10-15T14:24:07.866953+00:00",
+  "seconds": 17.49,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-final-node-source-build.log"
+}

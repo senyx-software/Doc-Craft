@@ -1,0 +1,3 @@
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+[storage] Using local disk storage at: /home/eranda/Projects/doc-craft/services/document/storage
+{"scenarios": 18, "passed": 18, "failed": 0}

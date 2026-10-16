@@ -1,0 +1,16 @@
+{
+  "id": "phase3-admin-tests",
+  "cwd": ".",
+  "command": [
+    ".venv-local/bin/python",
+    "-m",
+    "pytest",
+    "services/admin-api/tests",
+    "-q"
+  ],
+  "started_utc": "2026-10-15T17:58:02.042780+00:00",
+  "seconds": 25.35,
+  "exit_code": 0,
+  "result": "PASS",
+  "log": "evidence/phase3-admin-tests.log"
+}

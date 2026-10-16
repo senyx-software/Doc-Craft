@@ -1,0 +1,16 @@
+{
+  "id": "baseline-admin-build",
+  "cwd": ".",
+  "command": [
+    "npm",
+    "run",
+    "build",
+    "--prefix",
+    "admin"
+  ],
+  "started_utc": "2026-10-15T05:46:15.811148+00:00",
+  "seconds": 13.04,
+  "exit_code": 2,
+  "result": "FAIL",
+  "log": "evidence/baseline-admin-build.log"
+}

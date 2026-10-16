@@ -1,0 +1,35 @@
+# Credentials, local staging and generated state
+.env
+.env.*
+**/.env
+**/.env.*
+*.env
+!*.env.example
+!*.env.template
+.local/
+.venv*/
+**/.venv*/
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+build/
+**/build/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+**/.pytest_cache/
+*.db
+*.db-*
+*.sqlite*
+*.rdb
+*.aof
+**/storage/
+.idea/
+*.log
+# Keep reviewed audit execution evidence with its reports.
+!docs/system-audit/evidence/**/*.log
+# Downloaded local tooling and regenerated database clients.
+services/redis-bin/
+services/*/src/generated/
+*.tsbuildinfo
