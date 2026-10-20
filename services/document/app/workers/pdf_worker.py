@@ -87,7 +87,7 @@ async def process_pdf_job(job, job_token):
             require_entitlement(policy,'premium_templates')
         # 1. Render template to HTML
         print(f"[pdf-worker] [{job_id}] Rendering template for {doc_type}...")
-        html_string = render_template_to_html(doc_type, template_id, slots,user_id)
+        html_string = await asyncio.to_thread(render_template_to_html,doc_type, template_id, slots,user_id)
 
         # 2. Generate PDF via Puppeteer sidecar
         print(f"[pdf-worker] [{job_id}] Generating PDF from Puppeteer sidecar...")
@@ -96,7 +96,7 @@ async def process_pdf_job(job, job_token):
         # 3. Apply watermark if free tier
         if policy["pdf_watermark"]:
             print(f"[pdf-worker] [{job_id}] User is on free tier. Applying watermark...")
-            pdf_bytes = apply_watermark_to_pdf(pdf_bytes)
+            pdf_bytes = await asyncio.to_thread(apply_watermark_to_pdf,pdf_bytes)
 
         # 4. Upload to storage
         filename = f"{doc_id}.pdf"

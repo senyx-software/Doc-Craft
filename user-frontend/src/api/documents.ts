@@ -5,6 +5,7 @@
  */
 
 import { post, patch, get, apiRequest } from './client';
+import type {EditableTemplateDefinition} from '../utils/uploadedTemplateElements';
 import type {
   GenerateDocumentRequest,
   GenerateDocumentResponse,
@@ -41,7 +42,7 @@ export function getTemplates(documentType: DocumentType): Promise<TemplatesRespo
   });
 }
 
-export function getAvailableTemplateIds(documentType: DocumentType): Promise<{templates:Array<{id:string;name:string;premium?:boolean;available?:boolean}>}> {
+export function getAvailableTemplateIds(documentType: DocumentType): Promise<{templates:Array<{id:string;name:string;premium?:boolean;available?:boolean;created_at?:string;owner_id?:string;visibility?:'private'|'public';can_rename?:boolean}>}> {
   return get(`/document/templates?type=${encodeURIComponent(documentType)}`);
 }
 
@@ -100,6 +101,14 @@ export function deleteCustomTemplate(id: string): Promise<{ success: boolean }> 
   return apiRequest<{ success: boolean }>(`/document/templates/custom/${id}`, { method: 'DELETE' });
 }
 
+export function renameCustomTemplate(id:string,name:string):Promise<{id:string;name:string}> {
+  return patch(`/document/templates/custom/${encodeURIComponent(id)}`,{name});
+}
+
+export function renameUploadedTemplate(id:string,name:string):Promise<{id:string;name:string}> {
+  return patch(`/document/templates/uploads/${encodeURIComponent(id)}`,{name});
+}
+
 /** POST /document/generate — Generate and download PDF */
 export function exportPdf(documentId: string): Promise<Blob> {
   return apiRequest<Blob>(`/document/${encodeURIComponent(documentId)}/download`,{responseType:'blob'});
@@ -107,7 +116,7 @@ export function exportPdf(documentId: string): Promise<Blob> {
 
 export function getDocumentStatus(id: string): Promise<{status:string;errorMessage?:string}> {return get('/documents/'+encodeURIComponent(id));}
 
-export function getUploadedPreview(templateId:string,slots:Record<string,unknown>):Promise<{html:string}> {
+export function getUploadedPreview(templateId:string,slots:Record<string,unknown>):Promise<{html:string;canvasDefinition:EditableTemplateDefinition}> {
   return post('/document/template-preview',{templateId,slots});
 }
 export function uploadPrivateTemplate(payload:Record<string,unknown>):Promise<{id:string}> {

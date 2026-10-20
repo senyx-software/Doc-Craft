@@ -12,7 +12,7 @@ app = FastAPI(
     version="1.0.0",
     description="Handles document templates, synchronous previews, asynchronous PDF generation via sidecar, and public sharing."
 )
-app.add_middleware(RequestBodyLimit)
+app.add_middleware(RequestBodyLimit, path_limits={'/v1/document/templates/uploads': 7 * 1024 * 1024})
 app.middleware("http")(authenticate_document_request)
 
 # CORS middleware configuration
@@ -82,6 +82,8 @@ def health_check():
 
 @app.on_event('shutdown')
 async def shutdown_worker():
+    from app.services.pdf_runtime import shutdown_pdf_executor
+    shutdown_pdf_executor()
     recovery=getattr(app.state,'recovery_task',None)
     if recovery:
         recovery.cancel()

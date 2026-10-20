@@ -13,7 +13,7 @@ export async function requireAuth(request: FastifyRequest, reply: FastifyReply) 
             throw new Error('Invalid token');
         const accountResponse = await serviceFetch('auth', `${process.env.AUTH_SERVICE_URL || 'http://localhost:3011'}/internal/verify-token`, {
             method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Internal-Secret': process.env.INTERNAL_SERVICE_SECRET || '' },
-            body: JSON.stringify({ userId: payload.sub,token: bearer.slice(7) }), signal: AbortSignal.timeout(3000),
+            body: JSON.stringify({ userId: payload.sub,token: bearer.slice(7) }), signal: AbortSignal.timeout(10000),
         });
         if ([401,403,404].includes(accountResponse.status)) return reply.status(403).send({ error: 'Account unavailable' });
         if (!accountResponse.ok) return reply.status(503).send({ error: 'Account verification unavailable' });

@@ -1,14 +1,43 @@
 import UploadPrivateTemplate from './UploadPrivateTemplate';
+import UploadedTemplateThumbnail from './UploadedTemplateThumbnail';
 import { useQuotaStore } from '../../store/quotaStore';
 import React, { useEffect, useState } from 'react';
-import { Check, Lock, Save, Trash2, FileStack, Loader2 } from 'lucide-react';
+import { Check, Lock, Save, Trash2, FileStack, Loader2, Pencil, RefreshCw } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useDocumentStore, SAMPLE_DOCUMENT_DATA } from '../../store/documentStore';
 import { useChatStore } from '../../store/chatStore';
 import { renderTemplate } from '../../utils/templateRenderer';
-import { saveCustomTemplate, getCustomTemplates, getCustomTemplateDetail, deleteCustomTemplate, type CustomTemplateSummary } from '../../api/documents';
-import type { Template } from '../../types';
+import { saveCustomTemplate, getCustomTemplates, getCustomTemplateDetail, deleteCustomTemplate, renameCustomTemplate, renameUploadedTemplate, type CustomTemplateSummary } from '../../api/documents';
+import type { Template, DocumentType } from '../../types';
 import type { InvoiceElement } from '../../types/canvasElement';
+
+function templateDate(value?:string) {
+  if(!value)return 'Upload time unavailable';
+  const date=new Date(value);
+  return Number.isNaN(date.getTime())?'Upload time unavailable':date.toLocaleString();
+}
+
+function TemplateRename({id,name,uploaded,onSaved}:{id:string;name:string;uploaded:boolean;onSaved:()=>void}) {
+  const [editing,setEditing]=useState(false);
+  const [value,setValue]=useState(name);
+  const [busy,setBusy]=useState(false);
+  const [error,setError]=useState('');
+  const save=async()=>{
+    if(!value.trim()||busy)return;
+    setBusy(true);setError('');
+    try {
+      await (uploaded?renameUploadedTemplate:renameCustomTemplate)(id,value.trim());
+      onSaved();setEditing(false);
+    }catch(failure){setError(failure instanceof Error?failure.message:'Could not rename this template.');}
+    finally{setBusy(false);}
+  };
+  if(!editing)return <button type="button" aria-label={`Rename ${name}`} className="flex items-center gap-1 text-[10px] text-brand-500" onClick={()=>{setValue(name);setError('');setEditing(true);}}><Pencil size={11}/> Rename</button>;
+  return <form className="space-y-1" onSubmit={event=>{event.preventDefault();void save();}}>
+    <input aria-label="Template name" className="w-full border border-appBorder bg-appBg p-1 text-xs" autoFocus maxLength={100} value={value} disabled={busy} onChange={event=>setValue(event.target.value)}/>
+    <div className="flex gap-3 text-[10px]"><button className="text-brand-500" disabled={busy||!value.trim()}>{busy?'Saving…':'Save name'}</button><button type="button" disabled={busy} onClick={()=>setEditing(false)}>Cancel</button></div>
+    {error&&<p role="alert" className="text-[10px] text-appError">{error}</p>}
+  </form>;
+}
 
 interface TemplateCardItemProps {
   template: Template;
@@ -30,6 +59,7 @@ const TemplateCardItem: React.FC<TemplateCardItemProps> = React.memo(({
   onSelect,
 }) => {
   const renderedHtml = React.useMemo(() => {
+    if(template.template_id.startsWith('upl_'))return '';
     return renderTemplate(
       template.template_id,
       sampleData,
@@ -60,7 +90,7 @@ const TemplateCardItem: React.FC<TemplateCardItemProps> = React.memo(({
       }}
       disabled={isLocked}
       id={`template-${template.template_id}`}
-      className={`relative rounded-none overflow-hidden border-2 transition-all duration-200 group
+      className={`relative block w-full rounded-none overflow-hidden border-2 transition-all duration-200 group
         ${isSelected
           ? 'border-brand-500 shadow-glow'
           : 'border-appBorder hover:border-brand-500/50'
@@ -70,7 +100,7 @@ const TemplateCardItem: React.FC<TemplateCardItemProps> = React.memo(({
     >
       {/* Thumbnail */}
       <div className="aspect-[3/4] bg-appSurface flex items-center justify-center relative overflow-hidden">
-        {template.template_id.startsWith("upl_") ? <span className="p-4 text-sm">Uploaded template · Select to preview</span> : template.thumbnail_url ? (
+        {template.template_id.startsWith("upl_") ? <UploadedTemplateThumbnail id={template.template_id} name={template.name} slots={sampleData} locked={isLocked}/> : template.thumbnail_url ? (
           <img
             src={template.thumbnail_url}
             alt={template.name}
@@ -90,7 +120,11 @@ const TemplateCardItem: React.FC<TemplateCardItemProps> = React.memo(({
 
       {/* Label */}
       <div className="px-1.5 py-1.5 bg-appSurface border-t border-appBorder">
-        <p className="text-[10px] text-appTextPrimary font-medium truncate">{template.name}</p>
+        <p className="text-[10px] text-appTextPrimary font-medium truncate" title={template.name}>{template.name}</p>
+        {template.template_id.startsWith('upl_')&&<>
+          <p className="text-[9px] text-appTextSecondary">{template.visibility==='public'?'Public template':'Owner only'}</p>
+          <p className="text-[9px] text-appTextSecondary" title={template.created_at}>Uploaded {templateDate(template.created_at)}</p>
+        </>}
       </div>
 
       {/* Selected indicator */}
@@ -113,15 +147,11 @@ const TemplateCardItem: React.FC<TemplateCardItemProps> = React.memo(({
   );
 });
 
-// "Your Templates" — user-saved static snapshots of the canvas (see
-// applyCustomTemplateElements's own comment for why these can't be
-// data-bound generators like the built-in templates). Kept as a separate
-// section below the built-in grid rather than merged into TemplateCardItem,
-// since rendering a faithful thumbnail from raw canvasElements would need
-// a small standalone renderer of its own — out of scope here, so these
-// are plain named cards instead of visual previews.
-const CustomTemplatesSection: React.FC<{ currentDocType: string }> = ({ currentDocType }) => {
-  const { canvasElements, pageWidth, pageHeight, pageBackgroundColor, applyCustomTemplateElements } = useDocumentStore();
+// Approved uploads (including public layouts) and saved canvas snapshots.
+const CustomTemplatesSection: React.FC<{ currentDocType: string; sampleData:Record<string,unknown> }> = ({ currentDocType,sampleData }) => {
+  const { canvasElements, pageWidth, pageHeight, pageBackgroundColor, applyCustomTemplateElements, templates:availableTemplates, selectedTemplate, selectTemplate, accentColor, fetchTemplates } = useDocumentStore();
+  const isPro=useQuotaStore(state=>state.entitlements?.premium_templates===true);
+  const uploadedTemplates=availableTemplates.filter(template=>template.template_id.startsWith('upl_'));
   const [templates, setTemplates] = useState<CustomTemplateSummary[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -132,7 +162,7 @@ const CustomTemplatesSection: React.FC<{ currentDocType: string }> = ({ currentD
 
   const loadTemplates = () => {
     getCustomTemplates(currentDocType)
-      .then((res) => setTemplates(res.templates))
+      .then((res) => {setTemplates(res.templates);setError(null);})
       .catch(() => setError('Could not load your saved templates.'))
       .finally(() => setLoading(false));
   };
@@ -195,20 +225,29 @@ const CustomTemplatesSection: React.FC<{ currentDocType: string }> = ({ currentD
   return (
     <div className="p-4 border-b border-appBorder space-y-3">
       <div className="flex items-center justify-between">
-        <h5 className="text-xs font-bold text-appTextPrimary flex items-center gap-1.5">
+        <h5 className="text-xs font-bold text-appTextPrimary flex items-center gap-1.5 whitespace-nowrap">
           <FileStack size={13} /> Your Templates
         </h5>
+        <button type="button" aria-label="Refresh your templates" title="Refresh your templates" className="p-1 text-brand-500" onClick={()=>{loadTemplates();void fetchTemplates(currentDocType as DocumentType);}}><RefreshCw size={12}/></button>
         {!namingOpen && (
           <button
             onClick={() => setNamingOpen(true)}
             disabled={!canvasElements}
+            aria-label="Save current design as template"
             title={canvasElements ? 'Save current design as a template' : 'Nothing to save yet'}
             className="flex items-center gap-1 text-[10px] font-semibold text-brand-500 hover:underline disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            <Save size={11} /> Save current
+            <Save size={11} /> Save
           </button>
         )}
       </div>
+
+      {uploadedTemplates.length>0&&<div className="space-y-4">
+        {uploadedTemplates.map(template=><div key={template.template_id} className="space-y-1.5">
+          <TemplateCardItem template={template} isSelected={selectedTemplate===template.template_id} isLocked={template.tier==='pro'&&!isPro} sampleData={sampleData} accentColor={accentColor} currentDocType={currentDocType} onSelect={selectTemplate}/>
+          {template.can_rename&&<TemplateRename id={template.template_id} name={template.name} uploaded onSaved={()=>void fetchTemplates(currentDocType as DocumentType)}/>}
+        </div>)}
+      </div>}
 
       {namingOpen && (
         <div className="flex items-center gap-1.5">
@@ -235,15 +274,16 @@ const CustomTemplatesSection: React.FC<{ currentDocType: string }> = ({ currentD
         <p className="text-[10px] text-appError">{error}</p>
       ) : loading ? (
         <p className="text-[10px] text-appTextSecondary">Loading…</p>
-      ) : templates.length === 0 ? (
+      ) : templates.length === 0 && uploadedTemplates.length===0 ? (
         <p className="text-[10px] text-appTextSecondary">
-          No saved templates yet — style a document the way you like it, then "Save current" to reuse that exact layout next time.
+          Approved uploads and public templates appear here. You can also save your current design to reuse it.
         </p>
       ) : (
         <div className="space-y-1.5">
           {templates.map((t) => (
-            <div key={t.id} className="flex items-center gap-2 px-2.5 py-2 bg-appBg border border-appBorder rounded-[4px]">
-              <span className="flex-1 min-w-0 truncate text-xs text-appTextPrimary font-medium">{t.name}</span>
+            <div key={t.id} className="space-y-2 px-2.5 py-2 bg-appBg border border-appBorder rounded-[4px]">
+              <div className="flex items-center gap-2">
+              <span className="flex-1 min-w-0 truncate text-xs text-appTextPrimary font-medium" title={t.name}>{t.name}</span>
               <button
                 onClick={() => handleApply(t.id)}
                 disabled={applyingId === t.id}
@@ -258,6 +298,9 @@ const CustomTemplatesSection: React.FC<{ currentDocType: string }> = ({ currentD
               >
                 <Trash2 size={12} />
               </button>
+              </div>
+              <p className="text-[9px] text-appTextSecondary">Saved {templateDate(t.createdAt)}</p>
+              <TemplateRename id={t.id} name={t.name} uploaded={false} onSaved={loadTemplates}/>
             </div>
           ))}
         </div>
@@ -273,19 +316,19 @@ const TemplateSelector: React.FC = () => {
 
   const currentDocType = documentType || 'invoice';
 
-  if (templates.length === 0) return null;
-
   const sampleData = SAMPLE_DOCUMENT_DATA[currentDocType] || SAMPLE_DOCUMENT_DATA.invoice;
-  const activeData = (collectedSlots && Object.keys(collectedSlots).length > 0)
+  const activeData = React.useMemo(()=>(collectedSlots && Object.keys(collectedSlots).length > 0)
     ? { documentType: currentDocType, ...collectedSlots }
-    : (collectedData || sampleData);
+    : (collectedData || sampleData),[collectedSlots,collectedData,currentDocType,sampleData]);
+
+  if (templates.length === 0) return null;
 
   return (
     <div id="template-selector">
       <UploadPrivateTemplate documentType={currentDocType}/>
-      <CustomTemplatesSection key={currentDocType} currentDocType={currentDocType} />
+      <CustomTemplatesSection key={currentDocType} currentDocType={currentDocType} sampleData={activeData}/>
       <div className="p-4 grid grid-cols-1 gap-4">
-        {templates.map((template: Template) => {
+        {templates.filter(template=>!template.template_id.startsWith('upl_')).map((template: Template) => {
           const isSelected = selectedTemplate === template.template_id;
           const isLocked = template.tier === 'pro' && !isPro;
 

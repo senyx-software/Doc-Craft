@@ -22,7 +22,7 @@ export async function verifyJwt(token: string): Promise<DecodedToken> {
   try {
     result = await serviceFetch('auth', `${env.AUTH_SERVICE_URL}/internal/verify-token`, {
       method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Internal-Secret': env.INTERNAL_SERVICE_SECRET },
-      body: JSON.stringify({ userId: payload.sub,token: token }), signal: AbortSignal.timeout(3000),
+      body: JSON.stringify({ userId: payload.sub,token: token }), signal: AbortSignal.timeout(10000),
     });
   } catch {
     throw Object.assign(new Error('Account verification unavailable'), { statusCode: 503 });

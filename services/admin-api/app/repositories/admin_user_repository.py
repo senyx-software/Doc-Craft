@@ -4,12 +4,18 @@ from datetime import datetime, timezone
 from typing import List, Optional
 from app.db.admin_db import admin_db
 from app.models.admin_user import AdminUser
+from app.core.exceptions import AppException
 
 
 class AdminUserRepository:
     """Repository for managing admin staff user accounts in the dedicated admin database."""
 
     def _row_to_model(self, row: dict) -> AdminUser:
+        try:
+            totp_secret = open_secret(row.get('totp_secret'), row['id'])
+        except Exception as error:
+            raise AppException('Administrator authenticator configuration requires repair. Contact your administrator.',
+                code='AUTH_CONFIGURATION_UNAVAILABLE',status_code=503) from error
         return AdminUser(
             id=row["id"],
             email=row["email"],
@@ -18,7 +24,7 @@ class AdminUserRepository:
             role_id=row["role_id"],
             status=row["status"],
             totp_enabled=bool(row["totp_enabled"]),
-            totp_secret=open_secret(row.get("totp_secret"),row["id"]),
+            totp_secret=totp_secret,
             created_at=datetime.fromisoformat(row["created_at"]) if isinstance(row.get("created_at"), str) else datetime.now(timezone.utc),
             updated_at=datetime.fromisoformat(row["updated_at"]) if isinstance(row.get("updated_at"), str) else datetime.now(timezone.utc),
         )

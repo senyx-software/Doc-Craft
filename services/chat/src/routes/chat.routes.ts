@@ -69,7 +69,7 @@ export async function chatRoutes(fastify: FastifyInstance, options: any = {}) {
         }).strict()}).strict().safeParse(req.body);
         if(!body.success)return reply.status(400).send({code:'INVALID_INPUT',message:'Choose a supported image within the upload limit.'});
         try {if(body.data.asset.role==='logo')requireEntitlement(await getEntitlements((req as any).user?.id),'custom_logo');const saved=await repo.saveAsset((req as any).user?.id,(req.params as any).sessionId,body.data.asset,body.data.expectedRevision);return reply.send({state:snapshot(saved)});}
-        catch(error){const details=errorDetails(error,'storage');return reply.status(details.status).send(details);}
+        catch(error){const details=errorDetails(error,'storage');if(details.code==='ENTITLEMENT_DENIED'&&body.data.asset.role==='logo')details.message='Business logos are a PRO feature and are not enabled for your account.';return reply.status(details.status).send(details);}
     });
     fastify.delete('/chat/session/:sessionId/assets', async(req,reply)=>{
         const body=z.object({expectedRevision:z.number().int().nonnegative(),ids:z.array(z.string().regex(/^[a-zA-Z0-9_-]{1,80}$/)).min(1).max(6)}).strict().safeParse(req.body);

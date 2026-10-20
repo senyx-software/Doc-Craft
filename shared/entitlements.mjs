@@ -2,7 +2,8 @@ import { serviceFetch } from './service-auth.mjs';
 
 /** No cached allow decisions: expiry, suspension and overrides apply on each operation. */
 export async function getEntitlements(userId) {
-  const response = await serviceFetch('admin-api', `${process.env.ADMIN_API_SERVICE_URL || 'http://localhost:3018'}/api/v1/internal/entitlements/${encodeURIComponent(userId)}`, {signal: AbortSignal.timeout(5000)});
+  // The control plane verifies Auth/Billing and reads current policy from the database.
+  const response = await serviceFetch('admin-api', `${process.env.ADMIN_API_SERVICE_URL || 'http://localhost:3018'}/api/v1/internal/entitlements/${encodeURIComponent(userId)}`, {signal: AbortSignal.timeout(10000)});
   if (!response.ok) throw Object.assign(new Error('Current entitlements cannot be verified'), {statusCode:503, code:'POLICY_UNAVAILABLE'});
   return validateEntitlements(await response.json(), userId);
 }

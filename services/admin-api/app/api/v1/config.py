@@ -16,7 +16,7 @@ router = APIRouter(prefix="", tags=["Dynamic Config Engine"])
 # 1. Internal Read API (Consuming Microservices - Gateway, Auth, Chat, Quota, Payment, Document)
 # ----------------------------------------------------------------------
 @router.get("/api/v1/internal/config/{domain}", response_model=ConfigEntry, dependencies=[Depends(require_internal_secret)])
-async def get_internal_domain_config(domain: str):
+def get_internal_domain_config(domain: str):
     """
     Internal read endpoint for consuming microservices on cache miss.
     Consuming services use SharedConfigClient to read this fallback without touching Admin's DB.
@@ -28,7 +28,7 @@ async def get_internal_domain_config(domain: str):
 
 
 @router.get("/api/v1/internal/config", response_model=List[ConfigEntry], dependencies=[Depends(require_internal_secret)])
-async def get_internal_all_configs():
+def get_internal_all_configs():
     """Returns a full snapshot of all active domain configurations and version tags."""
     return config_repository.list_all_domain_configs()
 

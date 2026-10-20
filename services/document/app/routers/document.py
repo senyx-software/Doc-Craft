@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "document.env"))
 import uuid
 from typing import Optional, Dict, Any, List
+from pydantic import BaseModel,ConfigDict,Field
 from fastapi import APIRouter, Depends, Header, HTTPException, Query, Response
 from fastapi.responses import HTMLResponse, StreamingResponse
 from sqlalchemy.orm import Session
@@ -16,6 +17,8 @@ from app.services.db import get_db
 from app.models.document import Document
 from app.services.recovery import retained
 from app.services.uploaded_templates import fetch_uploaded
+from app.services.pdf_template import import_pdf_template
+from app.services.editable_templates import editable_definition,render_editable_html
 from shared.service_auth import service_request
 from app.models.custom_template import CustomTemplate
 from app.services.sidecar import render_template_to_html
@@ -42,7 +45,7 @@ def get_templates(type: Optional[str] = None, x_user_id: str = Header(..., alias
     templates = [{**t,"available":not policy.get(t["type"]+":"+t["variant"],{}).get("premium",False) or entitlements["premium_templates"]} for identity,t in list(TEMPLATE_DEFS.items()) if not identity.startswith('upl_') and published(identity,policy)]
     for template in fetch_uploaded(x_user_id)['templates']:
         TEMPLATE_DEFS[template['id']]=template
-        templates.append({**template,'available':not template['premium'] or entitlements['premium_templates']})
+        templates.append({**template,'available':not template['premium'] or entitlements['premium_templates'],'can_rename':template.get('owner_id')==x_user_id})
     if type:
         templates = [t for t in templates if t['type'] == type]
     return {"templates": templates}
@@ -52,13 +55,43 @@ def get_templates(type: Optional[str] = None, x_user_id: str = Header(..., alias
 def upload_template(payload:Dict[str,Any],x_user_id:str=Header(...,alias='x-user-id')):
     forbidden={'owner_id','visibility','premium'} & set(payload)
     if forbidden:raise HTTPException(422,'Template visibility and ownership are set by the server')
+    if 'pdf_base64' in payload:
+        if 'html' in payload or 'assets' in payload:
+            raise HTTPException(422,'Upload either a PDF or an HTML template bundle.')
+        payload = dict(payload)
+        try:
+            source = import_pdf_template(payload.pop('pdf_base64'))
+        except ValueError as error:
+            raise HTTPException(422, str(error)) from error
+        payload.update(source)
     payload={**payload,'owner_id':x_user_id,'visibility':'private','premium':False}
     try:
-        response=service_request('admin-api','POST',os.getenv('ADMIN_API_SERVICE_URL','http://localhost:3018')+'/api/v1/internal/uploaded-templates',json=payload,timeout=10)
-        if response.status_code in (403,404,409,422):raise HTTPException(response.status_code,'Template upload rejected; check the restricted format and version ownership')
+        response=service_request('admin-api','POST',os.getenv('ADMIN_API_SERVICE_URL','http://localhost:3018')+'/api/v1/internal/uploaded-templates',json=payload,timeout=20)
+        if response.status_code in (403,404,409,422):
+            body = response.json()
+            details = body.get('details', {})
+            detail = body.get('detail') or (details.get('validation_errors') if isinstance(details,dict) else None) or body.get('message')
+            raise HTTPException(response.status_code, detail if isinstance(detail,(str,list)) else 'Template upload rejected; check the restricted format and version ownership')
         response.raise_for_status();return response.json()
     except HTTPException:raise
     except Exception as error:raise HTTPException(503,'Template upload unavailable') from error
+
+class TemplateName(BaseModel):
+    model_config=ConfigDict(extra='forbid',str_strip_whitespace=True)
+    name:str=Field(min_length=1,max_length=100)
+
+
+@router.patch('/templates/uploads/{template_id}')
+def rename_uploaded_template(template_id:str,payload:TemplateName,x_user_id:str=Header(...,alias='x-user-id')):
+    from urllib.parse import quote
+    try:
+        response=service_request('admin-api','PATCH',os.getenv('ADMIN_API_SERVICE_URL','http://localhost:3018')+'/api/v1/internal/uploaded-templates/'+quote(template_id,safe=''),
+            json={'name':payload.name,'owner_id':x_user_id},timeout=10)
+        if response.status_code in (404,422):raise HTTPException(response.status_code,response.json().get('detail','Template could not be renamed'))
+        response.raise_for_status()
+        return response.json()
+    except HTTPException:raise
+    except Exception as error:raise HTTPException(503,'Template rename unavailable. Please retry.') from error
 
 
 @router.post("/templates/custom", status_code=201)
@@ -168,6 +201,15 @@ def delete_custom_template(
     return {"success": True}
 
 
+@router.patch('/templates/custom/{template_id}')
+def rename_custom_template(template_id:str,payload:TemplateName,db:Session=Depends(get_db),x_user_id:str=Header(...,alias='x-user-id')):
+    template=db.query(CustomTemplate).filter(CustomTemplate.id==template_id,CustomTemplate.userId==x_user_id).first()
+    if not template:raise HTTPException(404,'Template not found')
+    template.name=payload.name
+    db.commit()
+    return {'id':template.id,'name':template.name}
+
+
 @router.get("/templates/{template_id}")
 def get_template_detail(template_id: str):
     """
@@ -198,10 +240,14 @@ def uploaded_preview(payload:Dict[str,Any],x_user_id:str=Header(...,alias='x-use
     policy=get_entitlements(x_user_id)
     require_entitlement(policy,'account_enabled')
     if item['premium']:require_entitlement(policy,'premium_templates')
-    if item['source']['assets']:require_entitlement(policy,'custom_branding')
-    html=render_template_to_html(item['type'],template_id,payload.get('slots',{}),x_user_id)
+    # The reviewed template owns its embedded artwork. Premium access follows
+    # the template's explicit setting, independently of adding a new PRO logo.
+    try:
+        definition=editable_definition(item['source'],item['type'])
+        html=render_editable_html(definition,payload.get('slots',{}))
+    except ValueError as error:raise HTTPException(422,str(error)) from error
     csp="""<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">"""
-    return {'html':csp+html}
+    return {'html':csp+html,'canvasDefinition':definition}
 
 
 @router.post("/preview", response_class=HTMLResponse)

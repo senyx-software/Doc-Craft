@@ -545,7 +545,7 @@ const InvoiceCanvas: React.FC<InvoiceCanvasProps> = ({
               onPointerDown={(e) => { if (!isEditing) handlePointerDownOnElement(e, el); else e.stopPropagation(); }}
               style={{
                 width: '100%',
-                minHeight: '100%',
+                minHeight: el.h,
                 fontSize: el.fontSize,
                 fontWeight: el.fontWeight,
                 fontStyle: el.italic ? 'italic' : 'normal',

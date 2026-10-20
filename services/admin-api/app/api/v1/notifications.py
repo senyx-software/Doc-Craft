@@ -421,7 +421,7 @@ async def update_server_settings(
 # ──────────────────────────────────────────────────────────────────────────────
 
 @router.get("/config/public", dependencies=[Depends(require_internal_secret)])
-async def get_public_notification_config():
+def get_public_notification_config():
     """
     Public config endpoint for Notification Microservice (port 3016).
     Returns Admin-managed email templates, notification settings, branding, and enable/disable flags.

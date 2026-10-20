@@ -22,11 +22,15 @@ export function bindDocumentText(input: Record<string, unknown>) {
   const original = JSON.stringify(normalized);
   while (original.includes(prefix)) prefix += '_';
   const values = new Map<string, string>();
+  const tokens = new Map<string, string>();
   const visit = (value: unknown, key = ''): unknown => {
     if (typeof value === 'string' && !['documentType', 'currency', 'currencySymbol', 'issueDate', 'dueDate','locale','dateFormat'].includes(key)) {
       if (!value) return '';
+      const existing = tokens.get(value);
+      if (existing) return existing;
       const token = prefix + values.size + '__';
       values.set(token, value);
+      tokens.set(value, token);
       return token;
     }
     if (Array.isArray(value)) return value.map(entry => visit(entry));

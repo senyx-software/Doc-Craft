@@ -1,3 +1,0 @@
-[gateway] Upstream proxy error on POST /client-event: [TypeError: fetch failed] {
-  [cause]: Error: bad port
-      at makeNetworkError (node:internal/deps/undici/undici:11806:35)

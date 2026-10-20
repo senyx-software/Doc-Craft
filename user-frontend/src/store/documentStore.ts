@@ -22,9 +22,11 @@ import { assetElements } from '../../../shared/document-assets.mjs';
 import { withExportFontMetrics } from '../utils/exportFontMetrics';
 import { apiRequest, getToken } from '../api/client';
 import { canvasLayout } from '../../../shared/canvas-layout.mjs';
+import {clearUploadedDefinitions,registerUploadedDefinition,uploadedDefinition,uploadedTemplateElements,type EditableTemplateDefinition} from '../utils/uploadedTemplateElements';
 import type { ConversationSnapshot } from '../types';
 
 let documentGeneration=0;
+let uploadedPreviewSequence=0;
 let restoringCanvas=false;
 let canvasSession: string | null=null;
 let canvasRevision=0;
@@ -169,12 +171,18 @@ function computeCanvasElements(
   if (!templateId) return null;
   const docType = documentType || (data?.documentType as string);
   const dataWithDocType = docType ? { documentType: docType, ...data } : data;
-  const base = getElementsForTemplate(templateId, dataWithDocType, accent || getTemplateAccent(templateId));
+  const base = templateId.startsWith('upl_')?uploadedTemplateElements(templateId,dataWithDocType):getElementsForTemplate(templateId, dataWithDocType, accent || getTemplateAccent(templateId));
   if (!base) return null;
   const merged = base.map((el) => ({ ...el, ...(overrides[el.id] || {}) } as InvoiceElement));
   const content=[...merged,...custom];
   const assets=assetElements(useChatStore.getState().assets||[],content).map(el=>({...el,...(overrides[el.id]||{})}));
   return [...content,...assets];
+}
+
+function applyUploadedPreview(templateId:string,preview:{html:string;canvasDefinition?:EditableTemplateDefinition},data:Record<string,unknown>) {
+  if(preview.canvasDefinition)registerUploadedDefinition(templateId,preview.canvasDefinition);
+  const state=useDocumentStore.getState();
+  return {previewHtml:preview.html,canvasElements:computeCanvasElements(templateId,data,state.accentColor,state.elementOverrides,state.customElements)};
 }
 
 interface DocumentState {
@@ -320,7 +328,7 @@ export const useDocumentStore = create<DocumentState>()(
     const epoch=documentGeneration;
     let list = (DOCUMENT_TYPE_TEMPLATES[documentType] || DOCUMENT_TYPE_TEMPLATES.invoice) as Template[];
     if(!isDemoMode()) {
-      try {const response=await documentsApi.getAvailableTemplateIds(documentType);const allowed=new Set(response.templates.map(template=>template.id));list=[...list.filter(template=>allowed.has(template.template_id)),...response.templates.filter(template=>template.id.startsWith('upl_')).map(template=>({template_id:template.id,name:template.name,thumbnail_url:'',tier:template.premium?'pro' as const:'free' as const}))];}
+      try {const response=await documentsApi.getAvailableTemplateIds(documentType);const allowed=new Set(response.templates.map(template=>template.id));list=[...list.filter(template=>allowed.has(template.template_id)),...response.templates.filter(template=>template.id.startsWith('upl_')).map(template=>({template_id:template.id,name:template.name,created_at:template.created_at,owner_id:template.owner_id,visibility:template.visibility,can_rename:template.can_rename,thumbnail_url:'',tier:template.premium?'pro' as const:'free' as const}))];}
       catch {if(epoch===documentGeneration)set({templates:[],error:'Template availability could not be loaded.'});return;}
     }
     if(epoch!==documentGeneration)return;
@@ -359,9 +367,10 @@ export const useDocumentStore = create<DocumentState>()(
       : (chatState.collectedData || (isDemoMode()?SAMPLE_DOCUMENT_DATA[docType]:{documentType:docType}));
 
     if(templateId.startsWith('upl_')) {
-      set({canvasElements:null,previewHtml:null});
-      try {const preview=await documentsApi.getUploadedPreview(templateId,dataToRender);if(get().selectedTemplate===templateId)set({previewHtml:preview.html});}
-      catch {set({error:'Uploaded template preview unavailable'});}
+      const previewSequence=++uploadedPreviewSequence;
+      set({canvasElements:null,previewHtml:null,error:null});
+      try {const preview=await documentsApi.getUploadedPreview(templateId,dataToRender);if(epoch===documentGeneration&&previewSequence===uploadedPreviewSequence&&get().selectedTemplate===templateId)set(applyUploadedPreview(templateId,preview,dataToRender));}
+      catch(error) {if(epoch===documentGeneration&&previewSequence===uploadedPreviewSequence&&get().selectedTemplate===templateId)set({error:error instanceof Error?error.message:'Uploaded template preview unavailable'});}
       return;
     }
     set({
@@ -594,22 +603,7 @@ export const useDocumentStore = create<DocumentState>()(
           },
         });
       }
-      if(get().selectedTemplate?.startsWith('upl_') && !isDemoMode()) {
-        const current=useChatStore.getState();
-        if(!current.sessionId||!current.documentType)throw new Error('Open a saved document before generating');
-        const generated=await documentsApi.generateDocument({session_id:current.sessionId,operation_id:crypto.randomUUID(),expected_revision:current.revision,document_type:current.documentType,template_id:get().selectedTemplate!,accent_color:get().accentColor,data:current.collectedSlots});
-        set({documentId:generated.document_id,generationStatus:generated.status});
-        for(let attempt=0;attempt<60;attempt++) {
-          const result=await documentsApi.getDocumentStatus(generated.document_id);
-          if(result.status==='failed')throw new Error('Document generation failed');
-          if(result.status==='success'||result.status==='completed') {
-            const blob=await documentsApi.exportPdf(generated.document_id);
-            const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download='DocCraft.pdf';link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000);return;
-          }
-          await new Promise(resolve=>setTimeout(resolve,1000));
-        }
-        throw new Error('Your PDF is still processing. Check document history.');
-      }
+      if(get().selectedTemplate?.startsWith('upl_')&&!get().canvasElements)throw new Error('Wait for your uploaded template to finish loading, then download again.');
       // Let React paint the committed snapshot before capturing the page.
       await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
       if (!isCurrent()) return;
@@ -818,6 +812,7 @@ export const useDocumentStore = create<DocumentState>()(
   },
 
   resetDocument: () => {
+    clearUploadedDefinitions();
     canvasSession=null; canvasDirty=false;
     if(canvasTimer) clearTimeout(canvasTimer);
     documentGeneration++;
@@ -892,7 +887,7 @@ export const useDocumentStore = create<DocumentState>()(
   updateElement: (id: string, patch: Partial<InvoiceElement>) => {
     if ('text' in patch && typeof patch.text === 'string') {
       const text = patch.text;
-      void import('./chatStore').then(({useChatStore}) => {
+      void Promise.resolve().then(() => {
         try {const element=get().canvasElements?.find(el=>el.id===id);const field=element?.type==='text'?element.semanticField:undefined;const semantic = field?{[field]:text}:semanticCanvasPatch(id,text,useChatStore.getState().collectedSlots);if(semantic) return useChatStore.getState().updateSemanticFields(semantic);} catch {set({error:'Invalid document value. The edit was not saved.'});}
       });
     }
@@ -917,7 +912,7 @@ export const useDocumentStore = create<DocumentState>()(
   // Same as updateElement but applied to every id in one batch (e.g.
   // dragging a multi-selection as a group) — one set() instead of N.
   updateElements: (ids: string[], patch: Partial<InvoiceElement> | ((id: string) => Partial<InvoiceElement>)) => {
-    void import('./chatStore').then(({useChatStore}) => {
+    void Promise.resolve().then(() => {
       const fields: Record<string,unknown> = {};
       for(const id of ids) {const p=typeof patch==='function'?patch(id):patch;if('text' in p && typeof p.text==='string'){const element=get().canvasElements?.find(el=>el.id===id);const field=element?.type==='text'?element.semanticField:undefined;Object.assign(fields,field?{[field]:p.text}:semanticCanvasPatch(id,p.text,{...useChatStore.getState().collectedSlots,...fields})||{});}}
       if(Object.keys(fields).length)return useChatStore.getState().updateSemanticFields(fields);
@@ -1042,8 +1037,20 @@ export const useDocumentStore = create<DocumentState>()(
     const templateId = state.selectedTemplate || 'tmpl_invoice_2023_01';
     const merged = { documentType: docType, ...data };
     if(templateId.startsWith('upl_')) {
-      set({canvasElements:null});
-      void documentsApi.getUploadedPreview(templateId,merged).then(preview=>{if(get().selectedTemplate===templateId)set({previewHtml:preview.html});}).catch(()=>set({error:'Uploaded template preview unavailable'}));
+      const cleanOverrides={...state.elementOverrides};
+      for(const id of Object.keys(cleanOverrides))if(id.startsWith('upl_field_')||id.startsWith('item_')){
+        const {text:ignored,...presentation}=cleanOverrides[id] as Partial<InvoiceElement>&{text?:string};
+        void ignored;
+        cleanOverrides[id]=presentation as Partial<InvoiceElement>;
+      }
+      if(uploadedDefinition(templateId)) {
+        uploadedPreviewSequence++; // A cached field update supersedes older in-flight previews.
+        set({elementOverrides:cleanOverrides,error:null,canvasElements:computeCanvasElements(templateId,merged,state.accentColor,cleanOverrides,state.customElements)});
+        return;
+      }
+      const epoch=documentGeneration,previewSequence=++uploadedPreviewSequence;
+      set({canvasElements:null,error:null,elementOverrides:cleanOverrides});
+      void documentsApi.getUploadedPreview(templateId,merged).then(preview=>{if(epoch===documentGeneration&&previewSequence===uploadedPreviewSequence&&get().selectedTemplate===templateId)set(applyUploadedPreview(templateId,preview,merged));}).catch(error=>{if(epoch===documentGeneration&&previewSequence===uploadedPreviewSequence&&get().selectedTemplate===templateId)set({error:error instanceof Error?error.message:'Uploaded template preview unavailable'});});
       return;
     }
 

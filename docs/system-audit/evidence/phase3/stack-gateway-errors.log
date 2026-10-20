@@ -1,1 +1,0 @@
-[gateway/errorHandler] Unhandled Error on POST /v1/chat/api/chat/session/7d3f7340-e209-4463-b443-427efdf4bc1b/message: PayloadTooLargeError: request entity too large

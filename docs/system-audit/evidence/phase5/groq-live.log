@@ -1,2 +1,0 @@
-{"checks":[{"workflow":"bounded simple extraction live completion","status":"FAIL"},{"workflow":"Simple live extraction commits through MCP","status":"FAIL"},{"workflow":"Real provider MCP tool execution occurred","status":"FAIL"},{"workflow":"Live requests stay within explicit approval","status":"PASS"}],"attempts":8,"observed_usd":0.00027645}
-[groq] request failed {"sessionId":"41ec3dbb-492f-4081-b744-7584f9b46885","model":"openai/gpt-oss-20b","name":"Error"}

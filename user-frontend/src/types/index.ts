@@ -305,6 +305,10 @@ export interface Template {
   name: string;
   thumbnail_url: string;
   tier: TemplateTier;
+  created_at?: string;
+  owner_id?: string;
+  visibility?: 'private' | 'public';
+  can_rename?: boolean;
 }
 
 export interface TemplatesResponse {
@@ -326,6 +330,7 @@ export interface ApiError {
   error: string;
   message: string;
   details?: Record<string, unknown>;
+  detail?: string | { loc?: (string | number)[]; msg?: string }[];
 }
 
 // ─── Document Type Metadata ───────────────────

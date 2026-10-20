@@ -120,6 +120,7 @@ export const ADMIN_NAV_SECTIONS: AdminNavSection[] = [
     items: [
       { label: 'All Generated Documents', id: 'doc_all' },
       { label: 'Most Used Templates', id: 'doc_templates' },
+      { label: 'Custom Template Approvals', id: 'doc_version_registry' },
       { label: 'Document Type Breakdown', id: 'doc_breakdown' },
       { label: 'Shared Document Links', id: 'doc_links' }
     ]

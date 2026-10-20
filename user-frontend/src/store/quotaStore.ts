@@ -88,8 +88,8 @@ export const useQuotaStore = create<QuotaState>((set) => ({
     }
 
     try {
-      const [quota,entitlements] = await Promise.all([billingApi.getQuota(),get<Entitlements>("/quota/entitlements")]);
-      set({ quota,entitlements });
+      const [quota,entitlements] = await Promise.allSettled([billingApi.getQuota(),get<Entitlements>("/quota/entitlements")]);
+      set({quota:quota.status==='fulfilled'?quota.value:null,entitlements:entitlements.status==='fulfilled'?entitlements.value:null});
     } catch {
       set({quota:null,entitlements:null});
     }

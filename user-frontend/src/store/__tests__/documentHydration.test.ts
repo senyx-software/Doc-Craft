@@ -1,14 +1,65 @@
 import {it,expect,vi,beforeEach} from 'vitest';
+import type {ConversationSnapshot} from '../../types';
 const mocks=vi.hoisted(()=>{
  const values=new Map<string,string>();vi.stubGlobal('localStorage',{getItem:(key:string)=>values.get(key)||null,setItem:(key:string,value:string)=>values.set(key,value),removeItem:(key:string)=>values.delete(key)});
- return {chat:{sessionId:'s',documentType:'invoice',collectedSlots:{businessName:'Nexora'},collectedData:null,revision:2,readOnly:false,canGenerate:true,fieldStates:{},reconcileSnapshot:vi.fn()},template:vi.fn(),accent:vi.fn(),generate:vi.fn(),canvasWrite:vi.fn(async()=>({state:{sessionId:'s',revision:2,layoutRevision:1}}))};
+ return {chat:{sessionId:'s',documentType:'invoice',collectedSlots:{businessName:'Nexora'},collectedData:null,revision:2,readOnly:false,canGenerate:true,fieldStates:{},reconcileSnapshot:vi.fn(),updateSemanticFields:vi.fn()},template:vi.fn(),accent:vi.fn(),generate:vi.fn(),preview:vi.fn(),catalog:vi.fn(),canvasWrite:vi.fn(async(...args:unknown[])=>{void args;return {state:{sessionId:'s',revision:2,layoutRevision:1}};})};
 });
 vi.mock('../chatStore',()=>({useChatStore:{getState:()=>mocks.chat}}));
 vi.mock('../../api/ai',()=>({updateSessionTemplate:mocks.template,updateSessionAccentColor:mocks.accent}));
-vi.mock('../../api/documents',()=>({generateDocument:mocks.generate,getDocumentStatus:vi.fn(),getTemplates:vi.fn(),getAvailableTemplateIds:vi.fn(async()=>({templates:[]}))}));
+vi.mock('../../api/documents',()=>({generateDocument:mocks.generate,getUploadedPreview:mocks.preview,getDocumentStatus:vi.fn(),getTemplates:vi.fn(),getAvailableTemplateIds:mocks.catalog}));
 vi.mock('../../api/client',()=>({apiRequest:mocks.canvasWrite,getToken:()=> 'synthetic'}));
 import {useDocumentStore,flushCanvasLayout} from '../documentStore';
-beforeEach(()=>{vi.clearAllMocks();useDocumentStore.getState().resetDocument();mocks.chat.sessionId='s';vi.stubGlobal('window',{});});
+beforeEach(()=>{vi.clearAllMocks();mocks.catalog.mockResolvedValue({templates:[]});useDocumentStore.getState().resetDocument();mocks.chat.sessionId='s';vi.stubGlobal('window',{});});
+it('uploaded template hydration restores its actual rendered document',async()=>{
+ mocks.preview.mockResolvedValue({html:'<h1>Approved company format</h1>'});
+ mocks.catalog.mockResolvedValue({templates:[{id:'upl_company_v1',premium:false,name:'Company format'}]});
+ useDocumentStore.getState().hydrateConversation({sessionId:'s',templateId:'upl_company_v1',documentType:'invoice',slots:{businessName:'Nexora'}});
+ await vi.waitFor(()=>expect(useDocumentStore.getState().previewHtml).toContain('Approved company format'));
+ expect(mocks.preview).toHaveBeenCalledWith('upl_company_v1',{documentType:'invoice',businessName:'Nexora'});
+ expect(useDocumentStore.getState().canvasElements).toBeNull();
+});
+it('editable uploaded templates start blank and bind chat values while retaining manual layout edits',async()=>{
+ const definition={version:1,pageWidth:595,pageHeight:842,pageCount:1,elements:[
+  {id:'upl_static_0_1',type:'text',text:'Invoice',x:30,y:30,w:160,h:20,fontSize:18,fontWeight:700,color:'#222222',align:'left',section:'header',zIndex:1},
+  {id:'upl_field_businessName_0_2',type:'text',text:'',binding:'businessName',x:30,y:100,w:180,h:20,fontSize:10,fontWeight:400,color:'#222222',align:'left',section:'header',zIndex:2},
+ ]};
+ mocks.preview.mockResolvedValue({html:'<h1>Invoice</h1>',canvasDefinition:definition});
+ mocks.catalog.mockResolvedValue({templates:[{id:'upl_company_v1',premium:false,name:'Company format'}]});
+ useDocumentStore.getState().hydrateConversation({sessionId:'s',templateId:'upl_company_v1',documentType:'invoice',slots:{}});
+ await vi.waitFor(()=>expect(useDocumentStore.getState().canvasElements).not.toBeNull());
+ expect(useDocumentStore.getState().canvasElements!.find(element=>element.id==='upl_field_businessName_0_2')).toMatchObject({text:'',semanticField:'businessName'});
+ useDocumentStore.getState().updateElement('upl_static_0_1',{x:75,text:'Tax invoice'});
+ useDocumentStore.getState().refreshCanvasElements({businessName:'New company',documentType:'invoice'});
+ expect(useDocumentStore.getState().canvasElements!.find(element=>element.id==='upl_field_businessName_0_2')).toMatchObject({text:'New company'});
+ expect(useDocumentStore.getState().canvasElements!.find(element=>element.id==='upl_static_0_1')).toMatchObject({text:'Tax invoice',x:75});
+ expect(useDocumentStore.getState().canvasElements!.find(element=>element.id==='upl_field_businessName_0_2')).toMatchObject({semanticField:'businessName'});
+ useDocumentStore.getState().updateElement('upl_field_businessName_0_2',{text:'Edited in canvas'});
+ await vi.waitFor(()=>{expect(useDocumentStore.getState().error).toBeNull();expect(mocks.chat.updateSemanticFields).toHaveBeenCalledWith({businessName:'Edited in canvas'});});
+ await flushCanvasLayout();
+ const saved=(mocks.canvasWrite.mock.calls.at(-1)![1] as {body:{layout:NonNullable<ConversationSnapshot['canvasLayout']>}}).body.layout;
+ expect(saved.elementOverrides.upl_static_0_1).toEqual({x:75,text:'Tax invoice'});
+ expect('text' in saved.elementOverrides.upl_field_businessName_0_2).toBe(false);
+ useDocumentStore.getState().hydrateConversation({sessionId:'s',templateId:'upl_company_v1',documentType:'invoice',slots:{businessName:'Saved company'},canvasLayout:saved});
+ await vi.waitFor(()=>expect(useDocumentStore.getState().canvasElements?.find(element=>element.id==='upl_field_businessName_0_2')).toMatchObject({text:'Saved company'}));
+ expect(useDocumentStore.getState().canvasElements!.find(element=>element.id==='upl_static_0_1')).toMatchObject({text:'Tax invoice',x:75});
+ let finish!:(value:unknown)=>void;
+ mocks.template.mockResolvedValue({state:{sessionId:'s',revision:3}});
+ mocks.preview.mockImplementationOnce(()=>new Promise(resolve=>{finish=resolve;}));
+ const pending=useDocumentStore.getState().selectTemplate('upl_company_v1');
+ useDocumentStore.getState().refreshCanvasElements({documentType:'invoice',businessName:'Newest company'});
+ finish({html:'Older details',canvasDefinition:definition});await pending;
+ expect(useDocumentStore.getState().canvasElements!.find(element=>element.id==='upl_field_businessName_0_2')).toMatchObject({text:'Newest company'});
+});
+it('late uploaded previews cannot replace a newer rendered document',async()=>{
+ let finish!:(value:{html:string})=>void;
+ mocks.preview.mockImplementationOnce(()=>new Promise(resolve=>{finish=resolve;})).mockResolvedValueOnce({html:'<h1>Latest saved details</h1>'});
+ useDocumentStore.setState({selectedTemplate:'upl_company_v1'});
+ useDocumentStore.getState().refreshCanvasElements({documentType:'invoice',businessName:'Earlier'});
+ useDocumentStore.getState().refreshCanvasElements({documentType:'invoice',businessName:'Latest'});
+ await vi.waitFor(()=>expect(useDocumentStore.getState().previewHtml).toContain('Latest saved details'));
+ finish({html:'<h1>Outdated details</h1>'});await Promise.resolve();
+ expect(useDocumentStore.getState().previewHtml).toContain('Latest saved details');
+});
 it('moving an existing canvas element saves without first adding any element',async()=>{
  useDocumentStore.getState().hydrateConversation({sessionId:'s',templateId:'tmpl_invoice_2023_01',documentType:'invoice',slots:{businessName:'Nexora'}});
  const element=useDocumentStore.getState().canvasElements![0];

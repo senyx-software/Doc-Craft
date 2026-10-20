@@ -88,7 +88,13 @@ export class ApiRequestError extends Error {
   details?: Record<string, unknown>;
 
   constructor(status: number, body: ApiError) {
-    const errMsg = body.message || (typeof body.error === 'string' ? body.error : `Request failed with status ${status}`);
+    const validationMessage = typeof body.detail === 'string' ? body.detail : Array.isArray(body.detail)
+      ? body.detail.map(issue => {
+          const field = issue.loc?.filter(part => part !== 'body').join('.');
+          return issue.msg ? (field ? `${field}: ${issue.msg}` : issue.msg) : '';
+        }).filter(Boolean).join('; ')
+      : '';
+    const errMsg = body.message || validationMessage || (typeof body.error === 'string' ? body.error : `Request failed with status ${status}`);
     super(errMsg);
     this.name = 'ApiRequestError';
     this.status = status;

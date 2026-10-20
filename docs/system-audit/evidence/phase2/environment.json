@@ -1,9 +1,0 @@
-{
-  "docker_executable_available": false,
-  "podman_executable_available": false,
-  "node_version": "v24.20.0",
-  "python_version": "Python 3.13.13",
-  "postgres_fixture_version": "postgres (PostgreSQL) 18.4",
-  "database_policy": "Dedicated loopback instance; fresh uniquely named databases; no shared/production mutations",
-  "provider_policy": "Synthetic/empty credentials; no real charge or email"
-}

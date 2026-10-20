@@ -6,6 +6,7 @@ from fastapi.testclient import TestClient
 from app.services.authentication import authenticate_document_request
 from app.services import authentication
 from types import SimpleNamespace
+import pytest
 
 app = FastAPI()
 app.middleware("http")(authenticate_document_request)
@@ -26,8 +27,11 @@ def test_document_identity_comes_from_verified_access_claims(monkeypatch):
         def __init__(self, **kwargs): pass
         async def __aenter__(self): return self
         async def __aexit__(self, *args): pass
-        async def get(self, *args, **kwargs): return SimpleNamespace(status_code=200, json=lambda: {"user":{"id":"owner", "plan":"max"}})
-    monkeypatch.setattr(authentication.httpx, "AsyncClient", ProfileClient)
+        async def post(self, url, **kwargs):
+            assert url.endswith('/internal/verify-token')
+            assert kwargs['json']['userId']=='owner'
+            return SimpleNamespace(status_code=200, json=lambda: {"valid":True,"user":{"id":"owner", "plan":"max"}})
+    monkeypatch.setattr(authentication, "async_service_client", lambda *args,**kwargs:ProfileClient())
     token = access_token()
     response = client.get("/v1/document/history", headers={"Authorization": f"Bearer {token}", "x-user-id": "victim", "x-user-plan": "pro"})
     assert response.json() == {"id": "owner", "plan": "max"}
@@ -37,3 +41,17 @@ def test_document_api_rejects_mfa_tokens(monkeypatch):
     monkeypatch.setenv("JWT_SECRET", secret)
     token = access_token(profile='mfa')
     assert client.get("/v1/document/history", headers={"Authorization": f"Bearer {token}"}).status_code == 401
+
+@pytest.mark.parametrize('status,result,expected',[
+    (200,{'valid':False,'user':{'id':'owner'}},403),
+    (200,{'valid':True,'user':{'id':'another-owner'}},403),
+    (401,{},403),(403,{},403),(503,{},503),
+])
+def test_document_account_verification_remains_fail_closed(monkeypatch,status,result,expected):
+    class Client:
+        async def __aenter__(self):return self
+        async def __aexit__(self,*args):pass
+        async def post(self,*args,**kwargs):return SimpleNamespace(status_code=status,json=lambda:result)
+    monkeypatch.setattr(authentication,'async_service_client',lambda *args,**kwargs:Client())
+    response=client.get('/v1/document/history',headers={'Authorization':'Bearer '+access_token()})
+    assert response.status_code==expected

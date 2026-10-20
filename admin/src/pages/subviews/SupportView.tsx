@@ -5,6 +5,8 @@ import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
 import StatCard from '../../components/ui/StatCard';
+import Pagination from '../../components/ui/Pagination';
+import { usePagination } from '../../hooks/usePagination';
 import {
   MessageSquare, Search, RefreshCw, CheckCircle2, DollarSign,
   Mail, Layers, AlertCircle, Clock, Bot, X, ShieldCheck, Send, Eye, XCircle
@@ -73,6 +75,8 @@ const SupportView: React.FC<SupportViewProps> = ({ activeSubItem }) => {
     const matchStatus = !statusFilter || (item.status || '').toLowerCase() === statusFilter.toLowerCase();
     return matchSearch && matchStatus;
   });
+  const filteredOverrides = applyFilters(overrides, ['user_email', 'id', 'requested_plan', 'reason', 'current_plan']);
+  const overridePagination = usePagination(filteredOverrides, 10);
 
   // Shared filter toolbar
   const renderToolbar = (title: string, count: number, statusOptions: string[]) => (
@@ -87,14 +91,14 @@ const SupportView: React.FC<SupportViewProps> = ({ activeSubItem }) => {
           <input
             type="text"
             value={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)}
+            onChange={e => {setSearchTerm(e.target.value);overridePagination.setPage(1);}}
             placeholder="Search…"
             className="pl-8 pr-3 py-1 bg-appBg text-[11px] text-appTextPrimary border border-appBorder rounded-md focus:outline-none focus:border-appPrimary w-44"
           />
         </div>
         <select
           value={statusFilter}
-          onChange={e => setStatusFilter(e.target.value)}
+          onChange={e => {setStatusFilter(e.target.value);overridePagination.setPage(1);}}
           className="px-2 py-1 bg-appBg text-[11px] text-appTextPrimary border border-appBorder rounded-md focus:outline-none focus:border-appPrimary"
         >
           <option value="">All Statuses</option>
@@ -499,7 +503,7 @@ const SupportView: React.FC<SupportViewProps> = ({ activeSubItem }) => {
 
   // ─── SUBVIEW: Manual Plan Override Requests ───────────────────────────────
   if (activeSubItem === 'sup_overrides') {
-    const filtered = applyFilters(overrides, ['user_email', 'id', 'requested_plan', 'reason', 'current_plan']);
+    const filtered = filteredOverrides;
 
     return (
       <div className="space-y-6 text-left">
@@ -536,7 +540,7 @@ const SupportView: React.FC<SupportViewProps> = ({ activeSubItem }) => {
                   <tr><td colSpan={9} className="py-10 text-center text-appTextSecondary font-mono text-[11px]">
                     {isLoading ? 'Loading override requests…' : 'No plan override requests found.'}
                   </td></tr>
-                ) : filtered.map(o => (
+                ) : overridePagination.paged.map(o => (
                   <tr key={o.id} className="hover:bg-appBg/20 transition-colors">
                     <td className="py-3 font-mono text-[10px] text-appTextSecondary">{o.id}</td>
                     <td className="py-3 font-bold text-appTextPrimary">{o.user_email}</td>
@@ -563,6 +567,8 @@ const SupportView: React.FC<SupportViewProps> = ({ activeSubItem }) => {
             </table>
           </div>
         </Card>
+
+        <Pagination page={overridePagination.page} totalPages={overridePagination.totalPages} totalItems={overridePagination.totalItems} pageSize={overridePagination.pageSize} onChange={overridePagination.setPage} />
 
         {/* Override Review Modal */}
         {detailItem && detailType === 'override' && (

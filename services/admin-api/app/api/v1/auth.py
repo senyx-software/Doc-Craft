@@ -40,7 +40,7 @@ router = APIRouter(prefix="/admin/auth", tags=["Admin Auth"])
 
 
 @router.post("/login", response_model=AdminLoginCodeRequiredResponse)
-async def login(payload: AdminLoginRequest, request: Request):
+def login(payload: AdminLoginRequest, request: Request):
     """
     Step 1: Authenticate admin staff credentials (email & password).
     Generates a 6-digit email verification code and saves it to database.
@@ -89,7 +89,7 @@ async def login(payload: AdminLoginRequest, request: Request):
 
 
 @router.post("/verify-login-code", response_model=AdminTokenResponse)
-async def verify_login_code(payload: AdminVerifyLoginCodeRequest, request: Request):
+def verify_login_code(payload: AdminVerifyLoginCodeRequest, request: Request):
     """
     Step 2: Submit email and the 6-digit verification code to complete login and issue JWT access token.
     """
@@ -97,10 +97,10 @@ async def verify_login_code(payload: AdminVerifyLoginCodeRequest, request: Reque
     if not account:
         raise NotFoundException("Admin account not found")
 
-    return await _issue_token_for_valid_code(account, payload.verification_code.strip(), request)
+    return _issue_token_for_valid_code(account, payload.verification_code.strip(), request)
 
 
-async def _issue_token_for_valid_code(account, code_clean: str, request: Request) -> AdminTokenResponse:
+def _issue_token_for_valid_code(account, code_clean: str, request: Request) -> AdminTokenResponse:
     if account.status != "active":
         raise ForbiddenException("Admin account is unavailable")
     record = verification_repository.get_code(account.email)
@@ -197,7 +197,7 @@ async def _issue_token_for_valid_code(account, code_clean: str, request: Request
 
 
 @router.post("/forgot-password")
-async def forgot_password(payload: ForgotPasswordRequest, request: Request):
+def forgot_password(payload: ForgotPasswordRequest, request: Request):
     """Initiate password recovery by generating a 6-digit email verification code."""
     email_clean = payload.email.lower().strip()
     account = admin_user_repository.get_by_email(email_clean)
@@ -229,7 +229,7 @@ async def forgot_password(payload: ForgotPasswordRequest, request: Request):
 
 
 @router.post("/reset-password")
-async def reset_password(payload: ResetPasswordRequest, request: Request):
+def reset_password(payload: ResetPasswordRequest, request: Request):
     """Reset account password using valid 6-digit email verification code."""
     email_clean = payload.email.lower().strip()
     account = admin_user_repository.get_by_email(email_clean)
@@ -277,7 +277,7 @@ async def reset_password(payload: ResetPasswordRequest, request: Request):
 
 
 @router.post("/change-password")
-async def change_password(
+def change_password(
     payload: ChangePasswordRequest,
     request: Request,
     current_admin: AdminUserPayload = Depends(get_current_admin),
@@ -300,7 +300,7 @@ async def change_password(
 
 
 @router.post("/totp/setup", response_model=TOTPSetupResponse)
-async def setup_totp(current_admin: AdminUserPayload = Depends(get_current_admin)):
+def setup_totp(current_admin: AdminUserPayload = Depends(get_current_admin)):
     """Generate 32-character TOTP secret key & QR code provisioning URI."""
     account = admin_user_repository.get_by_email(current_admin.email)
     if account and account.totp_enabled:
@@ -322,7 +322,7 @@ async def setup_totp(current_admin: AdminUserPayload = Depends(get_current_admin
 
 
 @router.post("/totp/verify")
-async def verify_and_enable_totp(
+def verify_and_enable_totp(
     payload: TOTPVerifyRequest,
     request: Request,
     current_admin: AdminUserPayload = Depends(get_current_admin),
@@ -360,7 +360,7 @@ async def verify_and_enable_totp(
 
 
 @router.post("/totp/disable")
-async def disable_totp(
+def disable_totp(
     request: Request,
     current_admin: AdminUserPayload = Depends(require_totp_2fa),
 ):
@@ -392,7 +392,7 @@ async def disable_totp(
 
 
 @router.post("/request-action-code")
-async def request_action_code(request: Request, current_admin: AdminUserPayload = Depends(get_current_admin)):
+def request_action_code(request: Request, current_admin: AdminUserPayload = Depends(get_current_admin)):
     """
     Emails a 6-digit code the admin can submit in X-Admin-2FA for a sensitive
     action, as an alternative to a TOTP authenticator code — the exact same
@@ -426,7 +426,7 @@ async def request_action_code(request: Request, current_admin: AdminUserPayload 
 
 
 @router.get("/me", response_model=AdminProfileResponse)
-async def get_my_profile(current_admin: AdminUserPayload = Depends(get_current_admin)):
+def get_my_profile(current_admin: AdminUserPayload = Depends(get_current_admin)):
     """Return active authenticated admin profile and permissions."""
     account = admin_user_repository.get_by_id(current_admin.admin_id)
     return AdminProfileResponse(
@@ -441,7 +441,7 @@ async def get_my_profile(current_admin: AdminUserPayload = Depends(get_current_a
 
 
 @router.patch("/me", response_model=AdminProfileResponse)
-async def update_my_profile(
+def update_my_profile(
     payload: UpdateAdminProfileRequest,
     request: Request,
     current_admin: AdminUserPayload = Depends(get_current_admin),
@@ -472,7 +472,7 @@ async def update_my_profile(
 
 
 @router.post('/logout')
-async def logout_admin(current_admin: AdminUserPayload = Depends(get_current_admin)):
+def logout_admin(current_admin: AdminUserPayload = Depends(get_current_admin)):
     from app.repositories.security_repository import security_repository
     security_repository.terminate_session(current_admin.session_id)
     return {'revoked': True}

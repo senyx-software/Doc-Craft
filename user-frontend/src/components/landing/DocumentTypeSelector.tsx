@@ -6,12 +6,15 @@ import {
   Receipt,
   ShoppingCart,
   ArrowRight,
+  AlertTriangle,
 } from 'lucide-react';
 import type { DocumentType } from '../../types';
 import { DOCUMENT_TYPES } from '../../types';
 
 interface DocumentTypeSelectorProps {
   onSelect: (type: DocumentType) => void;
+  error?: string | null;
+  onRetry?: () => void;
 }
 
 // Same icon set + single accent gradient as the landing page hero's
@@ -27,7 +30,7 @@ const iconMap: Record<string, React.ReactNode> = {
 
 const cardStyle = { gradient: 'from-appPrimary to-accent-purple-500', text: 'text-appPrimary' };
 
-const DocumentTypeSelector: React.FC<DocumentTypeSelectorProps> = ({ onSelect }) => {
+const DocumentTypeSelector: React.FC<DocumentTypeSelectorProps> = ({ onSelect, error, onRetry }) => {
   return (
     <div
       className="relative min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 overflow-hidden"
@@ -71,6 +74,21 @@ const DocumentTypeSelector: React.FC<DocumentTypeSelectorProps> = ({ onSelect })
           Select a document type below to launch our interactive AI assistant. We'll extract details and craft a pixel-perfect design in seconds.
         </motion.p>
       </div>
+
+      {error && (
+        <div role="alert" className="relative z-10 mb-6 flex w-full max-w-5xl items-start gap-3 border border-danger/30 bg-danger/10 p-4 text-danger">
+          <AlertTriangle size={20} className="mt-0.5 shrink-0" />
+          <div className="flex-1 text-sm">
+            <p className="font-semibold">We couldn't open your workspace.</p>
+            <p className="mt-1">{error}</p>
+          </div>
+          {onRetry && (
+            <button type="button" onClick={onRetry} className="shrink-0 px-3 py-1 text-sm font-semibold underline underline-offset-4">
+              Try again
+            </button>
+          )}
+        </div>
+      )}
 
       {/* Cards Grid — one row of 4, same card component/styling as the
           landing page hero's document-type cards (single appPrimary/purple

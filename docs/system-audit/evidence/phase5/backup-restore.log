@@ -1,9 +1,0 @@
-{
-  "checked_at": "2026-10-16T08:34:02.229263+00:00",
-  "status": "BLOCKED",
-  "prerequisite": "PostgreSQL 17+ pg_dump and pg_restore executables; set PG_CLIENT_BIN_DIR or install on the dedicated staging host",
-  "attempted": "Native bundled server provides initdb/pg_ctl/postgres only. Official PostgreSQL source archive download timed out; no unverified client installed.",
-  "dump_created": false,
-  "restore_executed": false,
-  "production_data_used": false
-}

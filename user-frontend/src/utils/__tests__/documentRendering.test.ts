@@ -2,6 +2,17 @@ import {it,expect} from 'vitest';
 import {renderTemplate,INVOICE_TEMPLATE_IDS,DOCUMENT_TYPE_TEMPLATES,formatMarkdownHTML} from '../templateRenderer';
 import {getElementsForTemplate} from '../invoiceElements';
 const ready={businessName:'Invoice Solutions',clientName:'Acme',invoiceNumber:'INV-1',issueDate:'2026-10-13',dueDate:'2026-11-13',currency:'LKR',taxRate:0,paymentMethod:'Cash',subject:'Project',lineItems:[{description:'Invoice integration',quantity:1,unitPrice:120000}]};
+it.each([['quotation','quoteNumber'],['receipt','receiptNumber'],['purchase_order','poNumber']])('renders %s previews with matching document-number aliases', (type,alias)=>{
+ for(const template of DOCUMENT_TYPE_TEMPLATES[type]) {
+  const data={...ready,documentType:type,[alias]:ready.invoiceNumber};
+  const html=renderTemplate(template.template_id,data,null,'#0097b2',type);
+  expect(html,template.template_id).toContain(ready.businessName);
+  expect(html).not.toContain('__DOCCRAFT_VALUE_');
+ }
+});
+it('rejects conflicting document numbers before rendering',()=>{
+ expect(()=>renderTemplate(DOCUMENT_TYPE_TEMPLATES.quotation[0].template_id,{...ready,quoteNumber:'OTHER'},null,'#0097b2','quotation')).toThrow('Conflicting aliases for invoiceNumber');
+});
 for(const type of ['invoice','quotation','proposal','receipt','purchase_order'])it('T39-T41 literal values and absent contacts preserved for every '+type+' template',()=>{
  for(const template of DOCUMENT_TYPE_TEMPLATES[type]) {
   const html=renderTemplate(template.template_id,{...ready,documentType:type},null,'#0097b2',type);

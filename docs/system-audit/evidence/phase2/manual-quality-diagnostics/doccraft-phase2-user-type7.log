@@ -1,9 +1,0 @@
-npm warn Unknown env config "nodedir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
-npm warn Unknown user config "tmp". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
-
-> user-frontend@0.0.0 build
-> tsc -b && vite build
-
-src/pages/PasswordResetPage.tsx(1,27): error TS6133: 'useEffect' is declared but its value is never read.
-src/pages/PasswordResetPage.tsx(23,17): error TS6133: 'setToken' is declared but its value is never read.
-src/pages/PasswordResetPage.tsx(27,23): error TS6133: 'setIsResetStep' is declared but its value is never read.

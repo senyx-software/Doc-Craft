@@ -64,7 +64,13 @@ def validated_document(document_type, raw, template_id=None, document_schema=Non
     if any(not valid_field(key, value) for key, value in slots.items()): raise ValueError("Invalid document field")
     if slots.get('dueDate') and slots['dueDate'] < slots['issueDate']: raise ValueError('Due date is before issue date')
     if slots.get('taxStatus') in ['exempt','not applicable'] and slots.get('taxRate', 0) > 0: raise ValueError('Conflicting tax applicability')
-    if "lineItems" in slots:
+    return calculate_document_data(slots)
+
+
+def calculate_document_data(raw):
+    """Derive amounts from validated fields for complete documents and partial previews."""
+    slots=dict(raw)
+    if valid_field("lineItems", slots.get("lineItems")):
         digits = CONTRACT['formatting']['currencyDigits'].get(slots.get('currency'), 2)
         unit = 10 ** digits
         def money(first, second=1, divisor=1):
@@ -100,5 +106,5 @@ def validated_document(document_type, raw, template_id=None, document_schema=Non
             if 'discountRate' not in item:
                 item.pop('grossTotal', None)
                 item.pop('discountAmount', None)
-    slots["currencySymbol"] = CONTRACT['formatting']['currencySymbols'].get(slots["currency"], slots["currency"] + " ")
+    slots["currencySymbol"] = CONTRACT['formatting']['currencySymbols'].get(slots.get("currency"), (slots.get("currency") + " ") if slots.get("currency") else "")
     return slots

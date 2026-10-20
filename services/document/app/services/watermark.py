@@ -1,7 +1,11 @@
 import fitz  # PyMuPDF
 import math
+from app.services.pdf_runtime import run_pdf_task
 
 def apply_watermark_to_pdf(pdf_bytes: bytes) -> bytes:
+    return run_pdf_task(_apply_watermark_to_pdf,pdf_bytes)
+
+def _apply_watermark_to_pdf(pdf_bytes: bytes) -> bytes:
     """
     Applies a diagonal semi-transparent "DocCraft" watermark to each page of the PDF.
     """

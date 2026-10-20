@@ -351,6 +351,11 @@
       ]
     },
     {
+      "methods": ["PATCH"],
+      "path": "^/api/v1/internal/uploaded-templates/upl_[a-f0-9]{32}_v[0-9]+$",
+      "callers": ["document"]
+    },
+    {
       "methods": [
         "GET"
       ],

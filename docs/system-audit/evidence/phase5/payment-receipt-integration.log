@@ -1,1 +1,0 @@
-{"status":"PASS","checks":["12 verified events create one invoice receipt","recipient durably fixed before send","lost downstream acknowledgement leaves outbox pending","retry converges to one NotificationDelivery","subsequent verified event preserves completed receipt and facts"],"external_emails":0}

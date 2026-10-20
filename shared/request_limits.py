@@ -3,19 +3,21 @@ from starlette.responses import JSONResponse
 
 
 class RequestBodyLimit:
-    def __init__(self, app, max_bytes=2*1024*1024):
+    def __init__(self, app, max_bytes=2*1024*1024, path_limits=None):
         self.app, self.max_bytes = app, max_bytes
+        self.path_limits = path_limits or {}
 
     async def __call__(self, scope, receive, send):
         if scope["type"] != "http":
             return await self.app(scope, receive, send)
         messages, size = [], 0
+        max_bytes = self.path_limits.get(scope.get('path', '').rstrip('/'), self.max_bytes)
         while True:
             message = await receive()
             if message["type"] == "http.disconnect":
                 return
             size += len(message.get("body", b""))
-            if size > self.max_bytes:
+            if size > max_bytes:
                 return await JSONResponse({"detail":"Request body too large"}, status_code=413)(scope, receive, send)
             messages.append(message)
             if not message.get("more_body", False):

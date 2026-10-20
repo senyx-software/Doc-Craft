@@ -1,6 +1,11 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {canvasLayout} from '../canvas-layout.mjs';
+test('uploaded static labels persist while bound field values remain server owned',()=>{
+ const layout=canvasLayout({elementOverrides:{upl_static_0_1:{text:'Customer details',x:30},upl_field_clientName_0_2:{text:'Forged client',x:100}}});
+ assert.deepEqual(layout.elementOverrides.upl_static_0_1,{text:'Customer details',x:30});
+ assert.deepEqual(layout.elementOverrides.upl_field_clientName_0_2,{x:100});
+});
 test('canvas presentation persists without overriding canonical semantic text',()=>{
  const layout=canvasLayout({elementOverrides:{businessName:{x:40,text:'forged business name',semanticField:'clientName'}},customElements:[{id:'label',type:'text',section:'custom',x:5,y:5,w:100,h:20,zIndex:1,text:'Custom note'}]});
  assert.deepEqual(layout.elementOverrides.businessName,{x:40});

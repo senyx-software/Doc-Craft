@@ -1,7 +1,0 @@
-{
-  "checked_utc": "2026-10-15T18:07:56.871726+00:00",
-  "audit_owned_postgresql": "stopped with pg_ctl fast; data preserved",
-  "harness_children": "closed by harness finally handlers",
-  "owned_browser_download": "stopped; partial archives only in temporary/cache locations",
-  "remaining_owned_processes": []
-}

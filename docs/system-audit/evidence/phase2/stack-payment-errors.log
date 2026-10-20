@@ -1,3 +1,0 @@
-[payment] trackProductEvent('subscription_activated') failed: [TypeError: fetch failed] {
-  [cause]: Error: bad port
-      at makeNetworkError (node:internal/deps/undici/undici:11806:35)

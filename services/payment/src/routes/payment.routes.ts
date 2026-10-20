@@ -79,8 +79,8 @@ router.post('/admin/payhere/reconcile/:orderId',async(req,res)=>{
 });
 router.get('/admin/entitlements/:userId', async (req, res) => {
   try {
-    const sub = await (await import('../services/subscription.service.js')).getSubscription(String(req.params.userId));
-    res.json({subscription: sub ? {plan:sub.plan.name,status:sub.status,currentPeriodEnd:sub.currentPeriodEnd,cancelAtPeriodEnd:sub.cancelAtPeriodEnd} : null});
+    const subscription = await (await import('../services/subscription.service.js')).getSubscriptionPolicy(String(req.params.userId));
+    res.json({subscription});
   } catch { res.status(503).json({error:'Subscription policy unavailable'}); }
 });
 router.get('/admin/subscriptions/stats', payment.adminSubscriptionStats);

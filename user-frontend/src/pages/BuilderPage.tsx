@@ -94,7 +94,7 @@ const BuilderPage: React.FC = () => {
   const { isInitializing: authInitializing, user: authUser, isGuest, isAuthenticated } = useAuthStore();
   const downloadBlocked = isGuest || !isAuthenticated;
   const navigate = useNavigate();
-  const { sessionId, documentType, startSession, resetChat, collectedData, collectedSlots, loadSessionFromDb } = useChatStore();
+  const { sessionId, documentType, startSession, resetChat, collectedData, collectedSlots, loadSessionFromDb, error: chatError } = useChatStore();
   const {
     fetchTemplates, resetDocument, previewHtml, isGenerating, isExporting, exportPdf, error: documentError,
     accentColor, updateLayout, layoutState, selectedTemplate,
@@ -114,6 +114,7 @@ const BuilderPage: React.FC = () => {
   const handledSearchRef = useRef<string | null>(null);
   const handledTypeParamRef = useRef<string | null>(null);
   const [isStartingSession, setIsStartingSession] = useState(false);
+  const [lastAttemptedType, setLastAttemptedType] = useState<DocumentType | null>(null);
 
   useEffect(() => {
     if (authInitializing) return;
@@ -862,17 +863,6 @@ const BuilderPage: React.FC = () => {
     { tool: 'text', icon: <TypeIcon size={13} />, title: 'Text (T)' },
   ];
 
-  // Covers a page refresh mid-session, and stale template lists left over
-  // from localStorage before templates were excluded from persistence:
-  // always re-fetch the (code-defined) template list on mount whenever
-  // there's an active session, so it can never go stale.
-  useEffect(() => {
-    if (sessionId && documentType) {
-      fetchTemplates(documentType);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sessionId, documentType]);
-
   // Deliberately does NOT call resetChat() first — resetChat() nulls out
   // sessionId synchronously, and startSession() is async (500ms in demo
   // mode), so there'd be a real gap where sessionId is null. Since this is
@@ -885,14 +875,20 @@ const BuilderPage: React.FC = () => {
   // there's no null gap; the couple of fields it doesn't touch are cleared
   // right after, once the new session is already live.
   async function handleSelectDocType(type: DocumentType) {
+    setLastAttemptedType(type);
     setIsStartingSession(true);
     try {
       resetDocument();
-      fetchTemplates(type);
+      await fetchTemplates(type);
+      const document = useDocumentStore.getState();
+      if (!document.templates.length || !document.selectedTemplate) {
+        useChatStore.setState({ error: document.error || 'No templates are currently available for this document type. Please try again.' });
+        return;
+      }
       await startSession(type);
       useChatStore.setState({ pendingCorrection: null, summary: null, collectedData: null, spellCorrections: [] });
-    } catch {
-      // Handled in startSession
+    } catch (error) {
+      useChatStore.setState({ error: error instanceof Error ? error.message : 'Could not open your workspace. Please try again.' });
     } finally {
       setIsStartingSession(false);
     }
@@ -1048,7 +1044,11 @@ const BuilderPage: React.FC = () => {
         transition={{ duration: 0.4 }}
       >
         <div className="w-full">
-          <DocumentTypeSelector onSelect={handleSelectDocType} />
+          <DocumentTypeSelector
+            onSelect={handleSelectDocType}
+            error={chatError}
+            onRetry={lastAttemptedType ? () => void handleSelectDocType(lastAttemptedType) : undefined}
+          />
         </div>
       </motion.div>
     );
@@ -1344,6 +1344,10 @@ const BuilderPage: React.FC = () => {
                   <div className="flex flex-col items-center justify-center gap-4 h-full">
                     <Loader2 size={32} className="text-appPrimary animate-spin" />
                     <p className="text-sm text-appTextSecondary">Generating live layout...</p>
+                  </div>
+                ) : selectedTemplate?.startsWith('upl_')&&!previewHtml ? (
+                  <div className="flex h-full flex-col items-center justify-center gap-3 p-6 text-center" role={documentError?'alert':'status'}>
+                    {documentError?<><p className="text-sm text-appTextSecondary">{documentError}</p><button className="text-sm text-brand-500 underline" onClick={()=>refreshCanvasElements({documentType:documentType||'invoice',...activeData})}>Retry template preview</button></>:<><Loader2 size={28} className="animate-spin text-brand-500"/><p className="text-sm text-appTextSecondary">Loading your template preview…</p></>}
                   </div>
                 ) : canvasElements ? (
                   // Editable Figma-style canvas — every text/shape is selectable,

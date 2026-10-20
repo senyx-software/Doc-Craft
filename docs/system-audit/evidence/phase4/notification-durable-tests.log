@@ -1,9 +1,0 @@
-
- RUN  v5.0.5 /home/eranda/Projects/doc-craft
-
-
- Test Files  4 passed (4)
-      Tests  14 passed (14)
-   Start at  12:49:34
-   Duration  406ms (import 53%, transform 38%, tests 7%, worker 2%)
-

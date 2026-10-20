@@ -1,10 +1,12 @@
 import TemplateUpload from '../../components/TemplateUpload';
 import { useCommittedEvent } from '../../hooks/useCommittedEvent';
 import type * as Wire from '../../api/adminApiTypes';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Card from '../../components/ui/Card';
 import Badge from '../../components/ui/Badge';
 import Button from '../../components/ui/Button';
+import Pagination from '../../components/ui/Pagination';
+import { usePagination } from '../../hooks/usePagination';
 import { FileText, Code2, Eye, RefreshCw, UploadCloud, X } from 'lucide-react';
 import {
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis,
@@ -21,9 +23,54 @@ const DocumentsView: React.FC<DocumentsViewProps> = ({ activeSubItem }) => {
   const [templates, setTemplates] = useState<Wire.Template[]>([]);
   const [isLoadingTemplates, setIsLoadingTemplates] = useState(true);
   const [previewTemplate, setPreviewTemplate] = useState<Wire.Template | null>(null);
+  const [inspection,setInspection]=useState<Wire.UploadedTemplateDetail|null>(null);
+  const [previewError,setPreviewError]=useState('');
+  const [previewLoaded,setPreviewLoaded]=useState(false);
+  const [reviewed,setReviewed]=useState(false);
+  const [audience,setAudience]=useState<'private'|'public'>('private');
+  const [reviewNotes,setReviewNotes]=useState('');
+  const [reviewBusy,setReviewBusy]=useState(false);
+  const [templateName,setTemplateName]=useState('');
+  const previewRequest=useRef(0);
+  const visibleTemplates=activeSubItem==='doc_version_registry'?templates.filter(template=>template.id.startsWith('upl_')):templates;
+  const templatePagination=usePagination(visibleTemplates,10);
+
+  const closePreview=()=>{previewRequest.current++;setPreviewTemplate(null);};
+  const openPreview=async(template:Wire.Template)=>{
+    const request=++previewRequest.current;
+    setPreviewTemplate(template);setInspection(null);setPreviewError('');setPreviewLoaded(false);setReviewed(false);setReviewNotes('');
+    if(!template.id.startsWith('upl_'))return;
+    try {
+      const detail=await adminApiClient.inspectUploadedTemplate(template.id);
+      if(request!==previewRequest.current)return;
+      setInspection(detail);setAudience(detail.visibility);setTemplateName(detail.name);
+    }catch(error){if(request===previewRequest.current)setPreviewError(getErrorMessage(error)||'The uploaded document preview could not be loaded.');}
+  };
+  const renameTemplate=async()=>{
+    if(!inspection||!templateName.trim()||reviewBusy)return;
+    setReviewBusy(true);
+    try {
+      const result=await adminApiClient.renameUploadedTemplate(inspection.id,templateName.trim());
+      setInspection({...inspection,name:result.name});
+      setPreviewTemplate(previous=>previous?{...previous,name:result.name}:null);
+      await loadTemplatesFromApi();
+      toast.success('Template renamed','The name has been updated for everyone who can access this template.');
+    }catch(error){toast.error('Rename failed',getErrorMessage(error));}
+    finally{setReviewBusy(false);}
+  };
+  const submitReview=async(decision:'approve'|'reject')=>{
+    if(!inspection||reviewBusy||(decision==='approve'&&(!reviewed||!previewLoaded)))return;
+    setReviewBusy(true);
+    try {
+      await adminApiClient.reviewUploadedTemplate(inspection.id,{decision,visibility:audience,digest:inspection.digest,notes:reviewNotes});
+      await loadTemplatesFromApi();closePreview();
+      toast.success(decision==='approve'?'Template approved and published':'Template rejected',decision==='approve'?(audience==='private'?'Available only to the owner account.':'Available publicly to eligible accounts.'):'This version is unavailable for use.');
+    }catch(error){toast.error('Review was not saved',getErrorMessage(error));}
+    finally{setReviewBusy(false);}
+  };
 
   const loadTemplatesFromApi = useCommittedEvent(async () => {
-
+    setIsLoadingTemplates(true);
     try {
       const data = await adminApiClient.getTemplates();
       if (Array.isArray(data)) {
@@ -77,8 +124,8 @@ useEffect(() => {
   }, [loadTemplatesFromApi]);
 
   useEffect(() => {
-    loadDocLogs();
-  }, [loadDocLogs]);
+    if(!['doc_templates','doc_version_registry'].includes(activeSubItem))loadDocLogs();
+  }, [loadDocLogs,activeSubItem]);
 
   const handlePublishTemplate = async (templateId: string) => {
     try {
@@ -98,15 +145,15 @@ useEffect(() => {
             <div>
               <h3 className="text-xs font-bold uppercase tracking-wider text-gray-900 dark:text-white flex items-center gap-2">
                 <FileText size={16} className="text-purple-600 dark:text-purple-400" />
-                Document Template Version Registry (FR-ADM-01..03)
+                {activeSubItem==='doc_version_registry'?'Custom Template Approvals':'Document Templates'}
               </h3>
-              <p className="text-[10px] text-gray-500 dark:text-gray-400">Version review, private/public availability, publication and rollback</p>
+              <p className="text-[10px] text-gray-500 dark:text-gray-400">Review uploaded documents, choose their audience, and manage publication.</p>
             </div>
             <div className="flex items-center gap-2">
               <Button variant="outline" size="sm" onClick={loadTemplatesFromApi} disabled={isLoadingTemplates} className="flex items-center gap-1">
                 <RefreshCw size={12} className={isLoadingTemplates ? 'animate-spin' : ''} /> Reload Templates
               </Button>
-              <Badge variant="primary">{templates.length} Templates Registered</Badge>
+              <Badge variant="primary">{visibleTemplates.length} Templates Registered</Badge>
             </div>
           </div>
 
@@ -118,29 +165,30 @@ useEffect(() => {
                   <th className="pb-3 font-bold">Template ID</th>
                   <th className="pb-3 font-bold">Template Name</th>
                   <th className="pb-3 font-bold">Document Type</th>
+                  <th className="pb-3 font-bold">Owner / Audience</th>
                   <th className="pb-3 font-bold">Active Version</th>
-                  <th className="pb-3 font-bold">Last Modified</th>
+                  <th className="pb-3 font-bold">Uploaded / Updated</th>
                   <th className="pb-3 font-bold">Status</th>
                   <th className="pb-3 text-right font-bold">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200/40 dark:divide-white/5">
-                {templates.map((t) => (
+                {templatePagination.paged.map((t) => (
                   <tr key={t.id} className="hover:bg-purple-500/5 transition-colors">
                     <td className="py-3 font-mono text-gray-500 dark:text-gray-400">{t.id}</td>
                     <td className="py-3 text-gray-900 dark:text-white font-bold">{t.name}</td>
                     <td className="py-3 font-semibold text-purple-600 dark:text-purple-400">{t.type}</td>
+                    <td className="py-3 text-[10px] text-appTextSecondary"><span className="block max-w-44 truncate" title={t.owner_id}>{t.owner_id||'System'}</span><span>{t.visibility==='private'?'Owner only':'Public'}</span></td>
                     <td className="py-3 font-mono text-gray-500 dark:text-gray-400 font-bold">{t.version}</td>
-                    <td className="py-3 text-gray-500 dark:text-gray-400">{t.lastUpdated}</td>
+                    <td className="py-3 text-gray-500 dark:text-gray-400">{t.created_at?new Date(t.created_at).toLocaleString():t.lastUpdated}</td>
                     <td className="py-3">
-                      <Badge variant={t.status === 'Published' ? 'success' : 'warning'}>{t.status}</Badge>
+                      <Badge variant={t.status === 'Published' ? 'success' : t.status==='Rejected'?'danger':'warning'}>{t.status}</Badge>
                     </td>
                     <td className="py-3 text-right flex items-center justify-end gap-2">
-                      <Button variant="outline" size="sm" onClick={() => setPreviewTemplate(t)}>
-                        <Eye size={12} /> Template Definition
+                      <Button variant="outline" size="sm" onClick={() => void openPreview(t)}>
+                        <Eye size={12} /> {t.id.startsWith('upl_')?'View & review':'Template Definition'}
                       </Button>
-                      {t.status==='Review required'&&<Button variant="outline" size="sm" onClick={async()=>{try{await adminApiClient.approveTemplate(t.id);await loadTemplatesFromApi();}catch(error){toast.error('Approval failed',getErrorMessage(error));}}}>Approve reviewed version</Button>}
-                      {t.status !== 'Published' && (
+                      {t.status !== 'Published' && (!t.id.startsWith('upl_')||['Approved','Withdrawn'].includes(t.status)) && (
                         <Button variant="violet" size="sm" className="flex items-center gap-1.5" onClick={() => handlePublishTemplate(t.id)}>
                           <UploadCloud size={12} /> Publish Version
                         </Button>
@@ -155,28 +203,47 @@ useEffect(() => {
               </tbody>
             </table>
           </div>
+          <Pagination page={templatePagination.page} totalPages={templatePagination.totalPages} totalItems={templatePagination.totalItems} pageSize={templatePagination.pageSize} onChange={templatePagination.setPage}/>
+          {!isLoadingTemplates&&visibleTemplates.length===0&&<p className="py-6 text-sm text-appTextSecondary">No uploaded templates to review.</p>}
         </Card>
 
         {/* Source Preview Modal */}
         {previewTemplate && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 text-left">
-            <Card className="max-w-2xl w-full p-6 space-y-4 border-gray-200 dark:border-white/10 shadow-2xl relative">
+          <div role="dialog" aria-modal="true" aria-label="Template review" className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 text-left">
+            <Card className="max-w-5xl max-h-[94vh] overflow-y-auto w-full p-6 space-y-4 border-gray-200 dark:border-white/10 shadow-2xl relative">
               <div className="pb-3 border-b border-gray-200/60 dark:border-white/10 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Code2 size={18} className="text-purple-600 dark:text-purple-400" />
                   <h3 className="text-sm font-bold text-gray-900 dark:text-white">
-                    Jinja2 HTML Template Source: {previewTemplate.name} ({previewTemplate.version})
+                    {previewTemplate.name} (version {previewTemplate.version})
                   </h3>
                 </div>
-                <button onClick={() => setPreviewTemplate(null)} className="text-gray-400 hover:text-gray-600 dark:hover:text-white"><X size={16} /></button>
+                <button aria-label="Close template review" disabled={reviewBusy} onClick={closePreview} className="text-gray-400 hover:text-gray-600 dark:hover:text-white"><X size={16} /></button>
               </div>
 
-              <div className="space-y-2">
+              {previewTemplate.id.startsWith('upl_')&&<div className="space-y-3">
+                {previewError?<p role="alert" className="text-red-500">{previewError}</p>:!inspection?<p>Loading uploaded document…</p>:<>
+                  <p className="text-xs text-appTextSecondary">Owner account: {inspection.owner_id}. Current audience: {inspection.visibility==='private'?'Owner only':'Public'}.</p>
+                  {inspection.created_at&&<p className="text-xs text-appTextSecondary">Uploaded {new Date(inspection.created_at).toLocaleString()}</p>}
+                  <form className="flex items-end gap-3" onSubmit={event=>{event.preventDefault();void renameTemplate();}}>
+                    <label className="flex-1 text-sm">Template name<input aria-label="Template name" className="mt-1 block w-full rounded border border-appBorder bg-appBg p-2" maxLength={100} value={templateName} disabled={reviewBusy} onChange={event=>setTemplateName(event.target.value)}/></label>
+                    <Button type="submit" variant="outline" disabled={reviewBusy||!templateName.trim()||templateName.trim()===inspection.name}>Save name</Button>
+                  </form>
+                  <iframe title="Uploaded document preview" sandbox="" srcDoc={inspection.preview_html} onLoad={()=>setPreviewLoaded(true)} className="h-[50vh] w-full border bg-white"/>
+                  <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={reviewed} disabled={!previewLoaded||reviewBusy} onChange={event=>setReviewed(event.target.checked)}/>I have reviewed this document preview.</label>
+                  <label className="block text-sm">Approve for<select aria-label="Template audience" className="ml-3 rounded border border-appBorder bg-appBg p-2" value={audience} disabled={reviewBusy} onChange={event=>setAudience(event.target.value as 'private'|'public')}><option value="private">Owner account only</option><option value="public">Public — all eligible accounts</option></select></label>
+                  <label className="block text-sm">Review notes<textarea aria-label="Review notes" className="mt-1 block w-full rounded border border-appBorder bg-appBg p-2" maxLength={2000} value={reviewNotes} onChange={event=>setReviewNotes(event.target.value)} disabled={reviewBusy}/></label>
+                  <p className="text-xs text-appTextSecondary">Approval publishes this version for the selected audience. Rejecting a published version removes its availability.</p>
+                  <div className="flex justify-end gap-3"><Button variant="danger" disabled={reviewBusy} onClick={()=>void submitReview('reject')}>Reject</Button><Button variant="success" disabled={!reviewed||!previewLoaded||reviewBusy} onClick={()=>void submitReview('approve')}>{reviewBusy?'Saving…':audience==='private'?'Approve for owner':'Approve for public'}</Button></div>
+                </>}
+              </div>}
+              <details className="space-y-2">
+                <summary className="cursor-pointer text-xs font-semibold">Template definition</summary>
                 <label className="block text-[10px] text-gray-500 uppercase font-bold tracking-wider">Raw Template Source Code</label>
                 <pre className="p-4 bg-neutral-950 text-emerald-400 font-mono text-xs rounded-md overflow-x-auto border border-neutral-800 max-h-80">
-                  {previewTemplate.html_content || `<!-- DocCraft Jinja2 Template: ${previewTemplate.name} -->\n<div class="document-container">\n  <h1>{{ document_title }}</h1>\n  <p>Issued by {{ company_name }}</p>\n</div>`}
+                  {inspection?.source.html||previewTemplate.html_content||'No template definition is available.'}
                 </pre>
-              </div>
+              </details>
 
               <div className="pt-2 flex justify-end gap-2 border-t border-gray-200/60 dark:border-white/10">
                 <Button variant="outline" size="sm" className="flex items-center gap-1.5" onClick={() => setPreviewTemplate(null)}><X size={12} /> Close Preview</Button>

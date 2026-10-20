@@ -12,7 +12,7 @@ from app.security.totp import verify_totp_code
 security_bearer = HTTPBearer(auto_error=False)
 
 
-async def get_current_admin(
+def get_current_admin(
     credentials: Optional[HTTPAuthorizationCredentials] = Depends(security_bearer),
 ) -> AdminUserPayload:
     """FastAPI dependency extracting and verifying admin JWT Bearer token."""
@@ -48,7 +48,7 @@ async def require_internal_secret(request: Request):
     return await authorize_service("admin-api", request)
 
 
-async def require_totp_2fa(
+def require_totp_2fa(
     request: Request,
     current_admin: AdminUserPayload = Depends(get_current_admin),
     x_admin_2fa: Optional[str] = Header(None, alias="X-Admin-2FA"),

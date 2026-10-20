@@ -25,6 +25,14 @@ def test_rendering_substitutes_only_escaped_values():
     result=render_uploaded_template(html,{}, {'businessName':'<script>bad()</script>','lineItems':[{'description':'<img src=x>','quantity':1,'unitPrice':3}]})
     assert '&lt;script&gt;' in result and '&lt;img' in result and '<script>' not in result
 
+
+def test_upload_validation_explains_rejection_without_relaxing_restricted_html():
+    from app.api.v1.uploaded_templates import Upload
+    with pytest.raises(HTTPException) as rejected:
+        store.create(Upload(name='Invalid CSS',owner_id='owner',document_type='invoice',html='<div style="position:fixed">Unsafe</div>'),'user:owner')
+    assert rejected.value.status_code == 422
+    assert rejected.value.detail == 'Template rejected: Unsafe CSS'
+
 def test_upload_review_publish_owner_scope_new_version_rollback_and_withdraw():
     from app.api.v1.uploaded_templates import Upload
     client=TestClient(app);token,secret=seed_admin_with_totp('phase4-template-review@example.com','Super Admin',['*'],True)

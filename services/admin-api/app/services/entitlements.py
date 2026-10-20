@@ -93,21 +93,40 @@ def evaluate(account, subscription, plans, flags, routing, override=None, quota_
         'quota_policy':{'unit':'ai_provider_requests_plus_server_pdf_generations','reset':'first_metered_request','window_hours':hours,'browser_exports':'local_unmetered_artifacts'}}
 
 
+def read_policy_snapshot(user_id):
+    # Read current policy in one database statement. Separate pooled queries add
+    # enough network round trips to time out workspace startup on a hosted DB.
+    rows=admin_db.fetch_all('''SELECT p.*,
+        flags.data_json AS policy_flags, routing.data_json AS policy_routing,
+        o.plan AS override_plan, o.features_json AS override_features, o.expires_at AS override_expiry,
+        q.custom_quota AS quota_limit, q.expires_at AS quota_expiry
+        FROM plans p
+        LEFT JOIN config_entries flags ON flags.domain='feature_flags'
+        LEFT JOIN config_entries routing ON routing.domain='ai_model_routing'
+        LEFT JOIN entitlement_overrides o ON o.user_id=?
+        LEFT JOIN user_quota_overrides q ON q.user_id=?
+        WHERE p.status='active' ORDER BY p.price_usd_monthly ASC''',(user_id,user_id))
+    if not rows:raise HTTPException(503,'Entitlement plan configuration unavailable')
+    plans={}
+    for row in rows:
+        plan=plan_repository._row_to_plan(row)
+        plans[plan.code]=plan.model_dump(mode='json')
+    row=rows[0]
+    override={'plan':row['override_plan'],'features':json.loads(row['override_features']),'expires_at':row['override_expiry']} if row['override_features'] is not None else None
+    quota={'custom_quota':row['quota_limit'],'expires_at':row['quota_expiry']} if row['quota_limit'] is not None else None
+    return plans,json.loads(row['policy_flags'] or '{}'),json.loads(row['policy_routing'] or '{}'),override,quota
+
+
 def effective_entitlements(user_id):
     try:
-        response=service_request('auth','GET',os.getenv('AUTH_SERVICE_URL','http://localhost:3011')+'/internal/users/'+__import__('urllib.parse',fromlist=['quote']).quote(user_id,safe=''),timeout=3)
+        response=service_request('auth','GET',os.getenv('AUTH_SERVICE_URL','http://localhost:3011')+'/internal/users/'+__import__('urllib.parse',fromlist=['quote']).quote(user_id,safe=''),timeout=5)
         response.raise_for_status();account=response.json()
         subscription=None
         if not account.get('isGuest') and not user_id.startswith('guest_'):
-            response=service_request('payment','GET',os.getenv('PAYMENT_SERVICE_URL','http://localhost:3014')+'/v1/payment/admin/entitlements/'+__import__('urllib.parse',fromlist=['quote']).quote(user_id,safe=''),timeout=3)
+            response=service_request('payment','GET',os.getenv('PAYMENT_SERVICE_URL','http://localhost:3014')+'/v1/payment/admin/entitlements/'+__import__('urllib.parse',fromlist=['quote']).quote(user_id,safe=''),timeout=5)
             response.raise_for_status();subscription=response.json().get('subscription')
-        plans={p.code:p.model_dump(mode='json') for p in plan_repository.list_active_plans()}
-        # Read persisted policy, not a potentially stale cached allow decision.
-        def domain(name):
-            entry=config_repository.get_domain_config(name)
-            return entry.data if entry else {}
-        quota=plan_repository.get_user_quota_override(user_id)
-        return evaluate(account,subscription,plans,domain('feature_flags'),domain('ai_model_routing'),get_override(user_id),quota.model_dump(mode='json') if quota else None)
+        plans,flags,routing,override,quota=read_policy_snapshot(user_id)
+        return evaluate(account,subscription,plans,flags,routing,override,quota)
     except HTTPException:raise
     except Exception as error:raise HTTPException(503,'Current entitlements cannot be verified') from error
 

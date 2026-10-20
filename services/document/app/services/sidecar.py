@@ -35,14 +35,14 @@ def render_template_to_html(document_type: str, template_id: str, slots: dict, u
     if template_id.startswith('upl_'):
         if not user_id:raise ValueError('Verified owner required')
         from app.services.uploaded_templates import fetch_uploaded
-        from shared.safe_template import render_uploaded_template
         from shared.entitlements import get_entitlements,require_entitlement
         item=fetch_uploaded(user_id,template_id)
         if item['type']!=document_type:raise ValueError('Incompatible uploaded template')
         policy=get_entitlements(user_id)
+        require_entitlement(policy,'account_enabled')
         if item['premium']:require_entitlement(policy,'premium_templates')
-        if item['source']['assets']:require_entitlement(policy,'custom_branding')
-        return render_uploaded_template(item['source']['html'],item['source']['assets'],slots)
+        from app.services.editable_templates import editable_definition,render_editable_html
+        return render_editable_html(editable_definition(item['source'],item['type']),slots)
     """
     Renders Jinja2 HTML template with slots data.
     """

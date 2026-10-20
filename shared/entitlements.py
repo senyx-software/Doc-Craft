@@ -7,7 +7,8 @@ from shared.service_auth import service_request
 def get_entitlements(user_id):
     from urllib.parse import quote
     try:
-        response = service_request('admin-api', 'GET', os.getenv('ADMIN_API_SERVICE_URL', 'http://localhost:3018') + '/api/v1/internal/entitlements/' + quote(user_id, safe=''), timeout=5)
+        # Allow the control plane to verify Auth/Billing and read current database policy.
+        response = service_request('admin-api', 'GET', os.getenv('ADMIN_API_SERVICE_URL', 'http://localhost:3018') + '/api/v1/internal/entitlements/' + quote(user_id, safe=''), timeout=10)
         response.raise_for_status()
         policy = response.json()
         bools = ('account_enabled','custom_logo','custom_branding','premium_templates','pdf_watermark','priority_processing','ai_enabled')

@@ -170,7 +170,7 @@ async def public_submit_override_request(payload: OverrideRequestCreateSchema):
 # --- Support Tickets (admin) ---
 
 @router.get("/admin/support/tickets")
-async def admin_list_tickets(
+def admin_list_tickets(
     status_filter: Optional[str] = Query(None, alias="status"),
     category: Optional[str] = None,
     limit: int = Query(100, ge=1, le=500),
@@ -241,7 +241,7 @@ async def admin_resolve_ticket(
 # --- Refund Requests (admin) ---
 
 @router.get("/admin/support/refunds")
-async def admin_list_refunds(
+def admin_list_refunds(
     status_filter: Optional[str] = Query(None, alias="status"),
     limit: int = Query(100, ge=1, le=500),
     offset: int = Query(0, ge=0),
@@ -280,7 +280,7 @@ async def admin_update_refund(
 # --- Contact Submissions (admin) ---
 
 @router.get("/admin/support/contact")
-async def admin_list_contacts(
+def admin_list_contacts(
     status_filter: Optional[str] = Query(None, alias="status"),
     limit: int = Query(100, ge=1, le=500),
     offset: int = Query(0, ge=0),
@@ -317,7 +317,7 @@ async def admin_update_contact(
 # --- Plan Override Requests (admin) ---
 
 @router.get("/admin/support/plan-overrides")
-async def admin_list_overrides(
+def admin_list_overrides(
     status_filter: Optional[str] = Query(None, alias="status"),
     limit: int = Query(100, ge=1, le=500),
     offset: int = Query(0, ge=0),

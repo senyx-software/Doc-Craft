@@ -18,7 +18,7 @@ def policy():
 
 
 @router.get("")
-async def list_templates(admin=Depends(require_permission("templates", "view"))):
+def list_templates(admin=Depends(require_permission("templates", "view"))):
     publication = policy()
     entries = {}
     for identity, template in REGISTRY.items():
@@ -30,15 +30,17 @@ async def list_templates(admin=Depends(require_permission("templates", "view")))
             "html_content":json.dumps(template,indent=2)})
     from app.services import uploaded_templates as uploads
     from app.db.admin_db import admin_db
-    for row in admin_db.fetch_all('SELECT * FROM uploaded_template_versions ORDER BY family_id,version DESC'):
-        active=admin_db.fetch_one('SELECT version_id FROM uploaded_template_publications WHERE family_id=?',(row['family_id'],))
+    for row in admin_db.fetch_all('''SELECT v.*,p.version_id AS published_version_id,p.updated_at AS publication_updated_at
+            FROM uploaded_template_versions v LEFT JOIN uploaded_template_publications p ON p.family_id=v.family_id
+            ORDER BY v.created_at DESC,v.version DESC'''):
+        status='Published' if row['published_version_id']==row['id'] else 'Withdrawn' if row['approved_at'] and row['publication_updated_at'] and not row['published_version_id'] else 'Approved' if row['approved_at'] else 'Rejected' if row['reviewed_by'] else 'Review required'
         entries[row['id']]={**uploads.descriptor(row),'version':str(row['version']),'lastUpdated':row['created_at'],
-            'status':'Published' if active and active['version_id']==row['id'] else 'Approved' if row['approved_at'] else 'Review required',
+            'status':status,
             'html_content':__import__('json').loads(row['source_json'])['html']}
     return list(entries.values())
 
 
-async def set_publication(template_id, published, request, admin):
+def set_publication(template_id, published, request, admin):
     if template_id.startswith('upl_'):
         from app.services import uploaded_templates as uploads
         from app.db.admin_db import admin_db
@@ -60,10 +62,10 @@ async def set_publication(template_id, published, request, admin):
 
 
 @router.post("/{template_id}/publish")
-async def publish(template_id: str, request: Request, admin=Depends(require_permission("templates","approve")), verified=Depends(require_totp_2fa)):
-    return await set_publication(template_id,True,request,admin)
+def publish(template_id: str, request: Request, admin=Depends(require_permission("templates","approve")), verified=Depends(require_totp_2fa)):
+    return set_publication(template_id,True,request,admin)
 
 
 @router.post("/{template_id}/withdraw")
-async def withdraw(template_id: str, request: Request, admin=Depends(require_permission("templates","approve")), verified=Depends(require_totp_2fa)):
-    return await set_publication(template_id,False,request,admin)
+def withdraw(template_id: str, request: Request, admin=Depends(require_permission("templates","approve")), verified=Depends(require_totp_2fa)):
+    return set_publication(template_id,False,request,admin)

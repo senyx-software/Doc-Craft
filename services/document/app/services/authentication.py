@@ -1,7 +1,7 @@
 """Verify document API identities independently of caller-supplied headers."""
 import os
 import jwt
-from shared.service_auth import verify_user_token
+from shared.service_auth import verify_user_token, async_service_client
 import httpx
 from fastapi import Request
 from fastapi.responses import JSONResponse
@@ -30,14 +30,18 @@ async def authenticate_document_request(request: Request, call_next):
     except (jwt.PyJWTError, ValueError):
         return JSONResponse({"detail": "Invalid or expired access token"}, status_code=401)
     try:
-        async with httpx.AsyncClient(timeout=3) as client:
-            response = await client.get(f"{os.getenv('AUTH_SERVICE_URL', 'http://localhost:3011')}/v1/auth/me", headers={"Authorization": bearer})
+        async with async_service_client('auth', timeout=10) as client:
+            response = await client.post(
+                f"{os.getenv('AUTH_SERVICE_URL', 'http://localhost:3011')}/internal/verify-token",
+                json={'userId':payload['sub'],'token':bearer[7:]},
+            )
         if response.status_code in (401, 403, 404):
             return JSONResponse({"detail": "Account unavailable"}, status_code=403)
         if response.status_code != 200:
             raise ValueError("Account verification unavailable")
-        account = response.json().get("user", {})
-        if account.get("id") != payload["sub"]:
+        result=response.json()
+        account = result.get("user", {})
+        if not result.get('valid') or account.get("id") != payload["sub"]:
             return JSONResponse({"detail": "Account unavailable"}, status_code=403)
         payload["plan"] = account.get("plan", "free")
     except (httpx.RequestError, ValueError):

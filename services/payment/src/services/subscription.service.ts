@@ -282,6 +282,25 @@ export async function resolveReceiptRecipient(userId:string):Promise<string> {
 
 // ─── Subscription reads / lifecycle ────────────────────────────────────────────
 
+/** Access decisions need only plan and lifecycle fields, independent of billing metadata. */
+export async function getSubscriptionPolicy(userId: string) {
+  const sub = await prisma.subscription.findUnique({
+    where: { userId },
+    select: {
+      plan: { select: { name: true } },
+      status: true,
+      currentPeriodEnd: true,
+      cancelAtPeriodEnd: true,
+    },
+  });
+  return sub ? {
+    plan: sub.plan.name,
+    status: sub.status,
+    currentPeriodEnd: sub.currentPeriodEnd,
+    cancelAtPeriodEnd: sub.cancelAtPeriodEnd,
+  } : null;
+}
+
 /** getSubscription — the user's current subscription with its plan. */
 export async function getSubscription(userId: string) {
   return prisma.subscription.findUnique({

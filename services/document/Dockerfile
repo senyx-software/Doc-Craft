@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     chromium \
     fonts-liberation \
+    tesseract-ocr \
+    tesseract-ocr-eng \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 

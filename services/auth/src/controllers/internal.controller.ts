@@ -211,18 +211,19 @@ export const verifyInternalToken = async (request: FastifyRequest, reply: Fastif
     const {userId,token}=request.body as {userId?:string;token?:string};
     if(!token)return reply.status(401).send({valid:false});
     try{
-      if((await verifyAccessToken(token)).sub!==userId || await accessIsRevoked(token))return reply.status(401).send({valid:false});
+      if((await verifyAccessToken(token)).sub!==userId)return reply.status(401).send({valid:false});
     }catch(error){
       const invalid=error instanceof Error && (error.name.startsWith('JWT')||error.name.startsWith('JWS'));
       return reply.status(invalid?401:503).send({valid:false});
     }
-    const user = await prisma.user.findUnique({
+    const [revoked,user] = await Promise.all([accessIsRevoked(token),prisma.user.findUnique({
       where: { id: userId },
       select: { id: true, status: true, plan: true, deletedAt: true }
-    });
+    })]);
+    if(revoked)return reply.status(401).send({valid:false});
     if (!user) return reply.status(404).send({ valid: false, message: 'User not found' });
     return reply.send({ valid: user.status === 'active' && !user.deletedAt, user: { id: user.id, status: user.status, plan: user.plan } });
   } catch (error: any) {
-    return reply.status(500).send({ valid: false, error: error.message });
+    return reply.status(503).send({ valid: false, error: 'Account verification unavailable' });
   }
 };
