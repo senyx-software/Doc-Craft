@@ -27,3 +27,10 @@ export function validateEntitlements(policy, userId) {
 export function requireEntitlement(policy, feature) {
   if (!policy.account_enabled || policy[feature] !== true) throw Object.assign(new Error('This account is not permitted to use this feature'), {statusCode:403,code:'ENTITLEMENT_DENIED'});
 }
+
+/** Explicit user-facing projection; new internal policy keys stay private. */
+export function publicEntitlements(policy) {
+  return Object.fromEntries(['version','user_id','account_enabled','plan','subscription_status','subscription_expires_at',
+    'daily_quota','custom_logo','custom_branding','premium_templates','pdf_watermark','priority_processing','retention_days','ai_enabled','quota_policy']
+    .filter(key=>policy[key]!==undefined).map(key=>[key,policy[key]]));
+}

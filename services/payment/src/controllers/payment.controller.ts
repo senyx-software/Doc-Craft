@@ -16,6 +16,7 @@ import type { PaddleWebhookRequest } from '../middleware/webhook-verify.middlewa
 import * as planService from '../services/plan.service.js';
 import * as subscriptionService from '../services/subscription.service.js';
 import { validateCoupon } from '../services/coupon.service.js';
+import {subscriptionBillingFacts} from '../services/subscription-display.service.js';
 import { getUserInvoices } from '../services/invoice.service.js';
 import { selectGatewayAsync } from '../services/gateway-router.service.js';
 import { createPaddleCheckout, getPortalSession } from '../services/paddle.service.js';
@@ -320,8 +321,7 @@ export async function adminListSubscriptions(req: Request, res: Response): Promi
         current_period_end:   s.currentPeriodEnd,
         created_at:           s.createdAt,
         updated_at:           s.updatedAt,
-        amount:               s.plan.priceMonthly,
-        currency:             'USD',
+        ...subscriptionBillingFacts(s),
       })),
       total,
       limit,

@@ -17,7 +17,7 @@ const router = Router();
  * Access: Protected (JWT required)
  */
 router.get('/entitlements', authenticateUser, async (req,res)=>{
-  try {res.json(await (await import('../../../../shared/entitlements.mjs')).getEntitlements((req as AuthenticatedRequest).userId));}
+  try {const {getEntitlements,publicEntitlements}=await import('../../../../shared/entitlements.mjs');res.json(publicEntitlements(await getEntitlements((req as AuthenticatedRequest).userId)));}
   catch {res.status(503).json({error:'Entitlements unavailable'});}
 });
 router.get('/me', authenticateUser, ctrl.getMyQuota);

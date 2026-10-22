@@ -6,7 +6,7 @@
  */
 
 // Allowed tools for the standard chat loop
-const ALLOWED_TOOLS = ['update_slots','get_session_state'];
+const ALLOWED_TOOLS = ['update_slots','get_session_state','edit_canvas','get_editor_selection','undo_document','redo_document','propose_language_correction'];
 
 export function validateToolCall(
   toolName: string,

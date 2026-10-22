@@ -101,6 +101,22 @@ export const ADMIN_NAV_SECTIONS: AdminNavSection[] = [
     ]
   },
   {
+    title: 'AI Management',
+    icon: <Sparkles size={14} />,
+    category: 'Product & Content',
+    items: [
+      {label:'Providers',id:'ai_providers'},
+      {label:'Model Registry',id:'ai_models'},
+      {label:'Plan Assignments',id:'ai_assignments'},
+      {label:'Routing Policies',id:'ai_routing'},
+      {label:'API Credentials',id:'ai_credentials'},
+      {label:'Local Inference',id:'ai_local'},
+      {label:'Usage & Costs',id:'ai_usage'},
+      {label:'Health & Monitoring',id:'ai_health'},
+      {label:'Audit Logs',id:'ai_audit'},
+    ]
+  },
+  {
     title: 'Generations',
     icon: <Sparkles size={14} />,
     category: 'Product & Content',

@@ -94,7 +94,7 @@ class ConfigRepository:
             created_at=datetime.fromisoformat(row["created_at"]),
         )
 
-    def _insert_domain_config(self, domain: str, data: Dict[str, Any], version: int, admin_id: Optional[str]) -> ConfigEntry:
+    def _insert_domain_config(self, domain: str, data: Dict[str, Any], version: int, admin_id: Optional[str], expected_version: Optional[int] = None) -> ConfigEntry:
         now_iso=datetime.now(timezone.utc).isoformat();data_json=json.dumps(data)
         connection=admin_db.get_connection()
         try:
@@ -104,6 +104,9 @@ class ConfigRepository:
             else:cursor.execute('BEGIN IMMEDIATE')
             cursor.execute(admin_db._convert_query('SELECT version FROM config_entries WHERE domain=?'),(domain,))
             previous=cursor.fetchone()
+            if expected_version is not None and (int(previous[0]) if previous else 0) != expected_version:
+                from fastapi import HTTPException
+                raise HTTPException(409, 'Configuration changed; reload before saving')
             # Seeding must never replace an existing operator policy.
             if version==1 and previous:
                 connection.rollback()
@@ -127,11 +130,11 @@ class ConfigRepository:
         rows = admin_db.fetch_all("SELECT * FROM config_entries ORDER BY domain ASC")
         return [self._row_to_entry(r) for r in rows]
 
-    def update_domain_config(self, domain: str, data: Dict[str, Any], admin_id: str) -> ConfigEntry:
+    def update_domain_config(self, domain: str, data: Dict[str, Any], admin_id: str, expected_version: Optional[int] = None) -> ConfigEntry:
         domain_key = domain.lower().strip()
         existing = self.get_domain_config(domain_key)
         new_version = (existing.version + 1) if existing else 1
-        return self._insert_domain_config(domain_key, data, version=new_version, admin_id=admin_id)
+        return self._insert_domain_config(domain_key, data, version=new_version, admin_id=admin_id, expected_version=expected_version)
 
     def get_version_history(self, domain: str) -> List[ConfigVersionHistory]:
         rows = admin_db.fetch_all(

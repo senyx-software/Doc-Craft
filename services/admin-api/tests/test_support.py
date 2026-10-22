@@ -11,6 +11,11 @@ client = TestClient(app)
 
 TOKEN, _TOTP_SECRET = seed_admin_with_totp("support_test_admin@doccraft.app", "Super Admin", ["*"], is_super_admin=True)
 
+@pytest.fixture(autouse=True)
+def fresh_admin_session():
+    global TOKEN, _TOTP_SECRET
+    TOKEN, _TOTP_SECRET = seed_admin_with_totp("support_test_admin@doccraft.app", "Super Admin", ["*"], is_super_admin=True)
+
 
 def auth_2fa_headers() -> dict:
     """A fresh code each call — a module-level static one would expire

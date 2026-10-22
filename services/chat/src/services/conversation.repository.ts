@@ -5,6 +5,8 @@ import { documentType } from '../../../../shared/document-contract.mjs';
 import { sanitizeOutputChunk } from '../security/output-guardrails.js';
 import { validAsset, documentAssets, MAX_DOCUMENT_ASSETS } from '../../../../shared/document-assets.mjs';
 import { canvasLayout } from '../../../../shared/canvas-layout.mjs';
+import {editorContext,applyEditorOperations,recordHistory,historySnapshot} from '../../../../shared/editor-commands.mjs';
+import {validateLanguageCorrection} from '../../../../shared/language-corrections.mjs';
 export class ConversationError extends Error {
     constructor(public statusCode: number, message: string, public code?: string, public retryable?: boolean) { super(message); }
 }
@@ -112,6 +114,7 @@ export class ConversationRepository {
                 return { slots: session.slots };
             const applied = applyCandidates(meta.documentType || session._resolvedDocumentType || session.documentTypeId, {...session.slots,_chat:{...meta,templateId:session.templateId}}, proposal, source);
             const nextMeta = metadata(applied.raw);
+            if(applied.changed.length)recordHistory(nextMeta,session,lease?.turnId||source.id||randomUUID());
             if (lease) {
                 const turn = nextMeta.turns[lease.turnId];
                 turn.operations[opId] = true;
@@ -133,18 +136,93 @@ export class ConversationRepository {
             return {slots:{...session.slots,_chat:meta},...patch};
         });
     }
-    async saveCanvasLayout(userId:string,sessionId:string,input:unknown,expectedRevision:number) {
+    async saveCanvasLayout(userId:string,sessionId:string,input:unknown,expectedRevision:number,context?:unknown) {
         let layout;
         try { layout=canvasLayout(input); }
         catch { throw new ConversationError(400,'Invalid canvas layout','INVALID_INPUT',false); }
         return this.mutate(userId,sessionId,async session=>{
             const meta=metadata(session.slots);
+            if(meta.lease&&meta.lease.until>Date.now())throw new ConversationError(409,'A turn is running','TURN_BUSY');
             if ((meta.layoutRevision || 0)!==expectedRevision) throw new ConversationError(409,'Canvas changed; reload before saving','REVISION_CONFLICT',false);
+            if(JSON.stringify(meta.canvasLayout||canvasLayout({}))!==JSON.stringify(layout))recordHistory(meta,session,'canvas:'+randomUUID());
             meta.canvasLayout=layout;meta.layoutRevision=expectedRevision+1;
+            if(context)meta.editorContext=editorContext(context);
             return {slots:{...session.slots,_chat:meta}};
         });
     }
-    async checkpoint(userId: string, sessionId: string, lease: {turnId:string;token:string}, patch: {providerCompleted?:boolean;providerText?:string;quotaReserved?:boolean;intent?:any;actions?:any[];localProposal?:any}) {
+    async saveEditorContext(userId:string,sessionId:string,context:unknown,expectedLayoutRevision:number,lease:{turnId:string;token:string}) {
+        const validated=editorContext(context);
+        return this.mutate(userId,sessionId,async session=>{
+            const meta=metadata(session.slots);this.assertLease(meta,lease.turnId,lease.token);
+            if((meta.layoutRevision||0)!==expectedLayoutRevision)throw new ConversationError(409,'Canvas changed; reload before sending the edit','REVISION_CONFLICT',false);
+            const turn=meta.turns[lease.turnId];
+            if(turn.editorSelection)validated.selectedIds=turn.editorSelection.filter((id:string)=>validated.elements.some(el=>el.id===id));
+            else turn.editorSelection=[...validated.selectedIds];
+            meta.editorContext=validated;
+            return {slots:{...session.slots,_chat:meta}};
+        });
+    }
+    async editCanvas(userId:string,sessionId:string,operations:any[],message:string,lease:{turnId:string;token:string}) {
+        return this.mutate(userId,sessionId,async session=>{
+            const meta=metadata(session.slots);this.assertLease(meta,lease.turnId,lease.token);
+            const operationId=createHash('sha256').update(stableStringify(operations)).digest('hex');
+            const turn=meta.turns[lease.turnId];
+            if(turn.editorOperations?.[operationId])return {_noMutation:true};
+            const result=applyEditorOperations(meta.canvasLayout,meta.editorContext,operations,message,lease.turnId);
+            recordHistory(meta,session,lease.turnId);
+            meta.canvasLayout=result.layout;meta.editorContext=result.context;meta.layoutRevision=(meta.layoutRevision||0)+1;
+            delete meta.editorClarification;delete meta.finalization;
+            turn.editorOperations={...turn.editorOperations,[operationId]:true};turn.editorApplied=true;turn.editorResponse=result.response;
+            return {slots:{...session.slots,_chat:meta}};
+        });
+    }
+    async clarifyEditor(userId:string,sessionId:string,pending:any,lease:{turnId:string;token:string}) {
+        return this.mutate(userId,sessionId,async session=>{
+            const meta=metadata(session.slots);this.assertLease(meta,lease.turnId,lease.token);
+            meta.editorClarification=pending;
+            return {slots:{...session.slots,_chat:meta}};
+        });
+    }
+    async undoDocument(userId:string,sessionId:string,direction:'undo'|'redo',lease:{turnId:string;token:string}) {
+        return this.mutate(userId,sessionId,async session=>{
+            const meta=metadata(session.slots);this.assertLease(meta,lease.turnId,lease.token);
+            const turn=meta.turns[lease.turnId];if(turn.historyApplied)return {_noMutation:true};
+            const history=structuredClone(meta.documentHistory||{past:[],future:[]}),from=direction==='undo'?history.past:history.future,to=direction==='undo'?history.future:history.past;
+            const previous=from.pop();
+            if(!previous){turn.editorResponse='There are no saved changes to '+direction+'.';turn.historyApplied=true;return {slots:{...session.slots,_chat:meta}};}
+            to.push({turnId:lease.turnId,state:historySnapshot(session)});
+            for(const key of ['fields','canvasLayout','editorContext','pendingField','pendingContact','pendingIntent','pendingAction','collection','finalization','editorClarification','pendingLanguage'])delete meta[key];
+            Object.assign(meta,previous.state.meta);meta.documentHistory=history;meta.layoutRevision=(meta.layoutRevision||0)+1;
+            turn.editorApplied=true;turn.historyApplied=true;turn.editorResponse=direction==='undo'?'Done. I’ve restored the previous change.':'Done. I’ve reapplied the change.';
+            return {slots:{...previous.state.slots,_chat:meta},templateId:previous.state.templateId,accentColor:previous.state.accentColor};
+        });
+    }
+    async proposeLanguage(userId:string,sessionId:string,input:any,message:string,mode:string,lease:{turnId:string;token:string}) {
+        const saved=await this.mutate(userId,sessionId,async session=>{
+            const meta=metadata(session.slots);this.assertLease(meta,lease.turnId,lease.token);
+            const proposal=validateLanguageCorrection(input,snapshot(session),message,mode);
+            meta.pendingLanguage=proposal;meta.turns[lease.turnId].languageResponse=proposal.question;
+            return {slots:{...session.slots,_chat:meta}};
+        });
+        return metadata(saved.slots).pendingLanguage?.automatic?this.resolveLanguage(userId,sessionId,'yes',lease):saved;
+    }
+    async resolveLanguage(userId:string,sessionId:string,answer:string,lease:{turnId:string;token:string}) {
+        return this.mutate(userId,sessionId,async session=>{
+            const meta=metadata(session.slots);this.assertLease(meta,lease.turnId,lease.token);
+            const pending=meta.pendingLanguage,turn=meta.turns[lease.turnId];if(turn.languageResolved||!pending)return {_noMutation:true};
+            if(/^(?:no|cancel|dismiss|keep (?:it|the original))[.!]?$/i.test(answer.trim())){delete meta.pendingLanguage;turn.languageResolved=true;turn.languageResponse='Kept your original wording. Your document is unchanged.';return {slots:{...session.slots,_chat:meta}};}
+            const field=pending.field||(/\bnotes?\b/i.test(answer)?'notesAndTerms':/\bsubject\b/i.test(answer)?'subject':null);
+            if(!field){turn.languageResponse='Where should I use the corrected wording: the notes or the subject?';return {slots:{...session.slots,_chat:meta}};}
+            if(pending.field&&JSON.stringify(snapshot(session).slots[field]??null)!==JSON.stringify(pending.previousValue))throw new ConversationError(409,'The text changed. Ask for a new correction.','REVISION_CONFLICT',false);
+            const proposal=field==='notesAndTerms'&&!pending.editingSaved?{fieldOperations:[{operation:'append',field,value:pending.suggested}]}:{slots:{[field]:pending.suggested}};
+            const applied=applyCandidates(snapshot(session).documentType,session.slots,proposal,{kind:'user',id:lease.turnId,message:pending.suggested,correction:true});
+            if(applied.results.some((result:any)=>result.outcome==='rejected'))throw new ConversationError(422,'The corrected text is not valid for this field.','VALIDATION_FAILED',false);
+            const nextMeta=metadata(applied.raw);recordHistory(nextMeta,session,lease.turnId);delete nextMeta.pendingLanguage;delete nextMeta.finalization;
+            Object.assign(nextMeta.turns[lease.turnId],{languageResolved:true,languageResponse:'Saved the corrected wording in the '+(field==='notesAndTerms'?'notes':'subject')+'.',changed:[...new Set([...(turn.changed||[]),...applied.changed])],results:[...(turn.results||[]),...applied.results]});
+            return {slots:{...applied.raw,_chat:nextMeta}};
+        });
+    }
+    async checkpoint(userId: string, sessionId: string, lease: {turnId:string;token:string}, patch: {providerCompleted?:boolean;providerText?:string;quotaReserved?:boolean;intent?:any;actions?:any[];localProposal?:any;routingSnapshot?:any}) {
         return this.mutate(userId,sessionId,async(session)=>{
             const meta=metadata(session.slots);this.assertLease(meta,lease.turnId,lease.token);
             if(patch.intent&&meta.collection?.offerPending)meta.collection={...meta.collection,offerPending:false};
@@ -190,7 +268,7 @@ export class ConversationRepository {
             const meta = metadata(session.slots);
             this.assertLease(meta, turnId, token);
             if (outcome === 'success')
-                await tx.chatMessage.create({ data: { id: this.messageId(sessionId, turnId, 'assistant'), sessionId, role: 'ASSISTANT', content: sanitizeOutputChunk(response), metadata: { turnId } } });
+                await tx.chatMessage.create({ data: { id: this.messageId(sessionId, turnId, 'assistant'), sessionId, role: 'ASSISTANT', content: sanitizeOutputChunk(response), metadata: { turnId,...(details.processingRoute?{processingRoute:details.processingRoute,editorAttempt:details.editorAttempt===true,editorApplied:details.editorApplied===true,documentReady:details.documentReady===true}:{}) } } });
             meta.turns[turnId].status = outcome;
             Object.assign(meta.turns[turnId],details);
             if(details.optionalOffered)meta.collection={...meta.collection,optionalOffered:true,offerPending:true};

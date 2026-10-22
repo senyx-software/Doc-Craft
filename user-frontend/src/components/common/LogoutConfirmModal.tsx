@@ -8,6 +8,7 @@ interface LogoutConfirmModalProps {
   onClose: () => void;
   onConfirm: () => void;
   isLoading?: boolean;
+  error?: string|null;
 }
 
 const LogoutConfirmModal: React.FC<LogoutConfirmModalProps> = ({
@@ -15,6 +16,7 @@ const LogoutConfirmModal: React.FC<LogoutConfirmModalProps> = ({
   onClose,
   onConfirm,
   isLoading = false,
+  error,
 }) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -54,6 +56,7 @@ const LogoutConfirmModal: React.FC<LogoutConfirmModalProps> = ({
             aria-modal="true"
             aria-labelledby="logout-modal-title"
           >
+            {error&&<p role="alert" className="text-appError text-sm mb-3">{error}</p>}
             {/* Close Button */}
             <button
               onClick={onClose}

@@ -25,7 +25,7 @@ export function googleLogin(idToken: string): Promise<AuthResponse> {
 
 /** POST /auth/logout — Invalidate current session */
 export function logout(): Promise<{ message: string }> {
-  return post<{ message: string }>('/auth/logout');
+  return post<{ message: string }>('/auth/logout', {});
 }
 
 /** POST /auth/password/forgot — Send password reset email */
@@ -44,9 +44,8 @@ export function guestLogin(): Promise<GuestSession> {
 }
 
 /** GET /auth/oauth/google — Redirect to Google OAuth */
-export function getGoogleOAuthUrl(redirectTo?: string): string {
-  const params = redirectTo ? `?redirect_to=${encodeURIComponent(redirectTo)}` : '';
-  return `${BASE_URL}/auth/oauth/google${params}`;
+export function getGoogleOAuthUrl(): string {
+  return `${BASE_URL}/auth/login/google`;
 }
 
 /** GET /auth/me — Get current authenticated user profile */

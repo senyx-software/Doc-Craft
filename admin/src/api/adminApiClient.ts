@@ -46,7 +46,8 @@ async function apiRequest<T>(endpoint: string, options: RequestInit = {}): Promi
   }
 
   if (!response.ok) {
-    throw new Error(data.message || data.detail || `API request failed with status ${response.status}`);
+    const detail=typeof data.detail==='string'?data.detail:typeof data.detail?.message==='string'?data.detail.message:Array.isArray(data.detail)?data.detail.map((item:{message?:string;msg?:string})=>item.message||item.msg).filter(Boolean).join('; '):undefined;
+    throw new Error(data.message || detail || `API request failed with status ${response.status}`);
   }
 
   return data as T;
@@ -86,6 +87,21 @@ async function downloadFile(endpoint: string): Promise<void> {
 }
 
 export const adminApiClient = {
+  ai: {
+    snapshot:()=>apiRequest<import('./aiTypes').AISnapshot>('/admin/ai'),
+    provider:(expected_version:number,item:import('./aiTypes').AIProvider)=>apiRequest('/admin/ai/providers',{method:'POST',body:JSON.stringify({expected_version,item})}),
+    model:(expected_version:number,item:import('./aiTypes').AIModel)=>apiRequest('/admin/ai/models',{method:'POST',body:JSON.stringify({expected_version,item})}),
+    remove:(resource:'providers'|'models',id:string,version:number)=>apiRequest(`/admin/ai/${resource}/${encodeURIComponent(id)}?expected_version=${version}`,{method:'DELETE'}),
+    assignments:(expected_version:number,plans:Record<string,import('./aiTypes').AIPlanPolicy>)=>apiRequest('/admin/ai/assignments',{method:'PUT',body:JSON.stringify({expected_version,plans})}),
+    routing:(expected_version:number,routing:Partial<import('./aiTypes').AIConfiguration>)=>apiRequest('/admin/ai/routing',{method:'PUT',body:JSON.stringify({expected_version,routing})}),
+    credential:(id:string,secret:string)=>apiRequest(`/admin/ai/providers/${encodeURIComponent(id)}/credential`,{method:'PUT',body:JSON.stringify({secret})}),
+    revoke:(id:string)=>apiRequest(`/admin/ai/providers/${encodeURIComponent(id)}/credential`,{method:'DELETE'}),
+    test:(id:string)=>apiRequest<{healthy:boolean;code:string}>(`/admin/ai/models/${encodeURIComponent(id)}/test`,{method:'POST'}),
+    usage:()=>apiRequest<import('./aiTypes').AIUsage>('/admin/ai/usage'),
+    history:()=>apiRequest<Array<{version:number;created_at:string;changed_by_admin_id:string}>>('/admin/ai/history'),
+    rollback:(expected_version:number,version:number)=>apiRequest('/admin/ai/rollback',{method:'POST',body:JSON.stringify({expected_version,version})}),
+    audit:(page:number)=>apiRequest<{items:Array<{id:string;admin_email:string;action:string;details_json:string;created_at:string}>;page:number;total:number}>('/admin/ai/audit?page='+page),
+  },
   // --- 1. Admin Auth ---
   login: (email: string, password_hash: string) =>
     apiRequest<Wire.LoginResult>('/admin/auth/login', { method: 'POST', body: JSON.stringify({ email, password: password_hash }) }),
@@ -239,8 +255,6 @@ export const adminApiClient = {
     ).toString() : '';
     return apiRequest<{status: string; data: Wire.Invoice[]; total: number}>(`/admin/invoices${q ? `?${q}` : ''}`);
   },
-  getPaymentServicePlans: () =>
-    apiRequest<{ status: string; data: unknown[] }>('/admin/payment/plans'),
 
   // --- 5. Automation & Workflow Engine ---
   getAutomationRules: () => apiRequest<Wire.AutomationRule[]>('/admin/automation/rules'),
@@ -302,7 +316,6 @@ export const adminApiClient = {
   renameUploadedTemplate: (id:string,name:string)=>apiRequest<Pick<Wire.UploadedTemplateDetail,'id'|'name'|'created_at'>>(`/admin/templates/uploads/${encodeURIComponent(id)}`,{method:'PATCH',body:JSON.stringify({name})}),
   reviewUploadedTemplate: (id:string,payload:{decision:'approve'|'reject';visibility:'private'|'public';digest:string;notes:string})=>apiRequest(`/admin/templates/uploads/${encodeURIComponent(id)}/review`,{method:'POST',body:JSON.stringify(payload)}),
   getTemplates: () => apiRequest<Wire.Template[]>('/admin/templates'),
-  createTemplate: (templateData: unknown) => apiRequest<unknown>('/admin/templates', { method: 'POST', body: JSON.stringify(templateData) }),
   publishTemplate: (templateId: string) => apiRequest<unknown>(`/admin/templates/${templateId}/publish`, { method: 'POST' }),
   withdrawTemplate: (templateId: string) => apiRequest<unknown>(`/admin/templates/${templateId}/withdraw`, { method: 'POST' }),
 

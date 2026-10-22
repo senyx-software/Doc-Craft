@@ -28,6 +28,9 @@ for _module, _action in [
     ("settings", "view"), ("settings", "edit"), ("settings", "delete"),
     ("analytics", "edit"), ("rbac", "manage"), ("support", "edit"),
     ("automation", "create"), ("automation", "delete"),
+    ("ai_settings", "view"), ("ai_models", "edit"), ("ai_assignments", "edit"),
+    ("ai_credentials", "manage"), ("ai_routing", "edit"), ("ai_usage", "view"),
+    ("ai_deployments", "manage"),
 ]:
     SEED_PERMISSIONS.append(AdminPermission(
         id=f"perm_{_module}_{_action}", module=_module, action=_action,

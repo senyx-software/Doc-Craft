@@ -8,13 +8,8 @@ services:
       - redis_data:/data
     healthcheck:
       test:
-        - CMD
-        - redis-cli
-        - --port
-        - ${REDIS_PORT}
-        - --user
-        - health
-        - ping
+        - CMD-SHELL
+        - 'REDISCLI_AUTH="$${REDIS_HEALTH_PASSWORD}" redis-cli --port "$${REDIS_PORT}" --user health ping | grep -qx PONG'
       interval: 5s
       timeout: 5s
       retries: 5
@@ -25,17 +20,19 @@ services:
       - --bind
       - 0.0.0.0
       - --protected-mode
-      - yes
+      - "yes"
       - --aclfile
       - /run/secrets/redis_acl
       - --appendonly
-      - yes
+      - "yes"
       - --appendfsync
       - everysec
       - --maxmemory-policy
       - noeviction
     env_file:
       - .local/secrets/redis-health.env
+    environment:
+      REDIS_PORT: ${REDIS_PORT}
     secrets:
       - source: redis_acl
         target: redis_acl
@@ -86,7 +83,6 @@ services:
     networks:
       - backend
       - egress
-      - egress
     init: true
     stop_grace_period: 30s
     security_opt:
@@ -111,7 +107,6 @@ services:
         target: service_identity
     networks:
       - backend
-      - egress
       - egress
     init: true
     stop_grace_period: 30s
@@ -386,7 +381,7 @@ services:
       redis:
         condition: service_healthy
 volumes:
-  ? redis_data
+  redis_data: {}
 secrets:
   gateway_identity:
     file: .local/secrets/gateway.json

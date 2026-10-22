@@ -73,3 +73,16 @@ export function redirectToCheckout(session: CheckoutSession): void {
     window.location.assign(target.href);
   }
 }
+
+/** Persisted provider-webhook history; plan entitlements are not proof of payment. */
+export interface BillingInvoice {
+  id:string; gatewayInvoiceId:string; gateway:string; amount:number; currency:string;
+  status:string; pdfUrl:string|null; createdAt:string; paidAt:string|null;
+}
+export function getInvoices(page=1): Promise<{invoices:BillingInvoice[];pagination:{page:number;totalPages:number;total:number}}> {
+  return apiRequest(`/payment/invoices?page=${page}&limit=20`);
+}
+export function providerDocumentUrl(value:string|null):string|undefined {
+  if(!value)return;
+  try {const u=new URL(value);if(u.protocol==='https:'&&!u.username&&!u.password)return u.href;} catch { /* Invalid provider document URLs are not links. */ }
+}

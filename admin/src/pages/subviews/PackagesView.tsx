@@ -224,41 +224,6 @@ const PackagesView: React.FC<PackagesViewProps> = ({ activeSubItem }) => {
     }
   };
 
-  // ── AI Model Routing per Plan (real — Config Engine `ai_model_routing`, ──
-  // consumed live by the Chat service's model router) ─────────────────────
-  const [aiRouting, setAiRouting] = useState<Record<string, { max_model?: string; groq_models?: string[] }>>({});
-  const [isLoadingAiRouting, setIsLoadingAiRouting] = useState(true);
-  const [isSavingAiRouting, setIsSavingAiRouting] = useState(false);
-
-  const loadAiRouting = useCommittedEvent(async () => {
-
-    try {
-      const res = await adminApiClient.getAdminDomainConfig<Wire.ModelRouting>('ai_model_routing');
-      setAiRouting(res?.data || {});
-    } catch {
-      setAiRouting({});
-      toast.error('Failed to Load AI Routing Config', 'Could not reach the Config Engine.');
-    } finally {
-      setIsLoadingAiRouting(false);
-    }
-  });
-
-  const setMaxModel = (planKey: string, model: string) => {
-    setAiRouting((prev) => ({ ...prev, [planKey]: { ...prev[planKey], groq_models: model.split(',').map(value => value.trim()).filter(Boolean) } }));
-  };
-
-  const saveAiRouting = async () => {
-    setIsSavingAiRouting(true);
-    try {
-      await adminApiClient.updateAdminDomainConfig('ai_model_routing', aiRouting);
-      toast.success('AI Routing Updated', 'Plan model preferences saved. Provider account limits remain unchanged.');
-    } catch (err) {
-      toast.error('Save Failed', err);
-    } finally {
-      setIsSavingAiRouting(false);
-    }
-  };
-
   // ── Plan Performance (real — Auth signups x Payment conversions) ────────
   const [performanceData, setPerformanceData] = useState<Array<{ name: string; signups: number; conversions: number }>>([]);
   const [isLoadingPerformance, setIsLoadingPerformance] = useState(true);
@@ -280,9 +245,8 @@ useEffect(() => {
       loadLivePlans();
     }
     if (activeSubItem === 'pack_flags') loadFeatureFlags();
-    if (activeSubItem === 'pack_ai_models') loadAiRouting();
     if (activeSubItem === 'pack_performance') loadPerformance();
-  }, [activeSubItem, loadAiRouting, loadFeatureFlags, loadLivePlans, loadPerformance]);
+  }, [activeSubItem, loadFeatureFlags, loadLivePlans, loadPerformance]);
 
   // ── Current Plans / Create New Plan ──────────────────────────────────────
   if (activeSubItem === 'pack_current' || activeSubItem === 'subs_plan_overview') {
@@ -532,54 +496,6 @@ useEffect(() => {
           </div>
         )}
       </Card>
-    );
-  }
-
-  // ── AI Model Routing per Plan ─────────────────────────────────────────────
-  if (activeSubItem === 'pack_ai_models') {
-    return (
-      <div className="space-y-6 text-left">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-gray-200/60 dark:border-white/10">
-          <div>
-            <h3 className="text-sm font-extrabold uppercase tracking-wider text-gray-900 dark:text-white flex items-center gap-2">
-              <Zap size={18} className="text-purple-600 dark:text-purple-400" /> AI Model Routing (per Plan)
-            </h3>
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-              Active Groq requests and fallback use this allowlist. Unconfigured plans use the service model list; an empty list disables provider calls. Changes reach Chat within five seconds. Provider account limits apply separately.
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" onClick={loadAiRouting} disabled={isLoadingAiRouting}>
-              <RefreshCw size={12} className={isLoadingAiRouting ? 'animate-spin' : ''} /> Reload
-            </Button>
-            <Button variant="violet" size="sm" onClick={saveAiRouting} disabled={isSavingAiRouting}>
-              <Save size={12} /> {isSavingAiRouting ? 'Saving…' : 'Save Changes'}
-            </Button>
-          </div>
-        </div>
-
-        <ProviderAllowanceNotice />
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {(['free', 'pro', 'max'] as const).map((planKey) => (
-            <Card key={planKey} className="space-y-3">
-              <div className="flex items-center justify-between pb-3 border-b border-gray-200/60 dark:border-white/10">
-                <h4 className="text-xs font-bold text-gray-900 dark:text-white uppercase tracking-wider">{planKey} Tier</h4>
-                <Badge variant={planKey === 'free' ? 'secondary' : planKey === 'pro' ? 'primary' : 'success'}>{planKey.toUpperCase()}</Badge>
-              </div>
-              <div className="text-xs">
-                <label className="block text-[11px] font-bold text-gray-700 dark:text-gray-300 mb-1">Allowed Groq models (comma separated)</label>
-                <input
-                  value={aiRouting[planKey]?.groq_models?.join(', ') ?? ''}
-                  placeholder="Use Config Editor to clear the policy and restore service defaults"
-                  onChange={(e) => setMaxModel(planKey, e.target.value)}
-                  className="input-field w-full text-xs font-mono !py-1.5"
-                />
-              </div>
-            </Card>
-          ))}
-        </div>
-      </div>
     );
   }
 

@@ -124,7 +124,10 @@ export interface SchemaSummary {
 }
 
 export interface ConversationSnapshot {
-  canvasLayout?: {elementOverrides: Record<string,Partial<import('./canvasElement').InvoiceElement>>;customElements:import('./canvasElement').InvoiceElement[];pageWidth:number;pageHeight:number;pageBackgroundColor:string} | null;
+  editorContext?: import('../../../shared/editor-commands.mjs').EditorContext | null;
+  editorClarification?: {message:string} | null;
+  canUndo?: boolean; canRedo?: boolean;
+  canvasLayout?: {canvasMode?:'template'|'literal';elementOverrides: Record<string,Partial<import('./canvasElement').InvoiceElement>>;customElements:import('./canvasElement').InvoiceElement[];pageWidth:number;pageHeight:number;pageBackgroundColor:string} | null;
   layoutRevision?: number;
   assets?: import('../../../shared/document-assets.mjs').DocumentAsset[];
   finalization?: {status:string;fingerprint:string;confirmedAt?:string};
@@ -154,6 +157,8 @@ export interface SessionStartResponse {
 }
 
 export interface ChatRequest {
+  editor_context?: import('../../../shared/editor-commands.mjs').EditorContext;
+  expected_layout_revision?: number;
   turn_id?: string;
   signal?: AbortSignal;
   session_id: string;

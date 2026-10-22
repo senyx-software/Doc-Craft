@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CreditCard, AlertTriangle, CheckCircle2, ExternalLink, Receipt, X } from 'lucide-react';
@@ -11,6 +11,20 @@ import * as paymentApi from '../../api/payment';
 const DashboardBillingPage: React.FC = () => {
   const { quota, fetchQuota, entitlements } = useQuotaStore();
 
+  const [invoices,setInvoices]=useState<paymentApi.BillingInvoice[]>([]);
+  const [historyPage,setHistoryPage]=useState(1);
+  const [historyReload,setHistoryReload]=useState(0);
+  const [totalPages,setTotalPages]=useState(0);
+  const [historyLoading,setHistoryLoading]=useState(true);
+  const [historyError,setHistoryError]=useState<string|null>(null);
+  useEffect(()=>{void fetchQuota();},[fetchQuota]);
+  useEffect(()=>{
+    let active=true;
+    paymentApi.getInvoices(historyPage).then(result=>{if(active){setInvoices(result.invoices);setTotalPages(result.pagination.totalPages);}})
+      .catch(()=>{if(active)setHistoryError('Billing history is unavailable. Please retry.');})
+      .finally(()=>{if(active)setHistoryLoading(false);});
+    return ()=>{active=false;};
+  },[historyPage,historyReload]);
   const [cancelModalOpen, setCancelModalOpen] = useState(false);
   const [portalModalOpen, setPortalModalOpen] = useState(false);
   const [isCancelling, setIsCancelling] = useState(false);
@@ -79,7 +93,7 @@ const DashboardBillingPage: React.FC = () => {
               </h3>
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-2xl font-extrabold text-appTextPrimary">
-                  {entitlements?.plan.toUpperCase() || 'FREE'}
+                  {entitlements?.plan.toUpperCase() || 'Loading…'}
                 </span>
                 <span className="bg-emerald-500/10 border border-emerald-500/25 text-xs text-emerald-500 font-extrabold uppercase px-2.5 py-0.5 rounded-none">
                   Active
@@ -133,7 +147,7 @@ const DashboardBillingPage: React.FC = () => {
                     width:
                       quota?.daily_limit === UNLIMITED_QUOTA
                         ? '0%'
-                        : `${((quota?.used_today || 0) / (quota?.daily_limit ?? 0)) * 100}%`,
+                        : `${quota?.daily_limit && quota.daily_limit>0?Math.min(100,((quota.used_today||0)/quota.daily_limit)*100):0}%`,
                   }}
                 />
               </div>
@@ -151,49 +165,35 @@ const DashboardBillingPage: React.FC = () => {
           <div className="flex items-center gap-2">
             <Receipt size={18} className="text-appPrimary" />
             <h3 className="text-sm font-bold uppercase tracking-wider text-appTextSecondary">
-              Transaction & Invoice Receipts
+              Billing Invoices & Payments
             </h3>
           </div>
 
-          {['pro', 'max'].includes(entitlements?.plan || '') ? (
+          {historyLoading ? <p role="status">Loading billing history…</p> : historyError ?
+            <div role="alert">{historyError} <button className="underline" onClick={()=>{setHistoryLoading(true);setHistoryError(null);setHistoryReload(value=>value+1);}}>Retry</button></div> : invoices.length ? (
             <div className="overflow-x-auto">
               <table className="w-full text-xs text-left">
-                <thead className="bg-appBg border-b border-appBorder text-appTextSecondary font-bold uppercase tracking-wider text-[10px]">
-                  <tr>
-                    <th className="py-3 px-4">Date</th>
-                    <th className="py-3 px-4">Description</th>
-                    <th className="py-3 px-4">Amount</th>
-                    <th className="py-3 px-4">Status</th>
-                    <th className="py-3 px-4 text-right">Receipt</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-appBorder">
-                  <tr>
-                    <td className="py-3 px-4 font-mono">2026-08-15</td>
-                    <td className="py-3 px-4 font-semibold text-appTextPrimary">DocCraft Pro Monthly Subscription</td>
-                    <td className="py-3 px-4 font-bold text-appTextPrimary">LKR 990.00</td>
-                    <td className="py-3 px-4">
-                      <span className="bg-emerald-500/10 text-emerald-500 border border-emerald-500/25 px-2 py-0.5 rounded-none text-[10px] font-bold uppercase">
-                        Paid
-                      </span>
-                    </td>
-                    <td className="py-3 px-4 text-right">
-                      <button
-                        onClick={() => alert('Downloading official receipt PDF...')}
-                        className="text-appPrimary hover:underline font-semibold flex items-center gap-1 ml-auto"
-                      >
-                        Download <ExternalLink size={12} />
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
+                <thead><tr><th>Date</th><th>Provider reference</th><th>Amount</th><th>Status</th><th>Document</th></tr></thead>
+                <tbody>{invoices.map(invoice=>{
+                  const paid=invoice.status==='paid' && Boolean(invoice.paidAt);
+                  const url=paymentApi.providerDocumentUrl(invoice.pdfUrl);
+                  return <tr key={invoice.id}>
+                    <td className="py-3">{new Date(invoice.createdAt).toLocaleDateString()}</td>
+                    <td>{invoice.gateway}: {invoice.gatewayInvoiceId}</td>
+                    <td>{invoice.currency} {invoice.amount.toFixed(2)}</td>
+                    <td>{paid?'Paid':invoice.status==='open'?'Pending payment':invoice.status}</td>
+                    <td>{url?<a href={url} target="_blank" rel="noopener noreferrer" className="text-appPrimary underline">{paid?'Paid provider invoice':'Provider invoice'} <ExternalLink size={12} className="inline" /></a>:'Not provided'}</td>
+                  </tr>;
+                })}</tbody>
               </table>
+              <div className="flex gap-3 mt-3">
+                <button disabled={historyPage<=1} onClick={()=>{setHistoryLoading(true);setHistoryError(null);setInvoices([]);setHistoryPage(page=>page-1);}}>Previous</button>
+                <span>Page {historyPage} of {Math.max(1,totalPages)}</span>
+                <button disabled={historyPage>=totalPages} onClick={()=>{setHistoryLoading(true);setHistoryError(null);setInvoices([]);setHistoryPage(page=>page+1);}}>Next</button>
+              </div>
             </div>
-          ) : (
-            <div className="p-4 border border-dashed border-appBorder rounded-none text-center text-xs text-appTextSecondary">
-              No active transaction history. Subscribed payments will appear here.
-            </div>
-          )}
+          ) : <p className="text-xs text-appTextSecondary">No billing transactions have been recorded. Plan access alone does not create an invoice or receipt.</p>}
+
         </div>
       </motion.div>
 

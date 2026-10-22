@@ -23,7 +23,14 @@ authenticator.options = { window: 1 };
 import { randomBytes, randomUUID, randomInt } from 'crypto';
 import { recordLoginEvent } from '../services/loginTracking.service.js';
 import { trackProductEvent } from '../services/productTracking.service.js';
+import { validOAuthState, verifyOAuthIdentity, stateCookie, verifierCookie, oauthCookieOptions } from '../services/google-oauth.service.js';
 import { verifyGoogleIdToken } from '../services/firebase.service.js';
+
+const refreshCookie = 'doccraft_refresh';
+function sessionCookie(reply: FastifyReply, token: string) {
+  reply.setCookie(refreshCookie,token,{path:'/v1/auth',httpOnly:true,secure:process.env.NODE_ENV==='production',sameSite:'lax',maxAge:30*24*60*60});
+  reply.header('Cache-Control','no-store');
+}
 
 export async function googleLogin(request: FastifyRequest, reply: FastifyReply) {
   let profile;
@@ -55,6 +62,7 @@ export async function googleLogin(request: FastifyRequest, reply: FastifyReply) 
     }
     const accessToken = await signAccessToken(user.id, user.email, user.plan, user.userClass);
     const refreshToken = await signRefreshToken(user.id);
+    sessionCookie(reply, refreshToken);
     await prisma.session.create({ data: {
       userId: user.id, refreshToken:tokenDigest(refreshToken),
       expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
@@ -188,6 +196,7 @@ export async function login(request: FastifyRequest, reply: FastifyReply) {
   await recordSuccessfulAuthentication(user.id);
   const accessToken = await signAccessToken(user.id, user.email, user.plan, (user as any).userClass);
   const refreshToken = await signRefreshToken(user.id);
+  sessionCookie(reply, refreshToken);
   const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
 
   await safeCreateSession({ userId: user.id, refreshToken, expiresAt });
@@ -231,6 +240,7 @@ export async function login2FA(request: FastifyRequest, reply: FastifyReply) {
 
   const accessToken = await signAccessToken(user.id, user.email, user.plan, (user as any).userClass);
   const refreshToken = await signRefreshToken(user.id);
+  sessionCookie(reply, refreshToken);
   const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
 
   await prisma.session.create({
@@ -333,7 +343,11 @@ export async function resendVerificationCode(request: FastifyRequest, reply: Fas
 }
 
 export async function refresh(request: FastifyRequest, reply: FastifyReply) {
-  const { refreshToken } = request.body as any;
+  const supplied = (request.body as any)?.refreshToken;
+  const refreshToken = supplied || request.cookies?.[refreshCookie];
+  if (!supplied && request.headers.origin !== (process.env.FRONTEND_URL || 'http://localhost:5173')) {
+    return reply.status(403).send({error:'Refresh origin rejected'});
+  }
   let decoded;
   try {
     decoded = await verifyRefreshToken(refreshToken);
@@ -352,17 +366,19 @@ export async function refresh(request: FastifyRequest, reply: FastifyReply) {
   }
 
   const user = session.user;
-  if (user.id !== decoded.sub || user.status !== 'active' || user.deletedAt) return reply.status(403).send({ error: 'Account unavailable' });
+  if (user.id !== decoded.sub || user.status !== 'active' || user.deletedAt || (user.lockedUntil && user.lockedUntil > new Date())) return reply.status(403).send({ error: 'Account unavailable' });
   const newAccessToken = await signAccessToken(user.id, user.email, user.plan, (user as any).userClass);
   const newRefreshToken = await signRefreshToken(user.id);
   const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
 
-  await prisma.$transaction([
-    prisma.session.delete({ where: { id: session.id } }),
-    prisma.session.create({
-      data: { userId: user.id, refreshToken:tokenDigest(newRefreshToken), expiresAt },
-    }),
-  ]);
+  const rotated=await prisma.$transaction(async tx=>{
+    const consumed=await tx.session.deleteMany({where:{id:session.id,refreshToken:tokenDigest(refreshToken),expiresAt:{gt:new Date()}}});
+    if(consumed.count!==1)return false;
+    await tx.session.create({data:{userId:user.id,refreshToken:tokenDigest(newRefreshToken),expiresAt}});
+    return true;
+  });
+  if(!rotated)return reply.status(401).send({error:'Session expired or invalid'});
+  sessionCookie(reply,newRefreshToken);
 
   return reply.send({ accessToken: newAccessToken, refreshToken: newRefreshToken });
 }
@@ -373,6 +389,7 @@ export async function logout(request: FastifyRequest, reply: FastifyReply) {
   await revokeAccess(request.headers.authorization!.slice(7));
   if(refreshToken)await prisma.session.deleteMany({where:{refreshToken:tokenDigest(refreshToken),userId}});
   else await prisma.session.deleteMany({where:{userId}});
+  reply.clearCookie(refreshCookie,{path:'/v1/auth',httpOnly:true,secure:process.env.NODE_ENV==='production',sameSite:'lax'});
   return reply.send({ success: true });
 }
 
@@ -388,7 +405,7 @@ export async function forgotPassword(request: FastifyRequest, reply: FastifyRepl
   const expiresAt = new Date(Date.now() + 1000 * 60 * 60); // 1 hour
 
   await prisma.passwordReset.create({
-    data: { userId: user.id, token, expiresAt }
+    data: { userId: user.id, token: tokenDigest(token), expiresAt }
   });
 
   sendPasswordResetEmail(user.email, token, user.fullName || undefined).catch(err => {
@@ -401,7 +418,13 @@ export async function forgotPassword(request: FastifyRequest, reply: FastifyRepl
 export async function resetPassword(request: FastifyRequest, reply: FastifyReply) {
   const { token, newPassword } = request.body as any;
   
-  const resetRecord = await prisma.passwordReset.findUnique({ where: { token } });
+  // Legacy links contain the same 32-byte hex token and expire after one hour.
+  // Never accept a stored digest as a bearer credential.
+  if (typeof token !== 'string' || !/^[a-f0-9]{64}$/.test(token)) {
+    return reply.status(400).send({ error: 'Invalid or expired reset token' });
+  }
+  const resetRecord = await prisma.passwordReset.findUnique({ where: { token: tokenDigest(token) } })
+    ?? await prisma.passwordReset.findUnique({ where: { token } });
 
   if (!resetRecord || resetRecord.used || resetRecord.expiresAt < new Date()) {
     return reply.status(400).send({ error: 'Invalid or expired reset token' });
@@ -412,19 +435,21 @@ export async function resetPassword(request: FastifyRequest, reply: FastifyReply
 
   const passwordHash = await hashPassword(newPassword);
 
-  await prisma.$transaction([
-    prisma.user.update({
+  const consumed = await prisma.$transaction(async (tx) => {
+    const claim = await tx.passwordReset.updateMany({
+      where: { id: resetRecord.id, used: false, expiresAt: { gt: new Date() } },
+      data: { used: true },
+    });
+    if (claim.count !== 1) return false;
+    await tx.user.update({
       where: { id: resetRecord.userId },
       data: { passwordHash, failedLoginAttempts: 0, lockedUntil: null }
-    }),
-    prisma.passwordReset.update({
-      where: { id: resetRecord.id },
-      data: { used: true }
-    })
-  ]);
-
-  await prisma.session.deleteMany({where:{userId:resetRecord.userId}});
-  await revokeAllAccess(resetRecord.userId);
+    });
+    await tx.session.deleteMany({ where: { userId: resetRecord.userId } });
+    await revokeAllAccess(resetRecord.userId, tx);
+    return true;
+  });
+  if (!consumed) return reply.status(400).send({ error: 'Invalid or expired reset token' });
   return reply.send({ success: true, message: 'Password has been reset successfully' });
 }
 
@@ -463,52 +488,45 @@ export async function updateMe(request: FastifyRequest, reply: FastifyReply) {
 }
 
 export async function googleCallback(request: FastifyRequest, reply: FastifyReply) {
+  reply.header('Cache-Control', 'no-store').header('Referrer-Policy', 'no-referrer');
+  if (!(request.server as any).googleOAuth2) return reply.status(503).send({error:'Google sign-in is unavailable'});
+  if (!validOAuthState(request) || typeof (request.query as any)?.code !== 'string') {
+    return reply.status(400).send({ error: 'Invalid or expired OAuth request' });
+  }
   try {
-    const token = await (request.server as any).googleOAuth2.getAccessTokenFromAuthorizationCodeFlow(request);
-    
-    const res = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
-      headers: { Authorization: `Bearer ${token.token.access_token}` },
-    });
-    const profile = (await res.json()) as any;
-    
-    if (!profile.email) return reply.status(400).send({ error: 'Failed to retrieve email from Google' });
-
+    const result = await (request.server as any).googleOAuth2.getAccessTokenFromAuthorizationCodeFlow(request, reply);
+    const profile = await verifyOAuthIdentity(result.token.id_token, (request.query as any).state);
     let user = await prisma.user.findUnique({ where: { email: profile.email } });
-    let isNewUser = false;
-
-    if (!user) {
-      user = await prisma.user.create({
-        data: {
-          email: profile.email,
-          fullName: profile.name,
-          avatarUrl: profile.picture,
-          authProvider: 'google',
-          emailVerified: true
-        }
-      });
-      isNewUser = true;
+    const isNewUser = !user;
+    if (!user) user = await prisma.user.upsert({ where: { email: profile.email },
+      create: { ...profile, authProvider: 'google', emailVerified: true }, update: {} });
+    if (user.status !== 'active' || user.deletedAt || !user.emailVerified ||
+        (user.lockedUntil && user.lockedUntil > new Date())) {
+      return reply.status(403).send({ error: 'Account unavailable' });
     }
-
-    const accessToken = await signAccessToken(user.id, user.email, user.plan, (user as any).userClass);
+    const target = new URL('/oauth-callback', process.env.FRONTEND_URL || 'http://localhost:5173');
+    if (user.twoFactorEnabled) {
+      // The browser must complete the existing one-use TOTP check before any session exists.
+      target.hash = new URLSearchParams({ mfaToken: await signMfaToken(user.id) }).toString();
+      return reply.redirect(target.toString());
+    }
+    await recordSuccessfulAuthentication(user.id);
+    const accessToken = await signAccessToken(user.id, user.email, user.plan, user.userClass);
     const refreshToken = await signRefreshToken(user.id);
-    const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
-
-    await prisma.session.create({ data: { userId: user.id, refreshToken:tokenDigest(refreshToken), expiresAt } });
-    try {
-      await prisma.user.update({ where: { id: user.id }, data: { lastLoginAt: new Date() } });
-    } catch (err) {}
+    sessionCookie(reply, refreshToken);
+    await prisma.session.create({ data: { userId: user.id, refreshToken: tokenDigest(refreshToken),
+      expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) } });
     recordLoginEvent(user.id, request);
-    if (isNewUser) {
-      trackProductEvent(user.id, 'user_signed_up', { auth_provider: 'google' });
-    } else {
-      trackProductEvent(user.id, 'user_logged_in', { method: 'google_oauth' });
-    }
-
-    // Use URL fragment (#) so tokens are available to client-side JS but NEVER sent to the server in HTTP requests
-    return reply.redirect(`${process.env.FRONTEND_URL || 'http://localhost:5173'}/oauth-callback#accessToken=${accessToken}&refreshToken=${refreshToken}`);
-  } catch (err) {
-    request.log.error(err);
-    return reply.status(500).send({ error: 'OAuth authentication failed' });
+    trackProductEvent(user.id, isNewUser ? 'user_signed_up' : 'user_logged_in', { method: 'google_oauth' });
+    target.hash = new URLSearchParams({ accessToken }).toString();
+    return reply.redirect(target.toString());
+  } catch {
+    // Provider errors may include codes, tokens and client secrets. Return no diagnostics.
+    request.log.warn('Google OAuth callback rejected');
+    return reply.status(401).send({ error: 'Google sign-in failed. Please start again.' });
+  } finally {
+    reply.clearCookie(stateCookie, oauthCookieOptions());
+    reply.clearCookie(verifierCookie, oauthCookieOptions());
   }
 }
 
@@ -600,6 +618,7 @@ export async function guestLogin(request: FastifyRequest, reply: FastifyReply) {
   const expiresAt = Math.floor(Date.now() / 1000) + 24 * 60 * 60;
   const sessionToken = await signAccessToken(guestId, guestEmail, 'guest', 'guest', expiresAt);
 
+  reply.clearCookie(refreshCookie,{path:'/v1/auth',httpOnly:true,secure:process.env.NODE_ENV==='production',sameSite:'lax'});
   return reply.send({
     session_token: sessionToken,
     guest_user_id: guestId,

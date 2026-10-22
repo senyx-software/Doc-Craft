@@ -9,3 +9,5 @@ export interface Entitlements {
 export function getEntitlements(userId:string):Promise<Entitlements>;
 export function validateEntitlements(policy:unknown,userId:string):Entitlements;
 export function requireEntitlement(policy:Entitlements,feature:keyof Entitlements):void;
+export type PublicEntitlements=Pick<Entitlements,'version'|'user_id'|'account_enabled'|'plan'|'subscription_status'|'subscription_expires_at'|'daily_quota'|'custom_logo'|'custom_branding'|'premium_templates'|'pdf_watermark'|'priority_processing'|'retention_days'|'ai_enabled'|'quota_policy'>;
+export function publicEntitlements(policy:Entitlements):PublicEntitlements;

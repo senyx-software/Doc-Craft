@@ -65,7 +65,7 @@ interface ChatState {
 }
 const empty = { assets:[] as DocumentAsset[],canGenerate:false,finalization:undefined as ConversationSnapshot['finalization'],sessionId: null, documentType: null, schemaSummary: null, userSessions: [], messages: [], currentField: null, status: null, collectedSlots: {}, pendingRequired: [], pendingOptional: [], readyToGenerate: false, spellCorrections: [], pendingCorrection: null, summary: null, collectedData: null, isLoading: false, isLoadingSessions: false, error: null, demoFieldIndex: 0, revision: 0, workflowStage: 'collecting', lifecycle: 'ACTIVE', readOnly: false, fieldStates: {}, pendingIntent: null, pendingTurn: null };
 let generation = 0, request: AbortController | undefined;
-const demo = () => getToken() === 'demo_token_for_testing';
+const demo = () => import.meta.env.DEV && getToken() === 'demo_token_for_testing';
 function pointer(id: string) { if (typeof window === 'undefined')
     return; const url = new URL(window.location.href); url.searchParams.delete('new'); url.searchParams.delete('type'); url.searchParams.set('sessionId', id); window.history.replaceState({}, '', url); }
 function statePatch(s: ConversationSnapshot) {
@@ -154,8 +154,12 @@ export const useChatStore = create<ChatState>((set, get) => ({
                 const next = snapshot({ id, documentTypeId: state.documentType, status: 'ACTIVE', slots: result.raw });
                 response = { state: next, ai_message: 'Demo: ' + planResponse(next, result.changed,message,{results:result.results}) };
             }
-            else
-                response = await aiApi.sendChatMessage({ session_id: id, document_type: state.documentType, message, turn_id: turn.id, signal: request.signal, current_field: '', conversation_history: [] });
+            else {
+                const editorModule=await import('./documentStore');
+                await editorModule.flushCanvasLayout();
+                if(epoch!==generation||get().sessionId!==id)return;
+                response = await aiApi.sendChatMessage({ session_id: id, document_type: state.documentType, message, turn_id: turn.id, signal: request.signal, current_field: '', conversation_history: [],...editorModule.editorStateForChat() });
+            }
             if (epoch !== generation || get().sessionId !== id)
                 return;
             if(response.state.sessionId===id&&response.state.revision<get().revision) {
@@ -163,7 +167,9 @@ export const useChatStore = create<ChatState>((set, get) => ({
                 return;
             }
             set({ ...statePatch(response.state), messages: [...messages, { role: 'assistant', content: response.ai_message }], pendingTurn: null, isLoading: false });
-            const document = (await import('./documentStore')).useDocumentStore.getState();
+            const editorModule=await import('./documentStore');
+            editorModule.acceptCanvasSnapshot(response.state);
+            const document = editorModule.useDocumentStore.getState();
             if (epoch === generation && get().sessionId === response.state.sessionId && response.state.revision>=get().revision) {
                 if(response.state.sessionId!==id) {pointer(response.state.sessionId);document.hydrateConversation(response.state);}
                 document.refreshCanvasElements({ documentType: response.state.documentType, ...response.state.slots });

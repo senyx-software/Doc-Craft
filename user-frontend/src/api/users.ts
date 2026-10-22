@@ -20,6 +20,7 @@ export async function getProfile(): Promise<User> {
     plan:          ((u.plan as string) || 'free') as User['plan'],
     timezone:      (u.timezone as string | undefined),
     created_at:    (u.createdAt as string | undefined),
+    twoFactorEnabled: u.twoFactorEnabled === true,
   };
 }
 
@@ -41,5 +42,6 @@ export async function updateProfile(data: Partial<Pick<User, 'full_name' | 'time
     plan:          ((u.plan as string) || 'free') as User['plan'],
     timezone:      (u.timezone as string | undefined),
     created_at:    (u.createdAt as string | undefined),
+    twoFactorEnabled: u.twoFactorEnabled === true,
   };
 }

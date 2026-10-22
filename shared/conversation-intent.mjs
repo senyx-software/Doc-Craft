@@ -42,8 +42,14 @@ export function identifyIntent(message, state = {}) {
 export const ITEM_VALUE_LINK = String.raw`(?:(?:should|must)\s+(?:now\s+)?be|ought\s+to\s+be|needs?\s+to\s+be|has\s+to\s+be|is\s+(?:now\s+)?(?:to\s+be\s+)?|to|as|at|:|=)`;
 
 export function explicitItemOperation(message, state) {
-    const text = message.trim().replace(/^actually,?\s*/i, '');
+    const text = message.trim().replace(/^actually,?\s*/i, '')
+        .replace(/^add\s+(?:another\s+)?item\s*,\s*/i, 'add ');
     const items = state.slots?.lineItems || [];
+    const sale=text.match(/^(?:(?:I|we)\s+(?:sold|supplied|provided)\s+)?(one|two|three|four|five|six|seven|eight|nine|ten|\d+(?:\.\d+)?)\s+(.+?)\s+(?:for|at)\s+(?:LKR|USD|Rs\.?|[$€£])?\s*([\d,]+(?:\.\d+)?)\s*(?:(?:LKR|USD|EUR|GBP|AUD|CAD)\s+)?(?:each|per unit)[.!]?$/i);
+    if(sale) {
+        const words={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10};
+        return {itemOperations:[{operation:'add',item:{description:sale[2],quantity:words[sale[1].toLowerCase()]??Number(sale[1]),unitPrice:parseAmount(sale[3])}}]};
+    }
     const proposal=(label,operation,item)=>{
         const matches=resolveItemTarget(label,items);
         if(matches.length===1)return {itemOperations:[{operation,id:matches[0].id||'item-'+items.indexOf(matches[0]),...(item?{item}:{})}]};
@@ -69,11 +75,17 @@ export function explicitItemOperation(message, state) {
     }
     const remove=text.match(/^(?:remove|delete)\s+(?:the\s+)?(.+?)[.!]?$/i);
     if(remove&&(resolveItemTarget(remove[1],items).length||/\b(?:item|service)\b/i.test(remove[1])&&!canonicalKey(remove[1])))return proposal(remove[1],'remove');
-    const add = text.match(/^(?:add\s+(?:another\s+)?(?:a\s+)?)?(.+?)\s*,?\s*(?:quantity|qty)\s*(?:is|:|=)?\s*([\d.]+)\s*,?\s*(?:unit\s+)?price\s*(?:is|:|=)?\s*(?:LKR|USD|Rs\.?|[$€£])?\s*([\d,]+(?:\.\d+)?\s*(?:lakhs?|laks?|lacs?|k)?)[.!]?$/i)
+    const add = text.match(/^(?:add\s+(?:another\s+)?(?:an?\s+)?)?(.+?)\s*,?\s*(?:quantity|qty)\s*(?:is|:|=)?\s*([\d.]+)\s*,?\s*(?:(?:unit\s+)?price\s*(?:is|:|=)?|for|at)\s*(?:LKR|USD|Rs\.?|[$€£])?\s*([\d,]+(?:\.\d+)?\s*(?:lakhs?|laks?|lacs?|k)?)(?:\s+(?:LKR|USD|EUR|GBP|AUD|CAD|dollars?))?[.!]?$/i)
         || text.match(/^(.+?)\s+(\d+(?:\.\d+)?)\s+(?:LKR|USD|Rs\.?|[$€£])\s*([\d,]+(?:\.\d+)?\s*(?:lakhs?|laks?|lacs?|k)?)[.!]?$/i);
     if (add && !/^(?:change|remove|delete|what|why|how|tell)\b/i.test(add[1])) return { itemOperations: [{ operation: 'add', item: { description: add[1].replace(/[, ]+$/, ''), quantity: Number(add[2]), unitPrice: parseAmount(add[3]) } }] };
-    const partial = text.match(/^add\s+(?:another\s+)?(.+?)\s+(?:for|at)\s+(?:LKR|USD|Rs\.?|[$€£])?\s*([\d,]+(?:\.\d+)?\s*(?:lakhs?|laks?|lacs?|k)?)[.!]?$/i);
-    if (partial) return { itemOperations: [{ operation: 'add', item: { ...(/^(?:a )?(?:service|item)$/i.test(partial[1]) ? {} : { description: partial[1] }), unitPrice: parseAmount(partial[2]) } }] };
+    const partial = text.match(/^add\s+(?:another\s+)?(.+?)\s+(?:for|at)\s+(?:LKR|USD|Rs\.?|[$€£])?\s*([\d,]+(?:\.\d+)?\s*(?:lakhs?|laks?|lacs?|k)?)(?:\s+(?:LKR|USD|EUR|GBP|AUD|CAD|dollars?))?[.!]?$/i);
+    if (partial) {
+        const generic=/^(?:an? )?(?:service|item)$/i.test(partial[1]);
+        // An explicit singular article supplies one unit; bare descriptions
+        // still need a quantity. Never assume a quantity for plural prose.
+        const singular=!generic&&/^an?\s+\S+(?:\s+\S+)*$/i.test(partial[1])&&!/\b(?:pair|set|pack|box|dozen)\b/i.test(partial[1]);
+        return {itemOperations:[{operation:'add',item:{...(generic?{}:{description:partial[1].replace(/^an?\s+/i,'')}),...(singular?{quantity:1}:{}),unitPrice:parseAmount(partial[2])}}]};
+    }
     return undefined;
 }
 

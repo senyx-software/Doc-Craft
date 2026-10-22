@@ -22,6 +22,7 @@ import { assetElements } from '../../../shared/document-assets.mjs';
 import { withExportFontMetrics } from '../utils/exportFontMetrics';
 import { apiRequest, getToken } from '../api/client';
 import { canvasLayout } from '../../../shared/canvas-layout.mjs';
+import {editorContext} from '../../../shared/editor-commands.mjs';
 import {clearUploadedDefinitions,registerUploadedDefinition,uploadedDefinition,uploadedTemplateElements,type EditableTemplateDefinition} from '../utils/uploadedTemplateElements';
 import type { ConversationSnapshot } from '../types';
 
@@ -34,6 +35,22 @@ let canvasTimer: ReturnType<typeof setTimeout> | undefined;
 let canvasWrite: Promise<void> | undefined;
 let canvasDirty=false;
 
+export function currentEditorContext() {
+  const state=useDocumentStore.getState(),elements=(state.canvasElements||[]).slice(0,1000).map(el=>({id:el.id,type:el.type,label:el.type==='text'?el.text.slice(0,120):el.type,...Object.fromEntries(['x','y','w','h','fontSize','fontWeight'].filter(key=>typeof (el as unknown as Record<string,unknown>)[key]==='number').map(key=>[key,(el as unknown as Record<string,unknown>)[key]]))}));
+  return editorContext({elements,selectedIds:state.selectedElementIds.filter(id=>elements.some(el=>el.id===id))});
+}
+export function editorStateForChat() {return {editor_context:currentEditorContext(),expected_layout_revision:canvasRevision};}
+export function acceptCanvasSnapshot(state:ConversationSnapshot) {
+  if(canvasSession!==state.sessionId||(state.layoutRevision||0)<canvasRevision)return;
+  if((state.layoutRevision||0)===canvasRevision)return;
+  restoringCanvas=true;
+  try {
+    canvasRevision=state.layoutRevision||0;canvasDirty=false;
+    const layout=canvasLayout(state.canvasLayout||{}) as NonNullable<ConversationSnapshot['canvasLayout']>;
+    useDocumentStore.setState({...layout,selectedElementIds:state.editorContext?.selectedIds||[],selectedElementId:state.editorContext?.selectedIds?.at(-1)||null,historyPast:[],historyFuture:[]});
+  }finally {restoringCanvas=false;}
+}
+
 export async function flushCanvasLayout(): Promise<void> {
   if (canvasTimer) clearTimeout(canvasTimer);
   if (canvasWrite) { await canvasWrite; if (canvasDirty) return flushCanvasLayout(); return; }
@@ -41,11 +58,11 @@ export async function flushCanvasLayout(): Promise<void> {
   const session=canvasSession, epoch=documentGeneration, token=getToken();
   const state=useDocumentStore.getState();
   let layout;
-  try { layout=canvasLayout({elementOverrides:state.elementOverrides,customElements:state.customElements,pageWidth:state.pageWidth,pageHeight:state.pageHeight,pageBackgroundColor:state.pageBackgroundColor}); }
+  try { layout=canvasLayout({canvasMode:state.canvasMode,elementOverrides:state.elementOverrides,customElements:state.customElements,pageWidth:state.pageWidth,pageHeight:state.pageHeight,pageBackgroundColor:state.pageBackgroundColor}); }
   catch(error){useDocumentStore.setState({error:'Canvas changes exceed the supported size or format and were not saved.'});throw error;}
   canvasDirty=false;
   canvasWrite=apiRequest<{state:ConversationSnapshot}>('/chat/api/chat/session/'+encodeURIComponent(session)+'/canvas', {
-    method:'PUT',body:{layout,expectedLayoutRevision:canvasRevision},
+    method:'PUT',body:{layout,expectedLayoutRevision:canvasRevision,editorContext:currentEditorContext()},
   }).then(response=>{
     if(epoch!==documentGeneration || token!==getToken() || canvasSession!==session) return;
     canvasRevision=response.state.layoutRevision || 0;
@@ -58,7 +75,7 @@ export async function flushCanvasLayout(): Promise<void> {
   if(canvasDirty) await flushCanvasLayout();
 }
 function isDemoMode(): boolean {
-  return localStorage.getItem('doccraft_token') === 'demo_token_for_testing';
+  return import.meta.env.DEV && localStorage.getItem('doccraft_token') === 'demo_token_for_testing';
 }
 
 export function isGuestMode(): boolean {
@@ -166,12 +183,13 @@ function computeCanvasElements(
   accent: string,
   overrides: Record<string, Partial<InvoiceElement>>,
   custom: InvoiceElement[],
-  documentType?: string
+  documentType?: string,
+  mode: 'template'|'literal' = useDocumentStore.getState().canvasMode
 ): InvoiceElement[] | null {
   if (!templateId) return null;
   const docType = documentType || (data?.documentType as string);
   const dataWithDocType = docType ? { documentType: docType, ...data } : data;
-  const base = templateId.startsWith('upl_')?uploadedTemplateElements(templateId,dataWithDocType):getElementsForTemplate(templateId, dataWithDocType, accent || getTemplateAccent(templateId));
+  const base = mode==='literal'?[]:templateId.startsWith('upl_')?uploadedTemplateElements(templateId,dataWithDocType):getElementsForTemplate(templateId, dataWithDocType, accent || getTemplateAccent(templateId));
   if (!base) return null;
   const merged = base.map((el) => ({ ...el, ...(overrides[el.id] || {}) } as InvoiceElement));
   const content=[...merged,...custom];
@@ -201,6 +219,7 @@ interface DocumentState {
 
   // Editable canvas (Figma-style) — populated only for templates that have
   // an element-model migration; null means "fall back to the HTML preview".
+  canvasMode: 'template' | 'literal';
   canvasElements: InvoiceElement[] | null;
   elementOverrides: Record<string, Partial<InvoiceElement>>;
   customElements: InvoiceElement[];
@@ -224,8 +243,8 @@ interface DocumentState {
   // Continuous gestures (drag/resize) checkpoint once at the start via
   // checkpointHistory(), not on every intermediate update, or one drag
   // would produce hundreds of undo steps.
-  historyPast: Array<{ elementOverrides: Record<string, Partial<InvoiceElement>>; customElements: InvoiceElement[] }>;
-  historyFuture: Array<{ elementOverrides: Record<string, Partial<InvoiceElement>>; customElements: InvoiceElement[] }>;
+  historyPast: Array<{ canvasMode?:'template'|'literal'; elementOverrides: Record<string, Partial<InvoiceElement>>; customElements: InvoiceElement[] }>;
+  historyFuture: Array<{ canvasMode?:'template'|'literal'; elementOverrides: Record<string, Partial<InvoiceElement>>; customElements: InvoiceElement[] }>;
 
   // Session-scoped library of uploaded images / drawn or uploaded
   // signatures, shown as a thumbnail grid in the Uploads / Signature tabs.
@@ -233,7 +252,7 @@ interface DocumentState {
   addUploadedAsset: (asset: UploadedAsset) => void;
   removeUploadedAsset: (id: string) => void;
 
-  hydrateConversation: (state: {sessionId?:string;templateId?:string;accentColor?:string;documentType:DocumentType;slots:Record<string,unknown>;canvasLayout?:ConversationSnapshot['canvasLayout'];layoutRevision?:number}) => void;
+  hydrateConversation: (state: {sessionId?:string;templateId?:string;accentColor?:string;documentType:DocumentType;slots:Record<string,unknown>;canvasLayout?:ConversationSnapshot['canvasLayout'];layoutRevision?:number;editorContext?:ConversationSnapshot['editorContext']}) => void;
   fetchTemplates: (documentType: DocumentType) => Promise<void>;
   selectTemplate: (templateId: string) => void;
   applyCustomTemplateElements: (elements: InvoiceElement[], pageWidth?: number | null, pageHeight?: number | null, pageBackgroundColor?: string | null) => void;
@@ -286,6 +305,7 @@ export const useDocumentStore = create<DocumentState>()(
   isSidebarOpen: false,
   error: null,
 
+  canvasMode: 'template',
   canvasElements: null,
   elementOverrides: {},
   customElements: [],
@@ -317,6 +337,7 @@ export const useDocumentStore = create<DocumentState>()(
       const layout=canvasLayout(state.canvasLayout) as NonNullable<ConversationSnapshot['canvasLayout']>;
       set(layout);
     }
+    set({selectedElementIds:state.editorContext?.selectedIds||[],selectedElementId:state.editorContext?.selectedIds?.at(-1)||null});
     get().refreshCanvasElements({documentType:state.documentType,...state.slots});
     canvasSession=state.sessionId || null;
     canvasRevision=state.layoutRevision || 0;
@@ -340,7 +361,7 @@ export const useDocumentStore = create<DocumentState>()(
 
   selectTemplate: async (templateId: string) => {
     window.__selectedTemplateId = templateId;
-    set({ selectedTemplate: templateId, elementOverrides: {}, customElements: [], selectedElementId: null, selectedElementIds: [], historyPast: [], historyFuture: [] });
+    set({ selectedTemplate: templateId, canvasMode:'template', elementOverrides: {}, customElements: [], selectedElementId: null, selectedElementIds: [], historyPast: [], historyFuture: [] });
     const state = get();
 
     // Sync active session template ID in backend
@@ -366,7 +387,7 @@ export const useDocumentStore = create<DocumentState>()(
       ? { documentType: docType, ...chatState.collectedSlots }
       : (chatState.collectedData || (isDemoMode()?SAMPLE_DOCUMENT_DATA[docType]:{documentType:docType}));
 
-    if(templateId.startsWith('upl_')) {
+    if(state.canvasMode!=='literal'&&templateId.startsWith('upl_')) {
       const previewSequence=++uploadedPreviewSequence;
       set({canvasElements:null,previewHtml:null,error:null});
       try {const preview=await documentsApi.getUploadedPreview(templateId,dataToRender);if(epoch===documentGeneration&&previewSequence===uploadedPreviewSequence&&get().selectedTemplate===templateId)set(applyUploadedPreview(templateId,preview,dataToRender));}
@@ -391,10 +412,20 @@ export const useDocumentStore = create<DocumentState>()(
   // direct replace, same reset-selection/history pattern as switching
   // templates otherwise.
   applyCustomTemplateElements: (elements, pageWidth, pageHeight, pageBackgroundColor) => {
+    let layout;
+    try {
+      layout=canvasLayout({canvasMode:'literal',customElements:elements.map((el,index)=>({...el,id:'custom_template_'+index})),
+        pageWidth:pageWidth||get().pageWidth,pageHeight:pageHeight||get().pageHeight,
+        pageBackgroundColor:pageBackgroundColor||get().pageBackgroundColor});
+    } catch {
+      set({error:'This saved template exceeds the supported canvas format or size. It was not applied.'});
+      return;
+    }
     set({
-      canvasElements: elements,
+      ...layout,
+      canvasElements: layout.customElements as InvoiceElement[],
       elementOverrides: {},
-      customElements: [],
+      customElements: layout.customElements as InvoiceElement[],
       selectedElementId: null,
       selectedElementIds: [],
       historyPast: [],
@@ -483,7 +514,12 @@ export const useDocumentStore = create<DocumentState>()(
       state.accentColor,
       documentType
     );
+    if(state.canvasMode==='literal') {
+      set({documentId:createdDocId,isGenerating:false});
+      return;
+    }
     set({
+      canvasMode:'template',
       documentId: createdDocId || (isDemoMode() ? `demo_doc_${Date.now()}` : null),
       previewHtml,
       layoutState: initialLayout,
@@ -828,7 +864,8 @@ export const useDocumentStore = create<DocumentState>()(
       isExporting: false,
       isSidebarOpen: false,
       error: null,
-      canvasElements: null,
+      canvasMode: 'template',
+  canvasElements: null,
       elementOverrides: {},
       customElements: [],
       selectedElementId: null,
@@ -935,7 +972,7 @@ export const useDocumentStore = create<DocumentState>()(
 
   addElement: (el: InvoiceElement) => {
     set((state) => ({
-      historyPast: [...state.historyPast, { elementOverrides: state.elementOverrides, customElements: state.customElements }].slice(-50),
+      historyPast: [...state.historyPast, { canvasMode:state.canvasMode, elementOverrides: state.elementOverrides, customElements: state.customElements }].slice(-50),
       historyFuture: [],
       customElements: [...state.customElements, el],
       canvasElements: state.canvasElements ? [...state.canvasElements, el] : [el],
@@ -955,7 +992,7 @@ export const useDocumentStore = create<DocumentState>()(
       return;
     }
     set((state) => ({
-      historyPast: [...state.historyPast, { elementOverrides: state.elementOverrides, customElements: state.customElements }].slice(-50),
+      historyPast: [...state.historyPast, { canvasMode:state.canvasMode, elementOverrides: state.elementOverrides, customElements: state.customElements }].slice(-50),
       historyFuture: [],
       customElements: state.customElements.filter((el) => el.id !== id),
       canvasElements: state.canvasElements ? state.canvasElements.filter((el) => el.id !== id) : null,
@@ -975,7 +1012,7 @@ export const useDocumentStore = create<DocumentState>()(
     set((state) => {
       const idSet = new Set(ids);
       return {
-        historyPast: [...state.historyPast, { elementOverrides: state.elementOverrides, customElements: state.customElements }].slice(-50),
+        historyPast: [...state.historyPast, { canvasMode:state.canvasMode, elementOverrides: state.elementOverrides, customElements: state.customElements }].slice(-50),
         historyFuture: [],
         customElements: state.customElements.filter((el) => !idSet.has(el.id)),
         canvasElements: state.canvasElements ? state.canvasElements.filter((el) => !idSet.has(el.id)) : null,
@@ -994,38 +1031,42 @@ export const useDocumentStore = create<DocumentState>()(
   // update, or a single drag would produce hundreds of undo steps.
   checkpointHistory: () => {
     set((state) => ({
-      historyPast: [...state.historyPast, { elementOverrides: state.elementOverrides, customElements: state.customElements }].slice(-50),
+      historyPast: [...state.historyPast, { canvasMode:state.canvasMode, elementOverrides: state.elementOverrides, customElements: state.customElements }].slice(-50),
       historyFuture: [],
     }));
   },
 
   undo: (data: Record<string, unknown>) => {
+    if(!isDemoMode()&&useChatStore.getState().sessionId){void flushCanvasLayout().then(()=>useChatStore.getState().sendMessage('Undo that.')).catch(()=>set({error:'Save the current canvas before undoing.'}));return;}
     const state = get();
     if (state.historyPast.length === 0) return;
     const previous = state.historyPast[state.historyPast.length - 1];
-    const currentSnapshot = { elementOverrides: state.elementOverrides, customElements: state.customElements };
+    const currentSnapshot = { canvasMode:state.canvasMode, elementOverrides: state.elementOverrides, customElements: state.customElements };
     set({
       historyPast: state.historyPast.slice(0, -1),
       historyFuture: [currentSnapshot, ...state.historyFuture],
+      canvasMode: previous.canvasMode||'template',
       elementOverrides: previous.elementOverrides,
       customElements: previous.customElements,
-      canvasElements: computeCanvasElements(state.selectedTemplate, data, state.accentColor, previous.elementOverrides, previous.customElements),
+      canvasElements: computeCanvasElements(state.selectedTemplate, data, state.accentColor, previous.elementOverrides, previous.customElements,undefined,previous.canvasMode||'template'),
       selectedElementId: null,
       selectedElementIds: [],
     });
   },
 
   redo: (data: Record<string, unknown>) => {
+    if(!isDemoMode()&&useChatStore.getState().sessionId){void flushCanvasLayout().then(()=>useChatStore.getState().sendMessage('Redo that.')).catch(()=>set({error:'Save the current canvas before redoing.'}));return;}
     const state = get();
     if (state.historyFuture.length === 0) return;
     const next = state.historyFuture[0];
-    const currentSnapshot = { elementOverrides: state.elementOverrides, customElements: state.customElements };
+    const currentSnapshot = { canvasMode:state.canvasMode, elementOverrides: state.elementOverrides, customElements: state.customElements };
     set({
       historyFuture: state.historyFuture.slice(1),
       historyPast: [...state.historyPast, currentSnapshot],
+      canvasMode: next.canvasMode||'template',
       elementOverrides: next.elementOverrides,
       customElements: next.customElements,
-      canvasElements: computeCanvasElements(state.selectedTemplate, data, state.accentColor, next.elementOverrides, next.customElements),
+      canvasElements: computeCanvasElements(state.selectedTemplate, data, state.accentColor, next.elementOverrides, next.customElements,undefined,next.canvasMode||'template'),
       selectedElementId: null,
       selectedElementIds: [],
     });
@@ -1036,7 +1077,7 @@ export const useDocumentStore = create<DocumentState>()(
     const docType = (data.documentType as DocumentType) || 'invoice';
     const templateId = state.selectedTemplate || 'tmpl_invoice_2023_01';
     const merged = { documentType: docType, ...data };
-    if(templateId.startsWith('upl_')) {
+    if(state.canvasMode!=='literal'&&templateId.startsWith('upl_')) {
       const cleanOverrides={...state.elementOverrides};
       for(const id of Object.keys(cleanOverrides))if(id.startsWith('upl_field_')||id.startsWith('item_')){
         const {text:ignored,...presentation}=cleanOverrides[id] as Partial<InvoiceElement>&{text?:string};
@@ -1057,6 +1098,7 @@ export const useDocumentStore = create<DocumentState>()(
     // Strip text overrides from data-driven elements so fresh AI slot updates aren't shadowed by old clicks
     const cleanOverrides = { ...state.elementOverrides };
     for (const id of Object.keys(cleanOverrides)) {
+      if(id==='header_title'||id.startsWith('lbl_')||id.endsWith('_label'))continue;
       if (id.startsWith('totals_') || id.startsWith('item_') || id.startsWith('meta_') || id.startsWith('client_') || id.startsWith('sender_') || id.startsWith('header_')) {
         const itemOverride = cleanOverrides[id];
         if (itemOverride && 'text' in itemOverride && itemOverride.text !== undefined) {
@@ -1081,14 +1123,15 @@ export const useDocumentStore = create<DocumentState>()(
     const state = get();
     set({
       // "Default layout" is itself undo-able — checkpoint rather than wipe.
-      historyPast: [...state.historyPast, { elementOverrides: state.elementOverrides, customElements: state.customElements }].slice(-50),
+      historyPast: [...state.historyPast, { canvasMode:state.canvasMode, elementOverrides: state.elementOverrides, customElements: state.customElements }].slice(-50),
       historyFuture: [],
+      canvasMode: 'template',
       elementOverrides: {},
       customElements: [],
       selectedElementId: null,
       selectedElementIds: [],
       pageSelected: false,
-      canvasElements: computeCanvasElements(state.selectedTemplate, data, state.accentColor, {}, []),
+      canvasElements: computeCanvasElements(state.selectedTemplate, data, state.accentColor, {}, [], undefined, 'template'),
     });
   },
 }),
@@ -1103,7 +1146,7 @@ export const useDocumentStore = create<DocumentState>()(
     // from an earlier session survives a reload and "Reset to default
     // layout" would have nothing real to reset back to. Same reasoning as
     // excluding `templates`.
-    const excluded = new Set(['templates', 'canvasElements', 'elementOverrides', 'customElements', 'selectedElementId', 'selectedElementIds', 'historyPast', 'historyFuture', 'uploadedAssets', 'pageSelected']);
+    const excluded = new Set(['canvasMode', 'templates', 'canvasElements', 'elementOverrides', 'customElements', 'selectedElementId', 'selectedElementIds', 'historyPast', 'historyFuture', 'uploadedAssets', 'pageSelected']);
     const rest = Object.fromEntries(Object.entries(state).filter(([key]) => !excluded.has(key)));
     return rest;
   },
@@ -1113,6 +1156,7 @@ export const useDocumentStore = create<DocumentState>()(
   // explicitly so a stale drag can never come back from a previous session.
   merge: (persistedState, currentState) => {
     const persisted = { ...(persistedState as Partial<DocumentState>) };
+    delete persisted.canvasMode;
     delete persisted.canvasElements;
     delete persisted.elementOverrides;
     delete persisted.customElements;
@@ -1132,10 +1176,10 @@ export const useDocumentStore = create<DocumentState>()(
 // accounts' editing state never come from a global localStorage snapshot.
 useDocumentStore.subscribe((state,previous)=>{
   if(restoringCanvas || !canvasSession || useChatStore.getState().sessionId!==canvasSession || isDemoMode() || useChatStore.getState().readOnly) return;
-  if(state.elementOverrides===previous.elementOverrides && state.customElements===previous.customElements && state.pageWidth===previous.pageWidth && state.pageHeight===previous.pageHeight && state.pageBackgroundColor===previous.pageBackgroundColor) return;
+  if(state.canvasMode===previous.canvasMode && state.elementOverrides===previous.elementOverrides && state.customElements===previous.customElements && state.pageWidth===previous.pageWidth && state.pageHeight===previous.pageHeight && state.pageBackgroundColor===previous.pageBackgroundColor&&state.selectedElementIds===previous.selectedElementIds) return;
   // Rebuilding the canvas from a saved snapshot creates fresh objects. Do not
   // turn an identical presentation into an endless save/reconcile/render loop.
-  if(state.pageWidth===previous.pageWidth && state.pageHeight===previous.pageHeight && state.pageBackgroundColor===previous.pageBackgroundColor && JSON.stringify(state.elementOverrides)===JSON.stringify(previous.elementOverrides) && JSON.stringify(state.customElements)===JSON.stringify(previous.customElements)) return;
+  if(state.canvasMode===previous.canvasMode && state.pageWidth===previous.pageWidth && state.pageHeight===previous.pageHeight && state.pageBackgroundColor===previous.pageBackgroundColor && JSON.stringify(state.elementOverrides)===JSON.stringify(previous.elementOverrides) && JSON.stringify(state.customElements)===JSON.stringify(previous.customElements)&&JSON.stringify(state.selectedElementIds)===JSON.stringify(previous.selectedElementIds)) return;
   canvasDirty=true;
   if(canvasTimer) clearTimeout(canvasTimer);
   canvasTimer=setTimeout(()=>{void flushCanvasLayout().catch(()=>{});},700);

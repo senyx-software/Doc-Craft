@@ -33,3 +33,23 @@ __pycache__/
 services/redis-bin/
 services/*/src/generated/
 *.tsbuildinfo
+
+# Deployment credentials and infrastructure state
+deploy/runtime/
+deploy/secrets/*
+!deploy/secrets/README.md
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+!*.tfvars.example
+crash.log
+# Operator API/SSH credentials must never enter repository history.
+.oci/
+.ssh/
+*.pem
+*.key
+*.p12
+*.pfx
+**/*keyring*.json

@@ -3,6 +3,7 @@ const state=vi.hoisted(()=>({policy:{account_enabled:true,ai_enabled:true,ai_pro
 vi.mock('../../../../../shared/entitlements.mjs',async original=>({...await original<any>(),getEntitlements:vi.fn(async()=>state.policy)}));
 vi.mock('../groq.service.js',()=>({runGroqAgenticLoop:state.groq}));
 vi.mock('../claude.service.js',()=>({runAgenticLoop:state.claude}));
+vi.mock('../hybrid-ai.service.js',()=>({getHybridRuntime:async()=>({enabled:false,version:0}),runHybridAgenticLoop:vi.fn()}));
 import {runConfiguredAgenticLoop} from '../provider-router.service.js';
 beforeEach(()=>{
  vi.clearAllMocks();state.policy={account_enabled:true,ai_enabled:true,ai_provider:'groq',max_model:'claude-haiku-4-5'};

@@ -1,8 +1,8 @@
 import {beforeEach,it,expect,vi} from 'vitest';
-const mocks=vi.hoisted(()=>({token:null as string|null,guest:vi.fn(),me:vi.fn(),login:vi.fn(),login2FA:vi.fn(),transfer:vi.fn(),reopen:vi.fn()}));
-vi.mock('../../api/auth',()=>({guestLogin:mocks.guest,getMe:mocks.me,login:mocks.login,login2FA:mocks.login2FA}));
+const mocks=vi.hoisted(()=>({token:null as string|null,guest:vi.fn(),me:vi.fn(),login:vi.fn(),login2FA:vi.fn(),logout:vi.fn(),transfer:vi.fn(),reopen:vi.fn()}));
+vi.mock('../../api/auth',()=>({guestLogin:mocks.guest,getMe:mocks.me,login:mocks.login,login2FA:mocks.login2FA,logout:mocks.logout}));
 vi.mock('../chatStore',()=>({useChatStore:{getState:()=>({sessionId:null,loadSessionFromDb:mocks.reopen})}}));
-vi.mock('../../api/client',()=>({apiRequest:mocks.transfer,getToken:()=>mocks.token,setToken:(token:string)=>{mocks.token=token;},clearToken:()=>{mocks.token=null;},isTokenExpired:(token:string)=>token==='expired',getTokenExpiry:()=>Date.now()+86400000}));
+vi.mock('../../api/client',()=>({apiRequest:mocks.transfer,getToken:()=>mocks.token,setToken:(token:string)=>{mocks.token=token;},clearToken:()=>{mocks.token=null;},isTokenExpired:(token:string)=>token==='expired',refreshAccessToken:vi.fn(async()=>null),getTokenExpiry:()=>Date.now()+86400000}));
 vi.mock('../../lib/firebase',()=>({getGoogleIdToken:vi.fn(),googleSignInError:vi.fn()}));
 import {useAuthStore} from '../authStore';
 const guest={session_token:'new-guest',guest_user_id:'guest_test',expires_at:new Date(Date.now()+86400000).toISOString()};
@@ -33,3 +33,5 @@ it('guest sign-in uses the new account credential for transfer before discarding
  expect(mocks.reopen).toHaveBeenCalledWith('saved-draft');
  expect(useAuthStore.getState()).toMatchObject({isGuest:false,user:{user_id:'account'}});
 });
+
+it('failed server sign-out keeps visible account state and reports the failure',async()=>{mocks.token='active';useAuthStore.setState({isAuthenticated:true,isGuest:false});mocks.logout.mockRejectedValue(new Error('offline'));await expect(useAuthStore.getState().logout()).rejects.toThrow();expect(useAuthStore.getState().isAuthenticated).toBe(true);expect(mocks.token).toBe('active');expect(useAuthStore.getState().error).toContain('Sign-out could not be confirmed');});

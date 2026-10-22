@@ -9,10 +9,6 @@ import type {EditableTemplateDefinition} from '../utils/uploadedTemplateElements
 import type {
   GenerateDocumentRequest,
   GenerateDocumentResponse,
-  LayoutUpdateRequest,
-  LayoutUpdateResponse,
-  ContentUpdateRequest,
-  ContentUpdateResponse,
   TemplatesResponse,
   DocumentType,
   AISummaryResponse,
@@ -25,15 +21,7 @@ export function generateDocument(data: GenerateDocumentRequest): Promise<Generat
   }).then(response => ({document_id:response.documentId,job_id:response.jobId,status:response.status}));
 }
 
-/** PATCH /documents/{id}/layout — Update layout/formatting */
-export function updateLayout(documentId: string, data: LayoutUpdateRequest): Promise<LayoutUpdateResponse> {
-  return patch<LayoutUpdateResponse>(`/documents/${documentId}/layout`, data);
-}
 
-/** PATCH /documents/{id}/content — Update data content fields */
-export function updateContent(documentId: string, data: ContentUpdateRequest): Promise<ContentUpdateResponse> {
-  return patch<ContentUpdateResponse>(`/documents/${documentId}/content`, data);
-}
 
 /** GET /document/templates?document_type=... — Get available templates */
 export function getTemplates(documentType: DocumentType): Promise<TemplatesResponse> {

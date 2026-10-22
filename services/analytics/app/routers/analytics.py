@@ -63,8 +63,8 @@ def get_overview(db: Session = Depends(get_db)):
                 int(docs_df.iloc[0]["total_docs"]) if not docs_df.empty else 0
             ),
         }
-    except Exception as e:
-        return {"error": str(e)}
+    except Exception as error:
+        raise HTTPException(status_code=503, detail="Analytics reporting unavailable") from error
 
 
 @router.get("/revenue", dependencies=[Depends(require_internal_secret)])
@@ -102,8 +102,8 @@ def get_generations(db: Session = Depends(get_db)):
             "by_type": {k: int(v) for k, v in by_type.items()},
             "by_tier": {k: int(v) for k, v in by_tier.items()},
         }
-    except Exception as e:
-        return {"error": str(e)}
+    except Exception as error:
+        raise HTTPException(status_code=503, detail="Analytics reporting unavailable") from error
 
 
 @router.get("/users", dependencies=[Depends(require_internal_secret)])
@@ -129,8 +129,8 @@ def get_users(db: Session = Depends(get_db)):
             "by_class": {k: int(v) for k, v in by_class.items()},
             "guests": guests,
         }
-    except Exception as e:
-        return {"error": str(e)}
+    except Exception as error:
+        raise HTTPException(status_code=503, detail="Analytics reporting unavailable") from error
 
 
 SOURCE_COLORS = ["#3B82F6", "#8b5cf6", "#10b981", "#f59e0b", "#ec4899"]
@@ -342,8 +342,8 @@ def get_traffic(from_date: str | None = None, to_date: str | None = None, db: Se
             "channel_conversion": channel_conversion,
             "sessions_in_range": sessions_in_range,
         }
-    except Exception as e:
-        return {"error": str(e)}
+    except Exception as error:
+        raise HTTPException(status_code=503, detail="Analytics reporting unavailable") from error
 
 
 @router.get("/journey", dependencies=[Depends(require_internal_secret)])
@@ -411,5 +411,5 @@ def get_journey():
             ],
             "total_users": total_users,
         }
-    except Exception as e:
-        return {"error": str(e)}
+    except Exception as error:
+        raise HTTPException(status_code=503, detail="Analytics reporting unavailable") from error

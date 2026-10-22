@@ -16,8 +16,8 @@ const PUBLIC_ROUTES = [
   { method: 'POST', path: '/v1/auth/password/reset' },
   { method: 'POST', path: '/v1/auth/verify-email' },
   { method: 'POST', path: '/v1/auth/verify-email/resend' },
-  { method: 'GET',  path: '/v1/auth/oauth/google' },
-  { method: 'GET',  path: '/v1/auth/oauth/callback' },
+  { method: 'GET',  path: '/v1/auth/login/google' },
+  { method: 'GET',  path: '/v1/auth/oauth/google/callback' },
   
   // Payment & Billing public routes
   { method: 'GET',  path: '/v1/payment/plans' },

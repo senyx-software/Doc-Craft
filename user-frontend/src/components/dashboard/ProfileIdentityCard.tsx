@@ -62,7 +62,7 @@ const ProfileIdentityCard: React.FC<ProfileIdentityCardProps> = ({ variant = 'ca
     setSaveMessage('');
     try {
       const updated = await usersApi.updateProfile({ full_name: fullName, timezone });
-      setUser({ ...user!, full_name: updated.full_name, timezone: updated.timezone });
+      setUser(updated);
       setSaveMessage('Profile updated successfully.');
     } catch {
       setSaveMessage('Failed to update profile. Please try again.');

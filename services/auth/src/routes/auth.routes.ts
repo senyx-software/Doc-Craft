@@ -136,7 +136,7 @@ export async function authRoutes(fastify: FastifyInstance) {
       summary: 'Refresh access token',
       body: {
         type: 'object',
-        required: ['refreshToken'],
+        additionalProperties: false,
         properties: {
           refreshToken: { type: 'string' }
         }

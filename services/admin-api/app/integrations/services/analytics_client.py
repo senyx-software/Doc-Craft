@@ -11,7 +11,7 @@ class AnalyticsServiceClient:
     def __init__(self):
         self.base_url = settings.ANALYTICS_SERVICE_URL.rstrip("/")
 
-    async def _fetch(self, path: str, params: Optional[Dict[str, Any]] = None, timeout: float = 5.0) -> Dict[str, Any]:
+    async def _fetch(self, path: str, params: Optional[Dict[str, Any]] = None, timeout: float = 5.0, strict: bool = False) -> Dict[str, Any]:
         url = f"{self.base_url}{path}"
         try:
             async with async_service_client("analytics", timeout=timeout) as client:
@@ -21,7 +21,10 @@ class AnalyticsServiceClient:
                     if isinstance(data, dict) and "error" not in data:
                         return data
         except Exception as err:
-            print(f"[AnalyticsServiceClient] GET {url} error: {err}")
+            print("[AnalyticsServiceClient] Reporting dependency unavailable")
+        if strict:
+            from app.core.exceptions import AppException
+            raise AppException('Analytics reporting unavailable',code='ANALYTICS_UNAVAILABLE',status_code=503)
         return {}
 
     # ── Overview / User Counts ───────────────────────────────────────────────
@@ -232,7 +235,7 @@ class AnalyticsServiceClient:
 
     async def get_generations(self) -> Dict[str, Any]:
         """Fetch document generation statistics by type and user tier."""
-        data = await self._fetch("/v1/analytics/generations")
+        data = await self._fetch("/v1/analytics/generations", strict=True)
         return {
             "by_type": data.get("by_type", {}),
             "by_tier": data.get("by_tier", {}),
@@ -242,7 +245,7 @@ class AnalyticsServiceClient:
 
     async def get_users_breakdown(self) -> Dict[str, Any]:
         """Fetch user breakdown by status, class, and guest counts."""
-        data = await self._fetch("/v1/analytics/users")
+        data = await self._fetch("/v1/analytics/users", strict=True)
         return {
             "by_status": data.get("by_status", {}),
             "by_class":  data.get("by_class",  {}),

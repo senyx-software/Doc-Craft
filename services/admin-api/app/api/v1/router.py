@@ -43,6 +43,8 @@ router.include_router(uploads_router)
 router.include_router(config_router)
 from app.api.v1.automation_intake import router as automation_intake_router
 router.include_router(automation_intake_router)
+from app.api.v1.ai_management import router as ai_management_router
+router.include_router(ai_management_router)
 
 # Alias for backwards compatibility
 api_router = router

@@ -23,7 +23,7 @@ const ready={businessName:'Nexora',clientName:'Acme Corp',invoiceNumber:'INV-1',
 let db:MemoryDatabase,repo:ConversationRepository,f:ReturnType<typeof Fastify>,count=0;
 beforeEach(()=>{db=new MemoryDatabase();repo=new ConversationRepository(db);count=0;});
 afterEach(async()=>{await f?.close();vi.unstubAllGlobals();vi.clearAllMocks();});
-async function app(provider?:any){f=Fastify();f.addHook('onRequest',async(req:any)=>{req.user={id:'u',plan:'free'};});await f.register(chatRoutes,{repository:repo,db,provider,quota:checkChatQuota,limiter:async()=>{}} as any);}
+async function app(provider?:any){f=Fastify();f.addHook('onRequest',async(req:any)=>{req.user={id:'u',plan:'free'};});await f.register(chatRoutes,{repository:repo,db,provider,runtimeLoader:async()=>({enabled:false,version:0}),quota:checkChatQuota,limiter:async()=>{}} as any);}
 async function send(message:string,id?:string){const turnId=id||'00000000-0000-4000-a000-'+String(++count).padStart(12,'0');const r=await f.inject({method:'POST',url:'/chat/session/s/message',payload:{message,turnId}});const events=r.statusCode===200?r.body.split('\n').filter(l=>l.startsWith('data:')).map(l=>JSON.parse(l.slice(5))):[r.json()];return {r,done:events.find(e=>e.type==='done'),error:events.find(e=>e.type==='error'),turnId};}
 function textProvider(answer:string){vi.stubGlobal('fetch',vi.fn(async()=>Response.json({choices:[{message:{content:answer},finish_reason:'stop'}]})));}
 it('T01-T08/T16/T17 complete requested six-turn workflow through real route/storage',async()=>{

@@ -23,6 +23,7 @@ import DashboardSupportPage from './pages/dashboard/DashboardSupportPage';
 import BackgroundEffects from './components/common/BackgroundEffects';
 
 import GuestRoute from './middleware/GuestRoute';
+import OAuthCallbackPage from './pages/OAuthCallbackPage';
 import { usePageDurationTracking } from './hooks/usePageDurationTracking';
 
 function App() {
@@ -39,20 +40,9 @@ function App() {
 
   // Check for existing auth token on mount
   useEffect(() => {
-    checkAuth();
+    if(window.location.pathname!=='/oauth-callback') void checkAuth();
   }, [checkAuth]);
 
-  // Handle OAuth callback — extract token from URL hash/query
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get('access_token');
-    if (token) {
-      useAuthStore.getState().setToken(token);
-      useAuthStore.getState().checkAuth().then(() => {
-        window.history.replaceState({}, '', '/dashboard');
-      });
-    }
-  }, []);
 
   return (
     <div className="min-h-screen bg-appBg text-appTextPrimary relative transition-colors duration-200">
@@ -61,6 +51,7 @@ function App() {
       <Announcements />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
+          <Route path="/oauth-callback" element={<OAuthCallbackPage />} />
           <Route path="/" element={<LandingPage />} />
           <Route
             path="/login"

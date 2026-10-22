@@ -21,6 +21,8 @@ def get_internal_domain_config(domain: str):
     Internal read endpoint for consuming microservices on cache miss.
     Consuming services use SharedConfigClient to read this fallback without touching Admin's DB.
     """
+    if domain.lower().strip() == 'hybrid_ai':
+        raise ValidationException('Use the scoped AI management API')
     entry = config_engine.get_domain_config(domain)
     if not entry:
         raise NotFoundException(f"Configuration domain '{domain}' not found")
@@ -30,7 +32,7 @@ def get_internal_domain_config(domain: str):
 @router.get("/api/v1/internal/config", response_model=List[ConfigEntry], dependencies=[Depends(require_internal_secret)])
 def get_internal_all_configs():
     """Returns a full snapshot of all active domain configurations and version tags."""
-    return config_repository.list_all_domain_configs()
+    return [entry for entry in config_repository.list_all_domain_configs() if entry.domain != 'hybrid_ai']
 
 
 # ----------------------------------------------------------------------
@@ -42,6 +44,8 @@ async def get_admin_domain_config(
     admin: AdminUserPayload = Depends(require_permission("settings", "view")),
 ):
     """Get active domain configuration (Protected: settings:view)."""
+    if domain.lower().strip() == 'hybrid_ai':
+        raise ValidationException('Use the scoped AI management API')
     entry = config_engine.get_domain_config(domain)
     if not entry:
         raise NotFoundException(f"Configuration domain '{domain}' not found")
@@ -67,6 +71,8 @@ async def update_admin_domain_config(
     if not data or not isinstance(data, dict):
         raise ValidationException("Configuration payload must be a non-empty JSON object")
 
+    if domain.lower().strip() == 'hybrid_ai':
+        raise ValidationException('Use the scoped AI management API')
     if domain.lower().strip() in ("plans", "template_catalog"):
         raise ValidationException(
             "The 'plans' domain is derived from the Plans & Billing table and is read-only here. "
@@ -109,4 +115,6 @@ async def get_domain_config_history(
     admin: AdminUserPayload = Depends(require_permission("settings", "view")),
 ):
     """Fetch version audit history for a configuration domain (Protected: settings:view)."""
+    if domain.lower().strip() == 'hybrid_ai':
+        raise ValidationException('Use the scoped AI management API')
     return config_engine.get_version_history(domain)

@@ -97,7 +97,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
     # from a `raise ValueError(...)` in a field validator) which plain
     # JSONResponse can't serialize — jsonable_encoder coerces it (and any
     # other non-JSON-native value, like bytes) to a JSON-safe form first.
-    errors = jsonable_encoder(exc.errors())
+    errors = jsonable_encoder([{key: value for key, value in error.items() if key not in ('input', 'ctx')} for error in exc.errors()])
     return JSONResponse(
         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
         content={
@@ -116,6 +116,6 @@ async def generic_exception_handler(request: Request, exc: Exception) -> JSONRes
             "error": "INTERNAL_SERVER_ERROR",
             "code": "INTERNAL_SERVER_ERROR",
             "message": "An unexpected error occurred on the admin-api service",
-            "details": {"error_type": type(exc).__name__, "description": str(exc)},
+            "details": {"error_type": type(exc).__name__},
         },
     )

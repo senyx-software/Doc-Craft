@@ -108,7 +108,7 @@ const BuilderPage: React.FC = () => {
   const { fetchQuota, setShowUpgradeModal, setShowGuestDownloadModal } = useQuotaStore();
 
   const activeSampleData = SAMPLE_DOCUMENT_DATA[documentType || 'invoice'] || SAMPLE_DOCUMENT_DATA.invoice;
-  const activeData = (collectedSlots && Object.keys(collectedSlots).length > 0) ? collectedSlots : (collectedData || (useAuthStore.getState().user?.user_id==='demo-user-001'?activeSampleData:{}));
+  const activeData = (collectedSlots && Object.keys(collectedSlots).length > 0) ? collectedSlots : (collectedData || (import.meta.env.DEV && useAuthStore.getState().user?.user_id==='demo-user-001'?activeSampleData:{}));
 
 
   const handledSearchRef = useRef<string | null>(null);

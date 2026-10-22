@@ -8,6 +8,9 @@ export function errorDetails(error, phase = 'unknown') {
     return {code,phase:error?.phase||phase,status,retryable,message:errorMessage(code)};
 }
 export function errorMessage(code) {
+    if(code==='AI_BUDGET_EXCEEDED')return 'Your AI allowance has been reached. You can still review and edit saved document details.';
+    if(['AI_QUEUE_TIMEOUT','AI_QUEUE_FULL','LOCAL_RESOURCE_LIMIT'].includes(code))return 'The assistant is busy. Please retry shortly; your saved document is still available.';
+    if(code==='POLICY_CHANGED')return 'The assistant configuration changed. Retry to continue with your saved document.';
     if(code==='ENTITLEMENT_DENIED')return 'This feature is not enabled for your account. Check your plan or contact an administrator.';
     if(code==='POLICY_UNAVAILABLE')return 'Your account features could not be verified. Please retry shortly.';
     if(code==='ASSET_LIMIT')return 'A document can contain up to six uploaded images. Remove an image before adding another.';

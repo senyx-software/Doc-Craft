@@ -83,7 +83,7 @@ def main():
             "REDIS_HOST": "127.0.0.1", "REDIS_PORT": str(redis_port),
             "JWT_SECRET": "phase2-isolated-user-signing-secret-000000000", "JWT_REFRESH_SECRET": "phase2-isolated-refresh-signing-secret-000000000",
             "ADMIN_JWT_SECRET": "phase2-isolated-admin-signing-secret-000000000", "INTERNAL_SERVICE_SECRET": "phase2-isolated-internal-service-secret",
-            "PADDLE_API_KEY": "pdl_test_fixture", "PADDLE_WEBHOOK_SECRET": "phase2-fixture-paddle-signature",
+            "PADDLE_API_KEY": "pdl_test_fixture", "PADDLE_WEBHOOK_SECRET": "phase2-fixture-paddle-signature",  # gitleaks:allow -- isolated synthetic transport fixture
             "PADDLE_SANDBOX": "true", "PAYHERE_SANDBOX": "true", "PAYHERE_MERCHANT_ID": "fixture-merchant", "PAYHERE_MERCHANT_SECRET": "fixture-merchant-secret",
             "PADDLE_PRO_MONTHLY_PRICE_ID": "", "PADDLE_PRO_YEARLY_PRICE_ID": "", "PADDLE_MAX_MONTHLY_PRICE_ID": "", "PADDLE_MAX_YEARLY_PRICE_ID": "",
             "SUPABASE_URL": "", "SUPABASE_SERVICE_ROLE_KEY": "", "GROQ_API_KEY": "", "ANTHROPIC_API_KEY": "",
@@ -209,7 +209,7 @@ def main():
             try:
                 redis.Redis(host='127.0.0.1',port=redis_port,**({'ssl':True,'ssl_ca_certs':str(tlsdir/'ca.crt')} if tls_enabled else {})).ping()
                 anonymous_rejected=False
-            except AuthenticationError: anonymous_rejected=True
+            except AuthenticationError: anonymous_rejected=True  # gitleaks:allow -- isolated synthetic transport fixture
             record("Redis default user is disabled",anonymous_rejected,category="Security")
             if tls_enabled:
                 with socket.socket() as plain:

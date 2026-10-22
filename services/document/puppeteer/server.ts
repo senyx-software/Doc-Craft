@@ -191,10 +191,17 @@ server.post('/generate', {
     });
 
     server.log.info('PDF generated successfully.');
+    // Complete browser cleanup before sending bytes: a client can immediately
+    // start its next render after receipt. Awaiting cleanup after reply.send
+    // briefly kept every slot occupied and rejected bounded concurrent clients.
+    await page.close().catch(() => {});
+    page = undefined;
     reply.type('application/pdf');
     return reply.send(pdf);
   } catch (err: any) {
     server.log.error(err, 'Failed to generate PDF');
+    if (page) await page.close().catch(() => {});
+    page = undefined;
     return reply.status(500).send({ error: 'PDF rendering failed' });
   } finally {
     if (page) await page.close().catch(() => {});

@@ -8,3 +8,10 @@ test('rejects wrong-owner, malformed and fail-open entitlement envelopes',()=>{
  assert.throws(()=>requireEntitlement(policy,'custom_logo'));
  assert.throws(()=>requireEntitlement({...policy,account_enabled:false,custom_logo:true},'custom_logo'));
 });
+
+test('user entitlement responses retain product features and omit all model/routing metadata',async()=>{
+ const {publicEntitlements}=await import('../entitlements.mjs');
+ const publicPolicy=publicEntitlements({...policy,ai_provider:'groq',max_model:'internal-model',routing:{secret:'internal'},feature_flags:{internal_provider:'hidden'}});
+ assert.equal(publicPolicy.plan,'free');assert.equal(publicPolicy.ai_enabled,true);assert.equal(publicPolicy.quota_policy.window_hours,20);
+ for(const key of ['ai_provider','claude_models','groq_models','max_model','routing','feature_flags'])assert.equal(publicPolicy[key],undefined);
+});

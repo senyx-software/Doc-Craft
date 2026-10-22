@@ -1,9 +1,11 @@
 import {it,expect,vi,beforeEach,afterEach} from 'vitest';
 vi.mock('../../store/authStore',()=>({useAuthStore:{setState:vi.fn()}}));
 import {setToken,getToken,apiRequest,isTokenExpired,getTokenExpiry} from '../client';
-import {guestLogin} from '../auth';
+import {guestLogin,logout} from '../auth';
 beforeEach(()=>{let cookie='';const memory=new Map<string,string>();vi.stubGlobal('localStorage',{getItem:(key:string)=>memory.get(key)||null,setItem:(key:string,value:string)=>memory.set(key,value),removeItem:(key:string)=>memory.delete(key)});vi.stubGlobal('document',{get cookie(){return cookie;},set cookie(value:string){cookie=value.split(';')[0];}});vi.stubGlobal('window',{location:{pathname:'/login',search:'',href:''}});});
 afterEach(()=>vi.unstubAllGlobals());
 it('guest request has an explicit JSON body, no stale bearer token and a bounded timeout',async()=>{setToken('old-token');const fetch=vi.fn(async(...args: Parameters<typeof globalThis.fetch>)=>{expect(args[0]).toContain('/auth/guest');return Response.json({session_token:'guest-token'});});vi.stubGlobal('fetch',fetch);await guestLogin();expect(fetch.mock.calls[0][1]).toMatchObject({method:'POST',body:'{}'});const options=fetch.mock.calls[0]?.[1];if(!options)throw new Error('Missing request options');expect(new Headers(options.headers).get('Authorization')).toBeNull();expect(options.signal).toBeInstanceOf(AbortSignal);});
 it('late 401 from an old session cannot remove a newly connected guest token',async()=>{setToken('old-token');let resolve!:(value: Response) => void;vi.stubGlobal('fetch',vi.fn(()=>new Promise<Response>(r=>{resolve=r;})));const pending=apiRequest('/auth/me').catch(error=>error);setToken('new-guest-token');resolve(Response.json({error:'unauthorized'},{status:401}));await pending;expect(getToken()).toBe('new-guest-token');expect(window.location.href).toBe('');});
 it('invalid JWTs are expired and a guest JWT keeps its exact expiry',()=>{const exp=Math.floor(Date.now()/1000)+86400;const token='header.'+btoa(JSON.stringify({exp}))+'.signature';expect(getTokenExpiry(token)).toBe(exp*1000);expect(isTokenExpired(token)).toBe(false);expect(isTokenExpired('not-a-token')).toBe(true);});
+
+it('logout sends an explicit JSON body so Fastify can revoke the HttpOnly refresh session',async()=>{setToken('active-test-access');const request=vi.fn().mockResolvedValue(Response.json({success:true}));vi.stubGlobal('fetch',request);await logout();expect(request.mock.calls[0][1]).toMatchObject({method:'POST',body:'{}',credentials:'include'});});

@@ -126,3 +126,11 @@ test('a semantically proposed edit without an imperative is dry-validated and aw
  say(s,'yes');assert.equal(s.slots.lineItems[0].quantity,2);
  assert.throws(()=>applyCandidates('invoice',ready,{...proposal,itemOperations:[{operation:'update',id:'dev',item:{quantity:7}}]},{id:'bad',kind:'model',message,correction:false}));
 });
+
+test('semantic extraction accepts explicit word-number item evidence while retaining quantity/price roles',()=>{
+ const message='I sold three laptops for 500 each.';
+ const applied=applyCandidates('invoice',{}, {slots:{lineItems:[{description:'laptops',quantity:3,unitPrice:500}]},evidence:{lineItems:message}},{kind:'model',id:'word-number',message,correction:false});
+ assert.equal(applied.raw.lineItems[0].quantity,3);assert.equal(applied.raw.lineItems[0].unitPrice,500);
+ const forged=applyCandidates('invoice',{}, {slots:{lineItems:[{description:'laptops',quantity:500,unitPrice:3}]},evidence:{lineItems:message}},{kind:'model',id:'forged',message,correction:false});
+ assert.equal(forged.raw.lineItems,undefined);
+});
