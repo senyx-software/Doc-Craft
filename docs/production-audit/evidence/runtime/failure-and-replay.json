@@ -1,0 +1,34 @@
+{
+  "signed_replay": {
+    "first_http": 200,
+    "replay_http": 409,
+    "tampered_body_http": 401,
+    "status": "PASS",
+    "scope": "Actual pairwise JWT, request body binding and real Redis nonce store"
+  },
+  "redis_outage": {
+    "during_http": 503,
+    "after_resume_http": 200,
+    "freeze_seconds": 6,
+    "status": "PASS",
+    "scope": "Controlled native pause/resume; no process/data/volume was deleted; timeout not availability success"
+  },
+  "postgres_initial_probe": {
+    "during_http": 200,
+    "after_resume_http": 200,
+    "freeze_seconds": 6,
+    "status": "INCONCLUSIVE",
+    "scope": "Controlled native pause/resume; no process/data/volume was deleted; timeout not availability success",
+    "reason": "Pausing only postmaster process group does not necessarily pause existing PostgreSQL backend process groups; initial return200 does not prove fail-open"
+  },
+  "postgres_outage": {
+    "status": "PASS",
+    "paused_owned_processes": 48,
+    "pause_seconds": 3,
+    "completed_before_resume": false,
+    "request_http": 200,
+    "request_latency_ms": 3016,
+    "after_resume_http": 200,
+    "scope": "All known task-owned PG descendants paused then always resumed; bounded wait or refusal permitted; no availability SLO asserted"
+  }
+}

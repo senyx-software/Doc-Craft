@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "postgres_version": "18.4 native portable fixture; production PostgreSQL17 requires Docker validation",
+  "schema_owner": "doccraft_migrator NOSUPERUSER NOCREATEDB NOCREATEROLE",
+  "migration_exit": 0,
+  "bootstrap": "production SQL statements executed through psycopg2; shell psql invocation blocked (client unavailable)",
+  "backup": "pg_dump / pg_restore unavailable natively; actual archive/recovery verification blocked without Docker PostgreSQL client",
+  "executed": [
+    "auth/chat/payment/quota Prisma migrations",
+    "admin/document Python schema initialization",
+    "notification SQL initialization",
+    "scoped grants and runtime DDL rejection for all 8 DB services"
+  ],
+  "production_modified": false
+}

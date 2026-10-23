@@ -1,0 +1,41 @@
+{
+  "scope": "Actual task-owned native process trees incl.Ollama; shared desktop, no Docker cgroups; browser/test/build/unrelated apps excluded",
+  "samples": 8321,
+  "sample_period_seconds": 2,
+  "window_seconds": 17182.61,
+  "host_ram_mib": 15346.05,
+  "logical_cpus": 8,
+  "architecture": "x86_64",
+  "peak_simultaneous_owned_pss_mib": 4786.35,
+  "service_peak_pss_mib": {
+    "postgres": 146.71,
+    "redis": 16.74,
+    "auth": 215.92,
+    "quota": 84.59,
+    "chat": 348.25,
+    "payment": 89.66,
+    "notification": 75.83,
+    "pdf": 65.88,
+    "admin-api": 93.46,
+    "analytics": 123.29,
+    "document": 116.4,
+    "gateway": 82.86,
+    "admin-ui": 83.71,
+    "user-ui": 85.85,
+    "ollama": 4148.36
+  },
+  "minimum_host_available_mib": 1437.18,
+  "minimum_disk_available_gib": 83.9,
+  "limitations": [
+    "Restart interval resets CPU counters; positive deltas only",
+    "No target VPS or8GB certification",
+    "No sustained production PDF+model SLO",
+    "One model loaded at a time; samples include multiple test configurations",
+    "Raw non-atomic group deltas show counter artifacts around process/model replacements; raw peak is not physical CPU utilization",
+    "CPU estimate excludes group-size/counter regressions and values exceeding8core capacity; use proper cgroup accounting on the target"
+  ],
+  "raw_counter_peak_percent_diagnostic_only": 1024.71,
+  "stable_interval_cpu_peak_estimate_percent_one_core_equals_100": 796.13,
+  "cpu_intervals_retained": 8150,
+  "cpu_intervals_discarded": 170
+}

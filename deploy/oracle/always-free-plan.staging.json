@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "environment": "staging",
+  "status": "E5_TERMINATED_BOOT_RETAINED_A1_CAPACITY_BLOCKED",
+  "operator_approved_creation": true,
+  "operator_direction": "can u do that remove paid one and get A!",
+  "region": "ap-mumbai-1",
+  "compartment_id": "ocid1.tenancy.oc1..aaaaaaaaqdmc45x6ug4wxmdxu6vof3jtmnldsnhvp2bbjds3ddm6lw5wv3jq",
+  "preserve_existing": {
+    "instance_id": "ocid1.instance.oc1.ap-mumbai-1.anrg6ljr4wujdnqcezvcrlwboiuw3efznrg5ztawy7tes74vcz63m3yn46ra",
+    "name": "instance-20261021-1441",
+    "shape": "VM.Standard.E5.Flex",
+    "boot_volume_gb": 47,
+    "stop_approved": true,
+    "delete_approved": true,
+    "network_changes_approved": false,
+    "delete_scope": "Instance only; preserve boot and all data volumes",
+    "current_state": "TERMINATED",
+    "preserve_instance": false,
+    "preserve_boot_volume": true,
+    "boot_volume_id": "ocid1.bootvolume.oc1.ap-mumbai-1.abrg6ljrao5g24wqapeputcw3yf2adsj22r56e7qepgj7hfx2nopjkdeqzta",
+    "boot_volume_state": "AVAILABLE"
+  },
+  "proposed_target": {
+    "name": "doccraft-staging-a1",
+    "shape": "VM.Standard.A1.Flex",
+    "ocpus": 2,
+    "memory_gb": 12,
+    "boot_volume_gb": 50,
+    "architecture": "arm64",
+    "image_id": "ocid1.image.oc1.ap-mumbai-1.aaaaaaaa2jurqb3jm7hlpqw3au35loaqjkcozbyh7znn4jnfu5zbrgfulwia",
+    "image_name": "Canonical-Ubuntu-24.04-aarch64-2026.09.18-0",
+    "public_ip_initially_assigned": false,
+    "private_ip_proposed": "10.0.2.88"
+  },
+  "free_pool_guard": {
+    "monthly_ocpu_hours": 1500,
+    "monthly_gb_hours": 9000,
+    "max_31_day_ocpu_hours": 1488,
+    "max_31_day_gb_hours": 8928,
+    "existing_a1_instances_observed": 0,
+    "aggregate_storage_limit_gb": 200,
+    "projected_old_plus_new_boot_and_block_storage_gb": 97,
+    "recheck_before_creation": true
+  },
+  "capacity": {
+    "availability_domain": "vFwL:AP-MUMBAI-1-AD-1",
+    "fault_domains": [
+      {
+        "fault-domain": "FAULT-DOMAIN-1",
+        "availability-status": "OUT_OF_HOST_CAPACITY"
+      },
+      {
+        "fault-domain": "FAULT-DOMAIN-2",
+        "availability-status": "OUT_OF_HOST_CAPACITY"
+      },
+      {
+        "fault-domain": "FAULT-DOMAIN-3",
+        "availability-status": "OUT_OF_HOST_CAPACITY"
+      }
+    ],
+    "reservation_created": false,
+    "report_is_point_in_time_only": true
+  },
+  "network_draft": {
+    "vcn_id": "ocid1.vcn.oc1.ap-mumbai-1.amaaaaaa4wujdnqaan4ea7gwlmypfqaljiff4s5mtdob2u3s4q4xsdzpkgla",
+    "service_subnet_cidr": "10.0.2.0/24",
+    "bastion_endpoint_subnet_cidr": "10.0.1.0/28",
+    "existing_e5_subnet_unchanged": true,
+    "administrative_path": "Approved Bastion port forwarding; SSH private key remains local",
+    "general_internet_egress": "UNRESOLVED: separate reviewed public-IP or private-egress choice with verified pricing required",
+    "public_dns_https": "UNAPPROVED",
+    "nat_load_balancer_vpn": "No automatic creation"
+  },
+  "cost_containment_option": {
+    "action": "SOFTSTOP then terminate exact E5 while preserving its boot volume",
+    "preserve_boot_volume": true,
+    "new_paid_resources": false,
+    "current_authorization": "EXECUTED_ON_EXPLICIT_OPERATOR_REQUEST",
+    "status": "COMPLETE"
+  },
+  "no_paid_fallback": true,
+  "no_automatic_old_instance_stop": true,
+  "no_automatic_key_rotation": true,
+  "no_automatic_data_restore": true,
+  "no_automatic_provisioning": true,
+  "secret_transfer_approved": false,
+  "migrations_approved": false,
+  "service_deployment_approved": false,
+  "rollback": "E5 instance termination cannot be undone by START. Preserve the detached 47 GB x86 boot volume and original keys. Recovery requires an explicitly approved compatible x86 recovery instance (potentially paid) or reviewed read-only data extraction. Never boot the x86 OS on A1 or replace encryption keys.",
+  "evidence": "docs/oracle-deployment/evidence/always-free-capacity-review.json",
+  "report": "docs/oracle-deployment/09-ALWAYS-FREE-MIGRATION-PLAN.md",
+  "execution_evidence": "docs/oracle-deployment/evidence/a1-replacement-execution.json",
+  "automatic_retry_enabled": false,
+  "a1_launch_result": {
+    "requested_at_utc": "2026-10-22T05:35:20.509861+00:00",
+    "operator_request": "try now",
+    "shape": "VM.Standard.A1.Flex",
+    "ocpus": 2,
+    "memory_gb": 12,
+    "boot_gb": 50,
+    "boot_vpus_per_gb": 10,
+    "image_id": "ocid1.image.oc1.ap-mumbai-1.aaaaaaaa2jurqb3jm7hlpqw3au35loaqjkcozbyh7znn4jnfu5zbrgfulwia",
+    "subnet_id": "ocid1.subnet.oc1.ap-mumbai-1.aaaaaaaa4wzncz742s7re55so73tez3i634bteu7tr2mwmq5p2ekkdzgdesq",
+    "public_ip": false,
+    "fault_domain": "OCI-selected",
+    "retry_enabled": false,
+    "paid_fallback": false,
+    "ssh_private_key_uploaded": false,
+    "status": "REJECTED",
+    "http_status": 500,
+    "code": "InternalError",
+    "reason": "Out of host capacity",
+    "request_id": "3C1023FDEA034A8DAD84459214BAC80B/96C480C03DB6251099A0D96A424F4D84/B3AC7DB8C33079F5DDF615D83FA4D3EF"
+  },
+  "smaller_a1_capacity_check": {
+    "at_utc": "2026-10-22T04:49:03.222932+00:00",
+    "reserves_capacity": false,
+    "values": [
+      {
+        "fault_domain": "FAULT-DOMAIN-1",
+        "shape": "VM.Standard.A1.Flex",
+        "ocpus": 1,
+        "memory_gb": 12,
+        "availability_status": "OUT_OF_HOST_CAPACITY"
+      },
+      {
+        "fault_domain": "FAULT-DOMAIN-2",
+        "shape": "VM.Standard.A1.Flex",
+        "ocpus": 1,
+        "memory_gb": 12,
+        "availability_status": "OUT_OF_HOST_CAPACITY"
+      },
+      {
+        "fault_domain": "FAULT-DOMAIN-3",
+        "shape": "VM.Standard.A1.Flex",
+        "ocpus": 1,
+        "memory_gb": 12,
+        "availability_status": "OUT_OF_HOST_CAPACITY"
+      }
+    ]
+  },
+  "network_execution_variant": "Reuse existing subnet for this bounded private-only VM launch; no new subnet, public IP, gateway, Bastion or ingress mutation. Connectivity remains a later prerequisite.",
+  "existing_e5_restart_possible": false,
+  "latest_any_size_capacity_search": {
+    "observed_at_utc": "2026-10-22T04:58:14.008572+00:00",
+    "configurations": [
+      {
+        "ocpus": 1,
+        "memory_gb": 1
+      },
+      {
+        "ocpus": 1,
+        "memory_gb": 6
+      },
+      {
+        "ocpus": 1,
+        "memory_gb": 12
+      },
+      {
+        "ocpus": 2,
+        "memory_gb": 12
+      }
+    ],
+    "checks": 12,
+    "all_out_of_host_capacity": true,
+    "evidence": "docs/oracle-deployment/evidence/a1-any-size-capacity-review.json",
+    "automatic_retry_scheduled": false
+  },
+  "a1_launch_attempts_total": 2,
+  "last_inventory_verified_at_utc": "2026-10-22T05:35:58.790496+00:00"
+}

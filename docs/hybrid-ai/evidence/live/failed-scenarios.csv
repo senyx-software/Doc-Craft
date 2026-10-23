@@ -1,0 +1,100 @@
+model,scenario_id,category,latency_ms,failure_reasons
+qwen3:1.7b-q4_K_M,document_creation-01,document_creation,37567,field:businessName; field:clientName; field:invoiceNumber; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,multi_field-01,multi_field,17963,field:clientName; field:taxRate; field:invoiceNumber; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots
+qwen3:1.7b-q4_K_M,grammar-01,grammar,8076,language_suggestion; production_schema:propose_language_correction
+qwen3:1.7b-q4_K_M,party_mapping-01,party_mapping,18399,field:businessName; field:clientName; field:senderPhone; field:clientPhone; production_schema:update_slots; production_schema:update_slots
+qwen3:1.7b-q4_K_M,tax-01,tax,6440,field:taxRate; production_schema:update_slots
+qwen3:1.7b-q4_K_M,discount-01,discount,7048,field:discountRate; production_schema:propose_language_correction
+qwen3:1.7b-q4_K_M,item_add-01,item_add,7564,HTTPException
+qwen3:1.7b-q4_K_M,item_remove-01,item_remove,3539,HTTPException
+qwen3:1.7b-q4_K_M,style-01,style,7706,HTTPException
+qwen3:1.7b-q4_K_M,movement-01,movement,16005,HTTPException
+qwen3:1.7b-q4_K_M,user_correction-01,user_correction,40477,field:clientPhone
+qwen3:1.7b-q4_K_M,session_persistence-01,session_persistence,8225,field:taxRate; production_schema:update_slots
+qwen3:1.7b-q4_K_M,ambiguous-01,ambiguous,28119,unexpected_mutation; missing_clarification
+qwen3:1.7b-q4_K_M,document_creation-02,document_creation,90091,HTTPException
+qwen3:1.7b-q4_K_M,multi_field-02,multi_field,20775,field:clientName; field:taxRate; field:invoiceNumber; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots
+qwen3:1.7b-q4_K_M,grammar-02,grammar,6732,language_suggestion; production_schema:propose_language_correction
+qwen3:1.7b-q4_K_M,party_mapping-02,party_mapping,13186,field:businessName; field:clientName; field:senderPhone; field:clientPhone; production_schema:update_slots; production_schema:update_slots
+qwen3:1.7b-q4_K_M,tax-02,tax,4918,field:taxRate; production_schema:update_slots
+qwen3:1.7b-q4_K_M,discount-02,discount,7744,field:discountRate; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,item_add-02,item_add,5389,HTTPException
+qwen3:1.7b-q4_K_M,item_remove-02,item_remove,2697,HTTPException
+qwen3:1.7b-q4_K_M,style-02,style,6064,editor_patch; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,movement-02,movement,6343,editor_patch; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,user_correction-02,user_correction,8266,field:clientPhone; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,session_persistence-02,session_persistence,24574,field:taxRate; production_schema:update_slots
+qwen3:1.7b-q4_K_M,ambiguous-02,ambiguous,16837,unexpected_mutation; missing_clarification; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,document_creation-03,document_creation,68042,field:businessName; field:clientName; field:invoiceNumber; output_truncated; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:edit_canvas; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,multi_field-03,multi_field,18202,field:clientName; field:taxRate; field:invoiceNumber; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots
+qwen3:1.7b-q4_K_M,grammar-03,grammar,9790,language_suggestion; production_schema:propose_language_correction
+qwen3:1.7b-q4_K_M,party_mapping-03,party_mapping,30761,field:businessName; field:clientName; field:senderPhone; field:clientPhone; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots
+qwen3:1.7b-q4_K_M,tax-03,tax,6506,field:taxRate; production_schema:update_slots
+qwen3:1.7b-q4_K_M,discount-03,discount,8197,field:discountRate; production_schema:propose_language_correction
+qwen3:1.7b-q4_K_M,item_add-03,item_add,7185,HTTPException
+qwen3:1.7b-q4_K_M,item_remove-03,item_remove,3842,HTTPException
+qwen3:1.7b-q4_K_M,style-03,style,8778,editor_patch; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,movement-03,movement,12558,HTTPException
+qwen3:1.7b-q4_K_M,user_correction-03,user_correction,11697,field:clientPhone; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,session_persistence-03,session_persistence,33157,field:taxRate; production_schema:update_slots
+qwen3:1.7b-q4_K_M,document_creation-04,document_creation,44696,field:businessName; field:clientName; field:invoiceNumber; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots
+qwen3:1.7b-q4_K_M,multi_field-04,multi_field,21027,field:clientName; field:taxRate; field:invoiceNumber; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots
+qwen3:1.7b-q4_K_M,grammar-04,grammar,5987,production_schema:propose_language_correction
+qwen3:1.7b-q4_K_M,party_mapping-04,party_mapping,24432,field:businessName; field:clientName; field:senderPhone; field:clientPhone; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots
+qwen3:1.7b-q4_K_M,tax-04,tax,4766,field:taxRate; production_schema:update_slots
+qwen3:1.7b-q4_K_M,discount-04,discount,5168,field:discountRate; production_schema:propose_language_correction
+qwen3:1.7b-q4_K_M,item_add-04,item_add,5724,HTTPException
+qwen3:1.7b-q4_K_M,item_remove-04,item_remove,3529,HTTPException
+qwen3:1.7b-q4_K_M,style-04,style,4381,HTTPException
+qwen3:1.7b-q4_K_M,movement-04,movement,4420,editor_patch; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,user_correction-04,user_correction,8009,field:clientPhone; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,session_persistence-04,session_persistence,26039,field:taxRate; production_schema:update_slots
+qwen3:1.7b-q4_K_M,document_creation-05,document_creation,53913,field:businessName; field:clientName; field:invoiceNumber; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,multi_field-05,multi_field,13773,field:clientName; field:taxRate; field:invoiceNumber; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots
+qwen3:1.7b-q4_K_M,grammar-05,grammar,5158,production_schema:propose_language_correction
+qwen3:1.7b-q4_K_M,party_mapping-05,party_mapping,12500,field:businessName; field:clientName; field:senderPhone; field:clientPhone; production_schema:update_slots; production_schema:update_slots
+qwen3:1.7b-q4_K_M,tax-05,tax,5287,field:taxRate; production_schema:update_slots
+qwen3:1.7b-q4_K_M,discount-05,discount,5234,field:discountRate; production_schema:propose_language_correction
+qwen3:1.7b-q4_K_M,item_add-05,item_add,5868,HTTPException
+qwen3:1.7b-q4_K_M,item_remove-05,item_remove,3034,HTTPException
+qwen3:1.7b-q4_K_M,style-05,style,4295,HTTPException
+qwen3:1.7b-q4_K_M,movement-05,movement,12070,HTTPException
+qwen3:1.7b-q4_K_M,user_correction-05,user_correction,16353,field:clientPhone
+qwen3:1.7b-q4_K_M,session_persistence-05,session_persistence,25208,field:taxRate; production_schema:update_slots
+qwen3:1.7b-q4_K_M,ambiguous-05,ambiguous,5273,unexpected_mutation; missing_clarification; production_schema:update_slots
+qwen3:1.7b-q4_K_M,document_creation-06,document_creation,71417,field:businessName; field:clientName; field:invoiceNumber; output_truncated; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots
+qwen3:1.7b-q4_K_M,multi_field-06,multi_field,13908,field:clientName; field:taxRate; field:invoiceNumber; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots
+qwen3:1.7b-q4_K_M,grammar-06,grammar,5861,language_suggestion; production_schema:propose_language_correction
+qwen3:1.7b-q4_K_M,party_mapping-06,party_mapping,29628,field:businessName; field:clientName; field:senderPhone; field:clientPhone; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots
+qwen3:1.7b-q4_K_M,tax-06,tax,6037,field:taxRate; production_schema:update_slots
+qwen3:1.7b-q4_K_M,discount-06,discount,13361,field:discountRate; production_schema:propose_language_correction
+qwen3:1.7b-q4_K_M,item_add-06,item_add,18580,HTTPException
+qwen3:1.7b-q4_K_M,item_remove-06,item_remove,30287,item_operation; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,style-06,style,14580,HTTPException
+qwen3:1.7b-q4_K_M,movement-06,movement,28800,HTTPException
+qwen3:1.7b-q4_K_M,user_correction-06,user_correction,7865,field:clientPhone; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,session_persistence-06,session_persistence,26301,field:taxRate; production_schema:update_slots
+qwen3:1.7b-q4_K_M,ambiguous-06,ambiguous,7762,unexpected_mutation; missing_clarification; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,document_creation-07,document_creation,37149,field:businessName; field:clientName; field:invoiceNumber; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,multi_field-07,multi_field,12314,field:clientName; field:taxRate; field:invoiceNumber; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots
+qwen3:1.7b-q4_K_M,grammar-07,grammar,5184,language_suggestion; production_schema:propose_language_correction
+qwen3:1.7b-q4_K_M,party_mapping-07,party_mapping,17166,field:businessName; field:clientName; field:senderPhone; field:clientPhone; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots; production_schema:update_slots
+qwen3:1.7b-q4_K_M,tax-07,tax,4148,field:taxRate; production_schema:update_slots
+qwen3:1.7b-q4_K_M,discount-07,discount,19109,field:discountRate; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,item_add-07,item_add,6056,HTTPException
+qwen3:1.7b-q4_K_M,item_remove-07,item_remove,3940,HTTPException
+qwen3:1.7b-q4_K_M,style-07,style,11473,HTTPException
+qwen3:1.7b-q4_K_M,movement-07,movement,6755,editor_patch; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,user_correction-07,user_correction,6739,field:clientPhone; production_schema:edit_canvas
+qwen3:1.7b-q4_K_M,session_persistence-07,session_persistence,26005,field:taxRate; production_schema:update_slots
+qwen3:1.7b-q4_K_M,ambiguous-07,ambiguous,3919,unexpected_mutation; missing_clarification; production_schema:edit_canvas
+qwen3:4b-q4_K_M,document_creation-01,document_creation,90092,HTTPException
+qwen3:4b-q4_K_M,multi_field-01,multi_field,90092,HTTPException
+qwen3:4b-q4_K_M,party_mapping-01,party_mapping,37110,field:businessName; field:clientName
+qwen3:4b-q4_K_M,tax-01,tax,15010,field:taxRate
+qwen3:4b-q4_K_M,discount-01,discount,22840,field:discountRate
+qwen3:4b-q4_K_M,item_add-01,item_add,28017,item_operation; production_schema:update_slots
+qwen3:4b-q4_K_M,item_remove-01,item_remove,11294,item_operation
+qwen3:4b-q4_K_M,style-01,style,14123,editor_patch
+qwen3:4b-q4_K_M,missing_field-01,missing_field,23701,missing_clarification; production_schema:edit_canvas
+qwen3:4b-q4_K_M,session_persistence-01,session_persistence,34691,field:taxRate; production_schema:update_slots

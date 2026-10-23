@@ -1,0 +1,38 @@
+{
+  "observed_at_utc": "2026-10-22T03:40:47.352146+00:00",
+  "scope": "Actual standalone Compose parser using empty/synthetic temporary files; no Docker daemon or VPS",
+  "compose_version": "5.3.0",
+  "quiet_validation_exit": 0,
+  "project": "doccraft-staging",
+  "active_services": [
+    "admin-api",
+    "admin-ui",
+    "analytics",
+    "auth",
+    "chat",
+    "document",
+    "edge",
+    "gateway",
+    "notification",
+    "payment",
+    "pdf",
+    "postgres",
+    "quota",
+    "redis",
+    "user-ui"
+  ],
+  "published_ports": {
+    "edge": [
+      "80",
+      "443"
+    ]
+  },
+  "runtime_keyring_consumers": [
+    "admin-api"
+  ],
+  "ollama_in_default_services": false,
+  "managed_ai_disabled_verifier_gate": true,
+  "synthetic_configuration_used": true,
+  "original_env_files_changed": false,
+  "container_runtime_verified": false
+}

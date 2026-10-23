@@ -1,0 +1,8 @@
+region            = "operator-selected-region"
+app_domain        = "app.example.com"
+admin_domain      = "admin.example.com"
+ssh_public_keys   = ["ssh-ed25519 REPLACE_WITH_OPERATOR_PUBLIC_KEY operator"]
+ssh_source_cidrs  = ["192.0.2.10/32"]
+vcpu              = 4
+memory_mb         = 16384
+disk_gb           = 80

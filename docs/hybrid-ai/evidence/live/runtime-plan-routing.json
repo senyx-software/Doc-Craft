@@ -1,0 +1,9 @@
+{
+  "free_plan": "free",
+  "free_primary": "live-small",
+  "paid_plan": "pro",
+  "paid_primary": "live-large",
+  "version": 21,
+  "different_models": true,
+  "public_admin_configuration_status": 401
+}

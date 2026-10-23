@@ -1,0 +1,14 @@
+{
+  "observed_at_utc": "2026-10-22T04:00:47.913914+00:00",
+  "scope": "Local SSH key parse and comparison to OCI launch metadata only; no SSH session opened",
+  "operator_ssh_key_path": "/home/eranda/Downloads/ssh-key-2026-10-21(2).key",
+  "mode": "0600",
+  "operator_ssh_public_key_fingerprint": "SHA256:UrF+iiH8wOTm++9DwMHdWAmDHxChKv5Z2nyYXum0u0A",
+  "instance_ocid": "ocid1.instance.oc1.ap-mumbai-1.anrg6ljr4wujdnqcezvcrlwboiuw3efznrg5ztawy7tes74vcz63m3yn46ra",
+  "metadata_key_read_succeeded": true,
+  "operator_key_matches_launch_metadata": true,
+  "ssh_authentication_verified": false,
+  "host_key_fingerprint_verified": false,
+  "private_key_contents_disclosed": false,
+  "private_key_uploaded": false
+}

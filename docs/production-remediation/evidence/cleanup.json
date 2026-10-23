@@ -1,0 +1,7 @@
+{
+  "owned_processes_stopped": true,
+  "private_fixtures_retained": true,
+  "experimental_ai_disabled": true,
+  "fixture_rate_policy_restored": true,
+  "production_touched": false
+}

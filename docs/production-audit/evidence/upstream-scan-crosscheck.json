@@ -1,0 +1,78 @@
+[
+  {
+    "image": "node:24-bookworm-slim@sha256:a5f4366e834695d5f363b920c104953a535d3a9864d1bdf74566a0ebe01daee5",
+    "artifact_matches_pin": true,
+    "counts": {
+      "LOW": 84,
+      "HIGH": 64,
+      "MEDIUM": 100,
+      "CRITICAL": 4,
+      "UNKNOWN": 1
+    },
+    "raw_scan_sha256": "c54eef940354e7923ad5806f50c3d6b3bad95e9963171c871647088c19c19e1f",
+    "scope": "Earlier actual same-day remote scan independently checked against current immutable pin; not final app image"
+  },
+  {
+    "image": "python:3.13-slim-bookworm@sha256:a1165e272e578941b84abc79e4ab38a0305cd12803a5c4247979ac7655f4d641",
+    "artifact_matches_pin": true,
+    "counts": {
+      "LOW": 91,
+      "HIGH": 65,
+      "MEDIUM": 101,
+      "UNKNOWN": 2,
+      "CRITICAL": 3
+    },
+    "raw_scan_sha256": "af03c8cb70b66c339d3a5c2ee65bf9f0f839b85796e77e175fa3866a39f22783",
+    "scope": "Earlier actual same-day remote scan independently checked against current immutable pin; not final app image"
+  },
+  {
+    "image": "nginx:stable-alpine@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77552a7cfe9acfb3b5",
+    "artifact_matches_pin": true,
+    "counts": {
+      "HIGH": 2,
+      "MEDIUM": 6
+    },
+    "raw_scan_sha256": "8b437a7635e30a2c9472103a6c465fbe4da1ce02fff3f3521c6e9fa2208d73ed",
+    "scope": "Earlier actual same-day remote scan independently checked against current immutable pin; not final app image"
+  },
+  {
+    "image": "caddy:2-alpine@sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+    "artifact_matches_pin": true,
+    "counts": {
+      "MEDIUM": 14,
+      "UNKNOWN": 1,
+      "HIGH": 4,
+      "LOW": 1
+    },
+    "raw_scan_sha256": "7d3005829ba30f093d8ee02fb49a85c2cb39997b7565e56ca3049a4882a4b234",
+    "scope": "Earlier actual same-day remote scan independently checked against current immutable pin; not final app image"
+  },
+  {
+    "image": "postgres:17-bookworm@sha256:3645570cccdfa447589da9f57dd740faa29b30938e861289a5574b6ca6b03826",
+    "artifact_matches_pin": true,
+    "counts": {
+      "LOW": 173,
+      "HIGH": 96,
+      "MEDIUM": 195,
+      "UNKNOWN": 5,
+      "CRITICAL": 4
+    },
+    "raw_scan_sha256": "95453b321f41260baf17f05d13dff9c50b62a2ba549e0e2bb253f768a943405d",
+    "scope": "Earlier actual same-day remote scan independently checked against current immutable pin; not final app image"
+  },
+  {
+    "image": "redis:7-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+    "artifact_matches_pin": true,
+    "counts": {
+      "HIGH": 2,
+      "MEDIUM": 17,
+      "LOW": 2
+    },
+    "raw_scan_sha256": "c1568914a8d2d0dc043edd3736ea6fec0952f32f7563acbf5a4c853e249a5d8c",
+    "scope": "Earlier actual same-day remote scan independently checked against current immutable pin; not final app image"
+  },
+  {
+    "image": "ollama/ollama:0.40.6@sha256:265409e1d931028a8f7d5a32bcbafddd7bffbc6cc629d77efe9560adf692a5e7",
+    "status": "BLOCKED earlier remote scan timeout; no clean result claimed"
+  }
+]

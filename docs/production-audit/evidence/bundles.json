@@ -1,0 +1,121 @@
+[
+  {
+    "app": "admin",
+    "files": [
+      {
+        "path": "admin/dist/favicon.svg",
+        "bytes": 559,
+        "gzip_bytes": null
+      },
+      {
+        "path": "admin/dist/index.html",
+        "bytes": 984,
+        "gzip_bytes": 519
+      },
+      {
+        "path": "admin/dist/assets/index-D3ddXPyS.js",
+        "bytes": 1863773,
+        "gzip_bytes": 385707
+      },
+      {
+        "path": "admin/dist/assets/index-B5FpNI67.css",
+        "bytes": 55817,
+        "gzip_bytes": 10049
+      },
+      {
+        "path": "admin/dist/assets/logo-left-DHAmWStC.png",
+        "bytes": 112278,
+        "gzip_bytes": null
+      },
+      {
+        "path": "admin/dist/assets/logo-left1-D5psV_Sr.png",
+        "bytes": 126972,
+        "gzip_bytes": null
+      }
+    ],
+    "total_bytes": 2160383,
+    "scope": "Actual native production-mode Vite build against isolated fixture URLs; Docker production URLs independently configured; not browser load performance"
+  },
+  {
+    "app": "user-frontend",
+    "files": [
+      {
+        "path": "user-frontend/dist/favicon.svg",
+        "bytes": 559,
+        "gzip_bytes": null
+      },
+      {
+        "path": "user-frontend/dist/index.html",
+        "bytes": 1076,
+        "gzip_bytes": 568
+      },
+      {
+        "path": "user-frontend/dist/icons.svg",
+        "bytes": 5031,
+        "gzip_bytes": null
+      },
+      {
+        "path": "user-frontend/dist/doccraft-logo.png",
+        "bytes": 126972,
+        "gzip_bytes": null
+      },
+      {
+        "path": "user-frontend/dist/assets/index-Dwi6ky06.css",
+        "bytes": 78603,
+        "gzip_bytes": 13546
+      },
+      {
+        "path": "user-frontend/dist/assets/index-DVnmA4vD.js",
+        "bytes": 1872374,
+        "gzip_bytes": 409272
+      },
+      {
+        "path": "user-frontend/dist/assets/purify.es-18JuyMri.js",
+        "bytes": 30118,
+        "gzip_bytes": 11445
+      },
+      {
+        "path": "user-frontend/dist/assets/chat-bg-DNk7F5GZ.svg",
+        "bytes": 69701,
+        "gzip_bytes": null
+      },
+      {
+        "path": "user-frontend/dist/assets/hero-Ba2pgPIw.mp4",
+        "bytes": 6529501,
+        "gzip_bytes": null
+      },
+      {
+        "path": "user-frontend/dist/assets/logo-left-DHAmWStC.png",
+        "bytes": 112278,
+        "gzip_bytes": null
+      },
+      {
+        "path": "user-frontend/dist/assets/html2canvas.esm-DXEQVQnt.js",
+        "bytes": 201041,
+        "gzip_bytes": 46762
+      },
+      {
+        "path": "user-frontend/dist/assets/html2pdf-CmXSSEZk.js",
+        "bytes": 975747,
+        "gzip_bytes": 277226
+      },
+      {
+        "path": "user-frontend/dist/assets/index.es-B9IeOI7D.js",
+        "bytes": 158831,
+        "gzip_bytes": 52756
+      },
+      {
+        "path": "user-frontend/dist/assets/logo-left1-D5psV_Sr.png",
+        "bytes": 126972,
+        "gzip_bytes": null
+      },
+      {
+        "path": "user-frontend/dist/assets/jspdf.es.min-B5MB8IdJ.js",
+        "bytes": 386010,
+        "gzip_bytes": 124618
+      }
+    ],
+    "total_bytes": 10674814,
+    "scope": "Actual native production-mode Vite build against isolated fixture URLs; Docker production URLs independently configured; not browser load performance"
+  }
+]

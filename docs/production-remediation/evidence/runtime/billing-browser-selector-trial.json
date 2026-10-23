@@ -1,0 +1,34 @@
+{
+  "scope": "Actual browser/backend/DB; no real payment provider transaction asserted",
+  "checks": [
+    {
+      "id": "FE-001-empty-authoritative-history",
+      "status": "PASS",
+      "persisted_invoice_count": 0,
+      "actual_invoice_api_statuses": [
+        204,
+        200
+      ]
+    },
+    {
+      "id": "FE-005-cold-billing-plan",
+      "status": "PASS",
+      "expected": "Fresh direct billing entry initializes actual pro policy"
+    },
+    {
+      "id": "FE-006-browser-refresh",
+      "status": "PASS",
+      "renewal_statuses": [
+        200
+      ],
+      "http_only_refresh_cookie": true,
+      "scope": "Actual browser fetch, HttpOnly cookie, gateway/Auth/PostgreSQL rotation; expired client access replaced"
+    },
+    {
+      "id": "browser-harness",
+      "status": "FAIL",
+      "error": "Error",
+      "reason": "No element found for selector: #nav-logout"
+    }
+  ]
+}

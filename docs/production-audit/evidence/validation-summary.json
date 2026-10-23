@@ -1,0 +1,154 @@
+{
+  "date": "2026-10-21",
+  "scope": "new audit execution; source tests include mock/fixture dependencies; no claim of full production E2E",
+  "tests": {
+    "shared_node": 275,
+    "chat_gateway_frontend_vitest": 266,
+    "auth_gateway_notification_vitest": 94,
+    "payment_vitest": 93,
+    "quota_vitest": 25,
+    "admin_pytest": 195,
+    "document_pytest": 104,
+    "analytics_pytest": 3,
+    "deployment_unittest": 29
+  },
+  "overlapping_gateway_cases": 11,
+  "unique_regression_cases": 1073,
+  "duplicate_inclusive_executions": 1084,
+  "integrated_http": {
+    "total": 26,
+    "pass": 24,
+    "fail": 2,
+    "fail_ids": [
+      "INT-007",
+      "INT-008"
+    ],
+    "note": "Initial harness assumptions/rate-limit trials retained separately"
+  },
+  "browser": {
+    "total": 99,
+    "pass": 98,
+    "fail": 1,
+    "fail_id": "BROWSER-008",
+    "admin_navigation_entries": 91,
+    "scope": "91 navigation render checks; not91 complete mutation workflows. Eight user checks including actual login/profile persistence/MFA rendering."
+  },
+  "quota": "Actual admin limit3->2 propagated;8concurrent signed reservations yielded2success/6denial;zero limit rejected422 as schema requires",
+  "restore": "PASS:73tables/162rows/568constraints,content and constraint hashes match;native18.4synthetic fixture only",
+  "tools": {
+    "actionlint": "PASS",
+    "terraform_fmt_validate": "PASS provider-neutral contract, no real provider",
+    "compose_syntax": "PASS no daemon",
+    "docker_runtime": "BLOCKED no socket/daemon",
+    "production": "NOT TOUCHED"
+  },
+  "secrets": {
+    "source": 0,
+    "full_history_default_candidates": 273,
+    "confirmed_committed_backend_secret": 0,
+    "validity": "not checked externally"
+  },
+  "native_fixture": "New .local/production-audit/stack; own SQL/Redis roles/keys; no developer secrets copied",
+  "pdf": "16/16 actual signed diagnostic PDFs atconcurrency2 withPDF-specificRedisACL;normal sandbox ready503/render500",
+  "fresh_model_inference": "BLOCKED by conservative memory headroom on shared host; prior actual raw112/16cases revalidated separately, not counted as fresh inference",
+  "execution_logs": [
+    {
+      "name": "backend-build",
+      "private_path": ".local/production-audit/backend-build.log",
+      "sha256": "faffdbc30bff0b82a57723c868924bfa8ed416f744f249880ac8a3c67cf5a543",
+      "bytes": 1104
+    },
+    {
+      "name": "chat-tests",
+      "private_path": ".local/production-audit/chat-tests.log",
+      "sha256": "1dbf5b61711ef4f255b08bb48c34b4e2f6f3deb1bc9f13e6bcb579c02556fa6c",
+      "bytes": 25455
+    },
+    {
+      "name": "auth-gateway-notification-tests",
+      "private_path": ".local/production-audit/auth-gateway-notification-tests.log",
+      "sha256": "a2ef5d61e56533f8d9062a64b6d58ec2c6708846378b7b52d892f1e514309c57",
+      "bytes": 686
+    },
+    {
+      "name": "payment-tests",
+      "private_path": ".local/production-audit/payment-tests.log",
+      "sha256": "ea7456e84e646daee340ea2d886871d624a23aa86bf3bacb37a9fca4c7d44920",
+      "bytes": 878
+    },
+    {
+      "name": "quota-tests",
+      "private_path": ".local/production-audit/quota-tests.log",
+      "sha256": "99e9bb1bfbf9ade0f74320f9daa3f1aecc66126a2e5289f7d6fb4bf11fa9b3cf",
+      "bytes": 568
+    },
+    {
+      "name": "admin-tests",
+      "private_path": ".local/production-audit/admin-tests.log",
+      "sha256": "5bf0da5389be4459e7bec36ca243803b7a4b7ae27cb5d0b01aa3f8c62ef08eaa",
+      "bytes": 3445
+    },
+    {
+      "name": "document-tests",
+      "private_path": ".local/production-audit/document-tests.log",
+      "sha256": "ade6436784a89a982524b8e26293c4b63193d458776dd03bd587aea0a0bcad59",
+      "bytes": 692
+    },
+    {
+      "name": "analytics-tests",
+      "private_path": ".local/production-audit/analytics-tests.log",
+      "sha256": "b83a2470c4d9ad59c9c4b19b5c46e973b7fe3b9f2a05a223e82264eca9632652",
+      "bytes": 610
+    },
+    {
+      "name": "deploy-tests",
+      "private_path": ".local/production-audit/deploy-tests.log",
+      "sha256": "56b449a43b790c48b16a796c20b5b261ec54369bd97e6ebdcf8ae449ee3058a5",
+      "bytes": 3885
+    },
+    {
+      "name": "actionlint",
+      "private_path": ".local/production-audit/actionlint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "name": "terraform-fmt",
+      "private_path": ".local/production-audit/terraform-fmt.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "name": "terraform-validate",
+      "private_path": ".local/production-audit/terraform-validate.log",
+      "sha256": "2ff6f7b7b494d0f8d596def971d585d29ee3e06359aa4662e84c1988f7b74cbb",
+      "bytes": 55
+    },
+    {
+      "name": "compose",
+      "private_path": ".local/production-audit/compose.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "name": "config-boundaries",
+      "private_path": ".local/production-audit/config-boundaries.log",
+      "sha256": "10dd53b88ff8521bf4d4ef218b268243ed52437003df98775c20eaa60e6c2b04",
+      "bytes": 46
+    },
+    {
+      "name": "build-secrets",
+      "private_path": ".local/production-audit/build-secrets.log",
+      "sha256": "0e86ad418468e984f51b5c96ddcb8e64390d42ca73c3625a0a54611a4fb6baa2",
+      "bytes": 103
+    }
+  ],
+  "source_unchanged": "All baseline application/shared/frontend/deployment/Terraform/workflow source hashes unchanged",
+  "cleanup": "Own14-service native stack and sampler stopped; original fixture auth rate settings restored; private DB/model/tool data retained",
+  "supplemental_browser": "Actual paid receipt with zero billing invoices,cold billing FREEstate,and literal custom template reload loss reproduced",
+  "test_log_additions": [
+    "admin-lint.log",
+    "user-lint.log",
+    "pdf-concurrency-corrected-acl.log"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "scope": "Offline deterministic resolver + validation + calculations only; excludes HTTP, database, Redis, LLM and full deployment load",
+  "node": "v24.20.0",
+  "platform": "linux",
+  "cpu": "AMD Ryzen 7 4700U with Radeon Graphics",
+  "logical_cpus": 8,
+  "process_rss_mb": 111.50390625,
+  "samples": [
+    {
+      "message": "Create an invoice for Nexora. Customer is John, and I sold three laptops for 500 each.",
+      "iterations": 100,
+      "model_requests": 0,
+      "p50_ms": 0.7700470000000053,
+      "p95_ms": 1.3073599999999885
+    },
+    {
+      "message": "Change the tax to 10%.",
+      "iterations": 100,
+      "model_requests": 0,
+      "p50_ms": 0.7005489999999668,
+      "p95_ms": 1.1382600000000025
+    },
+    {
+      "message": "Add another item, a mouse for 25 dollars.",
+      "iterations": 100,
+      "model_requests": 0,
+      "p50_ms": 1.3302160000000072,
+      "p95_ms": 1.87371399999995
+    },
+    {
+      "message": "Actually change the customer to Alex and make the invoice heading blue.",
+      "iterations": 100,
+      "model_requests": 0,
+      "p50_ms": 1.3616719999999987,
+      "p95_ms": 1.809046999999964
+    },
+    {
+      "message": "Make it bigger.",
+      "iterations": 100,
+      "model_requests": 0,
+      "p50_ms": 0.5326720000000478,
+      "p95_ms": 0.9493820000000142
+    },
+    {
+      "message": "What is the difference between an invoice and a quotation?",
+      "iterations": 100,
+      "model_requests": 0,
+      "p50_ms": 0.23417799999992894,
+      "p95_ms": 0.341417999999976
+    },
+    {
+      "message": "Plase delivary the prodcts within seven days.",
+      "iterations": 100,
+      "model_requests": 0,
+      "p50_ms": 0.23106099999995422,
+      "p95_ms": 0.5038720000000012
+    }
+  ]
+}

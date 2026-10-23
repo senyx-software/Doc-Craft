@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "APP_DOMAIN",
+    "ADMIN_DOMAIN",
+    "ACME_EMAIL",
+    "CONFIG_VERSION",
+    "REGISTRY_PREFIX",
+    "POSTGRES_DB",
+    "LOCAL_AI_ENABLED",
+    "ADMIN_ALLOWED_CIDRS",
+    "RESEND_FROM_EMAIL"
+  ],
+  "properties": {
+    "ACME_EMAIL": {
+      "type": "string",
+      "description": "Deployment setting"
+    },
+    "ADMIN_DOMAIN": {
+      "type": "string",
+      "description": "Deployment setting"
+    },
+    "AI_ALLOWED_CLOUD_HOSTS": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "ALLOWED_ADMIN_IPS": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "APP_DOMAIN": {
+      "type": "string",
+      "description": "Deployment setting"
+    },
+    "CONFIG_VERSION": {
+      "type": "string",
+      "description": "Deployment setting"
+    },
+    "EMAIL_FROM": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "FIREBASE_PROJECT_ID": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "GOOGLE_CALLBACK_URL": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "GOOGLE_CLIENT_ID": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "IP_WHITELIST_ENABLED": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "LEGACY_STORAGE_PROVIDER": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "LOCAL_AI_ENABLED": {
+      "type": "string",
+      "description": "Deployment setting",
+      "enum": [
+        "true",
+        "false"
+      ]
+    },
+    "MAX_CONCURRENT_REQUESTS": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "MAX_QUEUE_SIZE": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "OLLAMA_CPUS": {
+      "type": "string",
+      "description": "Deployment setting"
+    },
+    "OLLAMA_MEMORY_MB": {
+      "type": "string",
+      "description": "Deployment setting"
+    },
+    "PADDLE_PRO_MONTHLY_PRICE_ID": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "PADDLE_PRO_YEARLY_PRICE_ID": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "PADDLE_SANDBOX": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "PAYHERE_MERCHANT_ID": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "PAYHERE_SANDBOX": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "PAYMENT_SERVICE_PUBLIC_URL": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "PDF_MAX_CONCURRENT": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "POSTGRES_DB": {
+      "type": "string",
+      "description": "Deployment setting"
+    },
+    "POSTHOG_HOST": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "POSTHOG_PROJECT_ID": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "REGISTRY_PREFIX": {
+      "type": "string",
+      "description": "Deployment setting",
+      "pattern": "^ghcr\\.io/[a-z0-9][a-z0-9._-]*/doccraft$"
+    },
+    "RESEND_FROM_EMAIL": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "SUPABASE_URL": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "TRUSTED_PROXY_IPS": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "TURN_TIMEOUT_MS": {
+      "type": "string",
+      "description": "Existing application setting; scoped through runtime map"
+    },
+    "ADMIN_ALLOWED_CIDRS": {
+      "type": "string",
+      "description": "Space-separated operator VPN/static IPv4/IPv6 CIDRs; /0 rejected; edge admin access restriction"
+    },
+    "AI_ALLOWED_LOCAL_ENDPOINTS": {
+      "type": "string",
+      "description": "Existing application setting or operator deployment control"
+    },
+    "PADDLE_MAX_MONTHLY_PRICE_ID": {
+      "type": "string",
+      "description": "Existing application setting or operator deployment control"
+    },
+    "PADDLE_MAX_YEARLY_PRICE_ID": {
+      "type": "string",
+      "description": "Existing application setting or operator deployment control"
+    }
+  }
+}

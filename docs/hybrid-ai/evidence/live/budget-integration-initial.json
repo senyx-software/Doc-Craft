@@ -1,0 +1,6 @@
+{
+  "code": "CONTEXT_LIMIT",
+  "dispatched_ledger_delta": 0,
+  "latency_ms": 559,
+  "method": "real Chat Service -> signed admin inference -> durable admission/budget check; no mocked provider"
+}

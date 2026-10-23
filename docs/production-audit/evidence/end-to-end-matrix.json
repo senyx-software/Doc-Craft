@@ -1,0 +1,4031 @@
+[
+  {
+    "id": "INT-001",
+    "feature": "Registration, verification, login persistence",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Register two unique fixture accounts; read one-time email challenges from owned DB; verify and password login"
+    ],
+    "expected": "Both real users have hashed stored passwords, verified flag, signed access/refresh tokens",
+    "actual": {
+      "verified_users": 4,
+      "tokens_received": true
+    },
+    "status": "PASS",
+    "latency_ms": 1,
+    "source_files": [
+      "services/auth/src/controllers/auth.controller.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-002",
+    "feature": "Invalid registration",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "POST invalid email/short password"
+    ],
+    "expected": "HTTP400/422; no successful account creation",
+    "actual": {
+      "http": 400
+    },
+    "status": "PASS",
+    "latency_ms": 6,
+    "source_files": [
+      "services/auth/src/routes/auth.routes.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-003",
+    "feature": "Wrong password",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "POST wrong password for fixture account"
+    ],
+    "expected": "HTTP401",
+    "actual": {
+      "http": 401
+    },
+    "status": "PASS",
+    "latency_ms": 244,
+    "source_files": [
+      "services/auth/src/controllers/auth.controller.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-004",
+    "feature": "Profile identity",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Read own profile"
+    ],
+    "expected": "Authenticated ID matches local user",
+    "actual": {
+      "identity_matches": true
+    },
+    "status": "PASS",
+    "latency_ms": 20,
+    "source_files": [
+      "services/auth/src/controllers/auth.controller.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-005",
+    "feature": "Profile persistence and plan mass assignment",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "PATCH name/timezone plus unauthorized plan; reload profile"
+    ],
+    "expected": "Name/timezone persist; plan remains free",
+    "actual": {
+      "persisted": true,
+      "plan_mass_assignment_rejected": true
+    },
+    "status": "PASS",
+    "latency_ms": 34,
+    "source_files": [
+      "services/auth/src/controllers/auth.controller.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-006",
+    "feature": "Refresh-token rotation",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Refresh fixture token then replay old refresh token"
+    ],
+    "expected": "New token pair; old token rejected",
+    "actual": {
+      "rotated": true,
+      "old_token_reuse_http": 401
+    },
+    "status": "PASS",
+    "latency_ms": 25,
+    "source_files": [
+      "services/auth/src/controllers/auth.controller.ts",
+      "services/auth/src/services/jwt.service.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-007",
+    "feature": "Google OAuth public routing",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Unauthenticated GET /v1/auth/login/google"
+    ],
+    "expected": "An OAuth initiation/callback must reach its public auth handler",
+    "actual": {
+      "exception": "AssertionError",
+      "reason": "Unexpected HTTP 401; expected [200, 302, 400, 404, 500, 503]"
+    },
+    "status": "FAIL",
+    "latency_ms": 3,
+    "source_files": [
+      "services/gateway/src/middleware/auth.middleware.ts",
+      "services/auth/src/routes/auth.routes.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-008",
+    "feature": "Google OAuth public routing",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Unauthenticated GET /v1/auth/oauth/google/callback"
+    ],
+    "expected": "An OAuth initiation/callback must reach its public auth handler",
+    "actual": {
+      "exception": "AssertionError",
+      "reason": "Unexpected HTTP 401; expected [200, 302, 400, 404, 500, 503]"
+    },
+    "status": "FAIL",
+    "latency_ms": 2,
+    "source_files": [
+      "services/gateway/src/middleware/auth.middleware.ts",
+      "services/auth/src/routes/auth.routes.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-009",
+    "feature": "Session creation and multi-field editor update",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Create invoice session; PATCH authorized fields; GET persisted state"
+    ],
+    "expected": "Correct customer and revision persist",
+    "actual": {
+      "fields_persisted": true,
+      "revision": 1
+    },
+    "status": "PASS",
+    "latency_ms": 63,
+    "source_files": [
+      "services/chat/src/routes/chat.routes.ts",
+      "services/chat/src/services/conversation.repository.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-010",
+    "feature": "Cross-user document conversation isolation",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Other user reads owner session"
+    ],
+    "expected": "HTTP403/404",
+    "actual": {
+      "http": 403
+    },
+    "status": "PASS",
+    "latency_ms": 22,
+    "source_files": [
+      "services/chat/src/services/conversation.repository.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-011",
+    "feature": "Optimistic revision conflict",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Submit stale editor revision; reload"
+    ],
+    "expected": "HTTP409 and saved customer preserved",
+    "actual": {
+      "stale_write_rejected": true,
+      "unrelated_data_preserved": true
+    },
+    "status": "PASS",
+    "latency_ms": 56,
+    "source_files": [
+      "services/chat/src/controllers/session.controller.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-012",
+    "feature": "Deterministic tax and totals",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Send SSE tax command; inspect committed fields and inference ledger"
+    ],
+    "expected": "Tax10%,total1650,customer unchanged,zero inference",
+    "actual": {
+      "totalDue": 1650,
+      "inference_calls": 0,
+      "sse_done": true
+    },
+    "status": "PASS",
+    "latency_ms": 115,
+    "source_files": [
+      "services/chat/src/routes/chat.routes.ts",
+      "shared/conversation-state.mjs"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-013",
+    "feature": "Undo and redo",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Undo tax; redo tax; inspect authoritative state"
+    ],
+    "expected": "Restored0 then10 tax",
+    "actual": {
+      "undo_and_redo_persisted": true
+    },
+    "status": "PASS",
+    "latency_ms": 265,
+    "source_files": [
+      "shared/conversation-state.mjs",
+      "services/chat/src/services/conversation.repository.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-014",
+    "feature": "Deterministic side-question preservation",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Ask common business question; compare persisted slots"
+    ],
+    "expected": "Natural response; no mutation or inference",
+    "actual": {
+      "document_unchanged": true,
+      "inference_calls": 0
+    },
+    "status": "PASS",
+    "latency_ms": 181,
+    "source_files": [
+      "shared/assistant-knowledge.mjs",
+      "services/chat/src/routes/chat.routes.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-015",
+    "feature": "Malformed chat input",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Send empty message and invalid turnId"
+    ],
+    "expected": "HTTP400",
+    "actual": {
+      "http": 400
+    },
+    "status": "PASS",
+    "latency_ms": 25,
+    "source_files": [
+      "services/chat/src/routes/chat.routes.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-016",
+    "feature": "Custom template CRUD and ownership",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Save literal canvas; other-user read; rename/reload; delete/reload"
+    ],
+    "expected": "CRUD persists and other user denied",
+    "actual": {
+      "create_read_rename_delete": true,
+      "cross_user_404": true
+    },
+    "status": "PASS",
+    "latency_ms": 179,
+    "source_files": [
+      "services/document/app/routers/document.py"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-017",
+    "feature": "Template catalog",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "GET actual published catalog"
+    ],
+    "expected": "Nonempty templates with actual server definitions",
+    "actual": {
+      "count": 41
+    },
+    "status": "PASS",
+    "latency_ms": 64,
+    "source_files": [
+      "services/document/app/routers/document.py"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-018",
+    "feature": "Premature document generation",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Request generation before explicit confirmation"
+    ],
+    "expected": "HTTP422; no fabricated PDF success",
+    "actual": {
+      "http": 422
+    },
+    "status": "PASS",
+    "latency_ms": 61,
+    "source_files": [
+      "services/document/app/routers/document.py"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-019",
+    "feature": "Quota and entitlements",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "GET user quota and entitlement endpoints"
+    ],
+    "expected": "Correct authenticated policy and usage shapes",
+    "actual": {
+      "quota_http": 200,
+      "entitlements_http": 200
+    },
+    "status": "PASS",
+    "latency_ms": 118,
+    "source_files": [
+      "services/quota/src/routes/quota.routes.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-020",
+    "feature": "Internal quota mutation protection",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "User JWT calls private increment route"
+    ],
+    "expected": "Denied401/403/404",
+    "actual": {
+      "http": 401
+    },
+    "status": "PASS",
+    "latency_ms": 18,
+    "source_files": [
+      "services/quota/src/middleware/authenticate.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-021",
+    "feature": "Admin regular-user rejection",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "User JWT reads AI settings and admin users"
+    ],
+    "expected": "Denied401/403",
+    "actual": {
+      "ai_http": 401,
+      "users_http": 401
+    },
+    "status": "PASS",
+    "latency_ms": 14,
+    "source_files": [
+      "services/admin-api/app/security/authentication.py"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-022",
+    "feature": "Admin actual login and challenge",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Password login; consume local one-use challenge"
+    ],
+    "expected": "Authenticated super-admin session",
+    "actual": {
+      "password_plus_one_use_code_executed": true,
+      "external_email_not_tested": true
+    },
+    "status": "PASS",
+    "latency_ms": 284,
+    "source_files": [
+      "services/admin-api/app/api/v1/auth.py"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-023",
+    "feature": "Admin live configuration read",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Authenticated read plans/users/AI settings"
+    ],
+    "expected": "Correct authenticated actual data shape",
+    "actual": {
+      "plans": 4,
+      "users_http": true,
+      "ai_version": 0
+    },
+    "status": "PASS",
+    "latency_ms": 43,
+    "source_files": [
+      "services/admin-api/app/api/v1/plans.py",
+      "services/admin-api/app/api/v1/users.py",
+      "services/admin-api/app/api/v1/ai_management.py"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-024",
+    "feature": "Admin provider creation and persistence",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Create disabled local provider with one-use2FA; reload config"
+    ],
+    "expected": "Provider saved; no inference or external request",
+    "actual": {
+      "provider_persisted": true,
+      "configuration_version": 1
+    },
+    "status": "PASS",
+    "latency_ms": 57,
+    "source_files": [
+      "services/admin-api/app/api/v1/ai_management.py"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-025",
+    "feature": "Unsigned private service request",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "GET direct admin internal policy with spoofed identity headers"
+    ],
+    "expected": "401/403 rejection",
+    "actual": {
+      "http": 401
+    },
+    "status": "PASS",
+    "latency_ms": 5,
+    "source_files": [
+      "shared/service_auth.py",
+      "services/admin-api/app/api/v1/entitlements.py"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "INT-026",
+    "feature": "Logout revokes refresh session",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Logout exact session; reuse refresh token"
+    ],
+    "expected": "HTTP401 on refresh",
+    "actual": {
+      "logged_out_refresh_rejected": 401
+    },
+    "status": "PASS",
+    "latency_ms": 36,
+    "source_files": [
+      "services/auth/src/controllers/auth.controller.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "evidence": "runtime/integrated-tests.json"
+  },
+  {
+    "id": "BROWSER-001",
+    "feature": "Actual browser password login",
+    "expected": "UI navigates to authenticated builder",
+    "actual": {
+      "passed": true,
+      "path": "/builder"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Actual browser password login",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "user-frontend/src/App.tsx",
+      "user-frontend/src/api/client.ts",
+      "user-frontend/src/store/authStore.ts"
+    ]
+  },
+  {
+    "id": "BROWSER-002",
+    "feature": "Profile update and browser reload",
+    "expected": "Saved name survives actual API reload",
+    "actual": {
+      "passed": true
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Profile update and browser reload",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "user-frontend/src/App.tsx",
+      "user-frontend/src/api/client.ts",
+      "user-frontend/src/store/authStore.ts"
+    ]
+  },
+  {
+    "id": "BROWSER-003",
+    "feature": "Document history actual API rendering",
+    "expected": "Renders without redirect or uncaught page error",
+    "actual": {
+      "passed": true,
+      "body_length": 237
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Document history actual API rendering",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "user-frontend/src/App.tsx",
+      "user-frontend/src/api/client.ts",
+      "user-frontend/src/store/authStore.ts"
+    ]
+  },
+  {
+    "id": "BROWSER-004",
+    "feature": "Support page actual API rendering",
+    "expected": "Renders without redirect or uncaught page error",
+    "actual": {
+      "passed": true,
+      "body_length": 510
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Support page actual API rendering",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "user-frontend/src/App.tsx",
+      "user-frontend/src/api/client.ts",
+      "user-frontend/src/store/authStore.ts"
+    ]
+  },
+  {
+    "id": "BROWSER-005",
+    "feature": "Billing page actual API rendering",
+    "expected": "Renders without redirect or uncaught page error",
+    "actual": {
+      "passed": true,
+      "body_length": 789
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Billing page actual API rendering",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "user-frontend/src/App.tsx",
+      "user-frontend/src/api/client.ts",
+      "user-frontend/src/store/authStore.ts"
+    ]
+  },
+  {
+    "id": "BROWSER-006",
+    "feature": "Invoice builder actual API rendering",
+    "expected": "Renders without redirect or uncaught page error",
+    "actual": {
+      "passed": true,
+      "body_length": 3612
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Invoice builder actual API rendering",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "user-frontend/src/App.tsx",
+      "user-frontend/src/api/client.ts",
+      "user-frontend/src/store/authStore.ts"
+    ]
+  },
+  {
+    "id": "BROWSER-007",
+    "feature": "Mobile builder viewport",
+    "expected": "No horizontal document overflow at390px",
+    "actual": {
+      "passed": true,
+      "width": 390,
+      "scroll": 390
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Mobile builder viewport",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "user-frontend/src/App.tsx",
+      "user-frontend/src/api/client.ts",
+      "user-frontend/src/store/authStore.ts"
+    ]
+  },
+  {
+    "id": "BROWSER-008",
+    "feature": "Profile reflects actual enabled MFA",
+    "expected": "Enabled badge/disable action agrees with persisted backend flag",
+    "actual": {
+      "passed": false,
+      "backend_enabled": true,
+      "ui_disable_action_visible": false
+    },
+    "status": "FAIL",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Profile reflects actual enabled MFA",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "user-frontend/src/App.tsx",
+      "user-frontend/src/api/client.ts",
+      "user-frontend/src/store/authStore.ts",
+      "user-frontend/src/api/users.ts",
+      "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-001",
+    "feature": "Admin navigation home_dashboard",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 27,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation home_dashboard",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-002",
+    "feature": "Admin navigation users_all",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation users_all",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-003",
+    "feature": "Admin navigation users_active",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation users_active",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-004",
+    "feature": "Admin navigation users_suspended",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation users_suspended",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-005",
+    "feature": "Admin navigation users_guest",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation users_guest",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-006",
+    "feature": "Admin navigation users_details",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation users_details",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-007",
+    "feature": "Admin navigation subs_all",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 18,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation subs_all",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-008",
+    "feature": "Admin navigation subs_active",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 10,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation subs_active",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-009",
+    "feature": "Admin navigation subs_cancelled",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 10,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation subs_cancelled",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-010",
+    "feature": "Admin navigation subs_failed",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 10,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation subs_failed",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-011",
+    "feature": "Admin navigation subs_refunds",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 10,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation subs_refunds",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-012",
+    "feature": "Admin navigation subs_plan_overview",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 10,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation subs_plan_overview",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-013",
+    "feature": "Admin navigation rev_mrr_arr",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 16,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation rev_mrr_arr",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-014",
+    "feature": "Admin navigation rev_by_plan",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 10,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation rev_by_plan",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-015",
+    "feature": "Admin navigation rev_cost_ledger",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 12,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation rev_cost_ledger",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-016",
+    "feature": "Admin navigation rev_churn",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 10,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation rev_churn",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-017",
+    "feature": "Admin navigation rev_ltv",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 10,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation rev_ltv",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-018",
+    "feature": "Admin navigation rev_transactions",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 10,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation rev_transactions",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-019",
+    "feature": "Admin navigation rev_payouts",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 10,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation rev_payouts",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-020",
+    "feature": "Admin navigation promo_coupons",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation promo_coupons",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-021",
+    "feature": "Admin navigation promo_active",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation promo_active",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-022",
+    "feature": "Admin navigation promo_ab_tests",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation promo_ab_tests",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-023",
+    "feature": "Admin navigation promo_referrals",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation promo_referrals",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-024",
+    "feature": "Admin navigation promo_trials",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation promo_trials",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-025",
+    "feature": "Admin navigation pack_current",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation pack_current",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-026",
+    "feature": "Admin navigation pack_create",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation pack_create",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-027",
+    "feature": "Admin navigation pack_flags",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation pack_flags",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-028",
+    "feature": "Admin navigation pack_ai_models",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 12,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation pack_ai_models",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-029",
+    "feature": "Admin navigation pack_performance",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 8,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation pack_performance",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-030",
+    "feature": "Admin navigation ai_providers",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 8,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation ai_providers",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-031",
+    "feature": "Admin navigation ai_models",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 8,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation ai_models",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-032",
+    "feature": "Admin navigation ai_assignments",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 8,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation ai_assignments",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-033",
+    "feature": "Admin navigation ai_routing",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 8,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation ai_routing",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-034",
+    "feature": "Admin navigation ai_credentials",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 8,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation ai_credentials",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-035",
+    "feature": "Admin navigation ai_local",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 8,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation ai_local",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-036",
+    "feature": "Admin navigation ai_usage",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 8,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation ai_usage",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-037",
+    "feature": "Admin navigation ai_health",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 8,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation ai_health",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-038",
+    "feature": "Admin navigation ai_audit",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 12,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation ai_audit",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-039",
+    "feature": "Admin navigation gen_total",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation gen_total",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-040",
+    "feature": "Admin navigation gen_by_type",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation gen_by_type",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-041",
+    "feature": "Admin navigation gen_by_user",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation gen_by_user",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-042",
+    "feature": "Admin navigation gen_failed",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation gen_failed",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-043",
+    "feature": "Admin navigation gen_free_tier",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation gen_free_tier",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-044",
+    "feature": "Admin navigation gen_pro_tier",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation gen_pro_tier",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-045",
+    "feature": "Admin navigation gen_drop_offs",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation gen_drop_offs",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-046",
+    "feature": "Admin navigation doc_all",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 8,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation doc_all",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-047",
+    "feature": "Admin navigation doc_templates",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation doc_templates",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-048",
+    "feature": "Admin navigation doc_version_registry",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation doc_version_registry",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-049",
+    "feature": "Admin navigation doc_breakdown",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation doc_breakdown",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-050",
+    "feature": "Admin navigation doc_links",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation doc_links",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-051",
+    "feature": "Admin navigation an_traffic",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 22,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation an_traffic",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-052",
+    "feature": "Admin navigation an_location",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 12,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation an_location",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-053",
+    "feature": "Admin navigation an_device",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 12,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation an_device",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-054",
+    "feature": "Admin navigation an_duration",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 12,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation an_duration",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-055",
+    "feature": "Admin navigation an_clicks",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 12,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation an_clicks",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-056",
+    "feature": "Admin navigation an_funnel",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 12,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation an_funnel",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-057",
+    "feature": "Admin navigation an_conversion",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 12,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation an_conversion",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-058",
+    "feature": "Admin navigation an_journey",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 12,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation an_journey",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-059",
+    "feature": "Admin navigation sec_ip_logs",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation sec_ip_logs",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-060",
+    "feature": "Admin navigation sec_suspicious",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation sec_suspicious",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-061",
+    "feature": "Admin navigation sec_rate_limits",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation sec_rate_limits",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-062",
+    "feature": "Admin navigation sec_bot_logs",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation sec_bot_logs",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-063",
+    "feature": "Admin navigation sec_abuse_reports",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation sec_abuse_reports",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-064",
+    "feature": "Admin navigation sec_audit",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation sec_audit",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-065",
+    "feature": "Admin navigation sec_sessions",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation sec_sessions",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-066",
+    "feature": "Admin navigation sup_reported",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 18,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation sup_reported",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-067",
+    "feature": "Admin navigation sup_refunds",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 10,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation sup_refunds",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-068",
+    "feature": "Admin navigation sup_contact",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 10,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation sup_contact",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-069",
+    "feature": "Admin navigation sup_overrides",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 10,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation sup_overrides",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-070",
+    "feature": "Admin navigation not_automation",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 8,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation not_automation",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-071",
+    "feature": "Admin navigation not_execution_logs",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation not_execution_logs",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-072",
+    "feature": "Admin navigation not_emit_events",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation not_emit_events",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-073",
+    "feature": "Admin navigation not_email_logs",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 18,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation not_email_logs",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-074",
+    "feature": "Admin navigation not_system",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 12,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation not_system",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-075",
+    "feature": "Admin navigation not_templates",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 12,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation not_templates",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-076",
+    "feature": "Admin navigation inf_uptime",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation inf_uptime",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-077",
+    "feature": "Admin navigation inf_mcp_chat",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 12,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation inf_mcp_chat",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-078",
+    "feature": "Admin navigation inf_sentry",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation inf_sentry",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-079",
+    "feature": "Admin navigation inf_api_usage",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 2,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation inf_api_usage",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-080",
+    "feature": "Admin navigation inf_db_health",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation inf_db_health",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-081",
+    "feature": "Admin navigation inf_deployments",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation inf_deployments",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-082",
+    "feature": "Admin navigation inf_staging_prod",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation inf_staging_prod",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-083",
+    "feature": "Admin navigation set_dynamic_config",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 10,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation set_dynamic_config",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-084",
+    "feature": "Admin navigation set_profile",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation set_profile",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-085",
+    "feature": "Admin navigation set_admin_users",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 10,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation set_admin_users",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-086",
+    "feature": "Admin navigation set_2fa",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation set_2fa",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-087",
+    "feature": "Admin navigation set_api_keys",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 4,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation set_api_keys",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-088",
+    "feature": "Admin navigation set_billing",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 2,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation set_billing",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-089",
+    "feature": "Admin navigation set_gdpr",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 2,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation set_gdpr",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-090",
+    "feature": "Admin navigation set_export_csv",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation set_export_csv",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "ADMIN-BROWSER-091",
+    "feature": "Admin navigation set_preferences",
+    "expected": "Authenticated screen renders actual API responses without uncaught error",
+    "actual": {
+      "passed": true,
+      "requests": 6,
+      "failed_http": [],
+      "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+    },
+    "status": "PASS",
+    "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+    "steps": "Admin navigation set_preferences",
+    "evidence": "runtime/browser-tests.json",
+    "related_source_files": [
+      "admin/src/config/adminNavSections.tsx",
+      "admin/src/pages/DashboardPage.tsx",
+      "admin/src/api/adminApiClient.ts"
+    ]
+  },
+  {
+    "id": "BROWSER-SUP-01",
+    "feature": "Paid receipt and cold billing state",
+    "preconditions": "Actual frontend/API/DB; approved synthetic admin plan override, no real payment",
+    "steps": "Paid receipt and cold billing state",
+    "expected": "Authoritative persisted financial/document state renders correctly",
+    "actual": {
+      "persisted_billing_invoice_rows": 0,
+      "fresh_billing_shows_free": true,
+      "diagnostic": {
+        "path": "/dashboard/billing",
+        "body_length": 844,
+        "has_date": true,
+        "has_amount": true,
+        "has_paid": true,
+        "has_session_expired": false
+      },
+      "fixed_paid_row_rendered": true,
+      "scope": "Actual frontend/API/DB; approved synthetic admin plan override, no real payment",
+      "status": "DEFECT_REPRODUCED"
+    },
+    "status": "FAIL",
+    "evidence": "runtime/billing-receipt.json",
+    "source_files": [
+      "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx"
+    ]
+  },
+  {
+    "id": "BROWSER-SUP-02",
+    "feature": "Applied custom canvas reload",
+    "preconditions": "Actual custom-template API, React Apply action, native backend reload; no mocks",
+    "steps": "Applied literal element survives same-session browser reload",
+    "expected": "Authoritative persisted financial/document state renders correctly",
+    "actual": {
+      "scope": "Actual custom-template API, React Apply action, native backend reload; no mocks",
+      "expected": "Applied literal element survives same-session browser reload",
+      "source": "user-frontend/src/store/documentStore.ts:411",
+      "visible_after_apply": true,
+      "visible_after_reload": false,
+      "status": "DEFECT_REPRODUCED"
+    },
+    "status": "FAIL",
+    "evidence": "runtime/custom-template-reload.json",
+    "source_files": [
+      "user-frontend/src/store/documentStore.ts"
+    ]
+  },
+  {
+    "id": "FEATURE-001-ALL-VARIANTS",
+    "feature": "admin/src/App.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/App.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-002-ALL-VARIANTS",
+    "feature": "admin/src/components/AdminSidebar.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/components/AdminSidebar.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-003-ALL-VARIANTS",
+    "feature": "admin/src/components/EntitlementControls.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/components/EntitlementControls.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-004-ALL-VARIANTS",
+    "feature": "admin/src/components/TemplateUpload.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/components/TemplateUpload.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-005-ALL-VARIANTS",
+    "feature": "admin/src/components/common/AdminNavbar.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/components/common/AdminNavbar.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-006-ALL-VARIANTS",
+    "feature": "admin/src/components/common/AdminTopbar.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/components/common/AdminTopbar.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-007-ALL-VARIANTS",
+    "feature": "admin/src/components/common/ToastContainer.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/components/common/ToastContainer.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-008-ALL-VARIANTS",
+    "feature": "admin/src/components/ui/DateRangeFilter.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/components/ui/DateRangeFilter.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-009-ALL-VARIANTS",
+    "feature": "admin/src/components/ui/FontFacePicker.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/components/ui/FontFacePicker.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-010-ALL-VARIANTS",
+    "feature": "admin/src/components/ui/Pagination.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/components/ui/Pagination.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-011-ALL-VARIANTS",
+    "feature": "admin/src/components/ui/SortableHeader.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/components/ui/SortableHeader.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-012-ALL-VARIANTS",
+    "feature": "admin/src/components/ui/SystemDialogModal.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/components/ui/SystemDialogModal.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-013-ALL-VARIANTS",
+    "feature": "admin/src/components/ui/TotpPromptModal.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/components/ui/TotpPromptModal.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-014-ALL-VARIANTS",
+    "feature": "admin/src/pages/DashboardPage.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/DashboardPage.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-015-ALL-VARIANTS",
+    "feature": "admin/src/pages/UserDetailPage.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/UserDetailPage.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-016-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/AIManagementView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/AIManagementView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-017-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/AnalyticsView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/AnalyticsView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-018-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/AutomationsView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/AutomationsView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-019-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/ConfigView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/ConfigView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-020-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/CostLedgerView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/CostLedgerView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-021-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/DocumentsView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/DocumentsView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-022-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/GenerationsView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/GenerationsView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-023-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/HomeView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/HomeView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-024-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/InfrastructureView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/InfrastructureView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-025-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/NotificationsView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/NotificationsView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-026-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/PackagesView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/PackagesView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-027-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/PromotionsView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/PromotionsView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-028-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/RevenueView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/RevenueView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-029-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/SecurityView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/SecurityView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-030-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/SettingsView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/SettingsView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-031-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/SubscriptionsView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/SubscriptionsView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-032-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/SupportView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/SupportView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-033-ALL-VARIANTS",
+    "feature": "admin/src/pages/subviews/UsersView.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "admin/src/pages/subviews/UsersView.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-034-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/FluidCardStack.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/FluidCardStack.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-035-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/AssetModal.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/AssetModal.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-036-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/CanvasContextMenu.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/CanvasContextMenu.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-037-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/ChatAttachments.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/ChatAttachments.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-038-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/ChatMessage.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/ChatMessage.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-039-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/ChatPanel.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/ChatPanel.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-040-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/DocumentPreview.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/DocumentPreview.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-041-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/ElementInspector.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/ElementInspector.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-042-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/ExportPanel.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/ExportPanel.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-043-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/FontFacePicker.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/FontFacePicker.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-044-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/FormatSidebar.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/FormatSidebar.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-045-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/InvoiceCanvas.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-046-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/LayersPanel.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/LayersPanel.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-047-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/MultiElementInspector.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-048-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/SignaturePad.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/SignaturePad.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-049-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/SpellCorrectionBanner.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/SpellCorrectionBanner.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-050-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/TemplateSelector.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/TemplateSelector.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-051-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/ToolkitTabButton.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/ToolkitTabButton.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-052-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/builder/UploadPrivateTemplate.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/builder/UploadPrivateTemplate.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-053-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/common/LogoutConfirmModal.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/common/LogoutConfirmModal.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-054-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/common/Navbar.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/common/Navbar.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-055-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/dashboard/DocumentsTable.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/dashboard/DocumentsTable.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-056-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/dashboard/PaymentMethodsCard.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/dashboard/PaymentMethodsCard.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-057-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/dashboard/ProfileIdentityCard.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/dashboard/ProfileIdentityCard.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-058-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-059-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/dashboard/ProfileSubscriptionCard.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/dashboard/ProfileSubscriptionCard.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-060-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/landing/DocumentTypeSelector.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/landing/DocumentTypeSelector.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-061-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/landing/PricingTierCard.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/landing/PricingTierCard.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-062-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/shared/GuestDownloadModal.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/shared/GuestDownloadModal.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-063-ALL-VARIANTS",
+    "feature": "user-frontend/src/components/shared/UpgradeModal.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/components/shared/UpgradeModal.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-064-ALL-VARIANTS",
+    "feature": "user-frontend/src/layouts/DashboardLayout.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/layouts/DashboardLayout.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-065-ALL-VARIANTS",
+    "feature": "user-frontend/src/pages/BuilderPage.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/pages/BuilderPage.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-066-ALL-VARIANTS",
+    "feature": "user-frontend/src/pages/LandingPage.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/pages/LandingPage.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-067-ALL-VARIANTS",
+    "feature": "user-frontend/src/pages/LoginPage.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/pages/LoginPage.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-068-ALL-VARIANTS",
+    "feature": "user-frontend/src/pages/PasswordResetPage.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/pages/PasswordResetPage.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-069-ALL-VARIANTS",
+    "feature": "user-frontend/src/pages/PricingPage.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/pages/PricingPage.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-070-ALL-VARIANTS",
+    "feature": "user-frontend/src/pages/RegisterPage.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/pages/RegisterPage.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-071-ALL-VARIANTS",
+    "feature": "user-frontend/src/pages/VerifyEmailPage.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/pages/VerifyEmailPage.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-072-ALL-VARIANTS",
+    "feature": "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-073-ALL-VARIANTS",
+    "feature": "user-frontend/src/pages/dashboard/DashboardOverviewPage.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/pages/dashboard/DashboardOverviewPage.tsx"
+    ]
+  },
+  {
+    "id": "FEATURE-074-ALL-VARIANTS",
+    "feature": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+    "preconditions": "Need dedicated isolated fixtures/permissions/data for every action",
+    "steps": [
+      "happy path",
+      "invalid input",
+      "ownership/permission denial",
+      "persistence/reload",
+      "network/provider failure"
+    ],
+    "expected": "All listed action variants validated against real backend/persistence/UI",
+    "actual": "Not fully executed; source bindings and navigation are weaker evidence",
+    "status": "UNTESTED",
+    "evidence": "feature-inventory.json",
+    "source_files": [
+      "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx"
+    ]
+  },
+  {
+    "id": "BLOCK-01",
+    "feature": "Real provider checkout/webhook/refund/portal",
+    "preconditions": "Approved payment testcredentials unavailable",
+    "steps": "Provision isolated prerequisites;execute named workflow",
+    "expected": "Real integration verified",
+    "actual": "Approved payment testcredentials unavailable",
+    "status": "BLOCKED",
+    "evidence": "validation-summary.json",
+    "source_files": []
+  },
+  {
+    "id": "BLOCK-02",
+    "feature": "External email/reset/2FA delivery",
+    "preconditions": "Approved verified sender/providercredential unavailable",
+    "steps": "Provision isolated prerequisites;execute named workflow",
+    "expected": "Real integration verified",
+    "actual": "Approved verified sender/providercredential unavailable",
+    "status": "BLOCKED",
+    "evidence": "validation-summary.json",
+    "source_files": []
+  },
+  {
+    "id": "BLOCK-03",
+    "feature": "Fresh local/cloud inference and mixed workload",
+    "preconditions": "Conservative local memory headroom /approvedcloudcredentials unavailable",
+    "steps": "Provision isolated prerequisites;execute named workflow",
+    "expected": "Real integration verified",
+    "actual": "Conservative local memory headroom /approvedcloudcredentials unavailable",
+    "status": "BLOCKED",
+    "evidence": "validation-summary.json",
+    "source_files": []
+  },
+  {
+    "id": "BLOCK-04",
+    "feature": "Full Docker deployment,rollback,limits/sandbox",
+    "preconditions": "Dockerdaemon unavailable",
+    "steps": "Provision isolated prerequisites;execute named workflow",
+    "expected": "Real integration verified",
+    "actual": "Dockerdaemon unavailable",
+    "status": "BLOCKED",
+    "evidence": "validation-summary.json",
+    "source_files": []
+  },
+  {
+    "id": "BLOCK-05",
+    "feature": "Actual Terraform/VPS/SSH/GHCR/branchsettings",
+    "preconditions": "Operatorprovider/infrastructureauthorization/setup unavailable",
+    "steps": "Provision isolated prerequisites;execute named workflow",
+    "expected": "Real integration verified",
+    "actual": "Operatorprovider/infrastructureauthorization/setup unavailable",
+    "status": "BLOCKED",
+    "evidence": "validation-summary.json",
+    "source_files": []
+  },
+  {
+    "id": "BLOCK-06",
+    "feature": "Full-host off-server encrypted restore/PITR",
+    "preconditions": "Backupinfrastructure/keyarchive/restorehost unavailable",
+    "steps": "Provision isolated prerequisites;execute named workflow",
+    "expected": "Real integration verified",
+    "actual": "Backupinfrastructure/keyarchive/restorehost unavailable",
+    "status": "BLOCKED",
+    "evidence": "validation-summary.json",
+    "source_files": []
+  },
+  {
+    "id": "UNTESTED-01",
+    "feature": "Firefox/WebKit/realdevicecompatibility",
+    "preconditions": "Not executed; Chromium390px check is insufficient",
+    "steps": "Provision isolated prerequisites;execute named workflow",
+    "expected": "Real integration verified",
+    "actual": "Not executed; Chromium390px check is insufficient",
+    "status": "UNTESTED",
+    "evidence": "validation-summary.json",
+    "source_files": []
+  },
+  {
+    "id": "UNTESTED-02",
+    "feature": "Every upload/export/share/delete/duplicate/support failure path",
+    "preconditions": "Not executed; requires complete action-level fixtures/assertions",
+    "steps": "Provision isolated prerequisites;execute named workflow",
+    "expected": "Real integration verified",
+    "actual": "Not executed; requires complete action-level fixtures/assertions",
+    "status": "UNTESTED",
+    "evidence": "validation-summary.json",
+    "source_files": []
+  }
+]

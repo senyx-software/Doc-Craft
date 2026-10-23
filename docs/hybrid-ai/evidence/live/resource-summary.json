@@ -1,0 +1,153 @@
+{
+  "sampler_version": 2,
+  "sampling_seconds": 2,
+  "samples": 1350,
+  "duration_seconds": 2804.7,
+  "method": "native task-owned process trees, PSS for shared-page accounting; CPU100%=one logical core; sampled peaks are lower bounds",
+  "initial_sampler_issue": "Earlier file could select an Ollama pull client rather than its server. Do not use its inference/total memory or CPU readings.",
+  "group_sampled_peaks": {
+    "postgres": {
+      "max_pss_mib": 91.52,
+      "max_rss_mib": 1013.82,
+      "max_cpu_percent": 4.18,
+      "max_processes": 33,
+      "read_bytes_delta": 212992,
+      "write_bytes_delta": 4997120
+    },
+    "redis": {
+      "max_pss_mib": 16.96,
+      "max_rss_mib": 16.96,
+      "max_cpu_percent": 0.97,
+      "max_processes": 1,
+      "read_bytes_delta": 65536,
+      "write_bytes_delta": 0
+    },
+    "auth": {
+      "max_pss_mib": 218.46,
+      "max_rss_mib": 289.64,
+      "max_cpu_percent": 40.07,
+      "max_processes": 1,
+      "read_bytes_delta": 53248,
+      "write_bytes_delta": 16384
+    },
+    "quota": {
+      "max_pss_mib": 66.74,
+      "max_rss_mib": 143.64,
+      "max_cpu_percent": 5.3,
+      "max_processes": 1,
+      "read_bytes_delta": 1273856,
+      "write_bytes_delta": 4096
+    },
+    "chat": {
+      "max_pss_mib": 161.43,
+      "max_rss_mib": 236.67,
+      "max_cpu_percent": 18.15,
+      "max_processes": 1,
+      "read_bytes_delta": 4096,
+      "write_bytes_delta": 40960
+    },
+    "payment": {
+      "max_pss_mib": 68.73,
+      "max_rss_mib": 137.49,
+      "max_cpu_percent": 4.29,
+      "max_processes": 1,
+      "read_bytes_delta": 0,
+      "write_bytes_delta": 0
+    },
+    "notification": {
+      "max_pss_mib": 60.17,
+      "max_rss_mib": 127.82,
+      "max_cpu_percent": 2.9,
+      "max_processes": 1,
+      "read_bytes_delta": 4096,
+      "write_bytes_delta": 45056
+    },
+    "pdf": {
+      "max_pss_mib": 31.34,
+      "max_rss_mib": 99.34,
+      "max_cpu_percent": 0.48,
+      "max_processes": 1,
+      "read_bytes_delta": 0,
+      "write_bytes_delta": 0
+    },
+    "admin-api": {
+      "max_pss_mib": 83.1,
+      "max_rss_mib": 107.57,
+      "max_cpu_percent": 30.45,
+      "max_processes": 1,
+      "read_bytes_delta": 20480,
+      "write_bytes_delta": 49152
+    },
+    "analytics": {
+      "max_pss_mib": 105.08,
+      "max_rss_mib": 127.65,
+      "max_cpu_percent": 0.97,
+      "max_processes": 1,
+      "read_bytes_delta": 4096,
+      "write_bytes_delta": 8192
+    },
+    "document": {
+      "max_pss_mib": 99.6,
+      "max_rss_mib": 124.64,
+      "max_cpu_percent": 0.97,
+      "max_processes": 1,
+      "read_bytes_delta": 0,
+      "write_bytes_delta": 0
+    },
+    "gateway": {
+      "max_pss_mib": 68.26,
+      "max_rss_mib": 136.91,
+      "max_cpu_percent": 1.45,
+      "max_processes": 1,
+      "read_bytes_delta": 12288,
+      "write_bytes_delta": 20480
+    },
+    "admin-ui": {
+      "max_pss_mib": 75.94,
+      "max_rss_mib": 143.78,
+      "max_cpu_percent": 3.85,
+      "max_processes": 2,
+      "read_bytes_delta": 1318912,
+      "write_bytes_delta": 0
+    },
+    "user-ui": {
+      "max_pss_mib": 79.4,
+      "max_rss_mib": 147.56,
+      "max_cpu_percent": 9.06,
+      "max_processes": 2,
+      "read_bytes_delta": 16515072,
+      "write_bytes_delta": 0
+    },
+    "pdf-diagnostic": {
+      "max_pss_mib": 385.39,
+      "max_rss_mib": 1023.59,
+      "max_cpu_percent": 3.87,
+      "max_processes": 10,
+      "read_bytes_delta": 401408,
+      "write_bytes_delta": 0
+    },
+    "ollama": {
+      "max_pss_mib": 3205.86,
+      "max_rss_mib": 3213.84,
+      "max_cpu_percent": 395.45,
+      "max_processes": 2,
+      "read_bytes_delta": 4709134336,
+      "write_bytes_delta": 53248
+    }
+  },
+  "total_simultaneous_peak_pss_mib": 4784.37,
+  "minimum_host_available_mib": 2927.15,
+  "memory_total_mib": 15346.05,
+  "minimum_disk_available_gib": 86.31,
+  "maximum_host_load_average": [
+    4.07,
+    3.07,
+    3.63
+  ],
+  "limitations": [
+    "Native Vite previews, not production nginx/cgroups/TLS reverse proxy",
+    "Shared desktop host; host load includes unrelated applications",
+    "First full 1.7B corpus predates fixed sampler; no valid full-corpus inference peak",
+    "Not an 8GB VPS, sustained traffic, disk-throughput or backup benchmark"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "probe": "DB-001",
+  "type": "actual_repository_isolated_sqlite_concurrency",
+  "transport_mocked": false,
+  "database": "fresh_temporary_sqlite",
+  "concurrent_requests": 2,
+  "returned_ids": [
+    "adm_001",
+    "adm_001"
+  ],
+  "persisted_rows": 1,
+  "unique_returned_ids": 1,
+  "race_reproduced": true,
+  "synchronization": "Barrier after both real list_all snapshots; real repository create/save executed",
+  "expected": "Two distinct staff rows with distinct identifiers",
+  "actual": "Two create operations chose one identifier; INSERT OR REPLACE retained only one account",
+  "source": "services/admin-api/app/repositories/admin_user_repository.py:71"
+}

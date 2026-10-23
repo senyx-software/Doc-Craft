@@ -1,0 +1,80 @@
+[
+  {
+    "source": "services/payment/prisma/schema.prisma",
+    "models": [
+      "Plan",
+      "Subscription",
+      "BillingInvoice",
+      "Coupon",
+      "WebhookEvent",
+      "WebhookDelivery",
+      "CheckoutIntent",
+      "PaymentOutbox",
+      "ProviderCursor",
+      "BillingAdjustment"
+    ],
+    "index_declarations": 9,
+    "unique_declarations": 7,
+    "relations": [
+      "@relation(fields: [planId], references: [id])",
+      "@relation(fields: [subscriptionId], references: [id])"
+    ]
+  },
+  {
+    "source": "services/quota/prisma/schema.prisma",
+    "models": [
+      "Quota",
+      "QuotaResetLog",
+      "AuditLog",
+      "QuotaReservation",
+      "QuotaDailyUsage",
+      "QuotaWindow"
+    ],
+    "index_declarations": 4,
+    "unique_declarations": 1,
+    "relations": []
+  },
+  {
+    "source": "services/auth/prisma/schema.prisma",
+    "models": [
+      "User",
+      "Session",
+      "PasswordReset",
+      "LoginEvent",
+      "Referral",
+      "AccessRevocation"
+    ],
+    "index_declarations": 5,
+    "unique_declarations": 4,
+    "relations": [
+      "@relation(fields: [userId], references: [id], onDelete: Cascade)",
+      "@relation(fields: [userId], references: [id], onDelete: Cascade)"
+    ]
+  },
+  {
+    "source": "services/chat/prisma/schema.prisma",
+    "models": [
+      "DocumentType",
+      "GuestMigration",
+      "Template",
+      "ChatSession",
+      "ChatMessage",
+      "GeneratedDocument",
+      "ToolExecution",
+      "AIUsage"
+    ],
+    "index_declarations": 16,
+    "unique_declarations": 2,
+    "relations": [
+      "@relation(fields: [documentTypeId], references: [id])",
+      "@relation(fields: [documentTypeId], references: [id])",
+      "@relation(fields: [templateId], references: [id])",
+      "@relation(fields: [sessionId], references: [id], onDelete: Cascade)",
+      "@relation(fields: [documentTypeId], references: [id])",
+      "@relation(fields: [sessionId], references: [id], onDelete: Cascade)",
+      "@relation(fields: [templateId], references: [id])",
+      "@relation(fields: [sessionId], references: [id], onDelete: Cascade)",
+      "@relation(fields: [sessionId], references: [id], onDelete: Cascade)"
+    ]
+  }
+]

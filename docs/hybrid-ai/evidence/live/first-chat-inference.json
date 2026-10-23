@@ -1,0 +1,739 @@
+{
+  "http_status": 200,
+  "latency_ms": 90599,
+  "events": [
+    {
+      "type": "error",
+      "outcome": "failure",
+      "code": "PROVIDER_TIMEOUT",
+      "phase": "provider",
+      "status": 504,
+      "retryable": true,
+      "message": "The AI provider timed out. Your saved information is still available; retry this response.",
+      "requestId": "cbc45c7d-62a0-4790-9445-7127b31794b2",
+      "sessionId": "25d6ab34-4496-4f9b-bdc3-27cd05f3a447",
+      "sourceSessionId": "25d6ab34-4496-4f9b-bdc3-27cd05f3a447",
+      "turnId": "2ac64afe-6b4f-4d6c-a6eb-fba6c7ea3e9f",
+      "state": {
+        "sessionId": "25d6ab34-4496-4f9b-bdc3-27cd05f3a447",
+        "userId": "858bfced-5afd-41c7-bbab-bff8b7ffe41a",
+        "revision": 9,
+        "canvasLayout": null,
+        "layoutRevision": 0,
+        "editorContext": null,
+        "editorClarification": null,
+        "pendingLanguage": null,
+        "canUndo": true,
+        "canRedo": false,
+        "documentType": "invoice",
+        "slots": {
+          "taxRate": 10
+        },
+        "fieldStates": {
+          "taxRate": {
+            "field": "taxRate",
+            "rawInput": 10,
+            "normalizedValue": 10,
+            "validationStatus": "valid",
+            "confirmationStatus": "confirmed",
+            "status": "confirmed",
+            "updatedAt": "2026-10-20T20:02:41.458Z",
+            "kind": "user",
+            "source": "fafceb75-2e35-4b8a-bf80-9a74719f0af0",
+            "sourceExcerpt": "Change the tax to 10%.",
+            "sourceMessage": "fafceb75-2e35-4b8a-bf80-9a74719f0af0"
+          },
+          "businessName": {
+            "field": "businessName",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "clientName": {
+            "field": "clientName",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "invoiceNumber": {
+            "field": "invoiceNumber",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "issueDate": {
+            "field": "issueDate",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "dueDate": {
+            "field": "dueDate",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "lineItems": {
+            "field": "lineItems",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "currency": {
+            "field": "currency",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "senderAddress": {
+            "field": "senderAddress",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "clientAddress": {
+            "field": "clientAddress",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "senderEmail": {
+            "field": "senderEmail",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "senderPhone": {
+            "field": "senderPhone",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "clientEmail": {
+            "field": "clientEmail",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "clientPhone": {
+            "field": "clientPhone",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "subject": {
+            "field": "subject",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "businessServices": {
+            "field": "businessServices",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "notesAndTerms": {
+            "field": "notesAndTerms",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "accountDetails": {
+            "field": "accountDetails",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "locale": {
+            "field": "locale",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "dateFormat": {
+            "field": "dateFormat",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "taxStatus": {
+            "field": "taxStatus",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "discountRate": {
+            "field": "discountRate",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "paymentMethod": {
+            "field": "paymentMethod",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "senderTaxId": {
+            "field": "senderTaxId",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "clientTaxId": {
+            "field": "clientTaxId",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "paymentTerms": {
+            "field": "paymentTerms",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          },
+          "discountFixedAmount": {
+            "field": "discountFixedAmount",
+            "rawInput": null,
+            "normalizedValue": null,
+            "validationStatus": "missing",
+            "confirmationStatus": "unconfirmed",
+            "status": "missing",
+            "updatedAt": null
+          }
+        },
+        "missingRequired": [
+          "businessName",
+          "clientName",
+          "invoiceNumber",
+          "issueDate",
+          "dueDate",
+          "lineItems",
+          "currency",
+          "senderAddress",
+          "clientAddress",
+          "senderEmail",
+          "senderPhone"
+        ],
+        "pendingOptional": [
+          "clientEmail",
+          "clientPhone",
+          "subject",
+          "businessServices",
+          "notesAndTerms",
+          "accountDetails",
+          "locale",
+          "dateFormat",
+          "taxStatus",
+          "discountRate",
+          "paymentMethod",
+          "senderTaxId",
+          "clientTaxId",
+          "paymentTerms",
+          "discountFixedAmount"
+        ],
+        "nextAction": {
+          "kind": "ask",
+          "field": "businessName",
+          "question": "What is the business or company name?"
+        },
+        "readyToGenerate": false,
+        "stage": "recovering",
+        "schema": {
+          "total_fields": 27,
+          "required_fields": 11,
+          "optional_fields": 16,
+          "required_keys": [
+            "businessName",
+            "clientName",
+            "invoiceNumber",
+            "issueDate",
+            "dueDate",
+            "lineItems",
+            "currency",
+            "senderAddress",
+            "clientAddress",
+            "senderEmail",
+            "senderPhone"
+          ],
+          "computed_fields": [
+            "subtotal",
+            "discountAmount",
+            "taxableAmount",
+            "taxAmount",
+            "totalDue"
+          ],
+          "templateId": "invoice-modern"
+        },
+        "lifecycle": "ACTIVE",
+        "assets": [],
+        "readOnly": false,
+        "dataValid": false,
+        "canGenerate": false,
+        "pendingTurn": {
+          "id": "2ac64afe-6b4f-4d6c-a6eb-fba6c7ea3e9f",
+          "message": "How should a small business explain a payment schedule to a customer?"
+        },
+        "pendingIntent": null,
+        "operationResults": [
+          {
+            "field": "taxRate",
+            "outcome": "committed"
+          }
+        ],
+        "finalization": {
+          "status": "unconfirmed",
+          "fingerprint": "{\"schema\":[\"businessName\",\"clientName\",\"invoiceNumber\",\"issueDate\",\"dueDate\",\"lineItems\",\"currency\",\"senderAddress\",\"clientAddress\",\"senderEmail\",\"senderPhone\"],\"slots\":{\"taxRate\":10},\"templateId\":\"invoice-modern\",\"type\":\"invoice\"}"
+        },
+        "timezone": "UTC",
+        "referenceDate": "2026-10-20",
+        "templateId": "invoice-modern",
+        "accentColor": null,
+        "title": "Draft: Invoice"
+      }
+    }
+  ],
+  "done": null,
+  "error": {
+    "type": "error",
+    "outcome": "failure",
+    "code": "PROVIDER_TIMEOUT",
+    "phase": "provider",
+    "status": 504,
+    "retryable": true,
+    "message": "The AI provider timed out. Your saved information is still available; retry this response.",
+    "requestId": "cbc45c7d-62a0-4790-9445-7127b31794b2",
+    "sessionId": "25d6ab34-4496-4f9b-bdc3-27cd05f3a447",
+    "sourceSessionId": "25d6ab34-4496-4f9b-bdc3-27cd05f3a447",
+    "turnId": "2ac64afe-6b4f-4d6c-a6eb-fba6c7ea3e9f",
+    "state": {
+      "sessionId": "25d6ab34-4496-4f9b-bdc3-27cd05f3a447",
+      "userId": "858bfced-5afd-41c7-bbab-bff8b7ffe41a",
+      "revision": 9,
+      "canvasLayout": null,
+      "layoutRevision": 0,
+      "editorContext": null,
+      "editorClarification": null,
+      "pendingLanguage": null,
+      "canUndo": true,
+      "canRedo": false,
+      "documentType": "invoice",
+      "slots": {
+        "taxRate": 10
+      },
+      "fieldStates": {
+        "taxRate": {
+          "field": "taxRate",
+          "rawInput": 10,
+          "normalizedValue": 10,
+          "validationStatus": "valid",
+          "confirmationStatus": "confirmed",
+          "status": "confirmed",
+          "updatedAt": "2026-10-20T20:02:41.458Z",
+          "kind": "user",
+          "source": "fafceb75-2e35-4b8a-bf80-9a74719f0af0",
+          "sourceExcerpt": "Change the tax to 10%.",
+          "sourceMessage": "fafceb75-2e35-4b8a-bf80-9a74719f0af0"
+        },
+        "businessName": {
+          "field": "businessName",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "clientName": {
+          "field": "clientName",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "invoiceNumber": {
+          "field": "invoiceNumber",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "issueDate": {
+          "field": "issueDate",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "dueDate": {
+          "field": "dueDate",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "lineItems": {
+          "field": "lineItems",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "currency": {
+          "field": "currency",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "senderAddress": {
+          "field": "senderAddress",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "clientAddress": {
+          "field": "clientAddress",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "senderEmail": {
+          "field": "senderEmail",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "senderPhone": {
+          "field": "senderPhone",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "clientEmail": {
+          "field": "clientEmail",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "clientPhone": {
+          "field": "clientPhone",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "subject": {
+          "field": "subject",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "businessServices": {
+          "field": "businessServices",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "notesAndTerms": {
+          "field": "notesAndTerms",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "accountDetails": {
+          "field": "accountDetails",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "locale": {
+          "field": "locale",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "dateFormat": {
+          "field": "dateFormat",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "taxStatus": {
+          "field": "taxStatus",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "discountRate": {
+          "field": "discountRate",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "paymentMethod": {
+          "field": "paymentMethod",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "senderTaxId": {
+          "field": "senderTaxId",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "clientTaxId": {
+          "field": "clientTaxId",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "paymentTerms": {
+          "field": "paymentTerms",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        },
+        "discountFixedAmount": {
+          "field": "discountFixedAmount",
+          "rawInput": null,
+          "normalizedValue": null,
+          "validationStatus": "missing",
+          "confirmationStatus": "unconfirmed",
+          "status": "missing",
+          "updatedAt": null
+        }
+      },
+      "missingRequired": [
+        "businessName",
+        "clientName",
+        "invoiceNumber",
+        "issueDate",
+        "dueDate",
+        "lineItems",
+        "currency",
+        "senderAddress",
+        "clientAddress",
+        "senderEmail",
+        "senderPhone"
+      ],
+      "pendingOptional": [
+        "clientEmail",
+        "clientPhone",
+        "subject",
+        "businessServices",
+        "notesAndTerms",
+        "accountDetails",
+        "locale",
+        "dateFormat",
+        "taxStatus",
+        "discountRate",
+        "paymentMethod",
+        "senderTaxId",
+        "clientTaxId",
+        "paymentTerms",
+        "discountFixedAmount"
+      ],
+      "nextAction": {
+        "kind": "ask",
+        "field": "businessName",
+        "question": "What is the business or company name?"
+      },
+      "readyToGenerate": false,
+      "stage": "recovering",
+      "schema": {
+        "total_fields": 27,
+        "required_fields": 11,
+        "optional_fields": 16,
+        "required_keys": [
+          "businessName",
+          "clientName",
+          "invoiceNumber",
+          "issueDate",
+          "dueDate",
+          "lineItems",
+          "currency",
+          "senderAddress",
+          "clientAddress",
+          "senderEmail",
+          "senderPhone"
+        ],
+        "computed_fields": [
+          "subtotal",
+          "discountAmount",
+          "taxableAmount",
+          "taxAmount",
+          "totalDue"
+        ],
+        "templateId": "invoice-modern"
+      },
+      "lifecycle": "ACTIVE",
+      "assets": [],
+      "readOnly": false,
+      "dataValid": false,
+      "canGenerate": false,
+      "pendingTurn": {
+        "id": "2ac64afe-6b4f-4d6c-a6eb-fba6c7ea3e9f",
+        "message": "How should a small business explain a payment schedule to a customer?"
+      },
+      "pendingIntent": null,
+      "operationResults": [
+        {
+          "field": "taxRate",
+          "outcome": "committed"
+        }
+      ],
+      "finalization": {
+        "status": "unconfirmed",
+        "fingerprint": "{\"schema\":[\"businessName\",\"clientName\",\"invoiceNumber\",\"issueDate\",\"dueDate\",\"lineItems\",\"currency\",\"senderAddress\",\"clientAddress\",\"senderEmail\",\"senderPhone\"],\"slots\":{\"taxRate\":10},\"templateId\":\"invoice-modern\",\"type\":\"invoice\"}"
+      },
+      "timezone": "UTC",
+      "referenceDate": "2026-10-20",
+      "templateId": "invoice-modern",
+      "accentColor": null,
+      "title": "Draft: Invoice"
+    }
+  }
+}

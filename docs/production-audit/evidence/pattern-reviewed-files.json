@@ -1,0 +1,3892 @@
+[
+  {
+    "file": "services/chat/test-chat.ts",
+    "sha256": "04b0cbda523d7e828cef1d4eafc85a878cc1dd21ca4745f6c055dd056e874242",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/package-lock.json",
+    "sha256": "45b7b2da5160f4c026313e40e3b1e774fc13e280ce4218f62ddcf69bb525fd60",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/Dockerfile",
+    "sha256": "ed06e2c10d354bae080016a0e2b3d917f86d323a4ed113fb6cd30425aafec16d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/tsconfig.json",
+    "sha256": "f09790218011c9883827852051ffa33aba6bbce04d284c379bc603610191d496",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/test-mcp.ts",
+    "sha256": "e9fea915b05344945d488d8d55ba3dd77b34ab64751f2be1fa9763f14d40d737",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/docker-compose.yml",
+    "sha256": "d43c2f0e190836f9b42ea51147c4b6dc2aae7ea5543a02bae39f4dc30c4c5e61",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/package.json",
+    "sha256": "677b81b0af093e8cc519cbefd9ea783bb8c91f2dec31fe757e0fad8888f67495",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/analytics/Dockerfile",
+    "sha256": "b669235bb62574d3f8cf85c072ca76d7cb87c0f50686505ba1bac7f1dcdcbe7b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/analytics/requirements.txt",
+    "sha256": "1093a90fb6750b010f41a1f1bca6df60ed4c1c7591edd2b407c0063ac3c4c84b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/package-lock.json",
+    "sha256": "bdd4dcee66a7a850ee3a6e4f2e636df48f95ac16b3360261137f2934d01c0291",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/Dockerfile",
+    "sha256": "2d3d53095186af868b007e6e4f37fdf774983be59262d8ffc0b4c6fbd0f85a43",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/tsconfig.json",
+    "sha256": "dd2cd8447c977959c63df8fb613a44ffc2358f666dc0c2e944eb4a1f7d874d74",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/docker-compose.yml",
+    "sha256": "d43c2f0e190836f9b42ea51147c4b6dc2aae7ea5543a02bae39f4dc30c4c5e61",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/package.json",
+    "sha256": "8ae331ebc48a8916bc84018018fed5cd91406b63324adf89b0ca3c3faa46ad9f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/Dockerfile",
+    "sha256": "d07875e1fc84e299aac1471fc4c5ba3deae6a12345e95865b8118686968358c7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/tsconfig.json",
+    "sha256": "b6ceb10d98749dab93308e48f131e0916f6ea90b25436720970f454344a79492",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/docker-compose.yml",
+    "sha256": "d43c2f0e190836f9b42ea51147c4b6dc2aae7ea5543a02bae39f4dc30c4c5e61",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/package.json",
+    "sha256": "427fc2c723234918300b7b80c2531f3c51a58631559f7436dfb1f8fe9f7e1d17",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/vitest.config.ts",
+    "sha256": "29abe0b290aae2122e48f2248b69cc69e7041825116801f91e49698832c7788d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/Dockerfile",
+    "sha256": "b94289ca819af9dfa309c559707c42c0e1925ca8af40b9482913e60f5f2b6398",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/test-gateway-config.ts",
+    "sha256": "7a46e2710a1a4b0efabfd1271ee8e81814184a16065cc4ab8fad3b0bd7136f70",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/tsconfig.json",
+    "sha256": "b6ceb10d98749dab93308e48f131e0916f6ea90b25436720970f454344a79492",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/test-gateway.ts",
+    "sha256": "6bd6982b6269edd5b0f76d5076d29879fa4fdcc8e37a23d24bdb33d43fec91b2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/package.json",
+    "sha256": "f088c77f5a0ff254a7c200c3372a5b825b39d34e8d3b42b1c302327bd0fc83fb",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/Dockerfile",
+    "sha256": "480c63fdd56b0162b4e9ceb4ace7fb1263e9a1f24820e62777b3b36d4fe30091",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/tsconfig.json",
+    "sha256": "b6ceb10d98749dab93308e48f131e0916f6ea90b25436720970f454344a79492",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/docker-compose.yml",
+    "sha256": "d43c2f0e190836f9b42ea51147c4b6dc2aae7ea5543a02bae39f4dc30c4c5e61",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/package.json",
+    "sha256": "d23a858612a34803c4f04892780ca99aa95ee4e090a5f6f0cb99335fdbb55cc9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/vitest.config.ts",
+    "sha256": "def74b9e799df61b8ff16ca3310af725bfc27638c2873272e7cf3b8f7176e918",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/Dockerfile",
+    "sha256": "231b46d44966ec897a04e4f45e53aec74333b0514e2b8517edc8e95e478a75d2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/tsconfig.json",
+    "sha256": "e2637a9d0db05e329b015c636ca34b2ff4e10b2fb6ee055d2fe9a29507241d77",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/docker-compose.yml",
+    "sha256": "d43c2f0e190836f9b42ea51147c4b6dc2aae7ea5543a02bae39f4dc30c4c5e61",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/package.json",
+    "sha256": "a3628467953f1667487ecbf2dfb2aa8798daa6ce3c68a481bbc19f6034652486",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/Dockerfile",
+    "sha256": "0727a7f190cab21cd5b39c7ff9515ebbfd675f028195a89d5bbbbeb34efa697f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/requirements.txt",
+    "sha256": "307bc5bd5dc5210b41bc9fe5ef73cff2c1b2d10cff1848a2005a1c93326bd0d8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/Dockerfile",
+    "sha256": "fb224d4928785e7da43f34271ad8155a53ccc8e161f9fb0127e524c202721b41",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/tsconfig.json",
+    "sha256": "9b4f475a4ba08787c6a8e4618661148ad82979dd814ddec3a586f1d6b52b0b1c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/requirements.txt",
+    "sha256": "61d9dcfd887b7bce13aefecaea9586ffc5144c7f21778c6316e54ee7ffe68ee1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/docker-compose.yml",
+    "sha256": "d43c2f0e190836f9b42ea51147c4b6dc2aae7ea5543a02bae39f4dc30c4c5e61",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/package.json",
+    "sha256": "9b2e80ab9f08d2c567ed42b9d546671c531c05dd5866ea15ca39f12cccb61d7a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/test_document.py",
+    "sha256": "7c02164fe164c9f506d9fb8310216b4102f84d380bff363716a93a90a633e24e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/tests/test_uploaded_previews.py",
+    "sha256": "5a3de68054a212424f897c608d7c16050b84010920bdcaac8ff16e1e899cbb8d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/tests/test_editable_templates.py",
+    "sha256": "767dae7094a708dcc57e8a9e1c407ddd37a7492f5f3087537499b4152ce8ca1f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/tests/test_worker_delivery.py",
+    "sha256": "2f1e435b78881dd8339f1c75587ef317f15136afb89359d68a3c1b814c4b5742",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/tests/test_storage_signing.py",
+    "sha256": "bbb20044cd44b5b2e9f136160342af27ae095ae88e217e6d5fbd789dad55c08d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/tests/conftest.py",
+    "sha256": "7c093e609fab9d77b2ec2acad0e39235ea441c5e690e50fd8efe64e7dc92632e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/tests/test_template_names.py",
+    "sha256": "33b688c9864670d4daebb6d270296f3676fc6bf9927e422998e0cc7fa1fbaf24",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/tests/test_authentication.py",
+    "sha256": "fb2ecd3216845c4afe755d7eebad15da0d6035746d62cfdd0e26f16e00ea7917",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/tests/test_document_contract.py",
+    "sha256": "89d3b08f356435e32daf0a224d75f1209538e7eff1cc3ced7f468dc6d064a898",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/tests/test_field_workflow.py",
+    "sha256": "461cc69723d9515c956fd0f5d36743624132d9d1c5ed9bfaada39ade57873985",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/tests/test_phase4_recovery.py",
+    "sha256": "ae3af5437e88488678cdd05336bfcc2fd4dfb79a9e6756f5b51f6e8a8e71af3c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/tests/test_generation_integration.py",
+    "sha256": "fae12bc6cbb7233382575bc08e6c7165c872b41da61aa4278be55d9c7b2a197b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/tests/test_pdf_template_upload.py",
+    "sha256": "50ae4ef275b202dfda3d82975ac50010006bf64eb267ba4840674205277f1907",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/puppeteer/Dockerfile",
+    "sha256": "5f1e897ab06036ffef641a1b4b69b7f56a2155ac144cf70ab998fa00574a34e7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/puppeteer/server.ts",
+    "sha256": "f46d1dc06eb383ae519d5fccaf40eccb39c6e5d682ea0ddc2e66e0993819480f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/__init__.py",
+    "sha256": "0d64fc7befb1cdd830c57f6eeb60a49a8661adb332c18a99e7e86f1c40435b23",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/main.py",
+    "sha256": "df25e45e74adcfee7b579ae0c75ad6a76c0218113ea6ca75b30625880dad0b48",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/models/custom_template.py",
+    "sha256": "15460746f4b687de00f74fc416389ee87cbf2db9f9600956806008b17e2fec1b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/models/document.py",
+    "sha256": "026453cd3d89fdedf1363b40daa50a2e3021620d3afef90aab71be99555bb857",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/workers/pdf_worker.py",
+    "sha256": "2a54580f700fbea7a76aafb14cb0b7e4d164e60c1aa33d2639fa5a6c73093a4a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/services/sidecar.py",
+    "sha256": "cbc0d6b2ff60b1e1c95bdd8339060f57ffda3819bd05288d9c791473e150e2b2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/services/uploaded_templates.py",
+    "sha256": "e5a533f07b13fb7dbded71aaa8ad70737176230795d0f7c0e777182f5d6705e5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/services/storage.py",
+    "sha256": "36acd5a967f950731f57e38b124ec896b3ffba90d97267609293a3b091340bd9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/services/editable_templates.py",
+    "sha256": "9f7055f8b4d4e1d83e5aaf4410c71ee054099f67c42565519ff099b3c8d2daab",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/services/pdf_runtime.py",
+    "sha256": "8fd8b6e72b45671c6f5db63682d050402699bd8aae19cf92a9fb3139fce0b091",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/services/watermark.py",
+    "sha256": "84011f1c0acf7cc1f40eebb597ff3df909e3f616793186f1c1fc2435d1121b87",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/services/db.py",
+    "sha256": "8d7e7b619061431e4f6b20baadcfde319977f2bd11e491f6aa39ac894b7c8734",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/services/document_contract.py",
+    "sha256": "ba3f13aaad52d1e8fee3e1537639c55ba47bf32b7e1c41c6f3cbafff3f0877c5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/services/template_policy.py",
+    "sha256": "1e64be3ef151cc74c817dd1534044f3fe233d34f4712222f0622f45652223b88",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/services/authentication.py",
+    "sha256": "6c554351d968573ac1268118ea8cd31fa2d2e61e02c070b7c05b33a4e1c49b2e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/services/pdf_template.py",
+    "sha256": "aa65fdfdfd14ac8c490d46f4ab4bd4a42361a728628afc8b2fbe7919597c87b5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/services/product_tracking.py",
+    "sha256": "86e99e9f0f15276b49b3fb0430a8eeff057e34ff12e1877cfa179ca5aa2497a6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/services/recovery.py",
+    "sha256": "e1314daf7dfd1cf4654d4775d405ae554557ca5a1ff25d464e72cfa9fcb3c096",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/document/app/routers/document.py",
+    "sha256": "8d9c1bae340131be8d6cfd417677b6f3cd9622444e79c86f6a01aa96f236b4f0",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_users_api.py",
+    "sha256": "e7541da805f625a3d22dd196390f889cb6bc836ec8ad6c1f7273b00449e3e49c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_phase3_sessions.py",
+    "sha256": "efbe4ce4b3d1e7d5625c2f131e10366c424e5afb1c4ff81f96bf7bffb2459e3b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_promotions_api.py",
+    "sha256": "63f485d9b547e3fd4f6c5f184948f8f2bd36e58a1496f445c6900a02a83ec754",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/conftest.py",
+    "sha256": "f7b2ff05830604f479a4a5b8cb0d687034ace0f3e5d645484bf80e5ff06be512",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_audit_regressions.py",
+    "sha256": "af40a34fef0a568a62f07493a383522523b5adacbb3c9ace8bc3a329e79e80f2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_phase3_events.py",
+    "sha256": "7327e36e74f53dd36c7f41b9eebb08d7e0d62112aa4d2b7e0a2e163eaa3bc8f6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_audit_logging.py",
+    "sha256": "aee6fba82d86080633b81edf40bc475ce49105671cb5b3b3900a8bf9fa1fb1b8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_phase3_budgets.py",
+    "sha256": "5488df40cc947ebead9f0890028d402e7736807bced7ce839699d94e60e7a6f8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_phase4_gdpr.py",
+    "sha256": "075f1cf564f462147b45524675fcccd9291dc395f280d5fafb4c239ec84f4a8d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_security_and_api.py",
+    "sha256": "4ff6ea0cd0c1f3b4f409171afdd59598ea29756454a8920241f6ec821f8a3f77",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_phase4_policy.py",
+    "sha256": "bf68a4c6946174f73d52c67f15caeac15785de0299c27313048d7c0012144e1f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_analytics_and_posthog.py",
+    "sha256": "a37abdc65560795f1e2ef41c44a1b9866d6a32bc47e3c80ed9a44445278399bc",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_schema_namespace.py",
+    "sha256": "7c00a81524ead3ac65dd20ac6af3881abc9a359635615b103b40e5d45019f1d6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_phase4_uploaded_templates.py",
+    "sha256": "ae963a0faa306e9b88114e17fe340492852e90056909d70827110f6e96a76162",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_support.py",
+    "sha256": "e1f63715eae59c6cdbb68d334df3fcfe3d6d631e1aabad25effc2a9a45bb55cd",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_hybrid_ai.py",
+    "sha256": "82f933b03ef6bee90cd408460f47f320c9e75af5e8f2ae7f369ad9ae1b28a8dd",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_phase4_automation_delivery.py",
+    "sha256": "5bf6a50de2ed3f6190cda92f5d1d4cd3c16410b84b5642834503f28e595ee42f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_workspace_concurrency.py",
+    "sha256": "17165de50848814d187d03b1358a23a5379d67d9cd87678339013730ed9c2e47",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_config_engine.py",
+    "sha256": "8a2a8b1ba5800214dbc83eff183c46a9fee9d436d40e8898280c5ab0638df48e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_plans_api.py",
+    "sha256": "a526d53fb8b48d9e45ff03921d90f1e855816367d904fd89dddf280cecc723c6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_phase2_mutations.py",
+    "sha256": "5a8e23281a24967d65d214dc9a932e0d11d98d54628dd14d2d255141d05af98a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_uploaded_template_review.py",
+    "sha256": "5363d87bddb46a14637bfde31939175d9d5dc386bb3d6c46b5b45e95887c3712",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_phase3_templates.py",
+    "sha256": "344eec1326a686b8ce7178400431c67fbf9d9a47754be128574eb5eb652ef612",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_bootstrap.py",
+    "sha256": "ddd70f456afad4b6dbf0349cf6c89b95fec0b2bf7f3c20eaced4af3491ad0832",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_rbac_engine.py",
+    "sha256": "f9a412dad629b57af8c58ac89b322cf9860c54d11ef50cf3fd4a263eec9b45b1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_admin_login_configuration.py",
+    "sha256": "6d05feb68d0f2306428db6e044f8a62edef4360451a23309d08f9d051f7e20d2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_phase3_payment_transport.py",
+    "sha256": "fb0a1220ea98f83ef5fa013aa45a095726886f68525a237c9df52c70749ef277",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/test_automation_engine.py",
+    "sha256": "2bbca61718cf8a54b6c0cba76b6279cb4c4914c3766a171fd21e5f3999a298d7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/migrations/202610200001_hybrid_ai.sql",
+    "sha256": "1c5e820d0a408be8dd04055faf42f29aa073da641cd55ccf1f3dc035d36c07f5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/__init__.py",
+    "sha256": "47692aeeea004ad2589db84d007a239ab11b40d2220aeba5715382055606a699",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/main.py",
+    "sha256": "7490f080d661862e6b8d428ababe78436ee0af797a422c2a23e236fd7212e4e6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/integrations/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/integrations/config_client.py",
+    "sha256": "00a07983b274e90c5199efd00d3ec65f92dde44343ae1e6bb5a51982ccbea6ed",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/core/config.py",
+    "sha256": "6f520e4b676873829b584ea5ca23bd6fade35a222a01b402c86d5d67a436d5ef",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/core/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/core/database.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/core/exceptions.py",
+    "sha256": "becac43eb479246ffaf1f93f544a4c60a86676422d0ee6cbac3a61e1917f20af",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/core/logging.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/core/redis.py",
+    "sha256": "fda4d124b6d9a7a2aa2972f50e4e7187bffba17026a44d219f320b9ba03f94dc",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/queues/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/queues/events.py",
+    "sha256": "8e97ff78953e69f581b747b4b3cacb2add7699b86a5d17fb86b0e7bc16d9ad5a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/queues/bullmq.py",
+    "sha256": "a541bc0a7da8bcc98576774151018f5c59c4ecae972b6455d8af54321e53e8af",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/db/admin_db.py",
+    "sha256": "9d778053cabfd9863ff42b86af86475d77d8a8f31457adac2ddcf01dbf51c2e9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/db/ai_schema.py",
+    "sha256": "477e3d87e39e88759dcb3cc53d088fb12004bcaa310cdab70468b12046fd64c3",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/repositories/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/repositories/automation_repository.py",
+    "sha256": "a19dcb6da00acab4033629b56174f3430762b3621d7de8f2eeef107b6d23e345",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/repositories/role_repository.py",
+    "sha256": "9037d974be08cfbee0e910ab84c44dde073ff4dd29af026cdb0bfe514b10a7ac",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/repositories/dashboard_repository.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/repositories/plan_repository.py",
+    "sha256": "16b7084e94560194b790eb4d8627581800b79f3ea15b3292d0905c1bfd76fec4",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/repositories/admin_user_repository.py",
+    "sha256": "40c11d636f0d6d20a5acb145a5809ff09b403e7bc6c056135d791c9e955fe430",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/repositories/cost_ledger_repository.py",
+    "sha256": "e4cdf538619be83d64cde3e66b0052c5113b41c9296e52f9d4cfdf0159469f9f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/repositories/template_repository.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/repositories/audit_repository.py",
+    "sha256": "a56517de3f66e2c198af747a8a834d1a7d1d91da2097684699f536e452512a16",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/repositories/security_repository.py",
+    "sha256": "b24ebe6a55d6192cc781ff6f72a97e83a8b9c4b6575f3bb872ec536b9c485483",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/repositories/support_repository.py",
+    "sha256": "b0877c2ba69e6295aa8a6987cd568adc0f3f46ee4333030cba29037a3b618cd9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/repositories/permission_repository.py",
+    "sha256": "9a540200cb8ba791e5dd49174c8f38f7c1fe3ad11ca470ef2ff3d05801f4f337",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/repositories/analytics_repository.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/repositories/verification_repository.py",
+    "sha256": "eb707b090b397f82d6667daefcb10688b697b7f8122bd8343613ed3bd0476a78",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/repositories/notification_repository.py",
+    "sha256": "465eefccdd47bc549b1b29c6a3dc26fc73610dc71503749fab091862856c9d7c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/repositories/config_repository.py",
+    "sha256": "c8cbcbb02582e7072cafef7c488871731601ae9480e468a4dcaa54bd013664ac",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/router.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/config.py",
+    "sha256": "c23b37bde2cc10afbd07121e7ab6fe77d6a6e5759251076d21896cd54dda4dc4",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/automation.py",
+    "sha256": "04d96a9aacec039c3726d600de34bfd4b84592f31c32d47640b52c9ae3cac89f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/plan.py",
+    "sha256": "b42d256c1ca6e61c418fb727e4990f17a81dad6d2179b479a76636626ba6d2b8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/dashboard_layout.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/cost_ledger.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/plan_feature.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/automation_run.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/ai_management.py",
+    "sha256": "7141b8374555675286e1161b4f49377d418c9070d5425bd6906c4c359065f6a8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/revenue_snapshot.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/role_permission.py",
+    "sha256": "4f3d8211cabb7cd4095544f3a4ac4016d77de1650087202b39e141ac9abbd539",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/admin_user.py",
+    "sha256": "fcb896b925d265517bd4a4e47adbbdcda0f35439411b9d10c934075b930bfcaf",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/feature_flag.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/role.py",
+    "sha256": "47cbdee46cb68845c54348ddae8a701aa2db09c73ac2db09b72c9523db164642",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/dashboard_widget.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/permission.py",
+    "sha256": "90facdf8bea7b74a4f0205b310885cc6e5328a632f5fe31ffd19873718b118fe",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/automation_rule.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/feature_override.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/analytics_aggregate.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/template.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/audit_log.py",
+    "sha256": "cc6d77c22b52724bc7faf60bc263608b64a39711a1db8299fd56a3493ca56589",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/models/template_version.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/workers/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/workers/analytics_aggregator.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/workers/automation_worker.py",
+    "sha256": "04f37c2f2d6c7446f2710fe8b8acf2985e4767802e12c4a496b5c429801f2dde",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/ai_budget.py",
+    "sha256": "ed6b1d1561203b1540063b25216a02fc4c45c03fff58fee39d54d0fb0ef497bc",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/uploaded_templates.py",
+    "sha256": "207620df92043b7716bcccb1fd83f18a3ac989edcb6f199560192b3a4665805a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/automation_inbox.py",
+    "sha256": "970d0adc45da3ffb7fb19e48ca3a781d8864053329c1151232c52838a52664bc",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/user_service.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/ai_security.py",
+    "sha256": "c962c19b82b7dcb1ff8ca68718f109852dfc818c70cfbcadb237e199874cd977",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/ai_providers.py",
+    "sha256": "5c7c78ef0a3f51a63b31a0d855e1dd94c83e5d9cb7aeddd1537ab00f1f76532b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/mcp_chat_client.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/ai_management.py",
+    "sha256": "35d6dfacefcbfed64da4d4b055e93f4b4678b4ea725c15e013a14d9fe20fb6d0",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/config_engine.py",
+    "sha256": "c843d122ff7333d46295840da48dfcd87b93425fe534fb8adac99f177cc6c2b9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/ai_inference.py",
+    "sha256": "3a18e3ff70274aca730ae6f0ea0030ae0c230372ff158f71b4f1a2df703776fc",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/rbac_engine.py",
+    "sha256": "e026db3963f6c19280fd7128cd4a8d3a6bf3ef2c563f93c0b9082a7e20c5c758",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/entitlements.py",
+    "sha256": "2cf982d0b2acdbfb05a1b442862b4e80df72ffa08cca38420e591c4117179e9f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/automation_engine.py",
+    "sha256": "212722e2bee1a86d9ef278bdadb64ea43393c3b7f1a187f7a405bbd8c99d9f7c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/email_service.py",
+    "sha256": "5b25f79e022f07f154d22abbf32fab5ac1e75588f502b6f8bb2fe5f1b86b1b42",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/audit_service.py",
+    "sha256": "e6bdfdafe4e55b57d2d273fb0046a71d5f3055aa77fa7a52032946cca67bf55d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/analytics_engine.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/services/dashboard_service.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/cli/__init__.py",
+    "sha256": "537ad6503bcfa9103420f46c72ed19ed750164681a211094644fd7bf826a583f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/cli/bootstrap.py",
+    "sha256": "5bf8412184cc4a815b8f490344f1deeadc3408446acc604a845ad43f3ea5a72e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/utils/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/utils/validators.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/utils/pagination.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/utils/filters.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/schemas/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/schemas/monitoring.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/schemas/support.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/schemas/automation.py",
+    "sha256": "82e6770247e3b3dd92fd8622097405becd7dbfa8ce30a5ffc24ecc343bb9ba11",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/schemas/dashboard.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/schemas/plan.py",
+    "sha256": "41ad9df5a1fd565d5c82858fa7f3442abb44102012e643822603669786e25118",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/schemas/auth.py",
+    "sha256": "cf9b65dbd9a6536e81eb1181f9b977468bc4ef55c813e3a07538a792d37fb3e5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/schemas/audit.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/schemas/users.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/schemas/plans.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/schemas/analytics.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/schemas/settings.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/schemas/templates.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/schemas/rbac.py",
+    "sha256": "15ab7e4f91e85f4f3d1369929132e8988f6ba610e9c22ad12d03a5f53aa11a41",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/security/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/security/middleware.py",
+    "sha256": "1a50b70df65161c319a995d53825d1baa11397831e3437d817098f98f5709618",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/security/authorization.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/security/permissions.py",
+    "sha256": "e645484f0c3b445ed5bb07613390dbbda9952a53e41b6c59ce3010f0bc411a2f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/security/dependencies.py",
+    "sha256": "f6f07cf623fa7050f1eb1953265e04643eb4c0b1dd45433fcbc92a53f266888c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/security/totp.py",
+    "sha256": "d6c6dda04147ad548e7a5a601942b891aabeec572d2a57815766dade23a70347",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/security/budgets.py",
+    "sha256": "33ab55e4487f052d64691b1322aa1b3b2304e738d03633ea60168ad0d4585356",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/security/authentication.py",
+    "sha256": "2393069dde03284e63610a091677a943b3ea8d0320d1c53b3a191e9194040432",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/config.py",
+    "sha256": "6a30ffb56b19884829a3c500d26c84dcf4396089b3cba8b711dde9568a892887",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/monitoring.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/uploaded_templates.py",
+    "sha256": "437c74423c8bfe6d763d2cb4dca9daec012d498817faeab3513174a191f50f41",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/subscriptions.py",
+    "sha256": "b5694b8352b3107ef5b6ee541cde0c0ecc2aad3332af9a970f26eba883440dea",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/support.py",
+    "sha256": "9bee8902f321c5cd15b7afcdc5f4b06c6c925730f63379386298bb5834f2ae69",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/automation.py",
+    "sha256": "32f8ed8367aaddc96f610eb331cd961e04d81d4584e0963c6a28518225b26763",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/dashboard.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/cost_ledger.py",
+    "sha256": "e3da641e79a168bd687571b6e5708d4ced63e9f41cee37d1e0e3c0a13cf887f2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/gdpr.py",
+    "sha256": "b4fcff2ba4aaab00e451c3a385f8b61447721f78cec6ae97051e5da0ef3af330",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/auth.py",
+    "sha256": "532412aefe049652731ea75993516d58eea70212a5d6b327dc9842b7b5167025",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/infrastructure.py",
+    "sha256": "a258d78cc24b98be95f1af773dfeb2a368b1b8e555f95ab57894d7f9da3391f8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/promotions.py",
+    "sha256": "107357ed52a5c4d2a57e3b62bf818581a3dbb74fbc246a2660f95256375ed088",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/audit.py",
+    "sha256": "660c346b7e959636355e56afa68a365cdea2ce19022196526bc65aa834478eb2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/ai_management.py",
+    "sha256": "feb723946363800dd40cbe7031c773bc54a5f121d158ed223789a6f5babce4e5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/users.py",
+    "sha256": "cb86348c07cd31a86bf79e6767c4dc34e4cfb72cb65fdd41ddc79b7312072f35",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/reports.py",
+    "sha256": "5becb46c04640b43951b4270cb8db9e914f59f2778009ebc6b59b6ee30fbe80d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/automation_intake.py",
+    "sha256": "21459751556ced62b8cad86ea66bfb6199fad546a4abca6ab190946def42d89c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/plans.py",
+    "sha256": "83941a65c69b85191db3626a0c57a9d993fc1822a307d43a8eccfe9e157c032f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/analytics.py",
+    "sha256": "0beed4d8c92712f6270a9ed09dd771a64a7ded6f815dd4441767acaffd07549c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/security.py",
+    "sha256": "1cb86938d1320150ff123faeb9971c9dc54d396b6f1432eb1dcb0aa10b5e0cae",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/settings.py",
+    "sha256": "90a4d35bc2b3b11b169e8e976e256d0046a7121b1cd8f303b6ed5f4b74104505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/router.py",
+    "sha256": "b1514d27a9a19fbaa53f0318ce2cbf2669508b9599a570981c175db854e0cdfc",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/entitlements.py",
+    "sha256": "cc3d83a8916236d05c779b9f439cc0f840a52dc3076bb93fb4c79708c7375340",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/notifications.py",
+    "sha256": "3c2ee9e51ac5b4f69edb9a8c6bccd84b514b4709a1156ff8ab68afa72211ecc1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/templates.py",
+    "sha256": "8dcbba29b24ae275661b58f5ad28d6e50881d8bb087312facd158db64630e4c2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/api/v1/rbac.py",
+    "sha256": "0c6c84bd3421d9d6aeab21b0b09e3d4259a7dfcd447cfd00bd64d782330abb95",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/integrations/mcp/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/integrations/mcp/chat_client.py",
+    "sha256": "866fef1690258874ea2430d1b86eca2e28a8a6d44ac3fbe3f33fe960cd8b3092",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/integrations/services/document_client.py",
+    "sha256": "03939a5d60a0b84882db0ed76b73911115cc31b4c99591a861ca232a7997e391",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/integrations/services/auth_client.py",
+    "sha256": "f6082c264758a9efadf7383a1340b129eae8438f1a7c1cf2565367d23fd08521",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/integrations/services/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/integrations/services/notification_client.py",
+    "sha256": "40f76c080bec17f282a8f84928845a4a4c0444247e6dd3ff32e78c338dde8a6d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/integrations/services/payment_client.py",
+    "sha256": "9c894baec208f1c0025e26ad5a78cafca20b1411d7f3d8e084cabfe3ef1a7065",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/integrations/services/quota_client.py",
+    "sha256": "a143a1625bd230b413446dc1ad0faca8d8c4d736184ae4ce49beb76e9a3f59f9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/integrations/services/posthog_client.py",
+    "sha256": "5c9506b62a775f62a5f263fe4d3b68cbd7cd9796fe29804d145ae7101b048b83",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/integrations/services/analytics_client.py",
+    "sha256": "19f7219115c50253a7e90806d2cde5750534077da8b3305d23e4641f167e50e9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/app/integrations/services/chat_client.py",
+    "sha256": "b6e5c6c47daad77499279f479e17cd6fe106638d1d1b4d8cb73c358a1e4818b8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/fixtures/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/unit/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/admin-api/tests/integration/__init__.py",
+    "sha256": "694724d290545ac69f6327fa0a1d85ee26106b12d0ac7d7df0741b5cf0e9f26b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/scripts/copy-templates.mjs",
+    "sha256": "8bcb06a4863fcfa2e86ae57c5d40f3e5332c46510cc02735739c8dc3c4c80633",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/src/security.ts",
+    "sha256": "2655f8a350de5aa4982b2688cb190a123e626112d8067b0a93c91d7b19c43378",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/src/delivery-worker.test.ts",
+    "sha256": "1e6385e24963c3c67a69064764d5be1405b5dff1a6a5e1867301e799fec2c73d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/src/server.ts",
+    "sha256": "c15400b61dd043e2aedd495d76bf2f6a9de20241e06ab6d1aabe214781caa52a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/src/provider-policy.test.ts",
+    "sha256": "664cd8781dea4ba4a8882a1e53f7eb15ce4002e6013dfe982b2a6f4f49ef33bd",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/src/security.test.ts",
+    "sha256": "f7c79406a964929fdfb557b02609fd66578b32307236084bddd938f3626e0a85",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/src/delivery-inbox.test.ts",
+    "sha256": "05e8c5a91abe5e2778cc3f5b5638bd5b21efe241670cd4e4ffa0d11e05a97366",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/src/worker.ts",
+    "sha256": "1de3a2eb3aa00d5dd27412043e615461a644053dfeaa0494b1e68e0fcb19a223",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/src/routes/notification.routes.ts",
+    "sha256": "3defc96e29d6a63126b06b3e5c20d7e2d5c99bb97a5df7db202f2ba7ac703c84",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/src/services/delivery-inbox.service.ts",
+    "sha256": "6a320e5f22fb022755f07a4fe0a603fb84eec9489b5320927b5b412e2df2f9e8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/src/services/db.service.ts",
+    "sha256": "1b551e1fbb199213e1b69a50e1b51e4fb3a80b296d77ce1ecb7f8b06d2a5b0cd",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/src/services/email.service.ts",
+    "sha256": "163fa0b3cbaa8653d664e3b8332026d768ffef2c06da1920c9bebbb0f50f9fcf",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/src/controllers/notification.controller.ts",
+    "sha256": "d3ffe549d574bab700ddaa4bd2d654f41bcce7466d8a83b5b1f82a40712ef9d7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/notification/src/assets/logoBase64.ts",
+    "sha256": "322ae906888913855ac785441092c3bc3614cdd5670012306d0743e394dfdaf6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/swagger.ts",
+    "sha256": "f3dcfc6da01e2b499e02c44459b34f84d026f3af0d9df596b56e4fd007b78244",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/server.ts",
+    "sha256": "db2b0d0f5202f80ad133b161a0ec5ff39903caa7196468fe251913a7a4ba0eb0",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/app.ts",
+    "sha256": "c6048916779de3a4d05a8a542330de4e5ef2d08bc3cb982292a8720b2ece84b3",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/prisma/schema.prisma",
+    "sha256": "88023e308df6313791f59e6ba717d926296f2e429e07b372117ae9295b439c29",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/prisma/migrations/202610160002_outbox_timestamps/migration.sql",
+    "sha256": "cd73dd056f063c054fbde357e8df156471e99e5a09e2ee08419d0579e9845f53",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/prisma/migrations/202610150006_webhook_inbox/migration.sql",
+    "sha256": "64834b217648059a2ed5c3bdd314d6d75bdf7a230a4a01ed7f2bf2f1f8768caf",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/prisma/migrations/202610150002_checkout_intents/migration.sql",
+    "sha256": "cd3d4d99b9976083062bdbc5682f5d89be235c57b50ce2553257b1c4a9a1fe5b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/prisma/migrations/202610150001_payment_initial/migration.sql",
+    "sha256": "135b6fe27e4adbcb22879ed94e6cbc1e9f3140be7441a04c36c4c4180f7a202a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/prisma/migrations/202610150007_billing_snapshot/migration.sql",
+    "sha256": "e863cb375f2c1a24e1d803849be171d99c2a7db1ea47531686453113efa35131",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/prisma/migrations/202610160001_payment_outbox/migration.sql",
+    "sha256": "ec84f05de057f7d3f8295576faf28140c153f4a9b5aea0d5a6f751ec19b80138",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/routes/health.routes.ts",
+    "sha256": "f5dfae41dcd8ad2633c6866314afa39ba99181ff3cb05a9fcc6001aada60d952",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/routes/payment.routes.ts",
+    "sha256": "df0d550afd2d7c1de206c3a3fdb7078063536bcc6e599ea81beba514f7b36a53",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/queues/payment-webhook.queue.ts",
+    "sha256": "8c5e5965db827e260b770579b24f23e23ab1c799954bbbd9fa5096c027fb2073",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/db/transaction-context.ts",
+    "sha256": "e4fa1d9dd0a9ae356a0ef50a93d32fb3926c8868da4bcb623f0a6b92f6d981d7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/db/redis.ts",
+    "sha256": "365e1a5b69225a1c3bd386b37b4f6063763fe114618399258614f155741d6597",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/db/prisma.ts",
+    "sha256": "568925470860886c0d8c9fcac213a3399ea1a64526710a97043c9abda5e7a2d3",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/services/gateway-router.service.ts",
+    "sha256": "90bf723158bcf61b9aa6dbb23bf5f8582cac142cf7a4c29d4293a362b7be9d98",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/services/paymentConfigClient.service.ts",
+    "sha256": "e31e60f10be245cf76643e308698060b860e0447dddd240613ecf3f59faf7cb4",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/services/subscription.service.ts",
+    "sha256": "138d07d64d7771bfa95628fa600a14e4e5f6b54fbc3c030c62ccbc7262d70017",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/services/paymentMethod.service.ts",
+    "sha256": "ab9bf0c3858cb469feeab7190c65e9645370a77a1b226f17a775ea4fe1bd1fb1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/services/paddle.client.ts",
+    "sha256": "f296eaeb27a644ade36aa6b4ab935856be447d7609ab0d69a76e63d2ab83242f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/services/payhere.service.ts",
+    "sha256": "12bd6d807098b6d0bc4ac7458a95203e592702e653b1b05be44f37128f0e5c4e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/services/coupon.service.ts",
+    "sha256": "8a589d07785b4e481480be06d45467275db653953178092b4b39073ec5b128fb",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/services/revenue.service.ts",
+    "sha256": "3f4caca06a4b42fa0513b585c8f0737fe9f314290e2dc001899ae2153086ee53",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/services/paddle.service.ts",
+    "sha256": "b7f52dc1fee47480bb51d23a8af6173a010e4cecf6c81c462a1dc14249cf819f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/services/invoice.service.ts",
+    "sha256": "6889b43864bffc32beb328003ee8563775add798e5e572504d55bf5c2f3e2fad",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/services/plan.service.ts",
+    "sha256": "d151e0280f0b53e2778c354ecea336db79d17b162d3c5a9bb93058ced2d101b2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/services/payhere-reconciliation.service.ts",
+    "sha256": "59173fe448ef88c718b880b171b100237df30c2830ec718a8a2d227f3fcfd56c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/services/payment-outbox.service.ts",
+    "sha256": "38dae45cca7289d176721f0274cc9601c037e9f6a7a99af1f8b8499d13c2dc39",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/controllers/payment.controller.ts",
+    "sha256": "fd93b99484fe9a6a13bbd259608127c915b5ef7f22f97d4c258854de3f5e6b3a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/authentication.test.ts",
+    "sha256": "d6f13f3baa97f7c8e82081ec02437cc691bf43f48489de67a9db017422d5e2d1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/revenue.test.ts",
+    "sha256": "dbcddc92c794c62aedda1a5f9c6adf2325c528a23c0332788ec76e8658e38e30",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/phase4-reconciliation.test.ts",
+    "sha256": "74c6d2cd2c61414c7ae7c7c7acd6a0e887a43c77b62b9601303cb0b47875d3a7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/payment-receipt.test.ts",
+    "sha256": "6a84d062808172d746926c0ec5ca90b1eef52dbbdbd58324153ed7bccf611c2b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/routing.test.ts",
+    "sha256": "aa3b46d61d91cdb5754f3f677222d7a9ebe56b1038f2bb621f02dbf9ddc9df02",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/subscription-policy.test.ts",
+    "sha256": "0b566bd2db458668cfd6d536eb0c2d02eb3bab7d093e0f4ceea52b1db5e36782",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/coupon.test.ts",
+    "sha256": "40c48a357c95f72fc469f2b3fa5a75d6cd64d06a7d8a13d230da9aa0cf92c7b5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/subscription-quota.test.ts",
+    "sha256": "99187411fb9682c95625e6b408a1bb766a9e74e07680968b1a3a45775908b21a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/test.setup.ts",
+    "sha256": "966b2507d9ae859a55f0efc81c6de29d9182d81eb1746aba4cf6d6e971821e07",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/durable-inbox.test.ts",
+    "sha256": "05692c369e6524da5a8a344244eb39cf9a0833619a2bc8c0434b53fccfc5de69",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/webhook-delivery.test.ts",
+    "sha256": "3742eecfdc9a45a71dd6be4071440f73626416e2a67209a3da43c27c54353240",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/signature.test.ts",
+    "sha256": "53ba26f4b816188d6447f16abc015641358dbcb0a5e91a837dc027e819ef75b4",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/checkout-security.test.ts",
+    "sha256": "5aa97f2cbfb1a2181ccfaceb875d5bf066dfd1abf19949624bba22d6cd5ca9ee",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/portal.test.ts",
+    "sha256": "44e8328f3e75f6c63f661e0dc3a138ea755d41ed1a96b2f4683ec62c8cd06542",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/payment-config.test.ts",
+    "sha256": "235fd5e33d19b3b3edeadd0967b742a5b40b1dfc29ce3634da09e2115feb2044",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/idempotency.test.ts",
+    "sha256": "72d60c4a27d9d92f32c533bd7054ab780b5610e7a55c0b0554c6448d63d82bd7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/__tests__/billing-automation.test.ts",
+    "sha256": "eb347eccbb7737a606c5e1e83c903568cbe8e65f99f6ed75ded743cb5de61eda",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/middleware/webhook-verify.middleware.ts",
+    "sha256": "73f873bf2dda6fd1f8788286a40bcf9b335ea904aaeb44a0ca32c5167269d089",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/middleware/authenticate.ts",
+    "sha256": "aa5f33adc68f006aa9e1d801eb9db052df85b0c19b81681988d9154cca5f07c4",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/config/env.ts",
+    "sha256": "a09c8181f89bb4ab51210646b80fd75481359380ab7c1fbb44fa658173a3e340",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/payment/src/security/webhookIpAllowlist.ts",
+    "sha256": "d0b77ef2b3180623ecc0c81292e7b71780ba425d46b950d740f288f097253327",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/swagger.ts",
+    "sha256": "73085707da57d1eb4f6ae35237b7c60bcc9127737aefc7ec3385faa9038e2e97",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/index.ts",
+    "sha256": "2821d9759f8c554de79dbf9724efe0ecce4e7fed92d69104c18db2b6b8c22149",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/routes/admin.routes.ts",
+    "sha256": "a3ca2d575e00a033f5e674d90e8f7e9d65f61b42cb79ff2a343fcab014407692",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/routes/analytics.routes.ts",
+    "sha256": "03b1a73668005777657425d1c10301741cabd00252905092575053a2a229e8a8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/routes/index.ts",
+    "sha256": "1aa5d7430032001f396405a5daea0d3daf508745871ccab91e50b924d81386cb",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/routes/notification.routes.ts",
+    "sha256": "ee39b0197df3ac2904fc274ba75d38c9d824e60c29dbeddc16f5d68b3eef90e9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/routes/quota.routes.ts",
+    "sha256": "366dd5d62d318dc7511fbc9d52fa2c80fd073605cd346c3cdc9d730f4440ccbb",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/routes/chat.routes.ts",
+    "sha256": "e7e6e300d570ae955160df415721d50da57c420bf5083aaca70cb5cc6aafb8aa",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/routes/auth.routes.ts",
+    "sha256": "0359b0b7b72e8b04c874b3496162e0395edffdd1991299e0ab38ad463f8339d1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/routes/document.routes.ts",
+    "sha256": "c39fb66777279fdbea1efcffc0e9b0ffe170821a3445af36cec952bb80c396c7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/routes/payment.routes.ts",
+    "sha256": "7c144951e849c3aa0317a8cce0f39a7ba5f3612499960a8a05456a2bf644c3df",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/services/proxyClient.service.ts",
+    "sha256": "5abe4f52f04bc434c7f070b67d3ac0e1fa74803d603e376d5e238b84b81b0380",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/services/upstreamPath.ts",
+    "sha256": "dfcf11b1a6a462e13a2eb086ef0b12f7bbc019c3dbd1ee2d5a69ac8ec28892d6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/services/sseRelay.service.ts",
+    "sha256": "ed1bd20c3e214f32b8b6a3405b8e0d3d8c3b82c5055b4d9ddd1e1b90e0261c37",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/services/configClient.service.ts",
+    "sha256": "0cfc42ba7cf293cb8b77eb9681339a006377685360747b913eef9a77398e2ef9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/services/serviceRegistry.ts",
+    "sha256": "693d3c4e2cfe2ea04c8df925c44e69206e8d8908f065b21931d8dbe81d5d45f2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/controllers/health.controller.ts",
+    "sha256": "2195e59c021a210da3cbb287cf4587e1dcdfc72846b3ef2db9e5670677f23aaa",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/controllers/sse.controller.ts",
+    "sha256": "4d1f460b83e9a757b1a8196d45cebc68a2adc0782e463382422dfdfc5e88cc07",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/controllers/proxy.controller.ts",
+    "sha256": "b7b42d4a7ad331dd078a061acbf4ddc37465c3bd409865232615edbdc242b0f9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/middleware/bodyParser.middleware.ts",
+    "sha256": "4114b9c38054150f10f05db3298292a495f3e4ac1b42c73ea2a7ac4b204eba27",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/middleware/auth.middleware.ts",
+    "sha256": "922a87acc0d3e83aa9516c146d88203deeeee36d506bf71ffcaffc6f0d5e0e27",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/middleware/errorHandler.middleware.ts",
+    "sha256": "4d9aff150ee85c874469d7adabf31795abd515dd2c4d249f1f01a69844bbc974",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/middleware/requestLogger.middleware.ts",
+    "sha256": "d0c50455889ef867816b24c7c3c59659560b0fd366f283546001446075c3907e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/middleware/rateLimiter.middleware.ts",
+    "sha256": "a936d3f1d4a58d9a1e453fa3b73b32b616ff63b5fbdf9dd4146e301b5e7aa67c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/middleware/sseHeaders.middleware.ts",
+    "sha256": "670f335069c37a1529d864c91e3fc157e49871bd16d58e304a3fb33e54a7e256",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/config/services.config.ts",
+    "sha256": "1b72a918c5ccd7d4ee281e46772493de7fe4e601c4621d741e8cca3963203a52",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/config/env.ts",
+    "sha256": "1c72325cbf4823f775bb4b34d20ddde58c04678549776fedbae9d37d2425f196",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/security/jwtVerifier.ts",
+    "sha256": "3d1b2517e883ce904acebe272bdf606bc3fccf40fcae7cc57e4b473712e4f5c0",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/security/helmet.config.ts",
+    "sha256": "1e87054364fcb7b04d834529a97462006beae4bdb30c7dfe2a8bcd17f2608d6e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/security/cors.config.ts",
+    "sha256": "09346d2bab8f909cf9891ef1075b435449447939b1129a83cb82f17c0c3fe979",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/middleware/__tests__/bodyParser.test.ts",
+    "sha256": "473ce1f112c89132f43d2ae52b68d8b05b48adc1f3f6f40c3f4ded8041d7c927",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/middleware/__tests__/chat-auth.test.ts",
+    "sha256": "fc9ab170d6db548e78c41a7c810813887d5332937d8f11c79718a813dad40410",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/services/__tests__/cors-proxy.test.ts",
+    "sha256": "d5c488ffe29fc4fba13d21c36a9f0065a24d5a887d6a86cc17f571184cf0394a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/services/__tests__/sseRelay.test.ts",
+    "sha256": "e8bb095181576f71c53f2568a29031cb453fe3d8ddae8cfb306029144029170a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/gateway/src/services/__tests__/routing.test.ts",
+    "sha256": "4906198a32a77b2c6ae427992a4eb90706f2392460a46ea254d86a65d3aa03a1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/swagger.ts",
+    "sha256": "bebb1d72fbf675b5c8f8703ad3f7f58eadab5393ce517d12fbc9493d57fd46a3",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/server.ts",
+    "sha256": "97a537e203334590c6599c75d00a6a5749cd6c805dc85dbf6b499b81825316db",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/app.ts",
+    "sha256": "6274463922e9fcf2199c5e0ef658475da402aad285a1946eae3b21fae40be33f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/prisma/schema.prisma",
+    "sha256": "9faf6bb23f9b7e565941052ee92238b72c0ab2e88ebfdbbfef8b2acb22fea3b6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/prisma/migrations/202610150001_quota_initial/migration.sql",
+    "sha256": "526ca4eff23294e845ef25e58f8ca2d0480974477b2ea5a6e82a5f4f36f91727",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/prisma/migrations/202610160001_durable_reservations/migration.sql",
+    "sha256": "3c84517d41287b03560cb53d792b7b86f6fbb32ec1cd66361b9ee503b4a12b6c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/lib/time.ts",
+    "sha256": "6badbb51379c7f3a180eb1e40ef73747a1b64952a4417824c58dcfcd7330fa4a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/routes/quota.routes.ts",
+    "sha256": "1da2cf741872928cf9d178a143c19df92187911efce760a57cc0d11701f3d872",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/routes/health.routes.ts",
+    "sha256": "58dc7321e1f6ab2f38fa3e92160ecce1ab82643bc3f740fd08c2ee88e79feb64",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/queues/quota-reset.queue.ts",
+    "sha256": "7a06d67bcc7e2418c2a4d48e1344c23a26791eeb3e8d957ec355208162e81eb6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/db/redis.ts",
+    "sha256": "192bd7f29b3e3ef8aa9aeda67314a2059e4b259a3f812fef2de934b2a62696b5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/db/prisma.ts",
+    "sha256": "ce66c566e0d09081130d5b4b057006a2715197238682b6380dab5ab14f0a5e5e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/services/quota.service.ts",
+    "sha256": "2c0f7480309e5fe015913d1136418aeb962378e242ba42af2cf16012abc962bd",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/services/quota-sync.service.ts",
+    "sha256": "6ee1339141c66296d59045290f662c66bfaa22c4c65269f89b3267645bae2b96",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/services/quotaConfigClient.service.ts",
+    "sha256": "36f3f167819332da4e3a09b6577208ad8b5a530fff48adf2419e68aaedb45c58",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/services/admin-override.service.ts",
+    "sha256": "900610f189aa16984ddebdefb92b30903df9cde15d1918923588bac15f2eae4c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/services/plan-sync.service.ts",
+    "sha256": "f684bbacc9638e59f8d61257bce7051ea6ddfa95a21a7aaad605e6eb7f637692",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/services/reservation-ledger.service.ts",
+    "sha256": "ed68ea3089a8e4c72c62500438c70f4e54e8b210662e2e3d0bb154bbd7328f8e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/controllers/quota.controller.ts",
+    "sha256": "48dac03edf463f3f725b5c03a0d469d2b36d3183b7c7c8126a32d31aaffd0316",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/__tests__/dynamic-quota.test.ts",
+    "sha256": "fb8fc58bc4a5678c4d93d43f722bd6e46e5a4b9533e3718c2b8702a06c0c297b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/__tests__/authentication.test.ts",
+    "sha256": "5d1dc2bb2d206b7f5a1b534c1fe820acc7480c762b54f7c955cc389318a61130",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/__tests__/reset.test.ts",
+    "sha256": "2af500835f25ba2b4965f050a210e0ea077a344289499646f7506586004fea34",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/__tests__/ledgerFixture.ts",
+    "sha256": "085fcc1fc3515fb80ec807341f0340f7898beedf98c5f0d83e27e3195e2e1b67",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/__tests__/guest.test.ts",
+    "sha256": "3265c27e6a02576fc4bd08ff6a1d4eb4233703adc924f06cc1fbba8d4a7b5e52",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/__tests__/override.test.ts",
+    "sha256": "01ec3655138c705af5ca8e7cdeb652098123b1e405e7d749e28b733831960e4c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/__tests__/test.setup.ts",
+    "sha256": "cf923a6bdfb72f795a6f95141ab549be51302a183c9b233613e49f5abb854638",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/__tests__/fakeRedis.ts",
+    "sha256": "75ca245e89435af8a322b36bc6d00e36f41b76200ba14f857fa12ba3f49cd8ef",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/__tests__/check.test.ts",
+    "sha256": "35df07fba722b7680b138703f70d54a3d352ffeaf0b5275dce5d6af58325c4fc",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/middleware/authenticate.ts",
+    "sha256": "b4b5caa74768e6a4c4a0014dcb11ac8499ffb57e8a97071a13d28bb3fd5a39bb",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/config/env.ts",
+    "sha256": "a34113cc53f963fcad7a7b716b39ce1d76dce3d6f1329f61d6e1779ad5221226",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/quota/src/security/ipAbuseDetection.ts",
+    "sha256": "28b9a1b8041b94275c11e4ac548f64cc5c4db195530b3b0a2cb0db97ad321349",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/server.ts",
+    "sha256": "d01822b6f8b18610e83727048fa6984c02913e19bf394321200bdc20a9395b0e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/prisma/schema.prisma",
+    "sha256": "20377cb9d14c112e6a0d5c39d7014057c861641ea2b9de2fe4a215bb99f84218",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/prisma/migrations/20260711140351_init/migration.sql",
+    "sha256": "1cc2811c24f946fc13269d8c4bb1538f26a516ad1982ce4af3e1d7a25b6e8591",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/prisma/migrations/20260830120000_add_login_events/migration.sql",
+    "sha256": "c2c29eb0e25d3673c53fe0319e2d1f33acc102d54dcd4e57c535af5f4be3b145",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/prisma/migrations/202610150004_refresh_token_digests/migration.sql",
+    "sha256": "a6bd2d7f38b559845524478550f6a22038ca6e0b1ce6e06598ec41c71626af35",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/prisma/migrations/20260829160000_add_referrals/migration.sql",
+    "sha256": "94c37dd3eeaae55501de544e4d1c2729422a649c3c70f812ba885713d08cd83e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/prisma/migrations/202610160001_totp_replay/migration.sql",
+    "sha256": "22b2164282c1bcd01eef227af47a88878fc2685dffa22dc2b77851f2fc68f7b5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/prisma/migrations/202610150003_email_verification/migration.sql",
+    "sha256": "76eb5c2fdb9d8abf8617d443c7a2279b43aa0c6d897bd96f42518e7db3c7749d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/prisma/migrations/20260713095926_add_srs_user_fields/migration.sql",
+    "sha256": "1663dc33276d8e1f19ade150e34fd1684c5abc553eaa135e324ac5db6f15e5f8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/routes/internal.routes.ts",
+    "sha256": "66319f6e904b6630f1ba4ed1bccc6d17bca78b76646178f41011e72bc9050db1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/routes/auth.routes.ts",
+    "sha256": "f77bf07ab6f328fb1e24bf8f3ae582866ac68f545ad618a48988601d26ded555",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/routes/internal.routes.test.ts",
+    "sha256": "846d0d93322ba37c29750d5d5c3fd05f0e7162eae359d0b17be55b02582073f6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/db/prisma.ts",
+    "sha256": "859fe990f6b61aa2c59277d1f7a278c3222fabe7f1849796fb952b0f9208c666",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/services/access-revocation.service.ts",
+    "sha256": "8db09f477c8a21255213bc29a4f76372f7fb796f92ba102838ecff92a08f9453",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/services/login-budget.service.ts",
+    "sha256": "b1f817d1b593cfcc158f7b642e6e6dff3c63cffb6607bb4d8bf9df57404f2a30",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/services/jwt.service.ts",
+    "sha256": "1904bef38e322ddef23c908bf8d8655e8436acb1c2d03e0ad6039cab22d611e1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/services/jwt.service.test.ts",
+    "sha256": "d0b564b3bfdc81fb9e94b8a4d44bdff63642fea4e392cdabbd3142d75357c60f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/services/token-digest.service.ts",
+    "sha256": "0e931ba3ba7c26ab4d48d525ea3a6cb51710abede13f63a14d1b8d150faebfe2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/services/totp-security.service.test.ts",
+    "sha256": "3f5e091fa7dfc2d65be5ea288875824a339902ed5f36680bd01c2872619a1950",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/services/firebase.service.ts",
+    "sha256": "b30889931e74d4b4040152917cbc032932b95ecc8a9c5ef8d14c410466112317",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/services/password.service.ts",
+    "sha256": "0def07f0460ca8ca6e03c11925c3209c6779fd22a34c0f062e40f0f9694945bb",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/services/loginTracking.service.ts",
+    "sha256": "8c7f8faebfca4380a5b756a673325d69f1f7b9a613c4f8b4e543196b2be885b1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/services/account-anonymization.service.test.ts",
+    "sha256": "c56573aa7545952c720586a6b976f6a362f2775edcf3bcea6d6334e05caa8f76",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/services/account-anonymization.service.ts",
+    "sha256": "70a9278cc518aafaeba0c56d2917487bfb8f70c32b5a1fef9115eae6ae7bc02b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/services/totp-security.service.ts",
+    "sha256": "58b1474051e5639c9c9b1bfa02e226299032381ca78b6f44e96b2df0e35b04b3",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/services/email.service.ts",
+    "sha256": "14cdad14ffd5300ec43743e6073d53ca1d9b88306fdfdc25e8007bea510c5b04",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/services/productTracking.service.ts",
+    "sha256": "6c4296c09a4d5a1684fba04238087978ed17f4009c146c35e78ae49db126960b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/services/firebase.service.test.ts",
+    "sha256": "2a01f6a0581e57cb98f7ad74c3bb647ddcfc4190189436580471122aece48d69",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/controllers/googleLogin.test.ts",
+    "sha256": "c7ec7fc75a1d14eaec0b359b0d6f0c9c89ad0fbd5f57a6304111d39754b1c6c0",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/controllers/internal.controller.ts",
+    "sha256": "756328819b179462101684e34bcbee15ce11361376c6ed2db2dc1f955d57a47c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/controllers/auth.controller.ts",
+    "sha256": "6190c5ffeb4150da2167f692ca5a55c087c07b0fc9a2e77143b3b68e66c3daaf",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/controllers/guestLogin.test.ts",
+    "sha256": "c3f3fbcaf87c5f77482fe81180ce8173fa2b95bcfc1e9d6cdb493547a1480a5b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/controllers/verifyInternalToken.test.ts",
+    "sha256": "32b546ba1a7e57287e0521535d7bdfc4f38dfec4fd6c11b5c8b4dcc346c81cd0",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/middleware/auth.middleware.ts",
+    "sha256": "5918e42d5a3c8bbfac82d7f6e536089b4a5f70cc83a10abad2b88e368f66448a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/auth/src/middleware/auth.middleware.test.ts",
+    "sha256": "8e7f9ce5f39dc59def25b6c437170043c6bb952c1d1b9919e54708d934bfd7ca",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/analytics/tests/test_authorization.py",
+    "sha256": "721ae06c60afca9de67861de37f3909d2acfde793ce6bcb4f072085eaa9dda8f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/analytics/app/__init__.py",
+    "sha256": "48276e8e90c047cc5b48c625292e2cad6efe73184dd2fa849b65bc2df3e60917",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/analytics/app/security.py",
+    "sha256": "b742a7c6bc1009a30fb73556e46790676a73717ef40b6f972fbd3ff994ba08dd",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/analytics/app/main.py",
+    "sha256": "7ce5ae3a6af93254154ccbb105aa66ccedb42dd635133e9f3b67ed5f07c2819a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/analytics/app/models/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/analytics/app/models/analytics.py",
+    "sha256": "4c1618394bb0da0d75b040ca064005b8f3d6efb5384edfbc3b92c3b0c18ee2e6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/analytics/app/workers/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/analytics/app/workers/posthog_worker.py",
+    "sha256": "cb2d40ca91faa5d0ab9ce047f790aa23b6882fb1ccec01f4e20b24f932f5721d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/analytics/app/services/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/analytics/app/services/db.py",
+    "sha256": "3b8e2e6b53d4873df66ccab6c06d2474cecbbaa56852e68b0b6411df9af741a1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/analytics/app/routers/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/analytics/app/routers/analytics.py",
+    "sha256": "38e05949f642cde0cbe340393079f1ca0ece058bed31cc2d99efda8d14656c85",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/server.ts",
+    "sha256": "5cbad540a709834e76ba9d15cdfc357cce7d6e5393ec7af4c06f953b3e2ffff3",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/prisma/schema.prisma",
+    "sha256": "9262da877c8758633cba459c66fa826c8f8372dce9b757687c88554f1ad5ed8d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/prisma/migrations/20260716_add_model_preference/migration.sql",
+    "sha256": "d2674a763235ad9aac2af65d35a1119590c9b9655ebdcdc5db0cab8c2ffc4a6c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/prisma/migrations/20260712180115_init/migration.sql",
+    "sha256": "f08e473489c1f3e73a2d128378eefe77f314be69a265dddef5dfc6965571d2da",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/prisma/migrations/202610150005_enum_contract/migration.sql",
+    "sha256": "7aeb6ab38a67f0792a939d5e414390eba19bb047942485955453b4e1f95e565e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/prisma/migrations/202610150006_guest_claim/migration.sql",
+    "sha256": "cdbdb9396bc757c1093152a6775e53d7c99f983d5132c705e6afb07722e02922",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/prisma/migrations/202610150004_conversation_persistence/migration.sql",
+    "sha256": "f21aee2af1068ac977da2f3e4a1c67511da9d6b1f229c1293fc9d4a5803728ba",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/routes/status.routes.ts",
+    "sha256": "351af1afbcb540b5afaa0391483430bddf5c61abecc50b09accb1be57eb56c3e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/routes/metrics.routes.ts",
+    "sha256": "93647897c23a6b2c56060c2902b8f2fa4a1b468d50f7634d2a0236d0a769ee3f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/routes/chat.routes.ts",
+    "sha256": "80bbebd7744a4710392109c575ea84a4d5e0b9f9c3e0736556a1aebcee78bc40",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/routes/mcp.routes.ts",
+    "sha256": "33ca287269b9910ef932d5303609cda1a10011a2977a5e7ffd31a6e8cd1e2c62",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/routes/internal-resources.routes.ts",
+    "sha256": "d5af4ef662157a11e2348d9978c9c446cf7254257ecbf451c77ff470ad89ca9e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/model-router.service.ts",
+    "sha256": "3e40ab9ce2ece90aae827e5f48ad7e30beb244d038bca1f910fbb2a896ecbfa1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/guest-migration.service.ts",
+    "sha256": "a464e490ed5b5ca4e7812967c2032d07838859cfbd8346e7bb8ea20b6147e0e3",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/provider-router.service.ts",
+    "sha256": "3fb03661db3562f90740c40d4e893a9b4e850a8ce00da0bc0cf07c8fce91c02c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/template-policy.service.ts",
+    "sha256": "09a846331341ed68d354aaba0d0016fea8a0f048c29a62d91207513c8a710b46",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/session.service.ts",
+    "sha256": "bb20d5e251d5d0b8db61e7631033556b9e446945b58224730cf2dc4fe8c78dec",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/conversation.repository.ts",
+    "sha256": "62ddafea13b748f3f689fc2594ff399fb8c9b6a292ecde717288fce7add1e48b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/groq.service.ts",
+    "sha256": "b55d8363843e821e40442da161ed8c1e31d5612a437c0a887231e14bb77765f1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/mcp.service.ts",
+    "sha256": "2122c2fc4e4847f16d80a4a80c6e572aebea0fd38812afa662521fa3ccea4233",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/context.service.ts",
+    "sha256": "3abf21be65d1831d34b7be5ffc406c321b26f8f2303c01f7b07f7cddf50e9c3f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/quotaClient.service.ts",
+    "sha256": "0407057ad4b94ab505d178d0a8c561ef42fbfbe11d8c2d28cd9aeadb3af12157",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/posthogTracking.service.ts",
+    "sha256": "32828b7a68003137d61cdffffb78b6560b51df8beb6b84946be5721954d95528",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/claude.service.ts",
+    "sha256": "a1eeed8f774f57fff9fe1f83d96177bb3e5a24096d412164bf8ecff803391125",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/hybrid-ai.service.ts",
+    "sha256": "52f2af7cd2de22b8d3a2c1ea60038cbec6595d2bef283cab976922168990a4a6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/db.service.ts",
+    "sha256": "ce7ac65d90093ddaec541e283d836767428c5b639f32d439ad6c9c8a0e064d92",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/circuit-breaker.ts",
+    "sha256": "f18427b1065906bc8329a1ec7027e56062be014738fbdf44718f998d475523dd",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/planConfigClient.service.ts",
+    "sha256": "7bfaa66da555925d94f772f4749a19d311387fdf337cd99bf073b5884a467d00",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/redis.service.ts",
+    "sha256": "be61de7c002dd8672400148d93a5f653cc94a17642f405aea5ee4051ec3f7109",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/profileClient.service.ts",
+    "sha256": "29836702144b2993926f3010e39580122429d922388e6b325f0789de233d9aad",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/metrics.service.ts",
+    "sha256": "df99c893f9d81cf328b89c110c7dd6e7cfe4e4806f6c866a25a56bf0566de098",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/controllers/session.controller.ts",
+    "sha256": "ab74b252c2c261ae39384a9a0a0e986e83282a1508e21a126f71708c4a87a548",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/middleware/concurrency.ts",
+    "sha256": "73bc6f130921f4729e9a51e0d50e6712cdc1227d1bfc6dbbec3220b17054f963",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/middleware/auth.middleware.ts",
+    "sha256": "ecf63f70189afd86a11e30d02e2dcd2350092ec71f90638df36367bdf961481c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/middleware/rate-limit.ts",
+    "sha256": "f3a7f763f65880aa4dd23fcfc94f9a89d5a37c345c0fef27afe4b9e9800461cb",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/testing/memory-db.ts",
+    "sha256": "c5c307052a8d8f69b9f5b7a5989ea3f08b92e4bc7afd623a94b3f5d0d57cc9ec",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/config/env.ts",
+    "sha256": "2a2a5383f62bf37298608b4d8f187e4e307f4ff9f13f4407111019e07a11c701",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/security/prompt-injection.ts",
+    "sha256": "3925420e8cbd69c7b120e440fa2c7db9dcdbe8d52ef11034ea04ceb4b297c079",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/security/tool-guardrails.ts",
+    "sha256": "af563afeabe94797430fe05d8ebeceb09c7f60480fe1b7c86fbbca0ad9b5ff4b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/security/output-guardrails.ts",
+    "sha256": "257198bb91a7da86c3255808dd23318a112dc2f7d40c468314e11a878443f104",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/security/input-validation.ts",
+    "sha256": "feca3da8144b1141bdd184afd3972f5709413c24879fde91fab3e7476a09400b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/middleware/__tests__/concurrency.test.ts",
+    "sha256": "cd16a171157bf90e0225062c428bbef801e3943375726037ecbae354ca46148f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/middleware/__tests__/rate-limit.test.ts",
+    "sha256": "0c63368167cbd072c1d257218a992caf2fb059176d95ef291db2850f9d511278",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/__tests__/groq.test.ts",
+    "sha256": "c95d90a8451db948da95e16955ce98338a925e86ffc0af9a7fa0aa6354c412ae",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/__tests__/profileClient.test.ts",
+    "sha256": "d9982142f8716df95dd2d4b2861abef6c7f8be09ddddcf8074dd1f31ae4d1e5c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/__tests__/context.test.ts",
+    "sha256": "3f5781341a695584fc134e08138cbace98b7824ad26afde1e127caaa8372961e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/__tests__/fieldWorkflow.test.ts",
+    "sha256": "2e4c67271f755a6d6ad971c5efad8e9bc971f3aee7797255cc65182431503cf1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/__tests__/claude.test.ts",
+    "sha256": "b601d03da6c155aba2d2859d14b39926fc7b0f2c6182523b673a858023a4e50f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/__tests__/assets.test.ts",
+    "sha256": "9b34ff960feb3ff8e8b20b7e53cb8c550d4ec9a9c160de7744661e7d3e0fdb15",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/__tests__/responseIntelligence.test.ts",
+    "sha256": "11ec740d2be567ef6a2660bafd051c6c4842f977f677a08de4e8b715598d05a7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/__tests__/hybrid-ai.test.ts",
+    "sha256": "2cd63b72a005fb98abc8ec291bc818e67e2f39e6857ad2f8f1bcf7d02c98ef40",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/__tests__/intelligence.test.ts",
+    "sha256": "62c5ef94c54805e581d8db3235bb1e43f8109990b6282fffc33fd99620458bba",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/__tests__/plan-policy.test.ts",
+    "sha256": "33f67a82f5d7b889a4d6b225b4e86ed0a492af3ae7481cbeba4257005996ecf5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/__tests__/mcp.test.ts",
+    "sha256": "88502af3ce75b35d000202a9d361450e9d8e4d0c1694c4c6dcf568d3d072aa76",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/__tests__/quotaClient.service.test.ts",
+    "sha256": "6e490d7487c8f537eb9d84cee8354e9ac25997a66331c92cfdc1e1325268e7cc",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/__tests__/guest-migration.test.ts",
+    "sha256": "18ba75b15d73a8e4054645af64f34b1ae866c67fa298bb83b59bd36713a6f6a5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/__tests__/provider-router.test.ts",
+    "sha256": "c5df29d5ade0a17d535d4e96816551a66cf371ee5bd4d0bb394c105bef20b652",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/services/__tests__/session.service.test.ts",
+    "sha256": "f2cc7679ff70163921cb686f5def71333c204faa4fc7d776b380edc9fe6b1127",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/routes/__tests__/internal-resources.test.ts",
+    "sha256": "969e7f0dca7163ad87167d27a4eca0d9329220bb8827fd2352fed2f030a51583",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/routes/__tests__/chat.routes.test.ts",
+    "sha256": "6587945b167e65ff0ed0cd9b46de52ec22bf3c4a317dec0faa71580083b3154e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "services/chat/src/routes/__tests__/assets.routes.test.ts",
+    "sha256": "801dcb707ac69c0cd48362def83c19379c5e40a3b1b63a77534a99b740ad0596",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/queue_auth.py",
+    "sha256": "794c3d41133d2199dfcccb608a3a46e71cbcda1729ec014baee17e103f0bd050",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/request_limits.py",
+    "sha256": "269e328da201e358961d0d42936b70323947535d3f9f15b3a535629248104a99",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/document-contract.mjs",
+    "sha256": "9fb69fcc7876a5b16304a4508797ef13a84b664c54617d44e49b5802cd9984f7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/sealed-secret.mjs",
+    "sha256": "6386913edb3a6133b6dfbc934240cd4078a0cbce7dea2ec4dd3015a8ec6625f8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/model-context.mjs",
+    "sha256": "8a74279fe61c44d1e8fed3748f1f1eb436d03a8c62f172e8bb44dbe385fa150f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/redact.mjs",
+    "sha256": "0ce31352fe9ff7fbe830b872ae0db3219af7cfe2c766dc5b7dbc3af8a0b30626",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/entitlements.mjs",
+    "sha256": "a96980f9cdb2965b1255da428ca59470c834354911758e18d1a623138f1c48ac",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/request-ip.mjs",
+    "sha256": "b241d323a1a902125b7267e88d3885af00231db50a7edc9931d600f9ce427df8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/index.ts",
+    "sha256": "0bc39d45b8477bffde3eba93d29a7175333068dc83d1245c7b6c7fe9ac65a76b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/conversation-intent.mjs",
+    "sha256": "1b83657c00d3f627779f6c27e46bd68284c28ccb02dd940268b3be03f754a292",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/service_auth.py",
+    "sha256": "1ed087893107d54f1bd3f0545ade582f660e8ae5c1772498e52488d7c0825741",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/document-edits.mjs",
+    "sha256": "3d90efabb02e42063d367edf03e453899a7da750541941cfff8416b8d7ee64ab",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tsconfig.json",
+    "sha256": "b45ef465e806375cdee9b9466a6ae10643f2040350eec3d0bca82693186cc115",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/redact.py",
+    "sha256": "7313517292c59718c56071c44ef502e4614b492f1fb96e13fa3080f5d5382fa0",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/event_auth.py",
+    "sha256": "7e652248c42617d4dfcf3c634888e991604e15d3ef2cfcd51c52f28bac12851b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/assistant-knowledge.mjs",
+    "sha256": "9e0f0b9d5eb6e4a7e224950e76934217b7c64bcaacafcc1871e91eae3d7ea952",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/service-auth.mjs",
+    "sha256": "641ec2d15d91bc195a72f930d180be68c2699794f5689b4f6a265e1e4012a2cc",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/safe_template.py",
+    "sha256": "0f2a760a6edf2ce26dad85b6462994c2d0224743c66659c20d32a307d7e07f70",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/field-edits.mjs",
+    "sha256": "aee6b64064e3bfc5c8830b7a4befd7d8ecbfc8d81514670179d1960bc8e5294b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/amounts.mjs",
+    "sha256": "169865b35c7c45b3f03bc2ff7c93a228b528814891db44aff873e156e0754726",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/chat-stream.mjs",
+    "sha256": "6de761515f27d84bc98459c5a62e0b9da50bfecf1bc9a251d22157152bc29314",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/logging.mjs",
+    "sha256": "c573d96608e894a89f67ff0512d86e536129adaf43c53deed99e0dcde43b873e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/canvas-layout.mjs",
+    "sha256": "e8428a19eb71cb82a58ab14d36f88dfa0f7c5ed967e70a9f2a21a26fad8b971e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/readiness.py",
+    "sha256": "46036ddcdb5671a913a93782e600faab708a5b994a0ff49993fddef9866ba8fb",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/canvas-fields.mjs",
+    "sha256": "ceb5d8c154691199ec5e33967ea180f33a67ea98ad1fdf1bc1a937372f638e70",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/editor-commands.mjs",
+    "sha256": "2c9f43eab03adc876dda8149d078cd64678f270ebd4e1e0921478f9d21fa120b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/document-contract.json",
+    "sha256": "c38ebfaed7d44ef44d04612404d65b3916884ea63258a7077987f5eb545dca6e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/language-corrections.mjs",
+    "sha256": "9571c3ab7c42aa57122a5e5ba070f173f03a3217202c3586f5014da0c149c01d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/chat-errors.mjs",
+    "sha256": "e98540826c650346438dd4bbfa1d6bde8fd643eaa2e958d0d0fecafe4d949f26",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/sealed_secret.py",
+    "sha256": "60167182b67adc04fffd5e7f16763d0219c6784acfcc5b7a062e02cd5a2c02d5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tool-proposal.mjs",
+    "sha256": "766a3780eb65413e66b66dc887c4c8a44a30291c69ccf334fc24b13ce53ca20e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/document-assets.mjs",
+    "sha256": "a34cd6d36e6c0919b4b5fb9a39cbf834e7c32f94a352a35800cad28cfbaab201",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/pg-tls.mjs",
+    "sha256": "70365d4bd6b155ac8e8bacab61d3e365727ac3ee80c1ba121bab7af667ecd0e9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/queue-auth.mjs",
+    "sha256": "b97895ecb663ccfcd351f6e4d334cdc39ab74cb7638894bbbc4d1e1b3bd9247b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/entitlements.py",
+    "sha256": "2e80d98f565e962fe66628079d738e65852306a9ae27bc7221253ba6fc02842b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/field-processing.mjs",
+    "sha256": "e62f0e594210a784515c1c3ee018d40eff5641b0a35cb6df02f739ff0e7960a8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/event-auth.mjs",
+    "sha256": "b85d2e4c33301c82ee3202c39ae3195009ca11b9050a5d573c5469a3588d34b9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/server-tls.mjs",
+    "sha256": "caccf496aeda2847f7049fb14a730024cae9b2b9f08c6106b70134c0df1eb8a7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/user-auth.mjs",
+    "sha256": "2f642f4a6528a316cbfbca0c00405475bf439e289c6f710339bd13c2fc503586",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/readiness.mjs",
+    "sha256": "cdea85720ff3ef23feadd5262562095760880c7e0e35d4ffba5d33d0ed18ce71",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/service-permissions.json",
+    "sha256": "137476b5a2293e35839d3a18cddd5b7add62739be68c22e031661ca816c8120a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/package.json",
+    "sha256": "02bd59d3d3076f0787edd435b8a9444511fa1de983f32ab487808698ba63946a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/item-table.mjs",
+    "sha256": "ed54cad78636a9a2be37af6ad1a8d8d31f0c9ea807aae2bf3170f897ec4f5fa7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/template-schemas.json",
+    "sha256": "97c0d762bde6dfe8f81008d99a03aea16a97b69f50406e0f721daf904469bba2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/conversation-state.mjs",
+    "sha256": "89c5e0d89fe6e51fb6342ce56f6e16ccf0383f9324be89a8604c301d8fb82eac",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/constants/index.ts",
+    "sha256": "5c9248f6e357e475498a3f545b59bb7068cfa98cb05ebf4dd45d179442dedfb8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/constants/apiEndpoints.ts",
+    "sha256": "3e3d8a07a142b8fda7907ab376d9aade773b80c5cf5ed74a71c0c02f5c127563",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/constants/planLimits.ts",
+    "sha256": "c63d7216a99c20e26b3de3a06c782123616bdce7941eb2d2b5697705d8d63ee2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/constants/documentTypes.ts",
+    "sha256": "2d5ff4377ee59d61fb84b4fdb5d9fba0a3c1976eddf9536b671e68c814a02c10",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/chat-field-edits.test.mjs",
+    "sha256": "6eebef523f8486fffeaec090759f779e885639712ddb89493315332a88b17ace",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/service-fixtures.mjs",
+    "sha256": "bc49f20d16181fefffdbf94c976095b8ea04d0c131930525894f76b3121e5db8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/sealed-secret.test.mjs",
+    "sha256": "fe7f814610f02d52b80504fc4dc6aa6ecbf90529a72d68f13fd34585aa27d04c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/redact.test.mjs",
+    "sha256": "023f86123511e97a041bb01fde3672201a88478e42e5906c894b166cdeafcef5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/test_entitlements.py",
+    "sha256": "0714c5da142b174beacb534fb23ffd1535d54efa5e338eb0ce2662ecac7806dd",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/chat-stream.test.mjs",
+    "sha256": "565b9740ca9cbec77bcddb05318058fef9a825acf3e4a13efa1f78181c884817",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/response-intelligence.test.mjs",
+    "sha256": "2d073ad5439827277265073b8925506df0bce5c54a8381f253f1aa1b875eb3e8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/pg-tls.test.mjs",
+    "sha256": "e9e982b7f77ab2d822473b4d6e82f794bc96cb3de7559a839ef549022c6c16c1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/conversation-state.test.mjs",
+    "sha256": "1692139f9f86d7e7c997d08f2485644115148868d00d3612a7975ced39ad6f42",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/test_staging_trust.py",
+    "sha256": "2cba480d7348d248b7336aad4abdded259cc67be67dc81bf5ceea040ccf65f50",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/queue-auth.test.mjs",
+    "sha256": "1db9080eeb0be988833d28e8877b2fe1082e01995e9532f04aced0fd41007ce2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/server-tls.test.mjs",
+    "sha256": "19098ac27be7561b5b2b7f3bf2ef50ec9acb7da22ab2e96d3fa270c97782f471",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/entitlements.test.mjs",
+    "sha256": "d5e2e3c42b5e6dca7c72769551f17def46004bd8eafeae9662f7b2b381a0a66e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/request-ip.test.mjs",
+    "sha256": "8ed0eda3dfeeacbb9d7ebfabc890334fb21cc06620f17c3a3b72cbbf44da8885",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/complete-intelligence.test.mjs",
+    "sha256": "fe663389b7816a99e65616928bd645fa6573a1b88d7b09dbf780c38b80346964",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/canvas-layout.test.mjs",
+    "sha256": "7eede5a44005d6f6e7b6431acf36bdfdaf9d556cdee71777ec4fc820ffe28573",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/field-processing.test.mjs",
+    "sha256": "3b6d517d5a8be604ae834b41deac7aa5579298eea47d3e34c17bc64aa4258c10",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/editor-commands.test.mjs",
+    "sha256": "ca8ddf905973295f9a78165d6e33f5f40b44093ad13799e5486c6f6bafa0000c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/service-auth.test.mjs",
+    "sha256": "4006368b522355e3bf61a9ba01dddaabfc0b38c96f06151d3c4377472b0c5bd0",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/model-context.test.mjs",
+    "sha256": "bd014f1f8533af9afbd521f26dcfb3f9d17f7bb3cd2292b8b6a4c23cab9237de",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/item-table.test.mjs",
+    "sha256": "fbd74678237adff07e8ffec875c0f4b52f4c8c276f4297ce3e86dff195bca754",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/test_request_limits.py",
+    "sha256": "52641895be3fc052e7f65dd8f4274771d80f762ab2e39f9623fc05de9b85347d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/tests/document-assets.test.mjs",
+    "sha256": "cdcda8b8c7d91d1275b8d1bce10f70784f27de2ba57886af2d9492b7b4de53d8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/types/index.ts",
+    "sha256": "a83922fa1ed1d2a9271bbd0db0cf59bfd4004189c7d6eb4b7ba1861f092ad1b6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/types/plan.types.ts",
+    "sha256": "7c3debc5fb15fd23ae5d9dbaaa5d8ef7bb8c488ca8e3e31da38abb9ac11b4b7a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/types/payment.types.ts",
+    "sha256": "036bf0a944f8a58f5b7a1ecd1c125588b94e82ab1df61d967dbeb732ea8a7562",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/types/api.types.ts",
+    "sha256": "4b280a8ab0dd694a3544fdb16575bae2f1abe5d4cccb2659ade3dfc2f1c26b14",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/types/document.types.ts",
+    "sha256": "51db189fc1cbcc3d72fdd7619dc67982c24e2f6063a3c0e3452069b325bdd73e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/types/quota.types.ts",
+    "sha256": "2daf0de1c5c76ab5a401b13a71f88360749dfc9e510ae85b029671f7d6ee1c9c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/types/chat.types.ts",
+    "sha256": "326d56a542753d4e04afcd7345d2dc2a9e3c3365347db9cfb4d0a0ff2e7a624e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/types/auth.types.ts",
+    "sha256": "e4b7d741e11d059eca2c10941c5dc79b899185d4c5753aa2bc1fab5660c86ae7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/utils/index.ts",
+    "sha256": "c768cb979313419f92eee35e67f8c85990a90438f6f5437133fa76d4774125c0",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/utils/cn.ts",
+    "sha256": "71a1555719c0d3e8d1b4584c3e12844c0e9947820082cb8d69315d0fb462fafb",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/utils/formatCurrency.ts",
+    "sha256": "3f2e8bf7731ed1d6d6e71beb27a9eb269397b48a8fe56c329878f2eac602467b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "shared/utils/formatDate.ts",
+    "sha256": "b367822a418dcabe8279b2b283a9c2cf4a7bef2914961134f07829dbc45b736e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/App.tsx",
+    "sha256": "76ce93af1895ca8f4f2e987ac0966d1c42f037a6f192a140bd33c2edf7d414f0",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/main.tsx",
+    "sha256": "f5297a6afed15af66b8fc1d11027acb37e88e3601ac703f7af43932f985ffd23",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/vite-env.d.ts",
+    "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/api/adminApiTypes.ts",
+    "sha256": "d2911619df15c33a456263c804bb1ed5ba374559036e0b28e7656ba1451de8b1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/api/aiTypes.ts",
+    "sha256": "770a5b88643fdee6023b2d5b240fb94895f57173d3ed6dc71bbdea02928d6e73",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/api/adminApiClient.ts",
+    "sha256": "9e6328f47caae2af6fa8ca6aee52a818a108e4e186098e99931936fd48b814f3",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/DashboardPage.tsx",
+    "sha256": "4c847ef0537affd7a556e4111915ae5d01ba8297801d6bcd026f80aacd873dc5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/UserDetailPage.tsx",
+    "sha256": "1ee4525de4a6809772fca0c67481d89b8c25718b0fc4b11611d2888f3e6797b1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/hooks/useCommittedEvent.ts",
+    "sha256": "eee10d2f5c86f3ff24d986b49ac7197e557f111e69dbd33018e9f16587916c34",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/hooks/usePagination.ts",
+    "sha256": "21b4f34ab5aeb2b3cca18a1b05aed9a4fe93a5dcfe852ee4a633978ea1b1051d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/hooks/useSortToggle.ts",
+    "sha256": "04bdd8b44a289e5a62d5a45f678af585449878ef716bd2e5ee80301b07d4976a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/store/adminAuthStore.ts",
+    "sha256": "6fd7659cf4f206982f15aef2a9986e37719bdb99c4a95958e60e85300f7cd728",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/store/themeStore.ts",
+    "sha256": "2b40e4a5b45baee7009f382839ce3f94818141717580af2c2416855a4ec4ca7c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/store/toastStore.ts",
+    "sha256": "13eeff46f30de5f9eadddb8af8da1f2a88066c8cc9f787505c417673fe97ebb0",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/store/totpPromptStore.ts",
+    "sha256": "eaf9283255e3408b70f626209e362eb8bec4631801e835b25a6f2438c829a48f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/utils/googleFonts.ts",
+    "sha256": "796e4b8fde3e63c93a29500a1df7df860a419c4e7eb8098236e3eba54490a8c5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/config/adminNavSections.tsx",
+    "sha256": "37a8d3aa90c46273effe452244d08e416edaabe9f0a2672b03c335c1416351da",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/EntitlementControls.tsx",
+    "sha256": "66d6075a63205db2b18cc09da8528f847b4e7b097793ad0171ddb3d8e07c473c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/AdminSidebar.tsx",
+    "sha256": "4fc52775ad11bdbb7b6591f751edfe1531d3ccd5a38ecf77d1b4ae154e66a474",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/TemplateUpload.tsx",
+    "sha256": "e63312b375da39aba72181c04a06e5e83e73c0423abb04b62f1dc81e21906d31",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/common/AdminNavbar.tsx",
+    "sha256": "4f27e62fbfac137a7e84b866819c9e794a9eac5dbfb6d59137d99c93b05aca5d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/common/AdminTopbar.tsx",
+    "sha256": "b455ec0693d0fec0b29121e9ea1ce686d4ddf6e6ba851e0205000dd97b25ec0b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/common/ToastContainer.tsx",
+    "sha256": "b696f46dd7c12a406785eb970c2aa16130de56e170c38efd98c12c7c86d6ed4f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/layout/SplitAuthLayout.tsx",
+    "sha256": "9ccc80e1d85c2ecbab9df7ae935a861ae4e076e3dd07cef419fefa9c80ccb571",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/infrastructure/ProviderLimitsInfo.tsx",
+    "sha256": "127fa3e9d0e71e1dfe05e92a2a1c0c9180df96d9c8614898bae51a3f1da01a3d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/ui/Input.tsx",
+    "sha256": "cd2a03a56f18c59162df4781dfb7b6c6ab8dff2a921b2f573a515b193cedbd8d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/ui/StatCard.tsx",
+    "sha256": "b049e5dad7009a65240f99ebe414c4b30aa6145b1834bacd4270d0066ff02cbd",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/ui/Pagination.tsx",
+    "sha256": "1c10ae5d1549b1fb23e0f3c28d6d4cdc57ed2faceb0c6333aef4489b4e6b3c97",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/ui/Card.tsx",
+    "sha256": "491c14f86783e86f3b8b4b33c41d97ef30f4adc76b9275c572536f099550fa5a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/ui/Button.tsx",
+    "sha256": "fcdf7ea91d7f925eb5727610c5dcacff7c08e2dbb886307c20087813fb5969ff",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/ui/TotpPromptModal.tsx",
+    "sha256": "853d385afeb4f8b18f54e29dc5f29afd6be93b741ccd5c5657880cfee86602b0",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/ui/SortableHeader.tsx",
+    "sha256": "f645bd846f3e17f7919bf3e7c671c8e7040100a340e972d7fbfcc01d610ab41c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/ui/Badge.tsx",
+    "sha256": "c9cdc2e58805a70d8442ef3e311fa28f905cf6a0fbf5cd7e0c741570afd9d4ce",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/ui/FontFacePicker.tsx",
+    "sha256": "0ddd65581a7a3a18bbf560b26f0241f0ab9e92694054f3393927df5bc6faada1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/ui/DateRangeFilter.tsx",
+    "sha256": "d03e207e3622ab52045f02e8cad2085dcc78f4183054b14c127f70f9e26b404d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/components/ui/SystemDialogModal.tsx",
+    "sha256": "09863672f8f83579fc91ea677779b74a8f716cc33c64d8cd65c12e4a70e91700",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/AIManagementView.tsx",
+    "sha256": "ca3111a9f72e33512046d9d54ebbe2dd5dca0861758ede2c1c0bfa9e40ff9d4c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/UsersView.tsx",
+    "sha256": "dbebf6df894122e2f192a892f0592019859c6050dadd188c89b9677715788614",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/NotificationsView.tsx",
+    "sha256": "1f60813c2828721b7405f443483ae166b1a65460c54cea76388d253c32f32233",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/SecurityView.tsx",
+    "sha256": "33e1e903925e685cc788d3b5e75fcb25ee5947d7dae5ecc7dabedc4bffc0b2b2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/ConfigView.tsx",
+    "sha256": "3427109e736d862492e1496d982b0696c48885a53b24b18008e887b822e2c087",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/PackagesView.tsx",
+    "sha256": "ca5dde6d578d11534bfdbff08a547668443d952584e1064f7d736870819ed5c0",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/AnalyticsView.tsx",
+    "sha256": "37dda4e19741cdf192e92f98c637d4eccea7ad321b1648089fdead51255865a4",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/GenerationsView.tsx",
+    "sha256": "8c8f3bdf455692b25eb3c7b0a078e42f6a9a6b93940ca4e148424eb931e4ce03",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/HomeView.tsx",
+    "sha256": "6de6377fea41afba557375cc86daad1c59b684a33f951afcc42087938e345936",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/PromotionsView.tsx",
+    "sha256": "af7041082af6aeed9eda28603529d0b10103ba66160788192b07ad4ba576f707",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/DocumentsView.tsx",
+    "sha256": "933784491af90675fcdb697337110f95d62d6eeb7aaeb8f911e0207ec9cf17cb",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/SupportView.tsx",
+    "sha256": "208e35ccb43be14596b02ba38d72e4156ccb9f8a3a6920a0eea568043eeffb46",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/SubscriptionsView.tsx",
+    "sha256": "c1ca0dc5262c110aa64c3e072ee22f6e572326f16620b56edea3a123b1c9d3dc",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/RevenueView.tsx",
+    "sha256": "115d03ca2ad7c96082abec2ddb54ee1631a0d4741c1cdf8222e649a1c22316b3",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/SettingsView.tsx",
+    "sha256": "1e5301b78caf996f4e716b92f0c3285a9b9033757dc8cfc0013041ca584a0f6d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/InfrastructureView.tsx",
+    "sha256": "b71abe59663afb65bd7937f780f75d77c0a8bca1b35db2aaba38b98b0934310f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+    "sha256": "44a043c4d5084531ee206ef3b5dfa2716b3ea0a6516ed05ee693d326b9a3c95c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "admin/src/pages/subviews/AutomationsView.tsx",
+    "sha256": "5ff35565fdf4d4ae05e64b45c2213b82b3284a4e2c6e3540d861662efdc0e488",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/App.tsx",
+    "sha256": "9e7386cb9d87fe2eebfa8b4ca4c6cccb1418701af751255d7db552e06a402c60",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/main.tsx",
+    "sha256": "c3ac37bcc61ca7a979980228a22848cc965f113f72c64260e4f2db83adfe09ef",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/vite-env.d.ts",
+    "sha256": "628fab3f01ca64a407a07f87bf335adbd68fbf43a37f7bcc8bf507b3b1f40d7b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/lib/firebase.ts",
+    "sha256": "6b7d80968ce8c84e748e56391bb58706c77f1a0059afa2a7170179e208bb047e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/layouts/DashboardLayout.tsx",
+    "sha256": "052861bb03913e10910b00d4df5613ce5961c819bd3ffb5bc68060ca6920e49d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/types/index.ts",
+    "sha256": "031bbf5dd0c6e0d0a85f92aa99da63a6fed677c143b41b4f8be785566679f55e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/types/canvasElement.ts",
+    "sha256": "beba82d9f809b831d2e1792a731c23095060b210bf1b34cc767ebc6586e5d95a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/api/auth.ts",
+    "sha256": "4b88682eb3ff87e485e03121387e4e5fe70cd47f2b64ba9827dfb80e53063900",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/api/support.ts",
+    "sha256": "34be065d2118db97080fba618c767b293d035f52890ab63e5b81fb921230dee8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/api/analytics.ts",
+    "sha256": "113a0d99c605d9808951f4621900a0940855e7272c78a632f621ed10ae635367",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/api/users.ts",
+    "sha256": "6fca1ec13d733bdbc917351c59af298e9533ea8ee29773691df57039754a38f2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/api/documents.ts",
+    "sha256": "f93ad9c78d1271a7ffedb24eb52600ea43ab0bbca152c2a167d782962deb8cac",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/api/ai.ts",
+    "sha256": "c9433972d8c57a9fabf8c265a11cf5b9000c711fe857643e515207621b624d80",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/api/client.ts",
+    "sha256": "25bdef3db1b09779d909011098b153ea84dd36f103f135ce93434ddf23e7405e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/api/payment.ts",
+    "sha256": "de7fa31e8d5a307dd0bb82cb223ea2345088c119c795f704c22d11afe735f091",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/api/billing.ts",
+    "sha256": "d9fa8449f311d6960338af052de957ca19507b4ff9efb79b34bd442b9a535f5e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/pages/LoginPage.tsx",
+    "sha256": "a5cd49377f18bead78b868b524b732846a45a1d7d011b54e4bebd202e363785d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/pages/LandingPage.tsx",
+    "sha256": "1a1c172b2d884cad73395dca414c938cb1d93ae87449d8a08e25b22ed5420f08",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/pages/RegisterPage.tsx",
+    "sha256": "3635a8e70ff006b8df2ec5b253cc0bc73aa04252c7d4d2cb3a33da1e365ef8c9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/pages/VerifyEmailPage.tsx",
+    "sha256": "05d7354be66dd095a17fe3f744a1a11d1ee59fed2a5fce530c675cff3e89790d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/pages/PricingPage.tsx",
+    "sha256": "dd7ea11dc635a47f04d30627f4ec758f9d93f7091f890f31edf1fbf37070614f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/pages/BuilderPage.tsx",
+    "sha256": "f27e02ce749f824050119b984cc75403a939d2a30ce94629f889c1388a5bdfab",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/pages/PasswordResetPage.tsx",
+    "sha256": "aad49e0aca0e77aae6864fbabf0f4a30b6b11b01fae0513fbf7b007f3d9a49db",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/hooks/usePlanCatalog.ts",
+    "sha256": "03d4e5d235bd082f400ca4f056173b98481f60f54944ac400db39c10a2020d99",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/hooks/useCommittedEvent.ts",
+    "sha256": "19bdecb308e771c31c0a834a4d4161b560d020829b31f0e2b9ea8b89aa3acfaa",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/hooks/usePageDurationTracking.ts",
+    "sha256": "173e490a418570b377e9e921d606d04dcd6f3aee70ba74004ffec469fabf363d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/hooks/useUserDocuments.ts",
+    "sha256": "75319bb7ac70adbad5800cc8068dc7bfee25003585a3d8242e05c1f197cfceed",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/store/documentStore.ts",
+    "sha256": "47b7984da589174b46d7cf33e1a3ebc6f13c7952794ca7c691920c380c328ca3",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/store/quotaStore.ts",
+    "sha256": "441977413acc8cffe9339897af229c12451d8766acbe26624a1a4383928a5e4e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/store/paymentStore.ts",
+    "sha256": "5cdac2a95635a7a0b703e17835d8e4f72c7296c398b6c580d16364ca6cc8a514",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/store/chatStore.ts",
+    "sha256": "e40d68106e2b6eb512895268263dc9c7ac7dea815fb30400d19b8ba74acde0e0",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/store/themeStore.ts",
+    "sha256": "69db50fe3cd70e0a9796b724aad3d81fef06914ba0e2ea7ed2344dce1921e395",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/store/authStore.ts",
+    "sha256": "ed57d2bc37285484ed8eb26ed8fbfbe269b8ba51860a05756c56e2a667fea5e5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/middleware/GuestRoute.tsx",
+    "sha256": "e656ecd9869ad2f3b27323d0a50aeb966f108195c60ce21021c6107dd78a709c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/middleware/ProtectedRoute.tsx",
+    "sha256": "f1413268ea88be0d69d1578f08440e13bd2a0ab46bc4c8e2da254a38254581c0",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/utils/exportFontMetrics.ts",
+    "sha256": "d04cdc53eb0345f28ba638ca8bcfc9767d7ccf0a6770f99469ef19f55fb5ccda",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/utils/pdfDownload.ts",
+    "sha256": "9c61ebb69b93e9c62b84206b48e1fbd85363f29dba97a6ef03b48de387584e31",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/utils/dashboardActions.ts",
+    "sha256": "b6edef8acbad536a9b11e88a134f6918d14c0836a9deaa16b8b0a12c750f3f46",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/utils/templateRenderer.ts",
+    "sha256": "d81613843a29b4942047a8192a8d6c11d3d83e95e7b326714f6245118a5467b8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/utils/invoiceElements.ts",
+    "sha256": "7192eab1be0d8876eb9720ac947082852e4e0b038853b32511f7d9053b1a7f0f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/utils/csv.ts",
+    "sha256": "34de6c1dc92cc040f6a5635721655a4d4442ab41caf52f2c70ebcb4aa8e999c2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/utils/uploadedTemplateElements.ts",
+    "sha256": "8ee8aa9c1c81299bffe2988db88b63d083a9672ee9becd0b770249b1433abed5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/utils/documentValues.ts",
+    "sha256": "9e8252d89a72a7d85a8f123a83602466ca2a660a05daba84f4a57345feffa741",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/utils/prepareDocumentAsset.ts",
+    "sha256": "8698c18fdfce85e0c07502922f91d6db0ba06480fb131a2c8a92a8b70255e52f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/utils/googleFonts.ts",
+    "sha256": "ef12b2319741fbe2766ae4b5a7b740581911e9644b88c3a9b8fb81d954d86ab1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/utils/removeBackground.ts",
+    "sha256": "3b57da192f23fb65b1c3fc1c1f27648590b645987cd4e355469be5393800b09d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/utils/templateUpload.ts",
+    "sha256": "db6dab6990da932287a45f337b8ec42addfc692ad3200cc709f332ef1e37ed01",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/FluidCardStack.tsx",
+    "sha256": "055719b55d232dec4ebcd306d5831de77c81398307b14c6feccc22638adfb43d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/SignaturePad.tsx",
+    "sha256": "a84701187f97b6a633b9df05337a96ca2343cc7d1b86d86e97a0ecd966220a06",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/TemplateSelector.tsx",
+    "sha256": "6dae92fb8d2df8878277c315a9ff4176acdadc405f1fb7d68f1e0f88967ed5c6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+    "sha256": "d79a6a31baaa668020ccefc3d2e4739614554beec83adce1ec740e769d86c357",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/SpellCorrectionBanner.tsx",
+    "sha256": "b04e12244252f37f717d5669d2a6fffd176b35b10a7289248a8d1b964fefefca",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/ToolkitTabButton.tsx",
+    "sha256": "b9c838cbbc4284153ecdf61b23e99025e50c4197da2f7c07f674da18ba98be57",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/DocumentPreview.tsx",
+    "sha256": "72d44aa8c950cc248cbc058669fabbc0d38f339b8fd4f3d31d5e752498d75dd0",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/ProgressIndicator.tsx",
+    "sha256": "a18fafd378d41f81b68b07e5e72225b36e585eec3a7d822f109dfc81054dd63d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/ExportPanel.tsx",
+    "sha256": "e28fbc586f5d25ffd3c3d91cfa05d6c12191cec9b365566c9b6ba8a007b800f7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/CanvasContextMenu.tsx",
+    "sha256": "bfefbe19d124791b13b4678135b8af8bc9804efd529ab426208fbb5a33905f71",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/LayersPanel.tsx",
+    "sha256": "b55390fca73a7f0e1f23847bc16ac52ccfd413fe15be68ece9b73cc335735933",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+    "sha256": "865796c22a2e6d803985560048d596b3d9c0e69777c29295a14ea3bdebcf4764",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/UploadedTemplateThumbnail.tsx",
+    "sha256": "9d678cc19cdfbd89b1ec0b148ff96f6ecd50f7d2c0478051db97119d150295b3",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+    "sha256": "5a5f74b56467ae79200830034ae28264de209b47f601d09b0e1840a16d1a3934",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/FontFacePicker.tsx",
+    "sha256": "7259ab4fce01bcf7514703238bb38aa29ffa4439edafb384f6f32d7185d2b961",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/UploadPrivateTemplate.tsx",
+    "sha256": "95f574e4ffd45466355be593ccc5d74b38c9c0754604f2d46bc4288a26073bd7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+    "sha256": "587d585febb55fab1532283e428d9ab781e976a019dafae7fc12fa7dc4082dec",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/AssetModal.tsx",
+    "sha256": "9d47ef71412fc75d344cf58c9a2a9138af1bde5f95a9677f7888d18d723de9b4",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/ChatAttachments.tsx",
+    "sha256": "d7a1e530338e048438d206bb5cb5252df2ff1d4f31d879c8cd9cc86f28349c83",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+    "sha256": "fffa3d75987007c955a0b23414952a1f118ce18703553b52e6ebbc0d85941c8d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/ChatMessage.tsx",
+    "sha256": "c1d7449f893f235de6fcd3c745fc43be77cbe6c4212856f2d93d0bab2054f888",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/dashboard/StatCard.tsx",
+    "sha256": "640f608df4face5b2dd490c9539b6fa92c16815fe07bbd7393c1eef593f1b3fc",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+    "sha256": "1d7982149c1a4cac6304ef86394696bd8f810f9ade0fbe9f02cfff26059300fe",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/dashboard/QuotaBar.tsx",
+    "sha256": "54048b1f1fa63030284b4e084ec095a5088eb282de6b0b2faa4555cbabb37322",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/dashboard/DocumentsTable.tsx",
+    "sha256": "286cdb9c81f09644c0121805a928a82839aab34a889283a027a24e5d79267833",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/dashboard/ProfileIdentityCard.tsx",
+    "sha256": "d9b43c8cd133b14bd2d6fec336477251de207650bfc18b128982e27cbf7ef412",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/dashboard/PaymentMethodsCard.tsx",
+    "sha256": "a64630530332a22eb9b6cdd809a8ffbdbb3bd501abb08052e6c8cc611b5a691f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/dashboard/ProfileQuotaCard.tsx",
+    "sha256": "01d0fd971261ab4a8178c61e4a6c258d42ff43d2f315ee50ccbc06807f4266fa",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/dashboard/ProfileSubscriptionCard.tsx",
+    "sha256": "dda9c1184b7a350f78e75ffd85a4217076d8cb047f81d3d84b7ddca1e012eb63",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/common/BackgroundEffects.tsx",
+    "sha256": "7dcbaf325c5bcae41a40f8b9c64cd895074a449673d187b169538aba4f94eee6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/common/Navbar.tsx",
+    "sha256": "c9b40051f7dce916571bbd33c541d4847cd52588b4b04a6eb800e026f3204638",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/common/LogoutConfirmModal.tsx",
+    "sha256": "408af45b49357283cfaa0ef4912da59d09340cd08b42999ac6560650dee2fec6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/common/Announcements.tsx",
+    "sha256": "3046082b3dd709ec6e84bfcd465bae132b7234d5674629618feea7401863ea6b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/shared/UpgradeModal.tsx",
+    "sha256": "53ee859055ec5d6d7761419c2b08306ad4b1c5fb94fd764e3e7b1db1f5ff95b9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/shared/GuestDownloadModal.tsx",
+    "sha256": "a754eb1ae1bab5e08430626e7612c01ac30b30291858ed093c86d908d191abf6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/landing/PricingTierCard.tsx",
+    "sha256": "21238da6831cac017cdf689642838966b9e99da3b2519e5b0ce772c1bcb98a83",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/landing/DocumentTypeSelector.tsx",
+    "sha256": "66e2db2b4df159f892dc1f1f1c34567efa546ad0911adbaa5c2904e71d181d26",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/layout/SplitAuthLayout.tsx",
+    "sha256": "e19956cb671f5404fa6fbe0471293d74734d122d2f01d1d2b78897300afe7179",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/ui/Input.tsx",
+    "sha256": "e53a2836797bdf3d5df6ff714a3e3114c8665325051403c21308de80f389d1ea",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/ui/Stat.tsx",
+    "sha256": "67be376fbee9d918258463a82c4ba40d4022675c71b7f5f3da58ce386c53fd4b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/ui/Card.tsx",
+    "sha256": "e359985a5c78b3b85e8fbdaa06c5020729e0bcee0fbafab2881c0be2c1430d8d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/ui/Button.tsx",
+    "sha256": "ca62da268e66cd86b10e35929bc8ff33a67d96a70937e548923487513f76efac",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/ui/Badge.tsx",
+    "sha256": "64af0a7d5f12a77fb08102f961aba057f25797f3eb2a2ac5f632c3302d9f91cc",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/ui/Table.tsx",
+    "sha256": "8d40f577bdd898fe51c16d2cc5bc4f1449399ba11b3fb0dd09f70452fa7bc7c8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/ui/Spinner.tsx",
+    "sha256": "2c3e30cd329b058b02d343b60b0e5edb1bb19d0bab4623e156f6dc361308782f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/components/builder/__tests__/review.test.tsx",
+    "sha256": "c4a9cee238f3fe3a266860b57601c254c902a0485e84069a1b1fe7a143811482",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/utils/__tests__/exportAlignment.test.ts",
+    "sha256": "33cea60718b095c70da8ae7707020815c52585a68471b2b1cdd4284e881599a9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/utils/__tests__/documentRendering.test.ts",
+    "sha256": "b265505c7c48ad7e6298e89f5e373c4760851fac3d1cabca5bc421390c5bdfa7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/utils/__tests__/templateUpload.test.ts",
+    "sha256": "8b942e9d7f9b8979983c90e8790d890d15c5bf25d5d1071640179b818e0a3904",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/utils/__tests__/pdfDownload.test.ts",
+    "sha256": "f06a7a68a0fbbecec9d0828aa68c18bb6747aa1740ec4fcc222ca519760e887d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/store/__tests__/documentHydration.test.ts",
+    "sha256": "cb939afc22e1defe30ceb9eb05be6da07bc147b74ac3e056f842843ac8a23ac8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/store/__tests__/quotaStore.test.ts",
+    "sha256": "419a4cf0a4688cd9ad088829c58cf5c912e390ae5884e5276c94230623877b6f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/store/__tests__/guestAuth.test.ts",
+    "sha256": "c3f6020f0d9a31bb82b86155b0a2013865efce2255c16c7104d1e37486d149a5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/store/__tests__/documentExport.test.ts",
+    "sha256": "aaa7da1150e46fa896172ea4b548eb85445190e693c1405e59e9466aae4463d9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/store/__tests__/chatStore.test.ts",
+    "sha256": "3670f64c8b9df803ff2769625c5ad27baee20774fb4bf0fa9f3ce7994f2fd920",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/pages/dashboard/DashboardOverviewPage.tsx",
+    "sha256": "fc381598770aa121bbe44e83e54b900da72312a2390415920dad606e4204ebee",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx",
+    "sha256": "411210e7e3f25b6b4f23eaeda2977553db3910d4457be1f93b627f11e07035e2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/pages/dashboard/DashboardHistoryPage.tsx",
+    "sha256": "6096010669ff56090e2eff252fa167ba34357464ad1cf1cd6a45876e32161b00",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+    "sha256": "213a41b1793820318f01b1dcd520dadb67fd9df122a5e436a7eae14a66ca558b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/pages/dashboard/DashboardProfileSettingsPage.tsx",
+    "sha256": "9d8a0ba0f291bc6229aeaef849a54c5358bc2a2bfe907b574052f60e2d8a171c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/api/__tests__/errors.test.ts",
+    "sha256": "bcbeb131eb60283cd03d16adf34a9035b676d32b7134a2fac1e0a1899504a678",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/api/__tests__/payment.test.ts",
+    "sha256": "befc5d3a11103f2a4f0a73734f3eb584674f09bdb49ff516867ec0f2e9926834",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/api/__tests__/guest.test.ts",
+    "sha256": "88b1fbccaccb5313e75a3a89492539af3c3e21e1a5988f0f00d5bd991069b331",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "user-frontend/src/api/__tests__/ai.test.ts",
+    "sha256": "18aa867af8e1b699d433a5a78d81e2692a3437387637e0cecf23b0e5f6876a00",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/release-policy.json",
+    "sha256": "42f683581d67f7d6ad293ce1654a19169db63b8df666a48e67e08aa0d5d94316",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/tests/test_deployment.py",
+    "sha256": "c18dedb54b47a1d15e794b9448c04500d76d892ccba00a0121e2c1a7cd558f36",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/check-migrations.py",
+    "sha256": "44caad111d012b0ed0235ff320d3dc0df185d4188feda4816f5f591020ea4044",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/check-config-boundaries.py",
+    "sha256": "1afeadd619ead77c0d10a556712f34c443104ce2497964439e6efc88c2c3a803",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/ci-migrations.py",
+    "sha256": "8eab7fc92a77c42af20a22e55217d310dc786d9fec4dfa7ccee5482f87ad8a61",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/controller.py",
+    "sha256": "5797ba6823e1f2cc6b00218f1c8318e25665497a07123a6476a859cf31ae8b81",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/database_roles.py",
+    "sha256": "b9f45f8a33f41a21a38c5fb315050c76f6f39737e50951ae6d0225e5891051c6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/configure.py",
+    "sha256": "e461f32337aa424e569303e551b53c3dbfe608cb72e3158522ef3b8e8e137886",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/deploy.sh",
+    "sha256": "e4a99f9a0ad10dcd44a65fdafcd2a6fdb0f1553f17dd9221d43ecb5d85773596",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/check-build-secrets.py",
+    "sha256": "921a970cf65106bc82b2686984d9defde36bf63d55248428baedb0d16ba804fd",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/container-health.mjs",
+    "sha256": "cd01bdba2f32826fce457445b18d8e2e87266995eaa98b0d0dfe652b35a3925a",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/initialize-host.py",
+    "sha256": "e7032c28c274ef0b689756169f76d01f4e2f9f6501b86ea1cb9b80a5c0ff5ea7",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/install-ci-tools.py",
+    "sha256": "fc7d3b4cdb984d59eb50dded6684a0484d4dfbbabae5603ded5b048a2f2bf998",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/rollback.sh",
+    "sha256": "f0eaf0397abfc412107a45aee3b6abd7cf505be2a999aaea2b3b3017a1cc67c6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/ci-pdf.py",
+    "sha256": "a4588d05d4fb50764794b2b7faffd57861055c400761417902576809247fb505",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/monitor.sh",
+    "sha256": "1a239a05cd6a7748f79e046a1691575b0112b4077a9a796adbc9491bcc10aa57",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/container_health.py",
+    "sha256": "5093e810d7c4a439586a5739d3455b29d97215220b8c57dab09f8f8b2b0dbcf8",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/bootstrap-postgres.sh",
+    "sha256": "8ee35ff6454933cf87aaacda1fcfd2f4c8d20b36907a866eb1f66e01fddf50e9",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/backup.sh",
+    "sha256": "157a2cf9241458d3a09c98be95d78549b9b3257087eae27a6154fef6bef9afd3",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/health-check.sh",
+    "sha256": "6da2300aca18209fd55146bb386c6388c5c71d47318fa91191bb0729834f9795",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/validate-config.sh",
+    "sha256": "da915d5e2a18c639407ab9f869ddd6c9593eecfa718b26a00aeeeea68eb9c255",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/scripts/verify_release.py",
+    "sha256": "890bf023c7de32b0116cf6ec16196a050528a12f4014cc95023972ba53b91a6f",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/staging/postgres-entrypoint.sh",
+    "sha256": "fd2894405815081539c804d4ac0d25f05ae1cc1be7f25d025d13420141bbd658",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/staging/service-entrypoint.sh",
+    "sha256": "27334965d32c281167196cffae8e92a8ebe78232969113bd20e45c1e9a7aa5c4",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/staging/python.constraints.txt",
+    "sha256": "e62ee27b6765a60c92c9f5c0abe265a3dd48ea58b5f5b439ecb407c3c528addf",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/config/ci-tools.json",
+    "sha256": "4583ffdb93c39c70ddfd6056632e171e36b81b60d0a55b3161fe5b2aaadbee6d",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/config/config.schema.json",
+    "sha256": "48316aa622922f58a37d298b7043532fd04ee234d1be9aad2a2b38bccb4f10b4",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/config/runtime-map.json",
+    "sha256": "56369a3c1e5d12e4389dd8c35c332a15d9f1212dda53b2d399bee8e26bb20b2e",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/config/base-images.json",
+    "sha256": "5e464e9f238555025ac329a0525d05a8014f7c2a12cdac299240484962c4b3ec",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/config/migration-baseline.json",
+    "sha256": "4b3bc3ee3895b8ec25034b5eb7126eae68fad74f0571fa88dd35e7d707ce6a1c",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/hybrid-ai/compose.local.yml",
+    "sha256": "5ab3e08b8f7045ac8713074263460aae31feb16bcdc665939e7fbc6e18d67137",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/docker/compose.production.yml",
+    "sha256": "84049e9e509167c50464f61895359bcf04c5aabd2d7dc6d9d4700142c8225af5",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "deploy/docker/Caddyfile",
+    "sha256": "2ac3713f10394623ae2e87935b305ee563745ae6a5651424a2d5323936d5efe2",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "terraform/versions.tf",
+    "sha256": "a6d1a80a13ddebfa98f43c72e104b1f8d3e7521eb07a76b1887c3d893bc436d6",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "terraform/outputs.tf",
+    "sha256": "7164c0e6991c5d84275ea886133893d099783aee1bfbeb80e2a568f4469ae030",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "terraform/main.tf",
+    "sha256": "4d9f801c90b9b019e7339ff945d8923e1986058908d59d2727c275589bf30c8b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": "terraform/variables.tf",
+    "sha256": "ce712d80b55a88b53c46d0eb20d8aac99b465bb4ba6d906e05880101ea5b47c1",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": ".github/workflows/deploy-production.yml",
+    "sha256": "8463d176a24c151774fef59a0ca7f973f19d5f6affe9e26a289669986bd6ab79",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": ".github/workflows/build-and-push.yml",
+    "sha256": "2fe5c4cc00bb27f80d9bf4d7150cf62811f4ecf4e5a0af97523a32aab1aee56b",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": ".github/workflows/terraform-plan.yml",
+    "sha256": "7d8866c00a6aadee5be541ef7fd7aa34eb155a6b6ea7c2c4bf47a5b0a1d10ccc",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  },
+  {
+    "file": ".github/workflows/ci.yml",
+    "sha256": "047c76d2e75f435c960371cc35398cd29d206e6e11f8063b9b79c14a96cec976",
+    "method": "pattern and declaration inventory; does not imply manual semantic review"
+  }
+]

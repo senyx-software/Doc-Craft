@@ -1,0 +1,122 @@
+{
+  "observed_at_utc": "2026-10-22T04:02:02.562358+00:00",
+  "scope": "Read-only Bastion capacity, network topology, quota availability and IAM policy review",
+  "cloud_mutations": 0,
+  "operations": {
+    "bastion_limits": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "availability-domain": null,
+          "name": "bastion-count",
+          "scope-type": "REGION",
+          "value": 5
+        }
+      ]
+    },
+    "root_instances": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "display-name": "instance-20261021-1441",
+          "id": "ocid1.instance.oc1.ap-mumbai-1.anrg6ljr4wujdnqcezvcrlwboiuw3efznrg5ztawy7tes74vcz63m3yn46ra",
+          "lifecycle-state": "RUNNING",
+          "shape": "VM.Standard.E5.Flex"
+        }
+      ]
+    },
+    "vcn_subnets": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "cidr-block": "10.0.0.0/24",
+          "display-name": "subnet-20261021-1443",
+          "id": "ocid1.subnet.oc1.ap-mumbai-1.aaaaaaaa4wzncz742s7re55so73tez3i634bteu7tr2mwmq5p2ekkdzgdesq",
+          "prohibit-public-ip-on-vnic": false,
+          "route-table-id": "ocid1.routetable.oc1.ap-mumbai-1.aaaaaaaar6v3tewhfiowjwp5tog3b5zizpulpfs7gmrydjygz4fn3df5txlq",
+          "security-list-ids": [
+            "ocid1.securitylist.oc1.ap-mumbai-1.aaaaaaaavg57ppqyydtwfwiqxxn6kaqp7lj6e5icokadxl2fzheyphrqfh3q"
+          ]
+        }
+      ]
+    },
+    "network_services": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "cidr-block": "oci-bom-objectstorage",
+          "id": "ocid1.service.oc1.ap-mumbai-1.aaaaaaaa5e4aje46cnkz4zjcfdnu3wnfp3rkienginyghcbanu6jflmqe2oq",
+          "name": "OCI BOM Object Storage"
+        },
+        {
+          "cidr-block": "all-bom-services-in-oracle-services-network",
+          "id": "ocid1.service.oc1.ap-mumbai-1.aaaaaaaalgcbq3vrynslsik576exhjek25p2j5abr6fpcrrsfr4d6h27jikq",
+          "name": "All BOM Services In Oracle Services Network"
+        }
+      ]
+    },
+    "iam_policies": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "id": "ocid1.policy.oc1..aaaaaaaaheyjbibce6l42t35eej5ixj22k3tjiu6fhe5jbo4osz36k2eemsa",
+          "lifecycle-state": "ACTIVE",
+          "name": "Tenant Admin Policy",
+          "statements": [
+            "ALLOW GROUP Administrators to manage all-resources IN TENANCY"
+          ]
+        }
+      ]
+    },
+    "reserved_ip_availability": {
+      "status": "OBSERVED",
+      "data": {
+        "available": 6,
+        "effective-quota-value": null,
+        "fractional-availability": 6.0,
+        "fractional-usage": 0.0,
+        "used": 0
+      }
+    },
+    "a1_core_availability": {
+      "status": "OBSERVED",
+      "data": {
+        "available": 41,
+        "effective-quota-value": null,
+        "fractional-availability": 41.0,
+        "fractional-usage": 0.0,
+        "used": 0
+      }
+    },
+    "a1_memory_availability": {
+      "status": "OBSERVED",
+      "data": {
+        "available": 277,
+        "effective-quota-value": null,
+        "fractional-availability": 277.0,
+        "fractional-usage": 0.0,
+        "used": 0
+      }
+    },
+    "e5_core_availability": {
+      "status": "OBSERVED",
+      "data": {
+        "available": 12,
+        "effective-quota-value": null,
+        "fractional-availability": 12.0,
+        "fractional-usage": 1.0,
+        "used": 1
+      }
+    },
+    "iam_user_groups": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "id": "ocid1.group.oc1..aaaaaaaadva2zyksxhtvfrrzzzjqaefchhwvevqzbes6r2lphpju3kgqggfq",
+          "lifecycle-state": "ACTIVE",
+          "name": "Administrators"
+        }
+      ]
+    }
+  }
+}

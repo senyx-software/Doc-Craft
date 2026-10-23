@@ -1,0 +1,5689 @@
+{
+  "scope": "Every source-declared supported interaction attribute; interactions are not independent backend features",
+  "interactions": [
+    {
+      "file": "admin/src/App.tsx",
+      "line": 185,
+      "event": "onClick",
+      "handler": "{() => toast.info('Need Administrator Access?', 'Contact tech@senyxsoftware.com for role assignment.')}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 200,
+      "event": "onSubmit",
+      "handler": "{handleLoginSubmit}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 212,
+      "event": "onChange",
+      "handler": "{(e) => setEmail(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 231,
+      "event": "onChange",
+      "handler": "{(e) => setPassword(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 238,
+      "event": "onClick",
+      "handler": "{() => setShowPassword(!showPassword)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 248,
+      "event": "onClick",
+      "handler": "{() => {\n                    setForgotEmail(email);\n                    setShowForgotModal(true);\n                  }}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 282,
+      "event": "onClick",
+      "handler": "{() => setShowTotpModal(false)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 300,
+      "event": "onSubmit",
+      "handler": "{handleVerify2FACode}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 308,
+      "event": "onChange",
+      "handler": "{(e) => setTotpCode(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 321,
+      "event": "onClick",
+      "handler": "{() => setShowTotpModal(false)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 344,
+      "event": "onClick",
+      "handler": "{() => setShowForgotModal(false)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 365,
+      "event": "onSubmit",
+      "handler": "{handleRequestCode}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 373,
+      "event": "onChange",
+      "handler": "{(e) => setForgotEmail(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 382,
+      "event": "onClick",
+      "handler": "{() => setShowForgotModal(false)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 392,
+      "event": "onSubmit",
+      "handler": "{handleResetPassword}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 399,
+      "event": "onChange",
+      "handler": "{(e) => setVerificationCode(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 408,
+      "event": "onChange",
+      "handler": "{(e) => setNewPassword(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/App.tsx",
+      "line": 417,
+      "event": "onClick",
+      "handler": "{() => setForgotStep('request')}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/components/AdminSidebar.tsx",
+      "line": 101,
+      "event": "onClick",
+      "handler": "{() => onSelect(item.id)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/AdminSidebar.tsx",
+      "line": 123,
+      "event": "onClick",
+      "handler": "{() => toggleSection(sec.title)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/AdminSidebar.tsx",
+      "line": 149,
+      "event": "onClick",
+      "handler": "{() => onSelect(item.id)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/EntitlementControls.tsx",
+      "line": 25,
+      "event": "onChange",
+      "handler": "{event=>setPlan(event.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/components/EntitlementControls.tsx",
+      "line": 26,
+      "event": "onChange",
+      "handler": "{event=>setFeatures(event.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "admin/src/components/EntitlementControls.tsx",
+      "line": 28,
+      "event": "onChange",
+      "handler": "{event=>setExpiry(event.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/components/EntitlementControls.tsx",
+      "line": 29,
+      "event": "onChange",
+      "handler": "{event=>setReason(event.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/components/EntitlementControls.tsx",
+      "line": 30,
+      "event": "onClick",
+      "handler": "{()=>void save()}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/EntitlementControls.tsx",
+      "line": 31,
+      "event": "onClick",
+      "handler": "{()=>void save(true)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/TemplateUpload.tsx",
+      "line": 14,
+      "event": "onChange",
+      "handler": "{e=>setName(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/components/TemplateUpload.tsx",
+      "line": 15,
+      "event": "onChange",
+      "handler": "{e=>setOwner(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/components/TemplateUpload.tsx",
+      "line": 16,
+      "event": "onChange",
+      "handler": "{e=>setKind(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/components/TemplateUpload.tsx",
+      "line": 17,
+      "event": "onChange",
+      "handler": "{e=>setScope(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/components/TemplateUpload.tsx",
+      "line": 18,
+      "event": "onChange",
+      "handler": "{e=>setPremium(e.target.checked)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/components/TemplateUpload.tsx",
+      "line": 19,
+      "event": "onChange",
+      "handler": "{e=>setFamily(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/components/TemplateUpload.tsx",
+      "line": 20,
+      "event": "onChange",
+      "handler": "{e=>setSource(e.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "admin/src/components/TemplateUpload.tsx",
+      "line": 21,
+      "event": "onChange",
+      "handler": "{e=>setAssets(e.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "admin/src/components/TemplateUpload.tsx",
+      "line": 23,
+      "event": "onClick",
+      "handler": "{()=>void upload()}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminNavbar.tsx",
+      "line": 48,
+      "event": "onClick",
+      "handler": "{toggleTheme}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 272,
+      "event": "onChange",
+      "handler": "{(e) => {\n              setSearchQuery(e.target.value);\n              openSearch();\n            }}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 295,
+      "event": "onClick",
+      "handler": "{() => goTo(app.id)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 313,
+      "event": "onClick",
+      "handler": "{() => goTo(item.id)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 336,
+      "event": "onClick",
+      "handler": "{() => setOpenMenu(openMenu === 'language' ? null : 'language')}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 346,
+      "event": "onClick",
+      "handler": "{() => setOpenMenu(null)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 357,
+      "event": "onClick",
+      "handler": "{toggleFullscreen}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 362,
+      "event": "onClick",
+      "handler": "{toggleTheme}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 369,
+      "event": "onClick",
+      "handler": "{() => setOpenMenu(openMenu === 'apps' ? null : 'apps')}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 385,
+      "event": "onClick",
+      "handler": "{() => goTo(app.id)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 402,
+      "event": "onClick",
+      "handler": "{() => setOpenMenu(openMenu === 'notifications' ? null : 'notifications')}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 420,
+      "event": "onClick",
+      "handler": "{() => {\n                      setOpenMenu(null);\n                      setShowComposeModal(true);\n                    }}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 430,
+      "event": "onClick",
+      "handler": "{fetchFailedNotifications}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 473,
+      "event": "onClick",
+      "handler": "{() => goTo('not_email_logs')}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 486,
+      "event": "onClick",
+      "handler": "{() => setOpenMenu(openMenu === 'profile' ? null : 'profile')}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 507,
+      "event": "onClick",
+      "handler": "{() => setShowLogoutModal(true)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 525,
+      "event": "onClick",
+      "handler": "{() => goTo('set_profile')}",
+      "element": "TopbarMenuItem"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 526,
+      "event": "onClick",
+      "handler": "{() => goTo('set_preferences')}",
+      "element": "TopbarMenuItem"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 527,
+      "event": "onClick",
+      "handler": "{() => goTo('set_2fa')}",
+      "element": "TopbarMenuItem"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 528,
+      "event": "onClick",
+      "handler": "{() => goTo('sec_audit')}",
+      "element": "TopbarMenuItem"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 539,
+      "event": "onClick",
+      "handler": "{() => {\n                    setOpenMenu(null);\n                    setShowLogoutModal(true);\n                  }}",
+      "element": "TopbarMenuItem"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 569,
+      "event": "onClick",
+      "handler": "{() => setShowComposeModal(false)}",
+      "element": "div"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 573,
+      "event": "onClick",
+      "handler": "{(e) => e.stopPropagation()}",
+      "element": "div"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 581,
+      "event": "onClick",
+      "handler": "{() => setShowComposeModal(false)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 588,
+      "event": "onSubmit",
+      "handler": "{handleComposeSubmit}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 596,
+      "event": "onChange",
+      "handler": "{(e) => setComposeTitle(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 608,
+      "event": "onChange",
+      "handler": "{(e) => setComposeMessage(e.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 621,
+      "event": "onChange",
+      "handler": "{(e) => setComposeSeverity(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 631,
+      "event": "onClick",
+      "handler": "{() => setShowComposeModal(false)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "line": 662,
+      "event": "onClick",
+      "handler": "{onClick}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/common/ToastContainer.tsx",
+      "line": 42,
+      "event": "onClick",
+      "handler": "{() => dismiss(t.id)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/ui/DateRangeFilter.tsx",
+      "line": 44,
+      "event": "onClick",
+      "handler": "{() => setOpen((v) => !v)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/ui/DateRangeFilter.tsx",
+      "line": 54,
+      "event": "onClick",
+      "handler": "{() => setOpen(false)}",
+      "element": "div"
+    },
+    {
+      "file": "admin/src/components/ui/DateRangeFilter.tsx",
+      "line": 59,
+      "event": "onClick",
+      "handler": "{() => selectPreset(p)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/ui/DateRangeFilter.tsx",
+      "line": 77,
+      "event": "onChange",
+      "handler": "{(e) => onChange({ ...value, from: e.target.value })}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/components/ui/DateRangeFilter.tsx",
+      "line": 88,
+      "event": "onChange",
+      "handler": "{(e) => onChange({ ...value, to: e.target.value })}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/components/ui/FontFacePicker.tsx",
+      "line": 76,
+      "event": "onClick",
+      "handler": "{() => { setQuery(''); setOpen(o => !o); }}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/ui/FontFacePicker.tsx",
+      "line": 92,
+      "event": "onChange",
+      "handler": "{(e) => setQuery(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/components/ui/FontFacePicker.tsx",
+      "line": 110,
+      "event": "onClick",
+      "handler": "{() => handlePick(f.family)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/ui/Pagination.tsx",
+      "line": 26,
+      "event": "onClick",
+      "handler": "{() => onChange(Math.max(1, page - 1))}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/ui/Pagination.tsx",
+      "line": 37,
+      "event": "onClick",
+      "handler": "{() => onChange(Math.min(totalPages, page + 1))}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/ui/SortableHeader.tsx",
+      "line": 21,
+      "event": "onClick",
+      "handler": "{() => onSort(sortKey)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/ui/SystemDialogModal.tsx",
+      "line": 51,
+      "event": "onClick",
+      "handler": "{(e) => e.stopPropagation()}",
+      "element": "div"
+    },
+    {
+      "file": "admin/src/components/ui/SystemDialogModal.tsx",
+      "line": 68,
+      "event": "onClick",
+      "handler": "{handleClose}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/ui/SystemDialogModal.tsx",
+      "line": 81,
+      "event": "onClick",
+      "handler": "{handleClose}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/components/ui/SystemDialogModal.tsx",
+      "line": 88,
+      "event": "onClick",
+      "handler": "{handleConfirm}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/components/ui/TotpPromptModal.tsx",
+      "line": 58,
+      "event": "onClick",
+      "handler": "{cancel}",
+      "element": "div"
+    },
+    {
+      "file": "admin/src/components/ui/TotpPromptModal.tsx",
+      "line": 60,
+      "event": "onSubmit",
+      "handler": "{handleSubmit}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/components/ui/TotpPromptModal.tsx",
+      "line": 61,
+      "event": "onClick",
+      "handler": "{(e) => e.stopPropagation()}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/components/ui/TotpPromptModal.tsx",
+      "line": 78,
+      "event": "onClick",
+      "handler": "{cancel}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/ui/TotpPromptModal.tsx",
+      "line": 93,
+      "event": "onChange",
+      "handler": "{(e) => setCode(e.target.value.replace(/[^0-9]/g, '').slice(0, 6))}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/components/ui/TotpPromptModal.tsx",
+      "line": 103,
+      "event": "onClick",
+      "handler": "{handleSendEmailCode}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/components/ui/TotpPromptModal.tsx",
+      "line": 115,
+      "event": "onClick",
+      "handler": "{cancel}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/DashboardPage.tsx",
+      "line": 32,
+      "event": "onClick",
+      "handler": "{() => this.setState({ hasError: false, error: null })}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/DashboardPage.tsx",
+      "line": 168,
+      "event": "onClick",
+      "handler": "{() => setRefreshVersion(version => version + 1)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/UserDetailPage.tsx",
+      "line": 127,
+      "event": "onClick",
+      "handler": "{onBack}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/UserDetailPage.tsx",
+      "line": 153,
+      "event": "onClick",
+      "handler": "{handleToggleStatus}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/UserDetailPage.tsx",
+      "line": 233,
+      "event": "onSubmit",
+      "handler": "{handleApplyOverride}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/UserDetailPage.tsx",
+      "line": 240,
+      "event": "onChange",
+      "handler": "{(e) => setOverrideStatus(e.target.value === 'banned' ? 'banned' : e.target.value === 'suspended' ? 'suspended' : 'active')}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/UserDetailPage.tsx",
+      "line": 254,
+      "event": "onChange",
+      "handler": "{(e) => setOverridePlan(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/UserDetailPage.tsx",
+      "line": 265,
+      "event": "onChange",
+      "handler": "{(e) => setOverrideQuota(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 23,
+      "event": "onChange",
+      "handler": "{event=>onChange(field.key,event.target.checked)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 24,
+      "event": "onChange",
+      "handler": "{event=>onChange(field.key,event.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 25,
+      "event": "onChange",
+      "handler": "{event=>onChange(field.key,field.nullable&&event.target.value===''?null:field.type==='number'?Number(event.target.value):event.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 30,
+      "event": "onClick",
+      "handler": "{onClose}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 68,
+      "event": "onChange",
+      "handler": "{setPage}",
+      "element": "Pagination"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 69,
+      "event": "onChange",
+      "handler": "{event=>{setSearch(event.target.value);setPage(1);}}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 70,
+      "event": "onChange",
+      "handler": "{event=>onChange(event.target.value||null)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 73,
+      "event": "onClick",
+      "handler": "{()=>void change(async()=>{},'Configuration refreshed.')}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 77,
+      "event": "onClick",
+      "handler": "{()=>setProvider(local?{...emptyProvider(),kind:'ollama',locality:'local',credential_required:false}:emptyProvider())}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 78,
+      "event": "onClick",
+      "handler": "{()=>setProvider({...item})}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 78,
+      "event": "onClick",
+      "handler": "{()=>void change(()=>adminApiClient.ai.provider(snapshot.version,{...item,enabled:!item.enabled}))}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 78,
+      "event": "onClick",
+      "handler": "{()=>void change(()=>adminApiClient.ai.remove('providers',item.id,snapshot.version),'Provider deleted.')}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 82,
+      "event": "onClick",
+      "handler": "{()=>setModel(emptyModel(config.providers[0]))}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 82,
+      "event": "onClick",
+      "handler": "{()=>setModel({...item})}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 82,
+      "event": "onClick",
+      "handler": "{()=>void test(item.id)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 82,
+      "event": "onClick",
+      "handler": "{()=>void change(()=>adminApiClient.ai.model(snapshot.version,{...item,enabled:!item.enabled}))}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 82,
+      "event": "onClick",
+      "handler": "{()=>void change(()=>adminApiClient.ai.remove('models',item.id,snapshot.version),'Model deleted.')}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 84,
+      "event": "onClick",
+      "handler": "{()=>void change(()=>adminApiClient.ai.assignments(snapshot.version,plans))}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 84,
+      "event": "onClick",
+      "handler": "{()=>setPlans({...plans,[plan.code]:emptyPolicy()})}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 84,
+      "event": "onChange",
+      "handler": "{(key,value)=>setPlans({...plans,[plan.code]:{...policy,[key]:value}})}",
+      "element": "Fields"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 87,
+      "event": "onChange",
+      "handler": "{event=>setPlans({...plans,[plan.code]:{...policy,allowed_features:event.target.checked?[...policy.allowed_features,feature]:policy.allowed_features.filter(valu",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 87,
+      "event": "onChange",
+      "handler": "{event=>setPlans({...plans,[plan.code]:{...policy,fallback_on:event.target.checked?[...policy.fallback_on,reason]:policy.fallback_on.filter(value=>value!==reaso",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 89,
+      "event": "onChange",
+      "handler": "{(key,value)=>setRouting({...routing,[key]:value})}",
+      "element": "Fields"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 89,
+      "event": "onClick",
+      "handler": "{()=>void change(()=>adminApiClient.ai.routing(snapshot.version,routing))}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 89,
+      "event": "onChange",
+      "handler": "{event=>setRollbackVersion(event.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 89,
+      "event": "onClick",
+      "handler": "{()=>void change(()=>adminApiClient.ai.rollback(snapshot.version,Number(rollbackVersion)),'Previous policy restored as a new version.')}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 91,
+      "event": "onClick",
+      "handler": "{()=>{setCredentialProvider(item.id);setSecret('');}}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 91,
+      "event": "onClick",
+      "handler": "{()=>void change(()=>adminApiClient.ai.revoke(item.id),'Credential revoked.')}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 95,
+      "event": "onClick",
+      "handler": "{()=>void test(item.id)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 99,
+      "event": "onSubmit",
+      "handler": "{event=>{event.preventDefault();void change(()=>adminApiClient.ai.provider(snapshot.version,provider));}}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 99,
+      "event": "onChange",
+      "handler": "{(key,value)=>setProvider({...provider,[key]:value})}",
+      "element": "Fields"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 100,
+      "event": "onSubmit",
+      "handler": "{event=>{event.preventDefault();void change(()=>adminApiClient.ai.model(snapshot.version,model));}}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 100,
+      "event": "onChange",
+      "handler": "{event=>{const p=config.providers.find(item=>item.id===event.target.value);setModel({...model,provider_id:event.target.value,runtime:p?.kind==='ollama'?'ollama'",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 100,
+      "event": "onChange",
+      "handler": "{(key,value)=>setModel({...model,[key]:value})}",
+      "element": "Fields"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 100,
+      "event": "onChange",
+      "handler": "{event=>setModel({...model,ollama_think:event.target.value==='default'?null:event.target.value==='true'})}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 101,
+      "event": "onSubmit",
+      "handler": "{event=>{event.preventDefault();const value=secret;setSecret('');setCredentialProvider('');void change(()=>adminApiClient.ai.credential(credentialProvider,value",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "line": 101,
+      "event": "onChange",
+      "handler": "{event=>setSecret(event.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AnalyticsView.tsx",
+      "line": 215,
+      "event": "onChange",
+      "handler": "{setDateRange}",
+      "element": "DateRangeFilter"
+    },
+    {
+      "file": "admin/src/pages/subviews/AnalyticsView.tsx",
+      "line": 217,
+      "event": "onClick",
+      "handler": "{loadAnalyticsData}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AnalyticsView.tsx",
+      "line": 328,
+      "event": "onClick",
+      "handler": "{loadAnalyticsData}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AnalyticsView.tsx",
+      "line": 337,
+      "event": "onClick",
+      "handler": "{handleTrackTestEvent}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AnalyticsView.tsx",
+      "line": 362,
+      "event": "onChange",
+      "handler": "{(e) => setLocationSearch(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AnalyticsView.tsx",
+      "line": 369,
+      "event": "onChange",
+      "handler": "{(e) => setLocationStatusFilter(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/AnalyticsView.tsx",
+      "line": 413,
+      "event": "onChange",
+      "handler": "{locationPagination.setPage}",
+      "element": "Pagination"
+    },
+    {
+      "file": "admin/src/pages/subviews/AnalyticsView.tsx",
+      "line": 489,
+      "event": "onChange",
+      "handler": "{(e) => setDurationSearch(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AnalyticsView.tsx",
+      "line": 525,
+      "event": "onChange",
+      "handler": "{durationPagination.setPage}",
+      "element": "Pagination"
+    },
+    {
+      "file": "admin/src/pages/subviews/AnalyticsView.tsx",
+      "line": 550,
+      "event": "onChange",
+      "handler": "{(e) => setClickSearch(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AnalyticsView.tsx",
+      "line": 561,
+      "event": "onChange",
+      "handler": "{(e) => setMinClicks(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AnalyticsView.tsx",
+      "line": 596,
+      "event": "onChange",
+      "handler": "{clickPagination.setPage}",
+      "element": "Pagination"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 442,
+      "event": "onClick",
+      "handler": "{loadData}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 445,
+      "event": "onClick",
+      "handler": "{openCreateModal}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 514,
+      "event": "onClick",
+      "handler": "{() => openEditModal(rule)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 521,
+      "event": "onClick",
+      "handler": "{() => handleToggleRule(rule)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 530,
+      "event": "onClick",
+      "handler": "{() => handleDeleteRule(rule.id, rule.name)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 567,
+      "event": "onChange",
+      "handler": "{(e) => setDryRunRuleId(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 576,
+      "event": "onChange",
+      "handler": "{(e) => setDryRunPayload(e.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 578,
+      "event": "onClick",
+      "handler": "{handleDryRun}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 611,
+      "event": "onClick",
+      "handler": "{() => setShowRuleModal(false)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 614,
+      "event": "onSubmit",
+      "handler": "{handleSaveRule}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 620,
+      "event": "onChange",
+      "handler": "{(e) => setRuleName(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 627,
+      "event": "onChange",
+      "handler": "{(e) => setRuleTrigger(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 635,
+      "event": "onChange",
+      "handler": "{(e) => setRuleDescription(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 645,
+      "event": "onClick",
+      "handler": "{addConditionRow}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 655,
+      "event": "onChange",
+      "handler": "{(e) => updateCondition(i, 'field', e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 659,
+      "event": "onChange",
+      "handler": "{(e) => updateCondition(i, 'operator', e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 663,
+      "event": "onChange",
+      "handler": "{(e) => updateCondition(i, 'value', e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 667,
+      "event": "onClick",
+      "handler": "{() => removeConditionRow(i)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 678,
+      "event": "onClick",
+      "handler": "{addActionRow}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 685,
+      "event": "onChange",
+      "handler": "{(e) => updateAction(i, 'action_type', e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 689,
+      "event": "onChange",
+      "handler": "{(e) => updateAction(i, 'target', e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 693,
+      "event": "onClick",
+      "handler": "{() => removeActionRow(i)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 700,
+      "event": "onChange",
+      "handler": "{(e) => updateAction(i, 'payload', e.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 717,
+      "event": "onChange",
+      "handler": "{(e) => setRuleRetryLimit(Number(e.target.value))}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 726,
+      "event": "onClick",
+      "handler": "{() => setShowRuleModal(false)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 785,
+      "event": "onChange",
+      "handler": "{(e) => setLogStatusFilter(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 793,
+      "event": "onChange",
+      "handler": "{(e) => setLogRuleFilter(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 797,
+      "event": "onClick",
+      "handler": "{loadData}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 825,
+      "event": "onClick",
+      "handler": "{() => setExpandedLogId(expandedLogId === log.id ? null : log.id)}",
+      "element": "tr"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 931,
+      "event": "onSubmit",
+      "handler": "{handleEmit}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 939,
+      "event": "onClick",
+      "handler": "{() => setEventName(ev)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 952,
+      "event": "onChange",
+      "handler": "{(e) => setEventName(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "line": 961,
+      "event": "onChange",
+      "handler": "{(e) => setEventPayload(e.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "admin/src/pages/subviews/ConfigView.tsx",
+      "line": 184,
+      "event": "onClick",
+      "handler": "{() => setSelectedDomain(domain.id)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/ConfigView.tsx",
+      "line": 223,
+      "event": "onClick",
+      "handler": "{() => setActiveTab('editor')}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/ConfigView.tsx",
+      "line": 231,
+      "event": "onClick",
+      "handler": "{() => setActiveTab('history')}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/ConfigView.tsx",
+      "line": 240,
+      "event": "onClick",
+      "handler": "{() => loadDomainConfig(selectedDomain)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/ConfigView.tsx",
+      "line": 276,
+      "event": "onChange",
+      "handler": "{(e) => !isReadOnlyDomain && setJsonText(e.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "admin/src/pages/subviews/ConfigView.tsx",
+      "line": 297,
+      "event": "onClick",
+      "handler": "{() => setJsonText(JSON.stringify(configData, null, 2))}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/ConfigView.tsx",
+      "line": 301,
+      "event": "onClick",
+      "handler": "{handleSave}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "line": 238,
+      "event": "onChange",
+      "handler": "{(e) => setPeriodFilter(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "line": 244,
+      "event": "onChange",
+      "handler": "{(e) => setCategoryFilter(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "line": 255,
+      "event": "onClick",
+      "handler": "{() => setIsModalOpen(true)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "line": 268,
+      "event": "onClick",
+      "handler": "{() => setIsModalOpen(true)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "line": 308,
+      "event": "onClick",
+      "handler": "{() => handleDelete(item.id)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "line": 324,
+      "event": "onChange",
+      "handler": "{entryPagination.setPage}",
+      "element": "Pagination"
+    },
+    {
+      "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "line": 374,
+      "event": "onClick",
+      "handler": "{() => setIsModalOpen(false)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "line": 385,
+      "event": "onSubmit",
+      "handler": "{handleCreate}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "line": 392,
+      "event": "onChange",
+      "handler": "{(e) => setForm({ ...form, category: e.target.value })}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "line": 412,
+      "event": "onChange",
+      "handler": "{(e) => setForm({ ...form, description: e.target.value })}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "line": 428,
+      "event": "onChange",
+      "handler": "{(e) => setForm({ ...form, amount_usd: e.target.value })}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "line": 441,
+      "event": "onChange",
+      "handler": "{(e) => setForm({ ...form, period_month: e.target.value })}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "line": 456,
+      "event": "onChange",
+      "handler": "{(e) => setForm({ ...form, vendor: e.target.value })}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "line": 469,
+      "event": "onChange",
+      "handler": "{(e) => setForm({ ...form, invoice_ref: e.target.value })}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "line": 476,
+      "event": "onClick",
+      "handler": "{() => setIsModalOpen(false)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/DocumentsView.tsx",
+      "line": 153,
+      "event": "onClick",
+      "handler": "{loadTemplatesFromApi}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/DocumentsView.tsx",
+      "line": 188,
+      "event": "onClick",
+      "handler": "{() => void openPreview(t)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/DocumentsView.tsx",
+      "line": 192,
+      "event": "onClick",
+      "handler": "{() => handlePublishTemplate(t.id)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/DocumentsView.tsx",
+      "line": 196,
+      "event": "onClick",
+      "handler": "{async()=>{\n                        try {await adminApiClient.withdrawTemplate(t.id);await loadTemplatesFromApi();toast.success('Template withdrawn','Availabili",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/DocumentsView.tsx",
+      "line": 206,
+      "event": "onChange",
+      "handler": "{templatePagination.setPage}",
+      "element": "Pagination"
+    },
+    {
+      "file": "admin/src/pages/subviews/DocumentsView.tsx",
+      "line": 221,
+      "event": "onClick",
+      "handler": "{closePreview}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/DocumentsView.tsx",
+      "line": 228,
+      "event": "onSubmit",
+      "handler": "{event=>{event.preventDefault();void renameTemplate();}}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/DocumentsView.tsx",
+      "line": 229,
+      "event": "onChange",
+      "handler": "{event=>setTemplateName(event.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/DocumentsView.tsx",
+      "line": 233,
+      "event": "onChange",
+      "handler": "{event=>setReviewed(event.target.checked)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/DocumentsView.tsx",
+      "line": 234,
+      "event": "onChange",
+      "handler": "{event=>setAudience(event.target.value as 'private'|'public')}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/DocumentsView.tsx",
+      "line": 235,
+      "event": "onChange",
+      "handler": "{event=>setReviewNotes(event.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "admin/src/pages/subviews/DocumentsView.tsx",
+      "line": 237,
+      "event": "onClick",
+      "handler": "{()=>void submitReview('reject')}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/DocumentsView.tsx",
+      "line": 237,
+      "event": "onClick",
+      "handler": "{()=>void submitReview('approve')}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/DocumentsView.tsx",
+      "line": 249,
+      "event": "onClick",
+      "handler": "{() => setPreviewTemplate(null)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/DocumentsView.tsx",
+      "line": 267,
+      "event": "onClick",
+      "handler": "{loadDocLogs}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/GenerationsView.tsx",
+      "line": 90,
+      "event": "onChange",
+      "handler": "{e => setSearchTerm(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/GenerationsView.tsx",
+      "line": 97,
+      "event": "onChange",
+      "handler": "{e => setDateFilter(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/GenerationsView.tsx",
+      "line": 107,
+      "event": "onChange",
+      "handler": "{e => setStartDate(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/GenerationsView.tsx",
+      "line": 110,
+      "event": "onChange",
+      "handler": "{e => setEndDate(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/HomeView.tsx",
+      "line": 266,
+      "event": "onClick",
+      "handler": "{loadTelemetryFromApi}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/HomeView.tsx",
+      "line": 316,
+      "event": "onSubmit",
+      "handler": "{handlePostAnnouncement}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/HomeView.tsx",
+      "line": 320,
+      "event": "onChange",
+      "handler": "{(e) => setNewAnnouncementText(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/HomeView.tsx",
+      "line": 341,
+      "event": "onClick",
+      "handler": "{() => handleDeleteAnnouncement(a.id)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/InfrastructureView.tsx",
+      "line": 145,
+      "event": "onClick",
+      "handler": "{() => setActiveTab('sessions')}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/InfrastructureView.tsx",
+      "line": 155,
+      "event": "onClick",
+      "handler": "{() => setActiveTab('templates')}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/InfrastructureView.tsx",
+      "line": 197,
+      "event": "onClick",
+      "handler": "{() => handleInspectSession(s)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/InfrastructureView.tsx",
+      "line": 242,
+      "event": "onClick",
+      "handler": "{() => handleInspectTemplate(t)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/InfrastructureView.tsx",
+      "line": 269,
+      "event": "onClick",
+      "handler": "{() => setSelectedResource(null)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/InfrastructureView.tsx",
+      "line": 276,
+      "event": "onClick",
+      "handler": "{copyToClipboard}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/InfrastructureView.tsx",
+      "line": 294,
+      "event": "onClick",
+      "handler": "{() => setSelectedResource(null)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/InfrastructureView.tsx",
+      "line": 351,
+      "event": "onClick",
+      "handler": "{loadHealthFromApi}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 286,
+      "event": "onChange",
+      "handler": "{e => setEmailCategoryFilter(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 301,
+      "event": "onClick",
+      "handler": "{() => setEmailStatusFilter('all')}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 307,
+      "event": "onClick",
+      "handler": "{() => setEmailStatusFilter('sent')}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 313,
+      "event": "onClick",
+      "handler": "{() => setEmailStatusFilter('failed')}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 320,
+      "event": "onClick",
+      "handler": "{loadAllNotificationData}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 345,
+      "event": "onClick",
+      "handler": "{() => setSelectedLogPayload(log)}",
+      "element": "tr"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 379,
+      "event": "onClick",
+      "handler": "{() => setSelectedLogPayload(null)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 413,
+      "event": "onClick",
+      "handler": "{() => setSelectedLogPayload(null)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 436,
+      "event": "onClick",
+      "handler": "{() => setShowAnnouncementModal(true)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 458,
+      "event": "onClick",
+      "handler": "{() => handleToggleAnnouncement(anc.id, anc.is_active)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 465,
+      "event": "onClick",
+      "handler": "{() => handleDeleteAnnouncement(anc.id)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 482,
+      "event": "onClick",
+      "handler": "{() => setShowAnnouncementModal(false)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 485,
+      "event": "onSubmit",
+      "handler": "{handlePublishAnnouncement}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 486,
+      "event": "onChange",
+      "handler": "{e => setAncTitle(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 489,
+      "event": "onChange",
+      "handler": "{e => setAncSeverity(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 497,
+      "event": "onChange",
+      "handler": "{e => setAncMessage(e.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 500,
+      "event": "onClick",
+      "handler": "{() => setShowAnnouncementModal(false)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 525,
+      "event": "onClick",
+      "handler": "{() => setShowCreateTemplateModal(true)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 554,
+      "event": "onClick",
+      "handler": "{() => setEditingTemplate(tpl)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 558,
+      "event": "onClick",
+      "handler": "{() => handleDeleteTemplate(tpl.id, tpl.name)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 585,
+      "event": "onSubmit",
+      "handler": "{handleSaveServerSettings}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 588,
+      "event": "onChange",
+      "handler": "{e=>setServerSettings({...serverSettings,email_provider:e.target.value as 'resend'|'disabled'})}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 592,
+      "event": "onChange",
+      "handler": "{e => setServerSettings({ ...serverSettings, sender_email: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 593,
+      "event": "onChange",
+      "handler": "{e => setServerSettings({ ...serverSettings, sender_name: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 595,
+      "event": "onChange",
+      "handler": "{e => setServerSettings({ ...serverSettings, rate_limit_per_minute: parseInt(e.target.value) })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 599,
+      "event": "onChange",
+      "handler": "{e => setServerSettings({ ...serverSettings, webhook_url: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 617,
+      "event": "onClick",
+      "handler": "{() => setEditingTemplate(null)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 620,
+      "event": "onSubmit",
+      "handler": "{handleSaveTemplate}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 621,
+      "event": "onChange",
+      "handler": "{e => setEditingTemplate({ ...editingTemplate, subject: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 624,
+      "event": "onChange",
+      "handler": "{e => setEditingTemplate({ ...editingTemplate, body_html: e.target.value })}",
+      "element": "textarea"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 627,
+      "event": "onChange",
+      "handler": "{e => setEditingTemplate({ ...editingTemplate, is_active: e.target.checked })}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 632,
+      "event": "onClick",
+      "handler": "{() => setEditingTemplate(null)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 646,
+      "event": "onClick",
+      "handler": "{() => setShowCreateTemplateModal(false)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 649,
+      "event": "onSubmit",
+      "handler": "{handleCreateTemplate}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 650,
+      "event": "onChange",
+      "handler": "{e => setNewTplName(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 651,
+      "event": "onChange",
+      "handler": "{e => setNewTplSubject(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 654,
+      "event": "onChange",
+      "handler": "{e => setNewTplChannel(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 662,
+      "event": "onChange",
+      "handler": "{e => setNewTplType(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 681,
+      "event": "onChange",
+      "handler": "{e => setNewTplBody(e.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "line": 684,
+      "event": "onClick",
+      "handler": "{() => setShowCreateTemplateModal(false)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 61,
+      "event": "onChange",
+      "handler": "{(e) => onChange(QUOTA_STEPS[parseInt(e.target.value, 10)])}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 266,
+      "event": "onClick",
+      "handler": "{loadLivePlans}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 269,
+      "event": "onClick",
+      "handler": "{() => setShowOverrideModal(true)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 303,
+      "event": "onClick",
+      "handler": "{() => handleToggleActive(p)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 316,
+      "event": "onClick",
+      "handler": "{() => setEditingPlan(p)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 331,
+      "event": "onClick",
+      "handler": "{() => setEditingPlan(null)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 334,
+      "event": "onChange",
+      "handler": "{e => setEditingPlan({ ...editingPlan, name: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 335,
+      "event": "onChange",
+      "handler": "{e => setEditingPlan({ ...editingPlan, price_usd_monthly: parseFloat(e.target.value) || 0 })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 336,
+      "event": "onChange",
+      "handler": "{e => setEditingPlan({ ...editingPlan, price_usd_yearly: Number(e.target.value) })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 338,
+      "event": "onChange",
+      "handler": "{e => setEditingPlan({ ...editingPlan, billing_currency: e.target.value === 'LKR' ? 'LKR' : 'USD' })}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 342,
+      "event": "onChange",
+      "handler": "{e => setEditingPlan({ ...editingPlan, price_lkr_monthly: e.target.value === '' ? null : Number(e.target.value) })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 343,
+      "event": "onChange",
+      "handler": "{e => setEditingPlan({ ...editingPlan, price_lkr_yearly: e.target.value === '' ? null : Number(e.target.value) })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 344,
+      "event": "onChange",
+      "handler": "{e => setEditingPlan({ ...editingPlan, paddle_price_yearly_id: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 348,
+      "event": "onChange",
+      "handler": "{(v) => setEditingPlan({ ...editingPlan, monthly_quota: v })}",
+      "element": "QuotaSlider"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 350,
+      "event": "onChange",
+      "handler": "{e=>setEditingPlan({...editingPlan,feature_flags:{...editingPlan.feature_flags,quota_window_hours:Number(e.target.value)}})}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 351,
+      "event": "onChange",
+      "handler": "{e => setEditingPlan({ ...editingPlan, payhere_plan_id: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 352,
+      "event": "onChange",
+      "handler": "{e => setEditingPlan({ ...editingPlan, paddle_price_id: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 355,
+      "event": "onClick",
+      "handler": "{() => setEditingPlan(null)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 356,
+      "event": "onClick",
+      "handler": "{handleSavePlanEdit}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 370,
+      "event": "onClick",
+      "handler": "{() => setShowOverrideModal(false)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 372,
+      "event": "onSubmit",
+      "handler": "{handleGrantOverride}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 373,
+      "event": "onChange",
+      "handler": "{e => setOverrideUserId(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 377,
+      "event": "onChange",
+      "handler": "{(v) => setOverrideQuota(String(v))}",
+      "element": "QuotaSlider"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 379,
+      "event": "onChange",
+      "handler": "{e => setOverrideReason(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 381,
+      "event": "onClick",
+      "handler": "{() => setShowOverrideModal(false)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 401,
+      "event": "onSubmit",
+      "handler": "{handleCreatePlan}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 403,
+      "event": "onChange",
+      "handler": "{(e) => setNewPlan({ ...newPlan, name: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 404,
+      "event": "onChange",
+      "handler": "{(e) => setNewPlan({ ...newPlan, code: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 406,
+      "event": "onChange",
+      "handler": "{(e) => setNewPlan({ ...newPlan, description: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 408,
+      "event": "onChange",
+      "handler": "{(e) => setNewPlan({ ...newPlan, price_usd_monthly: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 409,
+      "event": "onChange",
+      "handler": "{(e) => setNewPlan({ ...newPlan, price_usd_yearly: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 411,
+      "event": "onChange",
+      "handler": "{e => setNewPlan({ ...newPlan, billing_currency: e.target.value === 'LKR' ? 'LKR' : 'USD' })}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 415,
+      "event": "onChange",
+      "handler": "{e => setNewPlan({ ...newPlan, price_lkr_monthly: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 416,
+      "event": "onChange",
+      "handler": "{e => setNewPlan({ ...newPlan, price_lkr_yearly: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 417,
+      "event": "onChange",
+      "handler": "{e => setNewPlan({ ...newPlan, paddle_price_yearly_id: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 422,
+      "event": "onChange",
+      "handler": "{(v) => setNewPlan({ ...newPlan, monthly_quota: String(v) })}",
+      "element": "QuotaSlider"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 425,
+      "event": "onChange",
+      "handler": "{(e) => setNewPlan({ ...newPlan, payhere_plan_id: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 426,
+      "event": "onChange",
+      "handler": "{(e) => setNewPlan({ ...newPlan, paddle_price_id: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 446,
+      "event": "onClick",
+      "handler": "{loadFeatureFlags}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 449,
+      "event": "onClick",
+      "handler": "{saveFeatureFlags}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 482,
+      "event": "onClick",
+      "handler": "{() => toggleFlag(flagId, planKey)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "line": 510,
+      "event": "onClick",
+      "handler": "{loadPerformance}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 217,
+      "event": "onChange",
+      "handler": "{(e) => setSearchTerm(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 223,
+      "event": "onClick",
+      "handler": "{onReload}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 273,
+      "event": "onClick",
+      "handler": "{() => handleArchiveCoupon(c.id, c.code)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 292,
+      "event": "onSubmit",
+      "handler": "{handleAddCoupon}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 293,
+      "event": "onChange",
+      "handler": "{(e) => setNewCode(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 298,
+      "event": "onChange",
+      "handler": "{(e) => setNewType(e.target.value as 'percent' | 'fixed')}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 305,
+      "event": "onChange",
+      "handler": "{(e) => setNewVal(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 306,
+      "event": "onChange",
+      "handler": "{(e) => setNewLimit(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 307,
+      "event": "onChange",
+      "handler": "{(e) => setNewExpiry(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 325,
+      "event": "onClick",
+      "handler": "{loadAbTests}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 405,
+      "event": "onClick",
+      "handler": "{() => handleConvertReferral(r.id)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 426,
+      "event": "onSubmit",
+      "handler": "{handleAddReferral}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 427,
+      "event": "onChange",
+      "handler": "{(e) => setRefReferrerId(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 428,
+      "event": "onChange",
+      "handler": "{(e) => setRefReferredEmail(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 429,
+      "event": "onChange",
+      "handler": "{(e) => setRefCode(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 469,
+      "event": "onClick",
+      "handler": "{() => handleExtendTrial(t.id)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 472,
+      "event": "onClick",
+      "handler": "{() => handleEndTrial(t.id)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 492,
+      "event": "onSubmit",
+      "handler": "{handleStartTrial}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 493,
+      "event": "onChange",
+      "handler": "{(e) => setTrialUserId(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 498,
+      "event": "onChange",
+      "handler": "{(e) => setTrialPlan(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "line": 505,
+      "event": "onChange",
+      "handler": "{(e) => setTrialDays(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/RevenueView.tsx",
+      "line": 159,
+      "event": "onClick",
+      "handler": "{loadRevenueFromApi}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/RevenueView.tsx",
+      "line": 426,
+      "event": "onChange",
+      "handler": "{(e) => setSearchTerm(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/RevenueView.tsx",
+      "line": 431,
+      "event": "onClick",
+      "handler": "{handleExportCsv}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/RevenueView.tsx",
+      "line": 538,
+      "event": "onClick",
+      "handler": "{loadRevenueFromApi}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 347,
+      "event": "onClick",
+      "handler": "{() => setShowFilters(v => !v)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 361,
+      "event": "onClick",
+      "handler": "{handleFetchAllAudit}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 373,
+      "event": "onClick",
+      "handler": "{() => { setIsFetchingAll(false); onRefresh(); }}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 386,
+      "event": "onChange",
+      "handler": "{e => setSearchTerm(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 504,
+      "event": "onChange",
+      "handler": "{ipPagination.setPage}",
+      "element": "Pagination"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 544,
+      "event": "onChange",
+      "handler": "{ratePagination.setPage}",
+      "element": "Pagination"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 588,
+      "event": "onChange",
+      "handler": "{botPagination.setPage}",
+      "element": "Pagination"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 633,
+      "event": "onClick",
+      "handler": "{() => handleResolveAbuseReport(rep.id)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 642,
+      "event": "onChange",
+      "handler": "{abusePagination.setPage}",
+      "element": "Pagination"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 687,
+      "event": "onClick",
+      "handler": "{() => handleTerminateSession(sess.id)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 696,
+      "event": "onChange",
+      "handler": "{sessionPagination.setPage}",
+      "element": "Pagination"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 729,
+      "event": "onSubmit",
+      "handler": "{event => {\n              event.preventDefault(); setFilters(pendingFilters); setShowFilters(false);\n            }}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 735,
+      "event": "onChange",
+      "handler": "{event => setPendingFilters(value => ({ ...value, [field]: event.target.value }))}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 739,
+      "event": "onChange",
+      "handler": "{event => setPendingFilters(value => ({ ...value, totp_verified: event.target.value as AuditFilters['totp_verified'] }))}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 743,
+      "event": "onClick",
+      "handler": "{() => { setPendingFilters(DEFAULT_FILTERS); setFilters(DEFAULT_FILTERS); setShowFilters(false); }}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 783,
+      "event": "onClick",
+      "handler": "{() => handleInspectAudit(item.id)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 796,
+      "event": "onChange",
+      "handler": "{next => { void loadAuditLogs(next); }}",
+      "element": "Pagination"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 805,
+      "event": "onClick",
+      "handler": "{() => setSelectedDetail(null)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 811,
+      "event": "onClick",
+      "handler": "{() => setSelectedDetail(null)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "line": 850,
+      "event": "onClick",
+      "handler": "{() => handleResolveAlert(alert.id)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 547,
+      "event": "onSubmit",
+      "handler": "{handleUpdateProfile}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 551,
+      "event": "onChange",
+      "handler": "{(e) => setProfile({ ...profile, name: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 592,
+      "event": "onSubmit",
+      "handler": "{handleChangePassword}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 597,
+      "event": "onChange",
+      "handler": "{(e) => setCurrentPassword(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 605,
+      "event": "onChange",
+      "handler": "{(e) => setNewPassword(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 613,
+      "event": "onChange",
+      "handler": "{(e) => setConfirmPassword(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 664,
+      "event": "onClick",
+      "handler": "{loadRolesFromApi}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 667,
+      "event": "onClick",
+      "handler": "{() => setShowRoleModal(true)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 683,
+      "event": "onClick",
+      "handler": "{loadStaffFromApi}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 686,
+      "event": "onClick",
+      "handler": "{() => setShowInviteModal(true)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 721,
+      "event": "onChange",
+      "handler": "{(e) => handleChangeStaffRole(s.admin_id, e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 746,
+      "event": "onClick",
+      "handler": "{() => handleToggleStaffStatus(s)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 754,
+      "event": "onClick",
+      "handler": "{() => handleRemoveStaff(s)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 820,
+      "event": "onClick",
+      "handler": "{() => handleDeleteRole(r.id, r.name)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 846,
+      "event": "onClick",
+      "handler": "{() => setShowRoleModal(false)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 853,
+      "event": "onSubmit",
+      "handler": "{handleCreateRole}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 857,
+      "event": "onChange",
+      "handler": "{(e) => setNewRoleName(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 864,
+      "event": "onChange",
+      "handler": "{(e) => setNewRoleDesc(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 881,
+      "event": "onClick",
+      "handler": "{() => togglePrivilege(p.id)}",
+      "element": "label"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 891,
+      "event": "onClick",
+      "handler": "{() => setShowRoleModal(false)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 912,
+      "event": "onClick",
+      "handler": "{() => setShowInviteModal(false)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 919,
+      "event": "onSubmit",
+      "handler": "{handleInviteStaff}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 924,
+      "event": "onChange",
+      "handler": "{(e) => setNewStaffEmail(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 931,
+      "event": "onChange",
+      "handler": "{(e) => setNewStaffName(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 940,
+      "event": "onChange",
+      "handler": "{(e) => setNewStaffRoleId(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 960,
+      "event": "onClick",
+      "handler": "{() => setShowInviteModal(false)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 986,
+      "event": "onSubmit",
+      "handler": "{handleSaveBranding}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 990,
+      "event": "onChange",
+      "handler": "{(e) => setBranding({ ...branding, company_name: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 996,
+      "event": "onChange",
+      "handler": "{(e) => setBranding({ ...branding, logo_url: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 1003,
+      "event": "onChange",
+      "handler": "{(e) => setBranding({ ...branding, accent_color: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 1009,
+      "event": "onChange",
+      "handler": "{(family) => setBranding({ ...branding, font_family: family })}",
+      "element": "FontFacePicker"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 1016,
+      "event": "onChange",
+      "handler": "{(e) => setBranding({ ...branding, support_email: e.target.value })}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 1048,
+      "event": "onClick",
+      "handler": "{handleDisableTotp}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 1070,
+      "event": "onClick",
+      "handler": "{handleStartTotpSetup}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 1098,
+      "event": "onSubmit",
+      "handler": "{handleVerifyTotp}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 1102,
+      "event": "onChange",
+      "handler": "{(e) => setTotpVerifyCode(e.target.value.replace(/[^0-9]/g, '').slice(0, 6))}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 1112,
+      "event": "onClick",
+      "handler": "{() => setTotpSetupData(null)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 1164,
+      "event": "onClick",
+      "handler": "{() => handleManageKey(k.manage_url)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 1192,
+      "event": "onChange",
+      "handler": "{(e) => setGdprEmail(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 1196,
+      "event": "onClick",
+      "handler": "{() => handleGdprAction('export')}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 1199,
+      "event": "onClick",
+      "handler": "{() => handleGdprAction('delete')}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 1220,
+      "event": "onClick",
+      "handler": "{handleDownloadUsersCsv}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "line": 1243,
+      "event": "onClick",
+      "handler": "{handleToggleMaintenance}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SubscriptionsView.tsx",
+      "line": 170,
+      "event": "onChange",
+      "handler": "{(e) => setSearchTerm(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SubscriptionsView.tsx",
+      "line": 178,
+      "event": "onChange",
+      "handler": "{(e) => setDateFilter(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/SubscriptionsView.tsx",
+      "line": 189,
+      "event": "onChange",
+      "handler": "{(e) => setStartDate(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SubscriptionsView.tsx",
+      "line": 192,
+      "event": "onChange",
+      "handler": "{(e) => setEndDate(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SubscriptionsView.tsx",
+      "line": 197,
+      "event": "onClick",
+      "handler": "{loadData}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SubscriptionsView.tsx",
+      "line": 293,
+      "event": "onChange",
+      "handler": "{subPagination.setPage}",
+      "element": "Pagination"
+    },
+    {
+      "file": "admin/src/pages/subviews/SubscriptionsView.tsx",
+      "line": 481,
+      "event": "onClick",
+      "handler": "{() => setEditingPlan({ ...plan })}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SubscriptionsView.tsx",
+      "line": 557,
+      "event": "onClick",
+      "handler": "{() => setEditingPlan(null)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SubscriptionsView.tsx",
+      "line": 564,
+      "event": "onChange",
+      "handler": "{e => setEditingPlan({ ...editingPlan, name: e.target.value })}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SubscriptionsView.tsx",
+      "line": 570,
+      "event": "onChange",
+      "handler": "{e => setEditingPlan({ ...editingPlan, price_usd_monthly: Number(e.target.value) })}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SubscriptionsView.tsx",
+      "line": 576,
+      "event": "onChange",
+      "handler": "{e => setEditingPlan({ ...editingPlan, price_usd_yearly: Number(e.target.value) })}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SubscriptionsView.tsx",
+      "line": 582,
+      "event": "onChange",
+      "handler": "{e => setEditingPlan({ ...editingPlan, monthly_quota: Number(e.target.value) })}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SubscriptionsView.tsx",
+      "line": 588,
+      "event": "onClick",
+      "handler": "{() => setEditingPlan(null)}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SubscriptionsView.tsx",
+      "line": 589,
+      "event": "onClick",
+      "handler": "{handleSavePlanEdit}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 94,
+      "event": "onChange",
+      "handler": "{e => {setSearchTerm(e.target.value);overridePagination.setPage(1);}}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 101,
+      "event": "onChange",
+      "handler": "{e => {setStatusFilter(e.target.value);overridePagination.setPage(1);}}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 107,
+      "event": "onClick",
+      "handler": "{loadAll}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 239,
+      "event": "onClick",
+      "handler": "{() => openDetail(t, 'ticket_inspect')}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 244,
+      "event": "onClick",
+      "handler": "{() => openDetail(t, 'ticket')}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 268,
+      "event": "onClick",
+      "handler": "{closeDetail}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 283,
+      "event": "onChange",
+      "handler": "{e => setResolveNote(e.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 290,
+      "event": "onClick",
+      "handler": "{closeDetail}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 291,
+      "event": "onClick",
+      "handler": "{handleResolveTicket}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 364,
+      "event": "onClick",
+      "handler": "{() => openDetail(r, 'refund')}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 385,
+      "event": "onClick",
+      "handler": "{closeDetail}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 396,
+      "event": "onChange",
+      "handler": "{e => setAdminNote(e.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 400,
+      "event": "onClick",
+      "handler": "{closeDetail}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 401,
+      "event": "onClick",
+      "handler": "{() => handleUpdateRefund('denied')}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 402,
+      "event": "onClick",
+      "handler": "{() => handleUpdateRefund('approved')}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 458,
+      "event": "onClick",
+      "handler": "{() => openDetail(c, 'contact')}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 478,
+      "event": "onClick",
+      "handler": "{closeDetail}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 487,
+      "event": "onChange",
+      "handler": "{e => setAdminNote(e.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 492,
+      "event": "onClick",
+      "handler": "{closeDetail}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 493,
+      "event": "onClick",
+      "handler": "{handleUpdateContact}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 559,
+      "event": "onClick",
+      "handler": "{() => openDetail(o, 'override')}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 571,
+      "event": "onChange",
+      "handler": "{overridePagination.setPage}",
+      "element": "Pagination"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 582,
+      "event": "onClick",
+      "handler": "{closeDetail}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 595,
+      "event": "onChange",
+      "handler": "{e => setAdminNote(e.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 600,
+      "event": "onClick",
+      "handler": "{closeDetail}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 601,
+      "event": "onClick",
+      "handler": "{() => handleUpdateOverride('denied')}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "line": 602,
+      "event": "onClick",
+      "handler": "{() => handleUpdateOverride('approved')}",
+      "element": "Button"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 299,
+      "event": "onSubmit",
+      "handler": "{handleSearchSubmit}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 304,
+      "event": "onChange",
+      "handler": "{(e) => setSearchTerm(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 313,
+      "event": "onChange",
+      "handler": "{(e) => setFilterPlan(e.target.value === 'pro' ? 'pro' : e.target.value === 'free' ? 'free' : 'all')}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 324,
+      "event": "onChange",
+      "handler": "{(e) => setDateFilter(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 339,
+      "event": "onChange",
+      "handler": "{(e) => setStartDate(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 346,
+      "event": "onChange",
+      "handler": "{(e) => setEndDate(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 391,
+      "event": "onClick",
+      "handler": "{() => handleInspectUser(user)}",
+      "element": "tr"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 426,
+      "event": "onClick",
+      "handler": "{(e) => e.stopPropagation()}",
+      "element": "td"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 428,
+      "event": "onClick",
+      "handler": "{() => navigate(`/users/${user.id}`)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 435,
+      "event": "onClick",
+      "handler": "{() => resetQuota(user.id)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 442,
+      "event": "onClick",
+      "handler": "{() => toggleStatus(user.id)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 476,
+      "event": "onChange",
+      "handler": "{userPagination.setPage}",
+      "element": "Pagination"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 558,
+      "event": "onClick",
+      "handler": "{() => setSelectedUser(u)}",
+      "element": "button"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 593,
+      "event": "onSubmit",
+      "handler": "{handleApplyOverride}",
+      "element": "form"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 600,
+      "event": "onChange",
+      "handler": "{(e) => setOverrideStatus(e.target.value === 'banned' ? 'banned' : e.target.value === 'suspended' ? 'suspended' : 'active')}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 615,
+      "event": "onChange",
+      "handler": "{(e) => setOverridePlan(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "line": 627,
+      "event": "onChange",
+      "handler": "{(e) => setOverrideQuota(e.target.value)}",
+      "element": "Input"
+    },
+    {
+      "file": "user-frontend/src/components/FluidCardStack.tsx",
+      "line": 66,
+      "event": "onDragEnd",
+      "handler": "{(e, info) => isTop && handleDragEnd(e, info, card.id)}",
+      "element": "motion.div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/AssetModal.tsx",
+      "line": 96,
+      "event": "onClick",
+      "handler": "{onClose}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/AssetModal.tsx",
+      "line": 99,
+      "event": "onClick",
+      "handler": "{(e) => e.stopPropagation()}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/AssetModal.tsx",
+      "line": 103,
+      "event": "onClick",
+      "handler": "{onClose}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/AssetModal.tsx",
+      "line": 112,
+      "event": "onClick",
+      "handler": "{() => setSubMode('upload')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/AssetModal.tsx",
+      "line": 118,
+      "event": "onClick",
+      "handler": "{() => setSubMode('draw')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/AssetModal.tsx",
+      "line": 132,
+      "event": "onDrop",
+      "handler": "{(e) => { e.preventDefault(); setIsDragOver(false); loadFile(e.dataTransfer.files?.[0]); }}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/AssetModal.tsx",
+      "line": 133,
+      "event": "onClick",
+      "handler": "{() => fileInputRef.current?.click()}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/AssetModal.tsx",
+      "line": 149,
+      "event": "onChange",
+      "handler": "{(e) => { loadFile(e.target.files?.[0]); e.target.value = ''; }}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/AssetModal.tsx",
+      "line": 155,
+      "event": "onChange",
+      "handler": "{(_, pc) => setCrop(pc)}",
+      "element": "ReactCrop"
+    },
+    {
+      "file": "user-frontend/src/components/builder/AssetModal.tsx",
+      "line": 163,
+      "event": "onClick",
+      "handler": "{handleRemoveBackground}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/AssetModal.tsx",
+      "line": 174,
+      "event": "onClick",
+      "handler": "{() => { setPendingSrc(null); setCrop(undefined); setBgRemoved(false); }}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/AssetModal.tsx",
+      "line": 180,
+      "event": "onClick",
+      "handler": "{handleAdd}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/CanvasContextMenu.tsx",
+      "line": 64,
+      "event": "onClick",
+      "handler": "{() => { entry.onClick(); onClose(); }}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatAttachments.tsx",
+      "line": 49,
+      "event": "onClick",
+      "handler": "{()=>setOpen(!open)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatAttachments.tsx",
+      "line": 53,
+      "event": "onChange",
+      "handler": "{e=>{const file=e.target.files?.[0];e.target.value='';void upload(file);}}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatAttachments.tsx",
+      "line": 57,
+      "event": "onClick",
+      "handler": "{()=>pick(kind)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatAttachments.tsx",
+      "line": 60,
+      "event": "onClick",
+      "handler": "{()=>void retry()}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatAttachments.tsx",
+      "line": 60,
+      "event": "onClick",
+      "handler": "{()=>setError(null)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatMessage.tsx",
+      "line": 128,
+      "event": "onClick",
+      "handler": "{() => handleSelectChoice(choice)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 228,
+      "event": "onSubmit",
+      "handler": "{handleSubmit}",
+      "element": "form"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 236,
+      "event": "onChange",
+      "handler": "{handleTextareaChange}",
+      "element": "textarea"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 237,
+      "event": "onKeyDown",
+      "handler": "{handleKeyDown}",
+      "element": "textarea"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 281,
+      "event": "onClick",
+      "handler": "{() => {\n              const next = !showHistoryPanel;\n              setShowHistoryPanel(next);\n              if (next) {\n                fetchUserSessions();\n ",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 298,
+      "event": "onClick",
+      "handler": "{() => fetchSummary()}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 307,
+      "event": "onClick",
+      "handler": "{resetChat}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 316,
+      "event": "onClick",
+      "handler": "{onCollapse}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 346,
+      "event": "onClick",
+      "handler": "{() => {\n                  resetChat();\n                  startSession('invoice');\n                  setShowHistoryPanel(false);\n                }}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 357,
+      "event": "onClick",
+      "handler": "{() => setShowHistoryPanel(false)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 373,
+      "event": "onChange",
+      "handler": "{(e) => setSearchQuery(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 379,
+      "event": "onClick",
+      "handler": "{() => setSearchQuery('')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 409,
+      "event": "onClick",
+      "handler": "{() => {\n                      resetChat();\n                      startSession('invoice');\n                      setShowHistoryPanel(false);\n                   ",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 433,
+      "event": "onClick",
+      "handler": "{() => {\n                          loadSessionFromDb(sess.id);\n                          setShowHistoryPanel(false);\n                        }}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 469,
+      "event": "onClick",
+      "handler": "{(e) => {\n                            e.stopPropagation();\n                            deleteSessionById(sess.id);\n                          }}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 514,
+      "event": "onClick",
+      "handler": "{()=>void pollGeneration()}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 519,
+      "event": "onClick",
+      "handler": "{() => void retryMessage()}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 546,
+      "event": "onClick",
+      "handler": "{()=>void confirmDocument()}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "line": 549,
+      "event": "onClick",
+      "handler": "{() => void startSession(documentType || 'invoice', { reuseFromSessionId: sessionId })}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/DocumentPreview.tsx",
+      "line": 82,
+      "event": "onClick",
+      "handler": "{() => {\n                  const docStore = useDocumentStore.getState();\n                  const chatStore = useChatStore.getState();\n                  if (chat",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/DocumentPreview.tsx",
+      "line": 112,
+      "event": "onClick",
+      "handler": "{() => { trackButtonClick('btn_format_sidebar_toggle'); toggleSidebar(); }}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/DocumentPreview.tsx",
+      "line": 120,
+      "event": "onClick",
+      "handler": "{handleExport}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/DocumentPreview.tsx",
+      "line": 132,
+      "event": "onClick",
+      "handler": "{() => setShowGuestDownloadModal(true)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 97,
+      "event": "onChange",
+      "handler": "{(e) => onChange(Number(e.target.value))}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 112,
+      "event": "onChange",
+      "handler": "{(e) => onChange(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 116,
+      "event": "onChange",
+      "handler": "{(e) => onChange(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 127,
+      "event": "onClick",
+      "handler": "{() => onChange(c)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 153,
+      "event": "onChange",
+      "handler": "{(e) => onChange(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 197,
+      "event": "onClick",
+      "handler": "{() => setAspectLocked((v) => !v)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 212,
+      "event": "onChange",
+      "handler": "{(e) => onUpdate({ opacity: Number(e.target.value) / 100 })}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 227,
+      "event": "onChange",
+      "handler": "{(e) => onUpdate({ rotation: Number(e.target.value) })}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 234,
+      "event": "onClick",
+      "handler": "{() => onUpdate({ locked: !element.locked })}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 244,
+      "event": "onClick",
+      "handler": "{() => alignToPage('x', 'start')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 245,
+      "event": "onClick",
+      "handler": "{() => alignToPage('x', 'center')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 246,
+      "event": "onClick",
+      "handler": "{() => alignToPage('x', 'end')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 248,
+      "event": "onClick",
+      "handler": "{() => alignToPage('y', 'start')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 249,
+      "event": "onClick",
+      "handler": "{() => alignToPage('y', 'center')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 250,
+      "event": "onClick",
+      "handler": "{() => alignToPage('y', 'end')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 261,
+      "event": "onChange",
+      "handler": "{(e) => onUpdate({ shadowEnabled: e.target.checked } as Partial<InvoiceElement>)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 283,
+      "event": "onChange",
+      "handler": "{(v) => onUpdate({ fontFamily: v } as Partial<InvoiceElement>)}",
+      "element": "FontFacePicker"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 301,
+      "event": "onClick",
+      "handler": "{() => onUpdate({ fontWeight: element.fontWeight >= 700 ? 400 : 700 } as Partial<InvoiceElement>)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 308,
+      "event": "onClick",
+      "handler": "{() => onUpdate({ italic: !element.italic } as Partial<InvoiceElement>)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 315,
+      "event": "onClick",
+      "handler": "{() => onUpdate({ underline: !element.underline } as Partial<InvoiceElement>)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 322,
+      "event": "onClick",
+      "handler": "{() => onUpdate({ strikethrough: !element.strikethrough } as Partial<InvoiceElement>)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 336,
+      "event": "onClick",
+      "handler": "{() => onUpdate({ align: a } as Partial<InvoiceElement>)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 356,
+      "event": "onChange",
+      "handler": "{(e) => onUpdate({ strokeWidth: Number(e.target.value) } as Partial<InvoiceElement>)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 496,
+      "event": "onClick",
+      "handler": "{clearCellFormat}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 501,
+      "event": "onClick",
+      "handler": "{() => patchCellFormat({ bold: !cellFmt?.bold })}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 505,
+      "event": "onClick",
+      "handler": "{() => patchCellFormat({ italic: !cellFmt?.italic })}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 509,
+      "event": "onClick",
+      "handler": "{() => patchCellFormat({ underline: !cellFmt?.underline })}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 515,
+      "event": "onClick",
+      "handler": "{() => patchCellFormat({ align: v })}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 537,
+      "event": "onClick",
+      "handler": "{() => applyPreset(preset)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 562,
+      "event": "onChange",
+      "handler": "{(e) => onUpdate({ rowStripeColor: e.target.checked ? (element.rowStripeColor || '#f8fafc') : undefined } as Partial<InvoiceElement>)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 571,
+      "event": "onClick",
+      "handler": "{addColumn}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 579,
+      "event": "onChange",
+      "handler": "{(e) => updateColumn(idx, { label: e.target.value })}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 586,
+      "event": "onChange",
+      "handler": "{(e) => updateColumn(idx, { width: Number(e.target.value) })}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 590,
+      "event": "onClick",
+      "handler": "{() => removeColumn(idx)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 604,
+      "event": "onClick",
+      "handler": "{addRow}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 611,
+      "event": "onClick",
+      "handler": "{() => removeRow(idx)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 627,
+      "event": "onChange",
+      "handler": "{(e) => { const f = e.target.files?.[0]; if (f) handleCsvFile(f); e.target.value = ''; }}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "line": 637,
+      "event": "onClick",
+      "handler": "{onDelete}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ExportPanel.tsx",
+      "line": 83,
+      "event": "onChange",
+      "handler": "{(e) => setFormat(e.target.value as ExportFormat)}",
+      "element": "select"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ExportPanel.tsx",
+      "line": 105,
+      "event": "onChange",
+      "handler": "{(e) => setQualityPct(Number(e.target.value))}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ExportPanel.tsx",
+      "line": 121,
+      "event": "onChange",
+      "handler": "{(e) => setCompress(e.target.checked)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ExportPanel.tsx",
+      "line": 125,
+      "event": "onChange",
+      "handler": "{(e) => setLimitFileSize(e.target.checked)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ExportPanel.tsx",
+      "line": 131,
+      "event": "onChange",
+      "handler": "{(e) => setWatermark(e.target.checked)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ExportPanel.tsx",
+      "line": 138,
+      "event": "onClick",
+      "handler": "{handleExportClick}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FontFacePicker.tsx",
+      "line": 64,
+      "event": "onClick",
+      "handler": "{() => { setQuery(''); setOpen(o => !o); }}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FontFacePicker.tsx",
+      "line": 80,
+      "event": "onChange",
+      "handler": "{(e) => setQuery(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FontFacePicker.tsx",
+      "line": 98,
+      "event": "onClick",
+      "handler": "{() => handlePick(f.family)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 74,
+      "event": "onChange",
+      "handler": "{handleAlignment}",
+      "element": "AlignmentControl"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 75,
+      "event": "onChange",
+      "handler": "{handleFontSize}",
+      "element": "FontSizeControl"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 76,
+      "event": "onChange",
+      "handler": "{handleBold}",
+      "element": "BoldControl"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 82,
+      "event": "onChange",
+      "handler": "{handleAlignment}",
+      "element": "AlignmentControl"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 83,
+      "event": "onChange",
+      "handler": "{handleFontSize}",
+      "element": "FontSizeControl"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 84,
+      "event": "onChange",
+      "handler": "{handleBold}",
+      "element": "BoldControl"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 90,
+      "event": "onChange",
+      "handler": "{handleAlignment}",
+      "element": "AlignmentControl"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 91,
+      "event": "onChange",
+      "handler": "{handleFontSize}",
+      "element": "FontSizeControl"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 92,
+      "event": "onChange",
+      "handler": "{handleBold}",
+      "element": "BoldControl"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 93,
+      "event": "onChange",
+      "handler": "{handleVisibility}",
+      "element": "VisibilityControl"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 98,
+      "event": "onChange",
+      "handler": "{(v) => updateLayout('line_items', { showQuantityColumn: v })}",
+      "element": "VisibilityControl"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 103,
+      "event": "onChange",
+      "handler": "{handleVisibility}",
+      "element": "VisibilityControl"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 104,
+      "event": "onChange",
+      "handler": "{handleFontSize}",
+      "element": "FontSizeControl"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 110,
+      "event": "onChange",
+      "handler": "{(v) => updateLayout('logo', { visible: v })}",
+      "element": "VisibilityControl"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 117,
+      "event": "onChange",
+      "handler": "{handleLogoUpload}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 122,
+      "event": "onClick",
+      "handler": "{() => fileInputRef.current?.click()}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 139,
+      "event": "onClick",
+      "handler": "{() => handleColorChange(color)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 152,
+      "event": "onChange",
+      "handler": "{(e) => handleColorChange(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 159,
+      "event": "onChange",
+      "handler": "{(e) => handleColorChange(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 175,
+      "event": "onChange",
+      "handler": "{(e) => updateLayout('global', { fontFamily: e.target.value })}",
+      "element": "select"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 206,
+      "event": "onClick",
+      "handler": "{() => setSidebarOpen(false)}",
+      "element": "motion.div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 221,
+      "event": "onClick",
+      "handler": "{() => setSidebarOpen(false)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 239,
+      "event": "onClick",
+      "handler": "{() => setActiveSection(sectionId)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 260,
+      "event": "onClick",
+      "handler": "{() => setActiveSection(section.id)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 297,
+      "event": "onClick",
+      "handler": "{() => onChange(a)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 321,
+      "event": "onClick",
+      "handler": "{() => onChange(s)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 341,
+      "event": "onClick",
+      "handler": "{() => onChange(!value)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "line": 364,
+      "event": "onClick",
+      "handler": "{() => onChange(!visible)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 468,
+      "event": "onPointerDown",
+      "handler": "{handleRootPointerDown}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 473,
+      "event": "onClick",
+      "handler": "{handleCanvasClick}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 474,
+      "event": "onDoubleClick",
+      "handler": "{(e) => { if (activeTool === 'select' && e.target === e.currentTarget) onSelectPage(); }}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 538,
+      "event": "onDoubleClick",
+      "handler": "{(e) => handleTextDoubleClick(e, el)}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 539,
+      "event": "onBlur",
+      "handler": "{(e) => {\n                if (isEditing) {\n                  handleTextEdit(el, e.currentTarget.textContent || '');\n                  setEditingId(null);\n      ",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 545,
+      "event": "onPointerDown",
+      "handler": "{(e) => { if (!isEditing) handlePointerDownOnElement(e, el); else e.stopPropagation(); }}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 572,
+      "event": "onPointerDown",
+      "handler": "{(e) => handlePointerDownOnElement(e, el)}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 579,
+      "event": "onPointerDown",
+      "handler": "{(e) => handlePointerDownOnElement(e, el)}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 614,
+      "event": "onPointerDown",
+      "handler": "{(e) => handlePointerDownOnElement(e, el)}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 639,
+      "event": "onPointerDown",
+      "handler": "{(e) => handlePointerDownOnElement(e, el)}",
+      "element": "img"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 688,
+      "event": "onPointerDown",
+      "handler": "{(e) => { if (!editingCell || editingCell.elId !== el.id) handlePointerDownOnElement(e, el); else e.stopPropagation(); }}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 701,
+      "event": "onClick",
+      "handler": "{(e) => handleCellClick(e, -1, ci)}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 702,
+      "event": "onDoubleClick",
+      "handler": "{(e) => handleCellDoubleClick(e, el.id, -1, ci)}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 704,
+      "event": "onBlur",
+      "handler": "{(e) => { if (isEditingCell(-1, ci)) { commitCell(-1, ci, e.currentTarget.textContent || ''); setEditingCell(null); } }}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 731,
+      "event": "onClick",
+      "handler": "{(e) => handleCellClick(e, ri, ci)}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 732,
+      "event": "onDoubleClick",
+      "handler": "{(e) => handleCellDoubleClick(e, el.id, ri, ci)}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 734,
+      "event": "onBlur",
+      "handler": "{(e) => { if (isEditingCell(ri, ci)) { commitCell(ri, ci, e.currentTarget.textContent || ''); setEditingCell(null); } }}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 762,
+      "event": "onClick",
+      "handler": "{(e) => { if (activeTool === 'select') e.stopPropagation(); }}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 785,
+      "event": "onPointerDown",
+      "handler": "{(e) => handleResizeStart(e, el, corner)}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "line": 805,
+      "event": "onPointerDown",
+      "handler": "{(e) => handleRotateStart(e, el)}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/LayersPanel.tsx",
+      "line": 74,
+      "event": "onDragEnd",
+      "handler": "{() => { dragIndexRef.current = null; setDragOverIndex(null); }}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/LayersPanel.tsx",
+      "line": 75,
+      "event": "onDrop",
+      "handler": "{() => handleDrop(index)}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/LayersPanel.tsx",
+      "line": 76,
+      "event": "onClick",
+      "handler": "{(e) => onSelect(el.id, { additive: e.shiftKey || e.metaKey || e.ctrlKey })}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/builder/LayersPanel.tsx",
+      "line": 87,
+      "event": "onClick",
+      "handler": "{(e) => { e.stopPropagation(); onCheckpoint(); onUpdate(el.id, { hidden: !el.hidden }); }}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/LayersPanel.tsx",
+      "line": 94,
+      "event": "onClick",
+      "handler": "{(e) => { e.stopPropagation(); onCheckpoint(); onUpdate(el.id, { locked: !el.locked }); }}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/LayersPanel.tsx",
+      "line": 102,
+      "event": "onClick",
+      "handler": "{(e) => { e.stopPropagation(); onDelete(el.id); }}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 111,
+      "event": "onChange",
+      "handler": "{(e) => { if (e.target.value !== '') onChange(Number(e.target.value)); }}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 121,
+      "event": "onChange",
+      "handler": "{(e) => onChange(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 126,
+      "event": "onChange",
+      "handler": "{(e) => onChange(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 137,
+      "event": "onClick",
+      "handler": "{() => onChange(c)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 159,
+      "event": "onChange",
+      "handler": "{(e) => onChange(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 179,
+      "event": "onClick",
+      "handler": "{onClick}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 215,
+      "event": "onChange",
+      "handler": "{(e) => onUpdateAll({ opacity: Number(e.target.value) / 100 })}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 231,
+      "event": "onChange",
+      "handler": "{(e) => { if (e.target.value !== '') onUpdateAll({ rotation: Number(e.target.value) }); }}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 238,
+      "event": "onClick",
+      "handler": "{() => onUpdateAll({ locked: !allLocked })}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 248,
+      "event": "onClick",
+      "handler": "{() => alignSelection('x', 'start')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 249,
+      "event": "onClick",
+      "handler": "{() => alignSelection('x', 'center')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 250,
+      "event": "onClick",
+      "handler": "{() => alignSelection('x', 'end')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 252,
+      "event": "onClick",
+      "handler": "{() => alignSelection('y', 'start')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 253,
+      "event": "onClick",
+      "handler": "{() => alignSelection('y', 'center')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 254,
+      "event": "onClick",
+      "handler": "{() => alignSelection('y', 'end')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 258,
+      "event": "onClick",
+      "handler": "{() => distributeSelection('x')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 259,
+      "event": "onClick",
+      "handler": "{() => distributeSelection('y')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 271,
+      "event": "onChange",
+      "handler": "{(e) => onUpdateAll({ shadowEnabled: e.target.checked } as Partial<InvoiceElement>)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 306,
+      "event": "onChange",
+      "handler": "{(v) => onUpdateAll({ fontFamily: v } as Partial<InvoiceElement>)}",
+      "element": "FontFacePicker"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 335,
+      "event": "onClick",
+      "handler": "{() => onUpdateAll({ align: a } as Partial<InvoiceElement>)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 356,
+      "event": "onChange",
+      "handler": "{(e) => { if (e.target.value !== '') onUpdateAll({ strokeWidth: Number(e.target.value) } as Partial<InvoiceElement>); }}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "line": 410,
+      "event": "onClick",
+      "handler": "{onDelete}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/SignaturePad.tsx",
+      "line": 114,
+      "event": "onClick",
+      "handler": "{() => setColor(c)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/SignaturePad.tsx",
+      "line": 123,
+      "event": "onChange",
+      "handler": "{(e) => setColor(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/SignaturePad.tsx",
+      "line": 129,
+      "event": "onClick",
+      "handler": "{handleUndo}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/SignaturePad.tsx",
+      "line": 132,
+      "event": "onClick",
+      "handler": "{handleRedo}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/SignaturePad.tsx",
+      "line": 135,
+      "event": "onClick",
+      "handler": "{handleClear}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/SignaturePad.tsx",
+      "line": 148,
+      "event": "onChange",
+      "handler": "{(e) => setThickness(Number(e.target.value))}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/SignaturePad.tsx",
+      "line": 159,
+      "event": "onPointerDown",
+      "handler": "{handlePointerDown}",
+      "element": "canvas"
+    },
+    {
+      "file": "user-frontend/src/components/builder/SignaturePad.tsx",
+      "line": 173,
+      "event": "onClick",
+      "handler": "{handleAddClick}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/SpellCorrectionBanner.tsx",
+      "line": 30,
+      "event": "onClick",
+      "handler": "{onAccept}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/SpellCorrectionBanner.tsx",
+      "line": 39,
+      "event": "onClick",
+      "handler": "{onReject}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/TemplateSelector.tsx",
+      "line": 34,
+      "event": "onClick",
+      "handler": "{()=>{setValue(name);setError('');setEditing(true);}}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/TemplateSelector.tsx",
+      "line": 35,
+      "event": "onSubmit",
+      "handler": "{event=>{event.preventDefault();void save();}}",
+      "element": "form"
+    },
+    {
+      "file": "user-frontend/src/components/builder/TemplateSelector.tsx",
+      "line": 36,
+      "event": "onChange",
+      "handler": "{event=>setValue(event.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/TemplateSelector.tsx",
+      "line": 37,
+      "event": "onClick",
+      "handler": "{()=>setEditing(false)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/TemplateSelector.tsx",
+      "line": 87,
+      "event": "onClick",
+      "handler": "{(e) => {\n        e.preventDefault();\n        if (!isLocked) onSelect(template.template_id);\n      }}",
+      "element": "motion.button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/TemplateSelector.tsx",
+      "line": 231,
+      "event": "onClick",
+      "handler": "{()=>{loadTemplates();void fetchTemplates(currentDocType as DocumentType);}}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/TemplateSelector.tsx",
+      "line": 234,
+      "event": "onClick",
+      "handler": "{() => setNamingOpen(true)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/TemplateSelector.tsx",
+      "line": 258,
+      "event": "onChange",
+      "handler": "{(e) => setNameValue(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/TemplateSelector.tsx",
+      "line": 259,
+      "event": "onKeyDown",
+      "handler": "{(e) => { if (e.key === 'Enter') handleSave(); if (e.key === 'Escape') setNamingOpen(false); }}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/TemplateSelector.tsx",
+      "line": 264,
+      "event": "onClick",
+      "handler": "{handleSave}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/TemplateSelector.tsx",
+      "line": 288,
+      "event": "onClick",
+      "handler": "{() => handleApply(t.id)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/TemplateSelector.tsx",
+      "line": 295,
+      "event": "onClick",
+      "handler": "{() => handleDelete(t.id)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ToolkitTabButton.tsx",
+      "line": 12,
+      "event": "onClick",
+      "handler": "{onClick}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/builder/UploadPrivateTemplate.tsx",
+      "line": 20,
+      "event": "onChange",
+      "handler": "{event=>setName(event.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/builder/UploadPrivateTemplate.tsx",
+      "line": 21,
+      "event": "onChange",
+      "handler": "{event=>{void upload(event.target.files?.[0]);event.target.value='';}}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/common/LogoutConfirmModal.tsx",
+      "line": 40,
+      "event": "onClick",
+      "handler": "{onClose}",
+      "element": "motion.div"
+    },
+    {
+      "file": "user-frontend/src/components/common/LogoutConfirmModal.tsx",
+      "line": 59,
+      "event": "onClick",
+      "handler": "{onClose}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/common/LogoutConfirmModal.tsx",
+      "line": 85,
+      "event": "onClick",
+      "handler": "{onClose}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/components/common/LogoutConfirmModal.tsx",
+      "line": 95,
+      "event": "onClick",
+      "handler": "{onConfirm}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 127,
+      "event": "onClick",
+      "handler": "{scrollToSection('features')}",
+      "element": "a"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 135,
+      "event": "onClick",
+      "handler": "{scrollToSection('solution')}",
+      "element": "a"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 143,
+      "event": "onClick",
+      "handler": "{scrollToSection('pricing')}",
+      "element": "a"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 151,
+      "event": "onClick",
+      "handler": "{scrollToSection('about')}",
+      "element": "a"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 167,
+      "event": "onClick",
+      "handler": "{toggleTheme}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 203,
+      "event": "onClick",
+      "handler": "{() => setProfileMenuOpen((v) => !v)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 232,
+      "event": "onClick",
+      "handler": "{() => setProfileMenuOpen(false)}",
+      "element": "Link"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 246,
+      "event": "onClick",
+      "handler": "{() => setProfileMenuOpen(false)}",
+      "element": "Link"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 255,
+      "event": "onClick",
+      "handler": "{() => { setProfileMenuOpen(false); handleLogoutClick(); }}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 284,
+      "event": "onClick",
+      "handler": "{toggleTheme}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 292,
+      "event": "onClick",
+      "handler": "{() => setMobileOpen(!mobileOpen)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 311,
+      "event": "onClick",
+      "handler": "{(e) => { scrollToSection('features')(e); setMobileOpen(false); }}",
+      "element": "a"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 318,
+      "event": "onClick",
+      "handler": "{(e) => { scrollToSection('solution')(e); setMobileOpen(false); }}",
+      "element": "a"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 325,
+      "event": "onClick",
+      "handler": "{(e) => { scrollToSection('pricing')(e); setMobileOpen(false); }}",
+      "element": "a"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 332,
+      "event": "onClick",
+      "handler": "{(e) => { scrollToSection('about')(e); setMobileOpen(false); }}",
+      "element": "a"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 346,
+      "event": "onClick",
+      "handler": "{() => setMobileOpen(false)}",
+      "element": "Link"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 358,
+      "event": "onClick",
+      "handler": "{() => setMobileOpen(false)}",
+      "element": "a"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 369,
+      "event": "onClick",
+      "handler": "{() => setMobileOpen(false)}",
+      "element": "Link"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 378,
+      "event": "onClick",
+      "handler": "{() => { handleLogoutClick(); setMobileOpen(false); }}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 393,
+      "event": "onClick",
+      "handler": "{() => setMobileOpen(false)}",
+      "element": "Link"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "line": 400,
+      "event": "onClick",
+      "handler": "{() => setMobileOpen(false)}",
+      "element": "Link"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/DocumentsTable.tsx",
+      "line": 70,
+      "event": "onClick",
+      "handler": "{() => onReopen?.(doc)}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/DocumentsTable.tsx",
+      "line": 75,
+      "event": "onClick",
+      "handler": "{() => onDownload ? onDownload(doc) : onReopen?.(doc)}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/DocumentsTable.tsx",
+      "line": 81,
+      "event": "onClick",
+      "handler": "{() => onDelete?.(doc)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/PaymentMethodsCard.tsx",
+      "line": 26,
+      "event": "onClick",
+      "handler": "{openPortal}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileIdentityCard.tsx",
+      "line": 136,
+      "event": "onChange",
+      "handler": "{(e) => setFullName(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileIdentityCard.tsx",
+      "line": 167,
+      "event": "onChange",
+      "handler": "{(e) => setTimezone(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileIdentityCard.tsx",
+      "line": 194,
+      "event": "onClick",
+      "handler": "{handleSave}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileIdentityCard.tsx",
+      "line": 200,
+      "event": "onClick",
+      "handler": "{handleSave}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileIdentityCard.tsx",
+      "line": 227,
+      "event": "onClick",
+      "handler": "{doRefresh}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileIdentityCard.tsx",
+      "line": 232,
+      "event": "onClick",
+      "handler": "{doRefresh}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "line": 153,
+      "event": "onClick",
+      "handler": "{handleInitiate2FA}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "line": 159,
+      "event": "onClick",
+      "handler": "{handleInitiate2FA}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "line": 179,
+      "event": "onClick",
+      "handler": "{() => { setIsDisableOpen(true); setTwoFactorMessage(null); }}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "line": 188,
+      "event": "onClick",
+      "handler": "{() => { setIsDisableOpen(true); setTwoFactorMessage(null); }}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "line": 217,
+      "event": "onClick",
+      "handler": "{() => setIs2FASetupOpen(false)}",
+      "element": "motion.div"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "line": 233,
+      "event": "onClick",
+      "handler": "{() => setIs2FASetupOpen(false)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "line": 258,
+      "event": "onClick",
+      "handler": "{copySecret}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "line": 267,
+      "event": "onSubmit",
+      "handler": "{handleVerifyAndEnable2FA}",
+      "element": "form"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "line": 276,
+      "event": "onChange",
+      "handler": "{(e) => setTotpInput(e.target.value.replace(/[^0-9]/g, ''))}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "line": 286,
+      "event": "onClick",
+      "handler": "{() => setIs2FASetupOpen(false)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "line": 314,
+      "event": "onClick",
+      "handler": "{() => setIsDisableOpen(false)}",
+      "element": "motion.div"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "line": 330,
+      "event": "onClick",
+      "handler": "{() => setIsDisableOpen(false)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "line": 341,
+      "event": "onSubmit",
+      "handler": "{handleConfirmDisable2FA}",
+      "element": "form"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "line": 346,
+      "event": "onChange",
+      "handler": "{(e) => setDisableTotpInput(e.target.value.replace(/[^0-9]/g, ''))}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "line": 355,
+      "event": "onClick",
+      "handler": "{() => setIsDisableOpen(false)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSubscriptionCard.tsx",
+      "line": 29,
+      "event": "onClick",
+      "handler": "{openPortal}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/components/landing/DocumentTypeSelector.tsx",
+      "line": 86,
+      "event": "onClick",
+      "handler": "{onRetry}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/landing/DocumentTypeSelector.tsx",
+      "line": 102,
+      "event": "onClick",
+      "handler": "{(e) => {\n              e.preventDefault();\n              e.stopPropagation();\n              onSelect(doc.type);\n            }}",
+      "element": "motion.button"
+    },
+    {
+      "file": "user-frontend/src/components/landing/PricingTierCard.tsx",
+      "line": 68,
+      "event": "onClick",
+      "handler": "{onCtaClick}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/components/shared/GuestDownloadModal.tsx",
+      "line": 27,
+      "event": "onClick",
+      "handler": "{() => setShowGuestDownloadModal(false)}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/shared/GuestDownloadModal.tsx",
+      "line": 35,
+      "event": "onClick",
+      "handler": "{() => setShowGuestDownloadModal(false)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/shared/GuestDownloadModal.tsx",
+      "line": 59,
+      "event": "onClick",
+      "handler": "{handleRegister}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/shared/GuestDownloadModal.tsx",
+      "line": 70,
+      "event": "onClick",
+      "handler": "{handleLogin}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/shared/GuestDownloadModal.tsx",
+      "line": 80,
+      "event": "onClick",
+      "handler": "{() => setShowGuestDownloadModal(false)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/shared/UpgradeModal.tsx",
+      "line": 17,
+      "event": "onClick",
+      "handler": "{() => setShowUpgradeModal(false)}",
+      "element": "div"
+    },
+    {
+      "file": "user-frontend/src/components/shared/UpgradeModal.tsx",
+      "line": 25,
+      "event": "onClick",
+      "handler": "{() => setShowUpgradeModal(false)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/shared/UpgradeModal.tsx",
+      "line": 48,
+      "event": "onClick",
+      "handler": "{() => { setShowUpgradeModal(false); navigate('/pricing'); }}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/components/shared/UpgradeModal.tsx",
+      "line": 60,
+      "event": "onClick",
+      "handler": "{() => setShowUpgradeModal(false)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/layouts/DashboardLayout.tsx",
+      "line": 46,
+      "event": "onClick",
+      "handler": "{startNewDocument}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/layouts/DashboardLayout.tsx",
+      "line": 76,
+      "event": "onClick",
+      "handler": "{startNewDocument}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1074,
+      "event": "onClick",
+      "handler": "{() => navigate('/dashboard')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1081,
+      "event": "onClick",
+      "handler": "{() => handleExport()}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1090,
+      "event": "onClick",
+      "handler": "{() => setShowGuestDownloadModal(true)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1097,
+      "event": "onClick",
+      "handler": "{() => setMobileTab(tab)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1162,
+      "event": "onClick",
+      "handler": "{() => setChatCollapsed(false)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1206,
+      "event": "onClick",
+      "handler": "{handleBackToSelector}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1225,
+      "event": "onClick",
+      "handler": "{() => setActiveTool(tool)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1241,
+      "event": "onClick",
+      "handler": "{insertTableOntoCanvas}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1251,
+      "event": "onClick",
+      "handler": "{() => resetElementLayout(collectedData || activeSampleData)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1264,
+      "event": "onClick",
+      "handler": "{() => setZoom((z) => Math.max(25, z - 10))}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1274,
+      "event": "onChange",
+      "handler": "{(e) => setZoomInputValue(e.target.value.replace(/[^0-9]/g, ''))}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1275,
+      "event": "onBlur",
+      "handler": "{() => {\n                    const n = Number(zoomInputValue);\n                    if (zoomInputValue && !Number.isNaN(n)) setZoom(Math.max(25, Math.min(400, Ma",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1280,
+      "event": "onKeyDown",
+      "handler": "{(e) => {\n                    if (e.key === 'Enter') e.currentTarget.blur();\n                    if (e.key === 'Escape') { setZoomInputValue(null); e.currentTar",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1288,
+      "event": "onClick",
+      "handler": "{() => setZoom((z) => Math.min(400, z + 10))}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1300,
+      "event": "onClick",
+      "handler": "{() => setShowGrid(!showGrid)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1308,
+      "event": "onClick",
+      "handler": "{() => setToolkitCollapsed(!toolkitCollapsed)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1316,
+      "event": "onClick",
+      "handler": "{() => handleExport()}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1326,
+      "event": "onClick",
+      "handler": "{() => setShowGuestDownloadModal(true)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1350,
+      "event": "onClick",
+      "handler": "{()=>refreshCanvasElements({documentType:documentType||'invoice',...activeData})}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1370,
+      "event": "onClick",
+      "handler": "{() => {\n                                  document.getElementById(`canvas-page-card-${pIdx}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });\n       ",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1487,
+      "event": "onChange",
+      "handler": "{(e) => handleSelectDocType(e.target.value as DocumentType)}",
+      "element": "select"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1508,
+      "event": "onClick",
+      "handler": "{() => openToolkitTab(tab)}",
+      "element": "ToolkitTabButton"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1524,
+      "event": "onClick",
+      "handler": "{() => setToolkitCollapsed(true)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1543,
+      "event": "onChange",
+      "handler": "{(e) => setPageBackgroundColor(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1549,
+      "event": "onChange",
+      "handler": "{(e) => setPageBackgroundColor(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1562,
+      "event": "onChange",
+      "handler": "{(e) => setShowGrid(e.target.checked)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1575,
+      "event": "onClick",
+      "handler": "{() => setPageSize(preset.w, preset.h)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1647,
+      "event": "onClick",
+      "handler": "{() => setAssetModalMode('image')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1661,
+      "event": "onClick",
+      "handler": "{() => insertAssetOntoCanvas(a.dataUrl)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1668,
+      "event": "onClick",
+      "handler": "{() => removeUploadedAsset(a.id)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1685,
+      "event": "onClick",
+      "handler": "{() => setAssetModalMode('signature')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1699,
+      "event": "onClick",
+      "handler": "{() => insertAssetOntoCanvas(a.dataUrl)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1706,
+      "event": "onClick",
+      "handler": "{() => removeUploadedAsset(a.id)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "line": 1730,
+      "event": "onChange",
+      "handler": "{applyDocumentFont}",
+      "element": "FontFacePicker"
+    },
+    {
+      "file": "user-frontend/src/pages/LandingPage.tsx",
+      "line": 132,
+      "event": "onClick",
+      "handler": "{handleStartCreating}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/LandingPage.tsx",
+      "line": 135,
+      "event": "onClick",
+      "handler": "{scrollToId('choose')}",
+      "element": "a"
+    },
+    {
+      "file": "user-frontend/src/pages/LandingPage.tsx",
+      "line": 170,
+      "event": "onClick",
+      "handler": "{() => handleSelectDocumentType(doc.type)}",
+      "element": "motion.button"
+    },
+    {
+      "file": "user-frontend/src/pages/LoginPage.tsx",
+      "line": 124,
+      "event": "onClick",
+      "handler": "{() => navigate(`/verify-email?email=${encodeURIComponent(email)}`)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/LoginPage.tsx",
+      "line": 134,
+      "event": "onSubmit",
+      "handler": "{handleSubmit}",
+      "element": "form"
+    },
+    {
+      "file": "user-frontend/src/pages/LoginPage.tsx",
+      "line": 148,
+      "event": "onChange",
+      "handler": "{(e) => {\n                  setTotpCode(e.target.value.replace(/[^0-9]/g, ''));\n                  if (error) clearError();\n                }}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/LoginPage.tsx",
+      "line": 172,
+      "event": "onClick",
+      "handler": "{() => { setStep('credentials'); setTotpCode(''); clearError(); }}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/LoginPage.tsx",
+      "line": 189,
+      "event": "onChange",
+      "handler": "{(e) => {\n                    setEmail(e.target.value);\n                    if (error) clearError();\n                  }}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/LoginPage.tsx",
+      "line": 209,
+      "event": "onChange",
+      "handler": "{(e) => {\n                    setPassword(e.target.value);\n                    if (error) clearError();\n                  }}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/LoginPage.tsx",
+      "line": 219,
+      "event": "onClick",
+      "handler": "{() => setShowPassword(!showPassword)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/LoginPage.tsx",
+      "line": 266,
+      "event": "onClick",
+      "handler": "{handleGoogle}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/LoginPage.tsx",
+      "line": 282,
+      "event": "onClick",
+      "handler": "{handleGuest}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/PasswordResetPage.tsx",
+      "line": 99,
+      "event": "onSubmit",
+      "handler": "{handleNewPasswordSubmit}",
+      "element": "form"
+    },
+    {
+      "file": "user-frontend/src/pages/PasswordResetPage.tsx",
+      "line": 116,
+      "event": "onChange",
+      "handler": "{(e) => { setNewPassword(e.target.value); clearError(); setLocalError(null); }}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/PasswordResetPage.tsx",
+      "line": 124,
+      "event": "onClick",
+      "handler": "{() => setShowPassword(!showPassword)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/PasswordResetPage.tsx",
+      "line": 142,
+      "event": "onChange",
+      "handler": "{(e) => { setConfirmPassword(e.target.value); setLocalError(null); }}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/PasswordResetPage.tsx",
+      "line": 172,
+      "event": "onSubmit",
+      "handler": "{handleRequestSubmit}",
+      "element": "form"
+    },
+    {
+      "file": "user-frontend/src/pages/PasswordResetPage.tsx",
+      "line": 190,
+      "event": "onChange",
+      "handler": "{(e) => { setEmail(e.target.value); clearError(); }}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/PricingPage.tsx",
+      "line": 28,
+      "event": "onChange",
+      "handler": "{event => setCycle(event.target.value === 'yearly' ? 'yearly' : 'monthly')}",
+      "element": "select"
+    },
+    {
+      "file": "user-frontend/src/pages/PricingPage.tsx",
+      "line": 49,
+      "event": "onClick",
+      "handler": "{() => plan.name === 'free' ? navigate(isAuthenticated ? '/builder' : '/register') : checkout(plan.name)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/RegisterPage.tsx",
+      "line": 105,
+      "event": "onSubmit",
+      "handler": "{handleSubmit}",
+      "element": "form"
+    },
+    {
+      "file": "user-frontend/src/pages/RegisterPage.tsx",
+      "line": 117,
+      "event": "onChange",
+      "handler": "{(e) => { setFullName(e.target.value); clearError(); setLocalError(''); }}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/RegisterPage.tsx",
+      "line": 136,
+      "event": "onChange",
+      "handler": "{(e) => { setEmail(e.target.value); clearError(); setLocalError(''); }}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/RegisterPage.tsx",
+      "line": 155,
+      "event": "onChange",
+      "handler": "{(e) => { setPassword(e.target.value); setLocalError(''); }}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/RegisterPage.tsx",
+      "line": 163,
+      "event": "onClick",
+      "handler": "{() => setShowPassword(!showPassword)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/RegisterPage.tsx",
+      "line": 201,
+      "event": "onChange",
+      "handler": "{(e) => { setConfirmPassword(e.target.value); setLocalError(''); }}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/RegisterPage.tsx",
+      "line": 208,
+      "event": "onClick",
+      "handler": "{() => setShowConfirmPassword(!showConfirmPassword)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/RegisterPage.tsx",
+      "line": 262,
+      "event": "onClick",
+      "handler": "{handleGoogle}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/VerifyEmailPage.tsx",
+      "line": 123,
+      "event": "onClick",
+      "handler": "{handleResend}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/VerifyEmailPage.tsx",
+      "line": 133,
+      "event": "onSubmit",
+      "handler": "{handleVerify}",
+      "element": "form"
+    },
+    {
+      "file": "user-frontend/src/pages/VerifyEmailPage.tsx",
+      "line": 144,
+      "event": "onChange",
+      "handler": "{(e) => setEmail(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/VerifyEmailPage.tsx",
+      "line": 162,
+      "event": "onChange",
+      "handler": "{(e) => setCode(e.target.value.replace(/\\D/g, '').slice(0, 6))}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/VerifyEmailPage.tsx",
+      "line": 186,
+      "event": "onClick",
+      "handler": "{handleResend}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx",
+      "line": 68,
+      "event": "onClick",
+      "handler": "{() => setBillingNotice(null)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx",
+      "line": 98,
+      "event": "onClick",
+      "handler": "{() => setCancelModalOpen(true)}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx",
+      "line": 101,
+      "event": "onClick",
+      "handler": "{handleOpenBillingPortal}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx",
+      "line": 182,
+      "event": "onClick",
+      "handler": "{() => alert('Downloading official receipt PDF...')}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx",
+      "line": 207,
+      "event": "onClick",
+      "handler": "{() => setCancelModalOpen(false)}",
+      "element": "motion.div"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx",
+      "line": 227,
+      "event": "onClick",
+      "handler": "{() => setCancelModalOpen(false)}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx",
+      "line": 234,
+      "event": "onClick",
+      "handler": "{handleCancelSubscription}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx",
+      "line": 252,
+      "event": "onClick",
+      "handler": "{() => setPortalModalOpen(false)}",
+      "element": "motion.div"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx",
+      "line": 262,
+      "event": "onClick",
+      "handler": "{() => setPortalModalOpen(false)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx",
+      "line": 292,
+      "event": "onClick",
+      "handler": "{() => setPortalModalOpen(false)}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardOverviewPage.tsx",
+      "line": 76,
+      "event": "onClick",
+      "handler": "{startNewDocument}",
+      "element": "Button"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 151,
+      "event": "onClick",
+      "handler": "{() => setSupportFormNotice(null)}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 166,
+      "event": "onClick",
+      "handler": "{() => { if (id === 'ticket' || id === 'refund' || id === 'contact' || id === 'override') setSupportSubTab(id); setSupportFormNotice(null); }}",
+      "element": "button"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 187,
+      "event": "onSubmit",
+      "handler": "{handleTicketSubmit}",
+      "element": "form"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 193,
+      "event": "onChange",
+      "handler": "{e => setTktCategory(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 206,
+      "event": "onChange",
+      "handler": "{e => setTktPriority(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 221,
+      "event": "onChange",
+      "handler": "{e => setTktSubject(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 231,
+      "event": "onChange",
+      "handler": "{e => setTktMessage(e.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 254,
+      "event": "onSubmit",
+      "handler": "{handleRefundSubmit}",
+      "element": "form"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 260,
+      "event": "onChange",
+      "handler": "{e => setRfndGateway(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 274,
+      "event": "onChange",
+      "handler": "{e => setRfndAmount(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 284,
+      "event": "onChange",
+      "handler": "{e => setRfndReason(e.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 307,
+      "event": "onSubmit",
+      "handler": "{handleContactSubmit}",
+      "element": "form"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 313,
+      "event": "onChange",
+      "handler": "{e => setCtctName(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 323,
+      "event": "onChange",
+      "handler": "{e => setCtctSubject(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 333,
+      "event": "onChange",
+      "handler": "{e => setCtctMessage(e.target.value)}",
+      "element": "textarea"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 356,
+      "event": "onSubmit",
+      "handler": "{handleOverrideSubmit}",
+      "element": "form"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 362,
+      "event": "onChange",
+      "handler": "{e => setOvrPlan(e.target.value)}",
+      "element": "select"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 375,
+      "event": "onChange",
+      "handler": "{e => setOvrQuota(e.target.value)}",
+      "element": "input"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "line": 385,
+      "event": "onChange",
+      "handler": "{e => setOvrReason(e.target.value)}",
+      "element": "textarea"
+    }
+  ]
+}

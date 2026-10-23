@@ -1,0 +1,23 @@
+{
+  "services/admin-api/migrations/202610200001_hybrid_ai.sql": "1c5e820d0a408be8dd04055faf42f29aa073da641cd55ccf1f3dc035d36c07f5",
+  "services/auth/prisma/migrations/20260711140351_init/migration.sql": "1cc2811c24f946fc13269d8c4bb1538f26a516ad1982ce4af3e1d7a25b6e8591",
+  "services/auth/prisma/migrations/20260713095926_add_srs_user_fields/migration.sql": "1663dc33276d8e1f19ade150e34fd1684c5abc553eaa135e324ac5db6f15e5f8",
+  "services/auth/prisma/migrations/20260829160000_add_referrals/migration.sql": "94c37dd3eeaae55501de544e4d1c2729422a649c3c70f812ba885713d08cd83e",
+  "services/auth/prisma/migrations/20260830120000_add_login_events/migration.sql": "c2c29eb0e25d3673c53fe0319e2d1f33acc102d54dcd4e57c535af5f4be3b145",
+  "services/auth/prisma/migrations/202610150003_email_verification/migration.sql": "76eb5c2fdb9d8abf8617d443c7a2279b43aa0c6d897bd96f42518e7db3c7749d",
+  "services/auth/prisma/migrations/202610150004_refresh_token_digests/migration.sql": "a6bd2d7f38b559845524478550f6a22038ca6e0b1ce6e06598ec41c71626af35",
+  "services/auth/prisma/migrations/202610160001_totp_replay/migration.sql": "22b2164282c1bcd01eef227af47a88878fc2685dffa22dc2b77851f2fc68f7b5",
+  "services/chat/prisma/migrations/20260712180115_init/migration.sql": "f08e473489c1f3e73a2d128378eefe77f314be69a265dddef5dfc6965571d2da",
+  "services/chat/prisma/migrations/20260716_add_model_preference/migration.sql": "d2674a763235ad9aac2af65d35a1119590c9b9655ebdcdc5db0cab8c2ffc4a6c",
+  "services/chat/prisma/migrations/202610150004_conversation_persistence/migration.sql": "f21aee2af1068ac977da2f3e4a1c67511da9d6b1f229c1293fc9d4a5803728ba",
+  "services/chat/prisma/migrations/202610150005_enum_contract/migration.sql": "7aeb6ab38a67f0792a939d5e414390eba19bb047942485955453b4e1f95e565e",
+  "services/chat/prisma/migrations/202610150006_guest_claim/migration.sql": "cdbdb9396bc757c1093152a6775e53d7c99f983d5132c705e6afb07722e02922",
+  "services/payment/prisma/migrations/202610150001_payment_initial/migration.sql": "135b6fe27e4adbcb22879ed94e6cbc1e9f3140be7441a04c36c4c4180f7a202a",
+  "services/payment/prisma/migrations/202610150002_checkout_intents/migration.sql": "cd3d4d99b9976083062bdbc5682f5d89be235c57b50ce2553257b1c4a9a1fe5b",
+  "services/payment/prisma/migrations/202610150006_webhook_inbox/migration.sql": "64834b217648059a2ed5c3bdd314d6d75bdf7a230a4a01ed7f2bf2f1f8768caf",
+  "services/payment/prisma/migrations/202610150007_billing_snapshot/migration.sql": "e863cb375f2c1a24e1d803849be171d99c2a7db1ea47531686453113efa35131",
+  "services/payment/prisma/migrations/202610160001_payment_outbox/migration.sql": "ec84f05de057f7d3f8295576faf28140c153f4a9b5aea0d5a6f751ec19b80138",
+  "services/payment/prisma/migrations/202610160002_outbox_timestamps/migration.sql": "cd73dd056f063c054fbde357e8df156471e99e5a09e2ee08419d0579e9845f53",
+  "services/quota/prisma/migrations/202610150001_quota_initial/migration.sql": "526ca4eff23294e845ef25e58f8ca2d0480974477b2ea5a6e82a5f4f36f91727",
+  "services/quota/prisma/migrations/202610160001_durable_reservations/migration.sql": "3c84517d41287b03560cb53d792b7b86f6fbb32ec1cd66361b9ee503b4a12b6c"
+}

@@ -1,0 +1,8 @@
+{
+  "scope": "Actual custom-template API, React Apply action, native backend reload; no mocks",
+  "expected": "Applied literal element survives same-session browser reload",
+  "source": "user-frontend/src/store/documentStore.ts:411",
+  "visible_after_apply": true,
+  "visible_after_reload": false,
+  "status": "DEFECT_REPRODUCED"
+}

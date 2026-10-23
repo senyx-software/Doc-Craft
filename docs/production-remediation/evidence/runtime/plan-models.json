@@ -1,0 +1,28 @@
+{
+  "scope": "Actual admin APIs/PostgreSQL/cache/signed runtime assignments; both candidates remain production-unapproved",
+  "health": {
+    "model_id": "remediation-large",
+    "healthy": true,
+    "code": "OK",
+    "checked_at": "2026-10-21T15:17:26.769462+00:00",
+    "latency_ms": 16250
+  },
+  "assignments": [
+    {
+      "http": 200,
+      "plan": "free",
+      "primary": "remediation-small",
+      "version": 29
+    },
+    {
+      "http": 200,
+      "plan": "pro",
+      "primary": "remediation-large",
+      "version": 29
+    }
+  ],
+  "runtime_models_differ": true,
+  "version_matches_update": true,
+  "no_redeployment": true,
+  "paid_model_full_chat": "Not certified: 4096 context cannot fit full production prompt under conservative token budget"
+}

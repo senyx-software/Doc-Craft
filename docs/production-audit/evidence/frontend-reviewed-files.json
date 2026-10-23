@@ -1,0 +1,912 @@
+{
+  "audit_date": "2026-10-21",
+  "method": "AST inventory plus focused manual traces; no runtime pass inferred",
+  "files": [
+    {
+      "file": "admin/src/App.tsx",
+      "lines": 447,
+      "sha256": "76ce93af1895ca8f4f2e987ac0966d1c42f037a6f192a140bd33c2edf7d414f0",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/api/adminApiClient.ts",
+      "lines": 436,
+      "sha256": "9e6328f47caae2af6fa8ca6aee52a818a108e4e186098e99931936fd48b814f3",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/api/adminApiTypes.ts",
+      "lines": 70,
+      "sha256": "d2911619df15c33a456263c804bb1ed5ba374559036e0b28e7656ba1451de8b1",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/api/aiTypes.ts",
+      "lines": 30,
+      "sha256": "770a5b88643fdee6023b2d5b240fb94895f57173d3ed6dc71bbdea02928d6e73",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/AdminSidebar.tsx",
+      "lines": 186,
+      "sha256": "4fc52775ad11bdbb7b6591f751edfe1531d3ccd5a38ecf77d1b4ae154e66a474",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/EntitlementControls.tsx",
+      "lines": 35,
+      "sha256": "66d6075a63205db2b18cc09da8528f847b4e7b097793ad0171ddb3d8e07c473c",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/TemplateUpload.tsx",
+      "lines": 28,
+      "sha256": "e63312b375da39aba72181c04a06e5e83e73c0423abb04b62f1dc81e21906d31",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/common/AdminNavbar.tsx",
+      "lines": 67,
+      "sha256": "4f27e62fbfac137a7e84b866819c9e794a9eac5dbfb6d59137d99c93b05aca5d",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/common/AdminTopbar.tsx",
+      "lines": 675,
+      "sha256": "b455ec0693d0fec0b29121e9ea1ce686d4ddf6e6ba851e0205000dd97b25ec0b",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/common/ToastContainer.tsx",
+      "lines": 56,
+      "sha256": "b696f46dd7c12a406785eb970c2aa16130de56e170c38efd98c12c7c86d6ed4f",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/infrastructure/ProviderLimitsInfo.tsx",
+      "lines": 77,
+      "sha256": "127fa3e9d0e71e1dfe05e92a2a1c0c9180df96d9c8614898bae51a3f1da01a3d",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/layout/SplitAuthLayout.tsx",
+      "lines": 76,
+      "sha256": "9ccc80e1d85c2ecbab9df7ae935a861ae4e076e3dd07cef419fefa9c80ccb571",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/ui/Badge.tsx",
+      "lines": 29,
+      "sha256": "c9cdc2e58805a70d8442ef3e311fa28f905cf6a0fbf5cd7e0c741570afd9d4ce",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/ui/Button.tsx",
+      "lines": 46,
+      "sha256": "fcdf7ea91d7f925eb5727610c5dcacff7c08e2dbb886307c20087813fb5969ff",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/ui/Card.tsx",
+      "lines": 22,
+      "sha256": "491c14f86783e86f3b8b4b33c41d97ef30f4adc76b9275c572536f099550fa5a",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/ui/DateRangeFilter.tsx",
+      "lines": 102,
+      "sha256": "d03e207e3622ab52045f02e8cad2085dcc78f4183054b14c127f70f9e26b404d",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/ui/FontFacePicker.tsx",
+      "lines": 130,
+      "sha256": "0ddd65581a7a3a18bbf560b26f0241f0ab9e92694054f3393927df5bc6faada1",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/ui/Input.tsx",
+      "lines": 39,
+      "sha256": "cd2a03a56f18c59162df4781dfb7b6c6ab8dff2a921b2f573a515b193cedbd8d",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/ui/Pagination.tsx",
+      "lines": 50,
+      "sha256": "1c10ae5d1549b1fb23e0f3c28d6d4cdc57ed2faceb0c6333aef4489b4e6b3c97",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/ui/SortableHeader.tsx",
+      "lines": 34,
+      "sha256": "f645bd846f3e17f7919bf3e7c671c8e7040100a340e972d7fbfcc01d610ab41c",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/ui/StatCard.tsx",
+      "lines": 46,
+      "sha256": "b049e5dad7009a65240f99ebe414c4b30aa6145b1834bacd4270d0066ff02cbd",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/ui/SystemDialogModal.tsx",
+      "lines": 99,
+      "sha256": "09863672f8f83579fc91ea677779b74a8f716cc33c64d8cd65c12e4a70e91700",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/components/ui/TotpPromptModal.tsx",
+      "lines": 131,
+      "sha256": "853d385afeb4f8b18f54e29dc5f29afd6be93b741ccd5c5657880cfee86602b0",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/config/adminNavSections.tsx",
+      "lines": 224,
+      "sha256": "37a8d3aa90c46273effe452244d08e416edaabe9f0a2672b03c335c1416351da",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/hooks/useCommittedEvent.ts",
+      "lines": 9,
+      "sha256": "eee10d2f5c86f3ff24d986b49ac7197e557f111e69dbd33018e9f16587916c34",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/hooks/usePagination.ts",
+      "lines": 18,
+      "sha256": "21b4f34ab5aeb2b3cca18a1b05aed9a4fe93a5dcfe852ee4a633978ea1b1051d",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/hooks/useSortToggle.ts",
+      "lines": 36,
+      "sha256": "04bdd8b44a289e5a62d5a45f678af585449878ef716bd2e5ee80301b07d4976a",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/main.tsx",
+      "lines": 14,
+      "sha256": "f5297a6afed15af66b8fc1d11027acb37e88e3601ac703f7af43932f985ffd23",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/DashboardPage.tsx",
+      "lines": 201,
+      "sha256": "4c847ef0537affd7a556e4111915ae5d01ba8297801d6bcd026f80aacd873dc5",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/UserDetailPage.tsx",
+      "lines": 289,
+      "sha256": "1ee4525de4a6809772fca0c67481d89b8c25718b0fc4b11611d2888f3e6797b1",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/AIManagementView.tsx",
+      "lines": 104,
+      "sha256": "ca3111a9f72e33512046d9d54ebbe2dd5dca0861758ede2c1c0bfa9e40ff9d4c",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/AnalyticsView.tsx",
+      "lines": 853,
+      "sha256": "37dda4e19741cdf192e92f98c637d4eccea7ad321b1648089fdead51255865a4",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/AutomationsView.tsx",
+      "lines": 1042,
+      "sha256": "5ff35565fdf4d4ae05e64b45c2213b82b3284a4e2c6e3540d861662efdc0e488",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/ConfigView.tsx",
+      "lines": 354,
+      "sha256": "3427109e736d862492e1496d982b0696c48885a53b24b18008e887b822e2c087",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "lines": 492,
+      "sha256": "44a043c4d5084531ee206ef3b5dfa2716b3ea0a6516ed05ee693d326b9a3c95c",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/DocumentsView.tsx",
+      "lines": 344,
+      "sha256": "933784491af90675fcdb697337110f95d62d6eeb7aaeb8f911e0207ec9cf17cb",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/GenerationsView.tsx",
+      "lines": 399,
+      "sha256": "8c8f3bdf455692b25eb3c7b0a078e42f6a9a6b93940ca4e148424eb931e4ce03",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/HomeView.tsx",
+      "lines": 364,
+      "sha256": "6de6377fea41afba557375cc86daad1c59b684a33f951afcc42087938e345936",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/InfrastructureView.tsx",
+      "lines": 430,
+      "sha256": "b71abe59663afb65bd7937f780f75d77c0a8bca1b35db2aaba38b98b0934310f",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/NotificationsView.tsx",
+      "lines": 701,
+      "sha256": "1f60813c2828721b7405f443483ae166b1a65460c54cea76388d253c32f32233",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/PackagesView.tsx",
+      "lines": 540,
+      "sha256": "ca5dde6d578d11534bfdbff08a547668443d952584e1064f7d736870819ed5c0",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/PromotionsView.tsx",
+      "lines": 519,
+      "sha256": "af7041082af6aeed9eda28603529d0b10103ba66160788192b07ad4ba576f707",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/RevenueView.tsx",
+      "lines": 550,
+      "sha256": "115d03ca2ad7c96082abec2ddb54ee1631a0d4741c1cdf8222e649a1c22316b3",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/SecurityView.tsx",
+      "lines": 873,
+      "sha256": "33e1e903925e685cc788d3b5e75fcb25ee5947d7dae5ecc7dabedc4bffc0b2b2",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/SettingsView.tsx",
+      "lines": 1259,
+      "sha256": "1e5301b78caf996f4e716b92f0c3285a9b9033757dc8cfc0013041ca584a0f6d",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/SubscriptionsView.tsx",
+      "lines": 604,
+      "sha256": "c1ca0dc5262c110aa64c3e072ee22f6e572326f16620b56edea3a123b1c9d3dc",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/SupportView.tsx",
+      "lines": 617,
+      "sha256": "208e35ccb43be14596b02ba38d72e4156ccb9f8a3a6920a0eea568043eeffb46",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/pages/subviews/UsersView.tsx",
+      "lines": 667,
+      "sha256": "dbebf6df894122e2f192a892f0592019859c6050dadd188c89b9677715788614",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/store/adminAuthStore.ts",
+      "lines": 256,
+      "sha256": "6fd7659cf4f206982f15aef2a9986e37719bdb99c4a95958e60e85300f7cd728",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/store/themeStore.ts",
+      "lines": 45,
+      "sha256": "2b40e4a5b45baee7009f382839ce3f94818141717580af2c2416855a4ec4ca7c",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/store/toastStore.ts",
+      "lines": 58,
+      "sha256": "13eeff46f30de5f9eadddb8af8da1f2a88066c8cc9f787505c417673fe97ebb0",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/store/totpPromptStore.ts",
+      "lines": 48,
+      "sha256": "eaf9283255e3408b70f626209e362eb8bec4631801e835b25a6f2438c829a48f",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/utils/googleFonts.ts",
+      "lines": 136,
+      "sha256": "796e4b8fde3e63c93a29500a1df7df860a419c4e7eb8098236e3eba54490a8c5",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "admin/src/vite-env.d.ts",
+      "lines": 2,
+      "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/App.tsx",
+      "lines": 117,
+      "sha256": "9e7386cb9d87fe2eebfa8b4ca4c6cccb1418701af751255d7db552e06a402c60",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/api/ai.ts",
+      "lines": 83,
+      "sha256": "c9433972d8c57a9fabf8c265a11cf5b9000c711fe857643e515207621b624d80",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/api/analytics.ts",
+      "lines": 20,
+      "sha256": "113a0d99c605d9808951f4621900a0940855e7272c78a632f621ed10ae635367",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/api/auth.ts",
+      "lines": 100,
+      "sha256": "4b88682eb3ff87e485e03121387e4e5fe70cd47f2b64ba9827dfb80e53063900",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/api/billing.ts",
+      "lines": 54,
+      "sha256": "d9fa8449f311d6960338af052de957ca19507b4ff9efb79b34bd442b9a535f5e",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/api/client.ts",
+      "lines": 214,
+      "sha256": "25bdef3db1b09779d909011098b153ea84dd36f103f135ce93434ddf23e7405e",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/api/documents.ts",
+      "lines": 125,
+      "sha256": "f93ad9c78d1271a7ffedb24eb52600ea43ab0bbca152c2a167d782962deb8cac",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/api/payment.ts",
+      "lines": 76,
+      "sha256": "de7fa31e8d5a307dd0bb82cb223ea2345088c119c795f704c22d11afe735f091",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/api/support.ts",
+      "lines": 60,
+      "sha256": "34be065d2118db97080fba618c767b293d035f52890ab63e5b81fb921230dee8",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/api/users.ts",
+      "lines": 46,
+      "sha256": "6fca1ec13d733bdbc917351c59af298e9533ea8ee29773691df57039754a38f2",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/FluidCardStack.tsx",
+      "lines": 92,
+      "sha256": "055719b55d232dec4ebcd306d5831de77c81398307b14c6feccc22638adfb43d",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/AssetModal.tsx",
+      "lines": 196,
+      "sha256": "9d47ef71412fc75d344cf58c9a2a9138af1bde5f95a9677f7888d18d723de9b4",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/CanvasContextMenu.tsx",
+      "lines": 80,
+      "sha256": "bfefbe19d124791b13b4678135b8af8bc9804efd529ab426208fbb5a33905f71",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatAttachments.tsx",
+      "lines": 63,
+      "sha256": "d7a1e530338e048438d206bb5cb5252df2ff1d4f31d879c8cd9cc86f28349c83",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatMessage.tsx",
+      "lines": 173,
+      "sha256": "c1d7449f893f235de6fcd3c745fc43be77cbe6c4212856f2d93d0bab2054f888",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "lines": 565,
+      "sha256": "5a5f74b56467ae79200830034ae28264de209b47f601d09b0e1840a16d1a3934",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/DocumentPreview.tsx",
+      "lines": 152,
+      "sha256": "72d44aa8c950cc248cbc058669fabbc0d38f339b8fd4f3d31d5e752498d75dd0",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "lines": 648,
+      "sha256": "d79a6a31baaa668020ccefc3d2e4739614554beec83adce1ec740e769d86c357",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ExportPanel.tsx",
+      "lines": 165,
+      "sha256": "e28fbc586f5d25ffd3c3d91cfa05d6c12191cec9b365566c9b6ba8a007b800f7",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FontFacePicker.tsx",
+      "lines": 118,
+      "sha256": "7259ab4fce01bcf7514703238bb38aa29ffa4439edafb384f6f32d7185d2b961",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "lines": 379,
+      "sha256": "fffa3d75987007c955a0b23414952a1f118ce18703553b52e6ebbc0d85941c8d",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "lines": 828,
+      "sha256": "865796c22a2e6d803985560048d596b3d9c0e69777c29295a14ea3bdebcf4764",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/LayersPanel.tsx",
+      "lines": 117,
+      "sha256": "b55390fca73a7f0e1f23847bc16ac52ccfd413fe15be68ece9b73cc335735933",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "lines": 421,
+      "sha256": "587d585febb55fab1532283e428d9ab781e976a019dafae7fc12fa7dc4082dec",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ProgressIndicator.tsx",
+      "lines": 51,
+      "sha256": "a18fafd378d41f81b68b07e5e72225b36e585eec3a7d822f109dfc81054dd63d",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/SignaturePad.tsx",
+      "lines": 184,
+      "sha256": "a84701187f97b6a633b9df05337a96ca2343cc7d1b86d86e97a0ecd966220a06",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/SpellCorrectionBanner.tsx",
+      "lines": 55,
+      "sha256": "b04e12244252f37f717d5669d2a6fffd176b35b10a7289248a8d1b964fefefca",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/TemplateSelector.tsx",
+      "lines": 354,
+      "sha256": "6dae92fb8d2df8878277c315a9ff4176acdadc405f1fb7d68f1e0f88967ed5c6",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/ToolkitTabButton.tsx",
+      "lines": 25,
+      "sha256": "b9c838cbbc4284153ecdf61b23e99025e50c4197da2f7c07f674da18ba98be57",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/UploadPrivateTemplate.tsx",
+      "lines": 26,
+      "sha256": "95f574e4ffd45466355be593ccc5d74b38c9c0754604f2d46bc4288a26073bd7",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/builder/UploadedTemplateThumbnail.tsx",
+      "lines": 28,
+      "sha256": "9d678cc19cdfbd89b1ec0b148ff96f6ecd50f7d2c0478051db97119d150295b3",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/common/Announcements.tsx",
+      "lines": 32,
+      "sha256": "3046082b3dd709ec6e84bfcd465bae132b7234d5674629618feea7401863ea6b",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/common/BackgroundEffects.tsx",
+      "lines": 166,
+      "sha256": "7dcbaf325c5bcae41a40f8b9c64cd895074a449673d187b169538aba4f94eee6",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/common/LogoutConfirmModal.tsx",
+      "lines": 118,
+      "sha256": "408af45b49357283cfaa0ef4912da59d09340cd08b42999ac6560650dee2fec6",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/common/Navbar.tsx",
+      "lines": 422,
+      "sha256": "c9b40051f7dce916571bbd33c541d4847cd52588b4b04a6eb800e026f3204638",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/DocumentsTable.tsx",
+      "lines": 97,
+      "sha256": "286cdb9c81f09644c0121805a928a82839aab34a889283a027a24e5d79267833",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/PaymentMethodsCard.tsx",
+      "lines": 29,
+      "sha256": "a64630530332a22eb9b6cdd809a8ffbdbb3bd501abb08052e6c8cc611b5a691f",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileIdentityCard.tsx",
+      "lines": 255,
+      "sha256": "d9b43c8cd133b14bd2d6fec336477251de207650bfc18b128982e27cbf7ef412",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileQuotaCard.tsx",
+      "lines": 35,
+      "sha256": "01d0fd971261ab4a8178c61e4a6c258d42ff43d2f315ee50ccbc06807f4266fa",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "lines": 379,
+      "sha256": "1d7982149c1a4cac6304ef86394696bd8f810f9ade0fbe9f02cfff26059300fe",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/ProfileSubscriptionCard.tsx",
+      "lines": 37,
+      "sha256": "dda9c1184b7a350f78e75ffd85a4217076d8cb047f81d3d84b7ddca1e012eb63",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/QuotaBar.tsx",
+      "lines": 51,
+      "sha256": "54048b1f1fa63030284b4e084ec095a5088eb282de6b0b2faa4555cbabb37322",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/dashboard/StatCard.tsx",
+      "lines": 29,
+      "sha256": "640f608df4face5b2dd490c9539b6fa92c16815fe07bbd7393c1eef593f1b3fc",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/landing/DocumentTypeSelector.tsx",
+      "lines": 134,
+      "sha256": "66e2db2b4df159f892dc1f1f1c34567efa546ad0911adbaa5c2904e71d181d26",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/landing/PricingTierCard.tsx",
+      "lines": 77,
+      "sha256": "21238da6831cac017cdf689642838966b9e99da3b2519e5b0ce772c1bcb98a83",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/layout/SplitAuthLayout.tsx",
+      "lines": 87,
+      "sha256": "e19956cb671f5404fa6fbe0471293d74734d122d2f01d1d2b78897300afe7179",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/shared/GuestDownloadModal.tsx",
+      "lines": 94,
+      "sha256": "a754eb1ae1bab5e08430626e7612c01ac30b30291858ed093c86d908d191abf6",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/shared/UpgradeModal.tsx",
+      "lines": 77,
+      "sha256": "53ee859055ec5d6d7761419c2b08306ad4b1c5fb94fd764e3e7b1db1f5ff95b9",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/ui/Badge.tsx",
+      "lines": 26,
+      "sha256": "64af0a7d5f12a77fb08102f961aba057f25797f3eb2a2ac5f632c3302d9f91cc",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/ui/Button.tsx",
+      "lines": 45,
+      "sha256": "ca62da268e66cd86b10e35929bc8ff33a67d96a70937e548923487513f76efac",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/ui/Card.tsx",
+      "lines": 48,
+      "sha256": "e359985a5c78b3b85e8fbdaa06c5020729e0bcee0fbafab2881c0be2c1430d8d",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/ui/Input.tsx",
+      "lines": 44,
+      "sha256": "e53a2836797bdf3d5df6ff714a3e3114c8665325051403c21308de80f389d1ea",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/ui/Spinner.tsx",
+      "lines": 42,
+      "sha256": "2c3e30cd329b058b02d343b60b0e5edb1bb19d0bab4623e156f6dc361308782f",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/ui/Stat.tsx",
+      "lines": 18,
+      "sha256": "67be376fbee9d918258463a82c4ba40d4022675c71b7f5f3da58ce386c53fd4b",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/components/ui/Table.tsx",
+      "lines": 40,
+      "sha256": "8d40f577bdd898fe51c16d2cc5bc4f1449399ba11b3fb0dd09f70452fa7bc7c8",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/hooks/useCommittedEvent.ts",
+      "lines": 9,
+      "sha256": "19bdecb308e771c31c0a834a4d4161b560d020829b31f0e2b9ea8b89aa3acfaa",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/hooks/usePageDurationTracking.ts",
+      "lines": 94,
+      "sha256": "173e490a418570b377e9e921d606d04dcd6f3aee70ba74004ffec469fabf363d",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/hooks/usePlanCatalog.ts",
+      "lines": 24,
+      "sha256": "03d4e5d235bd082f400ca4f056173b98481f60f54944ac400db39c10a2020d99",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/hooks/useUserDocuments.ts",
+      "lines": 42,
+      "sha256": "75319bb7ac70adbad5800cc8068dc7bfee25003585a3d8242e05c1f197cfceed",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/layouts/DashboardLayout.tsx",
+      "lines": 95,
+      "sha256": "052861bb03913e10910b00d4df5613ce5961c819bd3ffb5bc68060ca6920e49d",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/lib/firebase.ts",
+      "lines": 35,
+      "sha256": "6b7d80968ce8c84e748e56391bb58706c77f1a0059afa2a7170179e208bb047e",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/main.tsx",
+      "lines": 14,
+      "sha256": "c3ac37bcc61ca7a979980228a22848cc965f113f72c64260e4f2db83adfe09ef",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/middleware/GuestRoute.tsx",
+      "lines": 37,
+      "sha256": "e656ecd9869ad2f3b27323d0a50aeb966f108195c60ce21021c6107dd78a709c",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/middleware/ProtectedRoute.tsx",
+      "lines": 35,
+      "sha256": "f1413268ea88be0d69d1578f08440e13bd2a0ab46bc4c8e2da254a38254581c0",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/pages/BuilderPage.tsx",
+      "lines": 1772,
+      "sha256": "f27e02ce749f824050119b984cc75403a939d2a30ce94629f889c1388a5bdfab",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/pages/LandingPage.tsx",
+      "lines": 462,
+      "sha256": "1a1c172b2d884cad73395dca414c938cb1d93ae87449d8a08e25b22ed5420f08",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/pages/LoginPage.tsx",
+      "lines": 306,
+      "sha256": "a5cd49377f18bead78b868b524b732846a45a1d7d011b54e4bebd202e363785d",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/pages/PasswordResetPage.tsx",
+      "lines": 215,
+      "sha256": "aad49e0aca0e77aae6864fbabf0f4a30b6b11b01fae0513fbf7b007f3d9a49db",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/pages/PricingPage.tsx",
+      "lines": 55,
+      "sha256": "dd7ea11dc635a47f04d30627f4ec758f9d93f7091f890f31edf1fbf37070614f",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/pages/RegisterPage.tsx",
+      "lines": 280,
+      "sha256": "3635a8e70ff006b8df2ec5b253cc0bc73aa04252c7d4d2cb3a33da1e365ef8c9",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/pages/VerifyEmailPage.tsx",
+      "lines": 199,
+      "sha256": "05d7354be66dd095a17fe3f744a1a11d1ee59fed2a5fce530c675cff3e89790d",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx",
+      "lines": 304,
+      "sha256": "411210e7e3f25b6b4f23eaeda2977553db3910d4457be1f93b627f11e07035e2",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardHistoryPage.tsx",
+      "lines": 35,
+      "sha256": "6096010669ff56090e2eff252fa167ba34357464ad1cf1cd6a45876e32161b00",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardOverviewPage.tsx",
+      "lines": 115,
+      "sha256": "fc381598770aa121bbe44e83e54b900da72312a2390415920dad606e4204ebee",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardProfileSettingsPage.tsx",
+      "lines": 45,
+      "sha256": "9d8a0ba0f291bc6229aeaef849a54c5358bc2a2bfe907b574052f60e2d8a171c",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "lines": 404,
+      "sha256": "213a41b1793820318f01b1dcd520dadb67fd9df122a5e436a7eae14a66ca558b",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/store/authStore.ts",
+      "lines": 345,
+      "sha256": "ed57d2bc37285484ed8eb26ed8fbfbe269b8ba51860a05756c56e2a667fea5e5",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/store/chatStore.ts",
+      "lines": 286,
+      "sha256": "e40d68106e2b6eb512895268263dc9c7ac7dea815fb30400d19b8ba74acde0e0",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/store/documentStore.ts",
+      "lines": 1164,
+      "sha256": "47b7984da589174b46d7cf33e1a3ebc6f13c7952794ca7c691920c380c328ca3",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/store/paymentStore.ts",
+      "lines": 85,
+      "sha256": "5cdac2a95635a7a0b703e17835d8e4f72c7296c398b6c580d16364ca6cc8a514",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/store/quotaStore.ts",
+      "lines": 159,
+      "sha256": "441977413acc8cffe9339897af229c12451d8766acbe26624a1a4383928a5e4e",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/store/themeStore.ts",
+      "lines": 47,
+      "sha256": "69db50fe3cd70e0a9796b724aad3d81fef06914ba0e2ea7ed2344dce1921e395",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/types/canvasElement.ts",
+      "lines": 123,
+      "sha256": "beba82d9f809b831d2e1792a731c23095060b210bf1b34cc767ebc6586e5d95a",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/types/index.ts",
+      "lines": 377,
+      "sha256": "031bbf5dd0c6e0d0a85f92aa99da63a6fed677c143b41b4f8be785566679f55e",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/utils/csv.ts",
+      "lines": 28,
+      "sha256": "34de6c1dc92cc040f6a5635721655a4d4442ab41caf52f2c70ebcb4aa8e999c2",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/utils/dashboardActions.ts",
+      "lines": 9,
+      "sha256": "b6edef8acbad536a9b11e88a134f6918d14c0836a9deaa16b8b0a12c750f3f46",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/utils/documentValues.ts",
+      "lines": 48,
+      "sha256": "9e8252d89a72a7d85a8f123a83602466ca2a660a05daba84f4a57345feffa741",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/utils/exportFontMetrics.ts",
+      "lines": 13,
+      "sha256": "d04cdc53eb0345f28ba638ca8bcfc9767d7ccf0a6770f99469ef19f55fb5ccda",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/utils/googleFonts.ts",
+      "lines": 133,
+      "sha256": "ef12b2319741fbe2766ae4b5a7b740581911e9644b88c3a9b8fb81d954d86ab1",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/utils/invoiceElements.ts",
+      "lines": 2680,
+      "sha256": "7192eab1be0d8876eb9720ac947082852e4e0b038853b32511f7d9053b1a7f0f",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/utils/pdfDownload.ts",
+      "lines": 39,
+      "sha256": "9c61ebb69b93e9c62b84206b48e1fbd85363f29dba97a6ef03b48de387584e31",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/utils/prepareDocumentAsset.ts",
+      "lines": 25,
+      "sha256": "8698c18fdfce85e0c07502922f91d6db0ba06480fb131a2c8a92a8b70255e52f",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/utils/removeBackground.ts",
+      "lines": 60,
+      "sha256": "3b57da192f23fb65b1c3fc1c1f27648590b645987cd4e355469be5393800b09d",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/utils/templateRenderer.ts",
+      "lines": 3941,
+      "sha256": "d81613843a29b4942047a8192a8d6c11d3d83e95e7b326714f6245118a5467b8",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/utils/templateUpload.ts",
+      "lines": 33,
+      "sha256": "db6dab6990da932287a45f337b8ec42addfc692ad3200cc709f332ef1e37ed01",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/utils/uploadedTemplateElements.ts",
+      "lines": 47,
+      "sha256": "8ee8aa9c1c81299bffe2988db88b63d083a9672ee9becd0b770249b1433abed5",
+      "review": "inventoried; API and UI event declarations scanned"
+    },
+    {
+      "file": "user-frontend/src/vite-env.d.ts",
+      "lines": 3,
+      "sha256": "628fab3f01ca64a407a07f87bf335adbd68fbf43a37f7bcc8bf507b3b1f40d7b",
+      "review": "inventoried; API and UI event declarations scanned"
+    }
+  ]
+}

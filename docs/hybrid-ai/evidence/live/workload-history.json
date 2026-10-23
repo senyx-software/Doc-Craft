@@ -1,0 +1,22 @@
+{
+  "initial_executed": {
+    "requests": 96,
+    "users": 8,
+    "passed": 96,
+    "p50_ms": 394,
+    "p95_ms": 501,
+    "duration_seconds": 4.791,
+    "inference_delta": 0,
+    "assertions": "tax result and authorization"
+  },
+  "final_executed": {
+    "requests": 96,
+    "users": 8,
+    "passed": 96,
+    "p50_ms": 470,
+    "p95_ms": 621,
+    "duration_seconds": 6.014,
+    "inference_delta": 0,
+    "assertions": "tax, recalculated totalDue and retained clientName; cross-user403"
+  }
+}

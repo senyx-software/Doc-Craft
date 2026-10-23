@@ -1,0 +1,12 @@
+{
+  "/ready": {
+    "http": 503,
+    "latency_ms": 59,
+    "pdf_magic": false
+  },
+  "/generate": {
+    "http": 500,
+    "latency_ms": 33,
+    "pdf_magic": false
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-21",
+  "shared_node_tests": {
+    "passed": 275,
+    "failed": 0
+  },
+  "chat_gateway_frontend_vitest": {
+    "files": 36,
+    "passed": 265,
+    "failed": 0
+  },
+  "admin_pytest": {
+    "passed": 193,
+    "failed": 0,
+    "hybrid_tests_included": 37
+  },
+  "quota_vitest": {
+    "files": 6,
+    "passed": 25,
+    "failed": 0
+  },
+  "browser_workflows": {
+    "passed": 6,
+    "transport": "isolated HTTP fixtures, actual React and Chromium"
+  },
+  "builds": {
+    "node_services": "passed",
+    "admin": "passed, existing bundle-size warning",
+    "user_frontend": "passed, existing bundle-size and dynamic-import warnings"
+  },
+  "not_measured": [
+    "Live LLM accuracy and tool reliability",
+    "Local inference throughput and RAM peaks",
+    "Complete VPS load",
+    "Live PostgreSQL migration/role checks",
+    "Production secret-manager and network deployment",
+    "Optional Docker Compose overlay CLI/runtime validation (Docker unavailable)"
+  ],
+  "document_pytest": {
+    "passed": 73,
+    "failed": 0,
+    "scope": "contract, field workflow, generation integration, editable templates, uploaded previews"
+  },
+  "automated_tests_passed": 831
+}

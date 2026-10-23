@@ -1,0 +1,147 @@
+{
+  "observed_at_utc": "2026-10-22T04:47:16.582314+00:00",
+  "region": "ap-mumbai-1",
+  "operator_request": "can u do that remove paid one and get A!",
+  "authorization": {
+    "retire_exact_e5_instance": true,
+    "a1_shape_only": true,
+    "max_ocpus": 2,
+    "max_memory_gb": 12,
+    "new_boot_gb": 50,
+    "preserve_old_boot_volume": true,
+    "delete_boot_volume": false,
+    "paid_fallback": false,
+    "secret_transfer": false,
+    "migrations": false,
+    "service_deployment": false
+  },
+  "old_instance": {
+    "id": "ocid1.instance.oc1.ap-mumbai-1.anrg6ljr4wujdnqcezvcrlwboiuw3efznrg5ztawy7tes74vcz63m3yn46ra",
+    "name": "instance-20261021-1441",
+    "shape": "VM.Standard.E5.Flex",
+    "initial_state": "RUNNING",
+    "boot_volume_id": "ocid1.bootvolume.oc1.ap-mumbai-1.abrg6ljrao5g24wqapeputcw3yf2adsj22r56e7qepgj7hfx2nopjkdeqzta",
+    "boot_volume_gb": 47,
+    "attached_data_volumes": 0,
+    "current_state": "TERMINATED",
+    "checked_at_utc": "2026-10-22T04:49:25.034297+00:00"
+  },
+  "a1_launch_attempts": [
+    {
+      "requested_at_utc": "2026-10-22T04:48:00.741482+00:00",
+      "shape": "VM.Standard.A1.Flex",
+      "ocpus": 2,
+      "memory_gb": 12,
+      "boot_gb": 50,
+      "boot_vpus_per_gb": 10,
+      "image_id": "ocid1.image.oc1.ap-mumbai-1.aaaaaaaa2jurqb3jm7hlpqw3au35loaqjkcozbyh7znn4jnfu5zbrgfulwia",
+      "subnet_id": "ocid1.subnet.oc1.ap-mumbai-1.aaaaaaaa4wzncz742s7re55so73tez3i634bteu7tr2mwmq5p2ekkdzgdesq",
+      "public_ip": false,
+      "fault_domain": "OCI-selected",
+      "retry_enabled": false,
+      "paid_fallback": false,
+      "ssh_private_key_uploaded": false,
+      "status": "REJECTED",
+      "retry_token": "987ecc7b-3feb-43e7-bb61-68e68a562a40",
+      "http_status": 500,
+      "code": "InternalError",
+      "reason": "Out of host capacity",
+      "request_id": "CD73262620C8491792F6E5EBED6E0C82/583F2FB7A8C6D7738095D96A424F4D98/8EB1AD510A11F867C3E204830A818D76"
+    },
+    {
+      "requested_at_utc": "2026-10-22T05:35:20.509861+00:00",
+      "operator_request": "try now",
+      "shape": "VM.Standard.A1.Flex",
+      "ocpus": 2,
+      "memory_gb": 12,
+      "boot_gb": 50,
+      "boot_vpus_per_gb": 10,
+      "image_id": "ocid1.image.oc1.ap-mumbai-1.aaaaaaaa2jurqb3jm7hlpqw3au35loaqjkcozbyh7znn4jnfu5zbrgfulwia",
+      "subnet_id": "ocid1.subnet.oc1.ap-mumbai-1.aaaaaaaa4wzncz742s7re55so73tez3i634bteu7tr2mwmq5p2ekkdzgdesq",
+      "public_ip": false,
+      "fault_domain": "OCI-selected",
+      "retry_enabled": false,
+      "paid_fallback": false,
+      "ssh_private_key_uploaded": false,
+      "status": "REJECTED",
+      "retry_token": "a4672c16-403f-4fa0-b050-39ef55dd6cd7",
+      "http_status": 500,
+      "code": "InternalError",
+      "reason": "Out of host capacity",
+      "request_id": "3C1023FDEA034A8DAD84459214BAC80B/96C480C03DB6251099A0D96A424F4D84/B3AC7DB8C33079F5DDF615D83FA4D3EF"
+    }
+  ],
+  "steps": [
+    {
+      "action": "SOFTSTOP",
+      "accepted": true,
+      "state": "STOPPING",
+      "at_utc": "2026-10-22T04:47:17.876836+00:00"
+    },
+    {
+      "action": "TERMINATE",
+      "requested_at_utc": "2026-10-22T04:48:24.031800+00:00",
+      "preserve_boot_volume": true,
+      "preserve_data_volumes_created_at_launch": true,
+      "precondition_state": "STOPPED",
+      "status": "ACCEPTED",
+      "http_status": 204,
+      "request_id": "58F9A33B84C44BA4985EACA6BDB38E5F/D421675C939D448D9895D96A424F4DC4/6DBA82FA4CDDC9776F26C719EE8D85D2"
+    }
+  ],
+  "network_execution_variant": "Reuse existing subnet for this bounded private-only VM launch; no new subnet, public IP, gateway, Bastion or ingress mutation. Connectivity remains a later prerequisite.",
+  "smaller_a1_capacity_check": {
+    "at_utc": "2026-10-22T04:49:03.222932+00:00",
+    "reserves_capacity": false,
+    "values": [
+      {
+        "fault_domain": "FAULT-DOMAIN-1",
+        "shape": "VM.Standard.A1.Flex",
+        "ocpus": 1,
+        "memory_gb": 12,
+        "availability_status": "OUT_OF_HOST_CAPACITY"
+      },
+      {
+        "fault_domain": "FAULT-DOMAIN-2",
+        "shape": "VM.Standard.A1.Flex",
+        "ocpus": 1,
+        "memory_gb": 12,
+        "availability_status": "OUT_OF_HOST_CAPACITY"
+      },
+      {
+        "fault_domain": "FAULT-DOMAIN-3",
+        "shape": "VM.Standard.A1.Flex",
+        "ocpus": 1,
+        "memory_gb": 12,
+        "availability_status": "OUT_OF_HOST_CAPACITY"
+      }
+    ]
+  },
+  "retained_boot_volume": {
+    "id": "ocid1.bootvolume.oc1.ap-mumbai-1.abrg6ljrao5g24wqapeputcw3yf2adsj22r56e7qepgj7hfx2nopjkdeqzta",
+    "state": "AVAILABLE",
+    "size_gb": 47,
+    "vpus_per_gb": 10,
+    "attached_to_nonterminated_instance": false
+  },
+  "final_inventory": {
+    "at_utc": "2026-10-22T05:35:58.790496+00:00",
+    "instances": [
+      {
+        "id": "ocid1.instance.oc1.ap-mumbai-1.anrg6ljr4wujdnqcezvcrlwboiuw3efznrg5ztawy7tes74vcz63m3yn46ra",
+        "name": "instance-20261021-1441",
+        "shape": "VM.Standard.E5.Flex",
+        "state": "TERMINATED"
+      }
+    ],
+    "boot_volumes": [
+      {
+        "id": "ocid1.bootvolume.oc1.ap-mumbai-1.abrg6ljrao5g24wqapeputcw3yf2adsj22r56e7qepgj7hfx2nopjkdeqzta",
+        "state": "AVAILABLE",
+        "size_gb": 47
+      }
+    ]
+  },
+  "a1_created": false,
+  "production_status": "NO-GO"
+}

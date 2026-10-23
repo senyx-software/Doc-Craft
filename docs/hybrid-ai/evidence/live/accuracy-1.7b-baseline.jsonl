@@ -1,0 +1,1 @@
+{"scenario_id": "document_creation-01", "category": "document_creation", "model": "qwen3:1.7b-q4_K_M", "mode": "real_inference_proposal; production schemas; no database commit", "passed": false, "errors": ["HTTPException"], "code": {"code": "PROVIDER_TIMEOUT", "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."}, "latency_ms": 90096}

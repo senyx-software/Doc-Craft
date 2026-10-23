@@ -1,0 +1,98 @@
+{
+  "observed_at_utc": "2026-10-22T04:18:24.253453+00:00",
+  "scope": "Always Free migration planning only: capacity enquiry (not reservation), compatible platform images and network address review",
+  "infrastructure_mutations": 0,
+  "instances_launched": 0,
+  "capacity_reserved": false,
+  "existing_instance_changed": false,
+  "operations": {
+    "a1_capacity_report": {
+      "status": "OBSERVED",
+      "data": {
+        "availability-domain": "vFwL:AP-MUMBAI-1-AD-1",
+        "compartment-id": "ocid1.tenancy.oc1..aaaaaaaaqdmc45x6ug4wxmdxu6vof3jtmnldsnhvp2bbjds3ddm6lw5wv3jq",
+        "shape-availabilities": [
+          {
+            "availability-status": "OUT_OF_HOST_CAPACITY",
+            "available-count": null,
+            "fault-domain": null,
+            "instance-shape": "VM.Standard.A1.Flex",
+            "instance-shape-config": {
+              "baseline-ocpu-utilization": null,
+              "memory-in-gbs": 12.0,
+              "nvmes": 0,
+              "ocpus": 2.0
+            }
+          }
+        ],
+        "time-created": "2026-10-22T04:18:23.699000+00:00"
+      }
+    },
+    "arm64_ubuntu_2404_images": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "compartment-id": null,
+          "display-name": "Canonical-Ubuntu-24.04-aarch64-2026.09.18-0",
+          "id": "ocid1.image.oc1.ap-mumbai-1.aaaaaaaa2jurqb3jm7hlpqw3au35loaqjkcozbyh7znn4jnfu5zbrgfulwia",
+          "lifecycle-state": "AVAILABLE",
+          "operating-system": "Canonical Ubuntu",
+          "operating-system-version": "24.04",
+          "size-in-mbs": 47694,
+          "time-created": "2026-09-21T21:59:16.261000+00:00"
+        },
+        {
+          "compartment-id": null,
+          "display-name": "Canonical-Ubuntu-24.04-aarch64-2026.08.25-0",
+          "id": "ocid1.image.oc1.ap-mumbai-1.aaaaaaaavpkbfemaxi7gfzobc4qsc3p2m5szuswd7skrxvzo5teii6bfkd2a",
+          "lifecycle-state": "AVAILABLE",
+          "operating-system": "Canonical Ubuntu",
+          "operating-system-version": "24.04",
+          "size-in-mbs": 47694,
+          "time-created": "2026-08-27T14:42:55.259000+00:00"
+        },
+        {
+          "compartment-id": null,
+          "display-name": "Canonical-Ubuntu-24.04-aarch64-2026.06.29-0",
+          "id": "ocid1.image.oc1.ap-mumbai-1.aaaaaaaaytxsvsvrxvbvw7sa6lu7ela3yb4q3hihq3lmsxpilio4rmcdwt2q",
+          "lifecycle-state": "AVAILABLE",
+          "operating-system": "Canonical Ubuntu",
+          "operating-system-version": "24.04",
+          "size-in-mbs": 47694,
+          "time-created": "2026-07-20T17:55:26.114000+00:00"
+        }
+      ]
+    },
+    "fault_domains": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1",
+          "id": "ocid1.faultdomain.oc1..aaaaaaaaqukdlvcnlnhoo76bwqic6fj7qe4oghxsd37yvdw63b2ixxsnuc7q",
+          "name": "FAULT-DOMAIN-1"
+        },
+        {
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1",
+          "id": "ocid1.faultdomain.oc1..aaaaaaaazmfiznl63aj6bsgfixvx3bgdmpdcwf3hvxu6mvxuibxmqichgaha",
+          "name": "FAULT-DOMAIN-2"
+        },
+        {
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1",
+          "id": "ocid1.faultdomain.oc1..aaaaaaaat4vh6h7ypqp37x6z22zexc47xvutixczxhtgjpcpr4yudd4cyjjq",
+          "name": "FAULT-DOMAIN-3"
+        }
+      ]
+    },
+    "current_primary_subnet_ips": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "id": "ocid1.privateip.oc1.ap-mumbai-1.abrg6ljrgi6sjkd7mbiipt2jdqpzdd7pc3ohoz7h5jy2ssions3tcgxmhj2a",
+          "ip-address": "10.0.0.88",
+          "is-primary": true,
+          "vnic-id": "ocid1.vnic.oc1.ap-mumbai-1.abrg6ljrrz4ngwzoy4bquktv6g5conoobhvs27zwo6qrmg6xlw6kzbn2qfva"
+        }
+      ]
+    }
+  }
+}

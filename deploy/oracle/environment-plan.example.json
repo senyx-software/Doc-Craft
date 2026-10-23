@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "environment": "staging",
+  "staging_database": "doccraft_staging",
+  "approval_reference": "",
+  "files": [
+    {
+      "target": ".env",
+      "kind": "env",
+      "approved_for_staging": false,
+      "sources": [],
+      "override_file": "/absolute/private/staging/compose.env"
+    },
+    {
+      "target": "config/auth.env",
+      "kind": "env",
+      "approved_for_staging": false,
+      "sources": [
+        {
+          "path": "/home/eranda/Projects/doc-craft/services/auth/auth.env",
+          "include": ["JWT_EXPIRES_IN", "REFRESH_EXPIRES_IN"]
+        }
+      ],
+      "override_file": "/absolute/private/staging/auth-overrides.env"
+    },
+    {
+      "target": "secrets/ai-credential-keyring.json",
+      "kind": "keyring",
+      "approved_for_staging": false,
+      "source": "/absolute/private/existing-staging/ai-credential-keyring.json"
+    }
+  ]
+}

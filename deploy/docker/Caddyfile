@@ -1,0 +1,60 @@
+{
+ email {$ACME_EMAIL}
+ admin off
+}
+(security) {
+ header {
+  Strict-Transport-Security "max-age=31536000"
+  X-Content-Type-Options nosniff
+  Referrer-Policy strict-origin-when-cross-origin
+ }
+ log {
+  output file /data/access.log {
+   roll_size 10MiB
+   roll_keep 3
+  }
+  format filter {
+   wrap json
+   fields {
+    request>headers delete
+    request>uri delete
+   }
+  }
+ }
+}
+{$APP_DOMAIN} {
+ import security
+ handle /v1/* {
+  reverse_proxy https://gateway:3001 {
+   flush_interval -1
+   transport http {
+    tls_trust_pool file /run/secrets/ca.crt
+   }
+  }
+ }
+ handle /health {
+  reverse_proxy https://gateway:3001 {
+   transport http {
+    tls_trust_pool file /run/secrets/ca.crt
+   }
+  }
+ }
+ handle {
+  reverse_proxy user-ui:8080
+ }
+}
+{$ADMIN_DOMAIN} {
+ import security
+ @blocked not remote_ip {$ADMIN_ALLOWED_CIDRS}
+ respond @blocked "Forbidden" 403
+ handle /api/v1/* {
+  reverse_proxy https://admin-api:3018 {
+   transport http {
+    tls_trust_pool file /run/secrets/ca.crt
+   }
+  }
+ }
+ handle {
+  reverse_proxy admin-ui:8080
+ }
+}

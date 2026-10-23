@@ -1,0 +1,15 @@
+{
+  "persisted_billing_invoice_rows": 0,
+  "fresh_billing_shows_free": true,
+  "diagnostic": {
+    "path": "/dashboard/billing",
+    "body_length": 844,
+    "has_date": true,
+    "has_amount": true,
+    "has_paid": true,
+    "has_session_expired": false
+  },
+  "fixed_paid_row_rendered": true,
+  "scope": "Actual frontend/API/DB; approved synthetic admin plan override, no real payment",
+  "status": "DEFECT_REPRODUCED"
+}

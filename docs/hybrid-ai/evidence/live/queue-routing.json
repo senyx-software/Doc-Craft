@@ -1,0 +1,43 @@
+{
+  "method": "actual signed internal inference, real provider and PostgreSQL queue; 50ms observer; client total includes queue/inference/HTTP",
+  "concurrency": 3,
+  "configured_local_concurrency": 1,
+  "results": [
+    {
+      "id": "32ac789784c546e08a75d30ec8c33ea1",
+      "http": 503,
+      "latency_ms": 8134,
+      "code": "AI_QUEUE_TIMEOUT",
+      "response": null,
+      "observed_queue_wait_ms": null
+    },
+    {
+      "id": "d1c6caeeb3f14187a6a27daeea39f651",
+      "http": 200,
+      "latency_ms": 8445,
+      "code": null,
+      "response": "Ready.",
+      "observed_queue_wait_ms": 7872
+    },
+    {
+      "id": "bbcb1c84dcc341e4bc43742e01cb1b30",
+      "http": 200,
+      "latency_ms": 7977,
+      "code": null,
+      "response": "Ready.",
+      "observed_queue_wait_ms": null
+    }
+  ],
+  "observations": {
+    "bbcb1c84dcc341e4bc43742e01cb1b30": {
+      "running": 0.1275063949997275
+    },
+    "d1c6caeeb3f14187a6a27daeea39f651": {
+      "waiting": 0.178201489001367,
+      "running": 8.049999172000753
+    },
+    "32ac789784c546e08a75d30ec8c33ea1": {
+      "waiting": 0.178201489001367
+    }
+  }
+}

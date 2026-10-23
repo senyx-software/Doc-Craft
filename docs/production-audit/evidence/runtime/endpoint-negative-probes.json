@@ -1,0 +1,5152 @@
+[
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/login/google",
+    "tested_path": "/login/google",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:12"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/v1/auth/login/google",
+    "tested_path": "/v1/auth/login/google",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:12"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/guest",
+    "tested_path": "/guest",
+    "http_status": 200,
+    "response_keys": [
+      "session_token",
+      "guest_user_id",
+      "expires_at"
+    ],
+    "latency_ms": 17,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:22"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/v1/auth/guest",
+    "tested_path": "/v1/auth/guest",
+    "http_status": 200,
+    "response_keys": [
+      "session_token",
+      "guest_user_id",
+      "expires_at"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:22"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/register",
+    "tested_path": "/register",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:40"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/v1/auth/register",
+    "tested_path": "/v1/auth/register",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:40"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/login",
+    "tested_path": "/login",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 6,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:66"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/v1/auth/login",
+    "tested_path": "/v1/auth/login",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 6,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:66"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/login/2fa",
+    "tested_path": "/login/2fa",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:101"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/v1/auth/login/2fa",
+    "tested_path": "/v1/auth/login/2fa",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:101"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/refresh",
+    "tested_path": "/refresh",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 6,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:133"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/v1/auth/refresh",
+    "tested_path": "/v1/auth/refresh",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:133"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/logout",
+    "tested_path": "/logout",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:156"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/v1/auth/logout",
+    "tested_path": "/v1/auth/logout",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:156"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/password/forgot",
+    "tested_path": "/password/forgot",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:179"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/v1/auth/password/forgot",
+    "tested_path": "/v1/auth/password/forgot",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:179"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/password/reset",
+    "tested_path": "/password/reset",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 7,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:202"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/v1/auth/password/reset",
+    "tested_path": "/v1/auth/password/reset",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:202"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/verify-email",
+    "tested_path": "/verify-email",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:226"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/v1/auth/verify-email",
+    "tested_path": "/v1/auth/verify-email",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:226"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/verify-email/resend",
+    "tested_path": "/verify-email/resend",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:251"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/v1/auth/verify-email/resend",
+    "tested_path": "/v1/auth/verify-email/resend",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:251"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "route": "/me",
+    "tested_path": "/me",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:275"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "route": "/v1/auth/me",
+    "tested_path": "/v1/auth/me",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:275"
+  },
+  {
+    "service": "auth",
+    "method": "PATCH",
+    "route": "/me",
+    "tested_path": "/me",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:307"
+  },
+  {
+    "service": "auth",
+    "method": "PATCH",
+    "route": "/v1/auth/me",
+    "tested_path": "/v1/auth/me",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 1,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:307"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "route": "/oauth/google/callback",
+    "tested_path": "/oauth/google/callback",
+    "http_status": 500,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:346"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "route": "/v1/auth/oauth/google/callback",
+    "tested_path": "/v1/auth/oauth/google/callback",
+    "http_status": 500,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:346"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/2fa/enable",
+    "tested_path": "/2fa/enable",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:354"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/v1/auth/2fa/enable",
+    "tested_path": "/v1/auth/2fa/enable",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:354"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/2fa/verify",
+    "tested_path": "/2fa/verify",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:373"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/v1/auth/2fa/verify",
+    "tested_path": "/v1/auth/2fa/verify",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:373"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/2fa/disable",
+    "tested_path": "/2fa/disable",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:397"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/v1/auth/2fa/disable",
+    "tested_path": "/v1/auth/2fa/disable",
+    "http_status": 400,
+    "response_keys": [
+      "statusCode",
+      "code",
+      "error",
+      "message"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/auth.routes.ts:397"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/internal/users/:id/anonymize",
+    "tested_path": "/internal/users/audit-nonexistent/anonymize",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/internal.routes.ts:12"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "route": "/internal/users",
+    "tested_path": "/internal/users",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/internal.routes.ts:18"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "route": "/internal/users/:id",
+    "tested_path": "/internal/users/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/internal.routes.ts:36"
+  },
+  {
+    "service": "auth",
+    "method": "PATCH",
+    "route": "/internal/users/:id/status",
+    "tested_path": "/internal/users/audit-nonexistent/status",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/internal.routes.ts:50"
+  },
+  {
+    "service": "auth",
+    "method": "PATCH",
+    "route": "/internal/users/:id/plan",
+    "tested_path": "/internal/users/audit-nonexistent/plan",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/internal.routes.ts:71"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "route": "/internal/users/stats-by-plan",
+    "tested_path": "/internal/users/stats-by-plan",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/internal.routes.ts:92"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "route": "/internal/referrals",
+    "tested_path": "/internal/referrals",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/internal.routes.ts:96"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/internal/referrals",
+    "tested_path": "/internal/referrals",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/internal.routes.ts:100"
+  },
+  {
+    "service": "auth",
+    "method": "PATCH",
+    "route": "/internal/referrals/:id/convert",
+    "tested_path": "/internal/referrals/audit-nonexistent/convert",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 7,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/internal.routes.ts:116"
+  },
+  {
+    "service": "auth",
+    "method": "POST",
+    "route": "/internal/verify-token",
+    "tested_path": "/internal/verify-token",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/routes/internal.routes.ts:124"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "route": "/ready",
+    "tested_path": "/ready",
+    "http_status": 200,
+    "response_keys": [
+      "status"
+    ],
+    "latency_ms": 6,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/server.ts:123"
+  },
+  {
+    "service": "auth",
+    "method": "GET",
+    "route": "/health",
+    "tested_path": "/health",
+    "http_status": 200,
+    "response_keys": [
+      "status",
+      "service",
+      "db"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/auth/src/server.ts:124"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/api/chat/guest-migration",
+    "tested_path": "/api/chat/guest-migration",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 6,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:34"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/v1/chat/api/chat/guest-migration",
+    "tested_path": "/v1/chat/api/chat/guest-migration",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:34"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/api/chat/session",
+    "tested_path": "/api/chat/session",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:40"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/v1/chat/api/chat/session",
+    "tested_path": "/v1/chat/api/chat/session",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:40"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "route": "/api/chat/sessions",
+    "tested_path": "/api/chat/sessions",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:41"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "route": "/v1/chat/api/chat/sessions",
+    "tested_path": "/v1/chat/api/chat/sessions",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:41"
+  },
+  {
+    "service": "chat",
+    "method": "PATCH",
+    "route": "/api/chat/session/:sessionId",
+    "tested_path": "/api/chat/session/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 6,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:42"
+  },
+  {
+    "service": "chat",
+    "method": "PATCH",
+    "route": "/v1/chat/api/chat/session/:sessionId",
+    "tested_path": "/v1/chat/api/chat/session/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 1,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:42"
+  },
+  {
+    "service": "chat",
+    "method": "DELETE",
+    "route": "/api/chat/session/:sessionId",
+    "tested_path": "/api/chat/session/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:43"
+  },
+  {
+    "service": "chat",
+    "method": "DELETE",
+    "route": "/v1/chat/api/chat/session/:sessionId",
+    "tested_path": "/v1/chat/api/chat/session/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:43"
+  },
+  {
+    "service": "chat",
+    "method": "PUT",
+    "route": "/api/chat/session/:sessionId/canvas",
+    "tested_path": "/api/chat/session/audit-nonexistent/canvas",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:44"
+  },
+  {
+    "service": "chat",
+    "method": "PUT",
+    "route": "/v1/chat/api/chat/session/:sessionId/canvas",
+    "tested_path": "/v1/chat/api/chat/session/audit-nonexistent/canvas",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:44"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "route": "/api/chat/session/:sessionId/messages",
+    "tested_path": "/api/chat/session/audit-nonexistent/messages",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:50"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "route": "/v1/chat/api/chat/session/:sessionId/messages",
+    "tested_path": "/v1/chat/api/chat/session/audit-nonexistent/messages",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:50"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/api/chat/session/:sessionId/confirm",
+    "tested_path": "/api/chat/session/audit-nonexistent/confirm",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:63"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/v1/chat/api/chat/session/:sessionId/confirm",
+    "tested_path": "/v1/chat/api/chat/session/audit-nonexistent/confirm",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:63"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/api/chat/session/:sessionId/assets",
+    "tested_path": "/api/chat/session/audit-nonexistent/assets",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:70"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/v1/chat/api/chat/session/:sessionId/assets",
+    "tested_path": "/v1/chat/api/chat/session/audit-nonexistent/assets",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:70"
+  },
+  {
+    "service": "chat",
+    "method": "DELETE",
+    "route": "/api/chat/session/:sessionId/assets",
+    "tested_path": "/api/chat/session/audit-nonexistent/assets",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:79"
+  },
+  {
+    "service": "chat",
+    "method": "DELETE",
+    "route": "/v1/chat/api/chat/session/:sessionId/assets",
+    "tested_path": "/v1/chat/api/chat/session/audit-nonexistent/assets",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:79"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/api/chat/session/:sessionId/complete",
+    "tested_path": "/api/chat/session/audit-nonexistent/complete",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:86"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/v1/chat/api/chat/session/:sessionId/complete",
+    "tested_path": "/v1/chat/api/chat/session/audit-nonexistent/complete",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:86"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/api/chat/session/:sessionId/abandon",
+    "tested_path": "/api/chat/session/audit-nonexistent/abandon",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:86"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/v1/chat/api/chat/session/:sessionId/abandon",
+    "tested_path": "/v1/chat/api/chat/session/audit-nonexistent/abandon",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 1,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:86"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/api/chat/session/:sessionId/resolve",
+    "tested_path": "/api/chat/session/audit-nonexistent/resolve",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:95"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/v1/chat/api/chat/session/:sessionId/resolve",
+    "tested_path": "/v1/chat/api/chat/session/audit-nonexistent/resolve",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 1,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:95"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/api/chat/session/:sessionId/message",
+    "tested_path": "/api/chat/session/audit-nonexistent/message",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:107"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/v1/chat/api/chat/session/:sessionId/message",
+    "tested_path": "/v1/chat/api/chat/session/audit-nonexistent/message",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/chat.routes.ts:107"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "route": "/internal/ai/outcomes",
+    "tested_path": "/internal/ai/outcomes",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/internal-resources.routes.ts:13"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/internal/resources",
+    "tested_path": "/internal/resources",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/internal-resources.routes.ts:23"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "route": "/api/mcp",
+    "tested_path": "/api/mcp",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/mcp.routes.ts:11"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "route": "/v1/chat/api/mcp",
+    "tested_path": "/v1/chat/api/mcp",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/mcp.routes.ts:11"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/api/mcp/message",
+    "tested_path": "/api/mcp/message",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 6,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/mcp.routes.ts:23"
+  },
+  {
+    "service": "chat",
+    "method": "POST",
+    "route": "/v1/chat/api/mcp/message",
+    "tested_path": "/v1/chat/api/mcp/message",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/mcp.routes.ts:23"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "route": "/api/metrics",
+    "tested_path": "/api/metrics",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/metrics.routes.ts:6"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "route": "/v1/chat/api/metrics",
+    "tested_path": "/v1/chat/api/metrics",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/metrics.routes.ts:6"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "route": "/api/internal/status/keys",
+    "tested_path": "/api/internal/status/keys",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 6,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/routes/status.routes.ts:10"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "route": "/ready",
+    "tested_path": "/ready",
+    "http_status": 200,
+    "response_keys": [
+      "status"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/server.ts:76"
+  },
+  {
+    "service": "chat",
+    "method": "GET",
+    "route": "/health",
+    "tested_path": "/health",
+    "http_status": 200,
+    "response_keys": [
+      "status",
+      "service",
+      "db"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/chat/src/server.ts:77"
+  },
+  {
+    "service": "pdf",
+    "method": "GET",
+    "route": "/health",
+    "tested_path": "/health",
+    "http_status": 200,
+    "response_keys": [
+      "status",
+      "activeRenders",
+      "maxRenders"
+    ],
+    "latency_ms": 7,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/puppeteer/server.ts:47"
+  },
+  {
+    "service": "pdf",
+    "method": "GET",
+    "route": "/ready",
+    "tested_path": "/ready",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 7,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/puppeteer/server.ts:48"
+  },
+  {
+    "service": "pdf",
+    "method": "POST",
+    "route": "/generate",
+    "tested_path": "/generate",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/puppeteer/server.ts:85"
+  },
+  {
+    "service": "gateway",
+    "method": "GET",
+    "route": "/ready",
+    "tested_path": "/ready",
+    "http_status": 200,
+    "response_keys": [
+      "status"
+    ],
+    "latency_ms": 56,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/gateway/src/routes/index.ts:15"
+  },
+  {
+    "service": "gateway",
+    "method": "GET",
+    "route": "/health",
+    "tested_path": "/health",
+    "http_status": 200,
+    "response_keys": [
+      "status",
+      "service",
+      "timestamp"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/gateway/src/routes/index.ts:20"
+  },
+  {
+    "service": "gateway",
+    "method": "GET",
+    "route": "/health/deep",
+    "tested_path": "/health/deep",
+    "http_status": 200,
+    "response_keys": [
+      "status",
+      "service",
+      "timestamp",
+      "checks"
+    ],
+    "latency_ms": 29,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/gateway/src/routes/index.ts:21"
+  },
+  {
+    "service": "gateway",
+    "method": "GET",
+    "route": "/docs.json",
+    "tested_path": "/docs.json",
+    "http_status": 200,
+    "response_keys": [
+      "openapi",
+      "info",
+      "servers",
+      "components",
+      "security",
+      "paths",
+      "tags"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/gateway/src/swagger.ts:54"
+  },
+  {
+    "service": "notification",
+    "method": "GET",
+    "route": "/notification/announcements",
+    "tested_path": "/notification/announcements",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/notification/src/routes/notification.routes.ts:15"
+  },
+  {
+    "service": "notification",
+    "method": "GET",
+    "route": "/notification/preferences",
+    "tested_path": "/notification/preferences",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/notification/src/routes/notification.routes.ts:34"
+  },
+  {
+    "service": "notification",
+    "method": "PATCH",
+    "route": "/notification/preferences",
+    "tested_path": "/notification/preferences",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/notification/src/routes/notification.routes.ts:46"
+  },
+  {
+    "service": "notification",
+    "method": "POST",
+    "route": "/notification/send",
+    "tested_path": "/notification/send",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/notification/src/routes/notification.routes.ts:62"
+  },
+  {
+    "service": "notification",
+    "method": "GET",
+    "route": "/notification/logs",
+    "tested_path": "/notification/logs",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/notification/src/routes/notification.routes.ts:79"
+  },
+  {
+    "service": "notification",
+    "method": "GET",
+    "route": "/notification/logs/admin",
+    "tested_path": "/notification/logs/admin",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/notification/src/routes/notification.routes.ts:91"
+  },
+  {
+    "service": "notification",
+    "method": "POST",
+    "route": "/notification/webhooks/resend-status",
+    "tested_path": "/notification/webhooks/resend-status",
+    "http_status": 503,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/notification/src/routes/notification.routes.ts:111"
+  },
+  {
+    "service": "notification",
+    "method": "GET",
+    "route": "/ready",
+    "tested_path": "/ready",
+    "http_status": 200,
+    "response_keys": [
+      "status"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/notification/src/server.ts:25"
+  },
+  {
+    "service": "notification",
+    "method": "GET",
+    "route": "/health",
+    "tested_path": "/health",
+    "http_status": 200,
+    "response_keys": [
+      "status",
+      "service",
+      "queue"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/notification/src/server.ts:26"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/ready",
+    "tested_path": "/ready",
+    "http_status": 200,
+    "response_keys": [
+      "status"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/app.ts:35"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/health",
+    "tested_path": "/health",
+    "http_status": 200,
+    "response_keys": [
+      "status",
+      "service",
+      "checks"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/health.routes.ts:8"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/v1/payment/plans",
+    "tested_path": "/v1/payment/plans",
+    "http_status": 200,
+    "response_keys": [
+      "plans"
+    ],
+    "latency_ms": 70,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:13"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "route": "/v1/payment/webhook/paddle",
+    "tested_path": "/v1/payment/webhook/paddle",
+    "http_status": 503,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:26"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "route": "/v1/payment/webhook/payhere",
+    "tested_path": "/v1/payment/webhook/payhere",
+    "http_status": 503,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:38"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "route": "/v1/payment/subscribe",
+    "tested_path": "/v1/payment/subscribe",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "message"
+    ],
+    "latency_ms": 19,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:49"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "route": "/v1/payment/portal",
+    "tested_path": "/v1/payment/portal",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "message"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:52"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/v1/payment/subscription",
+    "tested_path": "/v1/payment/subscription",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "message"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:55"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "route": "/v1/payment/cancel",
+    "tested_path": "/v1/payment/cancel",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "message"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:58"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/v1/payment/invoices",
+    "tested_path": "/v1/payment/invoices",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "message"
+    ],
+    "latency_ms": 14,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:61"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "route": "/v1/payment/coupon/validate",
+    "tested_path": "/v1/payment/coupon/validate",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "message"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:64"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/v1/payment/methods",
+    "tested_path": "/v1/payment/methods",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "message"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:67"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "route": "/v1/payment/methods",
+    "tested_path": "/v1/payment/methods",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "message"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:68"
+  },
+  {
+    "service": "payment",
+    "method": "DELETE",
+    "route": "/v1/payment/methods/:id",
+    "tested_path": "/v1/payment/methods/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "message"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:69"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "route": "/v1/payment/methods/:id/default",
+    "tested_path": "/v1/payment/methods/audit-nonexistent/default",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "message"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:70"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "route": "/v1/payment/admin/payhere/reconcile/:orderId",
+    "tested_path": "/v1/payment/admin/payhere/reconcile/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:76"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/v1/payment/admin/entitlements/:userId",
+    "tested_path": "/v1/payment/admin/entitlements/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:80"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/v1/payment/admin/subscriptions/stats",
+    "tested_path": "/v1/payment/admin/subscriptions/stats",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:86"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/v1/payment/admin/subscriptions",
+    "tested_path": "/v1/payment/admin/subscriptions",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:87"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/v1/payment/admin/invoices",
+    "tested_path": "/v1/payment/admin/invoices",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:90"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/v1/payment/admin/revenue",
+    "tested_path": "/v1/payment/admin/revenue",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:93"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/v1/payment/admin/revenue/trajectory",
+    "tested_path": "/v1/payment/admin/revenue/trajectory",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:96"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/v1/payment/admin/failed-payments",
+    "tested_path": "/v1/payment/admin/failed-payments",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:99"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/v1/payment/admin/refunds",
+    "tested_path": "/v1/payment/admin/refunds",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:102"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/v1/payment/admin/keys/status",
+    "tested_path": "/v1/payment/admin/keys/status",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:105"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/v1/payment/admin/coupons",
+    "tested_path": "/v1/payment/admin/coupons",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:108"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "route": "/v1/payment/admin/coupons",
+    "tested_path": "/v1/payment/admin/coupons",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:109"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "route": "/v1/payment/admin/coupons/:id/archive",
+    "tested_path": "/v1/payment/admin/coupons/audit-nonexistent/archive",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:110"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/v1/payment/admin/trials",
+    "tested_path": "/v1/payment/admin/trials",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:113"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "route": "/v1/payment/admin/trials",
+    "tested_path": "/v1/payment/admin/trials",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 7,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:114"
+  },
+  {
+    "service": "payment",
+    "method": "PATCH",
+    "route": "/v1/payment/admin/trials/:id/extend",
+    "tested_path": "/v1/payment/admin/trials/audit-nonexistent/extend",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 6,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:115"
+  },
+  {
+    "service": "payment",
+    "method": "POST",
+    "route": "/v1/payment/admin/trials/:id/end",
+    "tested_path": "/v1/payment/admin/trials/audit-nonexistent/end",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/routes/payment.routes.ts:116"
+  },
+  {
+    "service": "payment",
+    "method": "GET",
+    "route": "/docs.json",
+    "tested_path": "/docs.json",
+    "http_status": 200,
+    "response_keys": [
+      "openapi",
+      "info",
+      "servers",
+      "security",
+      "components",
+      "tags",
+      "paths"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/payment/src/swagger.ts:391"
+  },
+  {
+    "service": "quota",
+    "method": "GET",
+    "route": "/ready",
+    "tested_path": "/ready",
+    "http_status": 200,
+    "response_keys": [
+      "status"
+    ],
+    "latency_ms": 7,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/quota/src/app.ts:32"
+  },
+  {
+    "service": "quota",
+    "method": "GET",
+    "route": "/health",
+    "tested_path": "/health",
+    "http_status": 200,
+    "response_keys": [
+      "status",
+      "service",
+      "checks"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/quota/src/routes/health.routes.ts:13"
+  },
+  {
+    "service": "quota",
+    "method": "GET",
+    "route": "/v1/quota/entitlements",
+    "tested_path": "/v1/quota/entitlements",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "message"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/quota/src/routes/quota.routes.ts:19"
+  },
+  {
+    "service": "quota",
+    "method": "GET",
+    "route": "/v1/quota/me",
+    "tested_path": "/v1/quota/me",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "message"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/quota/src/routes/quota.routes.ts:23"
+  },
+  {
+    "service": "quota",
+    "method": "POST",
+    "route": "/v1/quota/check",
+    "tested_path": "/v1/quota/check",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/quota/src/routes/quota.routes.ts:33"
+  },
+  {
+    "service": "quota",
+    "method": "POST",
+    "route": "/v1/quota/plan/sync",
+    "tested_path": "/v1/quota/plan/sync",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/quota/src/routes/quota.routes.ts:34"
+  },
+  {
+    "service": "quota",
+    "method": "POST",
+    "route": "/v1/quota/increment",
+    "tested_path": "/v1/quota/increment",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 6,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/quota/src/routes/quota.routes.ts:49"
+  },
+  {
+    "service": "quota",
+    "method": "POST",
+    "route": "/v1/quota/refund",
+    "tested_path": "/v1/quota/refund",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/quota/src/routes/quota.routes.ts:59"
+  },
+  {
+    "service": "quota",
+    "method": "POST",
+    "route": "/v1/quota/reset",
+    "tested_path": "/v1/quota/reset",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/quota/src/routes/quota.routes.ts:68"
+  },
+  {
+    "service": "quota",
+    "method": "POST",
+    "route": "/v1/quota/guest/check",
+    "tested_path": "/v1/quota/guest/check",
+    "http_status": 400,
+    "response_keys": [
+      "error",
+      "message"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/quota/src/routes/quota.routes.ts:77"
+  },
+  {
+    "service": "quota",
+    "method": "POST",
+    "route": "/v1/quota/guest/increment",
+    "tested_path": "/v1/quota/guest/increment",
+    "http_status": 400,
+    "response_keys": [
+      "error",
+      "message"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/quota/src/routes/quota.routes.ts:84"
+  },
+  {
+    "service": "quota",
+    "method": "POST",
+    "route": "/v1/quota/override",
+    "tested_path": "/v1/quota/override",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 7,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/quota/src/routes/quota.routes.ts:94"
+  },
+  {
+    "service": "quota",
+    "method": "DELETE",
+    "route": "/v1/quota/override/:userId",
+    "tested_path": "/v1/quota/override/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/quota/src/routes/quota.routes.ts:95"
+  },
+  {
+    "service": "quota",
+    "method": "GET",
+    "route": "/v1/quota/admin/stats",
+    "tested_path": "/v1/quota/admin/stats",
+    "http_status": 401,
+    "response_keys": [
+      "error"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/quota/src/routes/quota.routes.ts:113"
+  },
+  {
+    "service": "quota",
+    "method": "GET",
+    "route": "/docs.json",
+    "tested_path": "/docs.json",
+    "http_status": 200,
+    "response_keys": [
+      "openapi",
+      "info",
+      "servers",
+      "security",
+      "components",
+      "tags",
+      "paths"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/quota/src/swagger.ts:254"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/ai",
+    "tested_path": "/api/v1/admin/ai",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 14,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/ai_management.py:56"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/ai/providers",
+    "tested_path": "/api/v1/admin/ai/providers",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 21,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/ai_management.py:64"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "route": "/api/v1/admin/ai/providers/{identity}",
+    "tested_path": "/api/v1/admin/ai/providers/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 17,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/ai_management.py:77"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/ai/models",
+    "tested_path": "/api/v1/admin/ai/models",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/ai_management.py:96"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "route": "/api/v1/admin/ai/models/{identity}",
+    "tested_path": "/api/v1/admin/ai/models/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/ai_management.py:111"
+  },
+  {
+    "service": "admin-api",
+    "method": "PUT",
+    "route": "/api/v1/admin/ai/assignments",
+    "tested_path": "/api/v1/admin/ai/assignments",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/ai_management.py:129"
+  },
+  {
+    "service": "admin-api",
+    "method": "PUT",
+    "route": "/api/v1/admin/ai/routing",
+    "tested_path": "/api/v1/admin/ai/routing",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/ai_management.py:144"
+  },
+  {
+    "service": "admin-api",
+    "method": "PUT",
+    "route": "/api/v1/admin/ai/providers/{identity}/credential",
+    "tested_path": "/api/v1/admin/ai/providers/audit-nonexistent/credential",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 16,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/ai_management.py:156"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "route": "/api/v1/admin/ai/providers/{identity}/credential",
+    "tested_path": "/api/v1/admin/ai/providers/audit-nonexistent/credential",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 14,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/ai_management.py:163"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/ai/models/{identity}/test",
+    "tested_path": "/api/v1/admin/ai/models/audit-nonexistent/test",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/ai_management.py:170"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/ai/history",
+    "tested_path": "/api/v1/admin/ai/history",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/ai_management.py:181"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/ai/rollback",
+    "tested_path": "/api/v1/admin/ai/rollback",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 14,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/ai_management.py:186"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/ai/usage",
+    "tested_path": "/api/v1/admin/ai/usage",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/ai_management.py:198"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/ai/audit",
+    "tested_path": "/api/v1/admin/ai/audit",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/ai_management.py:212"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/internal/ai/runtime/{user_id}",
+    "tested_path": "/api/v1/internal/ai/runtime/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/ai_management.py:219"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/internal/ai/infer",
+    "tested_path": "/api/v1/internal/ai/infer",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/ai_management.py:224"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/analytics/overview",
+    "tested_path": "/api/v1/admin/analytics/overview",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 16,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/analytics.py:28"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/analytics/revenue",
+    "tested_path": "/api/v1/admin/analytics/revenue",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/analytics.py:50"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/analytics/generations",
+    "tested_path": "/api/v1/admin/analytics/generations",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/analytics.py:71"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/analytics/generations/detailed",
+    "tested_path": "/api/v1/admin/analytics/generations/detailed",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/analytics.py:77"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/analytics/journey",
+    "tested_path": "/api/v1/admin/analytics/journey",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/analytics.py:83"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/analytics/users",
+    "tested_path": "/api/v1/admin/analytics/users",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/analytics.py:92"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/analytics/traffic",
+    "tested_path": "/api/v1/admin/analytics/traffic",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/analytics.py:98"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/analytics/posthog/config",
+    "tested_path": "/api/v1/admin/analytics/posthog/config",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/analytics.py:112"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/analytics/button-clicks",
+    "tested_path": "/api/v1/admin/analytics/button-clicks",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/analytics.py:168"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/analytics/page-duration",
+    "tested_path": "/api/v1/admin/analytics/page-duration",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/analytics.py:183"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/analytics/events",
+    "tested_path": "/api/v1/admin/analytics/events",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 14,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/analytics.py:195"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/audit-logs",
+    "tested_path": "/api/v1/admin/audit-logs",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/audit.py:14"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/audit-logs/all",
+    "tested_path": "/api/v1/admin/audit-logs/all",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/audit.py:46"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/audit-logs/{log_id}",
+    "tested_path": "/api/v1/admin/audit-logs/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/audit.py:56"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/auth/login",
+    "tested_path": "/api/v1/admin/auth/login",
+    "http_status": 422,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/auth.py:42"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/auth/verify-login-code",
+    "tested_path": "/api/v1/admin/auth/verify-login-code",
+    "http_status": 422,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 15,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/auth.py:91"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/auth/forgot-password",
+    "tested_path": "/api/v1/admin/auth/forgot-password",
+    "http_status": 422,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 14,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/auth.py:199"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/auth/reset-password",
+    "tested_path": "/api/v1/admin/auth/reset-password",
+    "http_status": 422,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/auth.py:231"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/auth/change-password",
+    "tested_path": "/api/v1/admin/auth/change-password",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/auth.py:279"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/auth/totp/setup",
+    "tested_path": "/api/v1/admin/auth/totp/setup",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/auth.py:302"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/auth/totp/verify",
+    "tested_path": "/api/v1/admin/auth/totp/verify",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 7,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/auth.py:324"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/auth/totp/disable",
+    "tested_path": "/api/v1/admin/auth/totp/disable",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/auth.py:362"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/auth/request-action-code",
+    "tested_path": "/api/v1/admin/auth/request-action-code",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/auth.py:394"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/auth/me",
+    "tested_path": "/api/v1/admin/auth/me",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 7,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/auth.py:428"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/admin/auth/me",
+    "tested_path": "/api/v1/admin/auth/me",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/auth.py:443"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/auth/logout",
+    "tested_path": "/api/v1/admin/auth/logout",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 7,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/auth.py:474"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/automation/rules",
+    "tested_path": "/api/v1/admin/automation/rules",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/automation.py:28"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/automation/rules",
+    "tested_path": "/api/v1/admin/automation/rules",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/automation.py:38"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/admin/automation/rules/{rule_id}",
+    "tested_path": "/api/v1/admin/automation/rules/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/automation.py:67"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "route": "/api/v1/admin/automation/rules/{rule_id}",
+    "tested_path": "/api/v1/admin/automation/rules/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/automation.py:94"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/automation/rules/{rule_id}/dry-run",
+    "tested_path": "/api/v1/admin/automation/rules/audit-nonexistent/dry-run",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 14,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/automation.py:121"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/automation/dry-run",
+    "tested_path": "/api/v1/admin/automation/dry-run",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/automation.py:136"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/automation/events/emit",
+    "tested_path": "/api/v1/admin/automation/events/emit",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/automation.py:163"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/automation/execution-logs",
+    "tested_path": "/api/v1/admin/automation/execution-logs",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 165,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/automation.py:194"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/internal/automation/events",
+    "tested_path": "/api/v1/internal/automation/events",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 161,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/automation_intake.py:13"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/internal/config/{domain}",
+    "tested_path": "/api/v1/internal/config/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 162,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/config.py:18"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/internal/config",
+    "tested_path": "/api/v1/internal/config",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/config.py:32"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/config/{domain}",
+    "tested_path": "/api/v1/admin/config/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 16,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/config.py:41"
+  },
+  {
+    "service": "admin-api",
+    "method": "PUT",
+    "route": "/api/v1/admin/config/{domain}",
+    "tested_path": "/api/v1/admin/config/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 18,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/config.py:59"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/config/{domain}/history",
+    "tested_path": "/api/v1/admin/config/audit-nonexistent/history",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/config.py:112"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/cost-ledger",
+    "tested_path": "/api/v1/admin/cost-ledger",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/cost_ledger.py:31"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/cost-ledger",
+    "tested_path": "/api/v1/admin/cost-ledger",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 17,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/cost_ledger.py:53"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "route": "/api/v1/admin/cost-ledger/{entry_id}",
+    "tested_path": "/api/v1/admin/cost-ledger/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/cost_ledger.py:87"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/cost-ledger/summary",
+    "tested_path": "/api/v1/admin/cost-ledger/summary",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 6,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/cost_ledger.py:111"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/internal/entitlements/{user_id}",
+    "tested_path": "/api/v1/internal/entitlements/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/entitlements.py:33"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/users/{user_id}/entitlements",
+    "tested_path": "/api/v1/users/audit-nonexistent/entitlements",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/entitlements.py:36"
+  },
+  {
+    "service": "admin-api",
+    "method": "PUT",
+    "route": "/api/v1/users/{user_id}/entitlements",
+    "tested_path": "/api/v1/users/audit-nonexistent/entitlements",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/entitlements.py:40"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "route": "/api/v1/users/{user_id}/entitlements",
+    "tested_path": "/api/v1/users/audit-nonexistent/entitlements",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/entitlements.py:47"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/internal/entitlement-plans",
+    "tested_path": "/api/v1/internal/entitlement-plans",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/entitlements.py:53"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/gdpr/export",
+    "tested_path": "/api/v1/admin/gdpr/export",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 15,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/gdpr.py:66"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/gdpr/purge",
+    "tested_path": "/api/v1/admin/gdpr/purge",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 15,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/gdpr.py:134"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/infrastructure/mcp/sessions",
+    "tested_path": "/api/v1/admin/infrastructure/mcp/sessions",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/infrastructure.py:75"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/infrastructure/mcp/templates",
+    "tested_path": "/api/v1/admin/infrastructure/mcp/templates",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/infrastructure.py:108"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/infrastructure/health",
+    "tested_path": "/api/v1/admin/infrastructure/health",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 14,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/infrastructure.py:134"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/notifications/email-logs",
+    "tested_path": "/api/v1/admin/notifications/email-logs",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/notifications.py:81"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/notifications/failed",
+    "tested_path": "/api/v1/admin/notifications/failed",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 15,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/notifications.py:190"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/notifications/history",
+    "tested_path": "/api/v1/admin/notifications/history",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/notifications.py:196"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/notifications/status",
+    "tested_path": "/api/v1/admin/notifications/status",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/notifications.py:202"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/notifications/announcements",
+    "tested_path": "/api/v1/admin/notifications/announcements",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/notifications.py:241"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/notifications/announcements",
+    "tested_path": "/api/v1/admin/notifications/announcements",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/notifications.py:247"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/admin/notifications/announcements/{announcement_id}",
+    "tested_path": "/api/v1/admin/notifications/announcements/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 14,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/notifications.py:271"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "route": "/api/v1/admin/notifications/announcements/{announcement_id}",
+    "tested_path": "/api/v1/admin/notifications/announcements/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/notifications.py:292"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/notifications/templates",
+    "tested_path": "/api/v1/admin/notifications/templates",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/notifications.py:316"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/notifications/templates",
+    "tested_path": "/api/v1/admin/notifications/templates",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/notifications.py:322"
+  },
+  {
+    "service": "admin-api",
+    "method": "PUT",
+    "route": "/api/v1/admin/notifications/templates/{template_id}",
+    "tested_path": "/api/v1/admin/notifications/templates/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/notifications.py:347"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "route": "/api/v1/admin/notifications/templates/{template_id}",
+    "tested_path": "/api/v1/admin/notifications/templates/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/notifications.py:368"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/notifications/settings",
+    "tested_path": "/api/v1/admin/notifications/settings",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/notifications.py:392"
+  },
+  {
+    "service": "admin-api",
+    "method": "PUT",
+    "route": "/api/v1/admin/notifications/settings",
+    "tested_path": "/api/v1/admin/notifications/settings",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 14,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/notifications.py:398"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/notifications/config/public",
+    "tested_path": "/api/v1/admin/notifications/config/public",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/notifications.py:423"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/plans",
+    "tested_path": "/api/v1/admin/plans",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/plans.py:29"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/plans/performance",
+    "tested_path": "/api/v1/admin/plans/performance",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/plans.py:39"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/plans",
+    "tested_path": "/api/v1/admin/plans",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/plans.py:71"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/admin/plans/{plan_id}",
+    "tested_path": "/api/v1/admin/plans/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/plans.py:119"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/plans/{plan_id}/archive",
+    "tested_path": "/api/v1/admin/plans/audit-nonexistent/archive",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/plans.py:161"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/users/{user_id}/quota-override",
+    "tested_path": "/api/v1/admin/users/audit-nonexistent/quota-override",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 15,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/plans.py:202"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "route": "/api/v1/admin/users/{user_id}/quota-override",
+    "tested_path": "/api/v1/admin/users/audit-nonexistent/quota-override",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 16,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/plans.py:239"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/coupons",
+    "tested_path": "/api/v1/admin/coupons",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/plans.py:288"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/coupons",
+    "tested_path": "/api/v1/admin/coupons",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/plans.py:297"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/coupons/{coupon_id}/archive",
+    "tested_path": "/api/v1/admin/coupons/audit-nonexistent/archive",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/plans.py:327"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/trials",
+    "tested_path": "/api/v1/admin/trials",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/plans.py:368"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/trials",
+    "tested_path": "/api/v1/admin/trials",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/plans.py:377"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/admin/trials/{trial_id}/extend",
+    "tested_path": "/api/v1/admin/trials/audit-nonexistent/extend",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/plans.py:401"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/trials/{trial_id}/end",
+    "tested_path": "/api/v1/admin/trials/audit-nonexistent/end",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/plans.py:426"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/promotions/ab-tests",
+    "tested_path": "/api/v1/admin/promotions/ab-tests",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/promotions.py:28"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/promotions/referrals",
+    "tested_path": "/api/v1/admin/promotions/referrals",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 14,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/promotions.py:43"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/promotions/referrals",
+    "tested_path": "/api/v1/admin/promotions/referrals",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/promotions.py:55"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/promotions/referrals/{referral_id}/convert",
+    "tested_path": "/api/v1/admin/promotions/referrals/audit-nonexistent/convert",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/promotions.py:82"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/roles",
+    "tested_path": "/api/v1/admin/roles",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/rbac.py:69"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/roles",
+    "tested_path": "/api/v1/admin/roles",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/rbac.py:77"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/admin/roles/{role_id}",
+    "tested_path": "/api/v1/admin/roles/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/rbac.py:108"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "route": "/api/v1/admin/roles/{role_id}",
+    "tested_path": "/api/v1/admin/roles/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 7,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/rbac.py:147"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/permissions",
+    "tested_path": "/api/v1/admin/permissions",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/rbac.py:177"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/staff",
+    "tested_path": "/api/v1/admin/staff",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/rbac.py:184"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/staff/invite",
+    "tested_path": "/api/v1/admin/staff/invite",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/rbac.py:202"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/admin/staff/{staff_id}",
+    "tested_path": "/api/v1/admin/staff/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/rbac.py:268"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "route": "/api/v1/admin/staff/{staff_id}",
+    "tested_path": "/api/v1/admin/staff/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/rbac.py:330"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/reports/users-csv",
+    "tested_path": "/api/v1/admin/reports/users-csv",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/reports.py:22"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/security/alerts",
+    "tested_path": "/api/v1/admin/security/alerts",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/security.py:39"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/admin/security/alerts/{alert_id}/resolve",
+    "tested_path": "/api/v1/admin/security/alerts/audit-nonexistent/resolve",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 7,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/security.py:48"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/security/sessions",
+    "tested_path": "/api/v1/admin/security/sessions",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/security.py:68"
+  },
+  {
+    "service": "admin-api",
+    "method": "DELETE",
+    "route": "/api/v1/admin/security/sessions/{session_id}",
+    "tested_path": "/api/v1/admin/security/sessions/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/security.py:76"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/security/ip-logs",
+    "tested_path": "/api/v1/admin/security/ip-logs",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/security.py:96"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/security/rate-limits",
+    "tested_path": "/api/v1/admin/security/rate-limits",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/security.py:105"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/security/bot-logs",
+    "tested_path": "/api/v1/admin/security/bot-logs",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/security.py:114"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/security/abuse-reports",
+    "tested_path": "/api/v1/admin/security/abuse-reports",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/security.py:122"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/admin/security/abuse-reports/{report_id}/resolve",
+    "tested_path": "/api/v1/admin/security/abuse-reports/audit-nonexistent/resolve",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/security.py:131"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/security/bot-detection-event",
+    "tested_path": "/api/v1/admin/security/bot-detection-event",
+    "http_status": 422,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/security.py:151"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/security/rate-limit-violation",
+    "tested_path": "/api/v1/admin/security/rate-limit-violation",
+    "http_status": 422,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/security.py:173"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/security/auto-suspend",
+    "tested_path": "/api/v1/admin/security/auto-suspend",
+    "http_status": 422,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/security.py:194"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/security/api-keys",
+    "tested_path": "/api/v1/admin/security/api-keys",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/security.py:239"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/subscriptions",
+    "tested_path": "/api/v1/admin/subscriptions",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/subscriptions.py:18"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/subscriptions/stats",
+    "tested_path": "/api/v1/admin/subscriptions/stats",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/subscriptions.py:33"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/revenue",
+    "tested_path": "/api/v1/admin/revenue",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/subscriptions.py:45"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/invoices",
+    "tested_path": "/api/v1/admin/invoices",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/subscriptions.py:57"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/failed-payments",
+    "tested_path": "/api/v1/admin/failed-payments",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/subscriptions.py:72"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/refunds",
+    "tested_path": "/api/v1/admin/refunds",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/subscriptions.py:86"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/support/sessions/{session_id}",
+    "tested_path": "/api/v1/admin/support/sessions/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/support.py:30"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/support/tickets",
+    "tested_path": "/api/v1/support/tickets",
+    "http_status": 422,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 15,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/support.py:110"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/support/refunds",
+    "tested_path": "/api/v1/support/refunds",
+    "http_status": 422,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 16,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/support.py:125"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/support/contact",
+    "tested_path": "/api/v1/support/contact",
+    "http_status": 422,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 15,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/support.py:141"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/support/plan-override-requests",
+    "tested_path": "/api/v1/support/plan-override-requests",
+    "http_status": 422,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/support.py:154"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/support/tickets",
+    "tested_path": "/api/v1/admin/support/tickets",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/support.py:172"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/support/tickets/{ticket_id}",
+    "tested_path": "/api/v1/admin/support/tickets/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/support.py:190"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/admin/support/tickets/{ticket_id}",
+    "tested_path": "/api/v1/admin/support/tickets/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/support.py:201"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/support/tickets/{ticket_id}/resolve",
+    "tested_path": "/api/v1/admin/support/tickets/audit-nonexistent/resolve",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/support.py:220"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/support/refunds",
+    "tested_path": "/api/v1/admin/support/refunds",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/support.py:243"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/admin/support/refunds/{refund_id}",
+    "tested_path": "/api/v1/admin/support/refunds/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 15,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/support.py:259"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/support/contact",
+    "tested_path": "/api/v1/admin/support/contact",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/support.py:282"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/admin/support/contact/{contact_id}",
+    "tested_path": "/api/v1/admin/support/contact/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 14,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/support.py:298"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/support/plan-overrides",
+    "tested_path": "/api/v1/admin/support/plan-overrides",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/support.py:319"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/admin/support/plan-overrides/{override_id}",
+    "tested_path": "/api/v1/admin/support/plan-overrides/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 14,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/support.py:387"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/support/plan-overrides/{override_id}/approve",
+    "tested_path": "/api/v1/admin/support/plan-overrides/audit-nonexistent/approve",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/support.py:418"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/templates",
+    "tested_path": "/api/v1/admin/templates",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/templates.py:20"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/templates/{template_id}/publish",
+    "tested_path": "/api/v1/admin/templates/audit-nonexistent/publish",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 15,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/templates.py:64"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/templates/{template_id}/withdraw",
+    "tested_path": "/api/v1/admin/templates/audit-nonexistent/withdraw",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/templates.py:69"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/internal/uploaded-templates",
+    "tested_path": "/api/v1/internal/uploaded-templates",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/uploaded_templates.py:41"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/internal/uploaded-templates/{identity}",
+    "tested_path": "/api/v1/internal/uploaded-templates/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 9,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/uploaded_templates.py:44"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/internal/uploaded-templates",
+    "tested_path": "/api/v1/internal/uploaded-templates",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/uploaded_templates.py:47"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/internal/uploaded-templates/{identity}",
+    "tested_path": "/api/v1/internal/uploaded-templates/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 15,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/uploaded_templates.py:54"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/admin/templates/uploads/{identity}",
+    "tested_path": "/api/v1/admin/templates/uploads/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 16,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/uploaded_templates.py:58"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/templates/uploads",
+    "tested_path": "/api/v1/admin/templates/uploads",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 17,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/uploaded_templates.py:65"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/admin/templates/uploads/{identity}",
+    "tested_path": "/api/v1/admin/templates/uploads/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/uploaded_templates.py:71"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/templates/uploads/{identity}/review",
+    "tested_path": "/api/v1/admin/templates/uploads/audit-nonexistent/review",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 14,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/uploaded_templates.py:80"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/admin/templates/uploads/{identity}/approve",
+    "tested_path": "/api/v1/admin/templates/uploads/audit-nonexistent/approve",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/uploaded_templates.py:87"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/users/",
+    "tested_path": "/api/v1/users/",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/users.py:18"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/api/v1/users/{user_id}",
+    "tested_path": "/api/v1/users/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 15,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/users.py:50"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/users/{user_id}/status",
+    "tested_path": "/api/v1/users/audit-nonexistent/status",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 15,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/users.py:93"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/users/{user_id}/plan",
+    "tested_path": "/api/v1/users/audit-nonexistent/plan",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/users.py:122"
+  },
+  {
+    "service": "admin-api",
+    "method": "PATCH",
+    "route": "/api/v1/users/{user_id}/quota",
+    "tested_path": "/api/v1/users/audit-nonexistent/quota",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 11,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/users.py:155"
+  },
+  {
+    "service": "admin-api",
+    "method": "POST",
+    "route": "/api/v1/users/{user_id}/override",
+    "tested_path": "/api/v1/users/audit-nonexistent/override",
+    "http_status": 401,
+    "response_keys": [
+      "error",
+      "code",
+      "message",
+      "details"
+    ],
+    "latency_ms": 15,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/api/v1/users.py:212"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/health",
+    "tested_path": "/health",
+    "http_status": 200,
+    "response_keys": [
+      "status",
+      "service",
+      "env",
+      "ip_whitelist_enabled"
+    ],
+    "latency_ms": 13,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/main.py:91"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/",
+    "tested_path": "/",
+    "http_status": 200,
+    "response_keys": [
+      "message",
+      "version"
+    ],
+    "latency_ms": 12,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/main.py:101"
+  },
+  {
+    "service": "admin-api",
+    "method": "GET",
+    "route": "/ready",
+    "tested_path": "/ready",
+    "http_status": 200,
+    "response_keys": [
+      "status"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/admin-api/app/main.py:109"
+  },
+  {
+    "service": "analytics",
+    "method": "GET",
+    "route": "/health",
+    "tested_path": "/health",
+    "http_status": 200,
+    "response_keys": [
+      "status",
+      "service"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/analytics/app/main.py:66"
+  },
+  {
+    "service": "analytics",
+    "method": "GET",
+    "route": "/ready",
+    "tested_path": "/ready",
+    "http_status": 200,
+    "response_keys": [
+      "status"
+    ],
+    "latency_ms": 68,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/analytics/app/main.py:70"
+  },
+  {
+    "service": "analytics",
+    "method": "POST",
+    "route": "/v1/analytics/event",
+    "tested_path": "/v1/analytics/event",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 47,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/analytics/app/routers/analytics.py:14"
+  },
+  {
+    "service": "analytics",
+    "method": "POST",
+    "route": "/v1/analytics/client-event",
+    "tested_path": "/v1/analytics/client-event",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 47,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/analytics/app/routers/analytics.py:37"
+  },
+  {
+    "service": "analytics",
+    "method": "GET",
+    "route": "/v1/analytics/overview",
+    "tested_path": "/v1/analytics/overview",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/analytics/app/routers/analytics.py:49"
+  },
+  {
+    "service": "analytics",
+    "method": "GET",
+    "route": "/v1/analytics/revenue",
+    "tested_path": "/v1/analytics/revenue",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/analytics/app/routers/analytics.py:70"
+  },
+  {
+    "service": "analytics",
+    "method": "GET",
+    "route": "/v1/analytics/generations",
+    "tested_path": "/v1/analytics/generations",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/analytics/app/routers/analytics.py:83"
+  },
+  {
+    "service": "analytics",
+    "method": "GET",
+    "route": "/v1/analytics/users",
+    "tested_path": "/v1/analytics/users",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/analytics/app/routers/analytics.py:109"
+  },
+  {
+    "service": "analytics",
+    "method": "GET",
+    "route": "/v1/analytics/traffic",
+    "tested_path": "/v1/analytics/traffic",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/analytics/app/routers/analytics.py:143"
+  },
+  {
+    "service": "analytics",
+    "method": "GET",
+    "route": "/v1/analytics/journey",
+    "tested_path": "/v1/analytics/journey",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/analytics/app/routers/analytics.py:349"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "route": "/health",
+    "tested_path": "/health",
+    "http_status": 200,
+    "response_keys": [
+      "status",
+      "service"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/main.py:78"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "route": "/ready",
+    "tested_path": "/ready",
+    "http_status": 200,
+    "response_keys": [
+      "status"
+    ],
+    "latency_ms": 24,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/main.py:96"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "route": "/v1/document/templates",
+    "tested_path": "/v1/document/templates",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:38"
+  },
+  {
+    "service": "document",
+    "method": "POST",
+    "route": "/v1/document/templates/uploads",
+    "tested_path": "/v1/document/templates/uploads",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 7,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:54"
+  },
+  {
+    "service": "document",
+    "method": "PATCH",
+    "route": "/v1/document/templates/uploads/{template_id}",
+    "tested_path": "/v1/document/templates/uploads/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:84"
+  },
+  {
+    "service": "document",
+    "method": "POST",
+    "route": "/v1/document/templates/custom",
+    "tested_path": "/v1/document/templates/custom",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:97"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "route": "/v1/document/templates/custom",
+    "tested_path": "/v1/document/templates/custom",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 10,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:138"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "route": "/v1/document/templates/custom/{template_id}",
+    "tested_path": "/v1/document/templates/custom/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:169"
+  },
+  {
+    "service": "document",
+    "method": "DELETE",
+    "route": "/v1/document/templates/custom/{template_id}",
+    "tested_path": "/v1/document/templates/custom/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:190"
+  },
+  {
+    "service": "document",
+    "method": "PATCH",
+    "route": "/v1/document/templates/custom/{template_id}",
+    "tested_path": "/v1/document/templates/custom/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:204"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "route": "/v1/document/templates/{template_id}",
+    "tested_path": "/v1/document/templates/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:213"
+  },
+  {
+    "service": "document",
+    "method": "POST",
+    "route": "/v1/document/template-preview",
+    "tested_path": "/v1/document/template-preview",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 6,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:235"
+  },
+  {
+    "service": "document",
+    "method": "POST",
+    "route": "/v1/document/preview",
+    "tested_path": "/v1/document/preview",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:253"
+  },
+  {
+    "service": "document",
+    "method": "POST",
+    "route": "/v1/document/generate",
+    "tested_path": "/v1/document/generate",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:330"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "route": "/v1/document/job/{job_id}",
+    "tested_path": "/v1/document/job/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 5,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:452"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "route": "/v1/document/history",
+    "tested_path": "/v1/document/history",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:496"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "route": "/v1/document/download-file/{pdf_key}",
+    "tested_path": "/v1/document/download-file/audit-nonexistent",
+    "http_status": 422,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 7,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:539"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "route": "/v1/document/{document_id}",
+    "tested_path": "/v1/document/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:560"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "route": "/v1/document/{document_id}/download",
+    "tested_path": "/v1/document/audit-nonexistent/download",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:589"
+  },
+  {
+    "service": "document",
+    "method": "POST",
+    "route": "/v1/document/{document_id}/share",
+    "tested_path": "/v1/document/audit-nonexistent/share",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 2,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:621"
+  },
+  {
+    "service": "document",
+    "method": "DELETE",
+    "route": "/v1/document/{document_id}",
+    "tested_path": "/v1/document/audit-nonexistent",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 4,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:659"
+  },
+  {
+    "service": "document",
+    "method": "GET",
+    "route": "/v1/document/shared/{share_token}",
+    "tested_path": "/v1/document/shared/audit-nonexistent",
+    "http_status": 404,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 8,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:682"
+  },
+  {
+    "service": "document",
+    "method": "POST",
+    "route": "/v1/document/internal/users/{user_id}/anonymize",
+    "tested_path": "/v1/document/internal/users/audit-nonexistent/anonymize",
+    "http_status": 401,
+    "response_keys": [
+      "detail"
+    ],
+    "latency_ms": 3,
+    "scope": "Unauthenticated request with empty body; does not verify authorized business functionality",
+    "source": "services/document/app/routers/document.py:701"
+  }
+]

@@ -1,0 +1,5 @@
+{
+  "count": 7,
+  "all_parameters_match_baseline": true,
+  "scope": "Current MCP tools/list handler with owned in-memory session; no inference or database dispatch"
+}

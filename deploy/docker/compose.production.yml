@@ -1,0 +1,1632 @@
+{
+  "name": "doccraft",
+  "services": {
+    "gateway": {
+      "image": "${GATEWAY_IMAGE:?Immutable release digest required}",
+      "init": true,
+      "restart": "unless-stopped",
+      "stop_grace_period": "45s",
+      "working_dir": "/app/services/gateway",
+      "command": [
+        "node",
+        "/app/services/gateway/dist/index.js"
+      ],
+      "env_file": [
+        {
+          "path": "${DOCCRAFT_RUNTIME:?}/gateway.env",
+          "format": "raw"
+        }
+      ],
+      "environment": {
+        "DOCCRAFT_SERVICE": "gateway"
+      },
+      "secrets": [
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        },
+        {
+          "source": "gateway_service_identity",
+          "target": "service_identity"
+        },
+        {
+          "source": "gateway_service_crt",
+          "target": "service.crt"
+        },
+        {
+          "source": "gateway_service_key",
+          "target": "service.key"
+        }
+      ],
+      "networks": [
+        "backend"
+      ],
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,size=256m"
+      ],
+      "pids_limit": 256,
+      "mem_limit": "256m",
+      "cpus": 0.5,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "auth": {
+      "image": "${AUTH_IMAGE:?Immutable release digest required}",
+      "init": true,
+      "restart": "unless-stopped",
+      "stop_grace_period": "45s",
+      "working_dir": "/app/services/auth",
+      "command": [
+        "node",
+        "/app/services/auth/dist/server.js"
+      ],
+      "env_file": [
+        {
+          "path": "${DOCCRAFT_RUNTIME:?}/auth.env",
+          "format": "raw"
+        }
+      ],
+      "environment": {
+        "DOCCRAFT_SERVICE": "auth"
+      },
+      "secrets": [
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        },
+        {
+          "source": "auth_service_identity",
+          "target": "service_identity"
+        },
+        {
+          "source": "auth_service_crt",
+          "target": "service.crt"
+        },
+        {
+          "source": "auth_service_key",
+          "target": "service.key"
+        }
+      ],
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,size=256m"
+      ],
+      "pids_limit": 256,
+      "mem_limit": "384m",
+      "cpus": 1,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "notification": {
+      "image": "${NOTIFICATION_IMAGE:?Immutable release digest required}",
+      "init": true,
+      "restart": "unless-stopped",
+      "stop_grace_period": "45s",
+      "working_dir": "/app/services/notification",
+      "command": [
+        "node",
+        "/app/services/notification/dist/server.js"
+      ],
+      "env_file": [
+        {
+          "path": "${DOCCRAFT_RUNTIME:?}/notification.env",
+          "format": "raw"
+        }
+      ],
+      "environment": {
+        "DOCCRAFT_SERVICE": "notification"
+      },
+      "secrets": [
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        },
+        {
+          "source": "notification_service_identity",
+          "target": "service_identity"
+        },
+        {
+          "source": "notification_service_crt",
+          "target": "service.crt"
+        },
+        {
+          "source": "notification_service_key",
+          "target": "service.key"
+        }
+      ],
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,size=256m"
+      ],
+      "pids_limit": 256,
+      "mem_limit": "384m",
+      "cpus": 0.5,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "document": {
+      "image": "${DOCUMENT_IMAGE:?Immutable release digest required}",
+      "init": true,
+      "restart": "unless-stopped",
+      "stop_grace_period": "45s",
+      "working_dir": "/app/services/document",
+      "command": [
+        "python",
+        "-m",
+        "uvicorn",
+        "app.main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "3013",
+        "--ssl-keyfile",
+        "/run/secrets/service.key",
+        "--ssl-certfile",
+        "/run/secrets/service.crt",
+        "--timeout-graceful-shutdown",
+        "20"
+      ],
+      "env_file": [
+        {
+          "path": "${DOCCRAFT_RUNTIME:?}/document.env",
+          "format": "raw"
+        }
+      ],
+      "environment": {
+        "DOCCRAFT_SERVICE": "document"
+      },
+      "secrets": [
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        },
+        {
+          "source": "document_service_identity",
+          "target": "service_identity"
+        },
+        {
+          "source": "document_service_crt",
+          "target": "service.crt"
+        },
+        {
+          "source": "document_service_key",
+          "target": "service.key"
+        }
+      ],
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,size=256m"
+      ],
+      "pids_limit": 256,
+      "mem_limit": "768m",
+      "cpus": 1,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      },
+      "volumes": [
+        "documents:/app/storage"
+      ]
+    },
+    "payment": {
+      "image": "${PAYMENT_IMAGE:?Immutable release digest required}",
+      "init": true,
+      "restart": "unless-stopped",
+      "stop_grace_period": "45s",
+      "working_dir": "/app/services/payment",
+      "command": [
+        "node",
+        "/app/services/payment/dist/server.js"
+      ],
+      "env_file": [
+        {
+          "path": "${DOCCRAFT_RUNTIME:?}/payment.env",
+          "format": "raw"
+        }
+      ],
+      "environment": {
+        "DOCCRAFT_SERVICE": "payment"
+      },
+      "secrets": [
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        },
+        {
+          "source": "payment_service_identity",
+          "target": "service_identity"
+        },
+        {
+          "source": "payment_service_crt",
+          "target": "service.crt"
+        },
+        {
+          "source": "payment_service_key",
+          "target": "service.key"
+        }
+      ],
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,size=256m"
+      ],
+      "pids_limit": 256,
+      "mem_limit": "384m",
+      "cpus": 0.5,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "quota": {
+      "image": "${QUOTA_IMAGE:?Immutable release digest required}",
+      "init": true,
+      "restart": "unless-stopped",
+      "stop_grace_period": "45s",
+      "working_dir": "/app/services/quota",
+      "command": [
+        "node",
+        "/app/services/quota/dist/server.js"
+      ],
+      "env_file": [
+        {
+          "path": "${DOCCRAFT_RUNTIME:?}/quota.env",
+          "format": "raw"
+        }
+      ],
+      "environment": {
+        "DOCCRAFT_SERVICE": "quota"
+      },
+      "secrets": [
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        },
+        {
+          "source": "quota_service_identity",
+          "target": "service_identity"
+        },
+        {
+          "source": "quota_service_crt",
+          "target": "service.crt"
+        },
+        {
+          "source": "quota_service_key",
+          "target": "service.key"
+        }
+      ],
+      "networks": [
+        "backend"
+      ],
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,size=256m"
+      ],
+      "pids_limit": 256,
+      "mem_limit": "384m",
+      "cpus": 0.5,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "chat": {
+      "image": "${CHAT_IMAGE:?Immutable release digest required}",
+      "init": true,
+      "restart": "unless-stopped",
+      "stop_grace_period": "45s",
+      "working_dir": "/app/services/chat",
+      "command": [
+        "node",
+        "/app/services/chat/dist/server.js"
+      ],
+      "env_file": [
+        {
+          "path": "${DOCCRAFT_RUNTIME:?}/chat.env",
+          "format": "raw"
+        }
+      ],
+      "environment": {
+        "DOCCRAFT_SERVICE": "chat"
+      },
+      "secrets": [
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        },
+        {
+          "source": "chat_service_identity",
+          "target": "service_identity"
+        },
+        {
+          "source": "chat_service_crt",
+          "target": "service.crt"
+        },
+        {
+          "source": "chat_service_key",
+          "target": "service.key"
+        }
+      ],
+      "networks": [
+        "backend"
+      ],
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,size=256m"
+      ],
+      "pids_limit": 256,
+      "mem_limit": "512m",
+      "cpus": 1,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "analytics": {
+      "image": "${ANALYTICS_IMAGE:?Immutable release digest required}",
+      "init": true,
+      "restart": "unless-stopped",
+      "stop_grace_period": "45s",
+      "working_dir": "/app/services/analytics",
+      "command": [
+        "python",
+        "-m",
+        "uvicorn",
+        "app.main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "3017",
+        "--ssl-keyfile",
+        "/run/secrets/service.key",
+        "--ssl-certfile",
+        "/run/secrets/service.crt",
+        "--timeout-graceful-shutdown",
+        "20"
+      ],
+      "env_file": [
+        {
+          "path": "${DOCCRAFT_RUNTIME:?}/analytics.env",
+          "format": "raw"
+        }
+      ],
+      "environment": {
+        "DOCCRAFT_SERVICE": "analytics"
+      },
+      "secrets": [
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        },
+        {
+          "source": "analytics_service_identity",
+          "target": "service_identity"
+        },
+        {
+          "source": "analytics_service_crt",
+          "target": "service.crt"
+        },
+        {
+          "source": "analytics_service_key",
+          "target": "service.key"
+        }
+      ],
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,size=256m"
+      ],
+      "pids_limit": 256,
+      "mem_limit": "512m",
+      "cpus": 0.5,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "admin-api": {
+      "image": "${ADMIN_API_IMAGE:?Immutable release digest required}",
+      "init": true,
+      "restart": "unless-stopped",
+      "stop_grace_period": "45s",
+      "working_dir": "/app/services/admin-api",
+      "command": [
+        "python",
+        "-m",
+        "uvicorn",
+        "app.main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "3018",
+        "--ssl-keyfile",
+        "/run/secrets/service.key",
+        "--ssl-certfile",
+        "/run/secrets/service.crt",
+        "--timeout-graceful-shutdown",
+        "20"
+      ],
+      "env_file": [
+        {
+          "path": "${DOCCRAFT_RUNTIME:?}/admin-api.env",
+          "format": "raw"
+        }
+      ],
+      "environment": {
+        "DOCCRAFT_SERVICE": "admin-api"
+      },
+      "secrets": [
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        },
+        {
+          "source": "admin-api_service_identity",
+          "target": "service_identity"
+        },
+        {
+          "source": "admin-api_service_crt",
+          "target": "service.crt"
+        },
+        {
+          "source": "admin-api_service_key",
+          "target": "service.key"
+        },
+        {
+          "source": "ai_keyring",
+          "target": "ai_credential_keyring"
+        }
+      ],
+      "networks": [
+        "backend",
+        "egress",
+        "inference"
+      ],
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,size=256m"
+      ],
+      "pids_limit": 256,
+      "mem_limit": "768m",
+      "cpus": 1,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      },
+      "volumes": [
+        "admin_assets:/app/storage"
+      ]
+    },
+    "pdf": {
+      "image": "${PDF_IMAGE:?Immutable release digest required}",
+      "init": true,
+      "restart": "unless-stopped",
+      "stop_grace_period": "45s",
+      "working_dir": "/app/services/document",
+      "command": [
+        "node",
+        "/app/services/document/dist/puppeteer/server.js"
+      ],
+      "env_file": [
+        {
+          "path": "${DOCCRAFT_RUNTIME:?}/pdf.env",
+          "format": "raw"
+        }
+      ],
+      "environment": {
+        "DOCCRAFT_SERVICE": "pdf"
+      },
+      "secrets": [
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        },
+        {
+          "source": "pdf_service_identity",
+          "target": "service_identity"
+        },
+        {
+          "source": "pdf_service_crt",
+          "target": "service.crt"
+        },
+        {
+          "source": "pdf_service_key",
+          "target": "service.key"
+        }
+      ],
+      "networks": [
+        "backend"
+      ],
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,size=256m"
+      ],
+      "pids_limit": 256,
+      "mem_limit": "1024m",
+      "cpus": 1,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      },
+      "shm_size": "256m"
+    },
+    "user-ui": {
+      "image": "${USER_UI_IMAGE:?Immutable release digest required}",
+      "init": true,
+      "restart": "unless-stopped",
+      "networks": [
+        "backend"
+      ],
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "mem_limit": "64m",
+      "cpus": 0.25,
+      "pids_limit": 64,
+      "tmpfs": [
+        "/tmp",
+        "/var/cache/nginx",
+        "/var/run"
+      ],
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "admin-ui": {
+      "image": "${ADMIN_UI_IMAGE:?Immutable release digest required}",
+      "init": true,
+      "restart": "unless-stopped",
+      "networks": [
+        "backend"
+      ],
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "mem_limit": "64m",
+      "cpus": 0.25,
+      "pids_limit": 64,
+      "tmpfs": [
+        "/tmp",
+        "/var/cache/nginx",
+        "/var/run"
+      ],
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "postgres": {
+      "image": "postgres:17-bookworm@sha256:3645570cccdfa447589da9f57dd740faa29b30938e861289a5574b6ca6b03826",
+      "restart": "unless-stopped",
+      "entrypoint": [
+        "/bin/sh",
+        "/control/deploy/staging/postgres-entrypoint.sh"
+      ],
+      "command": [
+        "postgres",
+        "-c",
+        "ssl=on",
+        "-c",
+        "ssl_cert_file=/run/doccraft-tls/server.crt",
+        "-c",
+        "ssl_key_file=/run/doccraft-tls/server.key",
+        "-c",
+        "ssl_min_protocol_version=TLSv1.2",
+        "-c",
+        "hba_file=/control/deploy/staging/pg_hba.conf",
+        "-c",
+        "shared_buffers=128MB",
+        "-c",
+        "max_connections=160"
+      ],
+      "environment": {
+        "POSTGRES_DB": "${POSTGRES_DB:?}",
+        "POSTGRES_PASSWORD_FILE": "/run/secrets/postgres_password",
+        "POSTGRES_INITDB_ARGS": "--auth-host=scram-sha-256"
+      },
+      "secrets": [
+        {
+          "source": "postgres_password",
+          "target": "postgres_password"
+        },
+        {
+          "source": "postgres_crt",
+          "target": "postgres.crt"
+        },
+        {
+          "source": "postgres_key",
+          "target": "postgres.key"
+        },
+        {
+          "source": "postgres_migrator_password",
+          "target": "postgres_migrator_password"
+        }
+      ],
+      "volumes": [
+        "postgres:/var/lib/postgresql/data",
+        "${DOCCRAFT_CONTROL:?}:/control:ro",
+        "${DOCCRAFT_CONTROL:?}/deploy/scripts/bootstrap-postgres.sh:/docker-entrypoint-initdb.d/01-doccraft.sh:ro"
+      ],
+      "networks": [
+        "backend"
+      ],
+      "mem_limit": "1536m",
+      "cpus": 1.5,
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "pg_isready",
+          "-U",
+          "postgres",
+          "-d",
+          "${POSTGRES_DB:?}"
+        ],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 12
+      },
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "redis": {
+      "image": "redis:7-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+      "restart": "unless-stopped",
+      "command": [
+        "redis-server",
+        "--port",
+        "0",
+        "--tls-port",
+        "6379",
+        "--tls-cert-file",
+        "/run/secrets/redis.crt",
+        "--tls-key-file",
+        "/run/secrets/redis.key",
+        "--tls-ca-cert-file",
+        "/run/secrets/ca.crt",
+        "--tls-auth-clients",
+        "no",
+        "--aclfile",
+        "/run/secrets/redis.acl",
+        "--appendonly",
+        "yes",
+        "--appendfsync",
+        "always",
+        "--maxmemory",
+        "256mb",
+        "--maxmemory-policy",
+        "noeviction"
+      ],
+      "env_file": [
+        {
+          "path": "${DOCCRAFT_HOME:?}/secrets/redis-health.env",
+          "format": "raw"
+        }
+      ],
+      "secrets": [
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        },
+        {
+          "source": "redis_crt",
+          "target": "redis.crt"
+        },
+        {
+          "source": "redis_key",
+          "target": "redis.key"
+        },
+        {
+          "source": "redis_acl",
+          "target": "redis.acl"
+        }
+      ],
+      "volumes": [
+        "redis:/data"
+      ],
+      "networks": [
+        "backend"
+      ],
+      "mem_limit": "384m",
+      "cpus": 0.5,
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "redis-cli",
+          "--tls",
+          "--cacert",
+          "/run/secrets/ca.crt",
+          "--user",
+          "health",
+          "ping"
+        ],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 12
+      },
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "edge": {
+      "image": "caddy:2-alpine@sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "restart": "unless-stopped",
+      "ports": [
+        "80:80",
+        "443:443"
+      ],
+      "environment": {
+        "APP_DOMAIN": "${APP_DOMAIN:?}",
+        "ADMIN_DOMAIN": "${ADMIN_DOMAIN:?}",
+        "ACME_EMAIL": "${ACME_EMAIL:?}",
+        "ADMIN_ALLOWED_CIDRS": "${ADMIN_ALLOWED_CIDRS:?Restrict admin access to operator/VPN source networks}"
+      },
+      "volumes": [
+        "${DOCCRAFT_CONTROL:?}/deploy/docker/Caddyfile:/etc/caddy/Caddyfile:ro",
+        "caddy_data:/data",
+        "caddy_config:/config"
+      ],
+      "secrets": [
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        }
+      ],
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "mem_limit": "128m",
+      "cpus": 0.5,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      },
+      "depends_on": {
+        "gateway": {
+          "condition": "service_healthy"
+        },
+        "admin-api": {
+          "condition": "service_healthy"
+        },
+        "user-ui": {
+          "condition": "service_healthy"
+        },
+        "admin-ui": {
+          "condition": "service_healthy"
+        }
+      },
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "caddy",
+          "validate",
+          "--config",
+          "/etc/caddy/Caddyfile"
+        ],
+        "interval": "30s",
+        "timeout": "5s",
+        "retries": 3
+      },
+      "cap_drop": [
+        "ALL"
+      ],
+      "cap_add": [
+        "NET_BIND_SERVICE"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "pids_limit": 128,
+      "init": true,
+      "stop_grace_period": "45s"
+    },
+    "ollama": {
+      "image": "ollama/ollama:0.40.6@sha256:265409e1d931028a8f7d5a32bcbafddd7bffbc6cc629d77efe9560adf692a5e7",
+      "profiles": [
+        "local-ai"
+      ],
+      "restart": "unless-stopped",
+      "init": true,
+      "environment": {
+        "OLLAMA_HOST": "0.0.0.0:11434",
+        "OLLAMA_MAX_LOADED_MODELS": "1",
+        "OLLAMA_NUM_PARALLEL": "1",
+        "OLLAMA_KEEP_ALIVE": "0",
+        "OLLAMA_NO_CLOUD": "1"
+      },
+      "volumes": [
+        "ollama_models:/root/.ollama"
+      ],
+      "networks": [
+        "inference",
+        "model-egress"
+      ],
+      "mem_limit": "${OLLAMA_MEMORY_MB:-6144}m",
+      "cpus": "${OLLAMA_CPUS:-2}",
+      "pids_limit": 256,
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "ollama",
+          "list"
+        ],
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3,
+        "start_period": "30s"
+      },
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      },
+      "stop_grace_period": "60s"
+    },
+    "migrate-node": {
+      "image": "${MIGRATION_IMAGE:?}",
+      "init": true,
+      "restart": "no",
+      "stop_grace_period": "45s",
+      "working_dir": "/app/services/admin-api",
+      "command": [
+        "node",
+        "/app/scripts/staging_migrate_node.mjs"
+      ],
+      "env_file": [
+        {
+          "path": "${DOCCRAFT_HOME:?}/secrets/migration-node.env",
+          "format": "raw"
+        }
+      ],
+      "environment": {
+        "PYTHONPATH": "/app",
+        "SSL_CERT_FILE": "/run/secrets/ca.crt",
+        "PGSSLROOTCERT": "/run/secrets/ca.crt",
+        "ADMIN_RUN_MIGRATIONS": "false",
+        "DOCUMENT_RUN_MIGRATIONS": "false",
+        "EXPECTED_DATABASE": "${POSTGRES_DB:?}",
+        "APP_DOMAIN": "${APP_DOMAIN:?}",
+        "ADMIN_DOMAIN": "${ADMIN_DOMAIN:?}",
+        "SERVICE_AUTH_CONFIG_FILE": "/run/secrets/service_identity",
+        "NODE_EXTRA_CA_CERTS": "/run/secrets/ca.crt",
+        "PG_REQUIRE_TLS": "true"
+      },
+      "secrets": [
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        },
+        {
+          "source": "payment_service_identity",
+          "target": "service_identity"
+        },
+        {
+          "source": "payment_service_crt",
+          "target": "service.crt"
+        },
+        {
+          "source": "payment_service_key",
+          "target": "service.key"
+        }
+      ],
+      "networks": [
+        "backend"
+      ],
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,size=256m"
+      ],
+      "pids_limit": 256,
+      "mem_limit": "1024m",
+      "cpus": 0.5,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      },
+      "profiles": [
+        "tools"
+      ],
+      "volumes": [
+        "${DOCCRAFT_CONTROL:?}:/control:ro"
+      ],
+      "healthcheck": {
+        "disable": true
+      }
+    },
+    "migrate-python": {
+      "image": "${ADMIN_API_IMAGE:?}",
+      "init": true,
+      "restart": "no",
+      "stop_grace_period": "45s",
+      "working_dir": "/app/services/admin-api",
+      "command": [
+        "python",
+        "/app/scripts/staging_migrate_python.py"
+      ],
+      "env_file": [
+        {
+          "path": "${DOCCRAFT_HOME:?}/secrets/migration-python.env",
+          "format": "raw"
+        }
+      ],
+      "environment": {
+        "PYTHONPATH": "/app",
+        "SSL_CERT_FILE": "/run/secrets/ca.crt",
+        "PGSSLROOTCERT": "/run/secrets/ca.crt",
+        "ADMIN_RUN_MIGRATIONS": "true",
+        "DOCUMENT_RUN_MIGRATIONS": "true",
+        "EXPECTED_DATABASE": "${POSTGRES_DB:?}",
+        "APP_DOMAIN": "${APP_DOMAIN:?}",
+        "ADMIN_DOMAIN": "${ADMIN_DOMAIN:?}",
+        "SERVICE_AUTH_CONFIG_FILE": "/run/secrets/service_identity",
+        "NODE_EXTRA_CA_CERTS": "/run/secrets/ca.crt",
+        "PG_REQUIRE_TLS": "true",
+        "RESEND_FROM_EMAIL": "${RESEND_FROM_EMAIL:?Set an approved verified sender}"
+      },
+      "secrets": [
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        },
+        {
+          "source": "admin-api_service_identity",
+          "target": "service_identity"
+        },
+        {
+          "source": "admin-api_service_crt",
+          "target": "service.crt"
+        },
+        {
+          "source": "admin-api_service_key",
+          "target": "service.key"
+        },
+        {
+          "source": "ai_keyring",
+          "target": "ai_credential_keyring"
+        }
+      ],
+      "networks": [
+        "backend"
+      ],
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,size=256m"
+      ],
+      "pids_limit": 256,
+      "mem_limit": "768m",
+      "cpus": 1,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      },
+      "volumes": [
+        "${DOCCRAFT_CONTROL:?}:/control:ro"
+      ],
+      "profiles": [
+        "tools"
+      ],
+      "healthcheck": {
+        "disable": true
+      }
+    },
+    "grant-roles": {
+      "image": "${ADMIN_API_IMAGE:?}",
+      "init": true,
+      "restart": "no",
+      "stop_grace_period": "45s",
+      "working_dir": "/app/services/admin-api",
+      "command": [
+        "python",
+        "/app/deploy/scripts/database_roles.py"
+      ],
+      "env_file": [
+        {
+          "path": "${DOCCRAFT_HOME:?}/secrets/admin-owner.env",
+          "format": "raw"
+        }
+      ],
+      "environment": {
+        "PYTHONPATH": "/app",
+        "SSL_CERT_FILE": "/run/secrets/ca.crt",
+        "PGSSLROOTCERT": "/run/secrets/ca.crt",
+        "ADMIN_RUN_MIGRATIONS": "false",
+        "DOCUMENT_RUN_MIGRATIONS": "false",
+        "EXPECTED_DATABASE": "${POSTGRES_DB:?}",
+        "APP_DOMAIN": "${APP_DOMAIN:?}",
+        "ADMIN_DOMAIN": "${ADMIN_DOMAIN:?}",
+        "SERVICE_AUTH_CONFIG_FILE": "/run/secrets/service_identity",
+        "NODE_EXTRA_CA_CERTS": "/run/secrets/ca.crt",
+        "PG_REQUIRE_TLS": "true"
+      },
+      "secrets": [
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        },
+        {
+          "source": "admin-api_service_identity",
+          "target": "service_identity"
+        },
+        {
+          "source": "admin-api_service_crt",
+          "target": "service.crt"
+        },
+        {
+          "source": "admin-api_service_key",
+          "target": "service.key"
+        },
+        {
+          "source": "ai_keyring",
+          "target": "ai_credential_keyring"
+        },
+        {
+          "source": "runtime_roles",
+          "target": "runtime_roles"
+        }
+      ],
+      "networks": [
+        "backend"
+      ],
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,size=256m"
+      ],
+      "pids_limit": 256,
+      "mem_limit": "768m",
+      "cpus": 1,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      },
+      "volumes": [
+        "${DOCCRAFT_CONTROL:?}:/control:ro"
+      ],
+      "profiles": [
+        "tools"
+      ],
+      "healthcheck": {
+        "disable": true
+      }
+    },
+    "verify": {
+      "image": "${ADMIN_API_IMAGE:?}",
+      "init": true,
+      "restart": "no",
+      "stop_grace_period": "45s",
+      "working_dir": "/app/services/admin-api",
+      "command": [
+        "python",
+        "/app/deploy/scripts/verify_release.py"
+      ],
+      "env_file": [
+        {
+          "path": "${DOCCRAFT_RUNTIME:?}/admin-api.env",
+          "format": "raw"
+        }
+      ],
+      "environment": {
+        "PYTHONPATH": "/app",
+        "SSL_CERT_FILE": "/run/secrets/ca.crt",
+        "PGSSLROOTCERT": "/run/secrets/ca.crt",
+        "ADMIN_RUN_MIGRATIONS": "false",
+        "DOCUMENT_RUN_MIGRATIONS": "false",
+        "EXPECTED_DATABASE": "${POSTGRES_DB:?}",
+        "APP_DOMAIN": "${APP_DOMAIN:?}",
+        "ADMIN_DOMAIN": "${ADMIN_DOMAIN:?}",
+        "SERVICE_AUTH_CONFIG_FILE": "/run/secrets/service_identity",
+        "NODE_EXTRA_CA_CERTS": "/run/secrets/ca.crt",
+        "PG_REQUIRE_TLS": "true"
+      },
+      "secrets": [
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        },
+        {
+          "source": "admin-api_service_identity",
+          "target": "service_identity"
+        },
+        {
+          "source": "admin-api_service_crt",
+          "target": "service.crt"
+        },
+        {
+          "source": "admin-api_service_key",
+          "target": "service.key"
+        },
+        {
+          "source": "ai_keyring",
+          "target": "ai_credential_keyring"
+        },
+        {
+          "source": "document_service_identity",
+          "target": "document_probe_identity"
+        }
+      ],
+      "networks": [
+        "backend",
+        "egress",
+        "inference"
+      ],
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,size=256m"
+      ],
+      "pids_limit": 256,
+      "mem_limit": "768m",
+      "cpus": 1,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      },
+      "volumes": [
+        "${DOCCRAFT_CONTROL:?}:/control:ro"
+      ],
+      "profiles": [
+        "tools"
+      ],
+      "healthcheck": {
+        "disable": true
+      }
+    },
+    "backup": {
+      "image": "postgres:17-bookworm@sha256:3645570cccdfa447589da9f57dd740faa29b30938e861289a5574b6ca6b03826",
+      "profiles": [
+        "tools"
+      ],
+      "restart": "no",
+      "entrypoint": [
+        "/bin/sh",
+        "/control/deploy/scripts/backup.sh"
+      ],
+      "secrets": [
+        {
+          "source": "backup_connection",
+          "target": "backup_connection"
+        },
+        {
+          "source": "ca",
+          "target": "ca.crt"
+        }
+      ],
+      "volumes": [
+        "${DOCCRAFT_CONTROL:?}:/control:ro"
+      ],
+      "networks": [
+        "backend"
+      ],
+      "mem_limit": "256m",
+      "cpus": 0.5,
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    }
+  },
+  "secrets": {
+    "gateway_service_identity": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/gateway.identity.json"
+    },
+    "gateway_service_crt": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/gateway.crt"
+    },
+    "gateway_service_key": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/gateway.key"
+    },
+    "auth_service_identity": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/auth.identity.json"
+    },
+    "auth_service_crt": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/auth.crt"
+    },
+    "auth_service_key": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/auth.key"
+    },
+    "notification_service_identity": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/notification.identity.json"
+    },
+    "notification_service_crt": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/notification.crt"
+    },
+    "notification_service_key": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/notification.key"
+    },
+    "document_service_identity": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/document.identity.json"
+    },
+    "document_service_crt": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/document.crt"
+    },
+    "document_service_key": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/document.key"
+    },
+    "payment_service_identity": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/payment.identity.json"
+    },
+    "payment_service_crt": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/payment.crt"
+    },
+    "payment_service_key": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/payment.key"
+    },
+    "quota_service_identity": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/quota.identity.json"
+    },
+    "quota_service_crt": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/quota.crt"
+    },
+    "quota_service_key": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/quota.key"
+    },
+    "chat_service_identity": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/chat.identity.json"
+    },
+    "chat_service_crt": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/chat.crt"
+    },
+    "chat_service_key": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/chat.key"
+    },
+    "analytics_service_identity": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/analytics.identity.json"
+    },
+    "analytics_service_crt": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/analytics.crt"
+    },
+    "analytics_service_key": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/analytics.key"
+    },
+    "admin-api_service_identity": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/admin-api.identity.json"
+    },
+    "admin-api_service_crt": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/admin-api.crt"
+    },
+    "admin-api_service_key": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/admin-api.key"
+    },
+    "pdf_service_identity": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/pdf.identity.json"
+    },
+    "pdf_service_crt": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/pdf.crt"
+    },
+    "pdf_service_key": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/pdf.key"
+    },
+    "ca": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/ca.crt"
+    },
+    "postgres_password": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/postgres-password"
+    },
+    "postgres_crt": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/postgres.crt"
+    },
+    "postgres_key": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/postgres.key"
+    },
+    "redis_acl": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/redis.acl"
+    },
+    "redis_crt": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/redis.crt"
+    },
+    "redis_key": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/redis.key"
+    },
+    "ai_keyring": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/ai-credential-keyring.json"
+    },
+    "backup_connection": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/migration-python.env"
+    },
+    "runtime_roles": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/runtime-roles.json"
+    },
+    "postgres_migrator_password": {
+      "file": "${DOCCRAFT_HOME:?}/secrets/postgres-migrator-password"
+    }
+  },
+  "networks": {
+    "backend": {
+      "internal": true
+    },
+    "inference": {
+      "internal": true
+    },
+    "egress": {},
+    "model-egress": {}
+  },
+  "volumes": {
+    "postgres": {},
+    "redis": {},
+    "documents": {},
+    "admin_assets": {},
+    "caddy_data": {},
+    "caddy_config": {},
+    "ollama_models": {}
+  }
+}

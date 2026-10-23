@@ -1,0 +1,457 @@
+[
+  {
+    "id": "home_dashboard",
+    "label": "Dashboard",
+    "line": 42
+  },
+  {
+    "id": "users_all",
+    "label": "All Users",
+    "line": 49
+  },
+  {
+    "id": "users_active",
+    "label": "Active Users",
+    "line": 50
+  },
+  {
+    "id": "users_suspended",
+    "label": "Suspended / Banned Users",
+    "line": 51
+  },
+  {
+    "id": "users_guest",
+    "label": "Guest Sessions",
+    "line": 52
+  },
+  {
+    "id": "users_details",
+    "label": "User Details & Manual Override",
+    "line": 53
+  },
+  {
+    "id": "subs_all",
+    "label": "All Subscriptions",
+    "line": 60
+  },
+  {
+    "id": "subs_active",
+    "label": "Active Plans",
+    "line": 61
+  },
+  {
+    "id": "subs_cancelled",
+    "label": "Cancelled Plans",
+    "line": 62
+  },
+  {
+    "id": "subs_failed",
+    "label": "Failed Payments",
+    "line": 63
+  },
+  {
+    "id": "subs_refunds",
+    "label": "Refunds",
+    "line": 64
+  },
+  {
+    "id": "subs_plan_overview",
+    "label": "Plan Overview (Free / Pro / Enterprise)",
+    "line": 65
+  },
+  {
+    "id": "rev_mrr_arr",
+    "label": "MRR & ARR",
+    "line": 72
+  },
+  {
+    "id": "rev_by_plan",
+    "label": "Revenue by Plan",
+    "line": 73
+  },
+  {
+    "id": "rev_cost_ledger",
+    "label": "Cost Ledger & Expenses",
+    "line": 74
+  },
+  {
+    "id": "rev_churn",
+    "label": "Churn Rate",
+    "line": 75
+  },
+  {
+    "id": "rev_ltv",
+    "label": "LTV per User",
+    "line": 76
+  },
+  {
+    "id": "rev_transactions",
+    "label": "Transaction History",
+    "line": 77
+  },
+  {
+    "id": "rev_payouts",
+    "label": "Payout Summary",
+    "line": 78
+  },
+  {
+    "id": "promo_coupons",
+    "label": "Coupon Codes",
+    "line": 85
+  },
+  {
+    "id": "promo_active",
+    "label": "Active Promotions",
+    "line": 86
+  },
+  {
+    "id": "promo_ab_tests",
+    "label": "A/B Tests",
+    "line": 87
+  },
+  {
+    "id": "promo_referrals",
+    "label": "Referral Program",
+    "line": 88
+  },
+  {
+    "id": "promo_trials",
+    "label": "Trial Management",
+    "line": 89
+  },
+  {
+    "id": "pack_current",
+    "label": "Current Plans",
+    "line": 96
+  },
+  {
+    "id": "pack_create",
+    "label": "Create New Plan",
+    "line": 97
+  },
+  {
+    "id": "pack_flags",
+    "label": "Feature Flags per Plan",
+    "line": 98
+  },
+  {
+    "id": "pack_ai_models",
+    "label": "AI Model Routing per Plan",
+    "line": 99
+  },
+  {
+    "id": "pack_performance",
+    "label": "Plan Performance",
+    "line": 100
+  },
+  {
+    "id": "ai_providers",
+    "label": "Providers",
+    "line": 108
+  },
+  {
+    "id": "ai_models",
+    "label": "Model Registry",
+    "line": 109
+  },
+  {
+    "id": "ai_assignments",
+    "label": "Plan Assignments",
+    "line": 110
+  },
+  {
+    "id": "ai_routing",
+    "label": "Routing Policies",
+    "line": 111
+  },
+  {
+    "id": "ai_credentials",
+    "label": "API Credentials",
+    "line": 112
+  },
+  {
+    "id": "ai_local",
+    "label": "Local Inference",
+    "line": 113
+  },
+  {
+    "id": "ai_usage",
+    "label": "Usage & Costs",
+    "line": 114
+  },
+  {
+    "id": "ai_health",
+    "label": "Health & Monitoring",
+    "line": 115
+  },
+  {
+    "id": "ai_audit",
+    "label": "Audit Logs",
+    "line": 116
+  },
+  {
+    "id": "gen_total",
+    "label": "Total Generations",
+    "line": 124
+  },
+  {
+    "id": "gen_by_type",
+    "label": "Generations by Document Type",
+    "line": 125
+  },
+  {
+    "id": "gen_by_user",
+    "label": "Generations by User",
+    "line": 126
+  },
+  {
+    "id": "gen_failed",
+    "label": "Failed Generations",
+    "line": 127
+  },
+  {
+    "id": "gen_free_tier",
+    "label": "Free Tier Usage",
+    "line": 128
+  },
+  {
+    "id": "gen_pro_tier",
+    "label": "Pro Tier Usage",
+    "line": 129
+  },
+  {
+    "id": "gen_drop_offs",
+    "label": "Drop-off Points in Chat Flow",
+    "line": 130
+  },
+  {
+    "id": "doc_all",
+    "label": "All Generated Documents",
+    "line": 137
+  },
+  {
+    "id": "doc_templates",
+    "label": "Most Used Templates",
+    "line": 138
+  },
+  {
+    "id": "doc_version_registry",
+    "label": "Custom Template Approvals",
+    "line": 139
+  },
+  {
+    "id": "doc_breakdown",
+    "label": "Document Type Breakdown",
+    "line": 140
+  },
+  {
+    "id": "doc_links",
+    "label": "Shared Document Links",
+    "line": 141
+  },
+  {
+    "id": "an_traffic",
+    "label": "Traffic Overview",
+    "line": 148
+  },
+  {
+    "id": "an_location",
+    "label": "Users by Location",
+    "line": 149
+  },
+  {
+    "id": "an_device",
+    "label": "Users by Device",
+    "line": 150
+  },
+  {
+    "id": "an_duration",
+    "label": "Page Visit Duration",
+    "line": 151
+  },
+  {
+    "id": "an_clicks",
+    "label": "Button Click Tracking",
+    "line": 152
+  },
+  {
+    "id": "an_funnel",
+    "label": "Subscribe Page Funnel",
+    "line": 153
+  },
+  {
+    "id": "an_conversion",
+    "label": "Conversion Rate",
+    "line": 154
+  },
+  {
+    "id": "an_journey",
+    "label": "Signup to Subscribe Journey",
+    "line": 155
+  },
+  {
+    "id": "sec_ip_logs",
+    "label": "IP Address Logs",
+    "line": 163
+  },
+  {
+    "id": "sec_suspicious",
+    "label": "Suspicious Activity",
+    "line": 164
+  },
+  {
+    "id": "sec_rate_limits",
+    "label": "Rate Limit Violations",
+    "line": 165
+  },
+  {
+    "id": "sec_bot_logs",
+    "label": "Bot Detection Logs",
+    "line": 166
+  },
+  {
+    "id": "sec_abuse_reports",
+    "label": "Account Abuse Reports",
+    "line": 167
+  },
+  {
+    "id": "sec_audit",
+    "label": "Audit Logs",
+    "line": 168
+  },
+  {
+    "id": "sec_sessions",
+    "label": "Session Management",
+    "line": 169
+  },
+  {
+    "id": "sup_reported",
+    "label": "User Reported Issues",
+    "line": 176
+  },
+  {
+    "id": "sup_refunds",
+    "label": "Refund Requests",
+    "line": 177
+  },
+  {
+    "id": "sup_contact",
+    "label": "Contact Form Submissions",
+    "line": 178
+  },
+  {
+    "id": "sup_overrides",
+    "label": "Manual Plan Override Requests",
+    "line": 179
+  },
+  {
+    "id": "not_automation",
+    "label": "Automation Rules & Engine",
+    "line": 186
+  },
+  {
+    "id": "not_execution_logs",
+    "label": "Automation Execution Logs",
+    "line": 187
+  },
+  {
+    "id": "not_emit_events",
+    "label": "Emit Domain Events",
+    "line": 188
+  },
+  {
+    "id": "not_email_logs",
+    "label": "Email Logs",
+    "line": 189
+  },
+  {
+    "id": "not_system",
+    "label": "System Announcements",
+    "line": 190
+  },
+  {
+    "id": "not_templates",
+    "label": "Notification Templates",
+    "line": 191
+  },
+  {
+    "id": "inf_uptime",
+    "label": "Uptime Monitor",
+    "line": 198
+  },
+  {
+    "id": "inf_mcp_chat",
+    "label": "Chat MCP Server Integration",
+    "line": 199
+  },
+  {
+    "id": "inf_sentry",
+    "label": "Error Logs (Sentry)",
+    "line": 200
+  },
+  {
+    "id": "inf_api_usage",
+    "label": "API Usage & Limits",
+    "line": 201
+  },
+  {
+    "id": "inf_db_health",
+    "label": "Database Health",
+    "line": 202
+  },
+  {
+    "id": "inf_deployments",
+    "label": "Deployment History",
+    "line": 203
+  },
+  {
+    "id": "inf_staging_prod",
+    "label": "Staging vs Production Status",
+    "line": 204
+  },
+  {
+    "id": "set_dynamic_config",
+    "label": "Dynamic Config Engine",
+    "line": 212
+  },
+  {
+    "id": "set_profile",
+    "label": "Admin Profile",
+    "line": 213
+  },
+  {
+    "id": "set_admin_users",
+    "label": "Admin User Management",
+    "line": 214
+  },
+  {
+    "id": "set_2fa",
+    "label": "2FA Settings",
+    "line": 215
+  },
+  {
+    "id": "set_api_keys",
+    "label": "API Keys & Integrations",
+    "line": 216
+  },
+  {
+    "id": "set_billing",
+    "label": "Billing Configuration",
+    "line": 217
+  },
+  {
+    "id": "set_gdpr",
+    "label": "GDPR & Data Management",
+    "line": 218
+  },
+  {
+    "id": "set_export_csv",
+    "label": "Export Data (CSV)",
+    "line": 219
+  },
+  {
+    "id": "set_preferences",
+    "label": "System Preferences",
+    "line": 220
+  }
+]

@@ -1,0 +1,292 @@
+[
+  {
+    "path": "services/admin-api/app/api/v1/ai_management.py",
+    "sha256": "feb723946363800dd40cbe7031c773bc54a5f121d158ed223789a6f5babce4e5",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/analytics.py",
+    "sha256": "0beed4d8c92712f6270a9ed09dd771a64a7ded6f815dd4441767acaffd07549c",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/audit.py",
+    "sha256": "660c346b7e959636355e56afa68a365cdea2ce19022196526bc65aa834478eb2",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/auth.py",
+    "sha256": "532412aefe049652731ea75993516d58eea70212a5d6b327dc9842b7b5167025",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/automation.py",
+    "sha256": "32f8ed8367aaddc96f610eb331cd961e04d81d4584e0963c6a28518225b26763",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/automation_intake.py",
+    "sha256": "21459751556ced62b8cad86ea66bfb6199fad546a4abca6ab190946def42d89c",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/config.py",
+    "sha256": "6a30ffb56b19884829a3c500d26c84dcf4396089b3cba8b711dde9568a892887",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/cost_ledger.py",
+    "sha256": "e3da641e79a168bd687571b6e5708d4ced63e9f41cee37d1e0e3c0a13cf887f2",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/entitlements.py",
+    "sha256": "cc3d83a8916236d05c779b9f439cc0f840a52dc3076bb93fb4c79708c7375340",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/gdpr.py",
+    "sha256": "b4fcff2ba4aaab00e451c3a385f8b61447721f78cec6ae97051e5da0ef3af330",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/infrastructure.py",
+    "sha256": "a258d78cc24b98be95f1af773dfeb2a368b1b8e555f95ab57894d7f9da3391f8",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/notifications.py",
+    "sha256": "3c2ee9e51ac5b4f69edb9a8c6bccd84b514b4709a1156ff8ab68afa72211ecc1",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/plans.py",
+    "sha256": "83941a65c69b85191db3626a0c57a9d993fc1822a307d43a8eccfe9e157c032f",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/promotions.py",
+    "sha256": "107357ed52a5c4d2a57e3b62bf818581a3dbb74fbc246a2660f95256375ed088",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/rbac.py",
+    "sha256": "0c6c84bd3421d9d6aeab21b0b09e3d4259a7dfcd447cfd00bd64d782330abb95",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/reports.py",
+    "sha256": "5becb46c04640b43951b4270cb8db9e914f59f2778009ebc6b59b6ee30fbe80d",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/router.py",
+    "sha256": "b1514d27a9a19fbaa53f0318ce2cbf2669508b9599a570981c175db854e0cdfc",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/security.py",
+    "sha256": "1cb86938d1320150ff123faeb9971c9dc54d396b6f1432eb1dcb0aa10b5e0cae",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/subscriptions.py",
+    "sha256": "b5694b8352b3107ef5b6ee541cde0c0ecc2aad3332af9a970f26eba883440dea",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/support.py",
+    "sha256": "9bee8902f321c5cd15b7afcdc5f4b06c6c925730f63379386298bb5834f2ae69",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/templates.py",
+    "sha256": "8dcbba29b24ae275661b58f5ad28d6e50881d8bb087312facd158db64630e4c2",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/uploaded_templates.py",
+    "sha256": "437c74423c8bfe6d763d2cb4dca9daec012d498817faeab3513174a191f50f41",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/api/v1/users.py",
+    "sha256": "cb86348c07cd31a86bf79e6767c4dc34e4cfb72cb65fdd41ddc79b7312072f35",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/admin-api/app/main.py",
+    "sha256": "7490f080d661862e6b8d428ababe78436ee0af797a422c2a23e236fd7212e4e6",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/analytics/app/main.py",
+    "sha256": "7ce5ae3a6af93254154ccbb105aa66ccedb42dd635133e9f3b67ed5f07c2819a",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/analytics/app/routers/analytics.py",
+    "sha256": "38e05949f642cde0cbe340393079f1ca0ece058bed31cc2d99efda8d14656c85",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/auth/src/routes/auth.routes.ts",
+    "sha256": "f77bf07ab6f328fb1e24bf8f3ae582866ac68f545ad618a48988601d26ded555",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/auth/src/routes/internal.routes.ts",
+    "sha256": "66319f6e904b6630f1ba4ed1bccc6d17bca78b76646178f41011e72bc9050db1",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/auth/src/server.ts",
+    "sha256": "d01822b6f8b18610e83727048fa6984c02913e19bf394321200bdc20a9395b0e",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/chat/src/routes/chat.routes.ts",
+    "sha256": "80bbebd7744a4710392109c575ea84a4d5e0b9f9c3e0736556a1aebcee78bc40",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/chat/src/routes/internal-resources.routes.ts",
+    "sha256": "d5af4ef662157a11e2348d9978c9c446cf7254257ecbf451c77ff470ad89ca9e",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/chat/src/routes/mcp.routes.ts",
+    "sha256": "33ca287269b9910ef932d5303609cda1a10011a2977a5e7ffd31a6e8cd1e2c62",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/chat/src/routes/metrics.routes.ts",
+    "sha256": "93647897c23a6b2c56060c2902b8f2fa4a1b468d50f7634d2a0236d0a769ee3f",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/chat/src/routes/status.routes.ts",
+    "sha256": "351af1afbcb540b5afaa0391483430bddf5c61abecc50b09accb1be57eb56c3e",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/chat/src/server.ts",
+    "sha256": "5cbad540a709834e76ba9d15cdfc357cce7d6e5393ec7af4c06f953b3e2ffff3",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/document/app/main.py",
+    "sha256": "df25e45e74adcfee7b579ae0c75ad6a76c0218113ea6ca75b30625880dad0b48",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/document/app/routers/document.py",
+    "sha256": "8d9c1bae340131be8d6cfd417677b6f3cd9622444e79c86f6a01aa96f236b4f0",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/document/puppeteer/server.ts",
+    "sha256": "f46d1dc06eb383ae519d5fccaf40eccb39c6e5d682ea0ddc2e66e0993819480f",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/gateway/src/routes/admin.routes.ts",
+    "sha256": "a3ca2d575e00a033f5e674d90e8f7e9d65f61b42cb79ff2a343fcab014407692",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/gateway/src/routes/analytics.routes.ts",
+    "sha256": "03b1a73668005777657425d1c10301741cabd00252905092575053a2a229e8a8",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/gateway/src/routes/auth.routes.ts",
+    "sha256": "0359b0b7b72e8b04c874b3496162e0395edffdd1991299e0ab38ad463f8339d1",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/gateway/src/routes/chat.routes.ts",
+    "sha256": "e7e6e300d570ae955160df415721d50da57c420bf5083aaca70cb5cc6aafb8aa",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/gateway/src/routes/document.routes.ts",
+    "sha256": "c39fb66777279fdbea1efcffc0e9b0ffe170821a3445af36cec952bb80c396c7",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/gateway/src/routes/index.ts",
+    "sha256": "1aa5d7430032001f396405a5daea0d3daf508745871ccab91e50b924d81386cb",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/gateway/src/routes/notification.routes.ts",
+    "sha256": "ee39b0197df3ac2904fc274ba75d38c9d824e60c29dbeddc16f5d68b3eef90e9",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/gateway/src/routes/payment.routes.ts",
+    "sha256": "7c144951e849c3aa0317a8cce0f39a7ba5f3612499960a8a05456a2bf644c3df",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/gateway/src/routes/quota.routes.ts",
+    "sha256": "366dd5d62d318dc7511fbc9d52fa2c80fd073605cd346c3cdc9d730f4440ccbb",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/gateway/src/swagger.ts",
+    "sha256": "73085707da57d1eb4f6ae35237b7c60bcc9127737aefc7ec3385faa9038e2e97",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/notification/src/routes/notification.routes.ts",
+    "sha256": "3defc96e29d6a63126b06b3e5c20d7e2d5c99bb97a5df7db202f2ba7ac703c84",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/notification/src/server.ts",
+    "sha256": "c15400b61dd043e2aedd495d76bf2f6a9de20241e06ab6d1aabe214781caa52a",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/payment/src/app.ts",
+    "sha256": "c6048916779de3a4d05a8a542330de4e5ef2d08bc3cb982292a8720b2ece84b3",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/payment/src/routes/health.routes.ts",
+    "sha256": "f5dfae41dcd8ad2633c6866314afa39ba99181ff3cb05a9fcc6001aada60d952",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/payment/src/routes/payment.routes.ts",
+    "sha256": "df0d550afd2d7c1de206c3a3fdb7078063536bcc6e599ea81beba514f7b36a53",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/payment/src/swagger.ts",
+    "sha256": "f3dcfc6da01e2b499e02c44459b34f84d026f3af0d9df596b56e4fd007b78244",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/quota/src/app.ts",
+    "sha256": "6274463922e9fcf2199c5e0ef658475da402aad285a1946eae3b21fae40be33f",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/quota/src/routes/health.routes.ts",
+    "sha256": "58dc7321e1f6ab2f38fa3e92160ecce1ab82643bc3f740fd08c2ee88e79feb64",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/quota/src/routes/quota.routes.ts",
+    "sha256": "1da2cf741872928cf9d178a143c19df92187911efce760a57cc0d11701f3d872",
+    "review": "AST route registration/dependency extraction"
+  },
+  {
+    "path": "services/quota/src/swagger.ts",
+    "sha256": "bebb1d72fbf675b5c8f8703ad3f7f58eadab5393ce517d12fbc9493d57fd46a3",
+    "review": "AST route registration/dependency extraction"
+  }
+]

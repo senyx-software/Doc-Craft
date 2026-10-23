@@ -1,0 +1,2465 @@
+{
+  "observed_at_utc": "2026-10-22T03:59:49.501652+00:00",
+  "region_requested": "ap-mumbai-1",
+  "operations": {
+    "identity": {
+      "status": "OBSERVED",
+      "data": {
+        "id": "ocid1.user.oc1..aaaaaaaaobw2fgl2akl74ncrcratt66w5onx75u52gacfu33lzrzlebg536q",
+        "name": "erandasathsara@gmail.com",
+        "lifecycle-state": "ACTIVE"
+      }
+    },
+    "tenancy": {
+      "status": "OBSERVED",
+      "data": {
+        "id": "ocid1.tenancy.oc1..aaaaaaaaqdmc45x6ug4wxmdxu6vof3jtmnldsnhvp2bbjds3ddm6lw5wv3jq",
+        "name": "erandasathsara",
+        "home-region-key": "BOM"
+      }
+    },
+    "regions": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "region-name": "ap-mumbai-1",
+          "region-key": "BOM",
+          "is-home-region": true,
+          "status": "READY"
+        }
+      ]
+    },
+    "compartments": {
+      "status": "OBSERVED",
+      "data": [],
+      "empty_cli_list_output": true
+    },
+    "instances": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "id": "ocid1.instance.oc1.ap-mumbai-1.anrg6ljr4wujdnqcezvcrlwboiuw3efznrg5ztawy7tes74vcz63m3yn46ra",
+          "display-name": "instance-20261021-1441",
+          "lifecycle-state": "RUNNING",
+          "shape": "VM.Standard.E5.Flex",
+          "shape-config": {
+            "baseline-ocpu-utilization": null,
+            "gpu-description": null,
+            "gpus": 0,
+            "local-disk-description": null,
+            "local-disks": 0,
+            "local-disks-total-size-in-gbs": null,
+            "local-volume-size-in-gbs": null,
+            "max-vnic-attachments": 2,
+            "memory-in-gbs": 12.0,
+            "networking-bandwidth-in-gbps": 1.0,
+            "ocpus": 1.0,
+            "processor-description": "2.3 GHz AMD EPYC\u2122 9J14 (Genoa)",
+            "resource-management": null,
+            "vcpus": 2
+          },
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1",
+          "image-id": "ocid1.image.oc1.ap-mumbai-1.aaaaaaaarymc45hntavlpoblx7zng6nnimqonzavz7vn4cz6mql3dcn7tpiq"
+        }
+      ]
+    },
+    "instance": {
+      "status": "OBSERVED",
+      "data": {
+        "id": "ocid1.instance.oc1.ap-mumbai-1.anrg6ljr4wujdnqcezvcrlwboiuw3efznrg5ztawy7tes74vcz63m3yn46ra",
+        "display-name": "instance-20261021-1441",
+        "compartment-id": "ocid1.tenancy.oc1..aaaaaaaaqdmc45x6ug4wxmdxu6vof3jtmnldsnhvp2bbjds3ddm6lw5wv3jq",
+        "region": "ap-mumbai-1",
+        "lifecycle-state": "RUNNING",
+        "shape": "VM.Standard.E5.Flex",
+        "shape-config": {
+          "baseline-ocpu-utilization": null,
+          "gpu-description": null,
+          "gpus": 0,
+          "local-disk-description": null,
+          "local-disks": 0,
+          "local-disks-total-size-in-gbs": null,
+          "local-volume-size-in-gbs": null,
+          "max-vnic-attachments": 2,
+          "memory-in-gbs": 12.0,
+          "networking-bandwidth-in-gbps": 1.0,
+          "ocpus": 1.0,
+          "processor-description": "2.3 GHz AMD EPYC\u2122 9J14 (Genoa)",
+          "resource-management": null,
+          "vcpus": 2
+        },
+        "availability-domain": "vFwL:AP-MUMBAI-1-AD-1",
+        "image-id": "ocid1.image.oc1.ap-mumbai-1.aaaaaaaarymc45hntavlpoblx7zng6nnimqonzavz7vn4cz6mql3dcn7tpiq",
+        "launch-options": {
+          "boot-volume-type": "PARAVIRTUALIZED",
+          "firmware": "UEFI_64",
+          "is-consistent-volume-naming-enabled": true,
+          "is-encryption-in-transit-enabled": null,
+          "is-pv-encryption-in-transit-enabled": true,
+          "network-type": "PARAVIRTUALIZED",
+          "remote-data-volume-type": "PARAVIRTUALIZED"
+        },
+        "agent-config": {
+          "are-all-plugins-disabled": false,
+          "is-management-disabled": false,
+          "is-monitoring-disabled": false,
+          "plugins-config": [
+            {
+              "desired-state": "DISABLED",
+              "name": "Vulnerability Scanning"
+            },
+            {
+              "desired-state": "DISABLED",
+              "name": "OS Management Hub Agent"
+            },
+            {
+              "desired-state": "DISABLED",
+              "name": "Management Agent"
+            },
+            {
+              "desired-state": "ENABLED",
+              "name": "Custom Logs Monitoring"
+            },
+            {
+              "desired-state": "DISABLED",
+              "name": "Compute RDMA GPU Monitoring"
+            },
+            {
+              "desired-state": "ENABLED",
+              "name": "Compute Instance Run Command"
+            },
+            {
+              "desired-state": "ENABLED",
+              "name": "Compute Instance Monitoring"
+            },
+            {
+              "desired-state": "DISABLED",
+              "name": "Compute HPC RDMA Auto-Configuration"
+            },
+            {
+              "desired-state": "DISABLED",
+              "name": "Compute HPC RDMA Authentication"
+            },
+            {
+              "desired-state": "ENABLED",
+              "name": "Cloud Guard Workload Protection"
+            },
+            {
+              "desired-state": "DISABLED",
+              "name": "Block Volume Management"
+            },
+            {
+              "desired-state": "DISABLED",
+              "name": "Bastion"
+            }
+          ]
+        }
+      }
+    },
+    "image": {
+      "status": "OBSERVED",
+      "data": {
+        "id": "ocid1.image.oc1.ap-mumbai-1.aaaaaaaarymc45hntavlpoblx7zng6nnimqonzavz7vn4cz6mql3dcn7tpiq",
+        "display-name": "Canonical-Ubuntu-20.04-2025.07.23-0",
+        "operating-system": "Canonical Ubuntu",
+        "operating-system-version": "20.04",
+        "size-in-mbs": 47694,
+        "launch-mode": "NATIVE"
+      }
+    },
+    "shape": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "shape": "BM.Standard.E5.192",
+          "processor-description": "2.3 GHz AMD EPYC\u2122 9J14 (Genoa)",
+          "ocpus": 192.0,
+          "memory-in-gbs": 2304.0,
+          "max-vnic-attachments": 512,
+          "is-flexible": false
+        },
+        {
+          "shape": "BM.Standard.A1.160",
+          "processor-description": "3.0 GHz Ampere\u00ae Altra\u2122",
+          "ocpus": 160.0,
+          "memory-in-gbs": 1024.0,
+          "max-vnic-attachments": 256,
+          "is-flexible": false
+        },
+        {
+          "shape": "BM.Standard3.64",
+          "processor-description": "2.6 GHz Intel\u00ae Xeon\u00ae Platinum 8358 (Ice Lake)",
+          "ocpus": 64.0,
+          "memory-in-gbs": 1024.0,
+          "max-vnic-attachments": 256,
+          "is-flexible": false
+        },
+        {
+          "shape": "BM.Standard2.52",
+          "processor-description": "2.0 GHz Intel\u00ae Xeon\u00ae Platinum 8167M (Skylake)",
+          "ocpus": 52.0,
+          "memory-in-gbs": 768.0,
+          "max-vnic-attachments": 200,
+          "is-flexible": false
+        },
+        {
+          "shape": "BM.Standard.E4.128",
+          "processor-description": "2.55 GHz AMD EPYC\u2122 7J13 (Milan)",
+          "ocpus": 128.0,
+          "memory-in-gbs": 2048.0,
+          "max-vnic-attachments": 256,
+          "is-flexible": false
+        },
+        {
+          "shape": "BM.Standard.E3.128",
+          "processor-description": "2.25 GHz AMD EPYC\u2122 7742 (Rome)",
+          "ocpus": 128.0,
+          "memory-in-gbs": 2048.0,
+          "max-vnic-attachments": 256,
+          "is-flexible": false
+        },
+        {
+          "shape": "BM.Standard.E2.64",
+          "processor-description": "2.0 GHz AMD EPYC\u2122 7551 (Naples)",
+          "ocpus": 64.0,
+          "memory-in-gbs": 512.0,
+          "max-vnic-attachments": 150,
+          "is-flexible": false
+        },
+        {
+          "shape": "VM.Standard.E4.Flex",
+          "processor-description": "2.55 GHz AMD EPYC\u2122 7J13 (Milan)",
+          "ocpus": 1.0,
+          "memory-in-gbs": 16.0,
+          "max-vnic-attachments": 2,
+          "is-flexible": true
+        },
+        {
+          "shape": "VM.Standard.E3.Flex",
+          "processor-description": "2.25 GHz AMD EPYC\u2122 7742 (Rome)",
+          "ocpus": 1.0,
+          "memory-in-gbs": 16.0,
+          "max-vnic-attachments": 2,
+          "is-flexible": true
+        },
+        {
+          "shape": "VM.Standard.A1.Flex",
+          "processor-description": "3.0 GHz Ampere\u00ae Altra\u2122",
+          "ocpus": 1.0,
+          "memory-in-gbs": 6.0,
+          "max-vnic-attachments": 2,
+          "is-flexible": true
+        },
+        {
+          "shape": "VM.Standard2.1",
+          "processor-description": "2.0 GHz Intel\u00ae Xeon\u00ae Platinum 8167M (Skylake)",
+          "ocpus": 1.0,
+          "memory-in-gbs": 15.0,
+          "max-vnic-attachments": 2,
+          "is-flexible": false
+        },
+        {
+          "shape": "VM.Standard2.2",
+          "processor-description": "2.0 GHz Intel\u00ae Xeon\u00ae Platinum 8167M (Skylake)",
+          "ocpus": 2.0,
+          "memory-in-gbs": 30.0,
+          "max-vnic-attachments": 2,
+          "is-flexible": false
+        },
+        {
+          "shape": "VM.Standard2.4",
+          "processor-description": "2.0 GHz Intel\u00ae Xeon\u00ae Platinum 8167M (Skylake)",
+          "ocpus": 4.0,
+          "memory-in-gbs": 60.0,
+          "max-vnic-attachments": 4,
+          "is-flexible": false
+        },
+        {
+          "shape": "VM.Standard2.8",
+          "processor-description": "2.0 GHz Intel\u00ae Xeon\u00ae Platinum 8167M (Skylake)",
+          "ocpus": 8.0,
+          "memory-in-gbs": 120.0,
+          "max-vnic-attachments": 8,
+          "is-flexible": false
+        },
+        {
+          "shape": "VM.Standard2.16",
+          "processor-description": "2.0 GHz Intel\u00ae Xeon\u00ae Platinum 8167M (Skylake)",
+          "ocpus": 16.0,
+          "memory-in-gbs": 240.0,
+          "max-vnic-attachments": 16,
+          "is-flexible": false
+        },
+        {
+          "shape": "VM.Standard2.24",
+          "processor-description": "2.0 GHz Intel\u00ae Xeon\u00ae Platinum 8167M (Skylake)",
+          "ocpus": 24.0,
+          "memory-in-gbs": 320.0,
+          "max-vnic-attachments": 24,
+          "is-flexible": false
+        },
+        {
+          "shape": "VM.Standard.E2.1",
+          "processor-description": "2.0 GHz AMD EPYC\u2122 7551 (Naples)",
+          "ocpus": 1.0,
+          "memory-in-gbs": 8.0,
+          "max-vnic-attachments": 2,
+          "is-flexible": false
+        },
+        {
+          "shape": "VM.Standard.E2.2",
+          "processor-description": "2.0 GHz AMD EPYC\u2122 7551 (Naples)",
+          "ocpus": 2.0,
+          "memory-in-gbs": 16.0,
+          "max-vnic-attachments": 2,
+          "is-flexible": false
+        },
+        {
+          "shape": "VM.Standard.E2.4",
+          "processor-description": "2.0 GHz AMD EPYC\u2122 7551 (Naples)",
+          "ocpus": 4.0,
+          "memory-in-gbs": 32.0,
+          "max-vnic-attachments": 4,
+          "is-flexible": false
+        },
+        {
+          "shape": "VM.Standard.E2.8",
+          "processor-description": "2.0 GHz AMD EPYC\u2122 7551 (Naples)",
+          "ocpus": 8.0,
+          "memory-in-gbs": 64.0,
+          "max-vnic-attachments": 8,
+          "is-flexible": false
+        },
+        {
+          "shape": "VM.Standard.E2.1.Micro",
+          "processor-description": "2.0 GHz AMD EPYC\u2122 7551 (Naples)",
+          "ocpus": 1.0,
+          "memory-in-gbs": 1.0,
+          "max-vnic-attachments": 1,
+          "is-flexible": false
+        },
+        {
+          "shape": "VM.Standard3.Flex",
+          "processor-description": "2.6 GHz Intel\u00ae Xeon\u00ae Platinum 8358 (Ice Lake)",
+          "ocpus": 1.0,
+          "memory-in-gbs": 16.0,
+          "max-vnic-attachments": 2,
+          "is-flexible": true
+        },
+        {
+          "shape": "VM.Standard.E5.Flex",
+          "processor-description": "2.3 GHz AMD EPYC\u2122 9J14 (Genoa)",
+          "ocpus": 1.0,
+          "memory-in-gbs": 12.0,
+          "max-vnic-attachments": 2,
+          "is-flexible": true
+        }
+      ]
+    },
+    "vnic_attachments": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "id": "ocid1.vnicattachment.oc1.ap-mumbai-1.anrg6ljr4wujdnqc3q32rajirrkqxmelginnceuxubs7u6nusejmek6lwjoa",
+          "vnic-id": "ocid1.vnic.oc1.ap-mumbai-1.abrg6ljrrz4ngwzoy4bquktv6g5conoobhvs27zwo6qrmg6xlw6kzbn2qfva",
+          "subnet-id": "ocid1.subnet.oc1.ap-mumbai-1.aaaaaaaa4wzncz742s7re55so73tez3i634bteu7tr2mwmq5p2ekkdzgdesq",
+          "lifecycle-state": "ATTACHED"
+        }
+      ]
+    },
+    "vnic_0": {
+      "status": "OBSERVED",
+      "data": {
+        "id": "ocid1.vnic.oc1.ap-mumbai-1.abrg6ljrrz4ngwzoy4bquktv6g5conoobhvs27zwo6qrmg6xlw6kzbn2qfva",
+        "subnet-id": "ocid1.subnet.oc1.ap-mumbai-1.aaaaaaaa4wzncz742s7re55so73tez3i634bteu7tr2mwmq5p2ekkdzgdesq",
+        "private-ip": "10.0.0.88",
+        "public-ip": null,
+        "is-primary": true,
+        "nsg-ids": [],
+        "lifecycle-state": "AVAILABLE",
+        "security-attributes": {}
+      }
+    },
+    "private_ips_0": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "id": "ocid1.privateip.oc1.ap-mumbai-1.abrg6ljrgi6sjkd7mbiipt2jdqpzdd7pc3ohoz7h5jy2ssions3tcgxmhj2a",
+          "ip-address": "10.0.0.88",
+          "is-primary": true,
+          "subnet-id": "ocid1.subnet.oc1.ap-mumbai-1.aaaaaaaa4wzncz742s7re55so73tez3i634bteu7tr2mwmq5p2ekkdzgdesq",
+          "vnic-id": "ocid1.vnic.oc1.ap-mumbai-1.abrg6ljrrz4ngwzoy4bquktv6g5conoobhvs27zwo6qrmg6xlw6kzbn2qfva"
+        }
+      ]
+    },
+    "vcns": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "id": "ocid1.vcn.oc1.ap-mumbai-1.amaaaaaa4wujdnqaan4ea7gwlmypfqaljiff4s5mtdob2u3s4q4xsdzpkgla",
+          "display-name": "vcn-20261021-1443",
+          "cidr-blocks": [
+            "10.0.0.0/16"
+          ],
+          "lifecycle-state": "AVAILABLE"
+        }
+      ]
+    },
+    "named_subnet": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "id": "ocid1.subnet.oc1.ap-mumbai-1.aaaaaaaa4wzncz742s7re55so73tez3i634bteu7tr2mwmq5p2ekkdzgdesq",
+          "display-name": "subnet-20261021-1443",
+          "vcn-id": "ocid1.vcn.oc1.ap-mumbai-1.amaaaaaa4wujdnqaan4ea7gwlmypfqaljiff4s5mtdob2u3s4q4xsdzpkgla",
+          "cidr-block": "10.0.0.0/24",
+          "prohibit-public-ip-on-vnic": false,
+          "route-table-id": "ocid1.routetable.oc1.ap-mumbai-1.aaaaaaaar6v3tewhfiowjwp5tog3b5zizpulpfs7gmrydjygz4fn3df5txlq",
+          "security-list-ids": [
+            "ocid1.securitylist.oc1.ap-mumbai-1.aaaaaaaavg57ppqyydtwfwiqxxn6kaqp7lj6e5icokadxl2fzheyphrqfh3q"
+          ]
+        }
+      ]
+    },
+    "attached_subnet_0": {
+      "status": "OBSERVED",
+      "data": {
+        "id": "ocid1.subnet.oc1.ap-mumbai-1.aaaaaaaa4wzncz742s7re55so73tez3i634bteu7tr2mwmq5p2ekkdzgdesq",
+        "display-name": "subnet-20261021-1443",
+        "vcn-id": "ocid1.vcn.oc1.ap-mumbai-1.amaaaaaa4wujdnqaan4ea7gwlmypfqaljiff4s5mtdob2u3s4q4xsdzpkgla",
+        "cidr-block": "10.0.0.0/24",
+        "prohibit-public-ip-on-vnic": false,
+        "route-table-id": "ocid1.routetable.oc1.ap-mumbai-1.aaaaaaaar6v3tewhfiowjwp5tog3b5zizpulpfs7gmrydjygz4fn3df5txlq",
+        "security-list-ids": [
+          "ocid1.securitylist.oc1.ap-mumbai-1.aaaaaaaavg57ppqyydtwfwiqxxn6kaqp7lj6e5icokadxl2fzheyphrqfh3q"
+        ]
+      }
+    },
+    "internet_gateways_0": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "id": "ocid1.internetgateway.oc1.ap-mumbai-1.aaaaaaaanxzffxhphpvhiy2q6x4vzwkd7qdhp3utrkwen7shhrxa2pnndd3q",
+          "display-name": "Internet Gateway vcn-20261021-1443",
+          "is-enabled": true,
+          "lifecycle-state": "AVAILABLE"
+        }
+      ]
+    },
+    "nat_gateways_0": {
+      "status": "OBSERVED",
+      "data": [],
+      "empty_cli_list_output": true
+    },
+    "service_gateways_0": {
+      "status": "OBSERVED",
+      "data": [],
+      "empty_cli_list_output": true
+    },
+    "routes_0": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "id": "ocid1.routetable.oc1.ap-mumbai-1.aaaaaaaar6v3tewhfiowjwp5tog3b5zizpulpfs7gmrydjygz4fn3df5txlq",
+          "display-name": "Default Route Table for vcn-20261021-1443",
+          "route-rules": [
+            {
+              "cidr-block": "0.0.0.0/0",
+              "description": null,
+              "destination": "0.0.0.0/0",
+              "destination-type": "CIDR_BLOCK",
+              "network-entity-id": "ocid1.internetgateway.oc1.ap-mumbai-1.aaaaaaaanxzffxhphpvhiy2q6x4vzwkd7qdhp3utrkwen7shhrxa2pnndd3q",
+              "route-type": "STATIC"
+            }
+          ]
+        }
+      ]
+    },
+    "security_lists_0": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "id": "ocid1.securitylist.oc1.ap-mumbai-1.aaaaaaaavg57ppqyydtwfwiqxxn6kaqp7lj6e5icokadxl2fzheyphrqfh3q",
+          "display-name": "Default Security List for vcn-20261021-1443",
+          "ingress-security-rules": [
+            {
+              "description": null,
+              "icmp-options": null,
+              "is-stateless": false,
+              "protocol": "6",
+              "source": "0.0.0.0/0",
+              "source-type": "CIDR_BLOCK",
+              "tcp-options": {
+                "destination-port-range": {
+                  "max": 22,
+                  "min": 22
+                },
+                "source-port-range": null
+              },
+              "udp-options": null
+            },
+            {
+              "description": null,
+              "icmp-options": {
+                "code": 4,
+                "type": 3
+              },
+              "is-stateless": false,
+              "protocol": "1",
+              "source": "0.0.0.0/0",
+              "source-type": "CIDR_BLOCK",
+              "tcp-options": null,
+              "udp-options": null
+            },
+            {
+              "description": null,
+              "icmp-options": {
+                "code": null,
+                "type": 3
+              },
+              "is-stateless": false,
+              "protocol": "1",
+              "source": "10.0.0.0/16",
+              "source-type": "CIDR_BLOCK",
+              "tcp-options": null,
+              "udp-options": null
+            }
+          ],
+          "egress-security-rules": [
+            {
+              "description": null,
+              "destination": "0.0.0.0/0",
+              "destination-type": "CIDR_BLOCK",
+              "icmp-options": null,
+              "is-stateless": false,
+              "protocol": "all",
+              "tcp-options": null,
+              "udp-options": null
+            }
+          ]
+        }
+      ]
+    },
+    "nsgs_0": {
+      "status": "OBSERVED",
+      "data": [],
+      "empty_cli_list_output": true
+    },
+    "regional_public_ips": {
+      "status": "OBSERVED",
+      "data": [],
+      "empty_cli_list_output": true
+    },
+    "ad_public_ips": {
+      "status": "OBSERVED",
+      "data": [],
+      "empty_cli_list_output": true
+    },
+    "bastions": {
+      "status": "OBSERVED",
+      "data": [],
+      "empty_cli_list_output": true
+    },
+    "security_zones": {
+      "status": "OBSERVED",
+      "data": []
+    },
+    "boot_attachments": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "id": "ocid1.instance.oc1.ap-mumbai-1.anrg6ljr4wujdnqcezvcrlwboiuw3efznrg5ztawy7tes74vcz63m3yn46ra",
+          "boot-volume-id": "ocid1.bootvolume.oc1.ap-mumbai-1.abrg6ljrao5g24wqapeputcw3yf2adsj22r56e7qepgj7hfx2nopjkdeqzta",
+          "lifecycle-state": "ATTACHED"
+        }
+      ]
+    },
+    "boot_volume_0": {
+      "status": "OBSERVED",
+      "data": {
+        "id": "ocid1.bootvolume.oc1.ap-mumbai-1.abrg6ljrao5g24wqapeputcw3yf2adsj22r56e7qepgj7hfx2nopjkdeqzta",
+        "display-name": "instance-20261021-1441 (Boot Volume)",
+        "size-in-gbs": 47,
+        "vpus-per-gb": 10,
+        "lifecycle-state": "AVAILABLE",
+        "is-auto-tune-enabled": false
+      }
+    },
+    "block_attachments": {
+      "status": "OBSERVED",
+      "data": [],
+      "empty_cli_list_output": true
+    },
+    "block_volumes": {
+      "status": "OBSERVED",
+      "data": [],
+      "empty_cli_list_output": true
+    },
+    "boot_volumes_in_ad": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "id": "ocid1.bootvolume.oc1.ap-mumbai-1.abrg6ljrao5g24wqapeputcw3yf2adsj22r56e7qepgj7hfx2nopjkdeqzta",
+          "display-name": "instance-20261021-1441 (Boot Volume)",
+          "size-in-gbs": 47,
+          "vpus-per-gb": 10,
+          "lifecycle-state": "AVAILABLE"
+        }
+      ]
+    },
+    "quotas": {
+      "status": "OBSERVED",
+      "data": [],
+      "empty_cli_list_output": true
+    },
+    "limits_compute": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "name": "bigdata-e5t-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "bigdata-e6t-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "bm-dense-io1-36-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "bm-dense-io2-52-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "bm-gpu2-2-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "bm-gpu3-8-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "bm-hpc2-36-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "bm-standard-b1-44-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "bm-standard-e2-64-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "bm-standard1-36-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "bm-standard2-52-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "custom-image-count",
+          "value": 25,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "dense-a4-ax-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-a4-ax-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-a4-ax-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-a4-ax-memory-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-a4-ax-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-a4-ax-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-a2-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-a2-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-a2-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-a2-memory-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-a2-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-a2-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e4-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e4-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e4-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e4-memory-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e4-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e4-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e5-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e5-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e5-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e5-memory-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e5-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e5-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e6-ax-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e6-ax-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e6-ax-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e6-ax-memory-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e6-ax-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io-e6-ax-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io1-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io1-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io1-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io2-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io2-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-io2-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-x12-ax-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-x12-ax-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-x12-ax-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-x12-ax-memory-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-x12-ax-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-x12-ax-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-x12-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-x12-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-x12-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-x12-memory-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-x12-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dense-x12-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dvh-dense-io2-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dvh-optimized3-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dvh-standard-a1-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dvh-standard-e2-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dvh-standard-e3-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dvh-standard-e4-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dvh-standard-e5-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dvh-standard-e6-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dvh-standard2-52-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dvh-standard2-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "dvh-standard3-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-a10-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-a10-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-a10-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-a100-v2-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-a100-v2-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-a100-v2-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-b200-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-b200-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-b200-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-b300-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-b300-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-b300-hs-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-b300-hs-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-b300-hs-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-b300-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-b4-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-b4-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-b4-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-gb200-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-gb200-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-gb200-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-gb300-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-gb300-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-gb300-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-h100-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-h100-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-h100-nc-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-h100-nc-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-h100-nc-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-h100-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-h200-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-h200-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-h200-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-l40s-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-l40s-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-l40s-nc-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-l40s-nc-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-l40s-nc-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-l40s-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-mi300x-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-mi300x-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-mi300x-nc-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-mi300x-nc-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-mi300x-nc-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-mi300x-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-positronatlas-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-positronatlas-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-positronatlas-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-rtxpro-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-rtxpro-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu-rtxpro-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu2-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu2-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu2-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu3-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu3-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu3-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu4-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu4-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "gpu4-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "high-io1-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "high-io1-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "high-io1-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "hpc-e5-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "hpc-e5-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "hpc-e5-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "hpc2-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "hpc2-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "hpc2-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "optimized3-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "optimized3-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "optimized3-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "optimized3-memory-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "optimized3-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "optimized3-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a1-core-count",
+          "value": 41,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a1-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a1-core-regional-count",
+          "value": 16,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "standard-a1-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a1-memory-count",
+          "value": 277,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a1-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a1-memory-regional-count",
+          "value": 96,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "standard-a1-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a2-core-count",
+          "value": 29,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a2-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a2-core-regional-count",
+          "value": 500000000,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "standard-a2-core-reserved-count",
+          "value": 500000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a2-memory-count",
+          "value": 208,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a2-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a2-memory-regional-count",
+          "value": 1000000000,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "standard-a2-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a4-ax-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a4-ax-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a4-ax-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a4-ax-memory-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a4-ax-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a4-ax-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a4-core-count",
+          "value": 6,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a4-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a4-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a4-memory-count",
+          "value": 48,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a4-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-a4-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-b1-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-b1-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-b1-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e2-core-count",
+          "value": 13,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e2-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e2-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e2-micro-core-count",
+          "value": 2,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e3-core-ad-count",
+          "value": 16,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e3-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e3-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e3-memory-count",
+          "value": 277,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e3-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e3-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e4-core-count",
+          "value": 16,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e4-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e4-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e4-memory-count",
+          "value": 277,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e4-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e4-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e5-core-count",
+          "value": 13,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e5-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e5-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e5-memory-count",
+          "value": 208,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e5-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e5-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e5t-lm-v2-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e5t-lm-v2-memory-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-ax-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-ax-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-ax-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-ax-memory-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-ax-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-ax-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-core-reserved-count",
+          "value": 13,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-hm-ax-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-hm-ax-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-hm-ax-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-hm-ax-memory-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-hm-ax-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-hm-ax-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-memory-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e6-memory-reserved-count",
+          "value": 208,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e7-ax-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e7-ax-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e7-ax-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e7-ax-memory-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e7-ax-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e7-ax-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e7-hm-ax-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e7-hm-ax-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e7-hm-ax-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e7-hm-ax-memory-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e7-hm-ax-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-e7-hm-ax-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-x12-ax-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-x12-ax-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-x12-ax-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-x12-ax-memory-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-x12-ax-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard-x12-ax-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard1-core-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard1-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard1-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard2-core-count",
+          "value": 6,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard2-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard2-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard3-core-count",
+          "value": 10,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard3-core-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard3-core-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard3-memory-count",
+          "value": 277,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard3-memory-count-reservable",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "standard3-memory-reserved-count",
+          "value": 1000000000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-dense-io1-16-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-dense-io1-4-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-dense-io1-8-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-dense-io2-16-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-dense-io2-24-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-dense-io2-8-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-gpu2-1-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-gpu3-1-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-gpu3-2-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-gpu3-4-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard-b1-1",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard-b1-16",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard-b1-2",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard-b1-4",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard-b1-8",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard-e2-1-count",
+          "value": 13,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard-e2-1-micro-count",
+          "value": 2,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard-e2-2-count",
+          "value": 6,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard-e2-4-count",
+          "value": 3,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard-e2-8-count",
+          "value": 1,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard1-1-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard1-16-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard1-2-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard1-4-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard1-8-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard2-1-count",
+          "value": 6,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard2-16-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard2-2-count",
+          "value": 3,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard2-24-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard2-4-count",
+          "value": 1,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "vm-standard2-8-count",
+          "value": 0,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        }
+      ]
+    },
+    "limits_vcn": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "name": "dhcp-option-count",
+          "value": 300,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "drg-count",
+          "value": 5,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "flow-log-config-count",
+          "value": 100,
+          "scope-type": "GLOBAL",
+          "availability-domain": null
+        },
+        {
+          "name": "internet-gateway-count",
+          "value": 1,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "nat-gateway-count",
+          "value": 1,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "networksecuritygroups-count",
+          "value": 1000,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "reserved-public-ip-count",
+          "value": 6,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "route-table-count",
+          "value": 300,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "security-list-count",
+          "value": 300,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "securityrules-per-networksecuritygroup-count",
+          "value": 120,
+          "scope-type": "GLOBAL",
+          "availability-domain": null
+        },
+        {
+          "name": "subnet-count",
+          "value": 300,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "vcn-count",
+          "value": 50,
+          "scope-type": "REGION",
+          "availability-domain": null
+        }
+      ]
+    },
+    "limits_block-storage": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "name": "backup-count",
+          "value": 100000,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "free-backup-count",
+          "value": 5,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "total-free-storage-gb",
+          "value": 200,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "total-free-storage-gb-regional",
+          "value": 200,
+          "scope-type": "REGION",
+          "availability-domain": null
+        },
+        {
+          "name": "total-replica-storage-gb",
+          "value": 256000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "total-storage-gb",
+          "value": 30720,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "volume-count",
+          "value": 10000,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        },
+        {
+          "name": "volumes-per-group",
+          "value": 32,
+          "scope-type": "AD",
+          "availability-domain": "vFwL:AP-MUMBAI-1-AD-1"
+        }
+      ]
+    },
+    "limits_oci-bastion": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "availability-domain": null,
+          "name": "bastion-count",
+          "scope-type": "REGION",
+          "value": 5
+        }
+      ]
+    }
+  },
+  "cloud_mutations": 0,
+  "authenticated": true,
+  "discovery_complete": true,
+  "cli_version": "3.95.1",
+  "configured_region_matches": true,
+  "cost_review": {
+    "shape": "VM.Standard.E5.Flex",
+    "always_free_candidate": false,
+    "billing_verified": false,
+    "note": "Shape eligibility alone does not prove free usage; review home region, allocation, storage and billing.",
+    "reported_prior_day_compute_amount": 0.581457456666,
+    "reported_currency": "SGD",
+    "reported_usage_day": "2026-10-21",
+    "credits_and_final_invoice_unverified": true
+  },
+  "permission_failures_or_other_errors": [],
+  "mutation_permissions_verified": false,
+  "supplemental_evidence": "oci-connectivity-review.json",
+  "audit_notes": [
+    "Initial empty successful OCI lists were misclassified locally; helper corrected and lists repeated.",
+    "Bastion limit service name corrected from bastion to oci-bastion, verified through limits service list.",
+    "Discovery completeness covers requested API inventory, not host access, final billing or mutation execution."
+  ]
+}

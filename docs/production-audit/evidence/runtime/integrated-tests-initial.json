@@ -1,0 +1,507 @@
+[
+  {
+    "id": "INT-001",
+    "feature": "Registration, verification, login persistence",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Register two unique fixture accounts; read one-time email challenges from owned DB; verify and password login"
+    ],
+    "expected": "Both real users have hashed stored passwords, verified flag, signed access/refresh tokens",
+    "actual": {
+      "verified_users": 2,
+      "tokens_received": true
+    },
+    "status": "PASS",
+    "latency_ms": 1,
+    "source_files": [
+      "services/auth/src/controllers/auth.controller.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-002",
+    "feature": "Invalid registration",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "POST invalid email/short password"
+    ],
+    "expected": "HTTP400/422; no successful account creation",
+    "actual": {
+      "http": 400
+    },
+    "status": "PASS",
+    "latency_ms": 9,
+    "source_files": [
+      "services/auth/src/routes/auth.routes.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-003",
+    "feature": "Wrong password",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "POST wrong password for fixture account"
+    ],
+    "expected": "HTTP401",
+    "actual": {
+      "http": 401
+    },
+    "status": "PASS",
+    "latency_ms": 220,
+    "source_files": [
+      "services/auth/src/controllers/auth.controller.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-004",
+    "feature": "Profile identity",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Read own profile"
+    ],
+    "expected": "Authenticated ID matches local user",
+    "actual": {
+      "identity_matches": true
+    },
+    "status": "PASS",
+    "latency_ms": 53,
+    "source_files": [
+      "services/auth/src/controllers/auth.controller.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-005",
+    "feature": "Profile persistence and plan mass assignment",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "PATCH name/timezone plus unauthorized plan; reload profile"
+    ],
+    "expected": "Name/timezone persist; plan remains free",
+    "actual": {
+      "exception": "AssertionError",
+      "reason": "Unexpected HTTP 429; expected [200]"
+    },
+    "status": "FAIL",
+    "latency_ms": 71,
+    "source_files": [
+      "services/auth/src/controllers/auth.controller.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "annotation": "Initial default auth rate cap triggered429 during test burst. Fixture-only allowance raised for final run and restored before shutdown; not classified as application defect."
+  },
+  {
+    "id": "INT-006",
+    "feature": "Refresh-token rotation",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Refresh fixture token then replay old refresh token"
+    ],
+    "expected": "New token pair; old token rejected",
+    "actual": {
+      "exception": "AssertionError",
+      "reason": "Unexpected HTTP 429; expected [200]"
+    },
+    "status": "FAIL",
+    "latency_ms": 4,
+    "source_files": [
+      "services/auth/src/controllers/auth.controller.ts",
+      "services/auth/src/services/jwt.service.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "annotation": "Initial default auth rate cap triggered429 during test burst. Fixture-only allowance raised for final run and restored before shutdown; not classified as application defect."
+  },
+  {
+    "id": "INT-007",
+    "feature": "Google OAuth public routing",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Unauthenticated GET /v1/auth/login/google"
+    ],
+    "expected": "An OAuth initiation/callback must reach its public auth handler",
+    "actual": {
+      "http": 401,
+      "defect": "401 gateway rejection confirms wrong public allowlist"
+    },
+    "status": "INCONCLUSIVE_INITIAL_ASSERTION",
+    "latency_ms": 2,
+    "source_files": [
+      "services/gateway/src/middleware/auth.middleware.ts",
+      "services/auth/src/routes/auth.routes.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "initial_recorded_status": "PASS",
+    "annotation": "Initial harness recorded observed401without asserting expected public routing. Final suite corrects assertion and reports FAIL."
+  },
+  {
+    "id": "INT-008",
+    "feature": "Google OAuth public routing",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Unauthenticated GET /v1/auth/oauth/google/callback"
+    ],
+    "expected": "An OAuth initiation/callback must reach its public auth handler",
+    "actual": {
+      "http": 401,
+      "defect": "401 gateway rejection confirms wrong public allowlist"
+    },
+    "status": "INCONCLUSIVE_INITIAL_ASSERTION",
+    "latency_ms": 2,
+    "source_files": [
+      "services/gateway/src/middleware/auth.middleware.ts",
+      "services/auth/src/routes/auth.routes.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "initial_recorded_status": "PASS",
+    "annotation": "Initial harness recorded observed401without asserting expected public routing. Final suite corrects assertion and reports FAIL."
+  },
+  {
+    "id": "INT-009",
+    "feature": "Session creation and multi-field editor update",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Create invoice session; PATCH authorized fields; GET persisted state"
+    ],
+    "expected": "Correct customer and revision persist",
+    "actual": {
+      "fields_persisted": true,
+      "revision": 1
+    },
+    "status": "PASS",
+    "latency_ms": 121,
+    "source_files": [
+      "services/chat/src/routes/chat.routes.ts",
+      "services/chat/src/services/conversation.repository.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-010",
+    "feature": "Cross-user document conversation isolation",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Other user reads owner session"
+    ],
+    "expected": "HTTP403/404",
+    "actual": {
+      "http": 403
+    },
+    "status": "PASS",
+    "latency_ms": 28,
+    "source_files": [
+      "services/chat/src/services/conversation.repository.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-011",
+    "feature": "Optimistic revision conflict",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Submit stale editor revision; reload"
+    ],
+    "expected": "HTTP409 and saved customer preserved",
+    "actual": {
+      "stale_write_rejected": true,
+      "unrelated_data_preserved": true
+    },
+    "status": "PASS",
+    "latency_ms": 62,
+    "source_files": [
+      "services/chat/src/controllers/session.controller.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-012",
+    "feature": "Deterministic tax and totals",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Send SSE tax command; inspect committed fields and inference ledger"
+    ],
+    "expected": "Tax10%,total1650,customer unchanged,zero inference",
+    "actual": {
+      "totalDue": 1650,
+      "inference_calls": 0,
+      "sse_done": true
+    },
+    "status": "PASS",
+    "latency_ms": 136,
+    "source_files": [
+      "services/chat/src/routes/chat.routes.ts",
+      "shared/conversation-state.mjs"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-013",
+    "feature": "Undo and redo",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Undo tax; redo tax; inspect authoritative state"
+    ],
+    "expected": "Restored0 then10 tax",
+    "actual": {
+      "exception": "KeyError",
+      "reason": "Inspect private fixture diagnostics"
+    },
+    "status": "FAIL",
+    "latency_ms": 122,
+    "source_files": [
+      "shared/conversation-state.mjs",
+      "services/chat/src/services/conversation.repository.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "annotation": "Initial harness assumed explicit taxRate0on undo; backend legitimately restores absent/default-zero field. Final test asserts effective value and passes."
+  },
+  {
+    "id": "INT-014",
+    "feature": "Deterministic side-question preservation",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Ask common business question; compare persisted slots"
+    ],
+    "expected": "Natural response; no mutation or inference",
+    "actual": {
+      "document_unchanged": true,
+      "inference_calls": 0
+    },
+    "status": "PASS",
+    "latency_ms": 164,
+    "source_files": [
+      "shared/assistant-knowledge.mjs",
+      "services/chat/src/routes/chat.routes.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-015",
+    "feature": "Malformed chat input",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Send empty message and invalid turnId"
+    ],
+    "expected": "HTTP400",
+    "actual": {
+      "http": 400
+    },
+    "status": "PASS",
+    "latency_ms": 23,
+    "source_files": [
+      "services/chat/src/routes/chat.routes.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-016",
+    "feature": "Custom template CRUD and ownership",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Save literal canvas; other-user read; rename/reload; delete/reload"
+    ],
+    "expected": "CRUD persists and other user denied",
+    "actual": {
+      "create_read_rename_delete": true,
+      "cross_user_404": true
+    },
+    "status": "PASS",
+    "latency_ms": 504,
+    "source_files": [
+      "services/document/app/routers/document.py"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-017",
+    "feature": "Template catalog",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "GET actual published catalog"
+    ],
+    "expected": "Nonempty templates with actual server definitions",
+    "actual": {
+      "count": 41
+    },
+    "status": "PASS",
+    "latency_ms": 82,
+    "source_files": [
+      "services/document/app/routers/document.py"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-018",
+    "feature": "Premature document generation",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Request generation before explicit confirmation"
+    ],
+    "expected": "HTTP422; no fabricated PDF success",
+    "actual": {
+      "http": 422
+    },
+    "status": "PASS",
+    "latency_ms": 60,
+    "source_files": [
+      "services/document/app/routers/document.py"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-019",
+    "feature": "Quota and entitlements",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "GET user quota and entitlement endpoints"
+    ],
+    "expected": "Correct authenticated policy and usage shapes",
+    "actual": {
+      "quota_http": 200,
+      "entitlements_http": 200
+    },
+    "status": "PASS",
+    "latency_ms": 178,
+    "source_files": [
+      "services/quota/src/routes/quota.routes.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-020",
+    "feature": "Internal quota mutation protection",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "User JWT calls private increment route"
+    ],
+    "expected": "Denied401/403/404",
+    "actual": {
+      "http": 401
+    },
+    "status": "PASS",
+    "latency_ms": 23,
+    "source_files": [
+      "services/quota/src/middleware/authenticate.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-021",
+    "feature": "Admin regular-user rejection",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "User JWT reads AI settings and admin users"
+    ],
+    "expected": "Denied401/403",
+    "actual": {
+      "ai_http": 401,
+      "users_http": 401
+    },
+    "status": "PASS",
+    "latency_ms": 13,
+    "source_files": [
+      "services/admin-api/app/security/authentication.py"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-022",
+    "feature": "Admin actual login and challenge",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Password login; consume local one-use challenge"
+    ],
+    "expected": "Authenticated super-admin session",
+    "actual": {
+      "password_plus_one_use_code_executed": true,
+      "external_email_not_tested": true
+    },
+    "status": "PASS",
+    "latency_ms": 268,
+    "source_files": [
+      "services/admin-api/app/api/v1/auth.py"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-023",
+    "feature": "Admin live configuration read",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Authenticated read plans/users/AI settings"
+    ],
+    "expected": "Correct authenticated actual data shape",
+    "actual": {
+      "plans": 4,
+      "users_http": true,
+      "ai_version": 0
+    },
+    "status": "PASS",
+    "latency_ms": 44,
+    "source_files": [
+      "services/admin-api/app/api/v1/plans.py",
+      "services/admin-api/app/api/v1/users.py",
+      "services/admin-api/app/api/v1/ai_management.py"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-024",
+    "feature": "Admin provider creation and persistence",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Create disabled local provider with one-use2FA; reload config"
+    ],
+    "expected": "Provider saved; no inference or external request",
+    "actual": {
+      "exception": "RuntimeError",
+      "reason": "Inspect private fixture diagnostics"
+    },
+    "status": "FAIL",
+    "latency_ms": 25,
+    "source_files": [
+      "services/admin-api/app/api/v1/ai_management.py"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-025",
+    "feature": "Unsigned private service request",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "GET direct admin internal policy with spoofed identity headers"
+    ],
+    "expected": "401/403 rejection",
+    "actual": {
+      "http": 401
+    },
+    "status": "PASS",
+    "latency_ms": 4,
+    "source_files": [
+      "shared/service_auth.py",
+      "services/admin-api/app/api/v1/entitlements.py"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery"
+  },
+  {
+    "id": "INT-026",
+    "feature": "Logout revokes refresh session",
+    "preconditions": "Fresh task-owned native PostgreSQL/Redis/services; no provider credentials; challenges read from local DB, no email delivery claim",
+    "steps": [
+      "Logout exact session; reuse refresh token"
+    ],
+    "expected": "HTTP401 on refresh",
+    "actual": {
+      "exception": "AssertionError",
+      "reason": "Unexpected HTTP 429; expected [200]"
+    },
+    "status": "FAIL",
+    "latency_ms": 9,
+    "source_files": [
+      "services/auth/src/controllers/auth.controller.ts"
+    ],
+    "scope": "actual integrated HTTP/database, not browser or provider delivery",
+    "annotation": "Initial default auth rate cap triggered429 during test burst. Fixture-only allowance raised for final run and restored before shutdown; not classified as application defect."
+  }
+]

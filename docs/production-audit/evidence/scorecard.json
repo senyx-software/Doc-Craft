@@ -1,0 +1,85 @@
+{
+  "recommendation": "NO-GO",
+  "categories": [
+    {
+      "category": "System architecture",
+      "status": "BLOCKED",
+      "reason": "Source and native topology inventoried; private TLS/VPS enforcement unverified"
+    },
+    {
+      "category": "API endpoint integrity",
+      "status": "FAIL",
+      "reason": "OAuth/security/error/financial contract defects; authorized coverage incomplete"
+    },
+    {
+      "category": "Frontend integration",
+      "status": "FAIL",
+      "reason": "MFA/canvas/billing/OAuth defects; four unused undeclared wrappers"
+    },
+    {
+      "category": "User functionality",
+      "status": "FAIL",
+      "reason": "Actual persistence, security-state and financial-display defects"
+    },
+    {
+      "category": "Admin functionality",
+      "status": "FAIL",
+      "reason": "Staff creation overwrite and financial mapping; mutation coverage incomplete"
+    },
+    {
+      "category": "Security",
+      "status": "FAIL",
+      "reason": "Confirmed alternate MFA path, reset-token reuse and account-integrity risks"
+    },
+    {
+      "category": "Database integrity",
+      "status": "FAIL",
+      "reason": "Staff-ID collision and reset race; selected constraints/quotas/restore pass"
+    },
+    {
+      "category": "Microservices communication",
+      "status": "BLOCKED",
+      "reason": "Selected signing/replay/outage chains pass; all TLS/queue/provider paths unverified"
+    },
+    {
+      "category": "AI chatbot",
+      "status": "FAIL",
+      "reason": "Retained actual proposal accuracy 23/112 and 6/16; fresh inference blocked"
+    },
+    {
+      "category": "Document generation",
+      "status": "FAIL",
+      "reason": "Custom canvas reload loss; normal production sandbox not verified"
+    },
+    {
+      "category": "Performance",
+      "status": "BLOCKED",
+      "reason": "Short native burst; no sustained mixed VPS/cgroup measurement"
+    },
+    {
+      "category": "Docker deployment",
+      "status": "BLOCKED",
+      "reason": "No daemon; image/runtime/network/limits/restart/rollback unverified"
+    },
+    {
+      "category": "Terraform infrastructure",
+      "status": "BLOCKED",
+      "reason": "Validated provider-neutral contract only; no provider/state acceptance"
+    },
+    {
+      "category": "CI/CD",
+      "status": "BLOCKED",
+      "reason": "Syntax and policies pass; hosted Actions/GHCR/SSH/protections unverified"
+    },
+    {
+      "category": "Monitoring",
+      "status": "FAIL",
+      "reason": "Local snapshots/logs exist; external failure alerts not implemented/verified"
+    },
+    {
+      "category": "Backup and recovery",
+      "status": "FAIL",
+      "reason": "Native database restore passes; scheduled encrypted off-server/full-host recovery missing"
+    }
+  ]
+}

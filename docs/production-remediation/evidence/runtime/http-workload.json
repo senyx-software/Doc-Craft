@@ -1,0 +1,596 @@
+{
+  "distinct_users": 8,
+  "method": "actual gateway + signed services + PostgreSQL/Redis; seeded fields via authorized editor API; native processes, no Docker",
+  "concurrency": 8,
+  "requests": 96,
+  "passed": 96,
+  "elapsed_seconds": 9.07,
+  "p50_ms": 729,
+  "p95_ms": 953,
+  "inference_ledger_delta": 0,
+  "cross_tenant_http_status": 403,
+  "results": [
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 700,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 579,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 732,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 741,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 634,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 778,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 691,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 678,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 837,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 963,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 858,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 729,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 605,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 421,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 558,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 534,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 690,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 635,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 757,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 801,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 716,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 999,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 921,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 926,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 711,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 600,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 692,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 743,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 638,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 779,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 778,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 757,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 893,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 920,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 933,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 557,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 695,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 514,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 428,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 616,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 593,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 678,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 745,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 751,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 812,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 888,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 909,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 885,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 715,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 599,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 688,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 611,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 601,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 708,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 605,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 775,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 712,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 856,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 950,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 867,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 335,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 470,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 495,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 731,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 807,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 670,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 768,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 747,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 743,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 873,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 953,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 963,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 677,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 609,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 708,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 573,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 665,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 776,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 841,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 774,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 856,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 861,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 975,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 644,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 646,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 350,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 551,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 516,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 718,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 621,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 786,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 727,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 782,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 898,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 986,
+      "passed": true,
+      "error_code": null
+    },
+    {
+      "kind": "deterministic_tax",
+      "latency_ms": 921,
+      "passed": true,
+      "error_code": null
+    }
+  ],
+  "nearest_rank_percentiles_ms": {
+    "p50": 727,
+    "p95": 963,
+    "p99": 999
+  },
+  "percentile_method": "Nearest rank; original helper median/truncated-index fields retained separately"
+}

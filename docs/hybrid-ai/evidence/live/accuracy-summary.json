@@ -1,0 +1,218 @@
+{
+  "total": 112,
+  "passed": 23,
+  "failed": 89,
+  "p50_ms": 7762,
+  "p95_ms": 40477,
+  "categories": {
+    "document_creation": {
+      "total": 7,
+      "passed": 0,
+      "latencies": [
+        37567,
+        90091,
+        68042,
+        44696,
+        53913,
+        71417,
+        37149
+      ]
+    },
+    "multi_field": {
+      "total": 7,
+      "passed": 0,
+      "latencies": [
+        17963,
+        20775,
+        18202,
+        21027,
+        13773,
+        13908,
+        12314
+      ]
+    },
+    "grammar": {
+      "total": 7,
+      "passed": 0,
+      "latencies": [
+        8076,
+        6732,
+        9790,
+        5987,
+        5158,
+        5861,
+        5184
+      ]
+    },
+    "party_mapping": {
+      "total": 7,
+      "passed": 0,
+      "latencies": [
+        18399,
+        13186,
+        30761,
+        24432,
+        12500,
+        29628,
+        17166
+      ]
+    },
+    "tax": {
+      "total": 7,
+      "passed": 0,
+      "latencies": [
+        6440,
+        4918,
+        6506,
+        4766,
+        5287,
+        6037,
+        4148
+      ]
+    },
+    "discount": {
+      "total": 7,
+      "passed": 0,
+      "latencies": [
+        7048,
+        7744,
+        8197,
+        5168,
+        5234,
+        13361,
+        19109
+      ]
+    },
+    "item_add": {
+      "total": 7,
+      "passed": 0,
+      "latencies": [
+        7564,
+        5389,
+        7185,
+        5724,
+        5868,
+        18580,
+        6056
+      ]
+    },
+    "item_remove": {
+      "total": 7,
+      "passed": 0,
+      "latencies": [
+        3539,
+        2697,
+        3842,
+        3529,
+        3034,
+        30287,
+        3940
+      ]
+    },
+    "style": {
+      "total": 7,
+      "passed": 0,
+      "latencies": [
+        7706,
+        6064,
+        8778,
+        4381,
+        4295,
+        14580,
+        11473
+      ]
+    },
+    "movement": {
+      "total": 7,
+      "passed": 0,
+      "latencies": [
+        16005,
+        6343,
+        12558,
+        4420,
+        12070,
+        28800,
+        6755
+      ]
+    },
+    "undo_redo": {
+      "total": 7,
+      "passed": 7,
+      "latencies": [
+        2205,
+        1912,
+        3487,
+        1972,
+        2056,
+        1975,
+        1713
+      ]
+    },
+    "user_correction": {
+      "total": 7,
+      "passed": 0,
+      "latencies": [
+        40477,
+        8266,
+        11697,
+        8009,
+        16353,
+        7865,
+        6739
+      ]
+    },
+    "side_question": {
+      "total": 7,
+      "passed": 7,
+      "latencies": [
+        21106,
+        6963,
+        4846,
+        7342,
+        15641,
+        13092,
+        12076
+      ]
+    },
+    "missing_field": {
+      "total": 7,
+      "passed": 7,
+      "latencies": [
+        4570,
+        4110,
+        7923,
+        3714,
+        3687,
+        3611,
+        3438
+      ]
+    },
+    "session_persistence": {
+      "total": 7,
+      "passed": 0,
+      "latencies": [
+        8225,
+        24574,
+        33157,
+        26039,
+        25208,
+        26301,
+        26005
+      ]
+    },
+    "ambiguous": {
+      "total": 7,
+      "passed": 2,
+      "latencies": [
+        28119,
+        16837,
+        9929,
+        2645,
+        5273,
+        7762,
+        3919
+      ]
+    }
+  },
+  "execution": "Actual Ollama inference through production Python adapter; production JSON schemas independently checked; proposal accuracy, not DB/editor integration"
+}

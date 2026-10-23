@@ -1,0 +1,23 @@
+{
+  "status": "running",
+  "database": "doccraft_staging_hybrid_6595d5f78e",
+  "services": [
+    "postgres",
+    "redis",
+    "auth",
+    "quota",
+    "chat",
+    "payment",
+    "notification",
+    "pdf",
+    "admin-api",
+    "analytics",
+    "document",
+    "gateway",
+    "admin-ui",
+    "user-ui"
+  ],
+  "database_engine": "PostgreSQL 18.4",
+  "database_runtime_roles": "per service DML/read scopes",
+  "network": "loopback, signed service identity, Redis ACLs; development HTTP without TLS"
+}

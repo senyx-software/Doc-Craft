@@ -1,0 +1,6 @@
+{
+  "repository_file": "/etc/doccraft/backup-secrets/repository",
+  "password_file": "/etc/doccraft/backup-secrets/password",
+  "credential_file": "/etc/doccraft/backup-secrets/credentials.json",
+  "maintenance_approved": false
+}

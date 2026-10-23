@@ -1,0 +1,10 @@
+[Unit]
+Description=Collect bounded private DocCraft resource snapshots
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=1min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

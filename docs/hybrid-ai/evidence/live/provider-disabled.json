@@ -1,0 +1,6 @@
+{
+  "code": "POLICY_CHANGED",
+  "inference_ledger_delta": 0,
+  "cloud_fallback_enabled": false,
+  "cross_provider_attempts": 0
+}

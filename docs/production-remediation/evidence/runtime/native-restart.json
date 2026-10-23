@@ -1,0 +1,11 @@
+{
+  "scope": "Actual task-owned native service SIGTERM/restart, not Docker restart acceptance",
+  "graceful_parent_stopped": true,
+  "stop_ms": 1809,
+  "production_touched": false,
+  "resumed": true,
+  "prior_user_refresh_succeeded": true,
+  "durable_session_list_http": 200,
+  "durable_session_list_readable": true,
+  "health": "14 native services resumed; production TLS/container runtime remains unverified"
+}

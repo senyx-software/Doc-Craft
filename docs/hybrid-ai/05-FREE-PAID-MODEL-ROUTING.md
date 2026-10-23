@@ -1,0 +1,17 @@
+# Free and paid model routing
+
+Policies use active plan codes from the existing plan repository; `free`, `pro`, `max` and `guest` are not a hardcoded model-assignment matrix. An administrator may give every plan a different registered primary, secondary and permitted cloud fallback. Existing document quotas and billing continue to use the plan/entitlement/quota services.
+
+Per-plan settings include deterministic routing, local inference, fallback enablement and allowed conditions, feature permissions, health requirements, correction mode, monthly request/token/cloud budgets, per-user request/token/cloud budgets, requests per minute and queue priority. Global settings bound monthly cloud spending, local concurrency, queue wait, available RAM and normalized CPU load. Provider and model limits are enforced together.
+
+Simple explicit edits use the existing deterministic resolver and backend calculations without inference. Common reviewed document explanations also avoid inference. Unknown prose remains a model task. The primary may be local or cloud; a configured local-first chain tries its primary and secondary before an approved cloud fallback. Conditions include unavailable, timeout, rate limit, invalid response and unresolved edit. A budget/entitlement/security refusal never triggers a cheaper-provider bypass.
+
+A local request is a real inference and consumes both request and token budgets. A deterministic message is recorded as a chat outcome, not an inference. Every dispatched provider request also uses the existing shared platform allowance; multiple agent iterations are multiple inference requests. A zero cloud budget explicitly disallows cloud requests, including endpoints priced at zero. Cloud pricing metadata must be set explicitly before activation.
+
+Monthly budgets use UTC calendar months. Per-user totals include previous plans to avoid resetting usage by switching subscriptions. Money is reserved in integer micro-USD using decimal arithmetic under a database transaction lock. Reservations cover a conservative input upper bound and maximum configured output. Known token usage settles to observed estimates; timeouts/unknown billing retain the reservation. These are internal estimated costs, not provider invoices or a cloud-provider hard spending cap.
+
+Runtime changes persist as versioned database snapshots and existing Redis invalidation events. Current authorization reads bypass stale caches. Turns retain their assigned version; current provider/model revocation, current feature restrictions, cloud fallback restrictions and tighter budgets still apply. A queue wait triggers a second authorization check.
+
+Regular users have no model picker and receive no registry/provider/endpoints/pricing/routing data. The public entitlement endpoint projects only product features and subscription/quota information. Session list responses omit legacy model preference. Assistant replies are constrained to DocCraft AI branding, with case-insensitive filtering of known private identifiers. User-entered legal/business names in document fields remain unchanged.
+
+Foreign-currency item prices are held as a durable pending operation. The assistant explains that changing the document currency does not convert existing prices and requires an explicit currency-code choice before committing. This choice survives reload and uses the existing confirmation state machine.

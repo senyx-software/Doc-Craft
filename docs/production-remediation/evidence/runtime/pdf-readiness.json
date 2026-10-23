@@ -1,0 +1,17 @@
+{
+  "scope": "Actual signed Document -> PDF after native restart; normal enforced sandbox",
+  "results": [
+    {
+      "method": "GET",
+      "path": "/ready",
+      "http": 503
+    },
+    {
+      "method": "POST",
+      "path": "/generate",
+      "http": 500
+    }
+  ],
+  "status": "BLOCKED",
+  "production_container_test": false
+}

@@ -1,0 +1,580 @@
+{
+  "observed_at_utc": "2026-10-22T03:59:53.862803+00:00",
+  "scope": "Additional read-only cost/limits/console/backup discovery",
+  "cloud_mutations": 0,
+  "operations": {
+    "limits_services": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "description": "Application Dependency Management",
+          "name": "adm"
+        },
+        {
+          "description": "Access Governance",
+          "name": "agcs"
+        },
+        {
+          "description": "AI Anomaly Detection",
+          "name": "ai-anomaly-detection"
+        },
+        {
+          "description": "AI Biometric Service",
+          "name": "ai-biometric"
+        },
+        {
+          "description": "AI Document",
+          "name": "ai-document"
+        },
+        {
+          "description": "AI Forecasting",
+          "name": "ai-forecasting"
+        },
+        {
+          "description": "Generative AI",
+          "name": "ai-generative"
+        },
+        {
+          "description": "AI Language",
+          "name": "ai-language"
+        },
+        {
+          "description": "AI Speech",
+          "name": "ai-speech"
+        },
+        {
+          "description": "AI Vision",
+          "name": "ai-vision"
+        },
+        {
+          "description": "Analytics",
+          "name": "analytics"
+        },
+        {
+          "description": "Announcements",
+          "name": "announcements"
+        },
+        {
+          "description": "API Gateway",
+          "name": "api-gateway"
+        },
+        {
+          "description": "Application Performance Monitoring",
+          "name": "apm"
+        },
+        {
+          "description": "Application Configuration",
+          "name": "app-configuration"
+        },
+        {
+          "description": "Tenancy Assurance Platform",
+          "name": "assuranceplatform"
+        },
+        {
+          "description": "Account Tracking and Automation Tools",
+          "name": "atat"
+        },
+        {
+          "description": "Auto Scaling",
+          "name": "auto-scaling"
+        },
+        {
+          "description": "Autonomous Recovery Service",
+          "name": "autonomous-recovery-service"
+        },
+        {
+          "description": "Batch Computing",
+          "name": "batch-computing"
+        },
+        {
+          "description": "Big Data",
+          "name": "big-data"
+        },
+        {
+          "description": "Block Volume",
+          "name": "block-storage"
+        },
+        {
+          "description": "Blockchain",
+          "name": "blockchain"
+        },
+        {
+          "description": "Compute Cloud at Customer",
+          "name": "ccatc"
+        },
+        {
+          "description": "Cross Domain Solution",
+          "name": "cds"
+        },
+        {
+          "description": "Certificates",
+          "name": "certificates"
+        },
+        {
+          "description": "Oracle Cloud Bridge",
+          "name": "cloud-bridge"
+        },
+        {
+          "description": "Cloud Shell",
+          "name": "cloud-shell"
+        },
+        {
+          "description": "Cloud Guard",
+          "name": "cloudguard"
+        },
+        {
+          "description": "Cluster Health Check",
+          "name": "cluster-health-check"
+        },
+        {
+          "description": "Cluster Placement Groups",
+          "name": "cluster-placement-groups"
+        },
+        {
+          "description": "Compartments",
+          "name": "compartments"
+        },
+        {
+          "description": "Compute",
+          "name": "compute"
+        },
+        {
+          "description": "Compute Management",
+          "name": "compute-management"
+        },
+        {
+          "description": "Container Engine",
+          "name": "container-engine"
+        },
+        {
+          "description": "Container Registry",
+          "name": "container-registry"
+        },
+        {
+          "description": "Cost Management",
+          "name": "cost-management"
+        },
+        {
+          "description": "Dashboard",
+          "name": "dashboard"
+        },
+        {
+          "description": "Data Catalog",
+          "name": "data-catalog"
+        },
+        {
+          "description": "Data Flow",
+          "name": "data-flow"
+        },
+        {
+          "description": "Data Integration",
+          "name": "data-integration"
+        },
+        {
+          "description": "Data Intelligence Foundation",
+          "name": "data-intelligence-foundation"
+        },
+        {
+          "description": "Data Labeling",
+          "name": "data-labeling"
+        },
+        {
+          "description": "Data Science",
+          "name": "data-science"
+        },
+        {
+          "description": "Data Transfer",
+          "name": "data-transfer"
+        },
+        {
+          "description": "Database",
+          "name": "database"
+        },
+        {
+          "description": "Database Migration",
+          "name": "database-migration"
+        },
+        {
+          "description": "Database MCP",
+          "name": "databasemcp"
+        },
+        {
+          "description": "AI Data Platform",
+          "name": "datalake"
+        },
+        {
+          "description": "Database Tools",
+          "name": "dbtools"
+        },
+        {
+          "description": "Device Data FHIR Service",
+          "name": "ddfs"
+        },
+        {
+          "description": "DevOps",
+          "name": "devops"
+        },
+        {
+          "description": "Digital Assistant",
+          "name": "digital-assistant"
+        },
+        {
+          "description": "Digital Media Services",
+          "name": "digital-media"
+        },
+        {
+          "description": "Full Stack Disaster Recovery",
+          "name": "disaster-recovery"
+        },
+        {
+          "description": "DNS",
+          "name": "dns"
+        },
+        {
+          "description": "Email Delivery",
+          "name": "email-delivery"
+        },
+        {
+          "description": "Events",
+          "name": "events"
+        },
+        {
+          "description": "Exadata Fleet Update",
+          "name": "exadata-fleet-update"
+        },
+        {
+          "description": "Functions",
+          "name": "faas"
+        },
+        {
+          "description": "Fleet Application Management",
+          "name": "fams"
+        },
+        {
+          "description": "Fast Connect",
+          "name": "fast-connect"
+        },
+        {
+          "description": "Storage with NetApp",
+          "name": "filestoragenetapp"
+        },
+        {
+          "description": "File Storage",
+          "name": "filesystem"
+        },
+        {
+          "description": "Guarded Data Pipelines",
+          "name": "gdp"
+        },
+        {
+          "description": "Generative AI Agent",
+          "name": "generative-ai-agent"
+        },
+        {
+          "description": "Global Accelerator",
+          "name": "global-accelerator"
+        },
+        {
+          "description": "GoldenGate",
+          "name": "goldengate"
+        },
+        {
+          "description": "Health Check",
+          "name": "health-checks"
+        },
+        {
+          "description": "Identity",
+          "name": "identity"
+        },
+        {
+          "description": "Integration",
+          "name": "integration"
+        },
+        {
+          "description": "Internet of Things",
+          "name": "iot"
+        },
+        {
+          "description": "Java Management",
+          "name": "java-management"
+        },
+        {
+          "description": "Key Management",
+          "name": "kms"
+        },
+        {
+          "description": "License Manager",
+          "name": "licensemanager"
+        },
+        {
+          "description": "Limits",
+          "name": "limits"
+        },
+        {
+          "description": "LbaaS",
+          "name": "load-balancer"
+        },
+        {
+          "description": "Logging",
+          "name": "logging"
+        },
+        {
+          "description": "Log Analytics",
+          "name": "logging-analytics"
+        },
+        {
+          "description": "Lustre File Storage",
+          "name": "lustrefilestorage"
+        },
+        {
+          "description": "Management Agent",
+          "name": "management-agent"
+        },
+        {
+          "description": "Management Dashboard",
+          "name": "management-dashboard"
+        },
+        {
+          "description": "Marketplace Publisher",
+          "name": "marketplace-publisher"
+        },
+        {
+          "description": "Monitoring",
+          "name": "monitoring"
+        },
+        {
+          "description": "Multicloud",
+          "name": "multicloud"
+        },
+        {
+          "description": "MySQL HeatWave",
+          "name": "mysql"
+        },
+        {
+          "description": "MySQL HeatWave on AWS",
+          "name": "mysql-heatwave-on-aws"
+        },
+        {
+          "description": "Network Firewall",
+          "name": "network-firewall"
+        },
+        {
+          "description": "Network Load Balancer",
+          "name": "network-load-balancer-api"
+        },
+        {
+          "description": "Network Path Analyzer",
+          "name": "network-path-analyzer"
+        },
+        {
+          "description": "NoSQL",
+          "name": "nosql"
+        },
+        {
+          "description": "Notifications",
+          "name": "notifications"
+        },
+        {
+          "description": "Object Storage",
+          "name": "object-storage"
+        },
+        {
+          "description": "OCI Bastion",
+          "name": "oci-bastion"
+        },
+        {
+          "description": "OCI streaming with Apache Kafka",
+          "name": "oci-kafka"
+        },
+        {
+          "description": "Oracle Cloud Migration",
+          "name": "ocm-migration"
+        },
+        {
+          "description": "VMware Solution",
+          "name": "ocvp"
+        },
+        {
+          "description": "OpenSearch",
+          "name": "open-search"
+        },
+        {
+          "description": "Operations Insights",
+          "name": "operations-insights"
+        },
+        {
+          "description": "Organizations",
+          "name": "organizations"
+        },
+        {
+          "description": "OS Management Hub",
+          "name": "osmh"
+        },
+        {
+          "description": "PostgreSQL",
+          "name": "postgresql"
+        },
+        {
+          "description": "Process Automation",
+          "name": "process-automation"
+        },
+        {
+          "description": "Private Service Access",
+          "name": "psacp"
+        },
+        {
+          "description": "Public Safety Suite",
+          "name": "pss"
+        },
+        {
+          "description": "Queue",
+          "name": "queue"
+        },
+        {
+          "description": "OCI Cache",
+          "name": "redis"
+        },
+        {
+          "description": "Regions",
+          "name": "regions"
+        },
+        {
+          "description": "Resource Analytics",
+          "name": "resource-analytics"
+        },
+        {
+          "description": "Resource Collection",
+          "name": "resource-collection"
+        },
+        {
+          "description": "Resource Manager",
+          "name": "resource-manager"
+        },
+        {
+          "description": "Resource Scheduler",
+          "name": "resource-scheduler"
+        },
+        {
+          "description": "Remote NVMe Disk",
+          "name": "rndrive"
+        },
+        {
+          "description": "Secrets",
+          "name": "secrets"
+        },
+        {
+          "description": "Secure Desktops",
+          "name": "secure-desktops"
+        },
+        {
+          "description": "Security Attributes",
+          "name": "security-attributes"
+        },
+        {
+          "description": "Service Connector Hub",
+          "name": "service-connector-hub"
+        },
+        {
+          "description": "Stack Monitoring",
+          "name": "stack-monitoring"
+        },
+        {
+          "description": "Streaming",
+          "name": "streaming"
+        },
+        {
+          "description": "Subscription Pricing",
+          "name": "subscription-pricing"
+        },
+        {
+          "description": "Tagging",
+          "name": "tagging"
+        },
+        {
+          "description": "Virtual Cloud Network",
+          "name": "vcn"
+        },
+        {
+          "description": "IP Management",
+          "name": "vcnip"
+        },
+        {
+          "description": "VPN",
+          "name": "vpn"
+        },
+        {
+          "description": "Vulnerability Scanning",
+          "name": "vulnerability-scanning"
+        },
+        {
+          "description": "Web Application Acceleration",
+          "name": "waa"
+        },
+        {
+          "description": "WaaS",
+          "name": "waas"
+        },
+        {
+          "description": "Web Application Firewall",
+          "name": "waf"
+        }
+      ]
+    },
+    "console_histories": {
+      "status": "OBSERVED",
+      "data": []
+    },
+    "instance_console_connections": {
+      "status": "OBSERVED",
+      "data": []
+    },
+    "boot_backups": {
+      "status": "OBSERVED",
+      "data": []
+    },
+    "cost_usage": {
+      "status": "OBSERVED",
+      "data": {
+        "items": [
+          {
+            "computed-amount": 0.0,
+            "computed-quantity": 0.000407025209,
+            "currency": "SGD",
+            "resource-id": "ocid1.vnic.oc1.ap-mumbai-1.abrg6ljrrz4ngwzoy4bquktv6g5conoobhvs27zwo6qrmg6xlw6kzbn2qfva",
+            "service": "Virtual Cloud Network",
+            "sku-name": null,
+            "sku-part-number": null,
+            "time-usage-ended": "2026-10-22T00:00:00+00:00",
+            "time-usage-started": "2026-10-21T00:00:00+00:00",
+            "unit": null
+          },
+          {
+            "computed-amount": 0.0,
+            "computed-quantity": 0.905439068089,
+            "currency": "SGD",
+            "resource-id": "ocid1.bootvolume.oc1.ap-mumbai-1.abrg6ljrao5g24wqapeputcw3yf2adsj22r56e7qepgj7hfx2nopjkdeqzta",
+            "service": "Block Storage",
+            "sku-name": null,
+            "sku-part-number": null,
+            "time-usage-ended": "2026-10-22T00:00:00+00:00",
+            "time-usage-started": "2026-10-21T00:00:00+00:00",
+            "unit": null
+          },
+          {
+            "computed-amount": 0.581457456666,
+            "computed-quantity": 101.296111111109,
+            "currency": "SGD",
+            "resource-id": "ocid1.instance.oc1.ap-mumbai-1.anrg6ljr4wujdnqcezvcrlwboiuw3efznrg5ztawy7tes74vcz63m3yn46ra",
+            "service": "Compute",
+            "sku-name": null,
+            "sku-part-number": null,
+            "time-usage-ended": "2026-10-22T00:00:00+00:00",
+            "time-usage-started": "2026-10-21T00:00:00+00:00",
+            "unit": null
+          }
+        ],
+        "data_lag_note": "A zero/empty recent report does not prove no charge; usage can lag and credits/taxes are not resolved"
+      }
+    }
+  }
+}

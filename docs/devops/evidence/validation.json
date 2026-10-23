@@ -1,0 +1,41 @@
+{
+  "docker_daemon": "blocked: /var/run/docker.sock absent",
+  "compose_cli": "v5.3.0",
+  "production_compose_syntax": "passed; no interpolation",
+  "production_compose_interpolation": "passed; fresh synthetic env files and mounted secrets",
+  "caddy_binary": "v2.11.7; official SHA512 verified",
+  "caddy_configuration": "passed with disposable private CA and public fixture domains; no listener started",
+  "terraform": "v1.16.6; official SHA256 verified; fmt/init backend=false/validate/fixture contract plan passed; no provider provisioned",
+  "github_actions": "actionlint v1.7.12 passed; Actions pinned to official API-resolved commit SHAs",
+  "controller_tests": "29 passed; includes scoped config, digest/network/secret restrictions, credential-safe rollback, durable schema epoch and migration failure guards; fake Docker executor only",
+  "frontend_lint": "admin and user passed",
+  "application_builds": "all backend workspaces, admin and user passed; existing chunk-size warnings",
+  "secret_scan": "post-review source scan passed; complete initial private/current/history classifications in redacted reports",
+  "production_deployment": "not attempted",
+  "GHCR_push_pull_auth": "blocked: no authorized registry/VPS credentials configured",
+  "SSH_permissions_hostkey": "configuration implemented; no operator VPS tested",
+  "application_regression": {
+    "shared_node": 275,
+    "chat_gateway_frontend_vitest": 266,
+    "admin_pytest": 195,
+    "quota_vitest": 25,
+    "document_pytest_selected": 73,
+    "deployment_policy_unittest": 29,
+    "total": 863
+  },
+  "browser_fixtures": "six workflows passed with real React/canvas and isolated HTTP fixtures; five separate actual admin API browser checks also passed",
+  "database_migrations": "passed in native PostgreSQL18.4 under non-superuser schema owner; runtime DDL denied; actual PG17 container and backup/restore tools blocked",
+  "browser_actual_api": "five live browser checks passed: nine AI screens, provider creation with one-use 2FA, encrypted credential addition/rotation, registry reload, user frontend; separate six fixture workflows also passed",
+  "pdf_concurrency": "after cleanup timing fix: 16/16 real diagnostic PDFs at concurrency2, p95 491ms; production sandbox remains unverified",
+  "dependencies": {
+    "npm_root_admin_user": "all production dependency audits: zero findings",
+    "python": "certifi 2026.10.19 and Pillow13.0.0 upgraded after9 advisories;195 admin and73 document tests passed; final pip-audit strict zero known vulnerabilities",
+    "pinned_caddy_remote_image": "executed Trivy0.76.0 against exact digest from remote registry, no daemon;4 HIGH,14 MEDIUM,1 LOW,1 UNKNOWN findings; release blocked pending reviewed replacement",
+    "remaining_images": "Remote base-image scan results recorded in base-image-scans.json; final application layers require Docker/CI, not executed locally"
+  },
+  "pdf_ci_harness": "16/16 real signed PDFs at concurrency2 passed; test-only unsandboxed Chrome",
+  "upstream_images": "6/7 pinned upstream images scanned remotely without Docker; Caddy/nginx/Node/Python/PostgreSQL/Redis all report HIGH or CRITICAL findings; Ollama remote scan blocked by bounded timeout",
+  "final_native_workload": "96/96 deterministic edits with tax/total/customer integrity,8users,concurrency8,p50 470ms,p95 621ms,0inference calls,cross-user403",
+  "test_process_cleanup": "Task-owned native backends/frontends/PostgreSQL/Redis/Ollama stopped; private durable fixtures and downloaded models retained",
+  "configuration_fixture": "Fresh synthetic scoped credentials and fixture4 config; production9required settings validated, no external credential dispatched"
+}

@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "scope": "16 actual signed PDF renders,concurrency2,test-only unsandboxed Chromium,PDF-scoped Redis ACL",
+  "exit": 0,
+  "earlier_harness_failure": "Document Redis identity was incorrectly supplied to PDF receiver; receiver correctly refused incompatible nonce permissions. First attempt also overlapped controlled outage. Test configuration corrected without application changes."
+}

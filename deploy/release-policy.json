@@ -1,0 +1,5 @@
+{
+  "schema_epoch": 1,
+  "application_rollback": "Only releases within the same explicitly reviewed schema epoch",
+  "database_rollback": "Never automatic; operator recovery procedure required"
+}

@@ -1,0 +1,512 @@
+{
+  "method": "Compose v5.3.0 full interpolation with fresh synthetic scoped secrets; no daemon or container start",
+  "validated": true,
+  "services": {
+    "gateway": {
+      "ports": null,
+      "networks": [
+        "backend"
+      ],
+      "mem_limit": "256m",
+      "cpus": 0.5,
+      "restart": "unless-stopped",
+      "healthcheck": null,
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "profiles": null
+    },
+    "auth": {
+      "ports": null,
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "mem_limit": "384m",
+      "cpus": 1,
+      "restart": "unless-stopped",
+      "healthcheck": null,
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "profiles": null
+    },
+    "notification": {
+      "ports": null,
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "mem_limit": "384m",
+      "cpus": 0.5,
+      "restart": "unless-stopped",
+      "healthcheck": null,
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "profiles": null
+    },
+    "document": {
+      "ports": null,
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "mem_limit": "768m",
+      "cpus": 1,
+      "restart": "unless-stopped",
+      "healthcheck": null,
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "profiles": null
+    },
+    "payment": {
+      "ports": null,
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "mem_limit": "384m",
+      "cpus": 0.5,
+      "restart": "unless-stopped",
+      "healthcheck": null,
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "profiles": null
+    },
+    "quota": {
+      "ports": null,
+      "networks": [
+        "backend"
+      ],
+      "mem_limit": "384m",
+      "cpus": 0.5,
+      "restart": "unless-stopped",
+      "healthcheck": null,
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "profiles": null
+    },
+    "chat": {
+      "ports": null,
+      "networks": [
+        "backend"
+      ],
+      "mem_limit": "512m",
+      "cpus": 1,
+      "restart": "unless-stopped",
+      "healthcheck": null,
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "profiles": null
+    },
+    "analytics": {
+      "ports": null,
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "mem_limit": "512m",
+      "cpus": 0.5,
+      "restart": "unless-stopped",
+      "healthcheck": null,
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "profiles": null
+    },
+    "admin-api": {
+      "ports": null,
+      "networks": [
+        "backend",
+        "egress",
+        "inference"
+      ],
+      "mem_limit": "768m",
+      "cpus": 1,
+      "restart": "unless-stopped",
+      "healthcheck": null,
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "profiles": null
+    },
+    "pdf": {
+      "ports": null,
+      "networks": [
+        "backend"
+      ],
+      "mem_limit": "1024m",
+      "cpus": 1,
+      "restart": "unless-stopped",
+      "healthcheck": null,
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "profiles": null
+    },
+    "user-ui": {
+      "ports": null,
+      "networks": [
+        "backend"
+      ],
+      "mem_limit": "64m",
+      "cpus": 0.25,
+      "restart": "unless-stopped",
+      "healthcheck": null,
+      "depends_on": null,
+      "profiles": null
+    },
+    "admin-ui": {
+      "ports": null,
+      "networks": [
+        "backend"
+      ],
+      "mem_limit": "64m",
+      "cpus": 0.25,
+      "restart": "unless-stopped",
+      "healthcheck": null,
+      "depends_on": null,
+      "profiles": null
+    },
+    "postgres": {
+      "ports": null,
+      "networks": [
+        "backend"
+      ],
+      "mem_limit": "1536m",
+      "cpus": 1.5,
+      "restart": "unless-stopped",
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "pg_isready",
+          "-U",
+          "postgres",
+          "-d",
+          "${POSTGRES_DB:?}"
+        ],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 12
+      },
+      "depends_on": null,
+      "profiles": null
+    },
+    "redis": {
+      "ports": null,
+      "networks": [
+        "backend"
+      ],
+      "mem_limit": "384m",
+      "cpus": 0.5,
+      "restart": "unless-stopped",
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "redis-cli",
+          "--tls",
+          "--cacert",
+          "/run/secrets/ca.crt",
+          "--user",
+          "health",
+          "ping"
+        ],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 12
+      },
+      "depends_on": null,
+      "profiles": null
+    },
+    "edge": {
+      "ports": [
+        "80:80",
+        "443:443"
+      ],
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "mem_limit": "128m",
+      "cpus": 0.5,
+      "restart": "unless-stopped",
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "caddy",
+          "validate",
+          "--config",
+          "/etc/caddy/Caddyfile"
+        ],
+        "interval": "30s",
+        "timeout": "5s",
+        "retries": 3
+      },
+      "depends_on": {
+        "gateway": {
+          "condition": "service_healthy"
+        },
+        "admin-api": {
+          "condition": "service_healthy"
+        },
+        "user-ui": {
+          "condition": "service_healthy"
+        },
+        "admin-ui": {
+          "condition": "service_healthy"
+        }
+      },
+      "profiles": null
+    },
+    "ollama": {
+      "ports": null,
+      "networks": [
+        "inference",
+        "model-egress"
+      ],
+      "mem_limit": "${OLLAMA_MEMORY_MB:-6144}m",
+      "cpus": "${OLLAMA_CPUS:-2}",
+      "restart": "unless-stopped",
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "ollama",
+          "list"
+        ],
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3,
+        "start_period": "30s"
+      },
+      "depends_on": null,
+      "profiles": [
+        "local-ai"
+      ]
+    },
+    "migrate-node": {
+      "ports": null,
+      "networks": [
+        "backend"
+      ],
+      "mem_limit": "1024m",
+      "cpus": 0.5,
+      "restart": "no",
+      "healthcheck": {
+        "disable": true
+      },
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "profiles": [
+        "tools"
+      ]
+    },
+    "migrate-python": {
+      "ports": null,
+      "networks": [
+        "backend"
+      ],
+      "mem_limit": "768m",
+      "cpus": 1,
+      "restart": "no",
+      "healthcheck": {
+        "disable": true
+      },
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "profiles": [
+        "tools"
+      ]
+    },
+    "grant-roles": {
+      "ports": null,
+      "networks": [
+        "backend"
+      ],
+      "mem_limit": "768m",
+      "cpus": 1,
+      "restart": "no",
+      "healthcheck": {
+        "disable": true
+      },
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "profiles": [
+        "tools"
+      ]
+    },
+    "verify": {
+      "ports": null,
+      "networks": [
+        "backend",
+        "egress",
+        "inference"
+      ],
+      "mem_limit": "768m",
+      "cpus": 1,
+      "restart": "no",
+      "healthcheck": {
+        "disable": true
+      },
+      "depends_on": {
+        "postgres": {
+          "condition": "service_healthy"
+        },
+        "redis": {
+          "condition": "service_healthy"
+        }
+      },
+      "profiles": [
+        "tools"
+      ]
+    },
+    "backup": {
+      "ports": null,
+      "networks": [
+        "backend"
+      ],
+      "mem_limit": "256m",
+      "cpus": 0.5,
+      "restart": "no",
+      "healthcheck": null,
+      "depends_on": null,
+      "profiles": [
+        "tools"
+      ]
+    }
+  },
+  "networks": {
+    "backend": {
+      "internal": true
+    },
+    "inference": {
+      "internal": true
+    },
+    "egress": {},
+    "model-egress": {}
+  },
+  "volumes": [
+    "postgres",
+    "redis",
+    "documents",
+    "admin_assets",
+    "caddy_data",
+    "caddy_config",
+    "ollama_models"
+  ],
+  "secret_names": [
+    "gateway_service_identity",
+    "gateway_service_crt",
+    "gateway_service_key",
+    "auth_service_identity",
+    "auth_service_crt",
+    "auth_service_key",
+    "notification_service_identity",
+    "notification_service_crt",
+    "notification_service_key",
+    "document_service_identity",
+    "document_service_crt",
+    "document_service_key",
+    "payment_service_identity",
+    "payment_service_crt",
+    "payment_service_key",
+    "quota_service_identity",
+    "quota_service_crt",
+    "quota_service_key",
+    "chat_service_identity",
+    "chat_service_crt",
+    "chat_service_key",
+    "analytics_service_identity",
+    "analytics_service_crt",
+    "analytics_service_key",
+    "admin-api_service_identity",
+    "admin-api_service_crt",
+    "admin-api_service_key",
+    "pdf_service_identity",
+    "pdf_service_crt",
+    "pdf_service_key",
+    "ca",
+    "postgres_password",
+    "postgres_crt",
+    "postgres_key",
+    "redis_acl",
+    "redis_crt",
+    "redis_key",
+    "ai_keyring",
+    "backup_connection",
+    "runtime_roles",
+    "postgres_migrator_password"
+  ]
+}

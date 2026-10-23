@@ -1,0 +1,5791 @@
+[
+  {
+    "id": "document_creation-01",
+    "category": "document_creation",
+    "message": "Create an invoice for Nexora. Customer is John; invoice number INV-10.",
+    "expected": {
+      "slots": {
+        "businessName": "Nexora",
+        "clientName": "John",
+        "invoiceNumber": "INV-10"
+      }
+    },
+    "slots": {},
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "multi_field-01",
+    "category": "multi_field",
+    "message": "Actually change customer to John, tax to 3% and invoice number to BILL-20.",
+    "expected": {
+      "slots": {
+        "clientName": "John",
+        "taxRate": 3,
+        "invoiceNumber": "BILL-20"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "grammar-01",
+    "category": "grammar",
+    "message": "Correct spelling in this note: \"We will recieve 1 prodcts within seven days.\"",
+    "expected": {
+      "language": {
+        "contains": [
+          "receive",
+          "products",
+          "1",
+          "seven"
+        ],
+        "original": "We will recieve 1 prodcts within seven days."
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "party_mapping-01",
+    "category": "party_mapping",
+    "message": "Our company is Nexora; the customer is John. My business phone is +14155550100 and the customer phone is +14155550200.",
+    "expected": {
+      "slots": {
+        "businessName": "Nexora",
+        "clientName": "John",
+        "senderPhone": "+14155550100",
+        "clientPhone": "+14155550200"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "tax-01",
+    "category": "tax",
+    "message": "Please change the tax rate to 5 percent.",
+    "expected": {
+      "slots": {
+        "taxRate": 5
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "discount-01",
+    "category": "discount",
+    "message": "Apply a 2% discount to the whole invoice.",
+    "expected": {
+      "slots": {
+        "discountRate": 2
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "item_add-01",
+    "category": "item_add",
+    "message": "Add a line item: 1 keyboards at 20 USD each.",
+    "expected": {
+      "item": {
+        "operation": "add",
+        "description": "keyboards",
+        "quantity": 1,
+        "unitPrice": 20
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "item_remove-01",
+    "category": "item_remove",
+    "message": "Remove the second item.",
+    "expected": {
+      "item": {
+        "operation": "remove",
+        "id": "mouse"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "style-01",
+    "category": "style",
+    "message": "Make the invoice heading blue.",
+    "expected": {
+      "editor": {
+        "property": "color",
+        "value": "#0000ff"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "movement-01",
+    "category": "movement",
+    "message": "Move the selected heading 10 pixels to the right.",
+    "expected": {
+      "editor": {
+        "property": "x",
+        "value": 40
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "undo_redo-01",
+    "category": "undo_redo",
+    "message": "Undo the previous change.",
+    "expected": {
+      "tool": "undo_document"
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "user_correction-01",
+    "category": "user_correction",
+    "message": "No, I meant the customer phone, not my business phone. Change the customer phone to +14155550300; keep the business phone unchanged.",
+    "expected": {
+      "slots": {
+        "clientPhone": "+14155550300"
+      },
+      "forbidden": [
+        "senderPhone"
+      ]
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ],
+      "senderPhone": "+14155550199",
+      "clientPhone": "+14155550299"
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "side_question-01",
+    "category": "side_question",
+    "message": "What is the difference between an invoice and a quotation?",
+    "expected": {
+      "prose": true,
+      "no_mutation": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "missing_field-01",
+    "category": "missing_field",
+    "message": "Add 1 monitors. I have not decided the unit price.",
+    "expected": {
+      "clarify": [
+        "price"
+      ],
+      "no_priced_item": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "session_persistence-01",
+    "category": "session_persistence",
+    "message": "Use the customer name we already saved, and change only the tax to 12%.",
+    "expected": {
+      "slots": {
+        "taxRate": 12
+      },
+      "forbidden": [
+        "clientName",
+        "businessName"
+      ]
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": [
+      {
+        "role": "user",
+        "content": "Business is Nexora. Customer is John."
+      },
+      {
+        "role": "assistant",
+        "content": "Saved those names."
+      }
+    ]
+  },
+  {
+    "id": "ambiguous-01",
+    "category": "ambiguous",
+    "message": "Make it bigger.",
+    "expected": {
+      "clarify": [
+        "which",
+        "what",
+        "select",
+        "specify",
+        "clarify"
+      ],
+      "no_mutation": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        },
+        {
+          "id": "client_name",
+          "type": "text",
+          "label": "John",
+          "x": 30,
+          "y": 100,
+          "w": 100,
+          "h": 20,
+          "fontSize": 12
+        }
+      ],
+      "selectedIds": []
+    },
+    "history": []
+  },
+  {
+    "id": "document_creation-02",
+    "category": "document_creation",
+    "message": "Create an invoice for Acme. Customer is Alex; invoice number INV-11.",
+    "expected": {
+      "slots": {
+        "businessName": "Acme",
+        "clientName": "Alex",
+        "invoiceNumber": "INV-11"
+      }
+    },
+    "slots": {},
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "multi_field-02",
+    "category": "multi_field",
+    "message": "Actually change customer to Alex, tax to 4% and invoice number to BILL-21.",
+    "expected": {
+      "slots": {
+        "clientName": "Alex",
+        "taxRate": 4,
+        "invoiceNumber": "BILL-21"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "grammar-02",
+    "category": "grammar",
+    "message": "Correct spelling in this note: \"We will recieve 2 prodcts within seven days.\"",
+    "expected": {
+      "language": {
+        "contains": [
+          "receive",
+          "products",
+          "2",
+          "seven"
+        ],
+        "original": "We will recieve 2 prodcts within seven days."
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "party_mapping-02",
+    "category": "party_mapping",
+    "message": "Our company is Acme; the customer is Alex. My business phone is +14155550101 and the customer phone is +14155550201.",
+    "expected": {
+      "slots": {
+        "businessName": "Acme",
+        "clientName": "Alex",
+        "senderPhone": "+14155550101",
+        "clientPhone": "+14155550201"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "tax-02",
+    "category": "tax",
+    "message": "Please change the tax rate to 6 percent.",
+    "expected": {
+      "slots": {
+        "taxRate": 6
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "discount-02",
+    "category": "discount",
+    "message": "Apply a 3% discount to the whole invoice.",
+    "expected": {
+      "slots": {
+        "discountRate": 3
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "item_add-02",
+    "category": "item_add",
+    "message": "Add a line item: 2 keyboards at 21 USD each.",
+    "expected": {
+      "item": {
+        "operation": "add",
+        "description": "keyboards",
+        "quantity": 2,
+        "unitPrice": 21
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "item_remove-02",
+    "category": "item_remove",
+    "message": "Delete the mouse line.",
+    "expected": {
+      "item": {
+        "operation": "remove",
+        "id": "mouse"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "style-02",
+    "category": "style",
+    "message": "Make the invoice heading red.",
+    "expected": {
+      "editor": {
+        "property": "color",
+        "value": "#ff0000"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "movement-02",
+    "category": "movement",
+    "message": "Move the selected heading 11 pixels to the right.",
+    "expected": {
+      "editor": {
+        "property": "x",
+        "value": 41
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "undo_redo-02",
+    "category": "undo_redo",
+    "message": "Redo the last change.",
+    "expected": {
+      "tool": "redo_document"
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "user_correction-02",
+    "category": "user_correction",
+    "message": "No, I meant the customer phone, not my business phone. Change the customer phone to +14155550301; keep the business phone unchanged.",
+    "expected": {
+      "slots": {
+        "clientPhone": "+14155550301"
+      },
+      "forbidden": [
+        "senderPhone"
+      ]
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ],
+      "senderPhone": "+14155550199",
+      "clientPhone": "+14155550299"
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "side_question-02",
+    "category": "side_question",
+    "message": "Explain net 30 payment terms.",
+    "expected": {
+      "prose": true,
+      "no_mutation": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "missing_field-02",
+    "category": "missing_field",
+    "message": "Add 2 monitors. I have not decided the unit price.",
+    "expected": {
+      "clarify": [
+        "price"
+      ],
+      "no_priced_item": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "session_persistence-02",
+    "category": "session_persistence",
+    "message": "Use the customer name we already saved, and change only the tax to 13%.",
+    "expected": {
+      "slots": {
+        "taxRate": 13
+      },
+      "forbidden": [
+        "clientName",
+        "businessName"
+      ]
+    },
+    "slots": {
+      "businessName": "Acme",
+      "clientName": "Alex",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": [
+      {
+        "role": "user",
+        "content": "Business is Acme. Customer is Alex."
+      },
+      {
+        "role": "assistant",
+        "content": "Saved those names."
+      }
+    ]
+  },
+  {
+    "id": "ambiguous-02",
+    "category": "ambiguous",
+    "message": "Change the phone number.",
+    "expected": {
+      "clarify": [
+        "which",
+        "what",
+        "select",
+        "specify",
+        "clarify"
+      ],
+      "no_mutation": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        },
+        {
+          "id": "client_name",
+          "type": "text",
+          "label": "John",
+          "x": 30,
+          "y": 100,
+          "w": 100,
+          "h": 20,
+          "fontSize": 12
+        }
+      ],
+      "selectedIds": []
+    },
+    "history": []
+  },
+  {
+    "id": "document_creation-03",
+    "category": "document_creation",
+    "message": "Create an invoice for Bluebird. Customer is Mary; invoice number INV-12.",
+    "expected": {
+      "slots": {
+        "businessName": "Bluebird",
+        "clientName": "Mary",
+        "invoiceNumber": "INV-12"
+      }
+    },
+    "slots": {},
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "multi_field-03",
+    "category": "multi_field",
+    "message": "Actually change customer to Mary, tax to 5% and invoice number to BILL-22.",
+    "expected": {
+      "slots": {
+        "clientName": "Mary",
+        "taxRate": 5,
+        "invoiceNumber": "BILL-22"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "grammar-03",
+    "category": "grammar",
+    "message": "Correct spelling in this note: \"We will recieve 3 prodcts within seven days.\"",
+    "expected": {
+      "language": {
+        "contains": [
+          "receive",
+          "products",
+          "3",
+          "seven"
+        ],
+        "original": "We will recieve 3 prodcts within seven days."
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "party_mapping-03",
+    "category": "party_mapping",
+    "message": "Our company is Bluebird; the customer is Mary. My business phone is +14155550102 and the customer phone is +14155550202.",
+    "expected": {
+      "slots": {
+        "businessName": "Bluebird",
+        "clientName": "Mary",
+        "senderPhone": "+14155550102",
+        "clientPhone": "+14155550202"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "tax-03",
+    "category": "tax",
+    "message": "Please change the tax rate to 7 percent.",
+    "expected": {
+      "slots": {
+        "taxRate": 7
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "discount-03",
+    "category": "discount",
+    "message": "Apply a 4% discount to the whole invoice.",
+    "expected": {
+      "slots": {
+        "discountRate": 4
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "item_add-03",
+    "category": "item_add",
+    "message": "Add a line item: 3 keyboards at 22 USD each.",
+    "expected": {
+      "item": {
+        "operation": "add",
+        "description": "keyboards",
+        "quantity": 3,
+        "unitPrice": 22
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "item_remove-03",
+    "category": "item_remove",
+    "message": "Remove the item named Mouse.",
+    "expected": {
+      "item": {
+        "operation": "remove",
+        "id": "mouse"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "style-03",
+    "category": "style",
+    "message": "Make the invoice heading green.",
+    "expected": {
+      "editor": {
+        "property": "color",
+        "value": "#008000"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "movement-03",
+    "category": "movement",
+    "message": "Move the selected heading 12 pixels to the right.",
+    "expected": {
+      "editor": {
+        "property": "x",
+        "value": 42
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "undo_redo-03",
+    "category": "undo_redo",
+    "message": "Undo the previous change.",
+    "expected": {
+      "tool": "undo_document"
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "user_correction-03",
+    "category": "user_correction",
+    "message": "No, I meant the customer phone, not my business phone. Change the customer phone to +14155550302; keep the business phone unchanged.",
+    "expected": {
+      "slots": {
+        "clientPhone": "+14155550302"
+      },
+      "forbidden": [
+        "senderPhone"
+      ]
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ],
+      "senderPhone": "+14155550199",
+      "clientPhone": "+14155550299"
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "side_question-03",
+    "category": "side_question",
+    "message": "Why is a due date useful?",
+    "expected": {
+      "prose": true,
+      "no_mutation": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "missing_field-03",
+    "category": "missing_field",
+    "message": "Add 3 monitors. I have not decided the unit price.",
+    "expected": {
+      "clarify": [
+        "price"
+      ],
+      "no_priced_item": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "session_persistence-03",
+    "category": "session_persistence",
+    "message": "Use the customer name we already saved, and change only the tax to 14%.",
+    "expected": {
+      "slots": {
+        "taxRate": 14
+      },
+      "forbidden": [
+        "clientName",
+        "businessName"
+      ]
+    },
+    "slots": {
+      "businessName": "Bluebird",
+      "clientName": "Mary",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": [
+      {
+        "role": "user",
+        "content": "Business is Bluebird. Customer is Mary."
+      },
+      {
+        "role": "assistant",
+        "content": "Saved those names."
+      }
+    ]
+  },
+  {
+    "id": "ambiguous-03",
+    "category": "ambiguous",
+    "message": "Move that to the left.",
+    "expected": {
+      "clarify": [
+        "which",
+        "what",
+        "select",
+        "specify",
+        "clarify"
+      ],
+      "no_mutation": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        },
+        {
+          "id": "client_name",
+          "type": "text",
+          "label": "John",
+          "x": 30,
+          "y": 100,
+          "w": 100,
+          "h": 20,
+          "fontSize": 12
+        }
+      ],
+      "selectedIds": []
+    },
+    "history": []
+  },
+  {
+    "id": "document_creation-04",
+    "category": "document_creation",
+    "message": "Create an invoice for Orion. Customer is Sam; invoice number INV-13.",
+    "expected": {
+      "slots": {
+        "businessName": "Orion",
+        "clientName": "Sam",
+        "invoiceNumber": "INV-13"
+      }
+    },
+    "slots": {},
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "multi_field-04",
+    "category": "multi_field",
+    "message": "Actually change customer to Sam, tax to 6% and invoice number to BILL-23.",
+    "expected": {
+      "slots": {
+        "clientName": "Sam",
+        "taxRate": 6,
+        "invoiceNumber": "BILL-23"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "grammar-04",
+    "category": "grammar",
+    "message": "Correct spelling in this note: \"We will recieve 4 prodcts within seven days.\"",
+    "expected": {
+      "language": {
+        "contains": [
+          "receive",
+          "products",
+          "4",
+          "seven"
+        ],
+        "original": "We will recieve 4 prodcts within seven days."
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "party_mapping-04",
+    "category": "party_mapping",
+    "message": "Our company is Orion; the customer is Sam. My business phone is +14155550103 and the customer phone is +14155550203.",
+    "expected": {
+      "slots": {
+        "businessName": "Orion",
+        "clientName": "Sam",
+        "senderPhone": "+14155550103",
+        "clientPhone": "+14155550203"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "tax-04",
+    "category": "tax",
+    "message": "Please change the tax rate to 8 percent.",
+    "expected": {
+      "slots": {
+        "taxRate": 8
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "discount-04",
+    "category": "discount",
+    "message": "Apply a 5% discount to the whole invoice.",
+    "expected": {
+      "slots": {
+        "discountRate": 5
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "item_add-04",
+    "category": "item_add",
+    "message": "Add a line item: 4 keyboards at 23 USD each.",
+    "expected": {
+      "item": {
+        "operation": "add",
+        "description": "keyboards",
+        "quantity": 4,
+        "unitPrice": 23
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "item_remove-04",
+    "category": "item_remove",
+    "message": "Actually remove the mouse, keeping the laptop.",
+    "expected": {
+      "item": {
+        "operation": "remove",
+        "id": "mouse"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "style-04",
+    "category": "style",
+    "message": "Make the invoice heading purple.",
+    "expected": {
+      "editor": {
+        "property": "color",
+        "value": "#800080"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "movement-04",
+    "category": "movement",
+    "message": "Move the selected heading 13 pixels to the right.",
+    "expected": {
+      "editor": {
+        "property": "x",
+        "value": 43
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "undo_redo-04",
+    "category": "undo_redo",
+    "message": "Redo the last change.",
+    "expected": {
+      "tool": "redo_document"
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "user_correction-04",
+    "category": "user_correction",
+    "message": "No, I meant the customer phone, not my business phone. Change the customer phone to +14155550303; keep the business phone unchanged.",
+    "expected": {
+      "slots": {
+        "clientPhone": "+14155550303"
+      },
+      "forbidden": [
+        "senderPhone"
+      ]
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ],
+      "senderPhone": "+14155550199",
+      "clientPhone": "+14155550299"
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "side_question-04",
+    "category": "side_question",
+    "message": "What does a purchase order do?",
+    "expected": {
+      "prose": true,
+      "no_mutation": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "missing_field-04",
+    "category": "missing_field",
+    "message": "Add 4 monitors. I have not decided the unit price.",
+    "expected": {
+      "clarify": [
+        "price"
+      ],
+      "no_priced_item": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "session_persistence-04",
+    "category": "session_persistence",
+    "message": "Use the customer name we already saved, and change only the tax to 15%.",
+    "expected": {
+      "slots": {
+        "taxRate": 15
+      },
+      "forbidden": [
+        "clientName",
+        "businessName"
+      ]
+    },
+    "slots": {
+      "businessName": "Orion",
+      "clientName": "Sam",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": [
+      {
+        "role": "user",
+        "content": "Business is Orion. Customer is Sam."
+      },
+      {
+        "role": "assistant",
+        "content": "Saved those names."
+      }
+    ]
+  },
+  {
+    "id": "ambiguous-04",
+    "category": "ambiguous",
+    "message": "Make the amount smaller.",
+    "expected": {
+      "clarify": [
+        "which",
+        "what",
+        "select",
+        "specify",
+        "clarify"
+      ],
+      "no_mutation": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        },
+        {
+          "id": "client_name",
+          "type": "text",
+          "label": "John",
+          "x": 30,
+          "y": 100,
+          "w": 100,
+          "h": 20,
+          "fontSize": 12
+        }
+      ],
+      "selectedIds": []
+    },
+    "history": []
+  },
+  {
+    "id": "document_creation-05",
+    "category": "document_creation",
+    "message": "Create an invoice for Bright Labs. Customer is Priya; invoice number INV-14.",
+    "expected": {
+      "slots": {
+        "businessName": "Bright Labs",
+        "clientName": "Priya",
+        "invoiceNumber": "INV-14"
+      }
+    },
+    "slots": {},
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "multi_field-05",
+    "category": "multi_field",
+    "message": "Actually change customer to Priya, tax to 7% and invoice number to BILL-24.",
+    "expected": {
+      "slots": {
+        "clientName": "Priya",
+        "taxRate": 7,
+        "invoiceNumber": "BILL-24"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "grammar-05",
+    "category": "grammar",
+    "message": "Correct spelling in this note: \"We will recieve 5 prodcts within seven days.\"",
+    "expected": {
+      "language": {
+        "contains": [
+          "receive",
+          "products",
+          "5",
+          "seven"
+        ],
+        "original": "We will recieve 5 prodcts within seven days."
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "party_mapping-05",
+    "category": "party_mapping",
+    "message": "Our company is Bright Labs; the customer is Priya. My business phone is +14155550104 and the customer phone is +14155550204.",
+    "expected": {
+      "slots": {
+        "businessName": "Bright Labs",
+        "clientName": "Priya",
+        "senderPhone": "+14155550104",
+        "clientPhone": "+14155550204"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "tax-05",
+    "category": "tax",
+    "message": "Please change the tax rate to 9 percent.",
+    "expected": {
+      "slots": {
+        "taxRate": 9
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "discount-05",
+    "category": "discount",
+    "message": "Apply a 6% discount to the whole invoice.",
+    "expected": {
+      "slots": {
+        "discountRate": 6
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "item_add-05",
+    "category": "item_add",
+    "message": "Add a line item: 5 keyboards at 24 USD each.",
+    "expected": {
+      "item": {
+        "operation": "add",
+        "description": "keyboards",
+        "quantity": 5,
+        "unitPrice": 24
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "item_remove-05",
+    "category": "item_remove",
+    "message": "Please delete line number two.",
+    "expected": {
+      "item": {
+        "operation": "remove",
+        "id": "mouse"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "style-05",
+    "category": "style",
+    "message": "Make the invoice heading orange.",
+    "expected": {
+      "editor": {
+        "property": "color",
+        "value": "#ffa500"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "movement-05",
+    "category": "movement",
+    "message": "Move the selected heading 14 pixels to the right.",
+    "expected": {
+      "editor": {
+        "property": "x",
+        "value": 44
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "undo_redo-05",
+    "category": "undo_redo",
+    "message": "Undo the previous change.",
+    "expected": {
+      "tool": "undo_document"
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "user_correction-05",
+    "category": "user_correction",
+    "message": "No, I meant the customer phone, not my business phone. Change the customer phone to +14155550304; keep the business phone unchanged.",
+    "expected": {
+      "slots": {
+        "clientPhone": "+14155550304"
+      },
+      "forbidden": [
+        "senderPhone"
+      ]
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ],
+      "senderPhone": "+14155550199",
+      "clientPhone": "+14155550299"
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "side_question-05",
+    "category": "side_question",
+    "message": "How is a receipt different from an invoice?",
+    "expected": {
+      "prose": true,
+      "no_mutation": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "missing_field-05",
+    "category": "missing_field",
+    "message": "Add 5 monitors. I have not decided the unit price.",
+    "expected": {
+      "clarify": [
+        "price"
+      ],
+      "no_priced_item": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "session_persistence-05",
+    "category": "session_persistence",
+    "message": "Use the customer name we already saved, and change only the tax to 16%.",
+    "expected": {
+      "slots": {
+        "taxRate": 16
+      },
+      "forbidden": [
+        "clientName",
+        "businessName"
+      ]
+    },
+    "slots": {
+      "businessName": "Bright Labs",
+      "clientName": "Priya",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": [
+      {
+        "role": "user",
+        "content": "Business is Bright Labs. Customer is Priya."
+      },
+      {
+        "role": "assistant",
+        "content": "Saved those names."
+      }
+    ]
+  },
+  {
+    "id": "ambiguous-05",
+    "category": "ambiguous",
+    "message": "Change their address.",
+    "expected": {
+      "clarify": [
+        "which",
+        "what",
+        "select",
+        "specify",
+        "clarify"
+      ],
+      "no_mutation": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        },
+        {
+          "id": "client_name",
+          "type": "text",
+          "label": "John",
+          "x": 30,
+          "y": 100,
+          "w": 100,
+          "h": 20,
+          "fontSize": 12
+        }
+      ],
+      "selectedIds": []
+    },
+    "history": []
+  },
+  {
+    "id": "document_creation-06",
+    "category": "document_creation",
+    "message": "Create an invoice for Cedar. Customer is Noah; invoice number INV-15.",
+    "expected": {
+      "slots": {
+        "businessName": "Cedar",
+        "clientName": "Noah",
+        "invoiceNumber": "INV-15"
+      }
+    },
+    "slots": {},
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "multi_field-06",
+    "category": "multi_field",
+    "message": "Actually change customer to Noah, tax to 8% and invoice number to BILL-25.",
+    "expected": {
+      "slots": {
+        "clientName": "Noah",
+        "taxRate": 8,
+        "invoiceNumber": "BILL-25"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "grammar-06",
+    "category": "grammar",
+    "message": "Correct spelling in this note: \"We will recieve 6 prodcts within seven days.\"",
+    "expected": {
+      "language": {
+        "contains": [
+          "receive",
+          "products",
+          "6",
+          "seven"
+        ],
+        "original": "We will recieve 6 prodcts within seven days."
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "party_mapping-06",
+    "category": "party_mapping",
+    "message": "Our company is Cedar; the customer is Noah. My business phone is +14155550105 and the customer phone is +14155550205.",
+    "expected": {
+      "slots": {
+        "businessName": "Cedar",
+        "clientName": "Noah",
+        "senderPhone": "+14155550105",
+        "clientPhone": "+14155550205"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "tax-06",
+    "category": "tax",
+    "message": "Please change the tax rate to 10 percent.",
+    "expected": {
+      "slots": {
+        "taxRate": 10
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "discount-06",
+    "category": "discount",
+    "message": "Apply a 7% discount to the whole invoice.",
+    "expected": {
+      "slots": {
+        "discountRate": 7
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "item_add-06",
+    "category": "item_add",
+    "message": "Add a line item: 6 keyboards at 25 USD each.",
+    "expected": {
+      "item": {
+        "operation": "add",
+        "description": "keyboards",
+        "quantity": 6,
+        "unitPrice": 25
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "item_remove-06",
+    "category": "item_remove",
+    "message": "Remove the Mouse from this invoice.",
+    "expected": {
+      "item": {
+        "operation": "remove",
+        "id": "mouse"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "style-06",
+    "category": "style",
+    "message": "Make the invoice heading black.",
+    "expected": {
+      "editor": {
+        "property": "color",
+        "value": "#000000"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "movement-06",
+    "category": "movement",
+    "message": "Move the selected heading 15 pixels to the right.",
+    "expected": {
+      "editor": {
+        "property": "x",
+        "value": 45
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "undo_redo-06",
+    "category": "undo_redo",
+    "message": "Redo the last change.",
+    "expected": {
+      "tool": "redo_document"
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "user_correction-06",
+    "category": "user_correction",
+    "message": "No, I meant the customer phone, not my business phone. Change the customer phone to +14155550305; keep the business phone unchanged.",
+    "expected": {
+      "slots": {
+        "clientPhone": "+14155550305"
+      },
+      "forbidden": [
+        "senderPhone"
+      ]
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ],
+      "senderPhone": "+14155550199",
+      "clientPhone": "+14155550299"
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "side_question-06",
+    "category": "side_question",
+    "message": "Why should I number my invoices?",
+    "expected": {
+      "prose": true,
+      "no_mutation": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "missing_field-06",
+    "category": "missing_field",
+    "message": "Add 6 monitors. I have not decided the unit price.",
+    "expected": {
+      "clarify": [
+        "price"
+      ],
+      "no_priced_item": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "session_persistence-06",
+    "category": "session_persistence",
+    "message": "Use the customer name we already saved, and change only the tax to 17%.",
+    "expected": {
+      "slots": {
+        "taxRate": 17
+      },
+      "forbidden": [
+        "clientName",
+        "businessName"
+      ]
+    },
+    "slots": {
+      "businessName": "Cedar",
+      "clientName": "Noah",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": [
+      {
+        "role": "user",
+        "content": "Business is Cedar. Customer is Noah."
+      },
+      {
+        "role": "assistant",
+        "content": "Saved those names."
+      }
+    ]
+  },
+  {
+    "id": "ambiguous-06",
+    "category": "ambiguous",
+    "message": "Use the other color.",
+    "expected": {
+      "clarify": [
+        "which",
+        "what",
+        "select",
+        "specify",
+        "clarify"
+      ],
+      "no_mutation": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        },
+        {
+          "id": "client_name",
+          "type": "text",
+          "label": "John",
+          "x": 30,
+          "y": 100,
+          "w": 100,
+          "h": 20,
+          "fontSize": 12
+        }
+      ],
+      "selectedIds": []
+    },
+    "history": []
+  },
+  {
+    "id": "document_creation-07",
+    "category": "document_creation",
+    "message": "Create an invoice for Atlas. Customer is Iris; invoice number INV-16.",
+    "expected": {
+      "slots": {
+        "businessName": "Atlas",
+        "clientName": "Iris",
+        "invoiceNumber": "INV-16"
+      }
+    },
+    "slots": {},
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "multi_field-07",
+    "category": "multi_field",
+    "message": "Actually change customer to Iris, tax to 9% and invoice number to BILL-26.",
+    "expected": {
+      "slots": {
+        "clientName": "Iris",
+        "taxRate": 9,
+        "invoiceNumber": "BILL-26"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "grammar-07",
+    "category": "grammar",
+    "message": "Correct spelling in this note: \"We will recieve 7 prodcts within seven days.\"",
+    "expected": {
+      "language": {
+        "contains": [
+          "receive",
+          "products",
+          "7",
+          "seven"
+        ],
+        "original": "We will recieve 7 prodcts within seven days."
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "party_mapping-07",
+    "category": "party_mapping",
+    "message": "Our company is Atlas; the customer is Iris. My business phone is +14155550106 and the customer phone is +14155550206.",
+    "expected": {
+      "slots": {
+        "businessName": "Atlas",
+        "clientName": "Iris",
+        "senderPhone": "+14155550106",
+        "clientPhone": "+14155550206"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "tax-07",
+    "category": "tax",
+    "message": "Please change the tax rate to 11 percent.",
+    "expected": {
+      "slots": {
+        "taxRate": 11
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "discount-07",
+    "category": "discount",
+    "message": "Apply a 8% discount to the whole invoice.",
+    "expected": {
+      "slots": {
+        "discountRate": 8
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "item_add-07",
+    "category": "item_add",
+    "message": "Add a line item: 7 keyboards at 26 USD each.",
+    "expected": {
+      "item": {
+        "operation": "add",
+        "description": "keyboards",
+        "quantity": 7,
+        "unitPrice": 26
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "item_remove-07",
+    "category": "item_remove",
+    "message": "Take the second line item off the invoice.",
+    "expected": {
+      "item": {
+        "operation": "remove",
+        "id": "mouse"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "style-07",
+    "category": "style",
+    "message": "Make the invoice heading navy.",
+    "expected": {
+      "editor": {
+        "property": "color",
+        "value": "#000080"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "movement-07",
+    "category": "movement",
+    "message": "Move the selected heading 16 pixels to the right.",
+    "expected": {
+      "editor": {
+        "property": "x",
+        "value": 46
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "undo_redo-07",
+    "category": "undo_redo",
+    "message": "Undo the previous change.",
+    "expected": {
+      "tool": "undo_document"
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "user_correction-07",
+    "category": "user_correction",
+    "message": "No, I meant the customer phone, not my business phone. Change the customer phone to +14155550306; keep the business phone unchanged.",
+    "expected": {
+      "slots": {
+        "clientPhone": "+14155550306"
+      },
+      "forbidden": [
+        "senderPhone"
+      ]
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ],
+      "senderPhone": "+14155550199",
+      "clientPhone": "+14155550299"
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "side_question-07",
+    "category": "side_question",
+    "message": "Explain the difference between a tax and a discount.",
+    "expected": {
+      "prose": true,
+      "no_mutation": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "missing_field-07",
+    "category": "missing_field",
+    "message": "Add 7 monitors. I have not decided the unit price.",
+    "expected": {
+      "clarify": [
+        "price"
+      ],
+      "no_priced_item": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "session_persistence-07",
+    "category": "session_persistence",
+    "message": "Use the customer name we already saved, and change only the tax to 18%.",
+    "expected": {
+      "slots": {
+        "taxRate": 18
+      },
+      "forbidden": [
+        "clientName",
+        "businessName"
+      ]
+    },
+    "slots": {
+      "businessName": "Atlas",
+      "clientName": "Iris",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": [
+      {
+        "role": "user",
+        "content": "Business is Atlas. Customer is Iris."
+      },
+      {
+        "role": "assistant",
+        "content": "Saved those names."
+      }
+    ]
+  },
+  {
+    "id": "ambiguous-07",
+    "category": "ambiguous",
+    "message": "Remove that item.",
+    "expected": {
+      "clarify": [
+        "which",
+        "what",
+        "select",
+        "specify",
+        "clarify"
+      ],
+      "no_mutation": true
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        },
+        {
+          "id": "client_name",
+          "type": "text",
+          "label": "John",
+          "x": 30,
+          "y": 100,
+          "w": 100,
+          "h": 20,
+          "fontSize": 12
+        }
+      ],
+      "selectedIds": []
+    },
+    "history": []
+  }
+]
