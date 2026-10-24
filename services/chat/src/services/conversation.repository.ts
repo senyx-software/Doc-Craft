@@ -156,7 +156,7 @@ export class ConversationRepository {
             const meta=metadata(session.slots);this.assertLease(meta,lease.turnId,lease.token);
             if((meta.layoutRevision||0)!==expectedLayoutRevision)throw new ConversationError(409,'Canvas changed; reload before sending the edit','REVISION_CONFLICT',false);
             const turn=meta.turns[lease.turnId];
-            if(turn.editorSelection)validated.selectedIds=turn.editorSelection.filter((id:string)=>validated.elements.some(el=>el.id===id));
+            if(turn.editorSelection)validated.selectedIds=turn.editorSelection.filter((id:string)=>validated.elements.some((el:any)=>el.id===id));
             else turn.editorSelection=[...validated.selectedIds];
             meta.editorContext=validated;
             return {slots:{...session.slots,_chat:meta}};

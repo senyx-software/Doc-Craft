@@ -1,15 +1,40 @@
 """Generate private per-service config files for a new isolated deployment.
 
-Never overwrite existing keys; rotate by adding a new kid to receiver keyrings
-and switching the sender after deployment. The output contains secrets.
+Rotate by adding a new kid to receiver keyrings and switching the sender after deployment.
+The output contains secrets.
 """
 import argparse
 import base64
 import json
 import os
+import stat
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def write_private(path, text, overwrite=False):
+    path = Path(path)
+    if path.exists():
+        if not overwrite:
+            raise FileExistsError(f"{path} already exists. Use --overwrite to replace it.")
+        try:
+            # On Windows, ensure file is writable before unlinking/writing
+            os.chmod(path, stat.S_IWRITE | stat.S_IREAD)
+        except OSError:
+            pass
+        try:
+            path.unlink()
+        except OSError:
+            pass
+    def opener(p, flags):
+        return os.open(p, flags, 0o600)
+    with open(path, "w", opener=opener) as stream:
+        stream.write(text)
+    try:
+        os.chmod(path, 0o600)
+    except OSError:
+        pass
 
 
 def generate():
@@ -47,10 +72,10 @@ def generate():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("directory", type=Path)
+    parser.add_argument("--overwrite", "--force", "-f", action="store_true", help="Overwrite existing credentials without error")
     args = parser.parse_args()
     args.directory.mkdir(mode=0o700, parents=True, exist_ok=True)
     for name, value in generate().items():
         path = args.directory / (name + ".json")
-        with open(path,"x", opener=lambda path, flags: os.open(path, flags, 0o600)) as stream:
-            stream.write(json.dumps(value, indent=2) + "\n")
+        write_private(path, json.dumps(value, indent=2) + "\n", overwrite=args.overwrite)
     print("Created private service credentials. No key values were printed.")

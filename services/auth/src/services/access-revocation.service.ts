@@ -11,7 +11,7 @@ function store(){
 export async function accessIsRevoked(token:string):Promise<boolean>{
  const claims=await verifyUserToken(token);
  const records=await prisma.accessRevocation.findMany({where:{key:{in:['jti:'+claims.jti,'user:'+claims.sub]},expiresAt:{gt:new Date()}}});
- return records.some(record=>record.key.startsWith('jti:') || record.revokedAt.getTime()>=Number(claims.iat)*1000);
+ return records.some((record: any)=>record.key.startsWith('jti:') || record.revokedAt.getTime()>=Number(claims.iat)*1000);
 }
 export async function revokeAccess(token:string){
  const claims=await verifyUserToken(token),seconds=Math.max(1,Number(claims.exp)-Math.floor(Date.now()/1000));

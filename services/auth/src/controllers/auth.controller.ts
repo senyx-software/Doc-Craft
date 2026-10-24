@@ -371,7 +371,7 @@ export async function refresh(request: FastifyRequest, reply: FastifyReply) {
   const newRefreshToken = await signRefreshToken(user.id);
   const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
 
-  const rotated=await prisma.$transaction(async tx=>{
+  const rotated=await prisma.$transaction(async (tx: any)=>{
     const consumed=await tx.session.deleteMany({where:{id:session.id,refreshToken:tokenDigest(refreshToken),expiresAt:{gt:new Date()}}});
     if(consumed.count!==1)return false;
     await tx.session.create({data:{userId:user.id,refreshToken:tokenDigest(newRefreshToken),expiresAt}});
@@ -435,7 +435,7 @@ export async function resetPassword(request: FastifyRequest, reply: FastifyReply
 
   const passwordHash = await hashPassword(newPassword);
 
-  const consumed = await prisma.$transaction(async (tx) => {
+  const consumed = await prisma.$transaction(async (tx: any) => {
     const claim = await tx.passwordReset.updateMany({
       where: { id: resetRecord.id, used: false, expiresAt: { gt: new Date() } },
       data: { used: true },

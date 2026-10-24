@@ -85,7 +85,7 @@ export class SessionService {
         if (!userId || userId === 'guest_user')
             throw new ConversationError(401, 'Verified identity required');
         const sessions = await this.prisma.chatSession.findMany({ where: { userId, isArchived: archived }, orderBy: { updatedAt: 'desc' }, include: { _count: { select: { messages: true } } } });
-        return sessions.map(({modelPreference,...session}) => ({ ...session, slots: documentData(session.slots as any) }));
+        return sessions.map(({modelPreference,...session}: any) => ({ ...session, slots: documentData(session.slots as any) }));
     }
     private ownership(userId: string, sessionId: string) { return new ConversationRepository(this.prisma).load(userId, sessionId); }
     async renameSession(userId: string, sessionId: string, title: string) { return new ConversationRepository(this.prisma).updateMetadata(userId,sessionId,{title}); }

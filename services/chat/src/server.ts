@@ -70,7 +70,7 @@ fastify.register(rateLimit, {
 import { requireAuth } from "./middleware/auth.middleware.js";
 
 fastify.addHook("onRequest", async (req, reply) => {
-  if (req.url.includes('/chat') || req.url.includes('/mcp')) await requireAuth(req, reply);
+  if (req.url.includes('/chat') || req.url.includes('/mcp')) await requireAuth(req as any, reply as any);
 });
 
 fastify.get('/ready',async(_request,reply)=>{const ready=await dependenciesReady(()=>db.$queryRaw`SELECT 1`);return reply.status(ready?200:503).send({status:ready?'ready':'unavailable'});});

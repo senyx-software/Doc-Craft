@@ -18,15 +18,16 @@
     "dev:document": "node scripts/with-service-identity.cjs document npm run dev -w doccraft-document",
     "dev:payment": "node scripts/with-service-identity.cjs payment npm run dev -w doccraft-payment",
     "dev:quota": "node scripts/with-service-identity.cjs quota npm run dev -w doccraft-quota",
-    "dev:analytics": "node scripts/with-service-identity.cjs analytics python3 -m uvicorn app.main:app --host 0.0.0.0 --port 3017 --reload --reload-dir services/analytics/app --app-dir services/analytics --env-file services/analytics/analytics.env",
-    "dev:admin-api": "node scripts/with-service-identity.cjs admin-api services/admin-api/.venv/bin/python3 -m uvicorn app.main:app --host 0.0.0.0 --port 3018 --reload --reload-dir services/admin-api/app --app-dir services/admin-api --env-file services/admin-api/admin-api.env",
+    "dev:analytics": "node scripts/with-service-identity.cjs analytics node scripts/run-python.cjs services/analytics -m uvicorn app.main:app --host 0.0.0.0 --port 3017 --reload --reload-dir services/analytics/app --app-dir services/analytics --env-file services/analytics/analytics.env",
+    "dev:admin-api": "node scripts/with-service-identity.cjs admin-api node scripts/run-python.cjs services/admin-api -m uvicorn app.main:app --host 0.0.0.0 --port 3018 --reload --reload-dir services/admin-api/app --app-dir services/admin-api --env-file services/admin-api/admin-api.env",
     "dev:user": "npm run dev --prefix user-frontend",
     "dev:admin": "npm run dev --prefix admin",
     "dev:all": "node scripts/wait-redis.js && concurrently \"npm run dev:services\" \"npm run dev:user\" \"npm run dev:admin\"",
+    "setup": "node scripts/setup.cjs",
     "build": "npm run build --workspaces --if-present",
     "db:generate": "npm run db:generate --workspaces --if-present",
     "db:migrate": "npm run db:migrate --workspaces --if-present",
-    "test:chat": "node --test shared/tests/*.test.mjs && vitest run services/chat/src/services/__tests__ services/chat/src/routes/__tests__ services/chat/src/middleware/__tests__ services/gateway/src/services/__tests__/sseRelay.test.ts services/gateway/src/middleware/__tests__/chat-auth.test.ts user-frontend/src/store/__tests__ user-frontend/src/utils/__tests__ user-frontend/src/api/__tests__ user-frontend/src/components/builder/__tests__"
+    "test:chat": "node --test shared/tests && vitest run services/chat/src/services/__tests__ services/chat/src/routes/__tests__ services/chat/src/middleware/__tests__ services/gateway/src/services/__tests__/sseRelay.test.ts services/gateway/src/middleware/__tests__/chat-auth.test.ts user-frontend/src/store/__tests__ user-frontend/src/utils/__tests__ user-frontend/src/api/__tests__ user-frontend/src/components/builder/__tests__"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
