@@ -1,0 +1,3601 @@
+[
+  {
+    "scenario_id": "document_creation-01",
+    "category": "document_creation",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_TIMEOUT",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 90093
+  },
+  {
+    "scenario_id": "multi_field-01",
+    "category": "multi_field",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_d495f6b08ddf4b2fabf3df4f51548704",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"reason\": \"Updating client name to John\", \"field\": \"clientName\", \"rawValue\": \"John\", \"suggestedValue\": \"John\"}"
+            }
+          },
+          {
+            "id": "call_8bfce9b349bc46cf8b28ae337e34ccf9",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"taxRate\", \"rawValue\": 0, \"suggestedValue\": 3, \"reason\": \"Updating tax rate to 3%\"}"
+            }
+          },
+          {
+            "id": "call_40a3e334346b42ae912f484321165280",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"invoiceNumber\", \"rawValue\": \"INV-001\", \"suggestedValue\": \"BILL-20\", \"reason\": \"Updating invoice number to BILL-20\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2173,
+        "output_tokens": 149
+      }
+    },
+    "errors": [
+      "field:clientName",
+      "field:taxRate",
+      "field:invoiceNumber",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 55695
+  },
+  {
+    "scenario_id": "grammar-01",
+    "category": "grammar",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_404c660a8a974a5b82830478bdd57df4",
+            "type": "function",
+            "function": {
+              "name": "propose_language_correction",
+              "arguments": "{\"field\": \"notesAndTerms\", \"original\": \"We will recieve 1 prodcts within seven days.\", \"reason\": \"Spelling error in 'recieve' and 'prodcts'\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2172,
+        "output_tokens": 58
+      }
+    },
+    "errors": [
+      "language_suggestion",
+      "production_schema:propose_language_correction"
+    ],
+    "passed": false,
+    "latency_ms": 6994
+  },
+  {
+    "scenario_id": "party_mapping-01",
+    "category": "party_mapping",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_061cd24b610249789341292e9f74a9aa",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"rawValue\": \"+14155550100\", \"suggestedValue\": \"+14155550100\", \"reason\": \"Business phone number\", \"field\": \"senderPhone\"}"
+            }
+          },
+          {
+            "id": "call_435f400861c7470a9b6100bc23cd525f",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"clientPhone\", \"rawValue\": \"+14155550200\", \"suggestedValue\": \"+14155550200\", \"reason\": \"Customer phone number\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2198,
+        "output_tokens": 128
+      }
+    },
+    "errors": [
+      "field:businessName",
+      "field:clientName",
+      "field:senderPhone",
+      "field:clientPhone",
+      "production_schema:update_slots",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 13564
+  },
+  {
+    "scenario_id": "tax-01",
+    "category": "tax",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_2aa3addae71e4817aaeac3136dacdd8a",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"taxRate\", \"rawValue\": \"5\", \"suggestedValue\": \"5\", \"reason\": \"Tax rate to be updated to 5 percent\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2163,
+        "output_tokens": 50
+      }
+    },
+    "errors": [
+      "field:taxRate",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 9221
+  },
+  {
+    "scenario_id": "discount-01",
+    "category": "discount",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_a852ea05e8034899bc948b7539e06eee",
+            "type": "function",
+            "function": {
+              "name": "propose_language_correction",
+              "arguments": "{\"field\": \"discountRate\", \"original\": \"2%\", \"reason\": \"Apply a 2% discount to the whole invoice.\", \"suggested\": \"2%\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2164,
+        "output_tokens": 52
+      }
+    },
+    "errors": [
+      "field:discountRate",
+      "production_schema:propose_language_correction"
+    ],
+    "passed": false,
+    "latency_ms": 11516
+  },
+  {
+    "scenario_id": "item_add-01",
+    "category": "item_add",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 12201
+  },
+  {
+    "scenario_id": "item_remove-01",
+    "category": "item_remove",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 7931
+  },
+  {
+    "scenario_id": "style-01",
+    "category": "style",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 15086
+  },
+  {
+    "scenario_id": "movement-01",
+    "category": "movement",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 20604
+  },
+  {
+    "scenario_id": "undo_redo-01",
+    "category": "undo_redo",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_8027b57b6c1e4072816a656b9add8afa",
+            "type": "function",
+            "function": {
+              "name": "undo_document",
+              "arguments": "{}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2158,
+        "output_tokens": 16
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 8941
+  },
+  {
+    "scenario_id": "user_correction-01",
+    "category": "user_correction",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_1658f5dd3dce4c10968823f7f4dd6946",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"element\": {\"fontSize\": 24, \"h\": 40, \"text\": \"Client Phone\", \"type\": \"text\", \"w\": 200, \"x\": 30, \"y\": 30}, \"evidence\": \"+14155550300\", \"operation\": \"update\"}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2223,
+        "output_tokens": 94
+      }
+    },
+    "errors": [
+      "field:clientPhone"
+    ],
+    "passed": false,
+    "latency_ms": 41574
+  },
+  {
+    "scenario_id": "side_question-01",
+    "category": "side_question",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "The difference between an invoice and a quotation lies in their purpose and timing:\n\n1. **Quotation**: \n   - A quotation is a formal offer from a seller to a buyer, typically for a specific product or service.\n   - It is usually provided before a sale is made and outlines the terms, price, and conditions.\n   - It is not a binding document unless it is accepted by the buyer.\n\n2. **Invoice**:\n   - An invoice is a document issued by a seller to a buyer to confirm a sale and request payment.\n   - It includes details such as the amount due, payment terms, and other relevant information.\n   - It is a formal record of the transaction and is typically required for payment processing.\n\nIn summary, a quotation is an offer, while an invoice is a record of a completed transaction."
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2164,
+        "output_tokens": 168
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 88274
+  },
+  {
+    "scenario_id": "missing_field-01",
+    "category": "missing_field",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "The request to add 1 monitors with an unspecified unit price is ambiguous. Please provide the unit price for the monitors so that the invoice can be accurately updated."
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2166,
+        "output_tokens": 33
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 32020
+  },
+  {
+    "scenario_id": "session_persistence-01",
+    "category": "session_persistence",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_bd062f190d6c4acfa655fbc8c4a671f7",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"suggestedValue\": \"12%\", \"reason\": \"Changing tax rate to 12%\", \"field\": \"taxRate\", \"rawValue\": \"0\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2194,
+        "output_tokens": 50
+      }
+    },
+    "errors": [
+      "field:taxRate",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 13026
+  },
+  {
+    "scenario_id": "ambiguous-01",
+    "category": "ambiguous",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_faea7e70d6114bbe9425fcda7da8a5bb",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"evidence\": \"header_title\", \"operation\": \"update\", \"patch\": {\"fontSize\": 36}}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2210,
+        "output_tokens": 43
+      }
+    },
+    "errors": [
+      "unexpected_mutation",
+      "missing_clarification"
+    ],
+    "passed": false,
+    "latency_ms": 27873
+  },
+  {
+    "scenario_id": "document_creation-02",
+    "category": "document_creation",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_TIMEOUT",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 90092
+  },
+  {
+    "scenario_id": "multi_field-02",
+    "category": "multi_field",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_a2f0d2121bee44b38f71a8e984915b5e",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"clientName\", \"rawValue\": \"John\", \"suggestedValue\": \"Alex\", \"reason\": \"Updating client name to Alex\"}"
+            }
+          },
+          {
+            "id": "call_bd28bbbf4bea42fab72abc5754d5a820",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"taxRate\", \"rawValue\": 0, \"suggestedValue\": 4, \"reason\": \"Updating tax rate to 4%\"}"
+            }
+          },
+          {
+            "id": "call_bdd4352a53fa4f2ab711bf0ea8ad5fd3",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"invoiceNumber\", \"rawValue\": \"INV-001\", \"suggestedValue\": \"BILL-21\", \"reason\": \"Updating invoice number to BILL-21\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2173,
+        "output_tokens": 149
+      }
+    },
+    "errors": [
+      "field:clientName",
+      "field:taxRate",
+      "field:invoiceNumber",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 26520
+  },
+  {
+    "scenario_id": "grammar-02",
+    "category": "grammar",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_0b99f91b33bc40f8bba46a536d294648",
+            "type": "function",
+            "function": {
+              "name": "propose_language_correction",
+              "arguments": "{\"field\": \"notesAndTerms\", \"original\": \"We will recieve 2 prodcts within seven days.\", \"reason\": \"Spelling error in 'recieve' and 'prodcts'.\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2172,
+        "output_tokens": 59
+      }
+    },
+    "errors": [
+      "language_suggestion",
+      "production_schema:propose_language_correction"
+    ],
+    "passed": false,
+    "latency_ms": 7019
+  },
+  {
+    "scenario_id": "party_mapping-02",
+    "category": "party_mapping",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_3b93d61c7a0f4dfdaf5bd7422c985a29",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"senderPhone\", \"rawValue\": \"+14155550101\", \"suggestedValue\": \"+14155550101\", \"reason\": \"Provided business phone\"}"
+            }
+          },
+          {
+            "id": "call_7c0a659f886c4a33ae206364545f0b4e",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"clientPhone\", \"rawValue\": \"+14155550201\", \"suggestedValue\": \"+14155550201\", \"reason\": \"Provided customer phone\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2198,
+        "output_tokens": 130
+      }
+    },
+    "errors": [
+      "field:businessName",
+      "field:clientName",
+      "field:senderPhone",
+      "field:clientPhone",
+      "production_schema:update_slots",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 12172
+  },
+  {
+    "scenario_id": "tax-02",
+    "category": "tax",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_243ddff99d504b608ce36471daf0bb0f",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"suggestedValue\": \"6\", \"reason\": \"Tax rate updated to 6 percent.\", \"field\": \"taxRate\", \"rawValue\": \"6\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2163,
+        "output_tokens": 49
+      }
+    },
+    "errors": [
+      "field:taxRate",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 4848
+  },
+  {
+    "scenario_id": "discount-02",
+    "category": "discount",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_83d8ae4ff4604152bd3b14e18eafe589",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"element\": {\"fontSize\": 24, \"h\": 40, \"operation\": \"update\", \"patch\": {\"text\": \"Invoice - 3% Discount\"}, \"text\": \"Invoice\", \"type\": \"text\", \"w\": 200, \"x\": 30, \"y\": 30}}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2164,
+        "output_tokens": 90
+      }
+    },
+    "errors": [
+      "field:discountRate",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 8258
+  },
+  {
+    "scenario_id": "item_add-02",
+    "category": "item_add",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 5014
+  },
+  {
+    "scenario_id": "item_remove-02",
+    "category": "item_remove",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 2558
+  },
+  {
+    "scenario_id": "style-02",
+    "category": "style",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_5355fdad3e664241a740e3ad3974f5a9",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"element\": {\"color\": \"red\", \"text\": \"Invoice\", \"type\": \"text\", \"w\": 200, \"x\": 30, \"y\": 30}, \"operation\": \"update\"}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2159,
+        "output_tokens": 68
+      }
+    },
+    "errors": [
+      "editor_patch",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 5489
+  },
+  {
+    "scenario_id": "movement-02",
+    "category": "movement",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_5d335cc63aec4f87806c2143fa4cfcfd",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"dx\": 11, \"evidence\": \"header_title\", \"h\": 40, \"operation\": \"move\", \"w\": 200, \"x\": 30, \"y\": 30}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2165,
+        "output_tokens": 68
+      }
+    },
+    "errors": [
+      "editor_patch",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 5672
+  },
+  {
+    "scenario_id": "undo_redo-02",
+    "category": "undo_redo",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_ce24588b18c54b5fa35635d142022f29",
+            "type": "function",
+            "function": {
+              "name": "redo_document",
+              "arguments": "{}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2159,
+        "output_tokens": 16
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 1679
+  },
+  {
+    "scenario_id": "user_correction-02",
+    "category": "user_correction",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_d5844098057b49f1906f961370a8cf2c",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"element\": {\"fontSize\": 24, \"h\": 40, \"text\": \"+14155550301\", \"type\": \"text\", \"w\": 200, \"x\": 30, \"y\": 30}, \"operation\": \"update\"}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2223,
+        "output_tokens": 86
+      }
+    },
+    "errors": [
+      "field:clientPhone",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 7047
+  },
+  {
+    "scenario_id": "side_question-02",
+    "category": "side_question",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "The \"net 30 payment terms\" indicate that the client is allowed to pay within 30 days from the date of the invoice. If the payment is made within this period, the full amount is due. If the payment is not made within 30 days, a late fee may apply. This is a common term used in business transactions to manage cash flow."
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2162,
+        "output_tokens": 77
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 52875
+  },
+  {
+    "scenario_id": "missing_field-02",
+    "category": "missing_field",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "The request to add 2 monitors and determine the unit price is not fully clear. Could you please specify the unit price for the monitors and confirm if you want to add them to the invoice?"
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2166,
+        "output_tokens": 40
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 4991
+  },
+  {
+    "scenario_id": "session_persistence-02",
+    "category": "session_persistence",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_8c62198b5f894fdb928fc2616f108e30",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"taxRate\", \"rawValue\": \"13%\", \"suggestedValue\": \"13%\", \"reason\": \"Change tax rate to 13%\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2193,
+        "output_tokens": 51
+      }
+    },
+    "errors": [
+      "field:taxRate",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 51217
+  },
+  {
+    "scenario_id": "ambiguous-02",
+    "category": "ambiguous",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_536edd4d5c4340c3aa4566775da7dbea",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"element\": {\"fontSize\": 12, \"h\": 20, \"operation\": \"update\", \"patch\": {\"color\": \"black\", \"fill\": \"black\", \"fontSize\": 12, \"hidden\": false, \"italic\": false, \"opacity\": 1, \"rotation\": 0, \"scale\": 1, \"stroke\": \"black\", \"strokeWidth\": 1, \"text\": \"123-456-7890\", \"underline\": false, \"w\": 100, \"x\": 30, \"y\": 100}, \"text\": \"senderPhone\", \"type\": \"text\", \"w\": 100, \"x\": 30, \"y\": 100}}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2211,
+        "output_tokens": 187
+      }
+    },
+    "errors": [
+      "unexpected_mutation",
+      "missing_clarification",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 26800
+  },
+  {
+    "scenario_id": "document_creation-03",
+    "category": "document_creation",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_TIMEOUT",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 90093
+  },
+  {
+    "scenario_id": "multi_field-03",
+    "category": "multi_field",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_989c497b6bc8462082f18a3b30be6418",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"clientName\", \"rawValue\": \"John\", \"suggestedValue\": \"Mary\", \"reason\": \"Updating client name to Mary\"}"
+            }
+          },
+          {
+            "id": "call_220f9aa3fb8f42c08430ea185b9f99c4",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"taxRate\", \"rawValue\": 0, \"suggestedValue\": 5, \"reason\": \"Updating tax rate to 5%\"}"
+            }
+          },
+          {
+            "id": "call_1b306d1da00f4ce1a8517bc04cd1a18f",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"invoiceNumber\", \"rawValue\": \"INV-001\", \"suggestedValue\": \"BILL-22\", \"reason\": \"Updating invoice number to BILL-22\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2173,
+        "output_tokens": 149
+      }
+    },
+    "errors": [
+      "field:clientName",
+      "field:taxRate",
+      "field:invoiceNumber",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 15175
+  },
+  {
+    "scenario_id": "grammar-03",
+    "category": "grammar",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_c4ac81ed19d94b39a7eea573e430fc18",
+            "type": "function",
+            "function": {
+              "name": "propose_language_correction",
+              "arguments": "{\"reason\": \"Spelling errors in 'recieve' and 'prodcts'\", \"field\": \"notesAndTerms\", \"original\": \"We will recieve 3 prodcts within seven days.\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2172,
+        "output_tokens": 58
+      }
+    },
+    "errors": [
+      "language_suggestion",
+      "production_schema:propose_language_correction"
+    ],
+    "passed": false,
+    "latency_ms": 21647
+  },
+  {
+    "scenario_id": "party_mapping-03",
+    "category": "party_mapping",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_0c76eccb94d54f45862d849a448ffcb1",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"businessName\", \"rawValue\": \"Bluebird\", \"suggestedValue\": \"Bluebird\", \"reason\": \"Company name provided\"}"
+            }
+          },
+          {
+            "id": "call_843178a0310446d8affc6cc7bb19f6e6",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"suggestedValue\": \"Mary\", \"reason\": \"Customer name provided\", \"field\": \"clientName\", \"rawValue\": \"Mary\"}"
+            }
+          },
+          {
+            "id": "call_e17c317c29094472b0d4fbda1e68410c",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"senderPhone\", \"rawValue\": \"+14155550102\", \"suggestedValue\": \"+14155550102\", \"reason\": \"Business phone provided\"}"
+            }
+          },
+          {
+            "id": "call_c81a0d7f12574595a273f2da52682e37",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"rawValue\": \"+14155550202\", \"suggestedValue\": \"+14155550202\", \"reason\": \"Customer phone provided\", \"field\": \"clientPhone\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2198,
+        "output_tokens": 211
+      }
+    },
+    "errors": [
+      "field:businessName",
+      "field:clientName",
+      "field:senderPhone",
+      "field:clientPhone",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 25935
+  },
+  {
+    "scenario_id": "tax-03",
+    "category": "tax",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_773bb9f1234b43c783ff9254a5da6c00",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"suggestedValue\": \"7\", \"reason\": \"Tax rate updated to 7 percent\", \"field\": \"taxRate\", \"rawValue\": \"7\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2163,
+        "output_tokens": 48
+      }
+    },
+    "errors": [
+      "field:taxRate",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 4664
+  },
+  {
+    "scenario_id": "discount-03",
+    "category": "discount",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_e7b75531525849a7b2c5f237a63af894",
+            "type": "function",
+            "function": {
+              "name": "propose_language_correction",
+              "arguments": "{\"reason\": \"Apply a 4% discount to the whole invoice.\", \"suggested\": \"4%\", \"field\": \"discountRate\", \"original\": \"4%\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2164,
+        "output_tokens": 52
+      }
+    },
+    "errors": [
+      "field:discountRate",
+      "production_schema:propose_language_correction"
+    ],
+    "passed": false,
+    "latency_ms": 5102
+  },
+  {
+    "scenario_id": "item_add-03",
+    "category": "item_add",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 8230
+  },
+  {
+    "scenario_id": "item_remove-03",
+    "category": "item_remove",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 40265
+  },
+  {
+    "scenario_id": "style-03",
+    "category": "style",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_6fd7ab9f11b347b1acea46c30104f08d",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"element\": {\"color\": \"green\", \"h\": 40, \"text\": \"Invoice\", \"type\": \"text\", \"w\": 200, \"x\": 30, \"y\": 30}, \"operation\": \"update\"}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2159,
+        "output_tokens": 75
+      }
+    },
+    "errors": [
+      "editor_patch",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 84066
+  },
+  {
+    "scenario_id": "movement-03",
+    "category": "movement",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 8782
+  },
+  {
+    "scenario_id": "undo_redo-03",
+    "category": "undo_redo",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_536a0d545f9e4376b5b5adc56980dd1e",
+            "type": "function",
+            "function": {
+              "name": "undo_document",
+              "arguments": "{}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2158,
+        "output_tokens": 16
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 2330
+  },
+  {
+    "scenario_id": "user_correction-03",
+    "category": "user_correction",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_5ed07dbf539a4db593ad1b97968b6be3",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"element\": {\"fontSize\": 24, \"h\": 40, \"text\": \"+14155550302\", \"type\": \"text\", \"w\": 200, \"x\": 30, \"y\": 30}, \"operation\": \"update\"}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2223,
+        "output_tokens": 86
+      }
+    },
+    "errors": [
+      "field:clientPhone",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 8154
+  },
+  {
+    "scenario_id": "side_question-03",
+    "category": "side_question",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "A due date is useful because it helps ensure that both the sender and recipient understand when a payment or service is expected. It provides clarity and helps avoid misunderstandings or late payments."
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2160,
+        "output_tokens": 37
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 4666
+  },
+  {
+    "scenario_id": "missing_field-03",
+    "category": "missing_field",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "The request to add 3 monitors with an unspecified unit price is ambiguous. Please provide the unit price for the monitors so that the invoice can be accurately updated."
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2166,
+        "output_tokens": 33
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 3221
+  },
+  {
+    "scenario_id": "session_persistence-03",
+    "category": "session_persistence",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_04b3462b3b33448f81e62310c1bbbfcf",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"taxRate\", \"rawValue\": \"0\", \"suggestedValue\": \"14%\", \"reason\": \"Changing tax rate to 14%\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2193,
+        "output_tokens": 50
+      }
+    },
+    "errors": [
+      "field:taxRate",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 26402
+  },
+  {
+    "scenario_id": "ambiguous-03",
+    "category": "ambiguous",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "The instruction \"Move that to the left\" is ambiguous and does not specify which element should be moved or what direction it should be moved. Please clarify which element you would like to move and in what direction."
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2212,
+        "output_tokens": 43
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 6027
+  },
+  {
+    "scenario_id": "document_creation-04",
+    "category": "document_creation",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_a5e942c5f9e34c58ba02445195f3d0c2",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"clientName\", \"rawValue\": \"Sam\", \"suggestedValue\": \"Sam\", \"reason\": \"Client name provided.\"}"
+            }
+          },
+          {
+            "id": "call_60b324f61f944ff5b4e327a024c86173",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"invoiceNumber\", \"rawValue\": \"INV-13\", \"suggestedValue\": \"INV-13\", \"reason\": \"Invoice number provided.\"}"
+            }
+          },
+          {
+            "id": "call_12f7b7ef069f44a58ae0a55e8779a3b2",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"invoiceNumber\", \"rawValue\": \"INV-13\", \"suggestedValue\": \"INV-13\", \"reason\": \"Invoice number provided.\"}"
+            }
+          },
+          {
+            "id": "call_42bd8b90fd254dbabd741727d7354bd0",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"suggestedValue\": \"INV-13\", \"reason\": \"Invoice number provided.\", \"field\": \"invoiceNumber\", \"rawValue\": \"INV-13\"}"
+            }
+          },
+          {
+            "id": "call_ad9943124254496d974480cfa27c2bcb",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"invoiceNumber\", \"rawValue\": \"INV-13\", \"suggestedValue\": \"INV-13\", \"reason\": \"Invoice number provided.\"}"
+            }
+          },
+          {
+            "id": "call_bd916c7feb234157901ccf4f1d1eaa8b",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"rawValue\": \"INV-13\", \"suggestedValue\": \"INV-13\", \"reason\": \"Invoice number provided.\", \"field\": \"invoiceNumber\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2055,
+        "output_tokens": 289
+      }
+    },
+    "errors": [
+      "field:businessName",
+      "field:clientName",
+      "field:invoiceNumber",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 28195
+  },
+  {
+    "scenario_id": "multi_field-04",
+    "category": "multi_field",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_b979f9aef4844d19afd93f060f6ecf2b",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"clientName\", \"rawValue\": \"John\", \"suggestedValue\": \"Sam\", \"reason\": \"Updating client name to Sam\"}"
+            }
+          },
+          {
+            "id": "call_425e17a38c424ab9a8c4c62377b8d170",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"taxRate\", \"rawValue\": 0, \"suggestedValue\": 6, \"reason\": \"Updating tax rate to 6%\"}"
+            }
+          },
+          {
+            "id": "call_4039304977144127b943e9ba382c5e75",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"invoiceNumber\", \"rawValue\": \"INV-001\", \"suggestedValue\": \"BILL-23\", \"reason\": \"Updating invoice number to BILL-23\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2173,
+        "output_tokens": 149
+      }
+    },
+    "errors": [
+      "field:clientName",
+      "field:taxRate",
+      "field:invoiceNumber",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 15174
+  },
+  {
+    "scenario_id": "grammar-04",
+    "category": "grammar",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_330b8c765db249a1b23c2c132295b3e8",
+            "type": "function",
+            "function": {
+              "name": "propose_language_correction",
+              "arguments": "{\"field\": \"notesAndTerms\", \"original\": \"We will recieve 4 prodcts within seven days.\", \"suggested\": \"We will receive 4 products within seven days.\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2172,
+        "output_tokens": 56
+      }
+    },
+    "errors": [
+      "production_schema:propose_language_correction"
+    ],
+    "passed": false,
+    "latency_ms": 4875
+  },
+  {
+    "scenario_id": "party_mapping-04",
+    "category": "party_mapping",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_e05cff10499549ec939ee0084b9ab6e2",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"rawValue\": \"Orion\", \"suggestedValue\": \"Orion\", \"reason\": \"Company name provided.\", \"field\": \"businessName\"}"
+            }
+          },
+          {
+            "id": "call_38c809bea1174469a0259ec6cd8aa35a",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"clientName\", \"rawValue\": \"Sam\", \"suggestedValue\": \"Sam\", \"reason\": \"Customer name provided.\"}"
+            }
+          },
+          {
+            "id": "call_a659f811969d4126aab4c367d5d9e12a",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"senderPhone\", \"rawValue\": \"+14155550103\", \"suggestedValue\": \"+14155550103\", \"reason\": \"Business phone provided.\"}"
+            }
+          },
+          {
+            "id": "call_f664217a35394f9da1492953ee820d2f",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"rawValue\": \"+14155550203\", \"suggestedValue\": \"+14155550203\", \"reason\": \"Customer phone provided.\", \"field\": \"clientPhone\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2197,
+        "output_tokens": 216
+      }
+    },
+    "errors": [
+      "field:businessName",
+      "field:clientName",
+      "field:senderPhone",
+      "field:clientPhone",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 17136
+  },
+  {
+    "scenario_id": "tax-04",
+    "category": "tax",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_521deb14c7ed474ab99b32e285fccc99",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"suggestedValue\": \"8\", \"reason\": \"Tax rate updated to 8 percent\", \"field\": \"taxRate\", \"rawValue\": \"8\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2163,
+        "output_tokens": 48
+      }
+    },
+    "errors": [
+      "field:taxRate",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 4030
+  },
+  {
+    "scenario_id": "discount-04",
+    "category": "discount",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_cf050e28af914e36a310242bd7d95d6b",
+            "type": "function",
+            "function": {
+              "name": "propose_language_correction",
+              "arguments": "{\"field\": \"discountRate\", \"original\": \"5%\", \"reason\": \"Apply a 5% discount to the whole invoice.\", \"suggested\": \"5%\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2164,
+        "output_tokens": 52
+      }
+    },
+    "errors": [
+      "field:discountRate",
+      "production_schema:propose_language_correction"
+    ],
+    "passed": false,
+    "latency_ms": 4368
+  },
+  {
+    "scenario_id": "item_add-04",
+    "category": "item_add",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 4847
+  },
+  {
+    "scenario_id": "item_remove-04",
+    "category": "item_remove",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 3053
+  },
+  {
+    "scenario_id": "style-04",
+    "category": "style",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 3685
+  },
+  {
+    "scenario_id": "movement-04",
+    "category": "movement",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_fea5f467f15a459892a5bf705c44ed29",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"evidence\": \"selected heading\", \"operation\": \"move\", \"patch\": {\"x\": 13}}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2165,
+        "output_tokens": 43
+      }
+    },
+    "errors": [
+      "editor_patch",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 3779
+  },
+  {
+    "scenario_id": "undo_redo-04",
+    "category": "undo_redo",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_2dbd28ffea74496695c49159eb27e511",
+            "type": "function",
+            "function": {
+              "name": "redo_document",
+              "arguments": "{}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2159,
+        "output_tokens": 16
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 2045
+  },
+  {
+    "scenario_id": "user_correction-04",
+    "category": "user_correction",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_979b6eb97eae4cd2909b48269ac7c5f3",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"element\": {\"fontSize\": 24, \"h\": 40, \"text\": \"+14155550303\", \"type\": \"text\", \"w\": 200, \"x\": 30, \"y\": 30}, \"operation\": \"update\"}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2223,
+        "output_tokens": 86
+      }
+    },
+    "errors": [
+      "field:clientPhone",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 6924
+  },
+  {
+    "scenario_id": "side_question-04",
+    "category": "side_question",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "A purchase order is a document issued by a buyer to a seller that specifies the details of a purchase, such as the items being bought, the quantity, the price, and the delivery date. It serves as a formal request for the seller to deliver the specified goods or services, and it helps ensure that both parties understand the terms and conditions of the transaction."
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2160,
+        "output_tokens": 73
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 5736
+  },
+  {
+    "scenario_id": "missing_field-04",
+    "category": "missing_field",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "The request to add 4 monitors with an unspecified unit price is ambiguous. Please provide the unit price for the monitors so that the invoice can be accurately updated."
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2166,
+        "output_tokens": 33
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 3105
+  },
+  {
+    "scenario_id": "session_persistence-04",
+    "category": "session_persistence",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_a4ee9d4af3ed4749a9178a42db51c408",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"taxRate\", \"rawValue\": \"15%\", \"suggestedValue\": \"15%\", \"reason\": \"Change tax rate to 15%\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2192,
+        "output_tokens": 51
+      }
+    },
+    "errors": [
+      "field:taxRate",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 23892
+  },
+  {
+    "scenario_id": "ambiguous-04",
+    "category": "ambiguous",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "I need to clarify the specific amount you'd like to make smaller. Could you please specify which amount you mean?"
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2211,
+        "output_tokens": 24
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 2783
+  },
+  {
+    "scenario_id": "document_creation-05",
+    "category": "document_creation",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_9061a0d14ab74cd4a25dc6e9b988c0cf",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"businessName\", \"rawValue\": \"Bright Labs\", \"suggestedValue\": \"Bright Labs\", \"reason\": \"Business name provided.\"}"
+            }
+          },
+          {
+            "id": "call_ba63332266c3463da56f22c4f13c7a7e",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"clientName\", \"rawValue\": \"Priya\", \"suggestedValue\": \"Priya\", \"reason\": \"Client name provided.\"}"
+            }
+          },
+          {
+            "id": "call_18ffe8a00100466c880d480796201806",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"rawValue\": \"INV-14\", \"suggestedValue\": \"INV-14\", \"reason\": \"Invoice number provided.\", \"field\": \"invoiceNumber\"}"
+            }
+          },
+          {
+            "id": "call_ea9b483e9e1e416ca01fe4c1b8f020e4",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"issueDate\", \"rawValue\": \"Today\", \"suggestedValue\": \"Today\", \"reason\": \"Issue date provided.\"}"
+            }
+          },
+          {
+            "id": "call_a1cc7cc50d3c482284eecf73a5bee88a",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"subject\", \"rawValue\": \"Invoice\", \"suggestedValue\": \"Invoice\", \"reason\": \"Subject provided.\"}"
+            }
+          },
+          {
+            "id": "call_dc05a668576843f89152f7fba7b52a55",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"element\": {\"fontSize\": 24, \"h\": 40, \"text\": \"Invoice\", \"type\": \"text\", \"w\": 200, \"x\": 30, \"y\": 30}, \"operation\": \"add\"}]}"
+            }
+          },
+          {
+            "id": "call_f054e2c20f5c41e89289e43dd902babc",
+            "type": "function",
+            "function": {
+              "name": "propose_language_correction",
+              "arguments": "{\"field\": \"subject\", \"original\": \"Invoice\", \"reason\": \"Subject provided.\", \"suggested\": \"Invoice\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2057,
+        "output_tokens": 338
+      }
+    },
+    "errors": [
+      "field:businessName",
+      "field:clientName",
+      "field:invoiceNumber",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 25138
+  },
+  {
+    "scenario_id": "multi_field-05",
+    "category": "multi_field",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_2982a0f8833749dca69c9c2a252cd677",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"clientName\", \"rawValue\": \"Priya\", \"suggestedValue\": \"Priya\", \"reason\": \"Updating client name to Priya\"}"
+            }
+          },
+          {
+            "id": "call_9b89fbd5a353475baa4e9c2dd01d3ae7",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"rawValue\": 0, \"suggestedValue\": 7, \"reason\": \"Updating tax rate to 7%\", \"field\": \"taxRate\"}"
+            }
+          },
+          {
+            "id": "call_470e2f34b6ab4437b25e2393676d9ab3",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"invoiceNumber\", \"rawValue\": \"INV-001\", \"suggestedValue\": \"BILL-24\", \"reason\": \"Updating invoice number to BILL-24\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2174,
+        "output_tokens": 152
+      }
+    },
+    "errors": [
+      "field:clientName",
+      "field:taxRate",
+      "field:invoiceNumber",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 11711
+  },
+  {
+    "scenario_id": "grammar-05",
+    "category": "grammar",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_249f43dfd4154928b17306b6ad1cf10d",
+            "type": "function",
+            "function": {
+              "name": "propose_language_correction",
+              "arguments": "{\"field\": \"notesAndTerms\", \"original\": \"We will recieve 5 prodcts within seven days.\", \"suggested\": \"We will receive 5 products within seven days.\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2172,
+        "output_tokens": 56
+      }
+    },
+    "errors": [
+      "production_schema:propose_language_correction"
+    ],
+    "passed": false,
+    "latency_ms": 4766
+  },
+  {
+    "scenario_id": "party_mapping-05",
+    "category": "party_mapping",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_41ffadf6bd9f4bf7b720baaeeaad77b8",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"senderPhone\", \"rawValue\": \"+14155550104\", \"suggestedValue\": \"+14155550104\", \"reason\": \"Business phone provided\"}"
+            }
+          },
+          {
+            "id": "call_697bbdb28d23480e9d167621999c267a",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"suggestedValue\": \"+14155550204\", \"reason\": \"Customer phone provided\", \"field\": \"clientPhone\", \"rawValue\": \"+14155550204\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2199,
+        "output_tokens": 128
+      }
+    },
+    "errors": [
+      "field:businessName",
+      "field:clientName",
+      "field:senderPhone",
+      "field:clientPhone",
+      "production_schema:update_slots",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 11033
+  },
+  {
+    "scenario_id": "tax-05",
+    "category": "tax",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_d4c71e934fb04d1abd8db4043597ed0d",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"rawValue\": \"9\", \"suggestedValue\": \"9\", \"reason\": \"Tax rate updated to 9 percent\", \"field\": \"taxRate\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2163,
+        "output_tokens": 48
+      }
+    },
+    "errors": [
+      "field:taxRate",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 4053
+  },
+  {
+    "scenario_id": "discount-05",
+    "category": "discount",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_a5371510da0d42fca34bb3559579d235",
+            "type": "function",
+            "function": {
+              "name": "propose_language_correction",
+              "arguments": "{\"field\": \"discountRate\", \"original\": \"6%\", \"reason\": \"Apply a 6% discount to the whole invoice.\", \"suggested\": \"6%\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2164,
+        "output_tokens": 52
+      }
+    },
+    "errors": [
+      "field:discountRate",
+      "production_schema:propose_language_correction"
+    ],
+    "passed": false,
+    "latency_ms": 4403
+  },
+  {
+    "scenario_id": "item_add-05",
+    "category": "item_add",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 4725
+  },
+  {
+    "scenario_id": "item_remove-05",
+    "category": "item_remove",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 2322
+  },
+  {
+    "scenario_id": "style-05",
+    "category": "style",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 3439
+  },
+  {
+    "scenario_id": "movement-05",
+    "category": "movement",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 10261
+  },
+  {
+    "scenario_id": "undo_redo-05",
+    "category": "undo_redo",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_d5fe64c93ddd4b21b7d420b4482d874f",
+            "type": "function",
+            "function": {
+              "name": "undo_document",
+              "arguments": "{}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2158,
+        "output_tokens": 16
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 1592
+  },
+  {
+    "scenario_id": "user_correction-05",
+    "category": "user_correction",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_22e9612901a14929b49eedd2057f669e",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"element\": {\"fontSize\": 24, \"h\": 40, \"text\": \"Client Phone\", \"type\": \"text\", \"w\": 200, \"x\": 30, \"y\": 30}, \"evidence\": \"+14155550304\", \"operation\": \"update\"}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2223,
+        "output_tokens": 94
+      }
+    },
+    "errors": [
+      "field:clientPhone"
+    ],
+    "passed": false,
+    "latency_ms": 7622
+  },
+  {
+    "scenario_id": "side_question-05",
+    "category": "side_question",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "A receipt is a document that confirms a transaction, typically showing the details of a purchase, such as the items bought, the amount paid, and the date of the transaction. It is usually issued by the seller to the customer to confirm that the transaction has been completed.\n\nAn invoice, on the other hand, is a document that is issued by the seller to the customer to request payment for goods or services provided. It typically includes details such as the date of the transaction, the amount due, the terms of payment, and the contact information of both parties. An invoice is usually sent before the transaction is completed, while a receipt is issued after the transaction is completed.\n\nIn summary, the main difference between a receipt and an invoice is that a receipt confirms a completed transaction, while an invoice is a request for payment for a transaction that has not yet been completed."
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2162,
+        "output_tokens": 174
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 13015
+  },
+  {
+    "scenario_id": "missing_field-05",
+    "category": "missing_field",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "The request to add 5 monitors with an unspecified unit price is ambiguous. Please provide the unit price for the monitors so that the invoice can be accurately updated."
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2166,
+        "output_tokens": 33
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 3443
+  },
+  {
+    "scenario_id": "session_persistence-05",
+    "category": "session_persistence",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_6205501ae99749e69772e21eaa1621b9",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"taxRate\", \"rawValue\": \"0\", \"suggestedValue\": \"16%\", \"reason\": \"Changing tax rate to 16%\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2195,
+        "output_tokens": 50
+      }
+    },
+    "errors": [
+      "field:taxRate",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 23653
+  },
+  {
+    "scenario_id": "ambiguous-05",
+    "category": "ambiguous",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_765a7aaf72e843a4ac9ce218cd17f803",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"clientAddress\", \"rawValue\": \"1234 Main Street\", \"suggestedValue\": \"1234 Main Street\", \"reason\": \"Change their address.\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2210,
+        "output_tokens": 55
+      }
+    },
+    "errors": [
+      "unexpected_mutation",
+      "missing_clarification",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 4678
+  },
+  {
+    "scenario_id": "document_creation-06",
+    "category": "document_creation",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_79581fd760ee419786e01908af3b2492",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"businessName\", \"rawValue\": \"Cedar\", \"suggestedValue\": \"Cedar\", \"reason\": \"Updating business name to 'Cedar'\"}"
+            }
+          },
+          {
+            "id": "call_a5f57d93df2640859802f9cceb98f707",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"clientName\", \"rawValue\": \"Noah\", \"suggestedValue\": \"Noah\", \"reason\": \"Updating client name to 'Noah'\"}"
+            }
+          },
+          {
+            "id": "call_d1a8043193de4020a5e37d60285cd7f2",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"reason\": \"Updating invoice number to 'INV-15'\", \"field\": \"invoiceNumber\", \"rawValue\": \"INV-15\", \"suggestedValue\": \"INV-15\"}"
+            }
+          },
+          {
+            "id": "call_396e4f02689549c7b3ee93fce9fd0414",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"suggestedValue\": \"Invoice\", \"reason\": \"Updating subject to 'Invoice'\", \"field\": \"subject\", \"rawValue\": \"Invoice\"}"
+            }
+          },
+          {
+            "id": "call_701d4a1b230248a89005f4adcc5f9cee",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"locale\", \"rawValue\": \"en\", \"suggestedValue\": \"en\", \"reason\": \"Updating locale to 'en'\"}"
+            }
+          },
+          {
+            "id": "call_d49937f2cf134462bd2928b809b966bb",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"dateFormat\", \"rawValue\": \"MM/DD/YYYY\", \"suggestedValue\": \"MM/DD/YYYY\", \"reason\": \"Updating date format to 'MM/DD/YYYY'\"}"
+            }
+          },
+          {
+            "id": "call_4093a0a3416b4f9db6ad6de45ef1c4d2",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"lineItems\", \"rawValue\": [], \"suggestedValue\": [], \"reason\": \"Updating line items to empty array\"}"
+            }
+          },
+          {
+            "id": "call_f0488374524e45c29d0c841cff35b9bf",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"currency\", \"rawValue\": \"USD\", \"suggestedValue\": \"USD\", \"reason\": \"Updating currency to 'USD'\"}"
+            }
+          },
+          {
+            "id": "call_cc4d3620ddaf4b459cb31fd9e9714138",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"paymentMethod\", \"rawValue\": \"PayPal\", \"suggestedValue\": \"PayPal\", \"reason\": \"Updating payment method to 'PayPal'\"}"
+            }
+          },
+          {
+            "id": "call_b592e3f8e47241cea5563c499899a752",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"paymentTerms\", \"rawValue\": \"Net 30\", \"suggestedValue\": \"Net 30\", \"reason\": \"Updating payment terms to 'Net 30'\"}"
+            }
+          },
+          {
+            "id": "call_3884482e6ffe4e43a8e12d5dffe7b6e8",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"notesAndTerms\", \"rawValue\": \"Please pay within 30 days.\", \"suggestedValue\": \"Please pay within 30 days.\", \"reason\": \"Updating notes and terms to 'Please pay within 30 days.'\"}"
+            }
+          },
+          {
+            "id": "call_6158379df834468da8b37a2bad7983de",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"rawValue\": \"\", \"suggestedValue\": \"\", \"reason\": \"Updating account details to empty string\", \"field\": \"accountDetails\"}"
+            }
+          },
+          {
+            "id": "call_4dea8f2647c143dfa30f2d0e481de221",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"rawValue\": \"Exempt\", \"suggestedValue\": \"Exempt\", \"reason\": \"Updating tax status to 'Exempt'\", \"field\": \"taxStatus\"}"
+            }
+          },
+          {
+            "id": "call_da584caeb39e471da39f4fc48a187877",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"discountRate\", \"rawValue\": 0, \"suggestedValue\": 0, \"reason\": \"Updating discount rate to 0%\"}"
+            }
+          },
+          {
+            "id": "call_8f8a25bec1ed4c6dbbb50a0611dde1ee",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"discountFixedAmount\", \"rawValue\": 0, \"suggestedValue\": 0, \"reason\": \"Updating fixed discount amount to 0\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "length",
+      "usage": {
+        "input_tokens": 2055,
+        "output_tokens": 768
+      }
+    },
+    "errors": [
+      "field:businessName",
+      "field:clientName",
+      "field:invoiceNumber",
+      "output_truncated",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 56693
+  },
+  {
+    "scenario_id": "multi_field-06",
+    "category": "multi_field",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_a08b30dd8e3b4e65b953beafc5f88a84",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"suggestedValue\": \"Noah\", \"reason\": \"Updating client name to Noah\", \"field\": \"clientName\", \"rawValue\": \"John\"}"
+            }
+          },
+          {
+            "id": "call_53b4c5aca4e14ac392dadfe040ae450d",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"rawValue\": 0, \"suggestedValue\": 8, \"reason\": \"Updating tax rate to 8%\", \"field\": \"taxRate\"}"
+            }
+          },
+          {
+            "id": "call_dbcbf7177d514198a087943b46600c71",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"reason\": \"Updating invoice number to BILL-25\", \"field\": \"invoiceNumber\", \"rawValue\": \"INV-001\", \"suggestedValue\": \"BILL-25\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2173,
+        "output_tokens": 150
+      }
+    },
+    "errors": [
+      "field:clientName",
+      "field:taxRate",
+      "field:invoiceNumber",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 11380
+  },
+  {
+    "scenario_id": "grammar-06",
+    "category": "grammar",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_011eb99c11974ac3875c36d3cd082726",
+            "type": "function",
+            "function": {
+              "name": "propose_language_correction",
+              "arguments": "{\"reason\": \"Spelling error in 'recieve' and 'prodcts'.\", \"field\": \"notesAndTerms\", \"original\": \"We will recieve 6 prodcts within seven days.\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2172,
+        "output_tokens": 59
+      }
+    },
+    "errors": [
+      "language_suggestion",
+      "production_schema:propose_language_correction"
+    ],
+    "passed": false,
+    "latency_ms": 6591
+  },
+  {
+    "scenario_id": "party_mapping-06",
+    "category": "party_mapping",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_9ce34d7af1e54b0f92d65e97db79b533",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"businessName\", \"rawValue\": \"Cedar\", \"suggestedValue\": \"Cedar\", \"reason\": \"Company name provided\"}"
+            }
+          },
+          {
+            "id": "call_d54c64218aa14abb9650a3633f5f7c73",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"clientName\", \"rawValue\": \"Noah\", \"suggestedValue\": \"Noah\", \"reason\": \"Customer name provided\"}"
+            }
+          },
+          {
+            "id": "call_c12ae7982872414fab36be72f0cf8780",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"rawValue\": \"+14155550105\", \"suggestedValue\": \"+14155550105\", \"reason\": \"Business phone provided\", \"field\": \"senderPhone\"}"
+            }
+          },
+          {
+            "id": "call_637af4184adc4b6ca8a1e44b77a54d2c",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"reason\": \"Customer phone provided\", \"field\": \"clientPhone\", \"rawValue\": \"+14155550205\", \"suggestedValue\": \"+14155550205\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2197,
+        "output_tokens": 213
+      }
+    },
+    "errors": [
+      "field:businessName",
+      "field:clientName",
+      "field:senderPhone",
+      "field:clientPhone",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 17158
+  },
+  {
+    "scenario_id": "tax-06",
+    "category": "tax",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_539a9312d6b740749062585a4efe6ffd",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"reason\": \"User requested to change tax rate to 10 percent\", \"field\": \"taxRate\", \"rawValue\": \"0\", \"suggestedValue\": \"10\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2164,
+        "output_tokens": 53
+      }
+    },
+    "errors": [
+      "field:taxRate",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 4402
+  },
+  {
+    "scenario_id": "discount-06",
+    "category": "discount",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_205a3bb258214e968fac6cb27023093e",
+            "type": "function",
+            "function": {
+              "name": "propose_language_correction",
+              "arguments": "{\"field\": \"discountRate\", \"original\": \"7%\", \"reason\": \"Apply a 7% discount to the whole invoice.\", \"suggested\": \"7%\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2164,
+        "output_tokens": 52
+      }
+    },
+    "errors": [
+      "field:discountRate",
+      "production_schema:propose_language_correction"
+    ],
+    "passed": false,
+    "latency_ms": 4411
+  },
+  {
+    "scenario_id": "item_add-06",
+    "category": "item_add",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 4882
+  },
+  {
+    "scenario_id": "item_remove-06",
+    "category": "item_remove",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_112818fb742447aebc15b6bee0bcd2cd",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"element\": {\"id\": \"mouse\", \"type\": \"element\"}, \"operation\": \"remove\"}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2160,
+        "output_tokens": 40
+      }
+    },
+    "errors": [
+      "item_operation",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 3457
+  },
+  {
+    "scenario_id": "style-06",
+    "category": "style",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 3714
+  },
+  {
+    "scenario_id": "movement-06",
+    "category": "movement",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 9729
+  },
+  {
+    "scenario_id": "undo_redo-06",
+    "category": "undo_redo",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_5d2dad241fd24542a22202914e17267d",
+            "type": "function",
+            "function": {
+              "name": "redo_document",
+              "arguments": "{}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2159,
+        "output_tokens": 16
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 1764
+  },
+  {
+    "scenario_id": "user_correction-06",
+    "category": "user_correction",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_a48a50fa762c405eb10e3cc5e8850b4f",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"element\": {\"fontSize\": 24, \"h\": 40, \"text\": \"+14155550305\", \"type\": \"text\", \"w\": 200, \"x\": 30, \"y\": 30}, \"operation\": \"update\"}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2223,
+        "output_tokens": 86
+      }
+    },
+    "errors": [
+      "field:clientPhone",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 6874
+  },
+  {
+    "scenario_id": "side_question-06",
+    "category": "side_question",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "Numbering invoices is important for several reasons:\n\n1. **Organization**: It helps in keeping track of invoices, making it easier to locate and manage them.\n2. **Accounting and Bookkeeping**: Numbers allow for accurate recording in accounting systems.\n3. **Client Management**: Clients often expect invoices to be numbered for easy reference.\n4. **Legal and Compliance Purposes**: Numbers can be useful for legal documentation and compliance.\n5. **Tracking Payments**: Numbers help in tracking when payments are made.\n\nIf you are using a system like Nexora, numbering invoices is a standard practice to ensure clarity and ease of reference. If you have any specific concerns or need further assistance with invoice numbering, feel free to ask!"
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2160,
+        "output_tokens": 144
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 11068
+  },
+  {
+    "scenario_id": "missing_field-06",
+    "category": "missing_field",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "The request to add 6 monitors with an unspecified unit price is ambiguous. Please provide the unit price for the monitors so that the invoice can be accurately prepared."
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2166,
+        "output_tokens": 33
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 3065
+  },
+  {
+    "scenario_id": "session_persistence-06",
+    "category": "session_persistence",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_aa467de77d134e158d062a298bcb0440",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"taxRate\", \"rawValue\": 0, \"suggestedValue\": 17, \"reason\": \"Change tax rate to 17%\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2193,
+        "output_tokens": 50
+      }
+    },
+    "errors": [
+      "field:taxRate",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 23741
+  },
+  {
+    "scenario_id": "ambiguous-06",
+    "category": "ambiguous",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_048a7fec177540a49982bf317c683656",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"color\": \"other\", \"element\": {\"fontSize\": 24, \"h\": 40, \"text\": \"Invoice\", \"type\": \"text\", \"w\": 200, \"x\": 30, \"y\": 30}, \"operation\": \"update\"}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2211,
+        "output_tokens": 82
+      }
+    },
+    "errors": [
+      "unexpected_mutation",
+      "missing_clarification",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 6289
+  },
+  {
+    "scenario_id": "document_creation-07",
+    "category": "document_creation",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_1a750003ceb241d3aaafe8290009c90a",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"reason\": \"Updating business name to 'Atlas'.\", \"field\": \"businessName\", \"rawValue\": \"Atlas\", \"suggestedValue\": \"Atlas\"}"
+            }
+          },
+          {
+            "id": "call_d6eed259de15462c8ab45363330e05cb",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"suggestedValue\": \"Iris\", \"reason\": \"Updating client name to 'Iris'.\", \"field\": \"clientName\", \"rawValue\": \"Iris\"}"
+            }
+          },
+          {
+            "id": "call_0a6e7eb2ce474ca883da266acaa5396c",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"invoiceNumber\", \"rawValue\": \"INV-16\", \"suggestedValue\": \"INV-16\", \"reason\": \"Updating invoice number to 'INV-16'.\"}"
+            }
+          },
+          {
+            "id": "call_e09be97c2ba648ad9e2a6f2c6b7565d8",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"reason\": \"Updating subject to 'Invoice'.\", \"field\": \"subject\", \"rawValue\": \"Invoice\", \"suggestedValue\": \"Invoice\"}"
+            }
+          },
+          {
+            "id": "call_6744a045d59a4b34991d115bea974274",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"suggestedValue\": \"Invoice\", \"reason\": \"Updating header title to 'Invoice'.\", \"field\": \"header_title\", \"rawValue\": \"Invoice\"}"
+            }
+          },
+          {
+            "id": "call_077889d297f945ec890f5aaab178dae4",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operation\": \"add\", \"evidence\": \"Invoice\", \"target\": {\"id\": \"header_title\", \"kind\": \"heading\"}}"
+            }
+          },
+          {
+            "id": "call_fe0d58480e41484f8a0f89f389567fd1",
+            "type": "function",
+            "function": {
+              "name": "propose_language_correction",
+              "arguments": "{\"field\": \"subject\", \"original\": \"Invoice\", \"suggested\": \"Invoice\", \"reason\": \"Proposing correction for 'Invoice'.\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2055,
+        "output_tokens": 334
+      }
+    },
+    "errors": [
+      "field:businessName",
+      "field:clientName",
+      "field:invoiceNumber",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 23905
+  },
+  {
+    "scenario_id": "multi_field-07",
+    "category": "multi_field",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_eea99a541a3043949720db7ded3ad97e",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"clientName\", \"rawValue\": \"John\", \"suggestedValue\": \"Iris\", \"reason\": \"Customer name needs to be updated.\"}"
+            }
+          },
+          {
+            "id": "call_c5e3a77992714500b393f88766c5a398",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"taxRate\", \"rawValue\": 0, \"suggestedValue\": 9, \"reason\": \"Tax rate needs to be updated to 9%.\"}"
+            }
+          },
+          {
+            "id": "call_3a5fa74d09974340a44dcb8bcad32021",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"invoiceNumber\", \"rawValue\": \"INV-001\", \"suggestedValue\": \"BILL-26\", \"reason\": \"Invoice number needs to be updated.\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2173,
+        "output_tokens": 152
+      }
+    },
+    "errors": [
+      "field:clientName",
+      "field:taxRate",
+      "field:invoiceNumber",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 11605
+  },
+  {
+    "scenario_id": "grammar-07",
+    "category": "grammar",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_a4d0305de7cd47328594cad337f5e4a6",
+            "type": "function",
+            "function": {
+              "name": "propose_language_correction",
+              "arguments": "{\"reason\": \"Spelling error in 'recieve' and 'prodcts'.\", \"field\": \"notesAndTerms\", \"original\": \"We will recieve 7 prodcts within seven days.\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2172,
+        "output_tokens": 59
+      }
+    },
+    "errors": [
+      "language_suggestion",
+      "production_schema:propose_language_correction"
+    ],
+    "passed": false,
+    "latency_ms": 5039
+  },
+  {
+    "scenario_id": "party_mapping-07",
+    "category": "party_mapping",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_8a6be9738e324d9ab3d07b813d82aabc",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"businessName\", \"rawValue\": \"Atlas\", \"suggestedValue\": \"Atlas\", \"reason\": \"Company name provided.\"}"
+            }
+          },
+          {
+            "id": "call_ff0bb48575a74c45ba0f8826fda64ecc",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"reason\": \"Customer name provided.\", \"field\": \"clientName\", \"rawValue\": \"Iris\", \"suggestedValue\": \"Iris\"}"
+            }
+          },
+          {
+            "id": "call_fdfcd68a6735483292ac6864f8c655f4",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"senderPhone\", \"rawValue\": \"+14155550106\", \"suggestedValue\": \"+14155550106\", \"reason\": \"Business phone provided.\"}"
+            }
+          },
+          {
+            "id": "call_cce1340d62954bcb91823f63a48111a5",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"clientPhone\", \"rawValue\": \"+14155550206\", \"suggestedValue\": \"+14155550206\", \"reason\": \"Customer phone provided.\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2197,
+        "output_tokens": 216
+      }
+    },
+    "errors": [
+      "field:businessName",
+      "field:clientName",
+      "field:senderPhone",
+      "field:clientPhone",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 17627
+  },
+  {
+    "scenario_id": "tax-07",
+    "category": "tax",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_d93bce10a14c472e8b54e8aaeaac0dfd",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"field\": \"taxRate\", \"rawValue\": \"11\", \"suggestedValue\": \"11\", \"reason\": \"Tax rate updated to 11 percent\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2164,
+        "output_tokens": 51
+      }
+    },
+    "errors": [
+      "field:taxRate",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 4156
+  },
+  {
+    "scenario_id": "discount-07",
+    "category": "discount",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_f9068046195e4f0c97ae42c7059d0e64",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"element\": {\"fontSize\": 24, \"h\": 40, \"operation\": \"update\", \"patch\": {\"text\": \"Invoice - 8% Discount\"}, \"text\": \"Invoice\", \"type\": \"text\", \"w\": 200, \"x\": 30, \"y\": 30}}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2164,
+        "output_tokens": 90
+      }
+    },
+    "errors": [
+      "field:discountRate",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 7730
+  },
+  {
+    "scenario_id": "item_add-07",
+    "category": "item_add",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 5050
+  },
+  {
+    "scenario_id": "item_remove-07",
+    "category": "item_remove",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 2507
+  },
+  {
+    "scenario_id": "style-07",
+    "category": "style",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "passed": false,
+    "errors": [
+      "HTTPException"
+    ],
+    "code": {
+      "code": "PROVIDER_RESPONSE_INVALID",
+      "message": "DocCraft AI is temporarily unavailable. Your saved document is preserved."
+    },
+    "latency_ms": 6249
+  },
+  {
+    "scenario_id": "movement-07",
+    "category": "movement",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_e32652fb2d2e4fe3b2124abaac29b9d1",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"element\": {\"fontSize\": 24, \"h\": 40, \"text\": \"Invoice\", \"type\": \"text\", \"w\": 200, \"x\": 30, \"y\": 30}, \"operation\": \"update\"}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2165,
+        "output_tokens": 76
+      }
+    },
+    "errors": [
+      "editor_patch",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 6435
+  },
+  {
+    "scenario_id": "undo_redo-07",
+    "category": "undo_redo",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_37beadf9816e4e40b6630103cab729cd",
+            "type": "function",
+            "function": {
+              "name": "undo_document",
+              "arguments": "{}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2158,
+        "output_tokens": 16
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 1680
+  },
+  {
+    "scenario_id": "user_correction-07",
+    "category": "user_correction",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_be362a44a4004147b3d6208ab0e19d63",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"element\": {\"fontSize\": 24, \"h\": 40, \"text\": \"+14155550306\", \"type\": \"text\", \"w\": 200, \"x\": 30, \"y\": 30}, \"operation\": \"update\"}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2223,
+        "output_tokens": 86
+      }
+    },
+    "errors": [
+      "field:clientPhone",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 7161
+  },
+  {
+    "scenario_id": "side_question-07",
+    "category": "side_question",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "A **tax** is a percentage or fixed amount imposed by a government on the sale or value of goods or services. It is typically included in the final price of a product or service. For example, if a product is priced at $100 and the tax rate is 10%, the total price would be $110.\n\nA **discount**, on the other hand, is a reduction in the price of a product or service. It is often expressed as a percentage of the original price. For example, if a product is priced at $100 and a 10% discount is applied, the final price would be $90.\n\nIn summary:\n- **Tax** is added to the price.\n- **Discount** is subtracted from the price."
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2164,
+        "output_tokens": 160
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 11968
+  },
+  {
+    "scenario_id": "missing_field-07",
+    "category": "missing_field",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "The request to add 7 monitors with an unspecified unit price is ambiguous. Please provide the unit price for the monitors so that the invoice can be accurately prepared."
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2166,
+        "output_tokens": 33
+      }
+    },
+    "errors": [],
+    "passed": true,
+    "latency_ms": 2923
+  },
+  {
+    "scenario_id": "session_persistence-07",
+    "category": "session_persistence",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_6f2442f33c824e159f0a456c81bb5686",
+            "type": "function",
+            "function": {
+              "name": "update_slots",
+              "arguments": "{\"reason\": \"Change tax rate to 18%\", \"field\": \"taxRate\", \"rawValue\": \"18%\", \"suggestedValue\": \"18%\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2192,
+        "output_tokens": 51
+      }
+    },
+    "errors": [
+      "field:taxRate",
+      "production_schema:update_slots"
+    ],
+    "passed": false,
+    "latency_ms": 23467
+  },
+  {
+    "scenario_id": "ambiguous-07",
+    "category": "ambiguous",
+    "model": "qwen3:1.7b-q4_K_M",
+    "mode": "real_inference_proposal; production schemas; no database commit",
+    "result": {
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_cbf18af7ca264d789f242a9cff7a663b",
+            "type": "function",
+            "function": {
+              "name": "edit_canvas",
+              "arguments": "{\"operations\": [{\"element\": {\"id\": \"laptop\"}, \"operation\": \"remove\"}]}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "input_tokens": 2210,
+        "output_tokens": 35
+      }
+    },
+    "errors": [
+      "unexpected_mutation",
+      "missing_clarification",
+      "production_schema:edit_canvas"
+    ],
+    "passed": false,
+    "latency_ms": 3085
+  }
+]

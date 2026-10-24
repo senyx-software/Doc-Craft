@@ -1,0 +1,1015 @@
+[
+  {
+    "name": "gateway",
+    "source_directory": "services/gateway",
+    "runtime": "Node24",
+    "framework": "Express",
+    "build_command": "npm run build --workspace=doccraft-gateway",
+    "startup": [
+      "node",
+      "/app/services/gateway/dist/index.js"
+    ],
+    "port": 3001,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "none",
+    "redis": "per-service ACL/replay/queue",
+    "internal_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    },
+    "external_dependencies": "see source edge inventory",
+    "health": "Dockerfile /health; release verifier /ready",
+    "authentication": "Bearer/JWT + ownership or admin permissions; signed private route policy",
+    "required_configuration": [
+      "AUTH_SERVICE_URL",
+      "DOCUMENT_SERVICE_URL",
+      "BILLING_SERVICE_URL",
+      "QUOTA_SERVICE_URL",
+      "AI_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "ADMIN_API_SERVICE_URL",
+      "NOTIFICATION_SERVICE_URL",
+      "CORS_ORIGINS"
+    ],
+    "required_secrets": [
+      "REDIS_URL",
+      "ca",
+      "gateway_service_identity",
+      "gateway_service_crt",
+      "gateway_service_key"
+    ],
+    "resource_caps": {
+      "memory": "256m",
+      "cpus": 0.5
+    },
+    "volumes": [],
+    "profile": []
+  },
+  {
+    "name": "auth",
+    "source_directory": "services/auth",
+    "runtime": "Node24",
+    "framework": "Fastify",
+    "build_command": "npm run build --workspace=doccraft-auth",
+    "startup": [
+      "node",
+      "/app/services/auth/dist/server.js"
+    ],
+    "port": 3011,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "PostgreSQL scoped role",
+    "redis": "per-service ACL/replay/queue",
+    "internal_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    },
+    "external_dependencies": "Firebase/Google",
+    "health": "Dockerfile /health; release verifier /ready",
+    "authentication": "Bearer/JWT + ownership or admin permissions; signed private route policy",
+    "required_configuration": [
+      "ADMIN_API_SERVICE_URL",
+      "NOTIFICATION_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "FRONTEND_URL",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CALLBACK_URL",
+      "FIREBASE_PROJECT_ID",
+      "EMAIL_FROM"
+    ],
+    "required_secrets": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "JWT_REFRESH_SECRET",
+      "JWT_SECRET",
+      "REDIS_URL",
+      "ca",
+      "auth_service_identity",
+      "auth_service_crt",
+      "auth_service_key"
+    ],
+    "resource_caps": {
+      "memory": "384m",
+      "cpus": 1
+    },
+    "volumes": [],
+    "profile": []
+  },
+  {
+    "name": "notification",
+    "source_directory": "services/notification",
+    "runtime": "Node24",
+    "framework": "Fastify",
+    "build_command": "npm run build --workspace=doccraft-notification",
+    "startup": [
+      "node",
+      "/app/services/notification/dist/server.js"
+    ],
+    "port": 3012,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "PostgreSQL scoped role",
+    "redis": "per-service ACL/replay/queue",
+    "internal_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    },
+    "external_dependencies": "Resend",
+    "health": "Dockerfile /health; release verifier /ready",
+    "authentication": "Bearer/JWT + ownership or admin permissions; signed private route policy",
+    "required_configuration": [
+      "AUTH_SERVICE_URL",
+      "ADMIN_API_URL",
+      "FRONTEND_URL",
+      "RESEND_FROM_EMAIL"
+    ],
+    "required_secrets": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "RESEND_API_KEY",
+      "ca",
+      "notification_service_identity",
+      "notification_service_crt",
+      "notification_service_key"
+    ],
+    "resource_caps": {
+      "memory": "384m",
+      "cpus": 0.5
+    },
+    "volumes": [],
+    "profile": []
+  },
+  {
+    "name": "document",
+    "source_directory": "services/document",
+    "runtime": "Python3.13",
+    "framework": "FastAPI",
+    "build_command": "pip install -c deploy/staging/python.constraints.txt -r services/document/requirements.txt",
+    "startup": [
+      "python",
+      "-m",
+      "uvicorn",
+      "app.main:app",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "3013",
+      "--ssl-keyfile",
+      "/run/secrets/service.key",
+      "--ssl-certfile",
+      "/run/secrets/service.crt",
+      "--timeout-graceful-shutdown",
+      "20"
+    ],
+    "port": 3013,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "PostgreSQL scoped role",
+    "redis": "per-service ACL/replay/queue",
+    "internal_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    },
+    "external_dependencies": "optional existing Supabase storage",
+    "health": "Dockerfile /health; release verifier /ready",
+    "authentication": "Bearer/JWT + ownership or admin permissions; signed private route policy",
+    "required_configuration": [
+      "AUTH_SERVICE_URL",
+      "QUOTA_SERVICE_URL",
+      "ADMIN_API_SERVICE_URL",
+      "AI_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "GATEWAY_URL",
+      "SUPABASE_URL",
+      "LEGACY_STORAGE_PROVIDER",
+      "LOCAL_STORAGE_DIR",
+      "SIDECAR_URL"
+    ],
+    "required_secrets": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "ca",
+      "document_service_identity",
+      "document_service_crt",
+      "document_service_key"
+    ],
+    "resource_caps": {
+      "memory": "768m",
+      "cpus": 1
+    },
+    "volumes": [
+      "documents:/app/storage"
+    ],
+    "profile": []
+  },
+  {
+    "name": "payment",
+    "source_directory": "services/payment",
+    "runtime": "Node24",
+    "framework": "Express",
+    "build_command": "npm run build --workspace=doccraft-payment",
+    "startup": [
+      "node",
+      "/app/services/payment/dist/server.js"
+    ],
+    "port": 3014,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "PostgreSQL scoped role",
+    "redis": "per-service ACL/replay/queue",
+    "internal_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    },
+    "external_dependencies": "Paddle/PayHere",
+    "health": "Dockerfile /health; release verifier /ready",
+    "authentication": "Bearer/JWT + ownership or admin permissions; signed private route policy",
+    "required_configuration": [
+      "AUTH_SERVICE_URL",
+      "QUOTA_SERVICE_URL",
+      "ADMIN_API_SERVICE_URL",
+      "NOTIFICATION_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "FRONTEND_URL",
+      "PAYMENT_SERVICE_PUBLIC_URL",
+      "PADDLE_SANDBOX",
+      "PAYHERE_SANDBOX",
+      "PADDLE_PRO_MONTHLY_PRICE_ID",
+      "PADDLE_PRO_YEARLY_PRICE_ID",
+      "PADDLE_MAX_MONTHLY_PRICE_ID",
+      "PADDLE_MAX_YEARLY_PRICE_ID",
+      "PAYHERE_MERCHANT_ID"
+    ],
+    "required_secrets": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "ca",
+      "payment_service_identity",
+      "payment_service_crt",
+      "payment_service_key"
+    ],
+    "resource_caps": {
+      "memory": "384m",
+      "cpus": 0.5
+    },
+    "volumes": [],
+    "profile": []
+  },
+  {
+    "name": "quota",
+    "source_directory": "services/quota",
+    "runtime": "Node24",
+    "framework": "Express",
+    "build_command": "npm run build --workspace=doccraft-quota",
+    "startup": [
+      "node",
+      "/app/services/quota/dist/server.js"
+    ],
+    "port": 3015,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "PostgreSQL scoped role",
+    "redis": "per-service ACL/replay/queue",
+    "internal_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    },
+    "external_dependencies": "see source edge inventory",
+    "health": "Dockerfile /health; release verifier /ready",
+    "authentication": "Bearer/JWT + ownership or admin permissions; signed private route policy",
+    "required_configuration": [
+      "AUTH_SERVICE_URL",
+      "ADMIN_API_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "FRONTEND_URL"
+    ],
+    "required_secrets": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "ca",
+      "quota_service_identity",
+      "quota_service_crt",
+      "quota_service_key"
+    ],
+    "resource_caps": {
+      "memory": "384m",
+      "cpus": 0.5
+    },
+    "volumes": [],
+    "profile": []
+  },
+  {
+    "name": "chat",
+    "source_directory": "services/chat",
+    "runtime": "Node24",
+    "framework": "Fastify",
+    "build_command": "npm run build --workspace=doccraft-ai",
+    "startup": [
+      "node",
+      "/app/services/chat/dist/server.js"
+    ],
+    "port": 3016,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "PostgreSQL scoped role",
+    "redis": "per-service ACL/replay/queue",
+    "internal_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    },
+    "external_dependencies": "see source edge inventory",
+    "health": "Dockerfile /health; release verifier /ready",
+    "authentication": "Bearer/JWT + ownership or admin permissions; signed private route policy",
+    "required_configuration": [
+      "AUTH_SERVICE_URL",
+      "QUOTA_SERVICE_URL",
+      "ADMIN_API_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "BILLING_SERVICE_URL",
+      "CORS_ORIGIN",
+      "TURN_TIMEOUT_MS",
+      "MAX_CONCURRENT_REQUESTS",
+      "MAX_QUEUE_SIZE"
+    ],
+    "required_secrets": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "ca",
+      "chat_service_identity",
+      "chat_service_crt",
+      "chat_service_key"
+    ],
+    "resource_caps": {
+      "memory": "512m",
+      "cpus": 1
+    },
+    "volumes": [],
+    "profile": []
+  },
+  {
+    "name": "analytics",
+    "source_directory": "services/analytics",
+    "runtime": "Python3.13",
+    "framework": "FastAPI",
+    "build_command": "pip install -c deploy/staging/python.constraints.txt -r services/analytics/requirements.txt",
+    "startup": [
+      "python",
+      "-m",
+      "uvicorn",
+      "app.main:app",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "3017",
+      "--ssl-keyfile",
+      "/run/secrets/service.key",
+      "--ssl-certfile",
+      "/run/secrets/service.crt",
+      "--timeout-graceful-shutdown",
+      "20"
+    ],
+    "port": 3017,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "PostgreSQL scoped role",
+    "redis": "per-service ACL/replay/queue",
+    "internal_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    },
+    "external_dependencies": "PostHog",
+    "health": "Dockerfile /health; release verifier /ready",
+    "authentication": "Bearer/JWT + ownership or admin permissions; signed private route policy",
+    "required_configuration": [
+      "AUTH_SERVICE_URL",
+      "PAYMENT_SERVICE_URL",
+      "POSTHOG_HOST"
+    ],
+    "required_secrets": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "ca",
+      "analytics_service_identity",
+      "analytics_service_crt",
+      "analytics_service_key"
+    ],
+    "resource_caps": {
+      "memory": "512m",
+      "cpus": 0.5
+    },
+    "volumes": [],
+    "profile": []
+  },
+  {
+    "name": "admin-api",
+    "source_directory": "services/admin-api",
+    "runtime": "Python3.13",
+    "framework": "FastAPI",
+    "build_command": "pip install -c deploy/staging/python.constraints.txt -r services/admin-api/requirements.txt",
+    "startup": [
+      "python",
+      "-m",
+      "uvicorn",
+      "app.main:app",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "3018",
+      "--ssl-keyfile",
+      "/run/secrets/service.key",
+      "--ssl-certfile",
+      "/run/secrets/service.crt",
+      "--timeout-graceful-shutdown",
+      "20"
+    ],
+    "port": 3018,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "PostgreSQL scoped role",
+    "redis": "per-service ACL/replay/queue",
+    "internal_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    },
+    "external_dependencies": "approved inference providers",
+    "health": "Dockerfile /health; release verifier /ready",
+    "authentication": "Bearer/JWT + ownership or admin permissions; signed private route policy",
+    "required_configuration": [
+      "AUTH_SERVICE_URL",
+      "QUOTA_SERVICE_URL",
+      "PAYMENT_SERVICE_URL",
+      "CHAT_SERVICE_URL",
+      "DOCUMENT_SERVICE_URL",
+      "NOTIFICATION_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "GATEWAY_URL",
+      "CHAT_SERVICE_MCP_URL",
+      "POSTHOG_HOST",
+      "POSTHOG_PROJECT_ID",
+      "RESEND_FROM_EMAIL",
+      "ALLOWED_ORIGINS",
+      "ALLOWED_ADMIN_IPS",
+      "IP_WHITELIST_ENABLED",
+      "TRUSTED_PROXY_IPS",
+      "AI_ALLOWED_LOCAL_ENDPOINTS",
+      "AI_ALLOWED_CLOUD_HOSTS",
+      "LOCAL_STORAGE_DIR"
+    ],
+    "required_secrets": [
+      "ADMIN_DATABASE_URL",
+      "ADMIN_JWT_SECRET",
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "ca",
+      "admin-api_service_identity",
+      "admin-api_service_crt",
+      "admin-api_service_key",
+      "ai_keyring"
+    ],
+    "resource_caps": {
+      "memory": "768m",
+      "cpus": 1
+    },
+    "volumes": [
+      "admin_assets:/app/storage"
+    ],
+    "profile": []
+  },
+  {
+    "name": "pdf",
+    "source_directory": "services/document/puppeteer",
+    "runtime": "Node24",
+    "framework": "Fastify",
+    "build_command": "npm run build --workspace=doccraft-document",
+    "startup": [
+      "node",
+      "/app/services/document/dist/puppeteer/server.js"
+    ],
+    "port": 3023,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "none",
+    "redis": "per-service ACL/replay/queue",
+    "internal_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    },
+    "external_dependencies": "see source edge inventory",
+    "health": "Dockerfile /health; release verifier /ready",
+    "authentication": "Bearer/JWT + ownership or admin permissions; signed private route policy",
+    "required_configuration": [
+      "SIDECAR_PORT",
+      "SIDECAR_HOST",
+      "PDF_MAX_CONCURRENT",
+      "PUPPETEER_EXECUTABLE_PATH"
+    ],
+    "required_secrets": [
+      "REDIS_URL",
+      "ca",
+      "pdf_service_identity",
+      "pdf_service_crt",
+      "pdf_service_key"
+    ],
+    "resource_caps": {
+      "memory": "1024m",
+      "cpus": 1
+    },
+    "volumes": [],
+    "profile": []
+  },
+  {
+    "name": "user-ui",
+    "source_directory": "user-frontend",
+    "runtime": "nginx",
+    "framework": "React/Vite\u2192nginx",
+    "build_command": "npm ci && npm run build",
+    "startup": "image Dockerfile default",
+    "port": 8080,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "none",
+    "redis": "none",
+    "internal_dependencies": {},
+    "external_dependencies": "see source edge inventory",
+    "health": "Dockerfile /health; release verifier /ready",
+    "authentication": "edge HTTPS/backend auth",
+    "required_configuration": [],
+    "required_secrets": [],
+    "resource_caps": {
+      "memory": "64m",
+      "cpus": 0.25
+    },
+    "volumes": [],
+    "profile": []
+  },
+  {
+    "name": "admin-ui",
+    "source_directory": "admin",
+    "runtime": "nginx",
+    "framework": "React/Vite\u2192nginx",
+    "build_command": "npm ci && npm run build",
+    "startup": "image Dockerfile default",
+    "port": 8080,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "none",
+    "redis": "none",
+    "internal_dependencies": {},
+    "external_dependencies": "see source edge inventory",
+    "health": "Dockerfile /health; release verifier /ready",
+    "authentication": "edge HTTPS/backend auth",
+    "required_configuration": [],
+    "required_secrets": [],
+    "resource_caps": {
+      "memory": "64m",
+      "cpus": 0.25
+    },
+    "volumes": [],
+    "profile": []
+  },
+  {
+    "name": "postgres",
+    "source_directory": "deploy",
+    "runtime": "postgres",
+    "framework": "upstream infrastructure",
+    "build_command": "Pull pinned image / deploy Dockerfile target",
+    "startup": [
+      "postgres",
+      "-c",
+      "ssl=on",
+      "-c",
+      "ssl_cert_file=/run/doccraft-tls/server.crt",
+      "-c",
+      "ssl_key_file=/run/doccraft-tls/server.key",
+      "-c",
+      "ssl_min_protocol_version=TLSv1.2",
+      "-c",
+      "hba_file=/control/deploy/staging/pg_hba.conf",
+      "-c",
+      "shared_buffers=128MB",
+      "-c",
+      "max_connections=160"
+    ],
+    "port": 5432,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "none",
+    "redis": "none",
+    "internal_dependencies": {},
+    "external_dependencies": "see source edge inventory",
+    "health": [
+      "CMD",
+      "pg_isready",
+      "-U",
+      "postgres",
+      "-d",
+      "${POSTGRES_DB:?}"
+    ],
+    "authentication": "TLS/ACL",
+    "required_configuration": [],
+    "required_secrets": [
+      "postgres_password",
+      "postgres_crt",
+      "postgres_key",
+      "postgres_migrator_password"
+    ],
+    "resource_caps": {
+      "memory": "1536m",
+      "cpus": 1.5
+    },
+    "volumes": [
+      "postgres:/var/lib/postgresql/data",
+      "${DOCCRAFT_CONTROL:?}:/control:ro",
+      "${DOCCRAFT_CONTROL:?}/deploy/scripts/bootstrap-postgres.sh:/docker-entrypoint-initdb.d/01-doccraft.sh:ro"
+    ],
+    "profile": []
+  },
+  {
+    "name": "redis",
+    "source_directory": "deploy",
+    "runtime": "redis",
+    "framework": "upstream infrastructure",
+    "build_command": "Pull pinned image / deploy Dockerfile target",
+    "startup": [
+      "redis-server",
+      "--port",
+      "0",
+      "--tls-port",
+      "6379",
+      "--tls-cert-file",
+      "/run/secrets/redis.crt",
+      "--tls-key-file",
+      "/run/secrets/redis.key",
+      "--tls-ca-cert-file",
+      "/run/secrets/ca.crt",
+      "--tls-auth-clients",
+      "no",
+      "--aclfile",
+      "/run/secrets/redis.acl",
+      "--appendonly",
+      "yes",
+      "--appendfsync",
+      "always",
+      "--maxmemory",
+      "256mb",
+      "--maxmemory-policy",
+      "noeviction"
+    ],
+    "port": 6379,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "none",
+    "redis": "persistent Redis service",
+    "internal_dependencies": {},
+    "external_dependencies": "see source edge inventory",
+    "health": [
+      "CMD",
+      "redis-cli",
+      "--tls",
+      "--cacert",
+      "/run/secrets/ca.crt",
+      "--user",
+      "health",
+      "ping"
+    ],
+    "authentication": "TLS/ACL",
+    "required_configuration": [],
+    "required_secrets": [
+      "ca",
+      "redis_crt",
+      "redis_key",
+      "redis_acl"
+    ],
+    "resource_caps": {
+      "memory": "384m",
+      "cpus": 0.5
+    },
+    "volumes": [
+      "redis:/data"
+    ],
+    "profile": []
+  },
+  {
+    "name": "edge",
+    "source_directory": "deploy",
+    "runtime": "edge",
+    "framework": "upstream infrastructure",
+    "build_command": "Pull pinned image / deploy Dockerfile target",
+    "startup": "image Dockerfile default",
+    "port": "80/443",
+    "exposure": "public80/443",
+    "database": "none",
+    "redis": "none",
+    "internal_dependencies": {
+      "gateway": {
+        "condition": "service_healthy"
+      },
+      "admin-api": {
+        "condition": "service_healthy"
+      },
+      "user-ui": {
+        "condition": "service_healthy"
+      },
+      "admin-ui": {
+        "condition": "service_healthy"
+      }
+    },
+    "external_dependencies": "ACME",
+    "health": [
+      "CMD",
+      "caddy",
+      "validate",
+      "--config",
+      "/etc/caddy/Caddyfile"
+    ],
+    "authentication": "network isolation",
+    "required_configuration": [],
+    "required_secrets": [
+      "ca"
+    ],
+    "resource_caps": {
+      "memory": "128m",
+      "cpus": 0.5
+    },
+    "volumes": [
+      "${DOCCRAFT_CONTROL:?}/deploy/docker/Caddyfile:/etc/caddy/Caddyfile:ro",
+      "caddy_data:/data",
+      "caddy_config:/config"
+    ],
+    "profile": []
+  },
+  {
+    "name": "ollama",
+    "source_directory": "deploy",
+    "runtime": "ollama",
+    "framework": "upstream infrastructure",
+    "build_command": "Pull pinned image / deploy Dockerfile target",
+    "startup": "image Dockerfile default",
+    "port": 11434,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "none",
+    "redis": "none",
+    "internal_dependencies": {},
+    "external_dependencies": "see source edge inventory",
+    "health": [
+      "CMD",
+      "ollama",
+      "list"
+    ],
+    "authentication": "network isolation",
+    "required_configuration": [],
+    "required_secrets": [],
+    "resource_caps": {
+      "memory": "${OLLAMA_MEMORY_MB:-6144}m",
+      "cpus": "${OLLAMA_CPUS:-2}"
+    },
+    "volumes": [
+      "ollama_models:/root/.ollama"
+    ],
+    "profile": [
+      "local-ai"
+    ]
+  },
+  {
+    "name": "migrate-node",
+    "source_directory": "deploy",
+    "runtime": "Node24",
+    "framework": "one-shot control job",
+    "build_command": "Pull pinned image / deploy Dockerfile target",
+    "startup": [
+      "node",
+      "/app/scripts/staging_migrate_node.mjs"
+    ],
+    "port": null,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "owner/migration only",
+    "redis": "none",
+    "internal_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    },
+    "external_dependencies": "see source edge inventory",
+    "health": "bounded process exit + controller gate",
+    "authentication": "root controller/operator job",
+    "required_configuration": [],
+    "required_secrets": [
+      "ca",
+      "payment_service_identity",
+      "payment_service_crt",
+      "payment_service_key"
+    ],
+    "resource_caps": {
+      "memory": "1024m",
+      "cpus": 0.5
+    },
+    "volumes": [
+      "${DOCCRAFT_CONTROL:?}:/control:ro"
+    ],
+    "profile": [
+      "tools"
+    ]
+  },
+  {
+    "name": "migrate-python",
+    "source_directory": "deploy",
+    "runtime": "Python3.13",
+    "framework": "one-shot control job",
+    "build_command": "Pull pinned image / deploy Dockerfile target",
+    "startup": [
+      "python",
+      "/app/scripts/staging_migrate_python.py"
+    ],
+    "port": null,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "owner/migration only",
+    "redis": "none",
+    "internal_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    },
+    "external_dependencies": "see source edge inventory",
+    "health": "bounded process exit + controller gate",
+    "authentication": "root controller/operator job",
+    "required_configuration": [],
+    "required_secrets": [
+      "ca",
+      "admin-api_service_identity",
+      "admin-api_service_crt",
+      "admin-api_service_key",
+      "ai_keyring"
+    ],
+    "resource_caps": {
+      "memory": "768m",
+      "cpus": 1
+    },
+    "volumes": [
+      "${DOCCRAFT_CONTROL:?}:/control:ro"
+    ],
+    "profile": [
+      "tools"
+    ]
+  },
+  {
+    "name": "grant-roles",
+    "source_directory": "deploy",
+    "runtime": "Python3.13",
+    "framework": "one-shot control job",
+    "build_command": "Pull pinned image / deploy Dockerfile target",
+    "startup": [
+      "python",
+      "/app/deploy/scripts/database_roles.py"
+    ],
+    "port": null,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "owner/migration only",
+    "redis": "none",
+    "internal_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    },
+    "external_dependencies": "see source edge inventory",
+    "health": "bounded process exit + controller gate",
+    "authentication": "root controller/operator job",
+    "required_configuration": [],
+    "required_secrets": [
+      "ca",
+      "admin-api_service_identity",
+      "admin-api_service_crt",
+      "admin-api_service_key",
+      "ai_keyring",
+      "runtime_roles"
+    ],
+    "resource_caps": {
+      "memory": "768m",
+      "cpus": 1
+    },
+    "volumes": [
+      "${DOCCRAFT_CONTROL:?}:/control:ro"
+    ],
+    "profile": [
+      "tools"
+    ]
+  },
+  {
+    "name": "verify",
+    "source_directory": "deploy",
+    "runtime": "Python3.13",
+    "framework": "one-shot control job",
+    "build_command": "Pull pinned image / deploy Dockerfile target",
+    "startup": [
+      "python",
+      "/app/deploy/scripts/verify_release.py"
+    ],
+    "port": null,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "none",
+    "redis": "none",
+    "internal_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    },
+    "external_dependencies": "see source edge inventory",
+    "health": "bounded process exit + controller gate",
+    "authentication": "root controller/operator job",
+    "required_configuration": [],
+    "required_secrets": [
+      "ca",
+      "admin-api_service_identity",
+      "admin-api_service_crt",
+      "admin-api_service_key",
+      "ai_keyring",
+      "document_service_identity"
+    ],
+    "resource_caps": {
+      "memory": "768m",
+      "cpus": 1
+    },
+    "volumes": [
+      "${DOCCRAFT_CONTROL:?}:/control:ro"
+    ],
+    "profile": [
+      "tools"
+    ]
+  },
+  {
+    "name": "backup",
+    "source_directory": "deploy",
+    "runtime": "backup",
+    "framework": "one-shot control job",
+    "build_command": "Pull pinned image / deploy Dockerfile target",
+    "startup": "image Dockerfile default",
+    "port": null,
+    "exposure": "private/edge-routed or tools-profile job",
+    "database": "owner/migration only",
+    "redis": "none",
+    "internal_dependencies": {},
+    "external_dependencies": "see source edge inventory",
+    "health": "bounded process exit + controller gate",
+    "authentication": "root controller/operator job",
+    "required_configuration": [],
+    "required_secrets": [
+      "backup_connection",
+      "ca"
+    ],
+    "resource_caps": {
+      "memory": "256m",
+      "cpus": 0.5
+    },
+    "volumes": [
+      "${DOCCRAFT_CONTROL:?}:/control:ro"
+    ],
+    "profile": [
+      "tools"
+    ]
+  }
+]

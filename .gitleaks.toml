@@ -1,0 +1,20 @@
+title = "DocCraft secret scanning"
+[extend]
+useDefault = true
+[[allowlists]]
+description = "Generated dependencies, local private execution files and synthetic test fixtures"
+paths = ['''(^|/)node_modules/''', '''(^|/)\.local/''', '''(^|/)\.venv[^/]*/''', '''(^|/)dist/''', '''^services/redis-bin/''', '''^dump\.rdb$''', '''(^|/)[^/]*\.env$''']
+
+[[allowlists]]
+description = "Baseline evidence maps contain SHA256 file-integrity hashes"
+condition = "AND"
+paths = ['''^docs/system-audit/evidence/[^/]+/(?:resume-)?baseline\.json$''', '''^docs/system-audit/evidence/phase5/phase4-evidence-baseline\.json$''']
+regexTarget = "secret"
+regexes = ['''^[a-f0-9]{64}$''']
+
+[[allowlists]]
+description = "Exact framework description is ordinary prose"
+condition = "AND"
+paths = ['''^docs/.*\.md$''', '''^DOC_CRAFT_FULL_PROJECT_REPORT\.md$''', '''^scripts/system_audit_reports\.py$''']
+regexTarget = "line"
+regexes = ['''FastAPI, pandas/SQLAlchemy reporting''']

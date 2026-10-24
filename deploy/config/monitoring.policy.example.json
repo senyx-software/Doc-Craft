@@ -1,0 +1,4 @@
+{
+  "heartbeat_url": "https://<operator-heartbeat-host>/<private-check-path>",
+  "alert_url": "https://<operator-alert-host>/<private-check-path>"
+}

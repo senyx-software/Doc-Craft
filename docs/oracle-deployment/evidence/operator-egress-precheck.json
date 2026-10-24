@@ -1,0 +1,21 @@
+{
+  "observed_at_utc": "2026-10-22T04:03:06.378914+00:00",
+  "scope": "HTTPS self-egress checks for proposed Bastion client allowlist; operator approval still required",
+  "observations": [
+    {
+      "source": "https://api.ipify.org",
+      "status": "OBSERVED",
+      "address": "175.157.169.103",
+      "is_global": true
+    },
+    {
+      "source": "https://checkip.amazonaws.com",
+      "status": "OBSERVED",
+      "address": "175.157.169.103",
+      "is_global": true
+    }
+  ],
+  "independent_sources_agree": true,
+  "proposed_operator_cidr": "175.157.169.103/32",
+  "operator_approved": false
+}

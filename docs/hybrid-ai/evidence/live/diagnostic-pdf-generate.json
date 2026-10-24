@@ -1,0 +1,6 @@
+{
+  "http_status": 200,
+  "latency_ms": 90,
+  "pdf_magic": true,
+  "sandbox": "disabled by separate developer test launcher; not production verification"
+}

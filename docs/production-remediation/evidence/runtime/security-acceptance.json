@@ -1,0 +1,112 @@
+{
+  "checks": [
+    {
+      "id": "SEC-002-concurrent",
+      "status": "PASS",
+      "actual": {
+        "statuses": [
+          400,
+          200,
+          400,
+          400,
+          400,
+          400,
+          400,
+          400
+        ],
+        "one_success_required": true,
+        "token_never_recorded": true
+      },
+      "scope": "actual gateway/Auth/PostgreSQL; synthetic owned state"
+    },
+    {
+      "id": "SEC-002-replay",
+      "status": "PASS",
+      "actual": {
+        "http": 400
+      },
+      "scope": "actual gateway/Auth/PostgreSQL; synthetic owned state"
+    },
+    {
+      "id": "SEC-002-access-revocation",
+      "status": "PASS",
+      "actual": {
+        "http": 403,
+        "expected": "Revoked access is denied"
+      },
+      "scope": "actual gateway/Auth/PostgreSQL; synthetic owned state"
+    },
+    {
+      "id": "SEC-002-refresh-revocation",
+      "status": "PASS",
+      "actual": {
+        "http": 401
+      },
+      "scope": "actual gateway/Auth/PostgreSQL; synthetic owned state"
+    },
+    {
+      "id": "SEC-002-winning-password",
+      "status": "PASS",
+      "actual": {
+        "http": 200
+      },
+      "scope": "actual gateway/Auth/PostgreSQL; synthetic owned state"
+    },
+    {
+      "id": "FE-006-refresh-origin",
+      "status": "PASS",
+      "actual": {
+        "http": 403
+      },
+      "scope": "actual gateway/Auth/PostgreSQL; synthetic owned state"
+    },
+    {
+      "id": "FE-006-cookie-rotation",
+      "status": "PASS",
+      "actual": {
+        "http": 200,
+        "rotated": true,
+        "refresh_cookie_httponly": true
+      },
+      "scope": "actual gateway/Auth/PostgreSQL; synthetic owned state"
+    },
+    {
+      "id": "API-001-google",
+      "status": "PASS",
+      "actual": {
+        "http": 503,
+        "expected": "Unconfigured provider returns503 from Auth rather than gateway401"
+      },
+      "scope": "actual gateway/Auth/PostgreSQL; synthetic owned state"
+    },
+    {
+      "id": "API-001-callback",
+      "status": "PASS",
+      "actual": {
+        "http": 503,
+        "expected": "Unconfigured provider returns503 from Auth rather than gateway401"
+      },
+      "scope": "actual gateway/Auth/PostgreSQL; synthetic owned state"
+    },
+    {
+      "id": "DB-001-postgres-concurrency",
+      "status": "PASS",
+      "actual": {
+        "created": 16,
+        "unique": 16
+      },
+      "scope": "actual PostgreSQL runtime role and repository; synthetic staff"
+    },
+    {
+      "id": "DB-001-normalized-email",
+      "status": "PASS",
+      "actual": {
+        "http_equivalent": 409,
+        "original_role_preserved": true
+      },
+      "scope": "actual PostgreSQL unique index and repository"
+    }
+  ],
+  "email_transport": "not delivered; recovery challenge seeded only in owned PostgreSQL",
+  "production_changed": false
+}

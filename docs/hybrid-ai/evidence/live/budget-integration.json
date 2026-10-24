@@ -1,0 +1,6 @@
+{
+  "code": "AI_BUDGET_EXCEEDED",
+  "dispatched_ledger_delta": 0,
+  "latency_ms": 401,
+  "method": "real Chat Service -> signed admin inference -> durable admission/budget check; no mocked provider"
+}

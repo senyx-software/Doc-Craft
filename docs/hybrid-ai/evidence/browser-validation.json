@@ -1,0 +1,29 @@
+{
+  "method": "Chromium, actual React UI and stores; isolated fixture HTTP transport; no live providers",
+  "checks": [
+    {
+      "name": "All nine AI management screens render without browser errors",
+      "status": "passed"
+    },
+    {
+      "name": "Provider form submits a versioned registry mutation",
+      "status": "passed"
+    },
+    {
+      "name": "Credential replacement/rotation clears password inputs and displays only masked metadata",
+      "status": "passed"
+    },
+    {
+      "name": "Real chat input, SSE client, stores and canvas synchronize a compound data/style edit",
+      "status": "passed"
+    },
+    {
+      "name": "Side question preserves document state in the rendered chat",
+      "status": "passed"
+    },
+    {
+      "name": "Reload hydrates saved business data and heading style into the actual canvas",
+      "status": "passed"
+    }
+  ]
+}

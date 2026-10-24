@@ -1,0 +1,33 @@
+{
+  "method": "Current shared exported schemas compared to the actual prior-inference tool schemas; no provider call",
+  "results": [
+    {
+      "tool": "update_slots",
+      "current_schema_matches": true
+    },
+    {
+      "tool": "edit_canvas",
+      "current_schema_matches": true
+    },
+    {
+      "tool": "propose_language_correction",
+      "current_schema_matches": true
+    },
+    {
+      "tool": "get_session_state",
+      "current_schema_matches": true
+    },
+    {
+      "tool": "get_editor_selection",
+      "current_schema_matches": true
+    },
+    {
+      "tool": "undo_document",
+      "current_schema_matches": true
+    },
+    {
+      "tool": "redo_document",
+      "current_schema_matches": true
+    }
+  ]
+}

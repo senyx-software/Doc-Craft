@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+# Install root:root 0755 at /usr/local/sbin/doccraft-receive after reviewing it.
+# No arguments or SSH_ORIGINAL_COMMAND are evaluated. stdin is JSON only.
+test "$#" -eq 0
+exec /usr/bin/env -i PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin DOCKER_CONFIG=/etc/doccraft/registry /usr/bin/python3 /opt/doccraft/control/deploy/scripts/controller.py deploy

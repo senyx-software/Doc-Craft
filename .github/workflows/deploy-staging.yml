@@ -1,0 +1,193 @@
+name: OCI staging (manual and disabled until approved)
+on:
+  workflow_dispatch:
+    inputs:
+      architecture:
+        description: Architecture verified on the approved OCI VM
+        type: choice
+        options: [amd64, arm64]
+        required: true
+      approval_id:
+        description: Operator approval reference for this staging deployment
+        type: string
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: oracle-staging-deployment
+  cancel-in-progress: false
+jobs:
+  checks:
+    if: vars.STAGING_DEPLOY_ENABLED == 'true'
+    permissions:
+      contents: read
+      packages: write
+    uses: ./.github/workflows/ci.yml
+  images:
+    needs: checks
+    environment: staging
+    runs-on: ${{ inputs.architecture == 'arm64' && 'ubuntu-24.04-arm' || 'ubuntu-24.04' }}
+    timeout-minutes: 60
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - {service: gateway, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: auth, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: notification, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: payment, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: quota, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: chat, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: pdf, file: Backend.Dockerfile, target: pdf, app: ''}
+          - {service: document, file: Python.Dockerfile, target: runtime, app: ''}
+          - {service: analytics, file: Python.Dockerfile, target: runtime, app: ''}
+          - {service: admin-api, file: Python.Dockerfile, target: runtime, app: ''}
+          - {service: admin-ui, file: Frontend.Dockerfile, target: '', app: admin}
+          - {service: user-ui, file: Frontend.Dockerfile, target: '', app: user-frontend}
+          - {service: migration, file: Backend.Dockerfile, target: migration, app: ''}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with: {persist-credentials: false}
+      - name: Validate staging approval and registry
+        env:
+          APPROVAL: ${{ inputs.approval_id }}
+          REGISTRY: ${{ vars.STAGING_REGISTRY_PREFIX }}
+        run: |
+          [[ "$APPROVAL" =~ ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,79}$ ]]
+          [[ "$REGISTRY" =~ ^ghcr.io/[a-z0-9][a-z0-9._-]*/doccraft$ ]]
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f
+      - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8
+        id: image
+        with:
+          context: .
+          file: deploy/docker/${{ matrix.file }}
+          target: ${{ matrix.target }}
+          build-args: APP=${{ matrix.app }}
+          platforms: linux/${{ inputs.architecture }}
+          push: true
+          tags: ${{ vars.STAGING_REGISTRY_PREFIX }}-${{ matrix.service }}:staging-sha-${{ github.sha }}-${{ inputs.architecture }}
+          provenance: mode=min
+          sbom: true
+      - name: Record immutable release fragment
+        env:
+          IMAGE: ${{ vars.STAGING_REGISTRY_PREFIX }}-${{ matrix.service }}@${{ steps.image.outputs.digest }}
+          SERVICE: ${{ matrix.service }}
+        run: |
+          mkdir -p fragments
+          jq -n --arg service "$SERVICE" --arg image "$IMAGE" '{($service): $image}' > "fragments/$SERVICE.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: staging-image-${{ matrix.service }}
+          path: fragments/*.json
+          if-no-files-found: error
+          retention-days: 14
+  scan:
+    needs: images
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with: {persist-credentials: false}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: staging-image-*
+          path: fragments
+          merge-multiple: true
+      - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Scan every selected platform digest using the pinned x86 scanner
+        env:
+          ARCHITECTURE: ${{ inputs.architecture }}
+        run: |
+          python3 deploy/scripts/install-ci-tools.py trivy
+          python3 - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+          for path in sorted(Path('fragments').glob('*.json')):
+              for image in json.loads(path.read_text()).values():
+                  subprocess.run(['.local/ci-tools/trivy', 'image', '--platform', 'linux/'+os.environ['ARCHITECTURE'],
+                                  '--exit-code', '1', '--severity', 'HIGH,CRITICAL', image], check=True)
+          PY
+  deploy:
+    needs: scan
+    environment: staging
+    # Select an approved runner that can use the approved Bastion or private route.
+    runs-on: ${{ vars.STAGING_RUNNER || 'ubuntu-24.04' }}
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with: {persist-credentials: false}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: staging-image-*
+          path: fragments
+          merge-multiple: true
+      - name: Validate and assemble immutable staging manifest
+        env:
+          ARCHITECTURE: ${{ inputs.architecture }}
+          REGISTRY: ${{ vars.STAGING_REGISTRY_PREFIX }}
+        run: |
+          python3 - <<'PY'
+          import json, os, sys
+          from pathlib import Path
+          sys.path.insert(0, 'deploy/scripts')
+          from controller import release_manifest
+          images = {}
+          for path in Path('fragments').glob('*.json'):
+              fragment = json.loads(path.read_text())
+              if set(images) & set(fragment): raise ValueError('Duplicate image')
+              images.update(fragment)
+          release = {'format': 1, 'commit': os.environ['GITHUB_SHA'],
+                     'schema_epoch': json.loads(Path('deploy/release-policy.json').read_text())['schema_epoch'],
+                     'images': images}
+          release_manifest(release, os.environ['REGISTRY'])
+          release['architecture'] = os.environ['ARCHITECTURE']
+          Path('staging-release.json').write_text(json.dumps(release, indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: staging-release-${{ github.sha }}-${{ inputs.architecture }}
+          path: staging-release.json
+          retention-days: 90
+      - name: Send release over verified staging SSH
+        env:
+          SSH_KEY: ${{ secrets.STAGING_SSH_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.STAGING_KNOWN_HOSTS }}
+          SSH_CONFIG: ${{ secrets.STAGING_SSH_CONFIG }}
+          APPROVAL: ${{ inputs.approval_id }}
+        run: |
+          umask 077
+          [[ "$APPROVAL" =~ ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,79}$ ]]
+          directory="$RUNNER_TEMP/doccraft-staging-ssh"
+          mkdir -m 700 "$directory"
+          trap 'rm -rf "$directory"' EXIT
+          printf '%s\n' "$SSH_KEY" > "$directory/key"
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > "$directory/known_hosts"
+          printf '%s\n' "$SSH_CONFIG" > "$directory/config"
+          # Config must define doccraft-staging and any separately pinned Bastion
+          # hop. The hop may reference DOCCRAFT_STAGING_SSH_DIRECTORY in ProxyCommand.
+          export DOCCRAFT_STAGING_SSH_DIRECTORY="$directory"
+          ssh -T -F "$directory/config" -i "$directory/key" \
+            -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes \
+            -o UserKnownHostsFile="$directory/known_hosts" -o GlobalKnownHostsFile=/dev/null \
+            -o ForwardAgent=no -o ClearAllForwardings=yes -o ControlMaster=no -o ControlPath=none \
+            -o PasswordAuthentication=no -o KbdInteractiveAuthentication=no \
+            -o ConnectTimeout=15 -o ServerAliveInterval=15 -o ServerAliveCountMax=8 \
+            doccraft-staging \
+            "python3 /opt/doccraft/control/scripts/oracle_staging.py deploy --release - --approval-id $APPROVAL" \
+            < staging-release.json

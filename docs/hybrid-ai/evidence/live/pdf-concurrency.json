@@ -1,0 +1,106 @@
+{
+  "method": "real signed diagnostic renderer; cleanup completes before PDF response; test-only unsandboxed Chromium",
+  "concurrency": 2,
+  "requests": 16,
+  "passed": 16,
+  "p50_ms": 129,
+  "p95_ms": 491,
+  "results": [
+    {
+      "latency_ms": 491,
+      "http": 200,
+      "bytes": 72880,
+      "passed": true
+    },
+    {
+      "latency_ms": 485,
+      "http": 200,
+      "bytes": 72880,
+      "passed": true
+    },
+    {
+      "latency_ms": 148,
+      "http": 200,
+      "bytes": 72880,
+      "passed": true
+    },
+    {
+      "latency_ms": 135,
+      "http": 200,
+      "bytes": 72880,
+      "passed": true
+    },
+    {
+      "latency_ms": 129,
+      "http": 200,
+      "bytes": 72880,
+      "passed": true
+    },
+    {
+      "latency_ms": 130,
+      "http": 200,
+      "bytes": 72880,
+      "passed": true
+    },
+    {
+      "latency_ms": 117,
+      "http": 200,
+      "bytes": 72880,
+      "passed": true
+    },
+    {
+      "latency_ms": 118,
+      "http": 200,
+      "bytes": 72880,
+      "passed": true
+    },
+    {
+      "latency_ms": 149,
+      "http": 200,
+      "bytes": 72880,
+      "passed": true
+    },
+    {
+      "latency_ms": 121,
+      "http": 200,
+      "bytes": 72880,
+      "passed": true
+    },
+    {
+      "latency_ms": 136,
+      "http": 200,
+      "bytes": 72880,
+      "passed": true
+    },
+    {
+      "latency_ms": 107,
+      "http": 200,
+      "bytes": 72880,
+      "passed": true
+    },
+    {
+      "latency_ms": 137,
+      "http": 200,
+      "bytes": 72880,
+      "passed": true
+    },
+    {
+      "latency_ms": 120,
+      "http": 200,
+      "bytes": 72880,
+      "passed": true
+    },
+    {
+      "latency_ms": 117,
+      "http": 200,
+      "bytes": 72880,
+      "passed": true
+    },
+    {
+      "latency_ms": 118,
+      "http": 200,
+      "bytes": 72880,
+      "passed": true
+    }
+  ]
+}

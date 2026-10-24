@@ -1,0 +1,7 @@
+{
+  "model_id": "live-small",
+  "healthy": true,
+  "code": "OK",
+  "checked_at": "2026-10-20T20:02:24.967143+00:00",
+  "latency_ms": 25049
+}

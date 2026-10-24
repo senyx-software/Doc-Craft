@@ -1,1 +1,1 @@
-export function localKnowledge(message: string): string | null;
+export function localKnowledge(message:string):string|null;

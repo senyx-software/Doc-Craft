@@ -1,0 +1,7 @@
+{
+  "http_status": 200,
+  "persisted_session_count": 2,
+  "durable_postgresql_reused": true,
+  "credentials_preserved": true,
+  "api_state_read": true
+}

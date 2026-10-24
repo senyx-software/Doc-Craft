@@ -1,0 +1,122 @@
+{
+  "observed_at_utc": "2026-10-22T04:25:29.756847+00:00",
+  "scope": "Historical local tests plus signed OCI discovery; later operator-authorized E5 retirement and failed A1 creation. No guest SSH/application deployment.",
+  "checks": [
+    {
+      "name": "deployment safety tests",
+      "command": "python3 -m unittest discover -s deploy/tests -v",
+      "status": "PASS",
+      "tests": 66,
+      "oracle_specific_tests": 33,
+      "scope": "Temporary filesystem fixtures, injected failures and subprocess mocks; no real deployment"
+    },
+    {
+      "name": "workflow syntax",
+      "command": ".local/hybrid-live/tools/actionlint/actionlint .github/workflows/deploy-staging.yml .github/workflows/ci.yml",
+      "status": "PASS",
+      "scope": "Static lint; no hosted workflow executed"
+    },
+    {
+      "name": "Compose staging merge",
+      "status": "PASS",
+      "evidence": "compose-validation.json",
+      "scope": "Real standalone parser, synthetic temporary files, no daemon; default services 15"
+    },
+    {
+      "name": "Python and shell syntax",
+      "status": "PASS",
+      "scope": "py_compile on Oracle helpers/verify_release; sh -n on transfer entry point"
+    },
+    {
+      "name": "migration immutability and destructive-SQL policy",
+      "command": "python3 deploy/scripts/check-migrations.py",
+      "status": "PASS",
+      "scope": "Static migrations; pending remote state unverified"
+    },
+    {
+      "name": "base image architecture indexes",
+      "status": "PASS",
+      "images": 6,
+      "evidence": "base-image-platforms.json",
+      "scope": "Live registry manifest digest verification only; no image layers/app builds"
+    },
+    {
+      "name": "environment inventory",
+      "status": "PASS",
+      "project_env_files": 19,
+      "generated_local_files": 234,
+      "project_permission_reviews": 15,
+      "source_variable_consumer_rows": 234,
+      "scope": "Static extraction; configured values withheld; dynamic helper accesses documented"
+    },
+    {
+      "name": "configured secret exclusion check",
+      "status": "PASS",
+      "distinct_values_compared_privately": 16,
+      "delivery_files_checked": 22,
+      "matches": 0,
+      "scope": "Exact comparisons of non-placeholder sensitive project-env values >=16 characters; no values emitted; not a complete historical secret scan"
+    },
+    {
+      "name": "whitespace",
+      "command": "git diff --check",
+      "status": "PASS"
+    },
+    {
+      "name": "OCI access",
+      "status": "PASS",
+      "reason": "Protected operator API profile reused; signed identity/tenancy/resource/usage calls succeeded",
+      "evidence": "oci-discovery.json",
+      "cli_version": "3.95.1"
+    },
+    {
+      "name": "SSH and remote deployment",
+      "status": "NOT_EXECUTED",
+      "reason": "Original launch key matched; E5 is now retired, A1 launch failed for host capacity, no replacement route/host key exists"
+    },
+    {
+      "name": "staging end-to-end verification",
+      "status": "NOT_EXECUTED",
+      "reason": "No deployment; all three A1 fault domains report OUT_OF_HOST_CAPACITY; production NO-GO retained"
+    },
+    {
+      "name": "Always Free migration preflight",
+      "status": "BLOCKED_BY_CAPACITY",
+      "api_requests_succeeded": true,
+      "shape": "VM.Standard.A1.Flex",
+      "ocpus": 2,
+      "memory_gb": 12,
+      "fault_domains_without_capacity": 3,
+      "projected_storage_gb": 97,
+      "evidence": "always-free-capacity-review.json",
+      "capacity_reserved": false,
+      "instances_launched": 0,
+      "scope": "Historical inventory plus refreshed capacity enquiry. operator_approved_creation=false in the read-only report is its non-authorizing tool scope; current operator authorization/execution is in a1-replacement-execution.json."
+    },
+    {
+      "name": "API/SSH key privacy and matching",
+      "status": "PASS",
+      "scope": "Protected local API key matches registered configuration and signed API access. Operator SSH public fingerprint matches launch metadata; no SSH authentication or private-key upload."
+    },
+    {
+      "name": "Operator-approved E5 retirement and A1 attempt",
+      "status": "E5_RETIRED_A1_CAPACITY_BLOCKED",
+      "observed_at_utc": "2026-10-22T04:49:25.034297+00:00",
+      "evidence": "a1-replacement-execution.json",
+      "scope": "Actual signed API stop/terminate; boot retained; no A1 created. Local unit tests were not rerun for documentation/evidence updates."
+    }
+  ],
+  "cloud_mutations": 2,
+  "secret_files_transferred": 0,
+  "migrations_applied": 0,
+  "services_deployed": 0,
+  "production_status": "NO-GO",
+  "operator_direction": "can u do that remove paid one and get A!",
+  "existing_vm_stop_approved": true,
+  "cloud_mutation_scope": "Successful SOFTSTOP and TERMINATE; one A1 launch request rejected without resource creation",
+  "existing_vm_delete_approved": true,
+  "current_instance_state": "TERMINATED",
+  "retained_boot_volume_gb": 47,
+  "a1_created": false,
+  "latest_cloud_execution_evidence": "a1-replacement-execution.json"
+}

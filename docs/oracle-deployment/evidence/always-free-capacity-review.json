@@ -1,0 +1,234 @@
+{
+  "observed_at_utc": "2026-10-22T05:34:35.281909+00:00",
+  "region": "ap-mumbai-1",
+  "scope": "Planning-only API inventory and non-reserving capacity reports",
+  "target": {
+    "shape": "VM.Standard.A1.Flex",
+    "ocpus": 2,
+    "memory_gb": 12,
+    "boot_gb": 50
+  },
+  "month_31_day_requirements": {
+    "ocpu_hours": 1488,
+    "gb_hours": 8928
+  },
+  "published_monthly_free_limits": {
+    "ocpu_hours": 1500,
+    "gb_hours": 9000,
+    "aggregate_block_storage_gb": 200
+  },
+  "instances_launched": 0,
+  "capacity_reserved": false,
+  "infrastructure_mutations": 0,
+  "operator_approved_creation": false,
+  "blockers": [
+    "No AVAILABLE host capacity reported for A1 2 OCPU / 12 GB in Mumbai"
+  ],
+  "a1_existing_instances": 0,
+  "projected_a1_allocation": {
+    "ocpus": 2,
+    "memory_gb": 12
+  },
+  "fault_domain_capacity": [
+    {
+      "availability-status": "OUT_OF_HOST_CAPACITY",
+      "available-count": null,
+      "fault-domain": "FAULT-DOMAIN-1",
+      "instance-shape": "VM.Standard.A1.Flex",
+      "instance-shape-config": {
+        "baseline-ocpu-utilization": null,
+        "memory-in-gbs": 12.0,
+        "nvmes": 0,
+        "ocpus": 2.0
+      }
+    },
+    {
+      "availability-status": "OUT_OF_HOST_CAPACITY",
+      "available-count": null,
+      "fault-domain": "FAULT-DOMAIN-2",
+      "instance-shape": "VM.Standard.A1.Flex",
+      "instance-shape-config": {
+        "baseline-ocpu-utilization": null,
+        "memory-in-gbs": 12.0,
+        "nvmes": 0,
+        "ocpus": 2.0
+      }
+    },
+    {
+      "availability-status": "OUT_OF_HOST_CAPACITY",
+      "available-count": null,
+      "fault-domain": "FAULT-DOMAIN-3",
+      "instance-shape": "VM.Standard.A1.Flex",
+      "instance-shape-config": {
+        "baseline-ocpu-utilization": null,
+        "memory-in-gbs": 12.0,
+        "nvmes": 0,
+        "ocpus": 2.0
+      }
+    }
+  ],
+  "projected_boot_plus_block_storage_gb": 97,
+  "selected_platform_image": {
+    "id": "ocid1.image.oc1.ap-mumbai-1.aaaaaaaa2jurqb3jm7hlpqw3au35loaqjkcozbyh7znn4jnfu5zbrgfulwia",
+    "display-name": "Canonical-Ubuntu-24.04-aarch64-2026.09.18-0",
+    "compartment-id": null,
+    "size-in-mbs": 47694,
+    "lifecycle-state": "AVAILABLE",
+    "time-created": "2026-09-21T21:59:16.261000+00:00"
+  },
+  "operations": {
+    "tenancy": {
+      "status": "OBSERVED",
+      "data": {
+        "id": "ocid1.tenancy.oc1..aaaaaaaaqdmc45x6ug4wxmdxu6vof3jtmnldsnhvp2bbjds3ddm6lw5wv3jq",
+        "name": "erandasathsara",
+        "home-region-key": "BOM"
+      }
+    },
+    "compartments": {
+      "status": "OBSERVED",
+      "data": [],
+      "empty_cli_list_output": true
+    },
+    "instances": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "id": "ocid1.instance.oc1.ap-mumbai-1.anrg6ljr4wujdnqcezvcrlwboiuw3efznrg5ztawy7tes74vcz63m3yn46ra",
+          "display-name": "instance-20261021-1441",
+          "shape": "VM.Standard.E5.Flex",
+          "shape-config": {
+            "baseline-ocpu-utilization": null,
+            "gpu-description": null,
+            "gpus": 0,
+            "local-disk-description": null,
+            "local-disks": 0,
+            "local-disks-total-size-in-gbs": null,
+            "local-volume-size-in-gbs": null,
+            "max-vnic-attachments": 2,
+            "memory-in-gbs": 12.0,
+            "networking-bandwidth-in-gbps": 1.0,
+            "ocpus": 1.0,
+            "processor-description": "2.3 GHz AMD EPYC\u2122 9J14 (Genoa)",
+            "resource-management": null,
+            "vcpus": 2
+          },
+          "lifecycle-state": "TERMINATED"
+        }
+      ]
+    },
+    "availability_domains": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "name": "vFwL:AP-MUMBAI-1-AD-1"
+        }
+      ]
+    },
+    "boot_volumes_0": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "id": "ocid1.bootvolume.oc1.ap-mumbai-1.abrg6ljrao5g24wqapeputcw3yf2adsj22r56e7qepgj7hfx2nopjkdeqzta",
+          "size-in-gbs": 47,
+          "lifecycle-state": "AVAILABLE"
+        }
+      ]
+    },
+    "fault_domains_0": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "name": "FAULT-DOMAIN-1"
+        },
+        {
+          "name": "FAULT-DOMAIN-2"
+        },
+        {
+          "name": "FAULT-DOMAIN-3"
+        }
+      ]
+    },
+    "capacity_0": {
+      "status": "OBSERVED",
+      "data": {
+        "availability-domain": "vFwL:AP-MUMBAI-1-AD-1",
+        "shape-availabilities": [
+          {
+            "availability-status": "OUT_OF_HOST_CAPACITY",
+            "available-count": null,
+            "fault-domain": "FAULT-DOMAIN-1",
+            "instance-shape": "VM.Standard.A1.Flex",
+            "instance-shape-config": {
+              "baseline-ocpu-utilization": null,
+              "memory-in-gbs": 12.0,
+              "nvmes": 0,
+              "ocpus": 2.0
+            }
+          },
+          {
+            "availability-status": "OUT_OF_HOST_CAPACITY",
+            "available-count": null,
+            "fault-domain": "FAULT-DOMAIN-2",
+            "instance-shape": "VM.Standard.A1.Flex",
+            "instance-shape-config": {
+              "baseline-ocpu-utilization": null,
+              "memory-in-gbs": 12.0,
+              "nvmes": 0,
+              "ocpus": 2.0
+            }
+          },
+          {
+            "availability-status": "OUT_OF_HOST_CAPACITY",
+            "available-count": null,
+            "fault-domain": "FAULT-DOMAIN-3",
+            "instance-shape": "VM.Standard.A1.Flex",
+            "instance-shape-config": {
+              "baseline-ocpu-utilization": null,
+              "memory-in-gbs": 12.0,
+              "nvmes": 0,
+              "ocpus": 2.0
+            }
+          }
+        ],
+        "time-created": "2026-10-22T05:34:46.005000+00:00"
+      }
+    },
+    "block_volumes": {
+      "status": "OBSERVED",
+      "data": [],
+      "empty_cli_list_output": true
+    },
+    "arm64_platform_images": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "id": "ocid1.image.oc1.ap-mumbai-1.aaaaaaaa2jurqb3jm7hlpqw3au35loaqjkcozbyh7znn4jnfu5zbrgfulwia",
+          "display-name": "Canonical-Ubuntu-24.04-aarch64-2026.09.18-0",
+          "compartment-id": null,
+          "size-in-mbs": 47694,
+          "lifecycle-state": "AVAILABLE",
+          "time-created": "2026-09-21T21:59:16.261000+00:00"
+        },
+        {
+          "id": "ocid1.image.oc1.ap-mumbai-1.aaaaaaaavpkbfemaxi7gfzobc4qsc3p2m5szuswd7skrxvzo5teii6bfkd2a",
+          "display-name": "Canonical-Ubuntu-24.04-aarch64-2026.08.25-0",
+          "compartment-id": null,
+          "size-in-mbs": 47694,
+          "lifecycle-state": "AVAILABLE",
+          "time-created": "2026-08-27T14:42:55.259000+00:00"
+        },
+        {
+          "id": "ocid1.image.oc1.ap-mumbai-1.aaaaaaaaytxsvsvrxvbvw7sa6lu7ela3yb4q3hihq3lmsxpilio4rmcdwt2q",
+          "display-name": "Canonical-Ubuntu-24.04-aarch64-2026.06.29-0",
+          "compartment-id": null,
+          "size-in-mbs": 47694,
+          "lifecycle-state": "AVAILABLE",
+          "time-created": "2026-07-20T17:55:26.114000+00:00"
+        }
+      ]
+    }
+  },
+  "preflight_ready": false,
+  "launch_authorized": false
+}

@@ -1,0 +1,241 @@
+{
+  "ports": {
+    "gateway": 3001,
+    "auth": 3011,
+    "notification": 3012,
+    "document": 3013,
+    "payment": 3014,
+    "quota": 3015,
+    "chat": 3016,
+    "analytics": 3017,
+    "admin-api": 3018,
+    "pdf": 3023
+  },
+  "settings_by_service": {
+    "gateway": [
+      "AUTH_SERVICE_URL",
+      "DOCUMENT_SERVICE_URL",
+      "BILLING_SERVICE_URL",
+      "QUOTA_SERVICE_URL",
+      "AI_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "ADMIN_API_SERVICE_URL",
+      "NOTIFICATION_SERVICE_URL",
+      "CORS_ORIGINS"
+    ],
+    "auth": [
+      "ADMIN_API_SERVICE_URL",
+      "NOTIFICATION_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "FRONTEND_URL",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CALLBACK_URL",
+      "FIREBASE_PROJECT_ID",
+      "EMAIL_FROM"
+    ],
+    "notification": [
+      "AUTH_SERVICE_URL",
+      "ADMIN_API_URL",
+      "FRONTEND_URL",
+      "RESEND_FROM_EMAIL"
+    ],
+    "document": [
+      "AUTH_SERVICE_URL",
+      "QUOTA_SERVICE_URL",
+      "ADMIN_API_SERVICE_URL",
+      "AI_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "GATEWAY_URL",
+      "SUPABASE_URL",
+      "LEGACY_STORAGE_PROVIDER",
+      "LOCAL_STORAGE_DIR",
+      "SIDECAR_URL"
+    ],
+    "payment": [
+      "AUTH_SERVICE_URL",
+      "QUOTA_SERVICE_URL",
+      "ADMIN_API_SERVICE_URL",
+      "NOTIFICATION_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "FRONTEND_URL",
+      "PAYMENT_SERVICE_PUBLIC_URL",
+      "PADDLE_SANDBOX",
+      "PAYHERE_SANDBOX",
+      "PADDLE_PRO_MONTHLY_PRICE_ID",
+      "PADDLE_PRO_YEARLY_PRICE_ID",
+      "PADDLE_MAX_MONTHLY_PRICE_ID",
+      "PADDLE_MAX_YEARLY_PRICE_ID",
+      "PAYHERE_MERCHANT_ID"
+    ],
+    "quota": [
+      "AUTH_SERVICE_URL",
+      "ADMIN_API_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "FRONTEND_URL"
+    ],
+    "chat": [
+      "AUTH_SERVICE_URL",
+      "QUOTA_SERVICE_URL",
+      "ADMIN_API_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "BILLING_SERVICE_URL",
+      "CORS_ORIGIN",
+      "TURN_TIMEOUT_MS",
+      "MAX_CONCURRENT_REQUESTS",
+      "MAX_QUEUE_SIZE"
+    ],
+    "analytics": [
+      "AUTH_SERVICE_URL",
+      "PAYMENT_SERVICE_URL",
+      "POSTHOG_HOST"
+    ],
+    "admin-api": [
+      "AUTH_SERVICE_URL",
+      "QUOTA_SERVICE_URL",
+      "PAYMENT_SERVICE_URL",
+      "CHAT_SERVICE_URL",
+      "DOCUMENT_SERVICE_URL",
+      "NOTIFICATION_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "GATEWAY_URL",
+      "CHAT_SERVICE_MCP_URL",
+      "POSTHOG_HOST",
+      "POSTHOG_PROJECT_ID",
+      "RESEND_FROM_EMAIL",
+      "ALLOWED_ORIGINS",
+      "ALLOWED_ADMIN_IPS",
+      "IP_WHITELIST_ENABLED",
+      "TRUSTED_PROXY_IPS",
+      "AI_ALLOWED_LOCAL_ENDPOINTS",
+      "AI_ALLOWED_CLOUD_HOSTS",
+      "LOCAL_STORAGE_DIR"
+    ],
+    "pdf": [
+      "SIDECAR_PORT",
+      "SIDECAR_HOST",
+      "PDF_MAX_CONCURRENT",
+      "PUPPETEER_EXECUTABLE_PATH"
+    ]
+  },
+  "secret_allowlist": {
+    "gateway": [
+      "REDIS_URL"
+    ],
+    "auth": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "GOOGLE_CLIENT_SECRET",
+      "JWT_REFRESH_SECRET",
+      "JWT_SECRET",
+      "REDIS_URL",
+      "RESEND_API_KEY"
+    ],
+    "notification": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "RESEND_API_KEY"
+    ],
+    "document": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "SUPABASE_SERVICE_ROLE_KEY"
+    ],
+    "payment": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "PADDLE_API_KEY",
+      "PADDLE_WEBHOOK_SECRET",
+      "PAYHERE_MERCHANT_SECRET",
+      "REDIS_URL"
+    ],
+    "quota": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL"
+    ],
+    "chat": [
+      "ANTHROPIC_API_KEY",
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "GROQ_API_KEY",
+      "REDIS_URL"
+    ],
+    "analytics": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "POSTHOG_API_KEY",
+      "REDIS_URL"
+    ],
+    "admin-api": [
+      "ADMIN_DATABASE_URL",
+      "ADMIN_JWT_SECRET",
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "POSTHOG_API_KEY",
+      "POSTHOG_PERSONAL_API_KEY",
+      "REDIS_URL",
+      "RESEND_API_KEY",
+      "SUPER_ADMIN_EMAIL",
+      "SUPER_ADMIN_NAME",
+      "SUPER_ADMIN_PASSWORD"
+    ],
+    "pdf": [
+      "REDIS_URL"
+    ]
+  },
+  "required_secrets": {
+    "gateway": [
+      "REDIS_URL"
+    ],
+    "auth": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "JWT_REFRESH_SECRET",
+      "JWT_SECRET",
+      "REDIS_URL"
+    ],
+    "notification": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "RESEND_API_KEY"
+    ],
+    "document": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL"
+    ],
+    "payment": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL"
+    ],
+    "quota": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL"
+    ],
+    "chat": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL"
+    ],
+    "analytics": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL"
+    ],
+    "admin-api": [
+      "ADMIN_DATABASE_URL",
+      "ADMIN_JWT_SECRET",
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL"
+    ],
+    "pdf": [
+      "REDIS_URL"
+    ]
+  }
+}

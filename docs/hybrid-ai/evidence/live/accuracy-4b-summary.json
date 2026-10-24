@@ -1,0 +1,11 @@
+{
+  "total": 16,
+  "passed": 6,
+  "failed": 10,
+  "p50_ms": 23701,
+  "p95_ms": 90092,
+  "context_window": 4096,
+  "cpu_threads": 4,
+  "output_limit": 768,
+  "comparison": "One case per category. Smaller context/fewer CPU threads than 1.7B full corpus; not a paired accuracy benchmark."
+}

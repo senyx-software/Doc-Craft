@@ -1,0 +1,1107 @@
+[
+  {
+    "id": "SEC-001",
+    "severity": "HIGH",
+    "component": "Auth alternate Google OAuth callback",
+    "classification": "Confirmed defect",
+    "description": "Alternate callback issues access/refresh sessions without main-login MFA and account-state checks.",
+    "root_cause": "googleCallback performs token exchange/email lookup then signs and stores session directly.",
+    "evidence": [
+      "services/auth/src/controllers/auth.controller.ts:465",
+      "runtime/../oauth-callback-handler.json"
+    ],
+    "reproduction_steps": [
+      "Run scripts/audit_security/oauth-callback.test.ts",
+      "Four fixture states: MFA enabled,suspended,deleted,locked"
+    ],
+    "business_impact": "MFA-capable accounts can take a weaker alternate authentication path once OAuth routing is made reachable.",
+    "security_impact": "MFA bypass for active accounts; downstream account checks mitigate suspended/deleted use but do not restore missing MFA.",
+    "recommended_fix": "Unify callback with the same account-status/MFA/session policy as password/Firebase login before repairing public routing.",
+    "estimated_effort": "1\u20132 days",
+    "verification_status": "Actual handler test reproduced all4states using explicit external/DB stubs; no real Google credentials or compromise tested",
+    "remediation": {
+      "id": "SEC-001",
+      "severity": "HIGH",
+      "status": "partially fixed",
+      "root_cause": "googleCallback performs token exchange/email lookup then signs and stores session directly.",
+      "fix_implemented": "OAuth now verifies state, S256 PKCE, signed Google ID-token issuer/audience/expiry/nonce/verified email, and account/verification/MFA policy before issuing sessions. Credentials and redirect origins must be configured; provider errors are sanitized.",
+      "files_changed": [
+        "services/auth/src/controllers/auth.controller.ts",
+        "services/auth/src/services/google-oauth.service.ts",
+        "services/auth/src/server.ts"
+      ],
+      "regression_tests": [
+        "node_modules/.bin/vitest run services/auth/src --maxWorkers=2"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/verification.json"
+      ],
+      "remaining_risks_and_dependencies": "Actual RSA/JWT and handler regressions use local keys and explicit provider/database stubs. Real Google redirect, consent, account linking, provider replay and HTTPS cookie acceptance remain unexecuted; no production OAuth approval."
+    }
+  },
+  {
+    "id": "SEC-002",
+    "severity": "HIGH",
+    "component": "Auth password reset",
+    "classification": "Confirmed defect",
+    "description": "Two concurrent requests with the same reset token both successfully change the password.",
+    "root_cause": "used check precedes bcrypt work and transaction; later token update has no conditional unused predicate.",
+    "evidence": [
+      "services/auth/src/controllers/auth.controller.ts:404",
+      "runtime/password-reset-race.json"
+    ],
+    "reproduction_steps": [
+      "Create owned fixture reset request",
+      "Submit same token concurrently with different strong passwords"
+    ],
+    "business_impact": "One-use recovery token semantics fail; final password depends on request order.",
+    "security_impact": "Valid reset-token reuse permits competing password mutations.",
+    "recommended_fix": "Consume hashed reset token conditionally inside a transaction and mutate password only for the winning request; preserve session revocation.",
+    "estimated_effort": "1 day",
+    "verification_status": "Actual gateway/Auth/PostgreSQL reproduced HTTP200 twice; no production account used",
+    "remediation": {
+      "id": "SEC-002",
+      "severity": "HIGH",
+      "status": "fixed",
+      "root_cause": "used check precedes bcrypt work and transaction; later token update has no conditional unused predicate.",
+      "fix_implemented": "A conditional unused/unexpired token claim, password mutation, session deletion and durable access revocation commit together. Losing claims cannot mutate credentials. New recovery tokens are stored as digests; old unexpired hex links remain compatible. A stored digest is never accepted as a bearer.",
+      "files_changed": [
+        "services/auth/src/controllers/auth.controller.ts",
+        "services/auth/src/services/access-revocation.service.ts",
+        "services/auth/src/controllers/resetPassword.test.ts"
+      ],
+      "regression_tests": [
+        "node_modules/.bin/vitest run services/auth/src/controllers/resetPassword.test.ts",
+        ".venv-local/bin/python scripts/production_remediation_security.py"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/security-acceptance.json"
+      ],
+      "remaining_risks_and_dependencies": "Actual gateway/Auth/PostgreSQL: one of eight succeeds, seven400; replay denied, old access/refresh denied, winning password works. Email challenge was seeded only in owned test DB; external mail delivery is not verified."
+    }
+  },
+  {
+    "id": "DB-001",
+    "severity": "HIGH",
+    "component": "Admin staff creation",
+    "classification": "Confirmed defect",
+    "description": "Concurrent staff creates choose one ID and overwrite an account.",
+    "root_cause": "MAX numeric suffix+1 outside transaction plus INSERT OR REPLACE/upsert.",
+    "evidence": [
+      "services/admin-api/app/repositories/admin_user_repository.py:48",
+      "services/admin-api/app/repositories/admin_user_repository.py:71",
+      "admin-create-race.json"
+    ],
+    "reproduction_steps": [
+      "Run scripts/audit_security/admin_create_race.py",
+      "Barrier after two real list_all snapshots"
+    ],
+    "business_impact": "Staff account/role identity loss or overwrite; privileged operation requires existing authorization.",
+    "security_impact": "Account integrity/possible role identity corruption; no anonymous exploit claimed.",
+    "recommended_fix": "Use DB-generated UUID/sequence plus insert-only create; retain explicit update path and unique-email constraints.",
+    "estimated_effort": "1 day",
+    "verification_status": "Real repository/fresh SQLite:two adm_001 IDs,one stored row; PostgreSQL upsert path requires follow-up concurrent acceptance",
+    "remediation": {
+      "id": "DB-001",
+      "severity": "HIGH",
+      "status": "fixed",
+      "root_cause": "MAX numeric suffix+1 outside transaction plus INSERT OR REPLACE/upsert.",
+      "fix_implemented": "Staff creation uses UUIDs and insert-only SQL; save updates existing identities and preserves creation time. Normalized email uniqueness is enforced in SQLite/PostgreSQL; conflicts return409. Schema initialization rolls back on failure.",
+      "files_changed": [
+        "services/admin-api/app/repositories/admin_user_repository.py",
+        "services/admin-api/app/db/admin_db.py",
+        "services/admin-api/migrations/202610210001_admin_identity.sql",
+        "services/admin-api/tests/test_staff_identity_remediation.py"
+      ],
+      "regression_tests": [
+        ".venv-local/bin/python -m pytest -q services/admin-api/tests",
+        ".venv-local/bin/python scripts/production_remediation_security.py"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/security-acceptance.json"
+      ],
+      "remaining_risks_and_dependencies": "Real SQLite and real PostgreSQL concurrency preserve16distinct accounts; duplicate email409 preserves original role. Review legacy normalized-email duplicates before the additive index; no accounts are merged or deleted automatically."
+    }
+  },
+  {
+    "id": "API-001",
+    "severity": "HIGH",
+    "component": "Gateway OAuth routing",
+    "classification": "Confirmed defect",
+    "description": "Real Google initiation/callback paths are rejected by gateway public-route policy.",
+    "root_cause": "Stale allowlist /oauth/google and /oauth/callback differs from registered /login/google and /oauth/google/callback.",
+    "evidence": [
+      "services/gateway/src/middleware/auth.middleware.ts:21",
+      "services/auth/src/routes/auth.routes.ts:407",
+      "runtime/integrated-tests.json"
+    ],
+    "reproduction_steps": [
+      "Unauthenticated GET /v1/auth/login/google",
+      "Unauthenticated GET /v1/auth/oauth/google/callback"
+    ],
+    "business_impact": "Alternate Google sign-in cannot complete through the public gateway.",
+    "security_impact": "Repairing routing alone would expose SEC-001.",
+    "recommended_fix": "After SEC-001 is fixed, align method/path allowlist and integration tests with actual auth registration.",
+    "estimated_effort": "0.5\u20131 day",
+    "verification_status": "Both real gateway requests returned401 (INT-007/008)",
+    "remediation": {
+      "id": "API-001",
+      "severity": "HIGH",
+      "status": "fixed",
+      "root_cause": "Stale allowlist /oauth/google and /oauth/callback differs from registered /login/google and /oauth/google/callback.",
+      "fix_implemented": "Gateway public methods/paths now match the actual Google initiation and callback. Unconfigured OAuth returns503 from Auth, rather than the stale gateway401.",
+      "files_changed": [
+        "services/gateway/src/middleware/auth.middleware.ts",
+        "services/auth/src/server.ts"
+      ],
+      "regression_tests": [
+        "node_modules/.bin/vitest run services/auth/src services/gateway/src/middleware/__tests__ --maxWorkers=2",
+        ".venv-local/bin/python scripts/production_remediation_security.py"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/security-acceptance.json",
+        "docs/production-remediation/evidence/runtime/integrated-tests.json"
+      ],
+      "remaining_risks_and_dependencies": "Live Google acceptance remains part of SEC-001. No dummy client credentials or unvalidated redirects are used."
+    }
+  },
+  {
+    "id": "FE-001",
+    "severity": "HIGH",
+    "component": "User billing receipt view",
+    "classification": "Confirmed defect",
+    "description": "Paid-plan view fabricates a fixed paid invoice and receipt download is an alert.",
+    "root_cause": "Static date/price/status row gated by cached entitlements instead of billing invoice query.",
+    "evidence": [
+      "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx:170",
+      "runtime/billing-receipt.json"
+    ],
+    "reproduction_steps": [
+      "Give synthetic account approved pro override without payment",
+      "Visit profile then navigate within app to billing",
+      "Observe fixed2026-08-15/LKR990 row despite zero billing_invoice rows"
+    ],
+    "business_impact": "Users see invented financial records and receive no receipt download.",
+    "security_impact": "Financial integrity/trust defect; no real charge or invoice created.",
+    "recommended_fix": "Render actual authorized invoices or an honest empty state; implement verified receipt download.",
+    "estimated_effort": "1\u20132 days",
+    "verification_status": "Actual browser/API/DB reproduced date/amount/paid display with zero persisted invoices",
+    "remediation": {
+      "id": "FE-001",
+      "severity": "HIGH",
+      "status": "fixed",
+      "root_cause": "Static date/price/status row gated by cached entitlements instead of billing invoice query.",
+      "fix_implemented": "Billing fetches authoritative invoices with loading/error/retry/pagination and loads entitlements on entry. Fixed paid rows and fake download alerts were removed. Plan access never creates a receipt; paid provider invoices, pending payments and failures have distinct labels.",
+      "files_changed": [
+        "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx",
+        "user-frontend/src/api/payment.ts",
+        "user-frontend/src/api/__tests__/payment.test.ts"
+      ],
+      "regression_tests": [
+        "node scripts/production_remediation_browser.mjs"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/billing-browser.json"
+      ],
+      "remaining_risks_and_dependencies": "Actual pro override with zero invoice rows renders zero financial records and correct cold plan state. No synthetic paid invoice is used as provider acceptance. Real checkout/webhook/paid invoice download/refund requires approved test-provider credentials."
+    }
+  },
+  {
+    "id": "FE-002",
+    "severity": "HIGH",
+    "component": "OAuth frontend callback",
+    "classification": "Confirmed defect",
+    "description": "Frontend does not consume the callback URL/fragment emitted by Auth.",
+    "root_cause": "Auth redirects /oauth-callback#accessToken=...; App only reads query access_token and declares no callback route.",
+    "evidence": [
+      "services/auth/src/controllers/auth.controller.ts:508",
+      "user-frontend/src/App.tsx:47"
+    ],
+    "reproduction_steps": [
+      "Compare callback response location and frontend router/parser",
+      "Full real Google flow requires approved test OAuth config"
+    ],
+    "business_impact": "Even after gateway repair, alternate OAuth session is not restored into UI.",
+    "security_impact": "Token handling must avoid logs/history leaks.",
+    "recommended_fix": "Implement one consistent callback route/encoding with token-safe handling and an actual OAuth integration test.",
+    "estimated_effort": "1 day",
+    "verification_status": "Source contract mismatch verified; external Google flow blocked",
+    "remediation": {
+      "id": "FE-002",
+      "severity": "HIGH",
+      "status": "partially fixed",
+      "root_cause": "Auth redirects /oauth-callback#accessToken=...; App only reads query access_token and declares no callback route.",
+      "fix_implemented": "A dedicated callback page consumes the server fragment, removes credentials from history immediately, verifies the session and sends MFA challenges to the existing second-factor page. Query-token intake and unused redirect targets were removed.",
+      "files_changed": [
+        "user-frontend/src/App.tsx",
+        "user-frontend/src/pages/OAuthCallbackPage.tsx",
+        "user-frontend/src/api/auth.ts"
+      ],
+      "regression_tests": [
+        "npm run build --prefix user-frontend",
+        "node_modules/.bin/vitest run services/auth/src/controllers/googleCallback.test.ts"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/browser-tests.json"
+      ],
+      "remaining_risks_and_dependencies": "Live Google browser flow remains blocked by approved credentials/provider setup. Access tokens still enter browser memory; SEC-003 remains partial. Callback-specific external acceptance is not replaced by ordinary browser login."
+    }
+  },
+  {
+    "id": "FE-003",
+    "severity": "HIGH",
+    "component": "User profile MFA display",
+    "classification": "Confirmed defect",
+    "description": "Opening profile shows MFA as disabled although backend MFA is enabled.",
+    "root_cause": "users.getProfile/updateProfile omit twoFactorEnabled; ProfileIdentityCard replaces auth user; security card coerces omitted field false.",
+    "evidence": [
+      "user-frontend/src/api/users.ts:15",
+      "user-frontend/src/components/dashboard/ProfileIdentityCard.tsx:41",
+      "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx:36",
+      "runtime/browser-tests.json"
+    ],
+    "reproduction_steps": [
+      "Actual TOTP enable+verify",
+      "Open/reload profile",
+      "Compare backend enabled flag to disable action"
+    ],
+    "business_impact": "Misleading security state; correct MFA-management actions disappear.",
+    "security_impact": "UI defect; primary backend MFA enforcement is not bypassed by this display bug.",
+    "recommended_fix": "Preserve the server MFA field in normalization and merge verified profile updates; cover reload.",
+    "estimated_effort": "0.5 day",
+    "verification_status": "BROWSER-008 failed:backend true,disable control absent",
+    "remediation": {
+      "id": "FE-003",
+      "severity": "HIGH",
+      "status": "fixed",
+      "root_cause": "users.getProfile/updateProfile omit twoFactorEnabled; ProfileIdentityCard replaces auth user; security card coerces omitted field false.",
+      "fix_implemented": "Profile read/save normalization retains backend MFA state. The identity card applies the complete authoritative saved profile.",
+      "files_changed": [
+        "user-frontend/src/api/users.ts",
+        "user-frontend/src/components/dashboard/ProfileIdentityCard.tsx",
+        "user-frontend/src/api/__tests__/profile.test.ts"
+      ],
+      "regression_tests": [
+        "node_modules/.bin/vitest run user-frontend/src/api/__tests__/profile.test.ts",
+        "node scripts/production_remediation_browser_suite.mjs"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/browser-tests.json"
+      ],
+      "remaining_risks_and_dependencies": "Actual TOTP enrollment followed by browser profile/reload shows the disable action. Production HTTPS and external OAuth MFA acceptance remain separate gates."
+    }
+  },
+  {
+    "id": "FE-004",
+    "severity": "HIGH",
+    "component": "Saved custom canvas template persistence",
+    "classification": "Confirmed defect",
+    "description": "Applied saved literal canvas disappears after reloading the same session.",
+    "root_cause": "Apply replaces canvasElements, clears customElements/overrides, leaves builtin selectedTemplate; autosave payload omits canvasElements and local persistence strips them.",
+    "evidence": [
+      "user-frontend/src/store/documentStore.ts:411",
+      "user-frontend/src/store/documentStore.ts:61",
+      "user-frontend/src/store/documentStore.ts:1125",
+      "runtime/custom-template-reload.json"
+    ],
+    "reproduction_steps": [
+      "Save literal custom template",
+      "Apply in active session",
+      "Reload same session and compare exact canvas elements"
+    ],
+    "business_impact": "Potential silent loss of a user-selected custom design.",
+    "security_impact": "Document integrity risk; do not claim runtime reproduction if probe blocked.",
+    "recommended_fix": "Represent applied literal template in typed durable state or persist its validated elements/definition identity; test reload and next chat.",
+    "estimated_effort": "1\u20132 days",
+    "verification_status": "Actual browser/API/database reproduction:literal element present after Apply,absent after same-session reload",
+    "remediation": {
+      "id": "FE-004",
+      "severity": "HIGH",
+      "status": "fixed",
+      "root_cause": "Apply replaces canvasElements, clears customElements/overrides, leaves builtin selectedTemplate; autosave payload omits canvasElements and local persistence strips them.",
+      "fix_implemented": "Validated session-scoped canvas mode distinguishes literal templates from generated bases. Literal elements/page settings persist through the existing backend canvas API, reload and hydration. Reset/undo/redo retain mode, undo flushes pending saves, and generation preserves literal presentation.",
+      "files_changed": [
+        "shared/canvas-layout.mjs",
+        "shared/canvas-layout.d.mts",
+        "user-frontend/src/types/index.ts",
+        "user-frontend/src/store/documentStore.ts",
+        "user-frontend/src/store/__tests__/documentHydration.test.ts",
+        "shared/tests/canvas-layout.test.mjs"
+      ],
+      "regression_tests": [
+        "node_modules/.bin/vitest run user-frontend/src/store/__tests__/documentHydration.test.ts user-frontend/src/store/__tests__/documentExport.test.ts --maxWorkers=2",
+        "node scripts/production_remediation_custom_template.mjs"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/custom-template-reload.json"
+      ],
+      "remaining_risks_and_dependencies": "Actual Apply -> backend save -> same-session reload passes. Legacy layouts default to template mode; original lost snapshots cannot be reconstructed. Literal templates stay literal; production PDF sandbox acceptance remains blocked."
+    }
+  },
+  {
+    "id": "FE-005",
+    "severity": "MEDIUM",
+    "component": "Billing deep-link state",
+    "classification": "Confirmed defect",
+    "description": "Fresh billing page can label a pro override account FREE until another page initializes quota state.",
+    "root_cause": "Billing reads quota/entitlements but does not fetch them on mount.",
+    "evidence": [
+      "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx:12",
+      "runtime/billing-receipt.json"
+    ],
+    "reproduction_steps": [
+      "Open billing directly in a new authenticated browser context",
+      "Visit profile then use in-app billing navigation"
+    ],
+    "business_impact": "Incorrect subscription display depends on navigation history.",
+    "security_impact": "No server entitlement bypass observed.",
+    "recommended_fix": "Fetch authoritative policy on mount with loading/error states and test direct URLs.",
+    "estimated_effort": "0.5 day",
+    "verification_status": "Actual cold billing showed FREE; after profile initialized entitlements paid branch rendered",
+    "remediation": {
+      "id": "FE-005",
+      "severity": "MEDIUM",
+      "status": "fixed",
+      "root_cause": "Billing reads quota/entitlements but does not fetch them on mount.",
+      "fix_implemented": "Billing fetches authoritative invoices with loading/error/retry/pagination and loads entitlements on entry. Fixed paid rows and fake download alerts were removed. Plan access never creates a receipt; paid provider invoices, pending payments and failures have distinct labels.",
+      "files_changed": [
+        "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx",
+        "user-frontend/src/api/payment.ts",
+        "user-frontend/src/api/__tests__/payment.test.ts"
+      ],
+      "regression_tests": [
+        "node scripts/production_remediation_browser.mjs"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/billing-browser.json"
+      ],
+      "remaining_risks_and_dependencies": "Actual pro override with zero invoice rows renders zero financial records and correct cold plan state. No synthetic paid invoice is used as provider acceptance. Real checkout/webhook/paid invoice download/refund requires approved test-provider credentials."
+    }
+  },
+  {
+    "id": "FE-006",
+    "severity": "MEDIUM",
+    "component": "Frontend session refresh",
+    "classification": "Confirmed defect",
+    "description": "Frontend discards/does not use the available refresh-token flow and clears authentication on expiry/401.",
+    "root_cause": "API wrappers consume access token; frontend has no refresh call; backend refresh exists.",
+    "evidence": [
+      "user-frontend/src/api/client.ts:59",
+      "user-frontend/src/store/authStore.ts:318",
+      "services/auth/src/controllers/auth.controller.ts:333"
+    ],
+    "reproduction_steps": [
+      "Let access token expire while editing",
+      "Observe frontend clear/re-auth instead of backend token rotation"
+    ],
+    "business_impact": "Avoidable interruptions and risk of unsaved editing state.",
+    "security_impact": "Browser token storage design needs security review.",
+    "recommended_fix": "Design secure refresh storage/rotation and bounded single-flight refresh before retry; retain logout revocation.",
+    "estimated_effort": "1\u20132 days",
+    "verification_status": "Source trace; backend refresh/old-token rejection verified INT-006; long-expiry browser recovery not certified",
+    "remediation": {
+      "id": "FE-006",
+      "severity": "MEDIUM",
+      "status": "fixed",
+      "root_cause": "API wrappers consume access token; frontend has no refresh call; backend refresh exists.",
+      "fix_implemented": "Server-set refresh cookies are HttpOnly, same-site and Secure in production. Browser requests include credentials and coalesce one renewal; PostgreSQL rotates refresh sessions conditionally. Cookie refresh requires the configured Origin. Logout sends JSON, clears the cookie and cannot silently succeed on a failed server request. Guests clear earlier refresh cookies.",
+      "files_changed": [
+        "services/auth/src/controllers/auth.controller.ts",
+        "services/auth/src/routes/auth.routes.ts",
+        "user-frontend/src/api/client.ts",
+        "user-frontend/src/api/auth.ts",
+        "user-frontend/src/store/authStore.ts",
+        "user-frontend/src/components/common/Navbar.tsx",
+        "user-frontend/src/components/common/LogoutConfirmModal.tsx",
+        "user-frontend/src/api/__tests__/refresh.test.ts",
+        "user-frontend/src/api/__tests__/guest.test.ts",
+        "user-frontend/src/store/__tests__/guestAuth.test.ts"
+      ],
+      "regression_tests": [
+        "node_modules/.bin/vitest run services/auth/src user-frontend/src/store/__tests__ user-frontend/src/api/__tests__ --maxWorkers=2",
+        "node scripts/production_remediation_browser.mjs"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/security-acceptance.json",
+        "docs/production-remediation/evidence/runtime/billing-browser.json"
+      ],
+      "remaining_risks_and_dependencies": "Actual origin rejection, cookie rotation, browser reload renewal and logout/no automatic reauthentication pass. Native tests use HTTP; target TLS/Secure attributes and multi-tab races still require staging acceptance. Legacy bearer clients remain compatible."
+    }
+  },
+  {
+    "id": "API-002",
+    "severity": "MEDIUM",
+    "component": "Legacy frontend API wrappers",
+    "classification": "Confirmed defect",
+    "description": "Four exported wrappers refer to undeclared backend paths.",
+    "root_cause": "Legacy admin payment/templates create and document layout/content wrappers remain after integration changes.",
+    "evidence": [
+      "frontend-api-map.json",
+      "user-frontend/src/api/documents.ts:29",
+      "admin/src/api/adminApiClient.ts:321"
+    ],
+    "reproduction_steps": [
+      "Review FE-API-077,112,192,193",
+      "Search exact imported wrapper calls rather than same-named store methods"
+    ],
+    "business_impact": "Dead/unsafe integration surface may be reused and then404/405; not evidence current canvas path is broken.",
+    "security_impact": "Backend authorization still required on any future implementation.",
+    "recommended_fix": "Remove/deprecate unused wrappers or implement approved APIs; add method/path contract checks.",
+    "estimated_effort": "0.5 day",
+    "verification_status": "Static resolution; all4appear unused after direct-import review; no active outage claimed",
+    "remediation": {
+      "id": "API-002",
+      "severity": "MEDIUM",
+      "status": "fixed",
+      "root_cause": "Legacy admin payment/templates create and document layout/content wrappers remain after integration changes.",
+      "fix_implemented": "Removed four unused wrappers for nonexistent routes; active canvas/template APIs remain.",
+      "files_changed": [
+        "admin/src/api/adminApiClient.ts",
+        "user-frontend/src/api/documents.ts"
+      ],
+      "regression_tests": [
+        "npm run build --prefix admin",
+        "npm run build --prefix user-frontend"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/browser-tests.json"
+      ],
+      "remaining_risks_and_dependencies": "Static import review and builds; no assertion that every remaining API action is integrated."
+    }
+  },
+  {
+    "id": "API-003",
+    "severity": "MEDIUM",
+    "component": "Analytics error responses",
+    "classification": "Confirmed defect",
+    "description": "Some analytics handlers return HTTP200 error objects containing exception text.",
+    "root_cause": "except Exception returns {error:str(e)} instead of typed non-success response.",
+    "evidence": [
+      "services/analytics/app/routers/analytics.py:66",
+      "services/analytics/app/routers/analytics.py:105"
+    ],
+    "reproduction_steps": [
+      "Force isolated database query failure for overview/generations/users",
+      "Check status/error body; failure branch not executed in this audit"
+    ],
+    "business_impact": "Admin can show empty/successful reporting during dependency failures.",
+    "security_impact": "Potential internal diagnostic leakage; no actual credential leak demonstrated.",
+    "recommended_fix": "Return bounded sanitized503 errors and render unavailable states; test transport and error shapes.",
+    "estimated_effort": "0.5\u20131 day",
+    "verification_status": "Confirmed source error contract; failure branch runtime untested",
+    "remediation": {
+      "id": "API-003",
+      "severity": "MEDIUM",
+      "status": "fixed",
+      "root_cause": "except Exception returns {error:str(e)} instead of typed non-success response.",
+      "fix_implemented": "Reporting query failures return bounded503 messages, not HTTP200 exception payloads. Affected admin breakdown consumers propagate unavailable errors instead of empty success.",
+      "files_changed": [
+        "services/analytics/app/routers/analytics.py",
+        "services/analytics/tests/test_authorization.py",
+        "services/admin-api/app/integrations/services/analytics_client.py",
+        "services/admin-api/tests/test_analytics_unavailable_remediation.py",
+        "services/admin-api/tests/test_analytics_and_posthog.py"
+      ],
+      "regression_tests": [
+        "env PYTHONPATH=services/analytics:. .venv-local/bin/python -m pytest -q services/analytics/tests",
+        ".venv-local/bin/python -m pytest -q services/admin-api/tests"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/verification.json"
+      ],
+      "remaining_risks_and_dependencies": "Query/transport failure tests are isolated with explicit fault injection. Existing unrelated dashboard fallback semantics are not universally certified."
+    }
+  },
+  {
+    "id": "API-004",
+    "severity": "HIGH",
+    "component": "Admin subscription finance mapping",
+    "classification": "Confirmed defect",
+    "description": "Subscription rows always report USD and monthly plan price regardless of currency/cadence.",
+    "root_cause": "adminListSubscriptions hardcodes currency USD and amount plan.priceMonthly.",
+    "evidence": [
+      "services/payment/src/controllers/payment.controller.ts:323"
+    ],
+    "reproduction_steps": [
+      "Create isolated LKR or yearly subscription fixture",
+      "Read admin subscription list and compare actual persisted billing facts"
+    ],
+    "business_impact": "Wrong financial figures can drive support/refund/revenue decisions.",
+    "security_impact": "Financial integrity defect, not proof of payment authorization bypass.",
+    "recommended_fix": "Use the actual billed currency/amount/interval and reconcile with invoice provider records.",
+    "estimated_effort": "1 day",
+    "verification_status": "Source-confirmed mapping; LKR/yearly runtime fixture not executed",
+    "remediation": {
+      "id": "API-004",
+      "severity": "HIGH",
+      "status": "fixed",
+      "root_cause": "adminListSubscriptions hardcodes currency USD and amount plan.priceMonthly.",
+      "fix_implemented": "Subscription responses use persisted amount/currency/cadence, never current catalog monthly price or guessed USD. Unknown billing facts remain null. Admin tables display cadence and remove dollar/currency guesses from invoice views.",
+      "files_changed": [
+        "services/payment/src/controllers/payment.controller.ts",
+        "services/payment/src/services/subscription-display.service.ts",
+        "services/payment/src/__tests__/subscription-display.test.ts",
+        "admin/src/api/adminApiTypes.ts",
+        "admin/src/pages/subviews/SubscriptionsView.tsx"
+      ],
+      "regression_tests": [
+        "npm run test -w doccraft-payment",
+        "npm run build --prefix admin"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/verification.json"
+      ],
+      "remaining_risks_and_dependencies": "USD/LKR minor-unit mapping is regression-tested with explicit synthetic inputs, not represented as paid-provider acceptance. Legacy unknown or unsupported currency facts are not guessed; reconciliation is required."
+    }
+  },
+  {
+    "id": "DATA-001",
+    "severity": "HIGH",
+    "component": "Account privacy purge/export",
+    "classification": "Potential risk",
+    "description": "Purge marks complete while chat content and document slots/PDF data can retain personal/business data.",
+    "root_cause": "Purge anonymizes Auth and document.userEmail only; no chat/content/PDF purge in current route.",
+    "evidence": [
+      "services/admin-api/app/api/v1/gdpr.py:154",
+      "services/document/app/routers/document.py:701"
+    ],
+    "reproduction_steps": [
+      "Populate synthetic chat/document PII",
+      "Invoke authorized purge",
+      "Inspect preserved conversation/slots/assets and export completeness"
+    ],
+    "business_impact": "Product de-identification claims may exceed actual retention behavior.",
+    "security_impact": "Privacy/retention risk; no legal compliance determination is made.",
+    "recommended_fix": "Define lawful/product retention explicitly, enumerate all data stores, implement resumable deletion/redaction/export and verify.",
+    "estimated_effort": "2\u20135 days",
+    "verification_status": "Source data-flow; destructive purge workflow not executed even against test data",
+    "remediation": {
+      "id": "DATA-001",
+      "severity": "HIGH",
+      "status": "not fixed",
+      "root_cause": "Purge anonymizes Auth and document.userEmail only; no chat/content/PDF purge in current route.",
+      "fix_implemented": "No destructive purge or invented retention policy was introduced. The cross-store privacy/retention gap remains.",
+      "files_changed": [],
+      "regression_tests": [],
+      "verification_evidence": [],
+      "remaining_risks_and_dependencies": "Operator/product retention decisions and resumable complete export/deletion across chats, documents/assets and billing retention are required. Do not advertise complete erasure from the current partial purge."
+    }
+  },
+  {
+    "id": "SEC-003",
+    "severity": "MEDIUM",
+    "component": "Browser bearer storage",
+    "classification": "Potential risk",
+    "description": "Access token is stored in JavaScript-readable localStorage and a cookie without Secure.",
+    "root_cause": "client setCookieToken uses SameSite=Lax only and mirrors token to localStorage.",
+    "evidence": [
+      "user-frontend/src/api/client.ts:14"
+    ],
+    "reproduction_steps": [
+      "Inspect cookie/storage attributes over HTTPS",
+      "Review XSS/refresh/CSRF trust model before redesign"
+    ],
+    "business_impact": "A successful XSS could read bearer credentials; HTTPS cookie policy is incomplete.",
+    "security_impact": "Potential confidentiality risk; APIs generally require Authorization bearer, so cookie presence alone is not a CSRF finding.",
+    "recommended_fix": "Define HttpOnly/Secure session or other justified token architecture; apply CSP/XSS/CSRF defenses appropriately.",
+    "estimated_effort": "1\u20133 days",
+    "verification_status": "Static storage review; no XSS exploit or cross-site request exploit demonstrated",
+    "remediation": {
+      "id": "SEC-003",
+      "severity": "MEDIUM",
+      "status": "partially fixed",
+      "root_cause": "client setCookieToken uses SameSite=Lax only and mirrors token to localStorage.",
+      "fix_implemented": "Refresh credentials are HttpOnly and the access cookie gains Secure on HTTPS. Callback credentials are removed from history and renewals use Origin validation.",
+      "files_changed": [
+        "services/auth/src/controllers/auth.controller.ts",
+        "user-frontend/src/api/client.ts",
+        "user-frontend/src/pages/OAuthCallbackPage.tsx"
+      ],
+      "regression_tests": [
+        "node scripts/production_remediation_browser.mjs"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/billing-browser.json"
+      ],
+      "remaining_risks_and_dependencies": "Access tokens remain JavaScript-readable in localStorage/cookies. A complete HttpOnly session/BFF and XSS/CSRF architecture decision plus production TLS/browser verification remains; no XSS exploit or comprehensive security pass is claimed."
+    }
+  },
+  {
+    "id": "CFG-001",
+    "severity": "MEDIUM",
+    "component": "Production frontend demo branches",
+    "classification": "Confirmed defect",
+    "description": "Production bundle includes client-only demo identity/token/quota paths.",
+    "root_cause": "Demo branches are ordinary application code rather than explicitly gated build targets.",
+    "evidence": [
+      "user-frontend/src/store/authStore.ts:261",
+      "user-frontend/src/store/chatStore.ts:68",
+      "user-frontend/src/store/quotaStore.ts:21"
+    ],
+    "reproduction_steps": [
+      "Set only the client demo sentinel in an isolated browser",
+      "Observe simulated state; backend should still reject unsigned token"
+    ],
+    "business_impact": "Confusing fake account/plan behavior in production client; support and testing ambiguity.",
+    "security_impact": "Do not treat this as backend privilege escalation.",
+    "recommended_fix": "Gate demo mode to explicit development/demo build and assert production bundle excludes it.",
+    "estimated_effort": "0.5\u20131 day",
+    "verification_status": "Source confirmed; no visible production UI invocation found; server bypass not demonstrated",
+    "remediation": {
+      "id": "CFG-001",
+      "severity": "MEDIUM",
+      "status": "fixed",
+      "root_cause": "Demo branches are ordinary application code rather than explicitly gated build targets.",
+      "fix_implemented": "Demo identity, token and quota branches are limited to development builds. Production asset scans reject their known sentinels.",
+      "files_changed": [
+        "user-frontend/src/store/authStore.ts",
+        "user-frontend/src/store/chatStore.ts",
+        "user-frontend/src/store/quotaStore.ts",
+        "user-frontend/src/store/documentStore.ts",
+        "user-frontend/src/api/client.ts",
+        "user-frontend/src/pages/BuilderPage.tsx"
+      ],
+      "regression_tests": [
+        "env NODE_ENV=production npm run build --prefix user-frontend",
+        "python3 deploy/scripts/check-build-secrets.py admin/dist user-frontend/dist"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/verification.json"
+      ],
+      "remaining_risks_and_dependencies": "Native fixtures now explicitly build frontends with NODE_ENV=production. Demo helpers remain available in development; this never constituted a backend JWT bypass."
+    }
+  },
+  {
+    "id": "OPS-001",
+    "severity": "HIGH",
+    "component": "Backup and disaster recovery",
+    "classification": "Confirmed defect",
+    "description": "Deploy-time same-host dumps are the only automated backup path; no implemented encrypted off-server schedule or key/asset recovery.",
+    "root_cause": "Controller backup occurs before rollout; timer only monitors; off-host retention is an operator instruction.",
+    "evidence": [
+      "deploy/scripts/controller.py:90",
+      "deploy/doccraft-monitor.timer",
+      "runtime/backup-restore.json"
+    ],
+    "reproduction_steps": [
+      "Review deployment backup path and all timers",
+      "Recover after simulated complete host loss using only documented artifacts"
+    ],
+    "business_impact": "VPS/disk loss can lose database/files/keys since last recoverable off-host copy.",
+    "security_impact": "Backups contain sensitive data; encryption and least-privilege restoration are required operational controls.",
+    "recommended_fix": "Implement scheduled encrypted off-host database/assets/config/key backups, retention and isolated full-host restore drills.",
+    "estimated_effort": "2\u20134 days",
+    "verification_status": "Source gap confirmed; native snapshot dump/restore73tables/162rows/568constraints passed; full-host DR blocked",
+    "remediation": {
+      "id": "OPS-001",
+      "severity": "HIGH",
+      "status": "partially fixed",
+      "root_cause": "Controller backup occurs before rollout; timer only monitors; off-host retention is an operator instruction.",
+      "fix_implemented": "Added an opt-in hourly encrypted off-host restic snapshot job with separate private repository/password/credential files, deployment lock, original key/config inclusion and bounded writer maintenance. It does not initialize repositories, rotate keys, prune or restore production data.",
+      "files_changed": [
+        "deploy/scripts/backup_remote.py",
+        "deploy/doccraft-backup.service",
+        "deploy/doccraft-backup.timer",
+        "deploy/config/backup.policy.example.json",
+        "deploy/tests/test_operations_remediation.py"
+      ],
+      "regression_tests": [
+        "python3 -m unittest discover -s deploy/tests"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/backup-restore.json"
+      ],
+      "remaining_risks_and_dependencies": "Actual native73-table snapshot restore passes. Restic, private remote policy/credentials, retention/immutability, maintenance-window approval, encrypted upload and full-host/key/asset restore are not accepted. Timer was not installed. No RPO/RTO achievement is claimed."
+    }
+  },
+  {
+    "id": "OPS-002",
+    "severity": "MEDIUM",
+    "component": "Monitoring/alerting",
+    "classification": "Confirmed defect",
+    "description": "Minute snapshots do not notify an operator of VPS/disk/API failure; tracing/SLO ownership is absent.",
+    "root_cause": "Local JSON timer and private metrics have no external heartbeat/page integration.",
+    "evidence": [
+      "deploy/scripts/controller.py:144",
+      "deploy/doccraft-monitor.timer",
+      "services/gateway/src/middleware/requestLogger.middleware.ts:8"
+    ],
+    "reproduction_steps": [
+      "Simulate host/down/disk threshold on disposable staging",
+      "Verify external alert receipt and correlation trail"
+    ],
+    "business_impact": "Failures may remain unnoticed until customers report them.",
+    "security_impact": "Security/deployment audit logs exist; this is operational detection coverage.",
+    "recommended_fix": "Add low-cost external uptime/heartbeat and actionable alerts; define correlation/retention/redaction ownership.",
+    "estimated_effort": "1\u20132 days",
+    "verification_status": "Current timer/log source verified; live alert delivery blocked",
+    "remediation": {
+      "id": "OPS-002",
+      "severity": "MEDIUM",
+      "status": "partially fixed",
+      "root_cause": "Local JSON timer and private metrics have no external heartbeat/page integration.",
+      "fix_implemented": "Added optional HTTPS heartbeat/alert integration, missing/stale backup detection, required-container health and additional filesystem thresholds. Payloads contain only time and bounded alert identifiers.",
+      "files_changed": [
+        "deploy/scripts/controller.py",
+        "deploy/scripts/operations_alerts.py",
+        "deploy/config/monitoring.policy.example.json",
+        "deploy/tests/test_operations_remediation.py"
+      ],
+      "regression_tests": [
+        "python3 -m unittest discover -s deploy/tests"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/verification.json"
+      ],
+      "remaining_risks_and_dependencies": "Delivery tests use explicit transport stubs. Operator endpoint/check timeout/notification ownership, disk-exhaustion/whole-host-loss alerts and actual alert receipt remain unconfigured/unexecuted."
+    }
+  },
+  {
+    "id": "INF-001",
+    "severity": "HIGH",
+    "component": "Pinned upstream images",
+    "classification": "Potential risk",
+    "description": "Pinned Node/Python/PostgreSQL and other upstream images have HIGH/CRITICAL scanner advisories.",
+    "root_cause": "Digest pins preserve old package versions; CI blocks but does not remediate vulnerable bases.",
+    "evidence": [
+      "deploy/config/base-images.json",
+      "../devops/evidence/base-image-scans.json",
+      "../devops/evidence/dependency-security.json"
+    ],
+    "reproduction_steps": [
+      "Scan exact pinned digest with a current Trivy database",
+      "Triage package/advisory/fixed-version and final-image reachability"
+    ],
+    "business_impact": "Release cannot safely pass configured vulnerability gates until triaged/fixed.",
+    "security_impact": "Scanner CRITICAL severity is not itself proof of active compromise.",
+    "recommended_fix": "Select reviewed fixed immutable bases, rebuild all targets, scan final images and repeat functional checks.",
+    "estimated_effort": "1\u20133 days",
+    "verification_status": "Prior same-day raw remote scan outputs independently tied to unchanged digests; no final application image built; exploitability not established",
+    "remediation": {
+      "id": "INF-001",
+      "severity": "HIGH",
+      "status": "not fixed",
+      "root_cause": "Digest pins preserve old package versions; CI blocks but does not remediate vulnerable bases.",
+      "fix_implemented": "Existing immutable pins and vulnerability gates were preserved; no unbuilt base-image replacement was claimed safe.",
+      "files_changed": [],
+      "regression_tests": [],
+      "verification_evidence": [
+        "docs/devops/evidence/base-image-scans.json"
+      ],
+      "remaining_risks_and_dependencies": "Triage/fix advisory findings, build and scan final application layers for the target architecture. Exploitability is not established solely by scanner severity."
+    }
+  },
+  {
+    "id": "INF-002",
+    "severity": "HIGH",
+    "component": "Docker production acceptance",
+    "classification": "Blocked verification",
+    "description": "No Docker daemon is available for final builds/private networking/limits/sandbox/restart/real rollback acceptance.",
+    "root_cause": "Development environment has CLI/Compose only.",
+    "evidence": [
+      "deploy/docker/compose.production.yml",
+      "runtime/normal-pdf-readiness.json",
+      "validation-summary.json"
+    ],
+    "reproduction_steps": [
+      "Run the supplied production targets on disposable Docker staging",
+      "Exercise dependency failures, restart persistence, resource limits and compatible rollback"
+    ],
+    "business_impact": "Essential deployment enforcement remains unverified.",
+    "security_impact": "No production deployment attempted.",
+    "recommended_fix": "Complete isolated container acceptance before enabling both deployment gates.",
+    "estimated_effort": "1\u20133 days",
+    "verification_status": "Static Compose/actionlint/controller tests pass; actual Docker runtime blocked",
+    "remediation": {
+      "id": "INF-002",
+      "severity": "HIGH",
+      "status": "blocked",
+      "root_cause": "Development environment has CLI/Compose only.",
+      "fix_implemented": "Performed available static validation and native checks; no production provisioning, deployment or fake acceptance was performed.",
+      "files_changed": [],
+      "regression_tests": [
+        "python3 -m unittest discover -s deploy/tests",
+        ".local/hybrid-live/tools/actionlint/actionlint",
+        ".local/ci-tools/terraform fmt -check -recursive terraform",
+        ".local/ci-tools/terraform -chdir=terraform validate"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/pdf-readiness.json",
+        "docs/production-remediation/evidence/verification.json"
+      ],
+      "remaining_risks_and_dependencies": "Docker daemon/target VPS, chosen provider/remote state, approved GHCR/SSH/GitHub environment and real migration/rollback/TLS/PDF-sandbox/container acceptance remain required. Normal signed PDF readiness503/render500 persists; sandbox was not weakened."
+    }
+  },
+  {
+    "id": "INF-003",
+    "severity": "HIGH",
+    "component": "Terraform and infrastructure controls",
+    "classification": "Blocked verification",
+    "description": "Terraform is a provider-neutral contract; actual VPS/firewall/DNS/state/SSH controls are not provisioned or verified.",
+    "root_cause": "No chosen provider or authorized infrastructure credentials.",
+    "evidence": [
+      "terraform/main.tf:32",
+      "terraform/backend.tf.example"
+    ],
+    "reproduction_steps": [
+      "Choose provider/remote state",
+      "Review real provider plan under separate approval"
+    ],
+    "business_impact": "No infrastructure readiness evidence or measured final capacity.",
+    "security_impact": "Application deploy does not run Terraform.",
+    "recommended_fix": "Implement provider adapter, encrypted locked state, restricted management ingress and approved plan/apply process.",
+    "estimated_effort": "1\u20133 days",
+    "verification_status": "fmt/validate pass; no real provider plan/apply/state verification",
+    "remediation": {
+      "id": "INF-003",
+      "severity": "HIGH",
+      "status": "blocked",
+      "root_cause": "No chosen provider or authorized infrastructure credentials.",
+      "fix_implemented": "Performed available static validation and native checks; no production provisioning, deployment or fake acceptance was performed.",
+      "files_changed": [],
+      "regression_tests": [
+        "python3 -m unittest discover -s deploy/tests",
+        ".local/hybrid-live/tools/actionlint/actionlint",
+        ".local/ci-tools/terraform fmt -check -recursive terraform",
+        ".local/ci-tools/terraform -chdir=terraform validate"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/pdf-readiness.json",
+        "docs/production-remediation/evidence/verification.json"
+      ],
+      "remaining_risks_and_dependencies": "Docker daemon/target VPS, chosen provider/remote state, approved GHCR/SSH/GitHub environment and real migration/rollback/TLS/PDF-sandbox/container acceptance remain required. Normal signed PDF readiness503/render500 persists; sandbox was not weakened."
+    }
+  },
+  {
+    "id": "INF-004",
+    "severity": "HIGH",
+    "component": "CI/CD external acceptance",
+    "classification": "Blocked verification",
+    "description": "Hosted GitHub Actions, GHCR credentials, protected settings, SSH host keys and actual automatic rollback have not executed on operator staging.",
+    "root_cause": "Operator repository/VPS bootstrap is not configured in this environment.",
+    "evidence": [
+      ".github/workflows/ci.yml",
+      ".github/workflows/deploy-production.yml",
+      "deploy/scripts/doccraft-receive"
+    ],
+    "reproduction_steps": [
+      "Configure protected test environment/GHCR/forced SSH identity",
+      "Run a release and deliberate compatible readiness failure"
+    ],
+    "business_impact": "Static safe intent does not prove delivery or recovery.",
+    "security_impact": "Keep production enable gates disabled.",
+    "recommended_fix": "Run complete staged pipeline; verify branch/tag ancestry, digest/provenance, migrations and rollback before activation.",
+    "estimated_effort": "1\u20132 days",
+    "verification_status": "Workflow syntax and29policy tests pass; operator infrastructure blocked",
+    "remediation": {
+      "id": "INF-004",
+      "severity": "HIGH",
+      "status": "blocked",
+      "root_cause": "Operator repository/VPS bootstrap is not configured in this environment.",
+      "fix_implemented": "Performed available static validation and native checks; no production provisioning, deployment or fake acceptance was performed.",
+      "files_changed": [],
+      "regression_tests": [
+        "python3 -m unittest discover -s deploy/tests",
+        ".local/hybrid-live/tools/actionlint/actionlint",
+        ".local/ci-tools/terraform fmt -check -recursive terraform",
+        ".local/ci-tools/terraform -chdir=terraform validate"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/pdf-readiness.json",
+        "docs/production-remediation/evidence/verification.json"
+      ],
+      "remaining_risks_and_dependencies": "Docker daemon/target VPS, chosen provider/remote state, approved GHCR/SSH/GitHub environment and real migration/rollback/TLS/PDF-sandbox/container acceptance remain required. Normal signed PDF readiness503/render500 persists; sandbox was not weakened."
+    }
+  },
+  {
+    "id": "AI-001",
+    "severity": "HIGH",
+    "component": "Local model document intelligence",
+    "classification": "Confirmed defect",
+    "description": "Available candidate models do not reliably produce valid document/editor proposals.",
+    "root_cause": "Nested tool schema/evidence/field mapping failures and timeouts.",
+    "evidence": [
+      "current-tool-schema-comparison.json",
+      "prior-1.7b-revalidated.json",
+      "prior-4b-revalidated.json"
+    ],
+    "reproduction_steps": [
+      "Regrade retained actual inference outputs against current unchanged schemas",
+      "After safe hardware provisioning rerun unchanged corpus and applied browser edits"
+    ],
+    "business_impact": "Assistant cannot fulfill natural document creation/editing reliably.",
+    "security_impact": "Safe rejection prevents some corruption but is not functional success.",
+    "recommended_fix": "Evaluate capable models/constrained generation without relaxing integrity checks; repeat real applied end-to-end conversations.",
+    "estimated_effort": "3\u201310 days",
+    "verification_status": "Current schemas all7 match; stored real outputs revalidated23/112 and6/16; no fresh provider dispatch this audit",
+    "remediation": {
+      "id": "AI-001",
+      "severity": "HIGH",
+      "status": "not fixed",
+      "root_cause": "Nested tool schema/evidence/field mapping failures and timeouts.",
+      "fix_implemented": "Re-evaluated actual candidates against unchanged production tool schemas and an explicit business-detail supplement. Integrity checks were not relaxed and neither candidate was approved.",
+      "files_changed": [],
+      "regression_tests": [
+        ".venv-local/bin/python scripts/production_remediation_ai.py --model qwen3:1.7b-q4_K_M --limit 112 --label remediation-1.7b",
+        ".venv-local/bin/python scripts/production_remediation_ai.py --model qwen3:4b-q4_K_M --limit 16 --label remediation-4b --context 4096",
+        ".venv-local/bin/python scripts/production_remediation_business_scenarios.py"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/ai/validated-1.7b.json",
+        "docs/production-remediation/evidence/ai/validated-4b.json",
+        "docs/production-remediation/evidence/ai/business-supplement/validated.json"
+      ],
+      "remaining_risks_and_dependencies": "Fresh real proposals:23/112 small,4/16 larger bounded sample,0/8 extra business details. These are proposal accuracy, not committed document success; context/thread/workload differences prevent a controlled ranking. A capable approved model and applied conversation acceptance are still needed."
+    }
+  },
+  {
+    "id": "AI-002",
+    "severity": "HIGH",
+    "component": "Fresh live providers and mixed inference capacity",
+    "classification": "Blocked verification",
+    "description": "Fresh local/cloud inference and full mixed PDF+LLM production load were not executed.",
+    "root_cause": "Shared host memory/swap pressure; no approved cloud test credentials or Docker/VPS.",
+    "evidence": [
+      "runtime/resource-samples.jsonl",
+      "validation-summary.json"
+    ],
+    "reproduction_steps": [
+      "Provision isolated measured staging capacity and approved provider test credentials",
+      "Run real fallback/budget/isolation and sustained mixed concurrency"
+    ],
+    "business_impact": "No supported current-model accuracy/latency/cloud-cost or VPS-minimum certification.",
+    "security_impact": "Do not infer 8GB adequacy from quantized file size.",
+    "recommended_fix": "Benchmark complete container deployment with one loaded model and agreed quality/latency targets.",
+    "estimated_effort": "2\u20134 days",
+    "verification_status": "Fresh model blocked deliberately to avoid resource exhaustion; earlier actual evidence is separately labeled",
+    "remediation": {
+      "id": "AI-002",
+      "severity": "HIGH",
+      "status": "partially fixed",
+      "root_cause": "Shared host memory/swap pressure; no approved cloud test credentials or Docker/VPS.",
+      "fix_implemented": "Fresh actual local inference, authenticated admin connectivity, full Chat->signed inference->Ollama->SSE, budget refusal and provider revocation were executed. Different free/pro model assignments propagated without redeployment.",
+      "files_changed": [],
+      "regression_tests": [
+        ".venv-local/bin/python scripts/production_remediation_live_ai.py"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/live-ai-integration.json",
+        "docs/production-remediation/evidence/runtime/plan-models.json"
+      ],
+      "remaining_risks_and_dependencies": "Small candidate needed a16384 configured context for the integrated question;8192 conservative byte-budget attempt was refused before dispatch. Real cloud fallback/spend, target containers and full mixed production load remain blocked. Health probes do not certify model intelligence."
+    }
+  },
+  {
+    "id": "DEV-001",
+    "severity": "HIGH",
+    "component": "Production PDF sandbox",
+    "classification": "Blocked verification",
+    "description": "Normal signed PDF readiness fails503 and rendering500 in this development environment.",
+    "root_cause": "Chromium sandbox/host compatibility requires actual production container/kernel acceptance.",
+    "evidence": [
+      "services/document/puppeteer/server.ts",
+      "runtime/normal-pdf-readiness.json",
+      "runtime/pdf-check.json"
+    ],
+    "reproduction_steps": [
+      "Run signed /ready then valid /generate using normal renderer",
+      "Compare diagnostic test-only unsandboxed rendering"
+    ],
+    "business_impact": "PDF generation cannot be certified on intended production host.",
+    "security_impact": "Do not disable sandbox globally to obtain a pass.",
+    "recommended_fix": "Validate secure browser sandbox under actual Docker host; preserve sandbox enforcement.",
+    "estimated_effort": "1\u20132 days",
+    "verification_status": "Normal failure reproduced;16/16diagnostic signed PDFs pass with test-only exception",
+    "remediation": {
+      "id": "DEV-001",
+      "severity": "HIGH",
+      "status": "blocked",
+      "root_cause": "Chromium sandbox/host compatibility requires actual production container/kernel acceptance.",
+      "fix_implemented": "Performed available static validation and native checks; no production provisioning, deployment or fake acceptance was performed.",
+      "files_changed": [],
+      "regression_tests": [
+        "python3 -m unittest discover -s deploy/tests",
+        ".local/hybrid-live/tools/actionlint/actionlint",
+        ".local/ci-tools/terraform fmt -check -recursive terraform",
+        ".local/ci-tools/terraform -chdir=terraform validate"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/pdf-readiness.json",
+        "docs/production-remediation/evidence/verification.json"
+      ],
+      "remaining_risks_and_dependencies": "Docker daemon/target VPS, chosen provider/remote state, approved GHCR/SSH/GitHub environment and real migration/rollback/TLS/PDF-sandbox/container acceptance remain required. Normal signed PDF readiness503/render500 persists; sandbox was not weakened."
+    }
+  },
+  {
+    "id": "PERF-001",
+    "severity": "HIGH",
+    "component": "Single-VPS sustainable capacity",
+    "classification": "Blocked verification",
+    "description": "Short native tests do not establish sustainable throughput, mixed workload latency or an8GB minimum.",
+    "root_cause": "No target VPS/cgroup runtime, long run, storage/network benchmark or agreed SLO.",
+    "evidence": [
+      "runtime/http-workload.json",
+      "runtime/resource-samples.jsonl"
+    ],
+    "reproduction_steps": [
+      "Run mixed logins/edit/generate/inference/admin workloads at target container caps",
+      "Measure steady-state p99/queue/RAM/swap/IO/errors and recovery"
+    ],
+    "business_impact": "Capacity and operating-cost promises would be unsupported.",
+    "security_impact": "No hardware purchase/minimum claim is made.",
+    "recommended_fix": "Agree SLOs, benchmark4vCPU/16GiB staging candidate, compare lower-cost alternatives using measured results.",
+    "estimated_effort": "2\u20133 days",
+    "verification_status": "96/96 edits at concurrency8 pass; nearest-rank343/580/661ms; sustained VPS test blocked",
+    "remediation": {
+      "id": "PERF-001",
+      "severity": "HIGH",
+      "status": "partially fixed",
+      "root_cause": "No target VPS/cgroup runtime, long run, storage/network benchmark or agreed SLO.",
+      "fix_implemented": "Measured actual eight-client deterministic edits, concurrent local-model resource samples and a bounded480-edit native workload with think time. Restart and snapshot restore were measured.",
+      "files_changed": [],
+      "regression_tests": [
+        ".venv-local/bin/python scripts/production_remediation_workload.py",
+        ".venv-local/bin/python .local/production-remediation/sustained_workload.py"
+      ],
+      "verification_evidence": [
+        "docs/production-remediation/evidence/runtime/http-workload.json",
+        "docs/production-remediation/evidence/runtime/native-sustained-workload.json",
+        "docs/production-remediation/evidence/resource-summary.json"
+      ],
+      "remaining_risks_and_dependencies": "Short shared-desktop native runs do not establish sustainable production throughput, an8GB minimum, cgroup enforcement, disk/network capacity, PDF+AI SLOs or lowest-cost VPS pricing. Benchmark the actual approved target."
+    }
+  },
+  {
+    "id": "PERF-002",
+    "severity": "MEDIUM",
+    "component": "Synchronous policy/queue contention",
+    "classification": "Potential risk",
+    "description": "Live-policy fan-out and a global AI budget advisory lock may become contention points.",
+    "root_cause": "Authoritative calls and100ms queue polling serialize budget/admission transactions.",
+    "evidence": [
+      "services/admin-api/app/services/ai_budget.py:15",
+      "services/admin-api/app/services/ai_budget.py:131",
+      "services/quota/src/middleware/authenticate.ts:34"
+    ],
+    "reproduction_steps": [
+      "Benchmark high concurrent queued inference and policy updates",
+      "Measure transaction waits/call amplification rather than remove validation"
+    ],
+    "business_impact": "Potential long-tail latency/cascading failures under load.",
+    "security_impact": "Security validation must not be disabled for throughput.",
+    "recommended_fix": "Measure first; bound retrieval/queue polling and optimize transactions while keeping authoritative security decisions.",
+    "estimated_effort": "1\u20133 days",
+    "verification_status": "Source potential; no measured lock bottleneck claimed",
+    "remediation": {
+      "id": "PERF-002",
+      "severity": "MEDIUM",
+      "status": "not fixed",
+      "root_cause": "Authoritative calls and100ms queue polling serialize budget/admission transactions.",
+      "fix_implemented": "Preserved authoritative admission/budget locking and policy validation rather than removing security for throughput.",
+      "files_changed": [],
+      "regression_tests": [],
+      "verification_evidence": [],
+      "remaining_risks_and_dependencies": "Potential lock/fan-out contention requires target queue/admission wait measurements under representative mixed load before optimizing transactions."
+    }
+  }
+]

@@ -1,0 +1,314 @@
+{
+  "status": "PASS",
+  "scope": "Real native PostgreSQL18.4 synthetic fixture snapshot dump/restore to distinct disposable database; not productionPG17/TLS/off-server/PITR/fullVPS recovery",
+  "source_archive": {
+    "source": "https://ftp.postgresql.org/pub/source/v18.4/postgresql-18.4.tar.bz2",
+    "sha256": "81a81ec695fb0c7901407defaa1d2f7973617154cf27ba74e3a7ab8e64436094",
+    "verified": true
+  },
+  "client_features": "No TLS/readline/ICU/zlib; snapshot dump uses compression0 over loopback fixture only",
+  "tables": 73,
+  "rows": 162,
+  "table_content_hashes_match": true,
+  "constraints": 568,
+  "constraint_definitions_match": true,
+  "dump_bytes": 185235,
+  "dump_sha256": "2b7dc0c6ca0f3d8027e8e1a113b75f5d475cc30e8f327be1997ee58c8b11ab1a",
+  "dump_ms": 101,
+  "restore_ms": 333,
+  "target_database_dropped_after_check": true,
+  "table_results": {
+    "NotificationDelivery": {
+      "rows": 6,
+      "sha256": "dafdf073555394fb4590fefe10349e372f15af6333017bb4076a5d2fb9edfeec"
+    },
+    "NotificationLog": {
+      "rows": 10,
+      "sha256": "e26a9213be72aa2b7120a4b21b24e3965e12f6487d43213a9cdb726fc8fb12cc"
+    },
+    "NotificationPreference": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "_prisma_migrations": {
+      "rows": 20,
+      "sha256": "7a38866b1324f8700e1c64804a03a33ddec8aa91911e62f691b7ff053506ef2b"
+    },
+    "access_revocations": {
+      "rows": 1,
+      "sha256": "d386a4e9580a24fd6ffecd979a726e7de0378790c654824f1bd1d3f69bf299af"
+    },
+    "account_abuse_reports": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "active_sessions": {
+      "rows": 3,
+      "sha256": "b7c4c5bfd31576569ef6c7eed5bed21abd8849ab744c65995cb68644c54a3912"
+    },
+    "admin_audit_logs": {
+      "rows": 13,
+      "sha256": "fc4f1003e232189078081f75177e176277c65a732eac2c51efbefdd39433ef62"
+    },
+    "admin_coupons": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "admin_login_sessions": {
+      "rows": 3,
+      "sha256": "858b39c35901c8bb74ef736e313e9acb6057e0ae5add4812e150d2d949a7ea3f"
+    },
+    "admin_plans": {
+      "rows": 4,
+      "sha256": "dca299a064176059abffb8e5d11076405b85a3c0a94fc4fdab921e191ffe7806"
+    },
+    "admin_roles": {
+      "rows": 4,
+      "sha256": "4b2dfd636fab8b4cc8531c734d1017914ff58bce72ffcf187beb2c71913e7366"
+    },
+    "admin_security_budgets": {
+      "rows": 2,
+      "sha256": "38b84cf1a9951e12bdb373c8470824c92fbdd451178ad56beb7c0f4dfc3c5795"
+    },
+    "admin_totp_steps": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "admin_users": {
+      "rows": 1,
+      "sha256": "abf7c0c2030cfd7b112e83f909855f1578c1a66d378a257359b02ad9747440be"
+    },
+    "ai_credentials": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ai_inference_ledger": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ai_inference_queue": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ai_model_health": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ai_usages": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "automation_event_inbox": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "automation_execution_logs": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "automation_rules": {
+      "rows": 3,
+      "sha256": "cc4573f00d5344bb6ec7e126cf49bb6f918449bd5979f8f2c209212f5761dbd2"
+    },
+    "billing_adjustments": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "billing_invoices": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "bot_detection_logs": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "chat_messages": {
+      "rows": 14,
+      "sha256": "9da55803fd4480a189edaeb7e6a25dcb336d3018eaa9378be740c1aed40a5dfc"
+    },
+    "chat_sessions": {
+      "rows": 2,
+      "sha256": "fe63500683f14f6aa1702057ae3ab3702eb5b7442dbf4719c9a61a4677d9410b"
+    },
+    "checkout_intents": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "config_entries": {
+      "rows": 9,
+      "sha256": "3dd84fa1c6c326f522b829563d25336ba88779282f098d0baa563ff7a792f7f6"
+    },
+    "config_history": {
+      "rows": 11,
+      "sha256": "563317913fdcebc9fd4380e2349a9c76fd29d8a8d50fcd2d5dc7e366b2ace4d7"
+    },
+    "contact_submissions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "cost_ledger": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "coupons": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "custom_templates": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "document_types": {
+      "rows": 1,
+      "sha256": "d41a4f6841023eb3a36233d3c139d26ff066ccc89e41b1c4add61264940ddd14"
+    },
+    "documents": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "entitlement_overrides": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "gdpr_purge_requests": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "generated_documents": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "guest_migrations": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ip_access_logs": {
+      "rows": 12,
+      "sha256": "1ae8dd3acd2af014be38645250be5990a706dab3a3223eb9f477fa499a3d93a6"
+    },
+    "login_events": {
+      "rows": 4,
+      "sha256": "b2c28683b45642fa5ba22f4a32e005e162db7736fe4f3812e0cfb92dca82090d"
+    },
+    "notification_server_settings": {
+      "rows": 14,
+      "sha256": "e8abc9845758dad303cbaae182b6d32ad783e031f47801830f971cf57ca28c01"
+    },
+    "notification_templates": {
+      "rows": 9,
+      "sha256": "5054f6991d4ff91c566c2fa29aadfe38a1d482a1dbafd25988e63392d7ede5d6"
+    },
+    "password_resets": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "payment_outbox": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "payment_provider_cursors": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "plan_override_requests": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "plans": {
+      "rows": 3,
+      "sha256": "7afc3db8680ab6ca96fdcc42d3898f00a2e0f9fdbc11a77ea4188e1793627d24"
+    },
+    "quota_audit_logs": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "quota_daily_usage": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "quota_reservations": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "quota_reset_logs": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "quota_windows": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "quotas": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "rate_limit_violations": {
+      "rows": 3,
+      "sha256": "5eb78c2d38a6e60fe26ce5556a9bf025c0b460c32e27c7dc2263462e0fafdb95"
+    },
+    "referrals": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "refund_requests": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "security_alerts": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sessions": {
+      "rows": 3,
+      "sha256": "86b6ec7d1d67358100bb74c87de1ccfbe5be1324ec5534bb0db230687984d723"
+    },
+    "subscriptions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "support_tickets": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "system_announcements": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "templates": {
+      "rows": 1,
+      "sha256": "02cf88a99111261e2416d1e6ab4fca4b8dbdb17603ff21c31274539ff72dcb35"
+    },
+    "tool_executions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "uploaded_template_publications": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "uploaded_template_versions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "user_quota_overrides": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "users": {
+      "rows": 6,
+      "sha256": "494988c2c8b87f50a86bf456fcee958e35fdb0f74a6829fc446bb9ce21f589c0"
+    },
+    "verification_codes": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "webhook_deliveries": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "webhook_events": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

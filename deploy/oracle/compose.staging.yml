@@ -1,0 +1,12 @@
+{
+  "name": "doccraft-staging",
+  "services": {
+    "payment": {
+      "environment": {"PADDLE_SANDBOX": "true", "PAYHERE_SANDBOX": "true"}
+    },
+    "admin-api": {"environment": {"ADMIN_RUN_MIGRATIONS": "false"}},
+    "document": {"environment": {"DOCUMENT_RUN_MIGRATIONS": "false"}},
+    "notification": {"environment": {"NOTIFICATION_RUN_MIGRATIONS": "false"}},
+    "verify": {"environment": {"DOCCRAFT_REQUIRE_AI_DISABLED": "true"}}
+  }
+}

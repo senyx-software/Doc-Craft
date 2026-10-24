@@ -1,0 +1,5862 @@
+{
+  "scope": "Real React production builds against isolated actual APIs/PostgreSQL; no response mocks; test-only unsandboxed Chromium; mail/provider delivery not verified",
+  "checks": [
+    {
+      "id": "BROWSER-001",
+      "feature": "Actual browser password login",
+      "expected": "UI navigates to authenticated builder",
+      "actual": {
+        "passed": true,
+        "path": "/builder"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Actual browser password login",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "BROWSER-002",
+      "feature": "Profile update and browser reload",
+      "expected": "Saved name survives actual API reload",
+      "actual": {
+        "passed": true
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Profile update and browser reload",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "BROWSER-003",
+      "feature": "Document history actual API rendering",
+      "expected": "Renders without redirect or uncaught page error",
+      "actual": {
+        "passed": true,
+        "body_length": 237
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Document history actual API rendering",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "BROWSER-004",
+      "feature": "Support page actual API rendering",
+      "expected": "Renders without redirect or uncaught page error",
+      "actual": {
+        "passed": true,
+        "body_length": 510
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Support page actual API rendering",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "BROWSER-005",
+      "feature": "Billing page actual API rendering",
+      "expected": "Renders without redirect or uncaught page error",
+      "actual": {
+        "passed": true,
+        "body_length": 819
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Billing page actual API rendering",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "BROWSER-006",
+      "feature": "Invoice builder actual API rendering",
+      "expected": "Renders without redirect or uncaught page error",
+      "actual": {
+        "passed": true,
+        "body_length": 3610
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Invoice builder actual API rendering",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "BROWSER-007",
+      "feature": "Mobile builder viewport",
+      "expected": "No horizontal document overflow at390px",
+      "actual": {
+        "passed": true,
+        "width": 390,
+        "scroll": 390
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Mobile builder viewport",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "BROWSER-008",
+      "feature": "Profile reflects actual enabled MFA",
+      "expected": "Enabled badge/disable action agrees with persisted backend flag",
+      "actual": {
+        "passed": true,
+        "backend_enabled": true,
+        "ui_disable_action_visible": true
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Profile reflects actual enabled MFA",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-001",
+      "feature": "Admin navigation home_dashboard",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 14,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation home_dashboard",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-002",
+      "feature": "Admin navigation users_all",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation users_all",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-003",
+      "feature": "Admin navigation users_active",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation users_active",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-004",
+      "feature": "Admin navigation users_suspended",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation users_suspended",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-005",
+      "feature": "Admin navigation users_guest",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation users_guest",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-006",
+      "feature": "Admin navigation users_details",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation users_details",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-007",
+      "feature": "Admin navigation subs_all",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 9,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation subs_all",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-008",
+      "feature": "Admin navigation subs_active",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 5,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation subs_active",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-009",
+      "feature": "Admin navigation subs_cancelled",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 5,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation subs_cancelled",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-010",
+      "feature": "Admin navigation subs_failed",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 5,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation subs_failed",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-011",
+      "feature": "Admin navigation subs_refunds",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 5,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation subs_refunds",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-012",
+      "feature": "Admin navigation subs_plan_overview",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 5,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation subs_plan_overview",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-013",
+      "feature": "Admin navigation rev_mrr_arr",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 8,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation rev_mrr_arr",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-014",
+      "feature": "Admin navigation rev_by_plan",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 5,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation rev_by_plan",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-015",
+      "feature": "Admin navigation rev_cost_ledger",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 6,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation rev_cost_ledger",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-016",
+      "feature": "Admin navigation rev_churn",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 5,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation rev_churn",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-017",
+      "feature": "Admin navigation rev_ltv",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 5,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation rev_ltv",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-018",
+      "feature": "Admin navigation rev_transactions",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 5,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation rev_transactions",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-019",
+      "feature": "Admin navigation rev_payouts",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 5,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation rev_payouts",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-020",
+      "feature": "Admin navigation promo_coupons",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation promo_coupons",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-021",
+      "feature": "Admin navigation promo_active",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation promo_active",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-022",
+      "feature": "Admin navigation promo_ab_tests",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation promo_ab_tests",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-023",
+      "feature": "Admin navigation promo_referrals",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation promo_referrals",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-024",
+      "feature": "Admin navigation promo_trials",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation promo_trials",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-025",
+      "feature": "Admin navigation pack_current",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation pack_current",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-026",
+      "feature": "Admin navigation pack_create",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation pack_create",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-027",
+      "feature": "Admin navigation pack_flags",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation pack_flags",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-028",
+      "feature": "Admin navigation pack_ai_models",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 7,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation pack_ai_models",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-029",
+      "feature": "Admin navigation pack_performance",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 4,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation pack_performance",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-030",
+      "feature": "Admin navigation ai_providers",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 4,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation ai_providers",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-031",
+      "feature": "Admin navigation ai_models",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 4,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation ai_models",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-032",
+      "feature": "Admin navigation ai_assignments",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 4,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation ai_assignments",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-033",
+      "feature": "Admin navigation ai_routing",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 4,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation ai_routing",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-034",
+      "feature": "Admin navigation ai_credentials",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 4,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation ai_credentials",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-035",
+      "feature": "Admin navigation ai_local",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 4,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation ai_local",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-036",
+      "feature": "Admin navigation ai_usage",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 4,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation ai_usage",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-037",
+      "feature": "Admin navigation ai_health",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 4,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation ai_health",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-038",
+      "feature": "Admin navigation ai_audit",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 6,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation ai_audit",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-039",
+      "feature": "Admin navigation gen_total",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation gen_total",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-040",
+      "feature": "Admin navigation gen_by_type",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation gen_by_type",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-041",
+      "feature": "Admin navigation gen_by_user",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation gen_by_user",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-042",
+      "feature": "Admin navigation gen_failed",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation gen_failed",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-043",
+      "feature": "Admin navigation gen_free_tier",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation gen_free_tier",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-044",
+      "feature": "Admin navigation gen_pro_tier",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation gen_pro_tier",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-045",
+      "feature": "Admin navigation gen_drop_offs",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation gen_drop_offs",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-046",
+      "feature": "Admin navigation doc_all",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 4,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation doc_all",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-047",
+      "feature": "Admin navigation doc_templates",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation doc_templates",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-048",
+      "feature": "Admin navigation doc_version_registry",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation doc_version_registry",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-049",
+      "feature": "Admin navigation doc_breakdown",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation doc_breakdown",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-050",
+      "feature": "Admin navigation doc_links",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation doc_links",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-051",
+      "feature": "Admin navigation an_traffic",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 11,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation an_traffic",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-052",
+      "feature": "Admin navigation an_location",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 6,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation an_location",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-053",
+      "feature": "Admin navigation an_device",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 6,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation an_device",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-054",
+      "feature": "Admin navigation an_duration",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 6,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation an_duration",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-055",
+      "feature": "Admin navigation an_clicks",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 6,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation an_clicks",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-056",
+      "feature": "Admin navigation an_funnel",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 6,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation an_funnel",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-057",
+      "feature": "Admin navigation an_conversion",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 6,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation an_conversion",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-058",
+      "feature": "Admin navigation an_journey",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 6,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation an_journey",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-059",
+      "feature": "Admin navigation sec_ip_logs",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation sec_ip_logs",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-060",
+      "feature": "Admin navigation sec_suspicious",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation sec_suspicious",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-061",
+      "feature": "Admin navigation sec_rate_limits",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation sec_rate_limits",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-062",
+      "feature": "Admin navigation sec_bot_logs",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation sec_bot_logs",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-063",
+      "feature": "Admin navigation sec_abuse_reports",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation sec_abuse_reports",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-064",
+      "feature": "Admin navigation sec_audit",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation sec_audit",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-065",
+      "feature": "Admin navigation sec_sessions",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation sec_sessions",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-066",
+      "feature": "Admin navigation sup_reported",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 9,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation sup_reported",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-067",
+      "feature": "Admin navigation sup_refunds",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 5,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation sup_refunds",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-068",
+      "feature": "Admin navigation sup_contact",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 5,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation sup_contact",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-069",
+      "feature": "Admin navigation sup_overrides",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 5,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation sup_overrides",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-070",
+      "feature": "Admin navigation not_automation",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 4,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation not_automation",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-071",
+      "feature": "Admin navigation not_execution_logs",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation not_execution_logs",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-072",
+      "feature": "Admin navigation not_emit_events",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation not_emit_events",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-073",
+      "feature": "Admin navigation not_email_logs",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 9,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation not_email_logs",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-074",
+      "feature": "Admin navigation not_system",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 6,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation not_system",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-075",
+      "feature": "Admin navigation not_templates",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 6,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation not_templates",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-076",
+      "feature": "Admin navigation inf_uptime",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation inf_uptime",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-077",
+      "feature": "Admin navigation inf_mcp_chat",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 6,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation inf_mcp_chat",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-078",
+      "feature": "Admin navigation inf_sentry",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation inf_sentry",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-079",
+      "feature": "Admin navigation inf_api_usage",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 1,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation inf_api_usage",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-080",
+      "feature": "Admin navigation inf_db_health",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation inf_db_health",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-081",
+      "feature": "Admin navigation inf_deployments",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation inf_deployments",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-082",
+      "feature": "Admin navigation inf_staging_prod",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation inf_staging_prod",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-083",
+      "feature": "Admin navigation set_dynamic_config",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 5,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation set_dynamic_config",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-084",
+      "feature": "Admin navigation set_profile",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation set_profile",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-085",
+      "feature": "Admin navigation set_admin_users",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 5,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation set_admin_users",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-086",
+      "feature": "Admin navigation set_2fa",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation set_2fa",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-087",
+      "feature": "Admin navigation set_api_keys",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 2,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation set_api_keys",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-088",
+      "feature": "Admin navigation set_billing",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 1,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation set_billing",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-089",
+      "feature": "Admin navigation set_gdpr",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 1,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation set_gdpr",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-090",
+      "feature": "Admin navigation set_export_csv",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation set_export_csv",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    },
+    {
+      "id": "ADMIN-BROWSER-091",
+      "feature": "Admin navigation set_preferences",
+      "expected": "Authenticated screen renders actual API responses without uncaught error",
+      "actual": {
+        "passed": true,
+        "requests": 3,
+        "failed_http": [],
+        "note": "Rendering only; mutations, empty/error semantics and permission variants not certified"
+      },
+      "status": "PASS",
+      "preconditions": "Fresh fixture user, native actual backend; approved browser sandbox exception only for test",
+      "steps": "Admin navigation set_preferences",
+      "evidence": "browser-tests.json",
+      "related_source_files": []
+    }
+  ],
+  "responses": [
+    {
+      "method": "GET",
+      "path": "/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-scWk1kcN.css",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-DTNlqbc0.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left1-D5psV_Sr.png",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/auth/refresh",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/refresh",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/auth/login",
+      "status": 204
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/login",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/notifications/announcements",
+      "status": 204
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/analytics/client-event",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/dashboard/profile",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-scWk1kcN.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-DTNlqbc0.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left1-D5psV_Sr.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/auth/me",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/quota/me",
+      "status": 204
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/quota/entitlements",
+      "status": 204
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/quota/me",
+      "status": 204
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/quota/entitlements",
+      "status": 204
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/payment/subscription",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/announcements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/entitlements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/payment/subscription",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/entitlements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/me",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/dashboard/profile",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-scWk1kcN.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-DTNlqbc0.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left1-D5psV_Sr.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/announcements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/entitlements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/payment/subscription",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/entitlements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/dashboard/document-history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-scWk1kcN.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-DTNlqbc0.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left1-D5psV_Sr.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/chat/sessions",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/announcements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/chat/sessions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/dashboard/support",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-scWk1kcN.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-DTNlqbc0.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left1-D5psV_Sr.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/announcements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/dashboard/billing",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-scWk1kcN.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-DTNlqbc0.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left1-D5psV_Sr.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/payment/invoices",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/v1/payment/invoices",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/announcements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/entitlements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/builder",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-scWk1kcN.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-DTNlqbc0.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left1-D5psV_Sr.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/auth/me",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/notifications/announcements",
+      "status": 204
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/document/templates",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/announcements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/entitlements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/document/templates",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/chat/api/chat/session",
+      "status": 204
+    },
+    {
+      "method": "POST",
+      "path": "/v1/chat/api/chat/session",
+      "status": 201
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/chat/api/chat/sessions",
+      "status": 204
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/document/templates/custom",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/assets/chat-bg-DNk7F5GZ.svg",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/document/templates",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/chat/api/chat/sessions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/document/templates/custom",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/chat/api/chat/sessions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/chat/api/chat/sessions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/builder",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-scWk1kcN.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-DTNlqbc0.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left1-D5psV_Sr.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/quota/me",
+      "status": 204
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/quota/entitlements",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/announcements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/entitlements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/document/templates",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/v1/chat/api/chat/session",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/assets/chat-bg-DNk7F5GZ.svg",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/v1/chat/api/chat/sessions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/document/templates/custom",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/chat/api/chat/sessions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/document/templates",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/chat/api/chat/sessions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/dashboard/profile",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-scWk1kcN.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-DTNlqbc0.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left1-D5psV_Sr.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/v1/payment/subscription",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/v1/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/notifications/announcements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/entitlements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/payment/subscription",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/entitlements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v1/quota/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/home_dashboard",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/analytics/overview",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/analytics/revenue",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/notifications/announcements",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/audit-logs",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/notifications/email-logs",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/automation/execution-logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/favicon.svg",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/announcements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/audit-logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/automation/execution-logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/email-logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/revenue",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/overview",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/users_all",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/users/",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/users_active",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/users/",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/users_suspended",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/users/",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/users_guest",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/users/",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/users_details",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/users/",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/subs_all",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/subscriptions",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/invoices",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/subscriptions/stats",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/plans",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/subscriptions/stats",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/subscriptions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/invoices",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/plans",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/subs_active",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/subscriptions/stats",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/invoices",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/plans",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/subscriptions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/subs_cancelled",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/plans",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/subscriptions/stats",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/invoices",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/subscriptions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/subs_failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/plans",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/subscriptions/stats",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/subscriptions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/invoices",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/subs_refunds",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/subscriptions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/invoices",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/subscriptions/stats",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/plans",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/subs_plan_overview",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/invoices",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/plans",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/subscriptions/stats",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/subscriptions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rev_mrr_arr",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/revenue",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/invoices",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/security/api-keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/invoices",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/revenue",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/security/api-keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/revenue",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rev_by_plan",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/revenue",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/invoices",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/security/api-keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/revenue",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rev_cost_ledger",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/cost-ledger",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/cost-ledger/summary",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/cost-ledger/summary",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/revenue",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/cost-ledger",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rev_churn",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/invoices",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/revenue",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/security/api-keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/revenue",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rev_ltv",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/revenue",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/invoices",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/security/api-keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/revenue",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rev_transactions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/invoices",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/revenue",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/security/api-keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/revenue",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rev_payouts",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/invoices",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/revenue",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/security/api-keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/revenue",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/promo_coupons",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/coupons",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/coupons",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/promo_active",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/coupons",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/promo_ab_tests",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/promotions/ab-tests",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/promotions/ab-tests",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/promo_referrals",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/promotions/referrals",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/promotions/referrals",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/promo_trials",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/trials",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/trials",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/pack_current",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/plans",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/pack_create",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/plans",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/pack_flags",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/config/feature_flags",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/config/feature_flags",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/pack_ai_models",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/ai",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/ai/usage",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/usage",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/ai/history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/pack_performance",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/plans/performance",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/plans",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/plans/performance",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/ai_providers",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/usage",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/ai_models",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/usage",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/ai_assignments",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/usage",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/ai_routing",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/usage",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/ai_credentials",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/usage",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/ai_local",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/usage",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/ai_usage",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/usage",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/ai_health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/usage",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/ai_audit",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/ai/audit",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/audit",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/usage",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/ai/history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/gen_total",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/analytics/generations/detailed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/generations/detailed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/gen_by_type",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/generations/detailed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/gen_by_user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/generations/detailed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/gen_failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/generations/detailed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/gen_free_tier",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/generations/detailed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/gen_pro_tier",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/generations/detailed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/gen_drop_offs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/generations/detailed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/doc_all",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/templates",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/templates",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/generations/detailed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/doc_templates",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/templates",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/doc_version_registry",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/templates",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/doc_breakdown",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/templates",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/generations/detailed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/doc_links",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/templates",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/generations/detailed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/an_traffic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/analytics/traffic",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/analytics/posthog/config",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/analytics/button-clicks",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/analytics/journey",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/analytics/page-duration",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/page-duration",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/posthog/config",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/button-clicks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/journey",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/traffic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/an_location",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/button-clicks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/posthog/config",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/page-duration",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/journey",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/traffic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/an_device",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/button-clicks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/page-duration",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/posthog/config",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/journey",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/traffic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/an_duration",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/posthog/config",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/button-clicks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/page-duration",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/journey",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/traffic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/an_clicks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/posthog/config",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/button-clicks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/page-duration",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/journey",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/traffic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/an_funnel",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/button-clicks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/page-duration",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/posthog/config",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/journey",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/traffic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/an_conversion",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/button-clicks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/page-duration",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/posthog/config",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/journey",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/traffic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/an_journey",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/button-clicks",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/posthog/config",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/page-duration",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/journey",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/analytics/traffic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/sec_ip_logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/security/ip-logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/security/ip-logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/sec_suspicious",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/security/alerts",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/sec_rate_limits",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/security/rate-limits",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/security/rate-limits",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/sec_bot_logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/security/bot-logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/security/bot-logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/sec_abuse_reports",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/security/abuse-reports",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/security/abuse-reports",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/sec_audit",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/audit-logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/audit-logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/sec_sessions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/security/sessions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/security/sessions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/sup_reported",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/support/tickets",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/support/refunds",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/support/contact",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/support/plan-overrides",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/support/plan-overrides",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/support/contact",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/support/refunds",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/support/tickets",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/sup_refunds",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/support/contact",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/support/tickets",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/support/plan-overrides",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/support/refunds",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/sup_contact",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/support/refunds",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/support/plan-overrides",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/support/tickets",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/support/contact",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/sup_overrides",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/support/plan-overrides",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/support/refunds",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/support/contact",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/support/tickets",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/not_automation",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/automation/rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/automation/rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/automation/execution-logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/not_execution_logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/automation/rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/automation/execution-logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/not_emit_events",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/automation/rules",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/automation/execution-logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/not_email_logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/notifications/templates",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/notifications/settings",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/notifications/status",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/settings",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/announcements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/templates",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/email-logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/status",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/not_system",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/settings",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/announcements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/templates",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/status",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/email-logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/not_templates",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/announcements",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/templates",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/settings",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/email-logs",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/status",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/inf_uptime",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/infrastructure/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/infrastructure/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/inf_mcp_chat",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/infrastructure/mcp/sessions",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/infrastructure/mcp/templates",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/infrastructure/mcp/sessions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/infrastructure/mcp/templates",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/infrastructure/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/inf_sentry",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/infrastructure/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/inf_api_usage",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/inf_db_health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/infrastructure/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/inf_deployments",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/infrastructure/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/inf_staging_prod",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/infrastructure/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/set_dynamic_config",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/config/plans",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/config/plans/history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/config/plans",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/config/plans/history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/set_profile",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/set_admin_users",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/roles",
+      "status": 200
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/staff",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/roles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/staff",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/set_2fa",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/set_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/security/api-keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/set_billing",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/set_gdpr",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/set_export_csv",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/config/settings",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/config/settings",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/set_preferences",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-CSHgnztD.js",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/index-B5FpNI67.css",
+      "status": 304
+    },
+    {
+      "method": "GET",
+      "path": "/assets/logo-left-DHAmWStC.png",
+      "status": 304
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/api/v1/admin/config/branding",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/config/branding",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/notifications/failed",
+      "status": 200
+    }
+  ],
+  "pageErrors": []
+}

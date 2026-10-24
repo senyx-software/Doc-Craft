@@ -1,0 +1,407 @@
+[
+  {
+    "id": "business-01",
+    "category": "business_details",
+    "message": "Our address is 14 Market Road, Colombo. The customer address is 25 Lake Street, Kandy.",
+    "expected": {
+      "slots": {
+        "senderAddress": "14 Market Road, Colombo",
+        "clientAddress": "25 Lake Street, Kandy"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "business-02",
+    "category": "business_details",
+    "message": "Set business email to billing@nexora.example and customer email to alex@customer.example.",
+    "expected": {
+      "slots": {
+        "senderEmail": "billing@nexora.example",
+        "clientEmail": "alex@customer.example"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "business-03",
+    "category": "business_details",
+    "message": "Use issue date 2026-11-10 and due date 2026-11-17.",
+    "expected": {
+      "slots": {
+        "issueDate": "2026-11-10",
+        "dueDate": "2026-11-17"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "business-04",
+    "category": "business_details",
+    "message": "Change the legal business name to Nexora iT (Pvt) Ltd. Preserve that capitalization.",
+    "expected": {
+      "slots": {
+        "businessName": "Nexora iT (Pvt) Ltd"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "business-05",
+    "category": "business_details",
+    "message": "Customer legal name is McDonald de Silva. Keep the spelling and capitalization exactly.",
+    "expected": {
+      "slots": {
+        "clientName": "McDonald de Silva"
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "business-06",
+    "category": "business_details",
+    "message": "Set the notes to Please deliver within seven days.",
+    "expected": {
+      "slots": {
+        "notesAndTerms": "Please deliver within seven days."
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "business-07",
+    "category": "business_details",
+    "message": "Set payment terms to 50% deposit and 50% on delivery.",
+    "expected": {
+      "slots": {
+        "paymentTerms": "50% deposit and 50% on delivery."
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  },
+  {
+    "id": "business-08",
+    "category": "business_details",
+    "message": "Use currency LKR, tax 10%, and a discount of 5%.",
+    "expected": {
+      "slots": {
+        "currency": "LKR",
+        "taxRate": 10,
+        "discountRate": 5
+      }
+    },
+    "slots": {
+      "businessName": "Nexora",
+      "clientName": "John",
+      "invoiceNumber": "INV-001",
+      "issueDate": "2026-10-21",
+      "currency": "USD",
+      "taxRate": 0,
+      "lineItems": [
+        {
+          "id": "laptop",
+          "description": "Laptop",
+          "quantity": 3,
+          "unitPrice": 500
+        },
+        {
+          "id": "mouse",
+          "description": "Mouse",
+          "quantity": 1,
+          "unitPrice": 25
+        }
+      ]
+    },
+    "editor": {
+      "selectedIds": [
+        "header_title"
+      ],
+      "elements": [
+        {
+          "id": "header_title",
+          "type": "text",
+          "label": "Invoice",
+          "x": 30,
+          "y": 30,
+          "w": 200,
+          "h": 40,
+          "fontSize": 24
+        }
+      ]
+    },
+    "history": []
+  }
+]

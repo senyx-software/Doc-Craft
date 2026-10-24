@@ -1,0 +1,1936 @@
+{
+  "scope": "All source files with extracted supported interaction attributes; not one independent feature per event; indirect bindings explicitly unresolved",
+  "components": [
+    {
+      "id": "FEATURE-001",
+      "app": "admin",
+      "component": "admin/src/App.tsx",
+      "interaction_count": 18,
+      "event_types": {
+        "onClick": 8,
+        "onSubmit": 4,
+        "onChange": 6
+      },
+      "api_calls": [
+        "FE-API-152",
+        "FE-API-153",
+        "FE-API-154",
+        "FE-API-155"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/App.tsx:185"
+      ]
+    },
+    {
+      "id": "FEATURE-002",
+      "app": "admin",
+      "component": "admin/src/components/AdminSidebar.tsx",
+      "interaction_count": 3,
+      "event_types": {
+        "onClick": 3
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/components/AdminSidebar.tsx:101"
+      ]
+    },
+    {
+      "id": "FEATURE-003",
+      "app": "admin",
+      "component": "admin/src/components/EntitlementControls.tsx",
+      "interaction_count": 6,
+      "event_types": {
+        "onChange": 4,
+        "onClick": 2
+      },
+      "api_calls": [
+        "FE-API-103",
+        "FE-API-104",
+        "FE-API-105"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/components/EntitlementControls.tsx:25"
+      ]
+    },
+    {
+      "id": "FEATURE-004",
+      "app": "admin",
+      "component": "admin/src/components/TemplateUpload.tsx",
+      "interaction_count": 9,
+      "event_types": {
+        "onChange": 8,
+        "onClick": 1
+      },
+      "api_calls": [
+        "FE-API-106"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/components/TemplateUpload.tsx:14"
+      ]
+    },
+    {
+      "id": "FEATURE-005",
+      "app": "admin",
+      "component": "admin/src/components/common/AdminNavbar.tsx",
+      "interaction_count": 1,
+      "event_types": {
+        "onClick": 1
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/components/common/AdminNavbar.tsx:48"
+      ]
+    },
+    {
+      "id": "FEATURE-006",
+      "app": "admin",
+      "component": "admin/src/components/common/AdminTopbar.tsx",
+      "interaction_count": 29,
+      "event_types": {
+        "onChange": 4,
+        "onClick": 24,
+        "onSubmit": 1
+      },
+      "api_calls": [
+        "FE-API-087",
+        "FE-API-091",
+        "FE-API-158"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/components/common/AdminTopbar.tsx:272"
+      ]
+    },
+    {
+      "id": "FEATURE-007",
+      "app": "admin",
+      "component": "admin/src/components/common/ToastContainer.tsx",
+      "interaction_count": 1,
+      "event_types": {
+        "onClick": 1
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/components/common/ToastContainer.tsx:42"
+      ]
+    },
+    {
+      "id": "FEATURE-008",
+      "app": "admin",
+      "component": "admin/src/components/ui/DateRangeFilter.tsx",
+      "interaction_count": 5,
+      "event_types": {
+        "onClick": 3,
+        "onChange": 2
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/components/ui/DateRangeFilter.tsx:44"
+      ]
+    },
+    {
+      "id": "FEATURE-009",
+      "app": "admin",
+      "component": "admin/src/components/ui/FontFacePicker.tsx",
+      "interaction_count": 3,
+      "event_types": {
+        "onClick": 2,
+        "onChange": 1
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/components/ui/FontFacePicker.tsx:76"
+      ]
+    },
+    {
+      "id": "FEATURE-010",
+      "app": "admin",
+      "component": "admin/src/components/ui/Pagination.tsx",
+      "interaction_count": 2,
+      "event_types": {
+        "onClick": 2
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/components/ui/Pagination.tsx:26"
+      ]
+    },
+    {
+      "id": "FEATURE-011",
+      "app": "admin",
+      "component": "admin/src/components/ui/SortableHeader.tsx",
+      "interaction_count": 1,
+      "event_types": {
+        "onClick": 1
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/components/ui/SortableHeader.tsx:21"
+      ]
+    },
+    {
+      "id": "FEATURE-012",
+      "app": "admin",
+      "component": "admin/src/components/ui/SystemDialogModal.tsx",
+      "interaction_count": 4,
+      "event_types": {
+        "onClick": 4
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/components/ui/SystemDialogModal.tsx:51"
+      ]
+    },
+    {
+      "id": "FEATURE-013",
+      "app": "admin",
+      "component": "admin/src/components/ui/TotpPromptModal.tsx",
+      "interaction_count": 7,
+      "event_types": {
+        "onClick": 5,
+        "onSubmit": 1,
+        "onChange": 1
+      },
+      "api_calls": [
+        "FE-API-025"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/components/ui/TotpPromptModal.tsx:58"
+      ]
+    },
+    {
+      "id": "FEATURE-014",
+      "app": "admin",
+      "component": "admin/src/pages/DashboardPage.tsx",
+      "interaction_count": 2,
+      "event_types": {
+        "onClick": 2
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/DashboardPage.tsx:32"
+      ]
+    },
+    {
+      "id": "FEATURE-015",
+      "app": "admin",
+      "component": "admin/src/pages/UserDetailPage.tsx",
+      "interaction_count": 6,
+      "event_types": {
+        "onClick": 2,
+        "onSubmit": 1,
+        "onChange": 3
+      },
+      "api_calls": [
+        "FE-API-029",
+        "FE-API-030",
+        "FE-API-033"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/UserDetailPage.tsx:127"
+      ]
+    },
+    {
+      "id": "FEATURE-016",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/AIManagementView.tsx",
+      "interaction_count": 37,
+      "event_types": {
+        "onChange": 16,
+        "onClick": 18,
+        "onSubmit": 3
+      },
+      "api_calls": [
+        "FE-API-004",
+        "FE-API-005",
+        "FE-API-006",
+        "FE-API-007",
+        "FE-API-008",
+        "FE-API-009",
+        "FE-API-010",
+        "FE-API-011",
+        "FE-API-012",
+        "FE-API-013",
+        "FE-API-014",
+        "FE-API-015",
+        "FE-API-016"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/AIManagementView.tsx:23"
+      ]
+    },
+    {
+      "id": "FEATURE-017",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/AnalyticsView.tsx",
+      "interaction_count": 12,
+      "event_types": {
+        "onChange": 9,
+        "onClick": 3
+      },
+      "api_calls": [
+        "FE-API-120",
+        "FE-API-121",
+        "FE-API-122",
+        "FE-API-123",
+        "FE-API-124",
+        "FE-API-125"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/AnalyticsView.tsx:215"
+      ]
+    },
+    {
+      "id": "FEATURE-018",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/AutomationsView.tsx",
+      "interaction_count": 33,
+      "event_types": {
+        "onClick": 15,
+        "onChange": 16,
+        "onSubmit": 2
+      },
+      "api_calls": [
+        "FE-API-078",
+        "FE-API-079",
+        "FE-API-080",
+        "FE-API-081",
+        "FE-API-082",
+        "FE-API-083",
+        "FE-API-084",
+        "FE-API-085"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/AutomationsView.tsx:442"
+      ]
+    },
+    {
+      "id": "FEATURE-019",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/ConfigView.tsx",
+      "interaction_count": 7,
+      "event_types": {
+        "onClick": 6,
+        "onChange": 1
+      },
+      "api_calls": [
+        "FE-API-128",
+        "FE-API-129",
+        "FE-API-130"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/ConfigView.tsx:184"
+      ]
+    },
+    {
+      "id": "FEATURE-020",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/CostLedgerView.tsx",
+      "interaction_count": 15,
+      "event_types": {
+        "onChange": 9,
+        "onClick": 5,
+        "onSubmit": 1
+      },
+      "api_calls": [
+        "FE-API-145",
+        "FE-API-146",
+        "FE-API-147",
+        "FE-API-148",
+        "FE-API-149"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/CostLedgerView.tsx:238"
+      ]
+    },
+    {
+      "id": "FEATURE-021",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/DocumentsView.tsx",
+      "interaction_count": 15,
+      "event_types": {
+        "onClick": 9,
+        "onChange": 5,
+        "onSubmit": 1
+      },
+      "api_calls": [
+        "FE-API-108",
+        "FE-API-109",
+        "FE-API-110",
+        "FE-API-111",
+        "FE-API-113",
+        "FE-API-114",
+        "FE-API-118"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/DocumentsView.tsx:153"
+      ]
+    },
+    {
+      "id": "FEATURE-022",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/GenerationsView.tsx",
+      "interaction_count": 4,
+      "event_types": {
+        "onChange": 4
+      },
+      "api_calls": [
+        "FE-API-118"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/GenerationsView.tsx:90"
+      ]
+    },
+    {
+      "id": "FEATURE-023",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/HomeView.tsx",
+      "interaction_count": 4,
+      "event_types": {
+        "onClick": 2,
+        "onSubmit": 1,
+        "onChange": 1
+      },
+      "api_calls": [
+        "FE-API-043",
+        "FE-API-085",
+        "FE-API-086",
+        "FE-API-090",
+        "FE-API-091",
+        "FE-API-093",
+        "FE-API-115",
+        "FE-API-116"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/HomeView.tsx:266"
+      ]
+    },
+    {
+      "id": "FEATURE-024",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/InfrastructureView.tsx",
+      "interaction_count": 8,
+      "event_types": {
+        "onClick": 8
+      },
+      "api_calls": [
+        "FE-API-100",
+        "FE-API-101",
+        "FE-API-102",
+        "FE-API-134"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/InfrastructureView.tsx:145"
+      ]
+    },
+    {
+      "id": "FEATURE-025",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/NotificationsView.tsx",
+      "interaction_count": 40,
+      "event_types": {
+        "onChange": 17,
+        "onClick": 19,
+        "onSubmit": 4
+      },
+      "api_calls": [
+        "FE-API-086",
+        "FE-API-089",
+        "FE-API-090",
+        "FE-API-091",
+        "FE-API-092",
+        "FE-API-093",
+        "FE-API-094",
+        "FE-API-095",
+        "FE-API-096",
+        "FE-API-097",
+        "FE-API-098",
+        "FE-API-099"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/NotificationsView.tsx:286"
+      ]
+    },
+    {
+      "id": "FEATURE-026",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/PackagesView.tsx",
+      "interaction_count": 42,
+      "event_types": {
+        "onChange": 27,
+        "onClick": 13,
+        "onSubmit": 2
+      },
+      "api_calls": [
+        "FE-API-056",
+        "FE-API-057",
+        "FE-API-058",
+        "FE-API-060",
+        "FE-API-069",
+        "FE-API-129"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/PackagesView.tsx:61"
+      ]
+    },
+    {
+      "id": "FEATURE-027",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/PromotionsView.tsx",
+      "interaction_count": 21,
+      "event_types": {
+        "onChange": 12,
+        "onClick": 6,
+        "onSubmit": 3
+      },
+      "api_calls": [
+        "FE-API-062",
+        "FE-API-063",
+        "FE-API-064",
+        "FE-API-065",
+        "FE-API-066",
+        "FE-API-067",
+        "FE-API-068",
+        "FE-API-070",
+        "FE-API-071",
+        "FE-API-072",
+        "FE-API-073"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/PromotionsView.tsx:217"
+      ]
+    },
+    {
+      "id": "FEATURE-028",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/RevenueView.tsx",
+      "interaction_count": 4,
+      "event_types": {
+        "onClick": 3,
+        "onChange": 1
+      },
+      "api_calls": [
+        "FE-API-055",
+        "FE-API-076",
+        "FE-API-116",
+        "FE-API-149"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/RevenueView.tsx:159"
+      ]
+    },
+    {
+      "id": "FEATURE-029",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/SecurityView.tsx",
+      "interaction_count": 20,
+      "event_types": {
+        "onClick": 10,
+        "onChange": 9,
+        "onSubmit": 1
+      },
+      "api_calls": [
+        "FE-API-043",
+        "FE-API-044",
+        "FE-API-045",
+        "FE-API-046",
+        "FE-API-047",
+        "FE-API-048",
+        "FE-API-049",
+        "FE-API-050",
+        "FE-API-051",
+        "FE-API-052",
+        "FE-API-053",
+        "FE-API-054"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/SecurityView.tsx:347"
+      ]
+    },
+    {
+      "id": "FEATURE-030",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/SettingsView.tsx",
+      "interaction_count": 43,
+      "event_types": {
+        "onSubmit": 6,
+        "onChange": 17,
+        "onClick": 20
+      },
+      "api_calls": [
+        "FE-API-001",
+        "FE-API-002",
+        "FE-API-022",
+        "FE-API-023",
+        "FE-API-024",
+        "FE-API-026",
+        "FE-API-034",
+        "FE-API-035",
+        "FE-API-037",
+        "FE-API-039",
+        "FE-API-040",
+        "FE-API-041",
+        "FE-API-042",
+        "FE-API-055",
+        "FE-API-128",
+        "FE-API-129",
+        "FE-API-131",
+        "FE-API-132",
+        "FE-API-133",
+        "FE-API-156",
+        "FE-API-157"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/SettingsView.tsx:547"
+      ]
+    },
+    {
+      "id": "FEATURE-031",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/SubscriptionsView.tsx",
+      "interaction_count": 14,
+      "event_types": {
+        "onChange": 9,
+        "onClick": 5
+      },
+      "api_calls": [
+        "FE-API-056",
+        "FE-API-058",
+        "FE-API-074",
+        "FE-API-075",
+        "FE-API-076"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/SubscriptionsView.tsx:170"
+      ]
+    },
+    {
+      "id": "FEATURE-032",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/SupportView.tsx",
+      "interaction_count": 27,
+      "event_types": {
+        "onChange": 7,
+        "onClick": 20
+      },
+      "api_calls": [
+        "FE-API-135",
+        "FE-API-137",
+        "FE-API-138",
+        "FE-API-139",
+        "FE-API-140",
+        "FE-API-141",
+        "FE-API-142",
+        "FE-API-143",
+        "FE-API-144"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/SupportView.tsx:94"
+      ]
+    },
+    {
+      "id": "FEATURE-033",
+      "app": "admin",
+      "component": "admin/src/pages/subviews/UsersView.tsx",
+      "interaction_count": 17,
+      "event_types": {
+        "onSubmit": 2,
+        "onChange": 9,
+        "onClick": 6
+      },
+      "api_calls": [
+        "FE-API-028",
+        "FE-API-029",
+        "FE-API-030",
+        "FE-API-033",
+        "FE-API-061"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "admin/src/pages/subviews/UsersView.tsx:299"
+      ]
+    },
+    {
+      "id": "FEATURE-034",
+      "app": "user",
+      "component": "user-frontend/src/components/FluidCardStack.tsx",
+      "interaction_count": 1,
+      "event_types": {
+        "onDragEnd": 1
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/FluidCardStack.tsx:66"
+      ]
+    },
+    {
+      "id": "FEATURE-035",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/AssetModal.tsx",
+      "interaction_count": 12,
+      "event_types": {
+        "onClick": 9,
+        "onDrop": 1,
+        "onChange": 2
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/AssetModal.tsx:96"
+      ]
+    },
+    {
+      "id": "FEATURE-036",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/CanvasContextMenu.tsx",
+      "interaction_count": 1,
+      "event_types": {
+        "onClick": 1
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/CanvasContextMenu.tsx:64"
+      ]
+    },
+    {
+      "id": "FEATURE-037",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/ChatAttachments.tsx",
+      "interaction_count": 5,
+      "event_types": {
+        "onClick": 4,
+        "onChange": 1
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/ChatAttachments.tsx:49"
+      ]
+    },
+    {
+      "id": "FEATURE-038",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/ChatMessage.tsx",
+      "interaction_count": 1,
+      "event_types": {
+        "onClick": 1
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/ChatMessage.tsx:128"
+      ]
+    },
+    {
+      "id": "FEATURE-039",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/ChatPanel.tsx",
+      "interaction_count": 18,
+      "event_types": {
+        "onSubmit": 1,
+        "onChange": 2,
+        "onKeyDown": 1,
+        "onClick": 14
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/ChatPanel.tsx:228"
+      ]
+    },
+    {
+      "id": "FEATURE-040",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/DocumentPreview.tsx",
+      "interaction_count": 4,
+      "event_types": {
+        "onClick": 4
+      },
+      "api_calls": [
+        "FE-API-171"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/DocumentPreview.tsx:82"
+      ]
+    },
+    {
+      "id": "FEATURE-041",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/ElementInspector.tsx",
+      "interaction_count": 38,
+      "event_types": {
+        "onChange": 13,
+        "onClick": 25
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/ElementInspector.tsx:97"
+      ]
+    },
+    {
+      "id": "FEATURE-042",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/ExportPanel.tsx",
+      "interaction_count": 6,
+      "event_types": {
+        "onChange": 5,
+        "onClick": 1
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/ExportPanel.tsx:83"
+      ]
+    },
+    {
+      "id": "FEATURE-043",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/FontFacePicker.tsx",
+      "interaction_count": 3,
+      "event_types": {
+        "onClick": 2,
+        "onChange": 1
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/FontFacePicker.tsx:64"
+      ]
+    },
+    {
+      "id": "FEATURE-044",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/FormatSidebar.tsx",
+      "interaction_count": 28,
+      "event_types": {
+        "onChange": 18,
+        "onClick": 10
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/FormatSidebar.tsx:74"
+      ]
+    },
+    {
+      "id": "FEATURE-045",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/InvoiceCanvas.tsx",
+      "interaction_count": 20,
+      "event_types": {
+        "onPointerDown": 9,
+        "onClick": 4,
+        "onDoubleClick": 4,
+        "onBlur": 3
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/InvoiceCanvas.tsx:468"
+      ]
+    },
+    {
+      "id": "FEATURE-046",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/LayersPanel.tsx",
+      "interaction_count": 6,
+      "event_types": {
+        "onDragEnd": 1,
+        "onDrop": 1,
+        "onClick": 4
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/LayersPanel.tsx:74"
+      ]
+    },
+    {
+      "id": "FEATURE-047",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/MultiElementInspector.tsx",
+      "interaction_count": 22,
+      "event_types": {
+        "onChange": 9,
+        "onClick": 13
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/MultiElementInspector.tsx:111"
+      ]
+    },
+    {
+      "id": "FEATURE-048",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/SignaturePad.tsx",
+      "interaction_count": 8,
+      "event_types": {
+        "onClick": 5,
+        "onChange": 2,
+        "onPointerDown": 1
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/SignaturePad.tsx:114"
+      ]
+    },
+    {
+      "id": "FEATURE-049",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/SpellCorrectionBanner.tsx",
+      "interaction_count": 2,
+      "event_types": {
+        "onClick": 2
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/SpellCorrectionBanner.tsx:30"
+      ]
+    },
+    {
+      "id": "FEATURE-050",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/TemplateSelector.tsx",
+      "interaction_count": 12,
+      "event_types": {
+        "onClick": 8,
+        "onSubmit": 1,
+        "onChange": 2,
+        "onKeyDown": 1
+      },
+      "api_calls": [
+        "FE-API-199",
+        "FE-API-200",
+        "FE-API-201",
+        "FE-API-202"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/TemplateSelector.tsx:34"
+      ]
+    },
+    {
+      "id": "FEATURE-051",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/ToolkitTabButton.tsx",
+      "interaction_count": 1,
+      "event_types": {
+        "onClick": 1
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/ToolkitTabButton.tsx:12"
+      ]
+    },
+    {
+      "id": "FEATURE-052",
+      "app": "user",
+      "component": "user-frontend/src/components/builder/UploadPrivateTemplate.tsx",
+      "interaction_count": 2,
+      "event_types": {
+        "onChange": 2
+      },
+      "api_calls": [
+        "FE-API-208"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/builder/UploadPrivateTemplate.tsx:20"
+      ]
+    },
+    {
+      "id": "FEATURE-053",
+      "app": "user",
+      "component": "user-frontend/src/components/common/LogoutConfirmModal.tsx",
+      "interaction_count": 4,
+      "event_types": {
+        "onClick": 4
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/common/LogoutConfirmModal.tsx:40"
+      ]
+    },
+    {
+      "id": "FEATURE-054",
+      "app": "user",
+      "component": "user-frontend/src/components/common/Navbar.tsx",
+      "interaction_count": 21,
+      "event_types": {
+        "onClick": 21
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/common/Navbar.tsx:127"
+      ]
+    },
+    {
+      "id": "FEATURE-055",
+      "app": "user",
+      "component": "user-frontend/src/components/dashboard/DocumentsTable.tsx",
+      "interaction_count": 3,
+      "event_types": {
+        "onClick": 3
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/dashboard/DocumentsTable.tsx:70"
+      ]
+    },
+    {
+      "id": "FEATURE-056",
+      "app": "user",
+      "component": "user-frontend/src/components/dashboard/PaymentMethodsCard.tsx",
+      "interaction_count": 1,
+      "event_types": {
+        "onClick": 1
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/dashboard/PaymentMethodsCard.tsx:26"
+      ]
+    },
+    {
+      "id": "FEATURE-057",
+      "app": "user",
+      "component": "user-frontend/src/components/dashboard/ProfileIdentityCard.tsx",
+      "interaction_count": 6,
+      "event_types": {
+        "onChange": 2,
+        "onClick": 4
+      },
+      "api_calls": [
+        "FE-API-222",
+        "FE-API-223",
+        "FE-API-228"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/dashboard/ProfileIdentityCard.tsx:136"
+      ]
+    },
+    {
+      "id": "FEATURE-058",
+      "app": "user",
+      "component": "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx",
+      "interaction_count": 15,
+      "event_types": {
+        "onClick": 11,
+        "onSubmit": 2,
+        "onChange": 2
+      },
+      "api_calls": [
+        "FE-API-182",
+        "FE-API-183",
+        "FE-API-184"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/dashboard/ProfileSecurityCard.tsx:153"
+      ]
+    },
+    {
+      "id": "FEATURE-059",
+      "app": "user",
+      "component": "user-frontend/src/components/dashboard/ProfileSubscriptionCard.tsx",
+      "interaction_count": 1,
+      "event_types": {
+        "onClick": 1
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/dashboard/ProfileSubscriptionCard.tsx:29"
+      ]
+    },
+    {
+      "id": "FEATURE-060",
+      "app": "user",
+      "component": "user-frontend/src/components/landing/DocumentTypeSelector.tsx",
+      "interaction_count": 2,
+      "event_types": {
+        "onClick": 2
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/landing/DocumentTypeSelector.tsx:86"
+      ]
+    },
+    {
+      "id": "FEATURE-061",
+      "app": "user",
+      "component": "user-frontend/src/components/landing/PricingTierCard.tsx",
+      "interaction_count": 1,
+      "event_types": {
+        "onClick": 1
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/landing/PricingTierCard.tsx:68"
+      ]
+    },
+    {
+      "id": "FEATURE-062",
+      "app": "user",
+      "component": "user-frontend/src/components/shared/GuestDownloadModal.tsx",
+      "interaction_count": 5,
+      "event_types": {
+        "onClick": 5
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/shared/GuestDownloadModal.tsx:27"
+      ]
+    },
+    {
+      "id": "FEATURE-063",
+      "app": "user",
+      "component": "user-frontend/src/components/shared/UpgradeModal.tsx",
+      "interaction_count": 4,
+      "event_types": {
+        "onClick": 4
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/components/shared/UpgradeModal.tsx:17"
+      ]
+    },
+    {
+      "id": "FEATURE-064",
+      "app": "user",
+      "component": "user-frontend/src/layouts/DashboardLayout.tsx",
+      "interaction_count": 2,
+      "event_types": {
+        "onClick": 2
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/layouts/DashboardLayout.tsx:46"
+      ]
+    },
+    {
+      "id": "FEATURE-065",
+      "app": "user",
+      "component": "user-frontend/src/pages/BuilderPage.tsx",
+      "interaction_count": 34,
+      "event_types": {
+        "onClick": 26,
+        "onChange": 6,
+        "onBlur": 1,
+        "onKeyDown": 1
+      },
+      "api_calls": [
+        "FE-API-171",
+        "FE-API-228"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/pages/BuilderPage.tsx:1074"
+      ]
+    },
+    {
+      "id": "FEATURE-066",
+      "app": "user",
+      "component": "user-frontend/src/pages/LandingPage.tsx",
+      "interaction_count": 3,
+      "event_types": {
+        "onClick": 3
+      },
+      "api_calls": [
+        "FE-API-171"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/pages/LandingPage.tsx:132"
+      ]
+    },
+    {
+      "id": "FEATURE-067",
+      "app": "user",
+      "component": "user-frontend/src/pages/LoginPage.tsx",
+      "interaction_count": 9,
+      "event_types": {
+        "onClick": 5,
+        "onSubmit": 1,
+        "onChange": 3
+      },
+      "api_calls": [
+        "FE-API-173",
+        "FE-API-178",
+        "FE-API-181",
+        "FE-API-185"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/pages/LoginPage.tsx:124"
+      ]
+    },
+    {
+      "id": "FEATURE-068",
+      "app": "user",
+      "component": "user-frontend/src/pages/PasswordResetPage.tsx",
+      "interaction_count": 6,
+      "event_types": {
+        "onSubmit": 2,
+        "onChange": 3,
+        "onClick": 1
+      },
+      "api_calls": [],
+      "classification": "frontend-only or indirect store/hook integration; manual trace required",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/pages/PasswordResetPage.tsx:99"
+      ]
+    },
+    {
+      "id": "FEATURE-069",
+      "app": "user",
+      "component": "user-frontend/src/pages/PricingPage.tsx",
+      "interaction_count": 2,
+      "event_types": {
+        "onChange": 1,
+        "onClick": 1
+      },
+      "api_calls": [
+        "FE-API-215",
+        "FE-API-228"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/pages/PricingPage.tsx:28"
+      ]
+    },
+    {
+      "id": "FEATURE-070",
+      "app": "user",
+      "component": "user-frontend/src/pages/RegisterPage.tsx",
+      "interaction_count": 8,
+      "event_types": {
+        "onSubmit": 1,
+        "onChange": 4,
+        "onClick": 3
+      },
+      "api_calls": [
+        "FE-API-172",
+        "FE-API-181"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/pages/RegisterPage.tsx:105"
+      ]
+    },
+    {
+      "id": "FEATURE-071",
+      "app": "user",
+      "component": "user-frontend/src/pages/VerifyEmailPage.tsx",
+      "interaction_count": 5,
+      "event_types": {
+        "onClick": 2,
+        "onSubmit": 1,
+        "onChange": 2
+      },
+      "api_calls": [
+        "FE-API-180",
+        "FE-API-181"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/pages/VerifyEmailPage.tsx:123"
+      ]
+    },
+    {
+      "id": "FEATURE-072",
+      "app": "user",
+      "component": "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx",
+      "interaction_count": 10,
+      "event_types": {
+        "onClick": 10
+      },
+      "api_calls": [
+        "FE-API-216",
+        "FE-API-217",
+        "FE-API-228"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/pages/dashboard/DashboardBillingPage.tsx:68"
+      ]
+    },
+    {
+      "id": "FEATURE-073",
+      "app": "user",
+      "component": "user-frontend/src/pages/dashboard/DashboardOverviewPage.tsx",
+      "interaction_count": 1,
+      "event_types": {
+        "onClick": 1
+      },
+      "api_calls": [
+        "FE-API-228"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/pages/dashboard/DashboardOverviewPage.tsx:76"
+      ]
+    },
+    {
+      "id": "FEATURE-074",
+      "app": "user",
+      "component": "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx",
+      "interaction_count": 19,
+      "event_types": {
+        "onClick": 2,
+        "onSubmit": 4,
+        "onChange": 13
+      },
+      "api_calls": [
+        "FE-API-218",
+        "FE-API-219",
+        "FE-API-220",
+        "FE-API-221"
+      ],
+      "classification": "API-linked component",
+      "functional_status": "UNTESTED; render probes alone do not verify all actions",
+      "required_test_variants": [
+        "happy path",
+        "invalid input",
+        "ownership/permission denial",
+        "persistence/reload",
+        "network/provider failure"
+      ],
+      "evidence": [
+        "user-frontend/src/pages/dashboard/DashboardSupportPage.tsx:151"
+      ]
+    }
+  ]
+}

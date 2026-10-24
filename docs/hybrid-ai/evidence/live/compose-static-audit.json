@@ -1,0 +1,338 @@
+{
+  "validation": "Compose v5.3.0 parse/merge, interpolation and env resolution disabled; no Docker daemon",
+  "services": {
+    "admin": {
+      "ports": [
+        "127.0.0.1:${ADMIN_FRONTEND_PORT}:${ADMIN_FRONTEND_PORT}"
+      ],
+      "networks": [
+        "egress"
+      ],
+      "memory_limit": null,
+      "cpu_limit": null,
+      "healthcheck": null,
+      "restart": null,
+      "depends_on": {
+        "gateway": {
+          "condition": "service_started",
+          "required": true
+        }
+      },
+      "secrets": []
+    },
+    "admin-api": {
+      "ports": [
+        "127.0.0.1:${ADMIN_API_PORT}:${ADMIN_API_PORT}"
+      ],
+      "networks": [
+        "backend",
+        "egress",
+        "inference"
+      ],
+      "memory_limit": null,
+      "cpu_limit": null,
+      "healthcheck": null,
+      "restart": null,
+      "depends_on": {
+        "redis": {
+          "condition": "service_healthy",
+          "required": true
+        }
+      },
+      "secrets": [
+        "admin-api_identity",
+        "ai_credential_keyring"
+      ]
+    },
+    "analytics": {
+      "ports": [],
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "memory_limit": null,
+      "cpu_limit": null,
+      "healthcheck": null,
+      "restart": null,
+      "depends_on": {
+        "redis": {
+          "condition": "service_healthy",
+          "required": true
+        }
+      },
+      "secrets": [
+        "analytics_identity"
+      ]
+    },
+    "auth": {
+      "ports": [],
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "memory_limit": null,
+      "cpu_limit": null,
+      "healthcheck": null,
+      "restart": null,
+      "depends_on": {
+        "redis": {
+          "condition": "service_healthy",
+          "required": true
+        }
+      },
+      "secrets": [
+        "auth_identity"
+      ]
+    },
+    "chat": {
+      "ports": [],
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "memory_limit": null,
+      "cpu_limit": null,
+      "healthcheck": null,
+      "restart": null,
+      "depends_on": {
+        "redis": {
+          "condition": "service_healthy",
+          "required": true
+        }
+      },
+      "secrets": [
+        "chat_identity"
+      ]
+    },
+    "document": {
+      "ports": [],
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "memory_limit": null,
+      "cpu_limit": null,
+      "healthcheck": null,
+      "restart": null,
+      "depends_on": {
+        "pdf": {
+          "condition": "service_started",
+          "required": true
+        },
+        "redis": {
+          "condition": "service_healthy",
+          "required": true
+        }
+      },
+      "secrets": [
+        "document_identity"
+      ]
+    },
+    "gateway": {
+      "ports": [
+        "127.0.0.1:${GATEWAY_PORT}:${GATEWAY_PORT}"
+      ],
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "memory_limit": null,
+      "cpu_limit": null,
+      "healthcheck": null,
+      "restart": null,
+      "depends_on": {
+        "admin-api": {
+          "condition": "service_started",
+          "required": true
+        },
+        "analytics": {
+          "condition": "service_started",
+          "required": true
+        },
+        "auth": {
+          "condition": "service_started",
+          "required": true
+        },
+        "chat": {
+          "condition": "service_started",
+          "required": true
+        },
+        "document": {
+          "condition": "service_started",
+          "required": true
+        },
+        "notification": {
+          "condition": "service_started",
+          "required": true
+        },
+        "payment": {
+          "condition": "service_started",
+          "required": true
+        },
+        "quota": {
+          "condition": "service_started",
+          "required": true
+        },
+        "redis": {
+          "condition": "service_healthy",
+          "required": true
+        }
+      },
+      "secrets": [
+        "gateway_identity"
+      ]
+    },
+    "notification": {
+      "ports": [],
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "memory_limit": null,
+      "cpu_limit": null,
+      "healthcheck": null,
+      "restart": null,
+      "depends_on": {
+        "redis": {
+          "condition": "service_healthy",
+          "required": true
+        }
+      },
+      "secrets": [
+        "notification_identity"
+      ]
+    },
+    "ollama": {
+      "ports": [],
+      "networks": [
+        "inference",
+        "model-egress"
+      ],
+      "memory_limit": "${OLLAMA_MEMORY_LIMIT:-4g}",
+      "cpu_limit": "${OLLAMA_CPUS:-2}",
+      "healthcheck": null,
+      "restart": "unless-stopped",
+      "depends_on": {},
+      "secrets": []
+    },
+    "payment": {
+      "ports": [],
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "memory_limit": null,
+      "cpu_limit": null,
+      "healthcheck": null,
+      "restart": null,
+      "depends_on": {
+        "redis": {
+          "condition": "service_healthy",
+          "required": true
+        }
+      },
+      "secrets": [
+        "payment_identity"
+      ]
+    },
+    "pdf": {
+      "ports": [],
+      "networks": [
+        "backend"
+      ],
+      "memory_limit": "768m",
+      "cpu_limit": 1,
+      "healthcheck": null,
+      "restart": "unless-stopped",
+      "depends_on": {
+        "redis": {
+          "condition": "service_healthy",
+          "required": true
+        }
+      },
+      "secrets": [
+        "pdf_identity"
+      ]
+    },
+    "quota": {
+      "ports": [],
+      "networks": [
+        "backend",
+        "egress"
+      ],
+      "memory_limit": null,
+      "cpu_limit": null,
+      "healthcheck": null,
+      "restart": null,
+      "depends_on": {
+        "redis": {
+          "condition": "service_healthy",
+          "required": true
+        }
+      },
+      "secrets": [
+        "quota_identity"
+      ]
+    },
+    "redis": {
+      "ports": [],
+      "networks": [
+        "backend"
+      ],
+      "memory_limit": null,
+      "cpu_limit": null,
+      "healthcheck": {
+        "interval": "5s",
+        "retries": 5,
+        "test": [
+          "CMD",
+          "redis-cli",
+          "--port",
+          "${REDIS_PORT}",
+          "--user",
+          "health",
+          "ping"
+        ],
+        "timeout": "5s"
+      },
+      "restart": "unless-stopped",
+      "depends_on": {},
+      "secrets": [
+        "redis_acl"
+      ]
+    },
+    "user": {
+      "ports": [
+        "127.0.0.1:${USER_FRONTEND_PORT}:${USER_FRONTEND_PORT}"
+      ],
+      "networks": [
+        "egress"
+      ],
+      "memory_limit": null,
+      "cpu_limit": null,
+      "healthcheck": null,
+      "restart": null,
+      "depends_on": {
+        "gateway": {
+          "condition": "service_started",
+          "required": true
+        }
+      },
+      "secrets": []
+    }
+  },
+  "networks": {
+    "backend": {
+      "internal": true
+    },
+    "egress": {
+      "internal": false
+    },
+    "inference": {
+      "internal": true
+    },
+    "model-egress": {
+      "internal": false
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "probe": "SEC-001",
+  "type": "actual_handler_stubbed_google_and_database",
+  "real_external_oauth": false,
+  "results": [
+    {
+      "condition": "mfa_enabled",
+      "access_signed": true,
+      "refresh_session_created": true,
+      "redirect_with_fragment": true,
+      "status_rejection": null
+    },
+    {
+      "condition": "suspended",
+      "access_signed": true,
+      "refresh_session_created": true,
+      "redirect_with_fragment": true,
+      "status_rejection": null
+    },
+    {
+      "condition": "soft_deleted",
+      "access_signed": true,
+      "refresh_session_created": true,
+      "redirect_with_fragment": true,
+      "status_rejection": null
+    },
+    {
+      "condition": "locked",
+      "access_signed": true,
+      "refresh_session_created": true,
+      "redirect_with_fragment": true,
+      "status_rejection": null
+    }
+  ],
+  "limitations": "No real Google credentials or account compromise exercised; runtime Auth consumers still reject suspended/deleted accounts."
+}

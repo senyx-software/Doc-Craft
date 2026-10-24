@@ -1,0 +1,123 @@
+{
+  "observed_at_utc": "2026-10-22T04:58:14.008572+00:00",
+  "region": "ap-mumbai-1",
+  "scope": "Read-only search for any A1 capacity; reports reserve nothing and create no instances",
+  "configurations": [
+    {
+      "ocpus": 1,
+      "memory_gb": 1
+    },
+    {
+      "ocpus": 1,
+      "memory_gb": 6
+    },
+    {
+      "ocpus": 1,
+      "memory_gb": 12
+    },
+    {
+      "ocpus": 2,
+      "memory_gb": 12
+    }
+  ],
+  "results": [
+    {
+      "availability_domain": "vFwL:AP-MUMBAI-1-AD-1",
+      "fault_domain": "FAULT-DOMAIN-1",
+      "shape": "VM.Standard.A1.Flex",
+      "ocpus": 1,
+      "memory_gb": 1,
+      "availability_status": "OUT_OF_HOST_CAPACITY"
+    },
+    {
+      "availability_domain": "vFwL:AP-MUMBAI-1-AD-1",
+      "fault_domain": "FAULT-DOMAIN-2",
+      "shape": "VM.Standard.A1.Flex",
+      "ocpus": 1,
+      "memory_gb": 1,
+      "availability_status": "OUT_OF_HOST_CAPACITY"
+    },
+    {
+      "availability_domain": "vFwL:AP-MUMBAI-1-AD-1",
+      "fault_domain": "FAULT-DOMAIN-3",
+      "shape": "VM.Standard.A1.Flex",
+      "ocpus": 1,
+      "memory_gb": 1,
+      "availability_status": "OUT_OF_HOST_CAPACITY"
+    },
+    {
+      "availability_domain": "vFwL:AP-MUMBAI-1-AD-1",
+      "fault_domain": "FAULT-DOMAIN-1",
+      "shape": "VM.Standard.A1.Flex",
+      "ocpus": 1,
+      "memory_gb": 6,
+      "availability_status": "OUT_OF_HOST_CAPACITY"
+    },
+    {
+      "availability_domain": "vFwL:AP-MUMBAI-1-AD-1",
+      "fault_domain": "FAULT-DOMAIN-2",
+      "shape": "VM.Standard.A1.Flex",
+      "ocpus": 1,
+      "memory_gb": 6,
+      "availability_status": "OUT_OF_HOST_CAPACITY"
+    },
+    {
+      "availability_domain": "vFwL:AP-MUMBAI-1-AD-1",
+      "fault_domain": "FAULT-DOMAIN-3",
+      "shape": "VM.Standard.A1.Flex",
+      "ocpus": 1,
+      "memory_gb": 6,
+      "availability_status": "OUT_OF_HOST_CAPACITY"
+    },
+    {
+      "availability_domain": "vFwL:AP-MUMBAI-1-AD-1",
+      "fault_domain": "FAULT-DOMAIN-1",
+      "shape": "VM.Standard.A1.Flex",
+      "ocpus": 1,
+      "memory_gb": 12,
+      "availability_status": "OUT_OF_HOST_CAPACITY"
+    },
+    {
+      "availability_domain": "vFwL:AP-MUMBAI-1-AD-1",
+      "fault_domain": "FAULT-DOMAIN-2",
+      "shape": "VM.Standard.A1.Flex",
+      "ocpus": 1,
+      "memory_gb": 12,
+      "availability_status": "OUT_OF_HOST_CAPACITY"
+    },
+    {
+      "availability_domain": "vFwL:AP-MUMBAI-1-AD-1",
+      "fault_domain": "FAULT-DOMAIN-3",
+      "shape": "VM.Standard.A1.Flex",
+      "ocpus": 1,
+      "memory_gb": 12,
+      "availability_status": "OUT_OF_HOST_CAPACITY"
+    },
+    {
+      "availability_domain": "vFwL:AP-MUMBAI-1-AD-1",
+      "fault_domain": "FAULT-DOMAIN-1",
+      "shape": "VM.Standard.A1.Flex",
+      "ocpus": 2,
+      "memory_gb": 12,
+      "availability_status": "OUT_OF_HOST_CAPACITY"
+    },
+    {
+      "availability_domain": "vFwL:AP-MUMBAI-1-AD-1",
+      "fault_domain": "FAULT-DOMAIN-2",
+      "shape": "VM.Standard.A1.Flex",
+      "ocpus": 2,
+      "memory_gb": 12,
+      "availability_status": "OUT_OF_HOST_CAPACITY"
+    },
+    {
+      "availability_domain": "vFwL:AP-MUMBAI-1-AD-1",
+      "fault_domain": "FAULT-DOMAIN-3",
+      "shape": "VM.Standard.A1.Flex",
+      "ocpus": 2,
+      "memory_gb": 12,
+      "availability_status": "OUT_OF_HOST_CAPACITY"
+    }
+  ],
+  "infrastructure_mutations": 0,
+  "instances_created": 0
+}

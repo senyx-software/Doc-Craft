@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "environment": "staging",
+  "status": "OBSOLETE_E5_TARGET_TERMINATED",
+  "operator_approved": false,
+  "region": "ap-mumbai-1",
+  "instance": {
+    "id": "ocid1.instance.oc1.ap-mumbai-1.anrg6ljr4wujdnqcezvcrlwboiuw3efznrg5ztawy7tes74vcz63m3yn46ra",
+    "name": "instance-20261021-1441",
+    "private_ip": "10.0.0.88",
+    "shape": "VM.Standard.E5.Flex",
+    "architecture": "amd64",
+    "ocpus": 1,
+    "memory_gib": 12
+  },
+  "existing": {
+    "compartment_id": "ocid1.tenancy.oc1..aaaaaaaaqdmc45x6ug4wxmdxu6vof3jtmnldsnhvp2bbjds3ddm6lw5wv3jq",
+    "vcn_id": "ocid1.vcn.oc1.ap-mumbai-1.amaaaaaa4wujdnqaan4ea7gwlmypfqaljiff4s5mtdob2u3s4q4xsdzpkgla",
+    "target_subnet_id": "ocid1.subnet.oc1.ap-mumbai-1.aaaaaaaa4wzncz742s7re55so73tez3i634bteu7tr2mwmq5p2ekkdzgdesq",
+    "target_security_list_id": "ocid1.securitylist.oc1.ap-mumbai-1.aaaaaaaavg57ppqyydtwfwiqxxn6kaqp7lj6e5icokadxl2fzheyphrqfh3q",
+    "target_route_table_id": "ocid1.routetable.oc1.ap-mumbai-1.aaaaaaaar6v3tewhfiowjwp5tog3b5zizpulpfs7gmrydjygz4fn3df5txlq",
+    "primary_vnic_id": "ocid1.vnic.oc1.ap-mumbai-1.abrg6ljrrz4ngwzoy4bquktv6g5conoobhvs27zwo6qrmg6xlw6kzbn2qfva",
+    "primary_private_ip_id": "ocid1.privateip.oc1.ap-mumbai-1.abrg6ljrgi6sjkd7mbiipt2jdqpzdd7pc3ohoz7h5jy2ssions3tcgxmhj2a"
+  },
+  "root_cause": {
+    "subnet_prohibits_public_ip": false,
+    "public_ip_attached": false,
+    "observed_cause": "No public IP resource is assigned to the primary private IP. The public subnet/Internet Gateway/default route are already present.",
+    "historical_launch_or_removal_reason": "Not established; no assignment mutation was attempted."
+  },
+  "operator_source_cidr": "175.157.169.103/32",
+  "operator_source_cidr_approved": false,
+  "preferred_solution": "OCI Bastion port forwarding via a dedicated private endpoint subnet; VM retains private-only address",
+  "proposed_resources": [
+    {
+      "operation": "create",
+      "type": "service_gateway",
+      "name": "doccraft-staging-sgw",
+      "vcn_id": "ocid1.vcn.oc1.ap-mumbai-1.amaaaaaa4wujdnqaan4ea7gwlmypfqaljiff4s5mtdob2u3s4q4xsdzpkgla",
+      "service_id": "ocid1.service.oc1.ap-mumbai-1.aaaaaaaalgcbq3vrynslsik576exhjek25p2j5abr6fpcrrsfr4d6h27jikq",
+      "service_cidr": "all-bom-services-in-oracle-services-network"
+    },
+    {
+      "operation": "create",
+      "type": "route_table",
+      "name": "doccraft-staging-bastion-routes",
+      "route_rules": [
+        {
+          "destination_type": "SERVICE_CIDR_BLOCK",
+          "destination": "all-bom-services-in-oracle-services-network",
+          "target": "new service_gateway"
+        }
+      ]
+    },
+    {
+      "operation": "create",
+      "type": "security_list",
+      "name": "doccraft-staging-bastion-security",
+      "ingress": [],
+      "egress": [
+        {
+          "protocol": "tcp",
+          "destination": "10.0.0.88/32",
+          "destination_port": 22
+        },
+        {
+          "protocol": "tcp",
+          "destination_type": "SERVICE_CIDR_BLOCK",
+          "destination": "all-bom-services-in-oracle-services-network",
+          "destination_port": 443
+        }
+      ]
+    },
+    {
+      "operation": "create",
+      "type": "subnet",
+      "name": "doccraft-staging-bastion-subnet",
+      "cidr": "10.0.1.0/28",
+      "prohibit_public_ip_on_vnic": true,
+      "route_table": "new route_table",
+      "security_list": "new security_list",
+      "preserve_existing_subnet": true
+    },
+    {
+      "operation": "create",
+      "type": "bastion",
+      "name": "DocCraftStagingAccess",
+      "type_name": "STANDARD",
+      "target_subnet": "new private subnet",
+      "client_cidr_allow_list": [
+        "175.157.169.103/32"
+      ],
+      "max_session_ttl_seconds": 10800
+    },
+    {
+      "operation": "update",
+      "type": "security_list",
+      "id": "ocid1.securitylist.oc1.ap-mumbai-1.aaaaaaaavg57ppqyydtwfwiqxxn6kaqp7lj6e5icokadxl2fzheyphrqfh3q",
+      "change": "Replace existing TCP 22 ingress from 0.0.0.0/0 with TCP 22 ingress from newly allocated Bastion private endpoint /32; preserve ICMP and egress rules; require matching ETag and reviewed baseline."
+    },
+    {
+      "operation": "create",
+      "type": "bastion_port_forward_session",
+      "target": "10.0.0.88:22",
+      "ttl_seconds": 10800,
+      "public_key_source": "derived public key matching operator SSH key; private key never uploaded"
+    },
+    {
+      "operation": "capture",
+      "type": "instance_console_history",
+      "instance_id": "ocid1.instance.oc1.ap-mumbai-1.anrg6ljr4wujdnqcezvcrlwboiuw3efznrg5ztawy7tes74vcz63m3yn46ra",
+      "purpose": "Independently verify VM host-key fingerprints from authenticated OCI console output; do not publish console contents."
+    }
+  ],
+  "cost": {
+    "existing_vm_paid_shape": true,
+    "reported_compute_cost": 0.581457456666,
+    "currency": "SGD",
+    "usage_day": "2026-10-21",
+    "credits_and_final_invoice_unverified": true,
+    "new_paid_vm_storage_nat_vpn_load_balancer": "none approved or proposed for execution",
+    "bastion_and_service_gateway": "No additional service fees according to Oracle documentation; existing compute/storage and applicable network transfer remain separately billed."
+  },
+  "security": {
+    "ssh_ingress": "Bastion endpoint /32 only",
+    "bastion_ingress": "175.157.169.103/32",
+    "vm_public_ip": "none",
+    "host_fingerprint_gate": "Console-derived trusted fingerprint required before SSH authentication",
+    "ssh_launch_key_matches": true,
+    "managed_ssh_agent": "Disabled; port forwarding does not require the Bastion agent",
+    "ssh_target_user_from_image": "ubuntu; verify actual guest identity after pinned SSH"
+  },
+  "egress_limit": "This approval establishes administrative SSH only. SGW allows regional OCI services, not arbitrary internet/GHCR/apt/AI endpoints. No NAT/public IP is included; general egress and website ingress need a later concrete approved plan.",
+  "rollback": [
+    "Save current route/security-list JSON and ETags privately before any mutation. Revalidate no concurrent changes.",
+    "Delete only the new Bastion session, stop the local tunnel and remove its private local SSH config.",
+    "Restore only the target security-list rules changed by this operation using concurrency checks and the saved baseline.",
+    "Delete only this new Bastion, then its dedicated subnet/security list/route table and unused new Service Gateway in dependency order.",
+    "Delete only this operation's captured console-history object if retention approval allows.",
+    "Do not delete, stop, resize, detach or recreate the existing VM, VNIC or 47 GiB boot volume. Do not restore databases or rotate keys."
+  ],
+  "approval_scope_excludes": [
+    "secret transfer",
+    "package installation",
+    "Docker/service deployment",
+    "database migrations",
+    "production DNS",
+    "public website exposure",
+    "compute stop or resize",
+    "paid replacement resources"
+  ],
+  "operator_decision": "Plan an Always Free migration before changes",
+  "obsolete_reason": "Operator approved retiring paid E5; instance terminated, boot retained. Do not apply this access plan to the deleted VM.",
+  "replacement_evidence": "docs/oracle-deployment/evidence/a1-replacement-execution.json"
+}

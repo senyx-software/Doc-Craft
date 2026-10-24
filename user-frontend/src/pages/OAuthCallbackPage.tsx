@@ -1,45 +1,27 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../store/authStore';
-import { Loader2 } from 'lucide-react';
+import {useEffect,useRef,useState} from 'react';
+import {Link,useNavigate} from 'react-router-dom';
+import {useAuthStore} from '../store/authStore';
 
-const OAuthCallbackPage: React.FC = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    async function handleCallback() {
-      try {
-        const hash = window.location.hash.startsWith('#') ? window.location.hash.slice(1) : '';
-        const search = window.location.search.startsWith('?') ? window.location.search.slice(1) : '';
-        const params = new URLSearchParams(hash || search);
-        const accessToken = params.get('accessToken') || params.get('access_token');
-        const mfaToken = params.get('mfaToken') || params.get('mfa_token');
-
-        if (accessToken) {
-          useAuthStore.getState().setToken(accessToken);
-          await useAuthStore.getState().checkAuth();
-          navigate('/dashboard', { replace: true });
-        } else if (mfaToken) {
-          navigate('/login', { state: { mfaToken }, replace: true });
-        } else {
-          navigate('/login', { replace: true });
-        }
-      } catch {
-        navigate('/login', { replace: true });
-      }
+export default function OAuthCallbackPage(){
+  const started=useRef(false),navigate=useNavigate();
+  const [error,setError]=useState<string|null>(()=>{const p=new URLSearchParams(window.location.hash.slice(1));return Boolean(p.get('accessToken'))===Boolean(p.get('mfaToken'))?'Invalid sign-in response. Please start again.':null;});
+  useEffect(()=>{
+    if(started.current)return;
+    started.current=true;
+    const params=new URLSearchParams(window.location.hash.slice(1));
+    // Remove credentials immediately, before requests, navigation or history entries.
+    window.history.replaceState({},'',window.location.pathname);
+    const token=params.get('accessToken'),mfa=params.get('mfaToken');
+    if(mfa&&!token){
+      useAuthStore.setState({mfaToken:mfa,isInitializing:false,isAuthenticated:false});
+      navigate('/login',{replace:true});return;
     }
-
-    void handleCallback();
-  }, [navigate]);
-
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-appBg text-appTextPrimary">
-      <div className="flex flex-col items-center gap-4">
-        <Loader2 className="w-8 h-8 animate-spin text-primary" />
-        <p className="text-sm text-appTextSecondary">Completing sign in...</p>
-      </div>
-    </div>
-  );
-};
-
-export default OAuthCallbackPage;
+    if(!token||mfa)return;
+    useAuthStore.getState().setToken(token);
+    void useAuthStore.getState().checkAuth().then(()=>{
+      if(useAuthStore.getState().isAuthenticated)navigate('/dashboard',{replace:true});
+      else setError('Sign-in could not be verified. Please start again.');
+    });
+  },[navigate]);
+  return <div className="p-8" role={error?'alert':'status'}>{error||'Completing sign-in…'}{error&&<Link className="block underline" to="/login">Return to sign in</Link>}</div>;
+}

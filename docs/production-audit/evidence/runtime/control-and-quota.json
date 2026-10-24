@@ -1,0 +1,53 @@
+{
+  "quota_propagation": {
+    "status": "PASS",
+    "before_limit": 3,
+    "after_limit": 2,
+    "actual_admin_postgres_redis_quota_chain": true
+  },
+  "quota_concurrency": {
+    "status": "PASS",
+    "results": [
+      {
+        "http": 403,
+        "latency_ms": 120
+      },
+      {
+        "http": 200,
+        "latency_ms": 94
+      },
+      {
+        "http": 403,
+        "latency_ms": 155
+      },
+      {
+        "http": 403,
+        "latency_ms": 150
+      },
+      {
+        "http": 200,
+        "latency_ms": 110
+      },
+      {
+        "http": 403,
+        "latency_ms": 124
+      },
+      {
+        "http": 403,
+        "latency_ms": 143
+      },
+      {
+        "http": 403,
+        "latency_ms": 131
+      }
+    ],
+    "requested": 8,
+    "configured_limit": 2,
+    "method": "Actual signed document->quota service requests; durable PostgreSQL accounting"
+  },
+  "zero_limit_validation": {
+    "http": 422,
+    "status": "PASS",
+    "expected": "Natural-number limit or -1 only; zero rejected"
+  }
+}

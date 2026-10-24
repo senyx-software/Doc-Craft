@@ -1,0 +1,11 @@
+[Unit]
+Description=Hourly DocCraft off-host snapshot (operator installation required)
+
+[Timer]
+OnCalendar=hourly
+RandomizedDelaySec=120
+Persistent=true
+Unit=doccraft-backup.service
+
+[Install]
+WantedBy=timers.target

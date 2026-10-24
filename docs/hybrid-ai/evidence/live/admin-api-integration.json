@@ -1,0 +1,19 @@
+{
+  "admin_password_and_one_time_login": "executed",
+  "sensitive_writes_one_time_2fa": "executed",
+  "provider_registration": "local and disabled cloud",
+  "credential_rotation": [
+    {
+      "generation": 1,
+      "encrypted": true,
+      "not_in_read_api": true
+    },
+    {
+      "generation": 2,
+      "encrypted": true,
+      "not_in_read_api": true
+    }
+  ],
+  "regular_user_admin_status": 401,
+  "live_cloud_inference": "blocked: no approved cloud API credentials; synthetic credentials never dispatched"
+}

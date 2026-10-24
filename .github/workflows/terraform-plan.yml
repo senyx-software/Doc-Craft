@@ -1,0 +1,27 @@
+name: Terraform contract plan
+on:
+  pull_request:
+    branches: [master]
+    paths: ['terraform/**', '.github/workflows/terraform-plan.yml', 'deploy/config/ci-tools.json']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with: {persist-credentials: false}
+      - name: Validate and plan provider-neutral interface with public fixtures
+        run: |
+          python3 deploy/scripts/install-ci-tools.py terraform
+          .local/ci-tools/terraform -chdir=terraform fmt -check -recursive
+          .local/ci-tools/terraform -chdir=terraform init -backend=false -input=false
+          .local/ci-tools/terraform -chdir=terraform validate
+          .local/ci-tools/terraform -chdir=terraform plan -input=false -lock=false \
+            -var='region=fixture-region' -var='app_domain=app.example.com' \
+            -var='admin_domain=admin.example.com' \
+            -var='ssh_public_keys=["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFZhbGlkYXRpb25QdWJsaWNLZXlPbmx5Q29udHJhY3Q fixture"]' \
+            -var='ssh_source_cidrs=["192.0.2.10/32"]'
+          echo 'Contract plan only. No VPS provider, provider credentials, remote state or terraform apply. Real infrastructure requires a separately reviewed provider adapter and operator approval.' >> "$GITHUB_STEP_SUMMARY"

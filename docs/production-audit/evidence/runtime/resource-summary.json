@@ -1,0 +1,91 @@
+{
+  "hardware": {
+    "cpu": "AMD Ryzen 7 4700U with Radeon Graphics",
+    "logical_cpus": 8,
+    "ram_mib": 15346.05,
+    "os": "Linux",
+    "architecture": "x86_64"
+  },
+  "scope": "Native fresh task-owned service process trees; PSS avoids shared-page double count; no Docker/cgroups; external browser/test clients and diagnostic PDF child not in context roots",
+  "samples": 2800,
+  "sampling_seconds": 2,
+  "duration_seconds": 5722.4,
+  "simultaneous_peak_pss_mib": 1190.09,
+  "minimum_host_available_mib": 1691.15,
+  "minimum_workspace_disk_gib": 84.42,
+  "group_peaks": {
+    "postgres": {
+      "max_pss_mib": 134.76,
+      "max_rss_mib": 2236.45,
+      "max_cpu_percent": 46.49
+    },
+    "redis": {
+      "max_pss_mib": 15.83,
+      "max_rss_mib": 15.84,
+      "max_cpu_percent": 2.92
+    },
+    "auth": {
+      "max_pss_mib": 206.55,
+      "max_rss_mib": 276.53,
+      "max_cpu_percent": 96.21
+    },
+    "quota": {
+      "max_pss_mib": 78.45,
+      "max_rss_mib": 146.71,
+      "max_cpu_percent": 7.32
+    },
+    "chat": {
+      "max_pss_mib": 263.39,
+      "max_rss_mib": 341.23,
+      "max_cpu_percent": 278.96
+    },
+    "payment": {
+      "max_pss_mib": 78.53,
+      "max_rss_mib": 146.61,
+      "max_cpu_percent": 7.37
+    },
+    "notification": {
+      "max_pss_mib": 64.83,
+      "max_rss_mib": 132.19,
+      "max_cpu_percent": 8.79
+    },
+    "pdf": {
+      "max_pss_mib": 60.92,
+      "max_rss_mib": 127.96,
+      "max_cpu_percent": 4.9
+    },
+    "admin-api": {
+      "max_pss_mib": 91.24,
+      "max_rss_mib": 110.69,
+      "max_cpu_percent": 38.19
+    },
+    "analytics": {
+      "max_pss_mib": 121.79,
+      "max_rss_mib": 143.63,
+      "max_cpu_percent": 7.17
+    },
+    "document": {
+      "max_pss_mib": 114.97,
+      "max_rss_mib": 139.54,
+      "max_cpu_percent": 19.53
+    },
+    "gateway": {
+      "max_pss_mib": 70.81,
+      "max_rss_mib": 137.89,
+      "max_cpu_percent": 13.14
+    },
+    "admin-ui": {
+      "max_pss_mib": 83.23,
+      "max_rss_mib": 143.41,
+      "max_cpu_percent": 7.34
+    },
+    "user-ui": {
+      "max_pss_mib": 84.04,
+      "max_rss_mib": 144.18,
+      "max_cpu_percent": 18.56
+    }
+  },
+  "fresh_model_admission": "Not dispatched:shared-host headroom below conservative4GiB test prerequisite and swap pressure; no model resources guessed",
+  "sustained_vps_capacity": "NOT VERIFIED",
+  "network_and_disk_throughput": "NOT BENCHMARKED; process I/O counters and disk-free samples only"
+}

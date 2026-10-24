@@ -1,0 +1,14 @@
+[Unit]
+Description=DocCraft encrypted off-host database, asset and key backup
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+User=root
+UMask=0077
+ExecStart=/usr/bin/python3 /opt/doccraft/control/deploy/scripts/backup_remote.py
+TimeoutStartSec=50min
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHome=yes

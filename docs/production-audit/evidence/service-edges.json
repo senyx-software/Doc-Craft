@@ -1,0 +1,1496 @@
+[
+  {
+    "source": "services/gateway/test-gateway.ts",
+    "line": 5,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/gateway/test-gateway.ts",
+    "line": 6,
+    "symbols": [
+      "AI_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/gateway/test-gateway.ts",
+    "line": 9,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/gateway/test-gateway.ts",
+    "line": 12,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/workers/pdf_worker.py",
+    "line": 22,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/workers/pdf_worker.py",
+    "line": 34,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/workers/pdf_worker.py",
+    "line": 36,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/services/sidecar.py",
+    "line": 18,
+    "symbols": [
+      "SIDECAR_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/services/sidecar.py",
+    "line": 105,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/services/sidecar.py",
+    "line": 107,
+    "symbols": [
+      "SIDECAR_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/services/sidecar.py",
+    "line": 112,
+    "symbols": [
+      "SIDECAR_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/services/uploaded_templates.py",
+    "line": 9,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/services/storage.py",
+    "line": 38,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/services/template_policy.py",
+    "line": 10,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/services/authentication.py",
+    "line": 33,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/services/authentication.py",
+    "line": 35,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/services/product_tracking.py",
+    "line": 19,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/routers/document.py",
+    "line": 30,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/routers/document.py",
+    "line": 69,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/routers/document.py",
+    "line": 88,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/routers/document.py",
+    "line": 285,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/routers/document.py",
+    "line": 288,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/document/app/routers/document.py",
+    "line": 361,
+    "symbols": [
+      "AI_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/config_client.py",
+    "line": 70,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/core/config.py",
+    "line": 36,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/core/config.py",
+    "line": 37,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/services/ai_inference.py",
+    "line": 70,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/services/entitlements.py",
+    "line": 122,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/services/entitlements.py",
+    "line": 126,
+    "symbols": [
+      "PAYMENT_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/services/automation_engine.py",
+    "line": 129,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/services/automation_engine.py",
+    "line": 130,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/services/automation_engine.py",
+    "line": 132,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/services/automation_engine.py",
+    "line": 147,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/services/automation_engine.py",
+    "line": 155,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/services/email_service.py",
+    "line": 41,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/services/email_service.py",
+    "line": 128,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/api/v1/support.py",
+    "line": 369,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/api/v1/gdpr.py",
+    "line": 156,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/api/v1/gdpr.py",
+    "line": 157,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/api/v1/gdpr.py",
+    "line": 159,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/api/v1/infrastructure.py",
+    "line": 26,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/api/v1/infrastructure.py",
+    "line": 30,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/api/v1/ai_management.py",
+    "line": 204,
+    "symbols": [
+      "CHAT_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/api/v1/users.py",
+    "line": 182,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/api/v1/users.py",
+    "line": 250,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/api/v1/notifications.py",
+    "line": 98,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/mcp/chat_client.py",
+    "line": 31,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/auth_client.py",
+    "line": 9,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/auth_client.py",
+    "line": 10,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/auth_client.py",
+    "line": 33,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/auth_client.py",
+    "line": 40,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/auth_client.py",
+    "line": 49,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/auth_client.py",
+    "line": 56,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/auth_client.py",
+    "line": 64,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/auth_client.py",
+    "line": 71,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/auth_client.py",
+    "line": 80,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/auth_client.py",
+    "line": 87,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/notification_client.py",
+    "line": 25,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/payment_client.py",
+    "line": 35,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/payment_client.py",
+    "line": 46,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/payment_client.py",
+    "line": 57,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/quota_client.py",
+    "line": 23,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/quota_client.py",
+    "line": 30,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/quota_client.py",
+    "line": 46,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/analytics_client.py",
+    "line": 17,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/analytics_client.py",
+    "line": 289,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/admin-api/app/integrations/services/chat_client.py",
+    "line": 28,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/notification/src/security.ts",
+    "line": 30,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/notification/src/routes/notification.routes.ts",
+    "line": 19,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/notification/src/services/email.service.ts",
+    "line": 24,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/services/paymentConfigClient.service.ts",
+    "line": 90,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/services/paymentConfigClient.service.ts",
+    "line": 91,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/services/paymentConfigClient.service.ts",
+    "line": 112,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/services/subscription.service.ts",
+    "line": 31,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/services/subscription.service.ts",
+    "line": 55,
+    "symbols": [
+      "ANALYTICS_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/services/subscription.service.ts",
+    "line": 82,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/services/subscription.service.ts",
+    "line": 94,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/services/subscription.service.ts",
+    "line": 113,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/services/subscription.service.ts",
+    "line": 118,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/services/subscription.service.ts",
+    "line": 132,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/services/subscription.service.ts",
+    "line": 138,
+    "symbols": [
+      "NOTIFICATION_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/services/subscription.service.ts",
+    "line": 265,
+    "symbols": [
+      "NOTIFICATION_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/services/subscription.service.ts",
+    "line": 276,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/services/plan.service.ts",
+    "line": 62,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/middleware/authenticate.ts",
+    "line": 41,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/config/env.ts",
+    "line": 36,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/config/env.ts",
+    "line": 37,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/payment/src/config/env.ts",
+    "line": 40,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/gateway/src/index.ts",
+    "line": 59,
+    "symbols": [
+      "AI_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/gateway/src/services/configClient.service.ts",
+    "line": 108,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/gateway/src/services/configClient.service.ts",
+    "line": 110,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/gateway/src/middleware/rateLimiter.middleware.ts",
+    "line": 36,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/gateway/src/config/services.config.ts",
+    "line": 11,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/gateway/src/config/services.config.ts",
+    "line": 15,
+    "symbols": [
+      "AI_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/gateway/src/config/services.config.ts",
+    "line": 27,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/gateway/src/config/services.config.ts",
+    "line": 39,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/gateway/src/config/env.ts",
+    "line": 20,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/gateway/src/config/env.ts",
+    "line": 21,
+    "symbols": [
+      "AI_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/gateway/src/config/env.ts",
+    "line": 24,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/gateway/src/config/env.ts",
+    "line": 27,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/gateway/src/security/jwtVerifier.ts",
+    "line": 23,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/quota/src/services/quota.service.ts",
+    "line": 36,
+    "symbols": [
+      "ANALYTICS_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/quota/src/services/quota.service.ts",
+    "line": 59,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/quota/src/services/quotaConfigClient.service.ts",
+    "line": 112,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/quota/src/services/quotaConfigClient.service.ts",
+    "line": 113,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/quota/src/middleware/authenticate.ts",
+    "line": 34,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/quota/src/config/env.ts",
+    "line": 31,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/quota/src/security/ipAbuseDetection.ts",
+    "line": 33,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/auth/src/services/firebase.service.ts",
+    "line": 9,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/auth/src/services/email.service.ts",
+    "line": 39,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/auth/src/services/productTracking.service.ts",
+    "line": 12,
+    "symbols": [
+      "ANALYTICS_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/analytics/app/security.py",
+    "line": 17,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/analytics/app/routers/analytics.py",
+    "line": 76,
+    "symbols": [
+      "PAYMENT_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/chat/src/services/guest-migration.service.ts",
+    "line": 13,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/chat/src/services/template-policy.service.ts",
+    "line": 7,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/chat/src/services/template-policy.service.ts",
+    "line": 18,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/chat/src/services/quotaClient.service.ts",
+    "line": 29,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/chat/src/services/posthogTracking.service.ts",
+    "line": 16,
+    "symbols": [
+      "ANALYTICS_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/chat/src/services/hybrid-ai.service.ts",
+    "line": 30,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/chat/src/services/planConfigClient.service.ts",
+    "line": 18,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/chat/src/services/profileClient.service.ts",
+    "line": 3,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/chat/src/services/profileClient.service.ts",
+    "line": 5,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/chat/src/middleware/auth.middleware.ts",
+    "line": 14,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/chat/src/config/env.ts",
+    "line": 22,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/chat/src/config/env.ts",
+    "line": 23,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "services/chat/src/config/env.ts",
+    "line": 25,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "shared/entitlements.mjs",
+    "line": 6,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "shared/service_auth.py",
+    "line": 92,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "shared/service_auth.py",
+    "line": 96,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "shared/service_auth.py",
+    "line": 98,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "shared/service_auth.py",
+    "line": 102,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "shared/service-auth.mjs",
+    "line": 37,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "shared/entitlements.py",
+    "line": 11,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/scripts/configure.py",
+    "line": 15,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL",
+      "ADMIN_API_URL",
+      "AI_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "AUTH_SERVICE_URL",
+      "BILLING_SERVICE_URL",
+      "CHAT_SERVICE_URL",
+      "DOCUMENT_SERVICE_URL",
+      "GATEWAY_URL",
+      "NOTIFICATION_SERVICE_URL",
+      "PAYMENT_SERVICE_URL",
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/scripts/configure.py",
+    "line": 17,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL",
+      "AI_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "AUTH_SERVICE_URL",
+      "BILLING_SERVICE_URL",
+      "DOCUMENT_SERVICE_URL",
+      "NOTIFICATION_SERVICE_URL",
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/scripts/configure.py",
+    "line": 18,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "FRONTEND_URL",
+      "GOOGLE_CALLBACK_URL",
+      "NOTIFICATION_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/scripts/configure.py",
+    "line": 19,
+    "symbols": [
+      "ADMIN_API_URL",
+      "AUTH_SERVICE_URL",
+      "FRONTEND_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/scripts/configure.py",
+    "line": 20,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL",
+      "AI_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "AUTH_SERVICE_URL",
+      "GATEWAY_URL",
+      "QUOTA_SERVICE_URL",
+      "SIDECAR_URL",
+      "SUPABASE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/scripts/configure.py",
+    "line": 21,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "AUTH_SERVICE_URL",
+      "FRONTEND_URL",
+      "NOTIFICATION_SERVICE_URL",
+      "PAYMENT_SERVICE_PUBLIC_URL",
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/scripts/configure.py",
+    "line": 22,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "AUTH_SERVICE_URL",
+      "FRONTEND_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/scripts/configure.py",
+    "line": 23,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "AUTH_SERVICE_URL",
+      "BILLING_SERVICE_URL",
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/scripts/configure.py",
+    "line": 24,
+    "symbols": [
+      "AUTH_SERVICE_URL",
+      "PAYMENT_SERVICE_URL",
+      "POSTHOG_HOST"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/scripts/configure.py",
+    "line": 25,
+    "symbols": [
+      "AI_ALLOWED_CLOUD_HOST",
+      "ANALYTICS_SERVICE_URL",
+      "AUTH_SERVICE_URL",
+      "CHAT_SERVICE_MCP_URL",
+      "CHAT_SERVICE_URL",
+      "DOCUMENT_SERVICE_URL",
+      "GATEWAY_URL",
+      "NOTIFICATION_SERVICE_URL",
+      "PAYMENT_SERVICE_URL",
+      "POSTHOG_HOST",
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/scripts/configure.py",
+    "line": 29,
+    "symbols": [
+      "CHAT_SERVICE_MCP_URL",
+      "FRONTEND_URL",
+      "SIDECAR_HOST",
+      "SIDECAR_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/scripts/configure.py",
+    "line": 87,
+    "symbols": [
+      "CHAT_SERVICE_MCP_URL",
+      "FRONTEND_URL",
+      "SIDECAR_HOST",
+      "SIDECAR_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/scripts/ci-pdf.py",
+    "line": 34,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/scripts/verify_release.py",
+    "line": 28,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/scripts/verify_release.py",
+    "line": 37,
+    "symbols": [],
+    "transport": "signed helper",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 16,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 19,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 20,
+    "symbols": [
+      "AI_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 22,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 27,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 37,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 43,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 44,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 45,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 46,
+    "symbols": [
+      "AI_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 52,
+    "symbols": [
+      "SIDECAR_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 55,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 56,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 57,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 71,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 72,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 77,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 78,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 79,
+    "symbols": [
+      "ADMIN_API_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 88,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 93,
+    "symbols": [
+      "AUTH_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  },
+  {
+    "source": "deploy/config/runtime-map.json",
+    "line": 94,
+    "symbols": [
+      "QUOTA_SERVICE_URL"
+    ],
+    "transport": "URL reference; follow named callsite",
+    "verification": "source reference only; not independent runtime edge"
+  }
+]

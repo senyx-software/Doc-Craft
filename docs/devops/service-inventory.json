@@ -1,0 +1,1084 @@
+[
+  {
+    "service_name": "gateway",
+    "source_directory": "services/gateway",
+    "runtime": "Node24",
+    "build_command": "npm run build --workspace=doccraft-gateway",
+    "startup_command": [
+      "node",
+      "/app/services/gateway/dist/index.js"
+    ],
+    "internal_port": 3001,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [],
+    "redis_dependencies": [
+      "scoped ACL, verifiedTLS"
+    ],
+    "runtime_configuration_names": [
+      "AUTH_SERVICE_URL",
+      "DOCUMENT_SERVICE_URL",
+      "BILLING_SERVICE_URL",
+      "QUOTA_SERVICE_URL",
+      "AI_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "ADMIN_API_SERVICE_URL",
+      "NOTIFICATION_SERVICE_URL",
+      "CORS_ORIGINS",
+      "PORT",
+      "SERVICE_AUTH_CONFIG_FILE",
+      "SERVICE_TLS_CERT_FILE",
+      "SERVICE_TLS_KEY_FILE"
+    ],
+    "required_secrets": [
+      "REDIS_URL",
+      "mount:ca",
+      "mount:gateway_service_identity",
+      "mount:gateway_service_crt",
+      "mount:gateway_service_key"
+    ],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 0.5,
+      "memory": "256m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [],
+    "startup_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    }
+  },
+  {
+    "service_name": "auth",
+    "source_directory": "services/auth",
+    "runtime": "Node24",
+    "build_command": "npm run build --workspace=doccraft-auth",
+    "startup_command": [
+      "node",
+      "/app/services/auth/dist/server.js"
+    ],
+    "internal_port": 3011,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [
+      "PostgreSQL scoped DML/read role"
+    ],
+    "redis_dependencies": [
+      "scoped ACL, verifiedTLS"
+    ],
+    "runtime_configuration_names": [
+      "ADMIN_API_SERVICE_URL",
+      "NOTIFICATION_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "FRONTEND_URL",
+      "GOOGLE_CLIENT_ID",
+      "GOOGLE_CALLBACK_URL",
+      "FIREBASE_PROJECT_ID",
+      "EMAIL_FROM",
+      "PORT",
+      "SERVICE_AUTH_CONFIG_FILE",
+      "SERVICE_TLS_CERT_FILE",
+      "SERVICE_TLS_KEY_FILE"
+    ],
+    "required_secrets": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "JWT_REFRESH_SECRET",
+      "JWT_SECRET",
+      "REDIS_URL",
+      "mount:ca",
+      "mount:auth_service_identity",
+      "mount:auth_service_crt",
+      "mount:auth_service_key"
+    ],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 1,
+      "memory": "384m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [],
+    "startup_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    }
+  },
+  {
+    "service_name": "notification",
+    "source_directory": "services/notification",
+    "runtime": "Node24",
+    "build_command": "npm run build --workspace=doccraft-notification",
+    "startup_command": [
+      "node",
+      "/app/services/notification/dist/server.js"
+    ],
+    "internal_port": 3012,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [
+      "PostgreSQL scoped DML/read role"
+    ],
+    "redis_dependencies": [
+      "scoped ACL, verifiedTLS"
+    ],
+    "runtime_configuration_names": [
+      "AUTH_SERVICE_URL",
+      "ADMIN_API_URL",
+      "FRONTEND_URL",
+      "RESEND_FROM_EMAIL",
+      "PORT",
+      "SERVICE_AUTH_CONFIG_FILE",
+      "SERVICE_TLS_CERT_FILE",
+      "SERVICE_TLS_KEY_FILE"
+    ],
+    "required_secrets": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "RESEND_API_KEY",
+      "mount:ca",
+      "mount:notification_service_identity",
+      "mount:notification_service_crt",
+      "mount:notification_service_key"
+    ],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 0.5,
+      "memory": "384m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [],
+    "startup_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    }
+  },
+  {
+    "service_name": "document",
+    "source_directory": "services/document",
+    "runtime": "Python3.13",
+    "build_command": "pip install -c deploy/staging/python.constraints.txt -r services/document/requirements.txt",
+    "startup_command": [
+      "python",
+      "-m",
+      "uvicorn",
+      "app.main:app",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "3013",
+      "--ssl-keyfile",
+      "/run/secrets/service.key",
+      "--ssl-certfile",
+      "/run/secrets/service.crt",
+      "--timeout-graceful-shutdown",
+      "20"
+    ],
+    "internal_port": 3013,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [
+      "PostgreSQL scoped DML/read role"
+    ],
+    "redis_dependencies": [
+      "scoped ACL, verifiedTLS"
+    ],
+    "runtime_configuration_names": [
+      "AUTH_SERVICE_URL",
+      "QUOTA_SERVICE_URL",
+      "ADMIN_API_SERVICE_URL",
+      "AI_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "GATEWAY_URL",
+      "SUPABASE_URL",
+      "LEGACY_STORAGE_PROVIDER",
+      "LOCAL_STORAGE_DIR",
+      "SIDECAR_URL",
+      "PORT",
+      "SERVICE_AUTH_CONFIG_FILE",
+      "SERVICE_TLS_CERT_FILE",
+      "SERVICE_TLS_KEY_FILE"
+    ],
+    "required_secrets": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "mount:ca",
+      "mount:document_service_identity",
+      "mount:document_service_crt",
+      "mount:document_service_key"
+    ],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 1,
+      "memory": "768m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [
+      "documents:/app/storage"
+    ],
+    "startup_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    }
+  },
+  {
+    "service_name": "payment",
+    "source_directory": "services/payment",
+    "runtime": "Node24",
+    "build_command": "npm run build --workspace=doccraft-payment",
+    "startup_command": [
+      "node",
+      "/app/services/payment/dist/server.js"
+    ],
+    "internal_port": 3014,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [
+      "PostgreSQL scoped DML/read role"
+    ],
+    "redis_dependencies": [
+      "scoped ACL, verifiedTLS"
+    ],
+    "runtime_configuration_names": [
+      "AUTH_SERVICE_URL",
+      "QUOTA_SERVICE_URL",
+      "ADMIN_API_SERVICE_URL",
+      "NOTIFICATION_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "FRONTEND_URL",
+      "PAYMENT_SERVICE_PUBLIC_URL",
+      "PADDLE_SANDBOX",
+      "PAYHERE_SANDBOX",
+      "PADDLE_PRO_MONTHLY_PRICE_ID",
+      "PADDLE_PRO_YEARLY_PRICE_ID",
+      "PADDLE_MAX_MONTHLY_PRICE_ID",
+      "PADDLE_MAX_YEARLY_PRICE_ID",
+      "PAYHERE_MERCHANT_ID",
+      "PORT",
+      "SERVICE_AUTH_CONFIG_FILE",
+      "SERVICE_TLS_CERT_FILE",
+      "SERVICE_TLS_KEY_FILE"
+    ],
+    "required_secrets": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "mount:ca",
+      "mount:payment_service_identity",
+      "mount:payment_service_crt",
+      "mount:payment_service_key"
+    ],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 0.5,
+      "memory": "384m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [],
+    "startup_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    }
+  },
+  {
+    "service_name": "quota",
+    "source_directory": "services/quota",
+    "runtime": "Node24",
+    "build_command": "npm run build --workspace=doccraft-quota",
+    "startup_command": [
+      "node",
+      "/app/services/quota/dist/server.js"
+    ],
+    "internal_port": 3015,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [
+      "PostgreSQL scoped DML/read role"
+    ],
+    "redis_dependencies": [
+      "scoped ACL, verifiedTLS"
+    ],
+    "runtime_configuration_names": [
+      "AUTH_SERVICE_URL",
+      "ADMIN_API_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "FRONTEND_URL",
+      "PORT",
+      "SERVICE_AUTH_CONFIG_FILE",
+      "SERVICE_TLS_CERT_FILE",
+      "SERVICE_TLS_KEY_FILE"
+    ],
+    "required_secrets": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "mount:ca",
+      "mount:quota_service_identity",
+      "mount:quota_service_crt",
+      "mount:quota_service_key"
+    ],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 0.5,
+      "memory": "384m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [],
+    "startup_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    }
+  },
+  {
+    "service_name": "chat",
+    "source_directory": "services/chat",
+    "runtime": "Node24",
+    "build_command": "npm run build --workspace=doccraft-ai",
+    "startup_command": [
+      "node",
+      "/app/services/chat/dist/server.js"
+    ],
+    "internal_port": 3016,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [
+      "PostgreSQL scoped DML/read role"
+    ],
+    "redis_dependencies": [
+      "scoped ACL, verifiedTLS"
+    ],
+    "runtime_configuration_names": [
+      "AUTH_SERVICE_URL",
+      "QUOTA_SERVICE_URL",
+      "ADMIN_API_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "BILLING_SERVICE_URL",
+      "CORS_ORIGIN",
+      "TURN_TIMEOUT_MS",
+      "MAX_CONCURRENT_REQUESTS",
+      "MAX_QUEUE_SIZE",
+      "PORT",
+      "SERVICE_AUTH_CONFIG_FILE",
+      "SERVICE_TLS_CERT_FILE",
+      "SERVICE_TLS_KEY_FILE"
+    ],
+    "required_secrets": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "mount:ca",
+      "mount:chat_service_identity",
+      "mount:chat_service_crt",
+      "mount:chat_service_key"
+    ],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 1,
+      "memory": "512m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [],
+    "startup_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    }
+  },
+  {
+    "service_name": "analytics",
+    "source_directory": "services/analytics",
+    "runtime": "Python3.13",
+    "build_command": "pip install -c deploy/staging/python.constraints.txt -r services/analytics/requirements.txt",
+    "startup_command": [
+      "python",
+      "-m",
+      "uvicorn",
+      "app.main:app",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "3017",
+      "--ssl-keyfile",
+      "/run/secrets/service.key",
+      "--ssl-certfile",
+      "/run/secrets/service.crt",
+      "--timeout-graceful-shutdown",
+      "20"
+    ],
+    "internal_port": 3017,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [
+      "PostgreSQL scoped DML/read role"
+    ],
+    "redis_dependencies": [
+      "scoped ACL, verifiedTLS"
+    ],
+    "runtime_configuration_names": [
+      "AUTH_SERVICE_URL",
+      "PAYMENT_SERVICE_URL",
+      "POSTHOG_HOST",
+      "PORT",
+      "SERVICE_AUTH_CONFIG_FILE",
+      "SERVICE_TLS_CERT_FILE",
+      "SERVICE_TLS_KEY_FILE"
+    ],
+    "required_secrets": [
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "mount:ca",
+      "mount:analytics_service_identity",
+      "mount:analytics_service_crt",
+      "mount:analytics_service_key"
+    ],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 0.5,
+      "memory": "512m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [],
+    "startup_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    }
+  },
+  {
+    "service_name": "admin-api",
+    "source_directory": "services/admin-api",
+    "runtime": "Python3.13",
+    "build_command": "pip install -c deploy/staging/python.constraints.txt -r services/admin-api/requirements.txt",
+    "startup_command": [
+      "python",
+      "-m",
+      "uvicorn",
+      "app.main:app",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "3018",
+      "--ssl-keyfile",
+      "/run/secrets/service.key",
+      "--ssl-certfile",
+      "/run/secrets/service.crt",
+      "--timeout-graceful-shutdown",
+      "20"
+    ],
+    "internal_port": 3018,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [
+      "PostgreSQL scoped DML/read role"
+    ],
+    "redis_dependencies": [
+      "scoped ACL, verifiedTLS"
+    ],
+    "runtime_configuration_names": [
+      "AUTH_SERVICE_URL",
+      "QUOTA_SERVICE_URL",
+      "PAYMENT_SERVICE_URL",
+      "CHAT_SERVICE_URL",
+      "DOCUMENT_SERVICE_URL",
+      "NOTIFICATION_SERVICE_URL",
+      "ANALYTICS_SERVICE_URL",
+      "GATEWAY_URL",
+      "CHAT_SERVICE_MCP_URL",
+      "POSTHOG_HOST",
+      "POSTHOG_PROJECT_ID",
+      "RESEND_FROM_EMAIL",
+      "ALLOWED_ORIGINS",
+      "ALLOWED_ADMIN_IPS",
+      "IP_WHITELIST_ENABLED",
+      "TRUSTED_PROXY_IPS",
+      "AI_ALLOWED_LOCAL_ENDPOINTS",
+      "AI_ALLOWED_CLOUD_HOSTS",
+      "LOCAL_STORAGE_DIR",
+      "PORT",
+      "SERVICE_AUTH_CONFIG_FILE",
+      "SERVICE_TLS_CERT_FILE",
+      "SERVICE_TLS_KEY_FILE"
+    ],
+    "required_secrets": [
+      "ADMIN_DATABASE_URL",
+      "ADMIN_JWT_SECRET",
+      "DATABASE_URL",
+      "DIRECT_URL",
+      "REDIS_URL",
+      "mount:ca",
+      "mount:admin-api_service_identity",
+      "mount:admin-api_service_crt",
+      "mount:admin-api_service_key",
+      "mount:ai_keyring"
+    ],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 1,
+      "memory": "768m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [
+      "admin_assets:/app/storage"
+    ],
+    "startup_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    }
+  },
+  {
+    "service_name": "pdf",
+    "source_directory": "services/document/puppeteer",
+    "runtime": "Node24",
+    "build_command": "npm run build --workspace=doccraft-document",
+    "startup_command": [
+      "node",
+      "/app/services/document/dist/puppeteer/server.js"
+    ],
+    "internal_port": 3023,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [],
+    "redis_dependencies": [
+      "scoped ACL, verifiedTLS"
+    ],
+    "runtime_configuration_names": [
+      "SIDECAR_PORT",
+      "SIDECAR_HOST",
+      "PDF_MAX_CONCURRENT",
+      "PUPPETEER_EXECUTABLE_PATH",
+      "PORT",
+      "SERVICE_AUTH_CONFIG_FILE",
+      "SERVICE_TLS_CERT_FILE",
+      "SERVICE_TLS_KEY_FILE"
+    ],
+    "required_secrets": [
+      "REDIS_URL",
+      "mount:ca",
+      "mount:pdf_service_identity",
+      "mount:pdf_service_crt",
+      "mount:pdf_service_key"
+    ],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 1,
+      "memory": "1024m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [],
+    "startup_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    }
+  },
+  {
+    "service_name": "user-ui",
+    "source_directory": "user-frontend",
+    "runtime": "React/Vite build; nginx8080 runtime",
+    "build_command": "npm ci --prefix user-frontend && npm run build --prefix user-frontend",
+    "startup_command": "Dockerfile default; see deploy/docker",
+    "internal_port": 8080,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [],
+    "redis_dependencies": [],
+    "runtime_configuration_names": [
+      "VITE_API_BASE_URL"
+    ],
+    "required_secrets": [],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 0.25,
+      "memory": "64m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [],
+    "startup_dependencies": {}
+  },
+  {
+    "service_name": "admin-ui",
+    "source_directory": "admin",
+    "runtime": "React/Vite build; nginx8080 runtime",
+    "build_command": "npm ci --prefix admin && npm run build --prefix admin",
+    "startup_command": "Dockerfile default; see deploy/docker",
+    "internal_port": 8080,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [],
+    "redis_dependencies": [],
+    "runtime_configuration_names": [
+      "VITE_ADMIN_API_BASE_URL"
+    ],
+    "required_secrets": [],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 0.25,
+      "memory": "64m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [],
+    "startup_dependencies": {}
+  },
+  {
+    "service_name": "postgres",
+    "source_directory": "deploy/docker",
+    "runtime": "postgres",
+    "build_command": "pull pinned upstream image",
+    "startup_command": [
+      "postgres",
+      "-c",
+      "ssl=on",
+      "-c",
+      "ssl_cert_file=/run/doccraft-tls/server.crt",
+      "-c",
+      "ssl_key_file=/run/doccraft-tls/server.key",
+      "-c",
+      "ssl_min_protocol_version=TLSv1.2",
+      "-c",
+      "hba_file=/control/deploy/staging/pg_hba.conf",
+      "-c",
+      "shared_buffers=128MB",
+      "-c",
+      "max_connections=160"
+    ],
+    "internal_port": 5432,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [],
+    "redis_dependencies": [],
+    "runtime_configuration_names": [
+      "POSTGRES_DB",
+      "POSTGRES_PASSWORD_FILE",
+      "POSTGRES_INITDB_ARGS"
+    ],
+    "required_secrets": [
+      "mount:postgres_password",
+      "mount:postgres_crt",
+      "mount:postgres_key",
+      "mount:postgres_migrator_password"
+    ],
+    "health_check": [
+      "CMD",
+      "pg_isready",
+      "-U",
+      "postgres",
+      "-d",
+      "${POSTGRES_DB:?}"
+    ],
+    "resource_limits_not_requirements": {
+      "cpu": 1.5,
+      "memory": "1536m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [
+      "postgres:/var/lib/postgresql/data",
+      "${DOCCRAFT_CONTROL:?}:/control:ro",
+      "${DOCCRAFT_CONTROL:?}/deploy/scripts/bootstrap-postgres.sh:/docker-entrypoint-initdb.d/01-doccraft.sh:ro"
+    ],
+    "startup_dependencies": {}
+  },
+  {
+    "service_name": "redis",
+    "source_directory": "deploy/docker",
+    "runtime": "redis",
+    "build_command": "pull pinned upstream image",
+    "startup_command": [
+      "redis-server",
+      "--port",
+      "0",
+      "--tls-port",
+      "6379",
+      "--tls-cert-file",
+      "/run/secrets/redis.crt",
+      "--tls-key-file",
+      "/run/secrets/redis.key",
+      "--tls-ca-cert-file",
+      "/run/secrets/ca.crt",
+      "--tls-auth-clients",
+      "no",
+      "--aclfile",
+      "/run/secrets/redis.acl",
+      "--appendonly",
+      "yes",
+      "--appendfsync",
+      "always",
+      "--maxmemory",
+      "256mb",
+      "--maxmemory-policy",
+      "noeviction"
+    ],
+    "internal_port": 6379,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [],
+    "redis_dependencies": [],
+    "runtime_configuration_names": [],
+    "required_secrets": [
+      "mount:ca",
+      "mount:redis_crt",
+      "mount:redis_key",
+      "mount:redis_acl"
+    ],
+    "health_check": [
+      "CMD",
+      "redis-cli",
+      "--tls",
+      "--cacert",
+      "/run/secrets/ca.crt",
+      "--user",
+      "health",
+      "ping"
+    ],
+    "resource_limits_not_requirements": {
+      "cpu": 0.5,
+      "memory": "384m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [
+      "redis:/data"
+    ],
+    "startup_dependencies": {}
+  },
+  {
+    "service_name": "edge",
+    "source_directory": "deploy/docker",
+    "runtime": "edge",
+    "build_command": "pull pinned upstream image",
+    "startup_command": "Dockerfile default; see deploy/docker",
+    "internal_port": "80/443",
+    "public_exposure": "80/443 only",
+    "database_dependencies": [],
+    "redis_dependencies": [],
+    "runtime_configuration_names": [
+      "APP_DOMAIN",
+      "ADMIN_DOMAIN",
+      "ACME_EMAIL",
+      "ADMIN_ALLOWED_CIDRS"
+    ],
+    "required_secrets": [
+      "mount:ca"
+    ],
+    "health_check": [
+      "CMD",
+      "caddy",
+      "validate",
+      "--config",
+      "/etc/caddy/Caddyfile"
+    ],
+    "resource_limits_not_requirements": {
+      "cpu": 0.5,
+      "memory": "128m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [
+      "${DOCCRAFT_CONTROL:?}/deploy/docker/Caddyfile:/etc/caddy/Caddyfile:ro",
+      "caddy_data:/data",
+      "caddy_config:/config"
+    ],
+    "startup_dependencies": {
+      "gateway": {
+        "condition": "service_healthy"
+      },
+      "admin-api": {
+        "condition": "service_healthy"
+      },
+      "user-ui": {
+        "condition": "service_healthy"
+      },
+      "admin-ui": {
+        "condition": "service_healthy"
+      }
+    }
+  },
+  {
+    "service_name": "ollama",
+    "source_directory": "deploy/docker",
+    "runtime": "ollama",
+    "build_command": "pull pinned upstream image",
+    "startup_command": "Dockerfile default; see deploy/docker",
+    "internal_port": 11434,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [],
+    "redis_dependencies": [],
+    "runtime_configuration_names": [
+      "OLLAMA_HOST",
+      "OLLAMA_MAX_LOADED_MODELS",
+      "OLLAMA_NUM_PARALLEL",
+      "OLLAMA_KEEP_ALIVE",
+      "OLLAMA_NO_CLOUD"
+    ],
+    "required_secrets": [],
+    "health_check": [
+      "CMD",
+      "ollama",
+      "list"
+    ],
+    "resource_limits_not_requirements": {
+      "cpu": "${OLLAMA_CPUS:-2}",
+      "memory": "${OLLAMA_MEMORY_MB:-6144}m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [
+      "ollama_models:/root/.ollama"
+    ],
+    "startup_dependencies": {}
+  },
+  {
+    "service_name": "migrate-node",
+    "source_directory": "deploy/docker",
+    "runtime": "migrate-node",
+    "build_command": "pull pinned upstream image",
+    "startup_command": [
+      "node",
+      "/app/scripts/staging_migrate_node.mjs"
+    ],
+    "internal_port": null,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [],
+    "redis_dependencies": [],
+    "runtime_configuration_names": [
+      "PYTHONPATH",
+      "SSL_CERT_FILE",
+      "PGSSLROOTCERT",
+      "ADMIN_RUN_MIGRATIONS",
+      "DOCUMENT_RUN_MIGRATIONS",
+      "EXPECTED_DATABASE",
+      "APP_DOMAIN",
+      "ADMIN_DOMAIN",
+      "SERVICE_AUTH_CONFIG_FILE",
+      "NODE_EXTRA_CA_CERTS",
+      "PG_REQUIRE_TLS"
+    ],
+    "required_secrets": [
+      "mount:ca",
+      "mount:payment_service_identity",
+      "mount:payment_service_crt",
+      "mount:payment_service_key"
+    ],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 0.5,
+      "memory": "1024m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [
+      "${DOCCRAFT_CONTROL:?}:/control:ro"
+    ],
+    "startup_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    }
+  },
+  {
+    "service_name": "migrate-python",
+    "source_directory": "deploy/docker",
+    "runtime": "migrate-python",
+    "build_command": "pull pinned upstream image",
+    "startup_command": [
+      "python",
+      "/app/scripts/staging_migrate_python.py"
+    ],
+    "internal_port": null,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [],
+    "redis_dependencies": [],
+    "runtime_configuration_names": [
+      "PYTHONPATH",
+      "SSL_CERT_FILE",
+      "PGSSLROOTCERT",
+      "ADMIN_RUN_MIGRATIONS",
+      "DOCUMENT_RUN_MIGRATIONS",
+      "EXPECTED_DATABASE",
+      "APP_DOMAIN",
+      "ADMIN_DOMAIN",
+      "SERVICE_AUTH_CONFIG_FILE",
+      "NODE_EXTRA_CA_CERTS",
+      "PG_REQUIRE_TLS",
+      "RESEND_FROM_EMAIL"
+    ],
+    "required_secrets": [
+      "mount:ca",
+      "mount:admin-api_service_identity",
+      "mount:admin-api_service_crt",
+      "mount:admin-api_service_key",
+      "mount:ai_keyring"
+    ],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 1,
+      "memory": "768m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [
+      "${DOCCRAFT_CONTROL:?}:/control:ro"
+    ],
+    "startup_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    }
+  },
+  {
+    "service_name": "grant-roles",
+    "source_directory": "deploy/docker",
+    "runtime": "grant-roles",
+    "build_command": "pull pinned upstream image",
+    "startup_command": [
+      "python",
+      "/app/deploy/scripts/database_roles.py"
+    ],
+    "internal_port": null,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [],
+    "redis_dependencies": [],
+    "runtime_configuration_names": [
+      "PYTHONPATH",
+      "SSL_CERT_FILE",
+      "PGSSLROOTCERT",
+      "ADMIN_RUN_MIGRATIONS",
+      "DOCUMENT_RUN_MIGRATIONS",
+      "EXPECTED_DATABASE",
+      "APP_DOMAIN",
+      "ADMIN_DOMAIN",
+      "SERVICE_AUTH_CONFIG_FILE",
+      "NODE_EXTRA_CA_CERTS",
+      "PG_REQUIRE_TLS"
+    ],
+    "required_secrets": [
+      "mount:ca",
+      "mount:admin-api_service_identity",
+      "mount:admin-api_service_crt",
+      "mount:admin-api_service_key",
+      "mount:ai_keyring",
+      "mount:runtime_roles"
+    ],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 1,
+      "memory": "768m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [
+      "${DOCCRAFT_CONTROL:?}:/control:ro"
+    ],
+    "startup_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    }
+  },
+  {
+    "service_name": "verify",
+    "source_directory": "deploy/docker",
+    "runtime": "verify",
+    "build_command": "pull pinned upstream image",
+    "startup_command": [
+      "python",
+      "/app/deploy/scripts/verify_release.py"
+    ],
+    "internal_port": null,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [],
+    "redis_dependencies": [],
+    "runtime_configuration_names": [
+      "PYTHONPATH",
+      "SSL_CERT_FILE",
+      "PGSSLROOTCERT",
+      "ADMIN_RUN_MIGRATIONS",
+      "DOCUMENT_RUN_MIGRATIONS",
+      "EXPECTED_DATABASE",
+      "APP_DOMAIN",
+      "ADMIN_DOMAIN",
+      "SERVICE_AUTH_CONFIG_FILE",
+      "NODE_EXTRA_CA_CERTS",
+      "PG_REQUIRE_TLS"
+    ],
+    "required_secrets": [
+      "mount:ca",
+      "mount:admin-api_service_identity",
+      "mount:admin-api_service_crt",
+      "mount:admin-api_service_key",
+      "mount:ai_keyring",
+      "mount:document_service_identity"
+    ],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 1,
+      "memory": "768m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [
+      "${DOCCRAFT_CONTROL:?}:/control:ro"
+    ],
+    "startup_dependencies": {
+      "postgres": {
+        "condition": "service_healthy"
+      },
+      "redis": {
+        "condition": "service_healthy"
+      }
+    }
+  },
+  {
+    "service_name": "backup",
+    "source_directory": "deploy/docker",
+    "runtime": "backup",
+    "build_command": "pull pinned upstream image",
+    "startup_command": "Dockerfile default; see deploy/docker",
+    "internal_port": null,
+    "public_exposure": "private; edge-authorized routes as applicable",
+    "database_dependencies": [],
+    "redis_dependencies": [],
+    "runtime_configuration_names": [],
+    "required_secrets": [
+      "mount:backup_connection",
+      "mount:ca"
+    ],
+    "health_check": "inherited Dockerfile /health; release gate /ready",
+    "resource_limits_not_requirements": {
+      "cpu": 0.5,
+      "memory": "256m",
+      "measurements": "hybrid-ai/evidence/live/resource-summary.json; native, not container sizing acceptance"
+    },
+    "persistent_storage": [
+      "${DOCCRAFT_CONTROL:?}:/control:ro"
+    ],
+    "startup_dependencies": {}
+  }
+]

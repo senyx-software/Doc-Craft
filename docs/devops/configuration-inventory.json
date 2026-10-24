@@ -1,0 +1,3681 @@
+{
+  "method": "names only; source env accesses, Pydantic settings, env loaders, existing env files; no values copied",
+  "configuration": [
+    {
+      "name": "ADMIN_API_SERVICE_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "auth",
+        "chat",
+        "document",
+        "gateway",
+        "payment",
+        "quota",
+        "shared"
+      ],
+      "locations": [
+        "services/auth/src/services/firebase.service.ts",
+        "services/chat/chat.env",
+        "services/chat/src/config/env.ts",
+        "services/chat/src/services/template-policy.service.ts",
+        "services/document/app/routers/document.py",
+        "services/document/app/services/storage.py",
+        "services/document/app/services/template_policy.py",
+        "services/document/app/services/uploaded_templates.py",
+        "services/gateway/gateway.env",
+        "services/gateway/src/config/env.ts",
+        "services/gateway/test-gateway.ts",
+        "services/payment/src/config/env.ts",
+        "services/payment/src/services/plan.service.ts",
+        "services/quota/src/config/env.ts",
+        "shared/entitlements.mjs",
+        "shared/entitlements.py"
+      ]
+    },
+    {
+      "name": "ADMIN_API_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "notification"
+      ],
+      "locations": [
+        "services/notification/src/routes/notification.routes.ts",
+        "services/notification/src/services/email.service.ts"
+      ]
+    },
+    {
+      "name": "ADMIN_DATABASE_URL",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/admin-api.env",
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "ADMIN_JWT_SECRET",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "ADMIN_RUN_MIGRATIONS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/api/v1/gdpr.py",
+        "services/admin-api/app/db/admin_db.py",
+        "services/admin-api/app/repositories/automation_repository.py",
+        "services/admin-api/app/services/automation_inbox.py",
+        "services/admin-api/app/services/entitlements.py",
+        "services/admin-api/app/services/uploaded_templates.py"
+      ]
+    },
+    {
+      "name": "AI_ALLOWED_CLOUD_HOSTS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/services/ai_security.py"
+      ]
+    },
+    {
+      "name": "AI_ALLOWED_LOCAL_ENDPOINTS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/services/ai_security.py"
+      ]
+    },
+    {
+      "name": "AI_CREDENTIAL_KEYRING",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/services/ai_security.py"
+      ]
+    },
+    {
+      "name": "AI_CREDENTIAL_KEYRING_FILE",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/services/ai_security.py"
+      ]
+    },
+    {
+      "name": "AI_SERVICE_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document",
+        "gateway"
+      ],
+      "locations": [
+        "services/document/app/routers/document.py",
+        "services/gateway/gateway.env",
+        "services/gateway/src/config/env.ts",
+        "services/gateway/test-gateway.ts"
+      ]
+    },
+    {
+      "name": "ALLOWED_ADMIN_IPS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "ALLOWED_ORIGINS",
+      "category": "PUBLIC CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "ANALYTICS_SERVICE_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "auth",
+        "chat",
+        "document",
+        "gateway",
+        "payment",
+        "quota"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py",
+        "services/auth/auth.env",
+        "services/auth/src/services/productTracking.service.ts",
+        "services/chat/chat.env",
+        "services/chat/src/config/env.ts",
+        "services/document/app/services/product_tracking.py",
+        "services/document/document.env",
+        "services/gateway/gateway.env",
+        "services/gateway/src/config/env.ts",
+        "services/gateway/test-gateway.ts",
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts",
+        "services/quota/quota.env",
+        "services/quota/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "ANDROID_DATA",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/__init__.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/__init__.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_vendor/platformdirs/__init__.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/__init__.py"
+      ]
+    },
+    {
+      "name": "ANDROID_ROOT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/__init__.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/__init__.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_vendor/platformdirs/__init__.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/__init__.py"
+      ]
+    },
+    {
+      "name": "ANTHROPIC_API_KEY",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "chat"
+      ],
+      "locations": [
+        "services/chat/chat.env",
+        "services/chat/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "API_RATE_LIMIT_MAX",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "chat"
+      ],
+      "locations": [
+        "services/chat/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "APPENGINE_RUNTIME",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/urllib3/contrib/_appengine_environ.py"
+      ]
+    },
+    {
+      "name": "AR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/sysconfig.py"
+      ]
+    },
+    {
+      "name": "ARFLAGS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/sysconfig.py"
+      ]
+    },
+    {
+      "name": "AUDIT_CHECK_TIMEOUT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/system_audit_check.py"
+      ]
+    },
+    {
+      "name": "AUDIT_EVIDENCE_DIR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/system_audit_api.py",
+        "scripts/system_audit_browser.cjs",
+        "scripts/system_audit_inventory.cjs",
+        "scripts/system_audit_pdf.py"
+      ]
+    },
+    {
+      "name": "AUDIT_QUICK_BROWSER",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/system_audit_phase2_stack.py",
+        "scripts/system_audit_phase3_stack.py",
+        "scripts/system_audit_phase4_stack.py"
+      ]
+    },
+    {
+      "name": "AUDIT_REDIS_BINARY",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/system_audit_phase4_stack.py"
+      ]
+    },
+    {
+      "name": "AUDIT_SKIP_BROWSER",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/system_audit_phase3_probes.py"
+      ]
+    },
+    {
+      "name": "AUDIT_TLS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/system_audit_phase4_stack.py"
+      ]
+    },
+    {
+      "name": "AUTH_SERVICE_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "analytics",
+        "chat",
+        "document",
+        "gateway",
+        "notification",
+        "payment",
+        "quota"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py",
+        "services/admin-api/app/services/entitlements.py",
+        "services/analytics/app/security.py",
+        "services/chat/src/config/env.ts",
+        "services/chat/src/middleware/auth.middleware.ts",
+        "services/chat/src/services/guest-migration.service.ts",
+        "services/document/app/services/authentication.py",
+        "services/gateway/gateway.env",
+        "services/gateway/src/config/env.ts",
+        "services/gateway/test-gateway.ts",
+        "services/notification/src/security.ts",
+        "services/payment/src/config/env.ts",
+        "services/payment/src/middleware/authenticate.ts",
+        "services/quota/src/middleware/authenticate.ts"
+      ]
+    },
+    {
+      "name": "AUTOMATION_RETRY_LIMIT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "AUTOMATION_WEBHOOK_ALLOWED_HOSTS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/services/automation_engine.py"
+      ]
+    },
+    {
+      "name": "AUTOMATION_WORKER_CONCURRENCY",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "BILLING_SERVICE_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "chat",
+        "gateway"
+      ],
+      "locations": [
+        "services/chat/chat.env",
+        "services/gateway/gateway.env",
+        "services/gateway/src/config/env.ts",
+        "services/gateway/test-gateway.ts"
+      ]
+    },
+    {
+      "name": "CC",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/compilers/C/cygwin.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/sysconfig.py"
+      ]
+    },
+    {
+      "name": "CFFI_TMPDIR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/cffi/verifier.py",
+        "services/document/.venv/lib/python3.14/site-packages/cffi/verifier.py"
+      ]
+    },
+    {
+      "name": "CFLAGS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/sysconfig.py"
+      ]
+    },
+    {
+      "name": "CHAT_SERVICE_MCP_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "CHAT_SERVICE_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py",
+        "services/admin-api/app/integrations/services/chat_client.py"
+      ]
+    },
+    {
+      "name": "CLAUDE_TIMEOUT_MS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "chat"
+      ],
+      "locations": [
+        "services/chat/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "COLORTERM",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/pygments/cmdline.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pygments/cmdline.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py"
+      ]
+    },
+    {
+      "name": "COLUMNS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py"
+      ]
+    },
+    {
+      "name": "COMP_CWORD",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/click/shell_completion.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/cli/autocompletion.py",
+        "services/document/.venv/lib/python3.13/site-packages/click/shell_completion.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/cli/autocompletion.py",
+        "services/document/.venv/lib/python3.14/site-packages/click/shell_completion.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/cli/autocompletion.py"
+      ]
+    },
+    {
+      "name": "COMP_WORDS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/click/shell_completion.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/cli/autocompletion.py",
+        "services/document/.venv/lib/python3.13/site-packages/click/shell_completion.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/cli/autocompletion.py",
+        "services/document/.venv/lib/python3.14/site-packages/click/shell_completion.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/cli/autocompletion.py"
+      ]
+    },
+    {
+      "name": "CONTENT_LENGTH",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/middleware/http_proxy.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wsgi.py"
+      ]
+    },
+    {
+      "name": "CONTENT_TYPE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/formparser.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wrappers/request.py"
+      ]
+    },
+    {
+      "name": "CORS_ORIGIN",
+      "category": "PUBLIC CONFIGURATION",
+      "owners": [
+        "chat"
+      ],
+      "locations": [
+        "services/chat/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "CORS_ORIGINS",
+      "category": "PUBLIC CONFIGURATION",
+      "owners": [
+        "gateway"
+      ],
+      "locations": [
+        "services/gateway/gateway.env",
+        "services/gateway/src/config/env.ts",
+        "services/gateway/test-gateway.ts"
+      ]
+    },
+    {
+      "name": "CPP",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/sysconfig.py"
+      ]
+    },
+    {
+      "name": "CURL_CA_BUNDLE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/commands/debug.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/requests/sessions.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/commands/debug.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/requests/sessions.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/commands/debug.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/requests/sessions.py"
+      ]
+    },
+    {
+      "name": "CXX",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/compilers/C/cygwin.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/sysconfig.py"
+      ]
+    },
+    {
+      "name": "CXXFLAGS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/sysconfig.py"
+      ]
+    },
+    {
+      "name": "DATABASE_URL",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "analytics",
+        "auth",
+        "chat",
+        "document",
+        "notification",
+        "payment",
+        "quota"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py",
+        "services/analytics/analytics.env",
+        "services/analytics/app/services/db.py",
+        "services/auth/auth.env",
+        "services/chat/chat.env",
+        "services/chat/src/config/env.ts",
+        "services/document/app/services/db.py",
+        "services/document/document.env",
+        "services/notification/notification.env",
+        "services/notification/src/services/db.service.ts",
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts",
+        "services/quota/quota.env",
+        "services/quota/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "DATABRICKS_RUNTIME_VERSION",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py"
+      ]
+    },
+    {
+      "name": "DIRECT_URL",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "auth",
+        "chat",
+        "document",
+        "payment",
+        "quota"
+      ],
+      "locations": [
+        "services/auth/auth.env",
+        "services/chat/chat.env",
+        "services/chat/src/config/env.ts",
+        "services/document/document.env",
+        "services/payment/payment.env",
+        "services/quota/quota.env"
+      ]
+    },
+    {
+      "name": "DISABLE_SQLALCHEMY_CEXT_RUNTIME",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/sqlalchemy/util/_has_cy.py",
+        "services/document/.venv/lib/python3.14/site-packages/sqlalchemy/util/_has_cy.py"
+      ]
+    },
+    {
+      "name": "DISPLAY",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/PIL/ImageGrab.py"
+      ]
+    },
+    {
+      "name": "DISTUTILS_DEBUG",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/debug.py"
+      ]
+    },
+    {
+      "name": "DISTUTILS_USE_SDK",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/compilers/C/msvc.py"
+      ]
+    },
+    {
+      "name": "DIST_EXTRA_CONFIG",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/dist.py"
+      ]
+    },
+    {
+      "name": "DOCCRAFT_AUDIT_EVIDENCE_DIR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/phase4_notification_receipt_probe.py",
+        "scripts/phase4_regression.py",
+        "scripts/system_audit_phase4_stack.py"
+      ]
+    },
+    {
+      "name": "DOCCRAFT_SECRETS_DIR",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/with-service-identity.cjs"
+      ]
+    },
+    {
+      "name": "DOCUMENT_RUN_MIGRATIONS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/app/services/db.py"
+      ]
+    },
+    {
+      "name": "DOCUMENT_SERVICE_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "gateway"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py",
+        "services/gateway/gateway.env",
+        "services/gateway/src/config/env.ts",
+        "services/gateway/test-gateway.ts"
+      ]
+    },
+    {
+      "name": "EDITOR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/commands/configuration.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/commands/configuration.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/commands/configuration.py"
+      ]
+    },
+    {
+      "name": "EMAIL_FROM",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "auth"
+      ],
+      "locations": [
+        "services/auth/auth.env"
+      ]
+    },
+    {
+      "name": "ENSUREPIP_OPTIONS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/operations/install/wheel.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/operations/install/wheel.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/command/_framework_compat.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/operations/install/wheel.py"
+      ]
+    },
+    {
+      "name": "ENV",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "FASTAPI_ENV",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/fastapi/routing.py"
+      ]
+    },
+    {
+      "name": "FIREBASE_PROJECT_ID",
+      "category": "PUBLIC CONFIGURATION",
+      "owners": [
+        "auth"
+      ],
+      "locations": [
+        "services/auth/auth.env",
+        "services/auth/src/services/firebase.service.test.ts",
+        "services/auth/src/services/firebase.service.ts"
+      ]
+    },
+    {
+      "name": "FLASK_DEBUG",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/flask/cli.py",
+        "services/document/.venv/lib/python3.13/site-packages/flask/helpers.py"
+      ]
+    },
+    {
+      "name": "FLASK_RUN_FROM_CLI",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/flask/app.py",
+        "services/document/.venv/lib/python3.13/site-packages/flask/cli.py"
+      ]
+    },
+    {
+      "name": "FLASK_SKIP_DOTENV",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/flask/helpers.py"
+      ]
+    },
+    {
+      "name": "FORCE_COLOR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/_io/terminalwriter.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/_io/terminalwriter.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py"
+      ]
+    },
+    {
+      "name": "FORWARDED_ALLOW_IPS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/uvicorn/config.py",
+        "services/document/.venv/lib/python3.13/site-packages/uvicorn/config.py",
+        "services/document/.venv/lib/python3.14/site-packages/uvicorn/config.py"
+      ]
+    },
+    {
+      "name": "FRONTEND_URL",
+      "category": "PUBLIC CONFIGURATION",
+      "owners": [
+        "auth",
+        "notification",
+        "payment",
+        "quota"
+      ],
+      "locations": [
+        "services/auth/auth.env",
+        "services/auth/src/controllers/auth.controller.ts",
+        "services/auth/src/server.ts",
+        "services/notification/notification.env",
+        "services/notification/src/services/email.service.ts",
+        "services/payment/payment.env",
+        "services/payment/src/app.ts",
+        "services/payment/src/config/env.ts",
+        "services/quota/src/app.ts"
+      ]
+    },
+    {
+      "name": "GATEWAY_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py",
+        "services/document/app/routers/document.py",
+        "services/document/app/services/storage.py"
+      ]
+    },
+    {
+      "name": "GOOGLE_CALLBACK_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "auth"
+      ],
+      "locations": [
+        "services/auth/auth.env",
+        "services/auth/src/server.ts"
+      ]
+    },
+    {
+      "name": "GOOGLE_CLIENT_ID",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "auth"
+      ],
+      "locations": [
+        "services/auth/auth.env",
+        "services/auth/src/server.ts"
+      ]
+    },
+    {
+      "name": "GOOGLE_CLIENT_SECRET",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "auth"
+      ],
+      "locations": [
+        "services/auth/auth.env",
+        "services/auth/src/server.ts"
+      ]
+    },
+    {
+      "name": "GROQ_API_KEY",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "chat"
+      ],
+      "locations": [
+        "services/chat/chat.env",
+        "services/chat/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "GROQ_MODELS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "chat"
+      ],
+      "locations": [
+        "services/chat/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "GROQ_TIMEOUT_MS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "chat"
+      ],
+      "locations": [
+        "services/chat/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "HOME",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document",
+        "scripts"
+      ],
+      "locations": [
+        "scripts/hybrid_live_stack.py",
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/_py/path.py",
+        "services/admin-api/.venv/lib/python3.13/site-packages/pygments/formatters/img.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/_py/path.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pygments/formatters/img.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/util.py"
+      ]
+    },
+    {
+      "name": "HOMEDRIVE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/_py/path.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/_py/path.py"
+      ]
+    },
+    {
+      "name": "HOMEPATH",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/_py/path.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/_py/path.py"
+      ]
+    },
+    {
+      "name": "HOST",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "HTTP_CONNECTION",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/routing/map.py"
+      ]
+    },
+    {
+      "name": "HTTP_HOST",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/debug/__init__.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/middleware/proxy_fix.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wsgi.py"
+      ]
+    },
+    {
+      "name": "HTTP_IF_MATCH",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/http.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wrappers/response.py"
+      ]
+    },
+    {
+      "name": "HTTP_IF_MODIFIED_SINCE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/http.py"
+      ]
+    },
+    {
+      "name": "HTTP_IF_NONE_MATCH",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/http.py"
+      ]
+    },
+    {
+      "name": "HTTP_IF_RANGE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/http.py"
+      ]
+    },
+    {
+      "name": "HTTP_RANGE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/http.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wrappers/response.py"
+      ]
+    },
+    {
+      "name": "HTTP_TRANSFER_ENCODING",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/serving.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wsgi.py"
+      ]
+    },
+    {
+      "name": "HTTP_UPGRADE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/routing/map.py"
+      ]
+    },
+    {
+      "name": "INTERNAL_SERVICE_SECRET",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "analytics",
+        "auth",
+        "chat",
+        "document",
+        "gateway",
+        "notification",
+        "payment",
+        "quota"
+      ],
+      "locations": [
+        "services/admin-api/admin-api.env",
+        "services/admin-api/app/core/config.py",
+        "services/admin-api/app/integrations/services/chat_client.py",
+        "services/admin-api/app/integrations/services/payment_client.py",
+        "services/analytics/analytics.env",
+        "services/auth/auth.env",
+        "services/auth/src/services/email.service.ts",
+        "services/auth/src/services/productTracking.service.ts",
+        "services/chat/chat.env",
+        "services/chat/src/config/env.ts",
+        "services/chat/src/middleware/auth.middleware.ts",
+        "services/document/app/routers/document.py",
+        "services/document/app/services/product_tracking.py",
+        "services/document/app/workers/pdf_worker.py",
+        "services/document/document.env",
+        "services/gateway/gateway.env",
+        "services/gateway/src/config/env.ts",
+        "services/notification/src/routes/notification.routes.ts",
+        "services/notification/src/services/email.service.ts",
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts",
+        "services/quota/quota.env",
+        "services/quota/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "IP_WHITELIST_ENABLED",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "JSONSCHEMA_DEBUG_CODE_GENERATION",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/config/_validate_pyproject/error_reporting.py"
+      ]
+    },
+    {
+      "name": "JUPYTER_COLUMNS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py"
+      ]
+    },
+    {
+      "name": "JUPYTER_LINES",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py"
+      ]
+    },
+    {
+      "name": "JWT_ACCESS_TOKEN_EXPIRE_MINUTES",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "JWT_ALGORITHM",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "JWT_EXPIRES_IN",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "auth"
+      ],
+      "locations": [
+        "services/auth/auth.env",
+        "services/auth/src/services/jwt.service.ts"
+      ]
+    },
+    {
+      "name": "JWT_REFRESH_SECRET",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "auth"
+      ],
+      "locations": [
+        "services/auth/auth.env",
+        "services/auth/src/services/jwt.service.test.ts"
+      ]
+    },
+    {
+      "name": "JWT_SECRET",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "analytics",
+        "auth",
+        "chat",
+        "document",
+        "gateway",
+        "payment",
+        "quota"
+      ],
+      "locations": [
+        "services/analytics/analytics.env",
+        "services/auth/auth.env",
+        "services/auth/src/server.ts",
+        "services/auth/src/services/jwt.service.test.ts",
+        "services/chat/chat.env",
+        "services/chat/test-mcp.ts",
+        "services/document/document.env",
+        "services/gateway/gateway.env",
+        "services/gateway/src/config/env.ts",
+        "services/gateway/test-gateway.ts",
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts",
+        "services/quota/quota.env",
+        "services/quota/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "LDCXXSHARED",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/sysconfig.py"
+      ]
+    },
+    {
+      "name": "LDSHARED",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/sysconfig.py"
+      ]
+    },
+    {
+      "name": "LEGACY_STORAGE_PROVIDER",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/app/services/storage.py"
+      ]
+    },
+    {
+      "name": "LESS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/click/_termui_impl.py",
+        "services/document/.venv/lib/python3.13/site-packages/click/_termui_impl.py",
+        "services/document/.venv/lib/python3.14/site-packages/click/_termui_impl.py"
+      ]
+    },
+    {
+      "name": "LINES",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py"
+      ]
+    },
+    {
+      "name": "LOCAL_STORAGE_DIR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/app/services/storage.py"
+      ]
+    },
+    {
+      "name": "MACOSX_DEPLOYMENT_TARGET",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_vendor/wheel/macosx_libfile.py"
+      ]
+    },
+    {
+      "name": "MAX_CONCURRENT_REQUESTS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "chat"
+      ],
+      "locations": [
+        "services/chat/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "MAX_QUEUE_SIZE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "chat"
+      ],
+      "locations": [
+        "services/chat/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "MCP_TIMEOUT_MS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "chat"
+      ],
+      "locations": [
+        "services/chat/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "MIGRATION_DATABASE_URL",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/reencrypt_totp.py"
+      ]
+    },
+    {
+      "name": "MSGPACK_PUREPYTHON",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/msgpack/__init__.py",
+        "services/document/.venv/lib/python3.13/site-packages/msgpack/__init__.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/msgpack/__init__.py",
+        "services/document/.venv/lib/python3.14/site-packages/msgpack/__init__.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/msgpack/__init__.py"
+      ]
+    },
+    {
+      "name": "MULTIDICT_NO_EXTENSIONS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/multidict/_compat.py",
+        "services/document/.venv/lib/python3.14/site-packages/multidict/_compat.py"
+      ]
+    },
+    {
+      "name": "MUPDF_",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/pymupdf/mupdf.py",
+        "services/document/.venv/lib/python3.14/site-packages/pymupdf/mupdf.py"
+      ]
+    },
+    {
+      "name": "MUPDF_CPPYY",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/pymupdf/__init__.py",
+        "services/document/.venv/lib/python3.14/site-packages/pymupdf/__init__.py"
+      ]
+    },
+    {
+      "name": "NETRC",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/requests/utils.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/requests/utils.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/requests/utils.py"
+      ]
+    },
+    {
+      "name": "NODE_ENV",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "auth",
+        "chat",
+        "gateway",
+        "notification",
+        "payment",
+        "quota"
+      ],
+      "locations": [
+        "services/auth/auth.env",
+        "services/auth/src/db/prisma.ts",
+        "services/auth/src/server.ts",
+        "services/chat/chat.env",
+        "services/chat/src/config/env.ts",
+        "services/gateway/gateway.env",
+        "services/gateway/src/config/env.ts",
+        "services/notification/notification.env",
+        "services/notification/src/services/email.service.ts",
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts",
+        "services/payment/src/security/webhookIpAllowlist.ts",
+        "services/quota/quota.env",
+        "services/quota/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "NOTIFICATION_RUN_MIGRATIONS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "notification",
+        "scripts"
+      ],
+      "locations": [
+        "scripts/staging_migrate_node.mjs",
+        "services/notification/src/services/db.service.ts"
+      ]
+    },
+    {
+      "name": "NOTIFICATION_SERVICE_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "auth",
+        "gateway",
+        "payment"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py",
+        "services/auth/auth.env",
+        "services/auth/src/services/email.service.ts",
+        "services/gateway/gateway.env",
+        "services/gateway/src/config/env.ts",
+        "services/gateway/test-gateway.ts",
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "NOTIFICATION_WEBHOOK_ALLOWED_HOSTS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "notification"
+      ],
+      "locations": [
+        "services/notification/src/security.ts"
+      ]
+    },
+    {
+      "name": "NO_COLOR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/_io/terminalwriter.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/_io/terminalwriter.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py"
+      ]
+    },
+    {
+      "name": "NO_NETWORK",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/config/_validate_pyproject/formats.py"
+      ]
+    },
+    {
+      "name": "P",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/_py/path.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/_py/path.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/compilers/C/msvc.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/msvc.py"
+      ]
+    },
+    {
+      "name": "P4_RECEIPT_KEY",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/phase4_notification_receipt_probe.py"
+      ]
+    },
+    {
+      "name": "PADDLE_API_KEY",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "payment"
+      ],
+      "locations": [
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "PADDLE_MAX_MONTHLY_PRICE_ID",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "payment"
+      ],
+      "locations": [
+        "services/payment/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "PADDLE_MAX_YEARLY_PRICE_ID",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "payment"
+      ],
+      "locations": [
+        "services/payment/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "PADDLE_PRO_MONTHLY_PRICE_ID",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "payment"
+      ],
+      "locations": [
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "PADDLE_PRO_YEARLY_PRICE_ID",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "payment"
+      ],
+      "locations": [
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "PADDLE_SANDBOX",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "payment"
+      ],
+      "locations": [
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "PADDLE_WEBHOOK_SECRET",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "payment"
+      ],
+      "locations": [
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "PAGER",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/click/_termui_impl.py",
+        "services/document/.venv/lib/python3.13/site-packages/click/_termui_impl.py",
+        "services/document/.venv/lib/python3.14/site-packages/click/_termui_impl.py"
+      ]
+    },
+    {
+      "name": "PASSLIB_BUILTIN_BCRYPT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/passlib/handlers/bcrypt.py"
+      ]
+    },
+    {
+      "name": "PASSLIB_MAX_PASSWORD_SIZE",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/passlib/utils/__init__.py"
+      ]
+    },
+    {
+      "name": "PASSLIB_MOCK_FIPS_MODE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/passlib/crypto/digest.py"
+      ]
+    },
+    {
+      "name": "PASSLIB_PBKDF2_BACKEND",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/passlib/crypto/digest.py"
+      ]
+    },
+    {
+      "name": "PATH",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/_py/path.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/_py/path.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/network/auth.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/operations/install/wheel.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/utils/entrypoints.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/distlib/compat.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/network/auth.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/operations/install/wheel.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/utils/entrypoints.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/distlib/compat.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/spawn.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/network/auth.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/operations/install/wheel.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/utils/entrypoints.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/distlib/compat.py"
+      ]
+    },
+    {
+      "name": "PATHEXT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/_py/path.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/_py/path.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/distlib/compat.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/distlib/compat.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_scripts.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/distlib/compat.py"
+      ]
+    },
+    {
+      "name": "PATH_INFO",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/middleware/dispatcher.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/middleware/lint.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/middleware/profiler.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wrappers/request.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wrappers/response.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wsgi.py"
+      ]
+    },
+    {
+      "name": "PAYHERE_APP_ID",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "payment"
+      ],
+      "locations": [
+        "services/payment/src/queues/payment-webhook.queue.ts",
+        "services/payment/src/services/payhere-reconciliation.service.ts",
+        "services/payment/src/services/payhere.service.ts"
+      ]
+    },
+    {
+      "name": "PAYHERE_APP_SECRET",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "payment"
+      ],
+      "locations": [
+        "services/payment/src/queues/payment-webhook.queue.ts",
+        "services/payment/src/services/payhere-reconciliation.service.ts",
+        "services/payment/src/services/payhere.service.ts"
+      ]
+    },
+    {
+      "name": "PAYHERE_MERCHANT_ID",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "payment"
+      ],
+      "locations": [
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "PAYHERE_MERCHANT_SECRET",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "payment"
+      ],
+      "locations": [
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "PAYHERE_PROVIDER_UTC_OFFSET",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "payment"
+      ],
+      "locations": [
+        "services/payment/src/services/payhere-reconciliation.service.ts"
+      ]
+    },
+    {
+      "name": "PAYHERE_SANDBOX",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "payment"
+      ],
+      "locations": [
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "PAYMENT_SERVICE_PUBLIC_URL",
+      "category": "PUBLIC CONFIGURATION",
+      "owners": [
+        "payment"
+      ],
+      "locations": [
+        "services/payment/payment.env",
+        "services/payment/src/services/payhere.service.ts"
+      ]
+    },
+    {
+      "name": "PAYMENT_SERVICE_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "analytics"
+      ],
+      "locations": [
+        "services/admin-api/admin-api.env",
+        "services/admin-api/app/core/config.py",
+        "services/admin-api/app/integrations/services/payment_client.py",
+        "services/admin-api/app/services/entitlements.py",
+        "services/analytics/app/routers/analytics.py"
+      ]
+    },
+    {
+      "name": "PDF_MAX_CONCURRENT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/puppeteer/server.ts"
+      ]
+    },
+    {
+      "name": "PDF_REDIS_URL",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "document",
+        "scripts"
+      ],
+      "locations": [
+        "scripts/system_audit_phase3_configuration.py",
+        "services/document/puppeteer/server.ts",
+        "services/document/puppeteer/start.cjs"
+      ]
+    },
+    {
+      "name": "PDF_SERVICE_AUTH_CONFIG_FILE",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "document",
+        "scripts"
+      ],
+      "locations": [
+        "scripts/system_audit_phase3_configuration.py",
+        "services/document/puppeteer/server.ts",
+        "services/document/puppeteer/start.cjs"
+      ]
+    },
+    {
+      "name": "PGSSLROOTCERT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "notification",
+        "scripts"
+      ],
+      "locations": [
+        "scripts/staging_database_roles.py",
+        "services/notification/src/services/db.service.ts"
+      ]
+    },
+    {
+      "name": "PG_AUDIT_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/system_audit_phase2_stack.py",
+        "scripts/system_audit_phase3_stack.py",
+        "scripts/system_audit_phase4_stack.py"
+      ]
+    },
+    {
+      "name": "PG_CLIENT_BIN_DIR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/phase5_backup_restore.py"
+      ]
+    },
+    {
+      "name": "PG_REQUIRE_TLS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "notification"
+      ],
+      "locations": [
+        "services/notification/src/services/db.service.ts"
+      ]
+    },
+    {
+      "name": "PHASE5_APPROVED_GROQ",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/phase5_stack_probes.py",
+        "scripts/system_audit_phase4_stack.py"
+      ]
+    },
+    {
+      "name": "PIP_BUILD_TRACKER",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/operations/build/build_tracker.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/operations/build/build_tracker.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/operations/build/build_tracker.py"
+      ]
+    },
+    {
+      "name": "PIP_CONFIG_FILE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/configuration.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/configuration.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/configuration.py"
+      ]
+    },
+    {
+      "name": "PIP_CONSTRAINT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/build_env.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/cli/base_command.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/build_env.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/cli/base_command.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/build_env.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/cli/base_command.py"
+      ]
+    },
+    {
+      "name": "PIP_EXISTS_ACTION",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/cli/base_command.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/utils/misc.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/cli/base_command.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/utils/misc.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/cli/base_command.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/utils/misc.py"
+      ]
+    },
+    {
+      "name": "PIP_NO_COLOR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/cli/parser.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/cli/parser.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/cli/parser.py"
+      ]
+    },
+    {
+      "name": "PIP_NO_INPUT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/cli/base_command.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/utils/misc.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/vcs/git.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/cli/base_command.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/utils/misc.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/vcs/git.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/cli/base_command.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/utils/misc.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/vcs/git.py"
+      ]
+    },
+    {
+      "name": "PIP_USER_AGENT_USER_DATA",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/network/session.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/network/session.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/network/session.py"
+      ]
+    },
+    {
+      "name": "PLAT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/util.py"
+      ]
+    },
+    {
+      "name": "PORT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "analytics",
+        "auth",
+        "chat",
+        "document",
+        "gateway",
+        "notification",
+        "payment",
+        "quota"
+      ],
+      "locations": [
+        "services/admin-api/admin-api.env",
+        "services/admin-api/app/core/config.py",
+        "services/analytics/analytics.env",
+        "services/auth/auth.env",
+        "services/auth/src/server.ts",
+        "services/chat/chat.env",
+        "services/chat/src/config/env.ts",
+        "services/document/document.env",
+        "services/gateway/gateway.env",
+        "services/gateway/src/config/env.ts",
+        "services/notification/notification.env",
+        "services/notification/src/server.ts",
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts",
+        "services/quota/quota.env",
+        "services/quota/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "POSTHOG_API_KEY",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "analytics"
+      ],
+      "locations": [
+        "services/admin-api/admin-api.env",
+        "services/admin-api/app/core/config.py",
+        "services/analytics/analytics.env",
+        "services/analytics/app/workers/posthog_worker.py"
+      ]
+    },
+    {
+      "name": "POSTHOG_HOST",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "analytics"
+      ],
+      "locations": [
+        "services/admin-api/admin-api.env",
+        "services/admin-api/app/core/config.py",
+        "services/analytics/analytics.env",
+        "services/analytics/app/workers/posthog_worker.py"
+      ]
+    },
+    {
+      "name": "POSTHOG_PERSONAL_API_KEY",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "POSTHOG_PROJECT_ID",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "PREFIX",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/__init__.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/__init__.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_vendor/platformdirs/__init__.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/__init__.py"
+      ]
+    },
+    {
+      "name": "PROPCACHE_NO_EXTENSIONS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/propcache/_helpers.py",
+        "services/document/.venv/lib/python3.14/site-packages/propcache/_helpers.py"
+      ]
+    },
+    {
+      "name": "PYDANTIC_DISABLE_PLUGINS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pydantic/plugin/_loader.py",
+        "services/document/.venv/lib/python3.13/site-packages/pydantic/plugin/_loader.py",
+        "services/document/.venv/lib/python3.14/site-packages/pydantic/plugin/_loader.py"
+      ]
+    },
+    {
+      "name": "PYDANTIC_PRIVATE_ALLOW_UNHANDLED_SCHEMA_TYPES",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pydantic/json_schema.py",
+        "services/document/.venv/lib/python3.13/site-packages/pydantic/json_schema.py",
+        "services/document/.venv/lib/python3.14/site-packages/pydantic/json_schema.py"
+      ]
+    },
+    {
+      "name": "PYMUPDF_LOG",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/pymupdf/__init__.py",
+        "services/document/.venv/lib/python3.14/site-packages/pymupdf/__init__.py"
+      ]
+    },
+    {
+      "name": "PYMUPDF_MESSAGE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/pymupdf/__init__.py",
+        "services/document/.venv/lib/python3.14/site-packages/pymupdf/__init__.py"
+      ]
+    },
+    {
+      "name": "PYMUPDF_SUGGEST_LAYOUT_ANALYZER",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/pymupdf/__init__.py",
+        "services/document/.venv/lib/python3.14/site-packages/pymupdf/__init__.py"
+      ]
+    },
+    {
+      "name": "PYTEST_ADDOPTS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/config/__init__.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/config/__init__.py"
+      ]
+    },
+    {
+      "name": "PYTEST_CURRENT_TEST",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/sqlalchemy/testing/plugin/pytestplugin.py",
+        "services/document/.venv/lib/python3.14/site-packages/sqlalchemy/testing/plugin/pytestplugin.py"
+      ]
+    },
+    {
+      "name": "PYTEST_DEBUG",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/config/__init__.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/config/__init__.py"
+      ]
+    },
+    {
+      "name": "PYTEST_DEBUG_TEMPROOT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/tmpdir.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/tmpdir.py"
+      ]
+    },
+    {
+      "name": "PYTEST_DISABLE_PLUGIN_AUTOLOAD",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/config/__init__.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/config/__init__.py"
+      ]
+    },
+    {
+      "name": "PYTEST_PLUGINS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/config/__init__.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/config/__init__.py"
+      ]
+    },
+    {
+      "name": "PYTEST_THEME",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/_io/terminalwriter.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/_io/terminalwriter.py"
+      ]
+    },
+    {
+      "name": "PYTEST_THEME_MODE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/_io/terminalwriter.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/_io/terminalwriter.py"
+      ]
+    },
+    {
+      "name": "PYTEST_VERSION",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/config/__init__.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/config/__init__.py"
+      ]
+    },
+    {
+      "name": "PYTHONPATH",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/pytester.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/pytester.py",
+        "services/document/.venv/lib/python3.13/site-packages/pymupdf/__init__.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_path.py",
+        "services/document/.venv/lib/python3.14/site-packages/pymupdf/__init__.py"
+      ]
+    },
+    {
+      "name": "PYTHONSTARTUP",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/flask/cli.py"
+      ]
+    },
+    {
+      "name": "PYTHON_DOTENV_DISABLED",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/dotenv/main.py",
+        "services/document/.venv/lib/python3.13/site-packages/dotenv/main.py",
+        "services/document/.venv/lib/python3.14/site-packages/dotenv/main.py"
+      ]
+    },
+    {
+      "name": "PYTHON_EGG_CACHE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/pkg_resources/__init__.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/pkg_resources/__init__.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/pkg_resources/__init__.py"
+      ]
+    },
+    {
+      "name": "PY_COLORS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/_io/terminalwriter.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/_io/terminalwriter.py"
+      ]
+    },
+    {
+      "name": "PY_IGNORE_IMPORTMISMATCH",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/_py/path.py",
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/pathlib.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/_py/path.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/pathlib.py"
+      ]
+    },
+    {
+      "name": "QUERY_STRING",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/utils.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wrappers/request.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wsgi.py"
+      ]
+    },
+    {
+      "name": "QUEUE_TIMEOUT_MS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "chat"
+      ],
+      "locations": [
+        "services/chat/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "QUOTA_SERVICE_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "chat",
+        "document",
+        "gateway",
+        "payment"
+      ],
+      "locations": [
+        "services/admin-api/admin-api.env",
+        "services/admin-api/app/core/config.py",
+        "services/chat/chat.env",
+        "services/chat/src/config/env.ts",
+        "services/document/app/routers/document.py",
+        "services/document/app/workers/pdf_worker.py",
+        "services/document/document.env",
+        "services/gateway/gateway.env",
+        "services/gateway/src/config/env.ts",
+        "services/gateway/test-gateway.ts",
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "RANLIB",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/sysconfig.py"
+      ]
+    },
+    {
+      "name": "RATE_LIMIT_MAX",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "chat"
+      ],
+      "locations": [
+        "services/chat/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "RATE_LIMIT_WINDOW",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "chat"
+      ],
+      "locations": [
+        "services/chat/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "REDIS_HOST",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "auth"
+      ],
+      "locations": [
+        "services/auth/src/services/email.service.ts"
+      ]
+    },
+    {
+      "name": "REDIS_PORT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "auth"
+      ],
+      "locations": [
+        "services/auth/src/services/email.service.ts"
+      ]
+    },
+    {
+      "name": "REDIS_URL",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "analytics",
+        "auth",
+        "chat",
+        "document",
+        "gateway",
+        "notification",
+        "payment",
+        "quota",
+        "scripts",
+        "shared"
+      ],
+      "locations": [
+        "scripts/system_audit_phase3_configuration.py",
+        "scripts/system_audit_phase3_stack.py",
+        "scripts/system_audit_phase4_stack.py",
+        "scripts/system_audit_sync.py",
+        "services/admin-api/app/core/config.py",
+        "services/analytics/analytics.env",
+        "services/analytics/app/workers/posthog_worker.py",
+        "services/auth/auth.env",
+        "services/auth/src/services/access-revocation.service.ts",
+        "services/auth/src/services/email.service.ts",
+        "services/chat/chat.env",
+        "services/chat/src/config/env.ts",
+        "services/document/app/routers/document.py",
+        "services/document/app/workers/pdf_worker.py",
+        "services/document/document.env",
+        "services/document/puppeteer/server.ts",
+        "services/gateway/gateway.env",
+        "services/gateway/src/config/env.ts",
+        "services/gateway/test-gateway.ts",
+        "services/notification/notification.env",
+        "services/notification/src/controllers/notification.controller.ts",
+        "services/notification/src/worker.ts",
+        "services/payment/payment.env",
+        "services/payment/src/config/env.ts",
+        "services/quota/quota.env",
+        "services/quota/src/config/env.ts",
+        "shared/readiness.mjs",
+        "shared/readiness.py",
+        "shared/service-auth.mjs",
+        "shared/service_auth.py"
+      ]
+    },
+    {
+      "name": "REFRESH_EXPIRES_IN",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "auth"
+      ],
+      "locations": [
+        "services/auth/auth.env",
+        "services/auth/src/services/jwt.service.ts"
+      ]
+    },
+    {
+      "name": "REMOTE_ADDR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wrappers/request.py"
+      ]
+    },
+    {
+      "name": "REQUESTS_CA_BUNDLE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/commands/debug.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/requests/sessions.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/commands/debug.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/requests/sessions.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/commands/debug.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/requests/sessions.py"
+      ]
+    },
+    {
+      "name": "REQUEST_METHOD",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wrappers/request.py"
+      ]
+    },
+    {
+      "name": "REQUIRE_SQLALCHEMY_CEXT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/sqlalchemy/testing/plugin/plugin_base.py",
+        "services/document/.venv/lib/python3.14/site-packages/sqlalchemy/testing/plugin/plugin_base.py"
+      ]
+    },
+    {
+      "name": "RESEND_API_KEY",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "auth",
+        "notification"
+      ],
+      "locations": [
+        "services/admin-api/admin-api.env",
+        "services/admin-api/app/core/config.py",
+        "services/admin-api/app/services/email_service.py",
+        "services/auth/auth.env",
+        "services/notification/notification.env",
+        "services/notification/src/services/email.service.ts"
+      ]
+    },
+    {
+      "name": "RESEND_FROM_EMAIL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "notification"
+      ],
+      "locations": [
+        "services/admin-api/admin-api.env",
+        "services/admin-api/app/core/config.py",
+        "services/admin-api/app/services/email_service.py",
+        "services/notification/notification.env",
+        "services/notification/src/services/email.service.ts"
+      ]
+    },
+    {
+      "name": "RESEND_WEBHOOK_SECRET",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "notification"
+      ],
+      "locations": [
+        "services/notification/src/controllers/notification.controller.ts"
+      ]
+    },
+    {
+      "name": "SCRIPT_NAME",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/middleware/dispatcher.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/middleware/lint.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wrappers/request.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wsgi.py"
+      ]
+    },
+    {
+      "name": "SERVER_NAME",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wsgi.py"
+      ]
+    },
+    {
+      "name": "SERVER_PORT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/wsgi.py"
+      ]
+    },
+    {
+      "name": "SERVER_SOFTWARE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/urllib3/contrib/_appengine_environ.py"
+      ]
+    },
+    {
+      "name": "SERVICE_AUTH_CONFIG_FILE",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "document",
+        "scripts",
+        "shared"
+      ],
+      "locations": [
+        "scripts/system_audit_phase3_configuration.py",
+        "services/document/puppeteer/server.ts",
+        "shared/service-auth.mjs",
+        "shared/service_auth.py"
+      ]
+    },
+    {
+      "name": "SERVICE_AUTH_CONFIG_JSON",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "document",
+        "scripts",
+        "shared"
+      ],
+      "locations": [
+        "scripts/audit_fixtures/service_identity.py",
+        "scripts/reencrypt_totp.py",
+        "scripts/system_audit_phase3_probes.py",
+        "services/document/puppeteer/server.ts",
+        "shared/service-auth.mjs",
+        "shared/service_auth.py"
+      ]
+    },
+    {
+      "name": "SERVICE_NAME",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "SERVICE_REQUIRE_TLS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "shared"
+      ],
+      "locations": [
+        "shared/server-tls.mjs"
+      ]
+    },
+    {
+      "name": "SERVICE_TLS_CERT_FILE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "shared"
+      ],
+      "locations": [
+        "shared/server-tls.mjs"
+      ]
+    },
+    {
+      "name": "SERVICE_TLS_KEY_FILE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "shared"
+      ],
+      "locations": [
+        "shared/server-tls.mjs"
+      ]
+    },
+    {
+      "name": "SETUPTOOLS_ENFORCE_DEPRECATION",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/warnings.py"
+      ]
+    },
+    {
+      "name": "SETUPTOOLS_EXT_SUFFIX",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/command/build_ext.py"
+      ]
+    },
+    {
+      "name": "SETUPTOOLS_LAUNCHER",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_scripts.py"
+      ]
+    },
+    {
+      "name": "SETUPTOOLS_USE_DISTUTILS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/_distutils_hack/__init__.py"
+      ]
+    },
+    {
+      "name": "SHELL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/__init__.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/__init__.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_vendor/platformdirs/__init__.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/__init__.py"
+      ]
+    },
+    {
+      "name": "SIDECAR_HOST",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/puppeteer/server.ts"
+      ]
+    },
+    {
+      "name": "SIDECAR_PORT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/document.env",
+        "services/document/puppeteer/server.ts"
+      ]
+    },
+    {
+      "name": "SIDECAR_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/app/services/sidecar.py",
+        "services/document/document.env"
+      ]
+    },
+    {
+      "name": "SOURCE_DATE_EPOCH",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/distlib/scripts.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/distlib/scripts.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_vendor/wheel/wheelfile.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/distlib/scripts.py"
+      ]
+    },
+    {
+      "name": "SPHINX_BUILD",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/jwt/algorithms.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/jwt/api_jwt.py",
+        "services/document/.venv/lib/python3.13/site-packages/jwt/algorithms.py",
+        "services/document/.venv/lib/python3.13/site-packages/jwt/api_jwt.py",
+        "services/document/.venv/lib/python3.14/site-packages/jwt/algorithms.py",
+        "services/document/.venv/lib/python3.14/site-packages/jwt/api_jwt.py"
+      ]
+    },
+    {
+      "name": "SSLKEYLOGFILE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/urllib3/util/ssl_.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/urllib3/util/ssl_.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/urllib3/util/ssl_.py"
+      ]
+    },
+    {
+      "name": "SSL_CERT_DIR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/httpx/_config.py",
+        "services/document/.venv/lib/python3.13/site-packages/httpx/_config.py",
+        "services/document/.venv/lib/python3.14/site-packages/httpx/_config.py"
+      ]
+    },
+    {
+      "name": "SSL_CERT_FILE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document",
+        "scripts",
+        "shared"
+      ],
+      "locations": [
+        "scripts/system_audit_phase4_stack.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/httpx/_config.py",
+        "services/document/.venv/lib/python3.13/site-packages/httpx/_config.py",
+        "services/document/.venv/lib/python3.14/site-packages/httpx/_config.py",
+        "shared/service_auth.py"
+      ]
+    },
+    {
+      "name": "STAGING_MIGRATION_DATABASE_URL",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/staging_database_roles.py"
+      ]
+    },
+    {
+      "name": "SUPABASE_SERVICE_KEY",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "analytics"
+      ],
+      "locations": [
+        "services/analytics/analytics.env"
+      ]
+    },
+    {
+      "name": "SUPABASE_SERVICE_ROLE_KEY",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/app/services/storage.py"
+      ]
+    },
+    {
+      "name": "SUPABASE_TEST_KEY",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/supabase/_async/client.py",
+        "services/document/.venv/lib/python3.13/site-packages/supabase/_sync/client.py",
+        "services/document/.venv/lib/python3.14/site-packages/supabase/_async/client.py",
+        "services/document/.venv/lib/python3.14/site-packages/supabase/_sync/client.py"
+      ]
+    },
+    {
+      "name": "SUPABASE_TEST_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/supabase/_async/client.py",
+        "services/document/.venv/lib/python3.13/site-packages/supabase/_sync/client.py",
+        "services/document/.venv/lib/python3.14/site-packages/supabase/_async/client.py",
+        "services/document/.venv/lib/python3.14/site-packages/supabase/_sync/client.py"
+      ]
+    },
+    {
+      "name": "SUPABASE_URL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "analytics",
+        "document"
+      ],
+      "locations": [
+        "services/analytics/analytics.env",
+        "services/document/app/services/storage.py"
+      ]
+    },
+    {
+      "name": "SUPER_ADMIN_EMAIL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/admin-api.env",
+        "services/admin-api/app/cli/bootstrap.py"
+      ]
+    },
+    {
+      "name": "SUPER_ADMIN_NAME",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/admin-api.env",
+        "services/admin-api/app/cli/bootstrap.py"
+      ]
+    },
+    {
+      "name": "SUPER_ADMIN_PASSWORD",
+      "category": "SENSITIVE CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/admin-api.env",
+        "services/admin-api/app/cli/bootstrap.py"
+      ]
+    },
+    {
+      "name": "SYSTEMROOT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/_py/path.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/_py/path.py"
+      ]
+    },
+    {
+      "name": "TERM",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/_io/terminalwriter.py",
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/terminalprogress.py",
+        "services/admin-api/.venv/lib/python3.13/site-packages/pygments/cmdline.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/_io/terminalwriter.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/terminalprogress.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/click/_termui_impl.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pygments/cmdline.py",
+        "services/document/.venv/lib/python3.13/site-packages/click/_termui_impl.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.14/site-packages/click/_termui_impl.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py"
+      ]
+    },
+    {
+      "name": "TESSDATA_PREFIX",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/pymupdf/__init__.py",
+        "services/document/.venv/lib/python3.14/site-packages/pymupdf/__init__.py",
+        "services/document/app/services/editable_templates.py"
+      ]
+    },
+    {
+      "name": "TEST_JOB",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/system_audit_phase3_stack.py",
+        "scripts/system_audit_phase4_stack.py"
+      ]
+    },
+    {
+      "name": "TEST_NAME",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/system_audit_phase3_stack.py",
+        "scripts/system_audit_phase4_stack.py"
+      ]
+    },
+    {
+      "name": "TEST_QUEUE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/system_audit_phase3_stack.py",
+        "scripts/system_audit_phase4_stack.py"
+      ]
+    },
+    {
+      "name": "TEST_USER",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "scripts"
+      ],
+      "locations": [
+        "scripts/system_audit_phase3_stack.py",
+        "scripts/system_audit_phase4_stack.py"
+      ]
+    },
+    {
+      "name": "TOTP_ISSUER",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "TOTP_WINDOW",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py"
+      ]
+    },
+    {
+      "name": "TOX_ENV_DIR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/cacheprovider.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/cacheprovider.py"
+      ]
+    },
+    {
+      "name": "TRUSTED_PROXY_IPS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "auth",
+        "gateway",
+        "quota"
+      ],
+      "locations": [
+        "services/admin-api/app/core/config.py",
+        "services/auth/src/server.ts",
+        "services/gateway/src/index.ts",
+        "services/quota/src/app.ts"
+      ]
+    },
+    {
+      "name": "TTY_COMPATIBLE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py"
+      ]
+    },
+    {
+      "name": "TTY_INTERACTIVE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/rich/console.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/rich/console.py"
+      ]
+    },
+    {
+      "name": "TURN_TIMEOUT_MS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "chat"
+      ],
+      "locations": [
+        "services/chat/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "UNIXCONFDIR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/distro/distro.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/distro/distro.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/distro/distro.py"
+      ]
+    },
+    {
+      "name": "UNIXUSRLIBDIR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/distro/distro.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/distro/distro.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/distro/distro.py"
+      ]
+    },
+    {
+      "name": "USER",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/_py/path.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/_py/path.py"
+      ]
+    },
+    {
+      "name": "USERNAME",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.13/site-packages/_pytest/_py/path.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/_pytest/_py/path.py"
+      ]
+    },
+    {
+      "name": "USERPROFILE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/windows.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/windows.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_vendor/platformdirs/windows.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/windows.py"
+      ]
+    },
+    {
+      "name": "VALIDATE_PYPROJECT_NO_NETWORK",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/config/_validate_pyproject/formats.py"
+      ]
+    },
+    {
+      "name": "VISUAL",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_internal/commands/configuration.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_internal/commands/configuration.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_internal/commands/configuration.py"
+      ]
+    },
+    {
+      "name": "VITE_ADMIN_API_BASE_URL",
+      "category": "BUILD-TIME CONFIGURATION",
+      "owners": [
+        "admin"
+      ],
+      "locations": [
+        "admin/src/api/adminApiClient.ts",
+        "admin/src/store/adminAuthStore.ts"
+      ]
+    },
+    {
+      "name": "VITE_API_BASE_URL",
+      "category": "BUILD-TIME CONFIGURATION",
+      "owners": [
+        "user-frontend"
+      ],
+      "locations": [
+        "user-frontend/src/api/ai.ts",
+        "user-frontend/src/api/auth.ts",
+        "user-frontend/src/api/client.ts",
+        "user-frontend/src/hooks/usePageDurationTracking.ts"
+      ]
+    },
+    {
+      "name": "VSCMD_ARG_TGT_ARCH",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/distlib/util.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/distlib/util.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_distutils/util.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/distlib/util.py"
+      ]
+    },
+    {
+      "name": "W",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/msvc.py"
+      ]
+    },
+    {
+      "name": "WAYLAND_DISPLAY",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/PIL/ImageGrab.py"
+      ]
+    },
+    {
+      "name": "WEBHOOK_ALLOWED_IPS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "gateway"
+      ],
+      "locations": [
+        "services/gateway/src/config/env.ts"
+      ]
+    },
+    {
+      "name": "WEBSOCKETS_BACKOFF_FACTOR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/websockets/client.py",
+        "services/document/.venv/lib/python3.13/site-packages/websockets/legacy/client.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/client.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/legacy/client.py"
+      ]
+    },
+    {
+      "name": "WEBSOCKETS_BACKOFF_INITIAL_DELAY",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/websockets/client.py",
+        "services/document/.venv/lib/python3.13/site-packages/websockets/legacy/client.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/client.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/legacy/client.py"
+      ]
+    },
+    {
+      "name": "WEBSOCKETS_BACKOFF_MAX_DELAY",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/websockets/client.py",
+        "services/document/.venv/lib/python3.13/site-packages/websockets/legacy/client.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/client.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/legacy/client.py"
+      ]
+    },
+    {
+      "name": "WEBSOCKETS_BACKOFF_MIN_DELAY",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/websockets/client.py",
+        "services/document/.venv/lib/python3.13/site-packages/websockets/legacy/client.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/client.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/legacy/client.py"
+      ]
+    },
+    {
+      "name": "WEBSOCKETS_MAX_BODY_SIZE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/websockets/http11.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/http11.py"
+      ]
+    },
+    {
+      "name": "WEBSOCKETS_MAX_LINE_LENGTH",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/websockets/http11.py",
+        "services/document/.venv/lib/python3.13/site-packages/websockets/legacy/http.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/http11.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/legacy/http.py"
+      ]
+    },
+    {
+      "name": "WEBSOCKETS_MAX_LOG_SIZE",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/websockets/frames.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/frames.py"
+      ]
+    },
+    {
+      "name": "WEBSOCKETS_MAX_NUM_HEADERS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/websockets/http11.py",
+        "services/document/.venv/lib/python3.13/site-packages/websockets/legacy/http.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/http11.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/legacy/http.py"
+      ]
+    },
+    {
+      "name": "WEBSOCKETS_MAX_REDIRECTS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/websockets/asyncio/client.py",
+        "services/document/.venv/lib/python3.13/site-packages/websockets/legacy/client.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/asyncio/client.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/legacy/client.py"
+      ]
+    },
+    {
+      "name": "WEBSOCKETS_SERVER",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/websockets/http11.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/http11.py"
+      ]
+    },
+    {
+      "name": "WEBSOCKETS_USER_AGENT",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/websockets/http11.py",
+        "services/document/.venv/lib/python3.14/site-packages/websockets/http11.py"
+      ]
+    },
+    {
+      "name": "WEB_CONCURRENCY",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/uvicorn/config.py",
+        "services/document/.venv/lib/python3.13/site-packages/uvicorn/config.py",
+        "services/document/.venv/lib/python3.14/site-packages/uvicorn/config.py"
+      ]
+    },
+    {
+      "name": "WERKZEUG_DEBUG_PIN",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/debug/__init__.py"
+      ]
+    },
+    {
+      "name": "WERKZEUG_RUN_MAIN",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/_reloader.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/debug/__init__.py",
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/serving.py"
+      ]
+    },
+    {
+      "name": "WERKZEUG_SERVER_FD",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/werkzeug/serving.py"
+      ]
+    },
+    {
+      "name": "WINDIR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/PIL/ImageFont.py"
+      ]
+    },
+    {
+      "name": "XDG_CACHE_HOME",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/unix.py"
+      ]
+    },
+    {
+      "name": "XDG_CONFIG_DIRS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/unix.py"
+      ]
+    },
+    {
+      "name": "XDG_CONFIG_HOME",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/click/utils.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.13/site-packages/click/utils.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.14/site-packages/click/utils.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/unix.py"
+      ]
+    },
+    {
+      "name": "XDG_DATA_DIRS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/PIL/ImageFont.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/unix.py"
+      ]
+    },
+    {
+      "name": "XDG_DATA_HOME",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/PIL/ImageFont.py",
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/unix.py"
+      ]
+    },
+    {
+      "name": "XDG_RUNTIME_DIR",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/unix.py"
+      ]
+    },
+    {
+      "name": "XDG_STATE_HOME",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "admin-api",
+        "document"
+      ],
+      "locations": [
+        "services/admin-api/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.13/site-packages/pip/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.13/site-packages/setuptools/_vendor/platformdirs/unix.py",
+        "services/document/.venv/lib/python3.14/site-packages/pip/_vendor/platformdirs/unix.py"
+      ]
+    },
+    {
+      "name": "YARL_NO_EXTENSIONS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/yarl/_quoting.py",
+        "services/document/.venv/lib/python3.14/site-packages/yarl/_quoting.py"
+      ]
+    },
+    {
+      "name": "YOURAPPLICATION_SETTINGS",
+      "category": "INTERNAL CONFIGURATION",
+      "owners": [
+        "document"
+      ],
+      "locations": [
+        "services/document/.venv/lib/python3.13/site-packages/flask/config.py"
+      ]
+    }
+  ]
+}

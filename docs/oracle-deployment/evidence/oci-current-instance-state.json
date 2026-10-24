@@ -1,0 +1,9 @@
+{
+  "observed_at_utc": "2026-10-22T04:49:25.034297+00:00",
+  "id": "ocid1.instance.oc1.ap-mumbai-1.anrg6ljr4wujdnqcezvcrlwboiuw3efznrg5ztawy7tes74vcz63m3yn46ra",
+  "name": "instance-20261021-1441",
+  "shape": "VM.Standard.E5.Flex",
+  "state": "TERMINATED",
+  "source": "Authenticated OCI get-instance after approved retirement",
+  "execution_evidence": "a1-replacement-execution.json"
+}

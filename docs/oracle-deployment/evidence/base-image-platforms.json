@@ -1,0 +1,87 @@
+{
+  "observed_at_utc": "2026-10-22T03:25:46.002226+00:00",
+  "scope": "Actual registry manifests only; no layers pulled, containers built, models downloaded or runtime tested",
+  "images": [
+    {
+      "image": "node:24-bookworm-slim@sha256:a5f4366e834695d5f363b920c104953a535d3a9864d1bdf74566a0ebe01daee5",
+      "status": "manifest-digest-verified",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64",
+        "linux/ppc64le",
+        "unknown/unknown"
+      ],
+      "amd64_and_arm64": true
+    },
+    {
+      "image": "python:3.13-slim-bookworm@sha256:a1165e272e578941b84abc79e4ab38a0305cd12803a5c4247979ac7655f4d641",
+      "status": "manifest-digest-verified",
+      "platforms": [
+        "linux/386",
+        "linux/amd64",
+        "linux/arm",
+        "linux/arm64",
+        "linux/ppc64le",
+        "unknown/unknown"
+      ],
+      "amd64_and_arm64": true
+    },
+    {
+      "image": "nginx:stable-alpine@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77552a7cfe9acfb3b5",
+      "status": "manifest-digest-verified",
+      "platforms": [
+        "linux/386",
+        "linux/amd64",
+        "linux/arm",
+        "linux/arm64",
+        "linux/ppc64le",
+        "linux/riscv64",
+        "linux/s390x",
+        "unknown/unknown"
+      ],
+      "amd64_and_arm64": true
+    },
+    {
+      "image": "caddy:2-alpine@sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f",
+      "status": "manifest-digest-verified",
+      "platforms": [
+        "linux/amd64",
+        "linux/arm",
+        "linux/arm64",
+        "linux/ppc64le",
+        "linux/riscv64",
+        "linux/s390x",
+        "unknown/unknown"
+      ],
+      "amd64_and_arm64": true
+    },
+    {
+      "image": "postgres:17-bookworm@sha256:3645570cccdfa447589da9f57dd740faa29b30938e861289a5574b6ca6b03826",
+      "status": "manifest-digest-verified",
+      "platforms": [
+        "linux/386",
+        "linux/amd64",
+        "linux/arm",
+        "linux/arm64",
+        "linux/ppc64le",
+        "unknown/unknown"
+      ],
+      "amd64_and_arm64": true
+    },
+    {
+      "image": "redis:7-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+      "status": "manifest-digest-verified",
+      "platforms": [
+        "linux/386",
+        "linux/amd64",
+        "linux/arm",
+        "linux/arm64",
+        "linux/ppc64le",
+        "linux/riscv64",
+        "linux/s390x",
+        "unknown/unknown"
+      ],
+      "amd64_and_arm64": true
+    }
+  ]
+}
