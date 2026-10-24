@@ -1,7 +1,8 @@
-import {serviceHeaders} from '../../../../shared/tests/service-fixtures.mjs';
+import {serviceHeaders,configureServiceFixture} from '../../../../shared/tests/service-fixtures.mjs';
 import {serviceNonceStore} from '../../../../shared/service-auth.mjs';
 import { expect, it, vi } from 'vitest';
 import { authenticateInternal, authenticateUser } from '../middleware/authenticate.js';
+configureServiceFixture('quota');
 const response = () => ({ status: vi.fn().mockReturnThis(), json: vi.fn() }) as any;
 it('cannot authenticate an internal refund/reset using ordinary identity headers', async () => {
   const res = response(), next = vi.fn();

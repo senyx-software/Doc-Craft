@@ -59,6 +59,7 @@ import SettingsView from './subviews/SettingsView';
 import CostLedgerView from './subviews/CostLedgerView';
 import ConfigView from './subviews/ConfigView';
 import AutomationsView from './subviews/AutomationsView';
+import AIManagementView from './subviews/AIManagementView';
 
 interface DashboardPageProps {
   activeSection: string;
@@ -87,6 +88,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ activeSection }) => {
   };
 
   const renderContent = () => {
+    if(activeSection.startsWith('ai_')||activeSection==='pack_ai_models')return <AIManagementView activeSubItem={activeSection==='pack_ai_models'?'ai_assignments':activeSection}/>;
     if (activeSection === 'rev_cost_ledger') {
       return <CostLedgerView activeSubItem={activeSection} />;
     }

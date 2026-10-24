@@ -4,7 +4,7 @@
  * Includes DEMO MODE with mock quota data.
  */
 
-import type { Entitlements } from '../../../shared/entitlements.mjs';
+import type { PublicEntitlements as Entitlements } from '../../../shared/entitlements.mjs';
 import {get} from '../api/client';
 import { create } from 'zustand';
 import type { Quota, Subscription } from '../types';
@@ -18,7 +18,7 @@ import { redirectToCheckout } from '../api/payment';
 export const UNLIMITED_QUOTA = -1;
 
 function isDemoMode(): boolean {
-  return localStorage.getItem('doccraft_token') === 'demo_token_for_testing';
+  return import.meta.env.DEV && localStorage.getItem('doccraft_token') === 'demo_token_for_testing';
 }
 
 function isGuestMode(): boolean {

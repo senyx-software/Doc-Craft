@@ -11,6 +11,9 @@ export function modelTaskState(state) {
         stage:state.stage,revision:state.revision,readyToGenerate:state.readyToGenerate,
         finalization:state.finalization?{status:state.finalization.status}:undefined,
         operationResults:state.operationResults,hint:state.hint
+        ,...(state.editorContext?{editor:{selectedIds:state.editorContext.selectedIds,elements:state.editorContext.elements.filter(el=>state.editorContext.selectedIds.includes(el.id)||/title|heading/.test(el.id)).slice(0,25)},editorClarification:state.editorClarification}:{}),
+        ...(state.editorApplied?{editorApplied:true}:{}),
+        ...(state.pendingLanguage?{pendingLanguage:state.pendingLanguage,languagePending:true}:{}),
     };
 }
 

@@ -25,7 +25,7 @@ export async function sendChatMessage(data: ChatRequest): Promise<ChatResponse> 
     const turnId = data.turn_id || crypto.randomUUID();
     let response: Response;
     try {
-        response = await fetch(base + path(data.session_id) + '/message', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'text/event-stream', 'Authorization': 'Bearer ' + (requestToken || '') }, body: JSON.stringify({ message: data.message, turnId }), signal: data.signal });
+        response = await fetch(base + path(data.session_id) + '/message', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'text/event-stream', 'Authorization': 'Bearer ' + (requestToken || '') }, body: JSON.stringify({ message: data.message, turnId,...(data.editor_context?{editorContext:data.editor_context,expectedLayoutRevision:data.expected_layout_revision}: {}) }), signal: data.signal });
     } catch (error) {
         const cancelled = data.signal?.aborted || error instanceof Error && error.name === 'AbortError';
         throw new ChatStreamError(cancelled ? 'cancelled' : 'failure', cancelled ? 499 : 503, undefined, cancelled ? 'REQUEST_CANCELLED' : 'NETWORK_UNAVAILABLE');

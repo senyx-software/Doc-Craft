@@ -30,7 +30,7 @@ beforeEach(() => {
   mocks.access.mockResolvedValue('access');
   mocks.refresh.mockResolvedValue('refresh');
   mocks.mfa.mockResolvedValue('mfa');
-  reply = { status: vi.fn().mockReturnThis(), send: vi.fn().mockReturnThis() };
+  reply = { setCookie:vi.fn(),header:vi.fn().mockReturnThis(), status: vi.fn().mockReturnThis(), send: vi.fn().mockReturnThis() };
 });
 
 describe('account persistence and verification regressions', () => {

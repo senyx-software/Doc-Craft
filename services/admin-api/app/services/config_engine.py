@@ -36,7 +36,7 @@ class ConfigEngine:
             cache_manager.set(cache_key, entry.model_dump(mode="json"), ttl=self.CACHE_TTL_SECONDS)
         return entry
 
-    def update_domain_config(self, domain: str, data: Dict[str, Any], admin_id: str) -> ConfigEntry:
+    def update_domain_config(self, domain: str, data: Dict[str, Any], admin_id: str, expected_version: Optional[int] = None) -> ConfigEntry:
         """
         Updates domain configuration payload, increments version tag, records history,
         updates Redis cache, and broadcasts Pub/Sub invalidation event.
@@ -44,7 +44,7 @@ class ConfigEngine:
         domain_clean = domain.lower().strip()
         
         # 1. Write to repository & increment version
-        updated_entry = config_repository.update_domain_config(domain_clean, data, admin_id)
+        updated_entry = config_repository.update_domain_config(domain_clean, data, admin_id, **({'expected_version': expected_version} if expected_version is not None else {}))
 
         # 2. Update Redis Cache
         cache_key = self._cache_key_for_domain(domain_clean)

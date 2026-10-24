@@ -26,22 +26,29 @@ READABLE={
  'analytics':{'users','chat_sessions','chat_messages','generated_documents','tool_executions','ai_usages','documents','subscriptions','billing_invoices'},
 }
 
-def provision(connection,prefix):
+def provision(connection,prefix,*,expected_database=None,credentials=None):
     if not prefix.replace('_','').isalnum():raise ValueError('Invalid staging role prefix')
     result={}
     with connection.cursor() as cursor:
         cursor.execute('SELECT current_database()');database=cursor.fetchone()[0]
-        if not database.startswith(('doccraft_staging_','doccraft_phase4_')):raise ValueError('Refusing a database outside the staging/task namespace')
+        if expected_database is None:
+            if not database.startswith(('doccraft_staging_','doccraft_phase4_')):raise ValueError('Refusing a database outside the staging/task namespace')
+        elif database != expected_database or not credentials or set(credentials)!=set(OWNED):
+            raise ValueError('Explicit database and complete persistent runtime credentials required')
         cursor.execute("SELECT tablename FROM pg_tables WHERE schemaname='public'");tables={row[0] for row in cursor.fetchall()}
         known=set().union(*OWNED.values())
         admin_tables=tables-known-{'_prisma_migrations'}
         # Explicit known admin tables; unknown tables fail review rather than receiving a wildcard grant.
-        admin_tables={name for name in admin_tables if name in {'active_sessions','bot_detection_logs','rate_limit_violations','account_abuse_reports','refund_requests','contact_submissions','plan_override_requests','system_announcements'} or name.startswith(('admin_','uploaded_template_','entitlement_','config_','verification_','automation_','security_','staff_','support_','notification_','promotion_','referral_','cost_','gdpr_','report_','user_quota_','coupon_','ip_','login_','role_','permission_'))}
+        admin_tables={name for name in admin_tables if name in {'ai_credentials','ai_model_health','ai_inference_ledger','ai_inference_queue','active_sessions','bot_detection_logs','rate_limit_violations','account_abuse_reports','refund_requests','contact_submissions','plan_override_requests','system_announcements'} or name.startswith(('admin_','uploaded_template_','entitlement_','config_','verification_','automation_','security_','staff_','support_','notification_','promotion_','referral_','cost_','gdpr_','report_','user_quota_','coupon_','ip_','login_','role_','permission_'))}
         cursor.execute('REVOKE CREATE ON SCHEMA public FROM PUBLIC')
         cursor.execute('REVOKE ALL ON ALL TABLES IN SCHEMA public FROM PUBLIC')
         for service,owned in OWNED.items():
-            role=prefix+'_'+service.replace('-','_');password=secrets.token_urlsafe(36)
-            cursor.execute(sql.SQL('CREATE ROLE {} LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT PASSWORD %s').format(sql.Identifier(role)),(password,))
+            role=prefix+'_'+service.replace('-','_');password=credentials[service]['password'] if credentials else secrets.token_urlsafe(36)
+            if len(password)<32:raise ValueError('Runtime credential is too short')
+            cursor.execute('SELECT rolsuper,rolcreatedb,rolcreaterole FROM pg_roles WHERE rolname=%s',(role,));existing=cursor.fetchone()
+            if existing:
+                if not credentials or any(existing):raise ValueError('Existing runtime role is not approved or has elevated privileges')
+            else:cursor.execute(sql.SQL('CREATE ROLE {} LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT PASSWORD %s').format(sql.Identifier(role)),(password,))
             cursor.execute(sql.SQL('GRANT CONNECT ON DATABASE {} TO {}').format(sql.Identifier(database),sql.Identifier(role)))
             cursor.execute(sql.SQL('GRANT USAGE ON SCHEMA public TO {}').format(sql.Identifier(role)))
             selected=(owned if service!='admin-api' else admin_tables)&tables

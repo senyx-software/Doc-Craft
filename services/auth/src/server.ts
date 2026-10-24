@@ -10,6 +10,7 @@ import metricsPlugin from 'fastify-metrics';
 import { prisma } from './db/prisma.js';
 import cookie from '@fastify/cookie';
 import oauthPlugin from '@fastify/oauth2';
+import {googleOAuthOptions} from './services/google-oauth.service.js';
 import { authRoutes } from './routes/auth.routes.js';
 import { internalRoutes } from './routes/internal.routes.js';
 import dotenv from 'dotenv';
@@ -97,24 +98,9 @@ async function main() {
     }
   });
 
-  await server.register(oauthPlugin as any, {
-    name: 'googleOAuth2',
-    credentials: {
-      client: {
-        id: process.env.GOOGLE_CLIENT_ID || 'dummy_id',
-        secret: process.env.GOOGLE_CLIENT_SECRET || 'dummy_secret'
-      },
-      auth: {
-        authorizeHost: 'https://accounts.google.com',
-        authorizePath: '/o/oauth2/v2/auth',
-        tokenHost: 'https://oauth2.googleapis.com',
-        tokenPath: '/token'
-      }
-    },
-    startRedirectPath: '/v1/auth/login/google',
-    callbackUri: process.env.GOOGLE_CALLBACK_URL || 'http://localhost:3011/v1/auth/oauth/google/callback',
-    scope: ['profile', 'email']
-  });
+  const oauth = googleOAuthOptions();
+  if (oauth) await server.register(oauthPlugin as any, oauth);
+  else server.get('/v1/auth/login/google', async (_request, reply) => reply.status(503).send({error:'Google sign-in is unavailable'}));
 
   await server.register(authRoutes, { prefix: '/v1/auth' });
   await server.register(authRoutes);

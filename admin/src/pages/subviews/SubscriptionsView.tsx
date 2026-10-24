@@ -246,7 +246,7 @@ const SubscriptionsView: React.FC<SubscriptionsViewProps> = ({ activeSubItem }) 
                   <td className="py-3 font-bold text-appTextPrimary">{sub.plan_name || sub.planName || sub.plan || '—'}</td>
                   <td className="py-3 text-appTextSecondary capitalize">{sub.gateway || '—'}</td>
                   <td className="py-3"><Badge variant={badgeVariant}>{subStatus.toUpperCase()}</Badge></td>
-                  <td className="py-3 font-mono font-bold text-appTextPrimary">{amount}</td>
+                  <td className="py-3 font-mono font-bold text-appTextPrimary">{amount}{sub.billing_cycle&&<span className="block text-xs text-appTextSecondary">{sub.billing_cycle}</span>}</td>
                   <td className="py-3 text-appTextSecondary">{fmtDate(periodStart)}</td>
                   <td className="py-3 text-appTextSecondary">{fmtDate(periodEnd)}</td>
                 </tr>
@@ -330,9 +330,9 @@ const SubscriptionsView: React.FC<SubscriptionsViewProps> = ({ activeSubItem }) 
                       {(inv.user_id || '—').substring(0, 16)}
                     </td>
                     <td className="py-3 font-bold font-mono text-appTextPrimary">
-                      {inv.amount != null ? `$${Number(inv.amount).toFixed(2)}` : '—'}
+                      {inv.amount != null ? `${Number(inv.amount).toFixed(2)}` : '—'}
                     </td>
-                    <td className="py-3 text-appTextSecondary uppercase">{inv.currency || 'USD'}</td>
+                    <td className="py-3 text-appTextSecondary uppercase">{inv.currency || 'Currency unavailable'}</td>
                     <td className="py-3 text-purple-500 capitalize flex items-center gap-1">
                       <ShieldAlert size={12} /> {inv.gateway || '—'}
                     </td>
@@ -390,7 +390,7 @@ const SubscriptionsView: React.FC<SubscriptionsViewProps> = ({ activeSubItem }) 
                       {inv.gateway_invoice_id || '—'}
                     </td>
                     <td className="py-3 font-bold font-mono text-appError">
-                      {inv.amount != null ? `$${Number(inv.amount).toFixed(2)}` : '—'}
+                      {inv.amount != null ? `${Number(inv.amount).toFixed(2)}` : '—'}
                     </td>
                     <td className="py-3 text-appTextSecondary capitalize">{inv.gateway || '—'}</td>
                     <td className="py-3 text-appTextSecondary">
@@ -523,9 +523,9 @@ const SubscriptionsView: React.FC<SubscriptionsViewProps> = ({ activeSubItem }) 
                         {(inv.user_id || '—').substring(0, 14)}
                       </td>
                       <td className="py-2 font-mono font-bold text-appTextPrimary">
-                        {inv.amount != null ? `$${Number(inv.amount).toFixed(2)}` : '—'}
+                        {inv.amount != null ? `${Number(inv.amount).toFixed(2)}` : '—'}
                       </td>
-                      <td className="py-2 text-appTextSecondary uppercase">{inv.currency || 'USD'}</td>
+                      <td className="py-2 text-appTextSecondary uppercase">{inv.currency || 'Currency unavailable'}</td>
                       <td className="py-2 text-appTextSecondary capitalize">{inv.gateway || '—'}</td>
                       <td className="py-2 text-appTextSecondary">
                         {inv.created_at ? new Date(inv.created_at).toLocaleDateString() : '—'}

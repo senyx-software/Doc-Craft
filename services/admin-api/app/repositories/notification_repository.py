@@ -1,4 +1,5 @@
 import json
+import os
 import uuid
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
@@ -108,7 +109,7 @@ DEFAULT_SETTINGS: Dict[str, Any] = {
     # in Resend — sending from an unverified domain is a strong spam signal.
     # doc-craft.com is the verified domain; senyxsoftware.com previously
     # seeded here was never verified and is why mail landed in spam.
-    "sender_email": "noreply@doc-craft.com",
+    "sender_email": os.getenv("RESEND_FROM_EMAIL") or "noreply@doc-craft.com",
     "sender_name": "DocCraft Platform",
     "max_retries": "3",
     "rate_limit_per_minute": "100",

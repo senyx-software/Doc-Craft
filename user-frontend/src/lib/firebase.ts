@@ -2,7 +2,8 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, inMemoryPersistence, setPersistence, signInWithPopup, signOut } from 'firebase/auth';
 
 const app = initializeApp({
-  apiKey: 'AIzaSyBwMVjcVrN6gzFsO63Lsnx4CgDa66bwL9w',
+  // Firebase web client configuration is public; backend verifies Firebase ID tokens.
+  apiKey: 'AIzaSyBwMVjcVrN6gzFsO63Lsnx4CgDa66bwL9w', // gitleaks:allow -- public Firebase web identifier; restrict authorized domains/API access
   authDomain: 'doc-craft-57643.firebaseapp.com',
   projectId: 'doc-craft-57643',
   storageBucket: 'doc-craft-57643.firebasestorage.app',

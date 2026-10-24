@@ -1,4 +1,6 @@
 import json
+from uuid import uuid4
+import sqlite3
 from shared.sealed_secret import seal_secret,open_secret
 from datetime import datetime, timezone
 from typing import List, Optional
@@ -38,65 +40,54 @@ class AdminUserRepository:
         return self._row_to_model(row) if row else None
 
     def get_by_email(self, email: str) -> Optional[AdminUser]:
-        row = admin_db.fetch_one("SELECT * FROM admin_users WHERE LOWER(email) = ?", (email.lower().strip(),))
+        row = admin_db.fetch_one("SELECT * FROM admin_users WHERE LOWER(TRIM(email)) = ?", (email.lower().strip(),))
         return self._row_to_model(row) if row else None
 
-    def save(self, user: AdminUser) -> AdminUser:
+    def _persist(self, user: AdminUser, *, creating: bool) -> AdminUser:
         now_iso = datetime.now(timezone.utc).isoformat()
         is_super = 1 if user.role_id == "role_super_admin" or getattr(user, "is_super_admin", False) else 0
 
-        admin_db.execute(
-            """
-            INSERT OR REPLACE INTO admin_users 
-            (id, email, password_hash, name, role_id, role_name, is_super_admin, totp_enabled, totp_secret, status, created_at, updated_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """,
-            (
-                user.id,
-                user.email.lower().strip(),
-                user.password_hash,
-                user.name,
-                user.role_id,
-                "Super Admin" if is_super else "Staff",
-                is_super,
-                1 if user.totp_enabled else 0,
-                seal_secret(user.totp_secret,user.id),
-                user.status or "active",
-                now_iso,
-                now_iso,
-            ),
-        )
+        email = user.email.lower().strip()
+        values = (email, user.password_hash, user.name, user.role_id,
+                  "Super Admin" if is_super else "Staff", is_super,
+                  1 if user.totp_enabled else 0, seal_secret(user.totp_secret, user.id),
+                  user.status or "active")
+        try:
+            if creating:
+                # Create must never replace an existing identity, including on retries.
+                admin_db.execute("""INSERT INTO admin_users
+                    (email,password_hash,name,role_id,role_name,is_super_admin,
+                     totp_enabled,totp_secret,status,id,created_at,updated_at)
+                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?)""",
+                    (*values, user.id, now_iso, now_iso))
+            else:
+                count = admin_db.execute("""UPDATE admin_users SET email=?,password_hash=?,
+                    name=?,role_id=?,role_name=?,is_super_admin=?,totp_enabled=?,
+                    totp_secret=?,status=?,updated_at=? WHERE id=?""",
+                    (*values, now_iso, user.id))
+                if count != 1:
+                    raise AppException("Administrator account no longer exists", code="NOT_FOUND", status_code=404)
+        except Exception as error:
+            if isinstance(error, sqlite3.IntegrityError) or getattr(error, 'pgcode', None) == '23505':
+                raise AppException("Administrator identity or email already exists", code="ADMIN_CONFLICT", status_code=409) from error
+            raise
         return self.get_by_id(user.id) or user
 
+    def save(self, user: AdminUser) -> AdminUser:
+        """Update an existing account; creation has a separate insert-only contract."""
+        return self._persist(user, creating=False)
+
     def create(self, email: str, password_hash: str, role_id: str, name: Optional[str] = None) -> AdminUser:
-        # MAX(existing numeric suffix) + 1, not COUNT(rows) + 1 — a count-based
-        # id is only safe if rows are never deleted. Once any row is removed
-        # (e.g. staff removal, or just test cleanup), the count drops and a
-        # freshly generated id can coincide with a still-existing row's id;
-        # since `save()` does INSERT OR REPLACE keyed by id, that silently
-        # overwrites the unrelated existing account (a real, observed bug —
-        # a staff invite corrupted an unrelated super admin's row this way).
-        max_num = 0
-        for row in self.list_all():
-            suffix = row.id.removeprefix("adm_")
-            if suffix.isdigit():
-                max_num = max(max_num, int(suffix))
-        user_id = f"adm_{max_num + 1:03d}"
-        user = AdminUser(
-            id=user_id,
-            email=email,
-            password_hash=password_hash,
-            role_id=role_id,
-            name=name,
-            status="active",
-        )
-        return self.save(user)
+        user = AdminUser(id="adm_" + uuid4().hex, email=email.lower().strip(),
+                         password_hash=password_hash, role_id=role_id,
+                         name=name, status="active")
+        return self._persist(user, creating=True)
 
     def update_password(self, email: str, new_password_hash: str) -> bool:
         account=self.get_by_email(email)
         if account:admin_db.execute('DELETE FROM admin_login_sessions WHERE admin_id=?',(account.id,))
         count = admin_db.execute(
-            "UPDATE admin_users SET password_hash = ?, updated_at = ? WHERE LOWER(email) = ?",
+            "UPDATE admin_users SET password_hash = ?, updated_at = ? WHERE LOWER(TRIM(email)) = ?",
             (new_password_hash, datetime.now(timezone.utc).isoformat(), email.lower().strip()),
         )
         return count > 0

@@ -84,7 +84,7 @@ export async function* runGroqAgenticLoop(messages: ConversationMessage[], syste
         }
         let needsUserInput = false;
         for (const tool of answer.tool_calls) {
-            if (!['update_slots', 'get_session_state'].includes(tool.function.name)) {
+            if (!['update_slots', 'get_session_state','edit_canvas','get_editor_selection','undo_document','redo_document','propose_language_correction'].includes(tool.function.name)) {
                 yield {type:'error',code:'TOOL_SCHEMA_INVALID',phase:'tool',retryable:false,message:'Invalid tool request'};
                 return;
             }
@@ -111,7 +111,7 @@ export async function* runGroqAgenticLoop(messages: ConversationMessage[], syste
                 return;
             }
             const payload=(result.content as any[])?.find(block=>block.type==='text')?.text;
-            let outcomes:any[]=[];try {outcomes=JSON.parse(payload||'{}').operationResults||[];}catch{}
+            let outcomes:any[]=[];try {const parsed=JSON.parse(payload||'{}');outcomes=parsed.operationResults||[];mutationResolved ||= parsed.editorApplied===true;}catch{}
             if(tool.function.name==='update_slots') {
                 let committed:any;try{committed=JSON.parse(payload||'{}');}catch{}
                 mutationResolved ||= outcomes.some(outcome=>['committed','cleared','unchanged','retained','skipped','conflicting','needs_confirmation','needs_value'].includes(outcome.outcome)) || !!args.requestField&&committed?.nextAction?.field===args.requestField;

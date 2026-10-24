@@ -98,3 +98,26 @@ it('T21 successive metadata choices are serialized and superseded queued choices
  await vi.waitFor(()=>expect(mocks.template).toHaveBeenCalledWith('s','tmpl_invoice_2023_02'));
  expect(useDocumentStore.getState().selectedTemplate).toBe('tmpl_invoice_2023_02');
 });
+it('literal custom templates persist through the scoped canvas API and hydrate without built-in elements',async()=>{
+ useDocumentStore.getState().hydrateConversation({sessionId:'s',templateId:'tmpl_invoice_2023_01',documentType:'invoice',slots:{businessName:'Nexora'}});
+ useDocumentStore.getState().applyCustomTemplateElements([{id:'saved',type:'text',section:'custom',x:20,y:30,w:200,h:40,zIndex:1,text:'Saved literal',fontSize:20,fontWeight:400,color:'#112233',align:'left'}],595,842,'#ffffff');
+ await flushCanvasLayout();
+ const layout=(mocks.canvasWrite.mock.calls.at(-1)![1] as {body:{layout:NonNullable<ConversationSnapshot['canvasLayout']>}}).body.layout;
+ expect(layout.canvasMode).toBe('literal');expect(layout.customElements).toHaveLength(1);
+ useDocumentStore.getState().hydrateConversation({sessionId:'s',templateId:'tmpl_invoice_2023_01',documentType:'invoice',slots:{businessName:'Nexora'},canvasLayout:layout});
+ expect(useDocumentStore.getState().canvasElements).toHaveLength(1);
+ expect(useDocumentStore.getState().canvasElements![0]).toMatchObject({text:'Saved literal',x:20,y:30});
+ useDocumentStore.getState().refreshCanvasElements({businessName:'Other value',documentType:'invoice'});
+ expect(useDocumentStore.getState().canvasElements).toHaveLength(1);
+});
+it('resetting a literal layout and local undo/redo retain the canvas mode',()=>{
+ useDocumentStore.getState().hydrateConversation({sessionId:'s',templateId:'tmpl_invoice_2023_01',documentType:'invoice',slots:{}});
+ useDocumentStore.getState().applyCustomTemplateElements([{id:'saved',type:'text',section:'custom',x:20,y:30,w:200,h:40,zIndex:1,text:'Saved literal',fontSize:20,fontWeight:400,color:'#112233',align:'left'}]);
+ mocks.chat.sessionId='';
+ useDocumentStore.getState().resetElementLayout({documentType:'invoice'});
+ expect(useDocumentStore.getState().canvasMode).toBe('template');expect(useDocumentStore.getState().canvasElements!.length).toBeGreaterThan(1);
+ useDocumentStore.getState().undo({documentType:'invoice'});
+ expect(useDocumentStore.getState().canvasMode).toBe('literal');expect(useDocumentStore.getState().canvasElements).toHaveLength(1);
+ useDocumentStore.getState().redo({documentType:'invoice'});
+ expect(useDocumentStore.getState().canvasMode).toBe('template');
+});

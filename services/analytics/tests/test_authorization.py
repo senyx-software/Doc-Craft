@@ -52,3 +52,17 @@ def test_internal_event_and_authenticated_client_event(monkeypatch):
         assert client.post("/v1/analytics/client-event", json={"eventName": "payment_success"}).status_code == 400
     finally:
         app.dependency_overrides.clear()
+
+def test_reporting_query_failures_are_sanitized_non_success(monkeypatch):
+    import pytest
+    from fastapi import HTTPException
+    from app.routers import analytics
+    def unavailable(*args, **kwargs):
+        raise RuntimeError('sensitive-query-diagnostic')
+    monkeypatch.setattr(analytics.pd, 'read_sql_query', unavailable)
+    for handler in (analytics.get_overview, analytics.get_generations, analytics.get_users):
+        with pytest.raises(HTTPException) as error:
+            handler(None)
+        assert error.value.status_code == 503
+        assert error.value.detail == 'Analytics reporting unavailable'
+        assert 'sensitive' not in error.value.detail

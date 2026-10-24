@@ -19,8 +19,7 @@ const CONFIG_DOMAINS = [
   { id: 'feature_flags', label: 'Feature Flags Matrix', desc: 'Global and plan-level feature toggles (watermark removal, custom fonts, etc.)' },
   { id: 'branding', label: 'App Branding & Assets', desc: 'Company details, logo URLs, custom CSS overrides, and email signatures' },
   { id: 'settings', label: 'Gateway & Payment Settings', desc: 'Per-role API rate limits (Gateway) and which payment gateways are enabled (Payment Service)' },
-  { id: 'ai_model_routing', label: 'AI Provider & Model Access', desc: 'Select provider: groq or claude. Configure plan model ceilings. Credentials are supplied securely by the operator.' },
-  { id: 'mcp_tools', label: 'Chat Assistant MCP Tool Config', desc: 'Model parameters, system prompts, tool permissions, and temperature settings' },
+  { id: 'chat_mcp_tools', label: 'Chat Assistant MCP Tool Config', desc: 'External chat integration tool availability and rate limits. Models and credentials are managed in AI Management.' },
 ];
 
 function getDomainDefault(domain: string) {
@@ -54,14 +53,10 @@ function getDomainDefault(domain: string) {
           document_storage_provider: 'local',
           rate_limits: { auth: 10, admin: 200, user: 100, public: 20 },
         };
-      case 'ai_model_routing':
-        return { provider: 'groq', free: {max_model:'claude-haiku-4-5'}, pro: {max_model:'claude-sonnet-4-5'}, max: {max_model:'claude-sonnet-4-5'} };
-      case 'mcp_tools':
+      case 'chat_mcp_tools':
         return {
-          model: 'gemini-3.6-flash',
-          temperature: 0.2,
-          max_tokens: 4096,
-          allowed_tools: ['generate_pdf', 'edit_template', 'suggest_edits'],
+          send_message: {enabled:true,rate_limit_per_min:60},
+          inspect_session_resources: {enabled:true,admin_read_only:true},
         };
       default:
         return {};

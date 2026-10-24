@@ -1,46 +1,69 @@
 # Local development topology. TLS and deployed security controls remain release gates.
 services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: doccraft-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-doccraft}
+    ports:
+      - 127.0.0.1:${POSTGRES_PORT:-5432}:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./supabase-schema.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U $${POSTGRES_USER:-postgres} -d $${POSTGRES_DB:-doccraft}
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - backend
+
   redis:
     image: redis:7-alpine
     container_name: doccraft-redis
     restart: unless-stopped
+    ports:
+      - 127.0.0.1:${REDIS_PORT:-6379}:${REDIS_PORT:-6379}
     volumes:
       - redis_data:/data
     healthcheck:
       test:
-        - CMD
-        - redis-cli
-        - --port
-        - ${REDIS_PORT}
-        - --user
-        - health
-        - ping
+        - CMD-SHELL
+        - 'redis-cli --port "$${REDIS_PORT:-6379}" --user health ping | grep -qx PONG'
       interval: 5s
       timeout: 5s
       retries: 5
     command:
       - redis-server
       - --port
-      - ${REDIS_PORT}
+      - "${REDIS_PORT:-6379}"
       - --bind
       - 0.0.0.0
       - --protected-mode
-      - yes
+      - "yes"
       - --aclfile
       - /run/secrets/redis_acl
       - --appendonly
-      - yes
+      - "yes"
       - --appendfsync
       - everysec
       - --maxmemory-policy
       - noeviction
     env_file:
       - .local/secrets/redis-health.env
+    environment:
+      REDIS_PORT: ${REDIS_PORT:-6379}
     secrets:
       - source: redis_acl
         target: redis_acl
     networks:
       - backend
+
   gateway:
     build:
       context: .
@@ -50,17 +73,17 @@ services:
       - services/gateway/gateway.env
       - .local/secrets/gateway.env
     environment:
-      AUTH_SERVICE_URL: http://auth:${AUTH_PORT}
-      AI_SERVICE_URL: http://chat:${CHAT_PORT}
-      DOCUMENT_SERVICE_URL: http://document:${DOCUMENT_PORT}
-      BILLING_SERVICE_URL: http://payment:${PAYMENT_PORT}
-      QUOTA_SERVICE_URL: http://quota:${QUOTA_PORT}
-      NOTIFICATION_SERVICE_URL: http://notification:${NOTIFICATION_PORT}
-      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT}
-      ADMIN_API_SERVICE_URL: http://admin-api:${ADMIN_API_PORT}
+      AUTH_SERVICE_URL: http://auth:${AUTH_PORT:-3011}
+      AI_SERVICE_URL: http://chat:${CHAT_PORT:-3016}
+      DOCUMENT_SERVICE_URL: http://document:${DOCUMENT_PORT:-3013}
+      BILLING_SERVICE_URL: http://payment:${PAYMENT_PORT:-3014}
+      QUOTA_SERVICE_URL: http://quota:${QUOTA_PORT:-3015}
+      NOTIFICATION_SERVICE_URL: http://notification:${NOTIFICATION_PORT:-3012}
+      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT:-3017}
+      ADMIN_API_SERVICE_URL: http://admin-api:${ADMIN_API_PORT:-3018}
       SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
     ports:
-      - 127.0.0.1:${GATEWAY_PORT}:${GATEWAY_PORT}
+      - 127.0.0.1:${GATEWAY_PORT:-3001}:${GATEWAY_PORT:-3001}
     depends_on:
       redis:
         condition: service_healthy
@@ -86,11 +109,11 @@ services:
     networks:
       - backend
       - egress
-      - egress
     init: true
     stop_grace_period: 30s
     security_opt:
       - no-new-privileges:true
+
   auth:
     build:
       context: .
@@ -100,11 +123,15 @@ services:
       - services/auth/auth.env
       - .local/secrets/auth.env
     environment:
-      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT}
-      NOTIFICATION_SERVICE_URL: http://notification:${NOTIFICATION_PORT}
+      DATABASE_URL: ${DOCKER_DATABASE_URL:-postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-doccraft}}
+      DIRECT_URL: ${DOCKER_DIRECT_URL:-postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-doccraft}}
+      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT:-3017}
+      NOTIFICATION_SERVICE_URL: http://notification:${NOTIFICATION_PORT:-3012}
       SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
     depends_on:
       redis:
+        condition: service_healthy
+      postgres:
         condition: service_healthy
     secrets:
       - source: auth_identity
@@ -112,11 +139,11 @@ services:
     networks:
       - backend
       - egress
-      - egress
     init: true
     stop_grace_period: 30s
     security_opt:
       - no-new-privileges:true
+
   quota:
     build:
       context: .
@@ -126,12 +153,16 @@ services:
       - services/quota/quota.env
       - .local/secrets/quota.env
     environment:
-      AUTH_SERVICE_URL: http://auth:${AUTH_PORT}
-      ADMIN_API_SERVICE_URL: http://admin-api:${ADMIN_API_PORT}
-      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT}
+      DATABASE_URL: ${DOCKER_DATABASE_URL:-postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-doccraft}}
+      DIRECT_URL: ${DOCKER_DIRECT_URL:-postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-doccraft}}
+      AUTH_SERVICE_URL: http://auth:${AUTH_PORT:-3011}
+      ADMIN_API_SERVICE_URL: http://admin-api:${ADMIN_API_PORT:-3018}
+      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT:-3017}
       SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
     depends_on:
       redis:
+        condition: service_healthy
+      postgres:
         condition: service_healthy
     secrets:
       - source: quota_identity
@@ -143,6 +174,7 @@ services:
     stop_grace_period: 30s
     security_opt:
       - no-new-privileges:true
+
   chat:
     build:
       context: .
@@ -152,14 +184,18 @@ services:
       - services/chat/chat.env
       - .local/secrets/chat.env
     environment:
-      AUTH_SERVICE_URL: http://auth:${AUTH_PORT}
-      ADMIN_API_SERVICE_URL: http://admin-api:${ADMIN_API_PORT}
-      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT}
-      AI_SERVICE_URL: http://chat:${CHAT_PORT}
-      QUOTA_SERVICE_URL: http://quota:${QUOTA_PORT}
+      DATABASE_URL: ${DOCKER_DATABASE_URL:-postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-doccraft}}
+      DIRECT_URL: ${DOCKER_DIRECT_URL:-postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-doccraft}}
+      AUTH_SERVICE_URL: http://auth:${AUTH_PORT:-3011}
+      ADMIN_API_SERVICE_URL: http://admin-api:${ADMIN_API_PORT:-3018}
+      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT:-3017}
+      AI_SERVICE_URL: http://chat:${CHAT_PORT:-3016}
+      QUOTA_SERVICE_URL: http://quota:${QUOTA_PORT:-3015}
       SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
     depends_on:
       redis:
+        condition: service_healthy
+      postgres:
         condition: service_healthy
     secrets:
       - source: chat_identity
@@ -171,6 +207,7 @@ services:
     stop_grace_period: 30s
     security_opt:
       - no-new-privileges:true
+
   document:
     build:
       context: .
@@ -180,15 +217,18 @@ services:
       - services/document/document.env
       - .local/secrets/document.env
     environment:
-      AI_SERVICE_URL: http://chat:${CHAT_PORT}
-      QUOTA_SERVICE_URL: http://quota:${QUOTA_PORT}
-      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT}
-      AUTH_SERVICE_URL: http://auth:${AUTH_PORT}
-      GATEWAY_URL: http://gateway:${GATEWAY_PORT}
-      SIDECAR_URL: http://pdf:${DOCUMENT_SIDECAR_PORT}/generate
+      DATABASE_URL: ${DOCKER_DATABASE_URL:-postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-doccraft}}
+      AI_SERVICE_URL: http://chat:${CHAT_PORT:-3016}
+      QUOTA_SERVICE_URL: http://quota:${QUOTA_PORT:-3015}
+      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT:-3017}
+      AUTH_SERVICE_URL: http://auth:${AUTH_PORT:-3011}
+      GATEWAY_URL: http://gateway:${GATEWAY_PORT:-3001}
+      SIDECAR_URL: http://pdf:${DOCUMENT_SIDECAR_PORT:-3023}/generate
       SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
     depends_on:
       redis:
+        condition: service_healthy
+      postgres:
         condition: service_healthy
       pdf:
         condition: service_started
@@ -210,7 +250,8 @@ services:
       - --host
       - 0.0.0.0
       - --port
-      - ${DOCUMENT_PORT}
+      - "${DOCUMENT_PORT:-3013}"
+
   payment:
     build:
       context: .
@@ -220,14 +261,18 @@ services:
       - services/payment/payment.env
       - .local/secrets/payment.env
     environment:
-      QUOTA_SERVICE_URL: http://quota:${QUOTA_PORT}
-      NOTIFICATION_SERVICE_URL: http://notification:${NOTIFICATION_PORT}
-      ADMIN_API_SERVICE_URL: http://admin-api:${ADMIN_API_PORT}
-      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT}
-      AUTH_SERVICE_URL: http://auth:${AUTH_PORT}
+      DATABASE_URL: ${DOCKER_DATABASE_URL:-postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-doccraft}}
+      DIRECT_URL: ${DOCKER_DIRECT_URL:-postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-doccraft}}
+      QUOTA_SERVICE_URL: http://quota:${QUOTA_PORT:-3015}
+      NOTIFICATION_SERVICE_URL: http://notification:${NOTIFICATION_PORT:-3012}
+      ADMIN_API_SERVICE_URL: http://admin-api:${ADMIN_API_PORT:-3018}
+      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT:-3017}
+      AUTH_SERVICE_URL: http://auth:${AUTH_PORT:-3011}
       SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
     depends_on:
       redis:
+        condition: service_healthy
+      postgres:
         condition: service_healthy
     secrets:
       - source: payment_identity
@@ -239,6 +284,7 @@ services:
     stop_grace_period: 30s
     security_opt:
       - no-new-privileges:true
+
   notification:
     build:
       context: .
@@ -248,11 +294,14 @@ services:
       - services/notification/notification.env
       - .local/secrets/notification.env
     environment:
-      AUTH_SERVICE_URL: http://auth:${AUTH_PORT}
-      ADMIN_API_URL: http://admin-api:${ADMIN_API_PORT}
+      DATABASE_URL: ${DOCKER_DATABASE_URL:-postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-doccraft}}
+      AUTH_SERVICE_URL: http://auth:${AUTH_PORT:-3011}
+      ADMIN_API_URL: http://admin-api:${ADMIN_API_PORT:-3018}
       SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
     depends_on:
       redis:
+        condition: service_healthy
+      postgres:
         condition: service_healthy
     secrets:
       - source: notification_identity
@@ -264,6 +313,7 @@ services:
     stop_grace_period: 30s
     security_opt:
       - no-new-privileges:true
+
   analytics:
     build:
       context: .
@@ -273,9 +323,12 @@ services:
       - services/analytics/analytics.env
       - .local/secrets/analytics.env
     environment:
+      DATABASE_URL: ${DOCKER_DATABASE_URL:-postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-doccraft}}
       SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
     depends_on:
       redis:
+        condition: service_healthy
+      postgres:
         condition: service_healthy
     secrets:
       - source: analytics_identity
@@ -287,6 +340,7 @@ services:
     stop_grace_period: 30s
     security_opt:
       - no-new-privileges:true
+
   admin-api:
     build:
       context: .
@@ -296,19 +350,23 @@ services:
       - services/admin-api/admin-api.env
       - .local/secrets/admin-api.env
     environment:
-      AUTH_SERVICE_URL: http://auth:${AUTH_PORT}
-      QUOTA_SERVICE_URL: http://quota:${QUOTA_PORT}
-      PAYMENT_SERVICE_URL: http://payment:${PAYMENT_PORT}
-      CHAT_SERVICE_URL: http://chat:${CHAT_PORT}
-      DOCUMENT_SERVICE_URL: http://document:${DOCUMENT_PORT}
-      NOTIFICATION_SERVICE_URL: http://notification:${NOTIFICATION_PORT}
-      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT}
-      GATEWAY_URL: http://gateway:${GATEWAY_PORT}
+      DATABASE_URL: ${DOCKER_DATABASE_URL:-postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-doccraft}}
+      ADMIN_DATABASE_URL: ${DOCKER_ADMIN_DATABASE_URL:-postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-doccraft}}
+      AUTH_SERVICE_URL: http://auth:${AUTH_PORT:-3011}
+      QUOTA_SERVICE_URL: http://quota:${QUOTA_PORT:-3015}
+      PAYMENT_SERVICE_URL: http://payment:${PAYMENT_PORT:-3014}
+      CHAT_SERVICE_URL: http://chat:${CHAT_PORT:-3016}
+      DOCUMENT_SERVICE_URL: http://document:${DOCUMENT_PORT:-3013}
+      NOTIFICATION_SERVICE_URL: http://notification:${NOTIFICATION_PORT:-3012}
+      ANALYTICS_SERVICE_URL: http://analytics:${ANALYTICS_PORT:-3017}
+      GATEWAY_URL: http://gateway:${GATEWAY_PORT:-3001}
       SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
     ports:
-      - 127.0.0.1:${ADMIN_API_PORT}:${ADMIN_API_PORT}
+      - 127.0.0.1:${ADMIN_API_PORT:-3018}:${ADMIN_API_PORT:-3018}
     depends_on:
       redis:
+        condition: service_healthy
+      postgres:
         condition: service_healthy
     secrets:
       - source: admin-api_identity
@@ -320,15 +378,16 @@ services:
     stop_grace_period: 30s
     security_opt:
       - no-new-privileges:true
+
   user:
     build:
       context: .
       dockerfile: user-frontend/Dockerfile
     container_name: doccraft-user-frontend
     environment:
-      VITE_API_BASE_URL: http://localhost:${GATEWAY_PORT}/v1
+      VITE_API_BASE_URL: http://localhost:${GATEWAY_PORT:-3001}/v1
     ports:
-      - 127.0.0.1:${USER_FRONTEND_PORT}:${USER_FRONTEND_PORT}
+      - 127.0.0.1:${USER_FRONTEND_PORT:-5173}:${USER_FRONTEND_PORT:-5173}
     volumes:
       - ./user-frontend:/app/user-frontend
       - /app/user-frontend/node_modules
@@ -337,16 +396,17 @@ services:
       - gateway
     networks:
       - egress
+
   admin:
     build:
       context: ./admin
       dockerfile: Dockerfile
     container_name: doccraft-admin-frontend
     environment:
-      VITE_API_BASE_URL: http://localhost:${GATEWAY_PORT}/v1
-      VITE_ADMIN_API_BASE_URL: http://localhost:${ADMIN_API_PORT}/api/v1
+      VITE_API_BASE_URL: http://localhost:${GATEWAY_PORT:-3001}/v1
+      VITE_ADMIN_API_BASE_URL: http://localhost:${ADMIN_API_PORT:-3018}/api/v1
     ports:
-      - 127.0.0.1:${ADMIN_FRONTEND_PORT}:${ADMIN_FRONTEND_PORT}
+      - 127.0.0.1:${ADMIN_FRONTEND_PORT:-5174}:${ADMIN_FRONTEND_PORT:-5174}
     volumes:
       - ./admin:/app
       - /app/node_modules
@@ -354,6 +414,7 @@ services:
       - gateway
     networks:
       - egress
+
   pdf:
     build:
       context: .
@@ -363,7 +424,7 @@ services:
       - .local/secrets/pdf.env
     environment:
       NODE_ENV: production
-      SIDECAR_PORT: ${DOCUMENT_SIDECAR_PORT}
+      SIDECAR_PORT: ${DOCUMENT_SIDECAR_PORT:-3023}
       SIDECAR_HOST: 0.0.0.0
       SERVICE_AUTH_CONFIG_FILE: /run/secrets/service_identity
       PDF_MAX_CONCURRENT: "2"
@@ -385,8 +446,11 @@ services:
     depends_on:
       redis:
         condition: service_healthy
+
 volumes:
-  ? redis_data
+  redis_data: {}
+  postgres_data: {}
+
 secrets:
   gateway_identity:
     file: .local/secrets/gateway.json
@@ -410,6 +474,7 @@ secrets:
     file: .local/secrets/pdf.json
   redis_acl:
     file: .local/secrets/redis.acl
+
 networks:
   backend:
     internal: true

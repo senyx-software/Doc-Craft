@@ -6,7 +6,7 @@
 import { create } from 'zustand';
 import type { User, GuestSession } from '../types';
 import * as authApi from '../api/auth';
-import { setToken, clearToken, getToken, isTokenExpired, getTokenExpiry } from '../api/client';
+import { setToken, clearToken, getToken, isTokenExpired, getTokenExpiry, refreshAccessToken } from '../api/client';
 import { getGoogleIdToken, googleSignInError } from '../lib/firebase';
 import { apiRequest } from '../api/client';
 
@@ -165,8 +165,9 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   logout: async () => {
     try {
       await authApi.logout();
-    } catch {
-      // Logout even if API call fails
+    } catch (error) {
+      set({error:'Sign-out could not be confirmed. Please retry before leaving this device.'});
+      throw error;
     }
     clearToken();
     set({
@@ -259,6 +260,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   demoLogin: () => {
+    if(!import.meta.env.DEV)return;
     const demoUser: User = {
       user_id: 'demo-user-001',
       email: 'demo@doccraft.app',
@@ -279,6 +281,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   toggleDemoPlan: () => {
+    if(!import.meta.env.DEV)return;
     const currentUser = get().user;
     if (currentUser) {
       set({
@@ -300,7 +303,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   clearError: () => set({ error: null }),
 
   checkAuth: async () => {
-    const token = getToken();
+    let token = getToken();
+    if(!token || isTokenExpired(token)) {
+      try {token=await refreshAccessToken();} catch {set({isInitializing:false,error:'Session renewal is unavailable. Please retry.'});return;}
+    }
 
     if (!token) {
       clearToken();
@@ -315,7 +321,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       return;
     }
 
-    if (token === 'demo_token_for_testing') {
+    if (import.meta.env.DEV && token === 'demo_token_for_testing') {
       set({ isAuthenticated: true, isInitializing: false });
       return;
     }
@@ -328,7 +334,13 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
     try {
       const user = await authApi.getMe();
-      if (getToken() !== token) return;
+      if (getToken() !== token) {
+        // A renewal for this same user is safe; an unrelated login must win.
+        try {
+          const current=getToken();
+          if(!current || JSON.parse(atob(current.split('.')[1].replace(/-/g,'+').replace(/_/g,'/'))).sub!==user.user_id)return;
+        } catch {return;}
+      }
       const isGuest = user.plan === 'guest' || user.auth_provider === 'guest';
       set({ user, isAuthenticated: true, isGuest, guestSession: isGuest ? { session_token: token, guest_user_id: user.user_id, expires_at: new Date(getTokenExpiry(token)!).toISOString() } : null, isInitializing: false });
     } catch {

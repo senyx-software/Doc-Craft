@@ -129,6 +129,15 @@
       "callers": [
         "admin-api"
       ]
+    },
+    {
+      "methods": [
+        "POST"
+      ],
+      "path": "^/v1/quota/check$",
+      "callers": [
+        "admin-api"
+      ]
     }
   ],
   "payment": [
@@ -177,6 +186,15 @@
         "GET"
       ],
       "path": "^/(?:api/|v1/chat/api/)?metrics$",
+      "callers": [
+        "admin-api"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/internal/ai/outcomes$",
       "callers": [
         "admin-api"
       ]
@@ -351,9 +369,13 @@
       ]
     },
     {
-      "methods": ["PATCH"],
+      "methods": [
+        "PATCH"
+      ],
       "path": "^/api/v1/internal/uploaded-templates/upl_[a-f0-9]{32}_v[0-9]+$",
-      "callers": ["document"]
+      "callers": [
+        "document"
+      ]
     },
     {
       "methods": [
@@ -371,6 +393,24 @@
       "path": "^/api/v1/internal/automation/events$",
       "callers": [
         "payment"
+      ]
+    },
+    {
+      "methods": [
+        "GET"
+      ],
+      "path": "^/api/v1/internal/ai/runtime/[^/]+$",
+      "callers": [
+        "chat"
+      ]
+    },
+    {
+      "methods": [
+        "POST"
+      ],
+      "path": "^/api/v1/internal/ai/infer$",
+      "callers": [
+        "chat"
       ]
     }
   ],

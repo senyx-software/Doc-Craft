@@ -936,7 +936,14 @@ class AdminDatabase:
                 cursor.execute("PRAGMA table_info(verification_codes)")
                 if "attempts" not in {row[1] for row in cursor.fetchall()}:
                     cursor.execute("ALTER TABLE verification_codes ADD COLUMN attempts INTEGER NOT NULL DEFAULT 0")
+            from app.db.ai_schema import initialize as initialize_ai
+            initialize_ai(cursor)
+            # Existing case-variant duplicates require operator review; never merge staff identities.
+            cursor.execute("CREATE UNIQUE INDEX IF NOT EXISTS admin_users_email_normalized_uq ON admin_users (LOWER(TRIM(email)))")
             conn.commit()
+        except Exception:
+            conn.rollback()
+            raise
         finally:
             self._release_connection(conn)
 

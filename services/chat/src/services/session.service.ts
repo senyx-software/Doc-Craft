@@ -40,6 +40,7 @@ export class SessionService {
         }
         slots._chat = { version: 2, revision: 0, documentType: kind, templateId,documentSchema:doc.slotSchema||[],timezone: metadata(source.slots).timezone || 'UTC', profileAvailable: metadata(source.slots).profileAvailable, fields, turns: {}, origin: { sessionId: sourceId, revision: state.revision, operationId, kind: kind === state.documentType ? 'revision' : 'type_change' } };
         slots._chat.assets=structuredClone((state.assets||[]).filter((asset:any)=>kind===state.documentType||asset.role==='logo'));
+        if(kind===state.documentType){slots._chat.canvasLayout=structuredClone(state.canvasLayout);slots._chat.editorContext=structuredClone(state.editorContext);slots._chat.layoutRevision=0;}
         const data = { id, userId, documentTypeId: doc.id, templateId: template.id, title: (kind === state.documentType ? 'Revision: ' : 'Draft: ') + contract.documents[kind].label, status: 'ACTIVE' as const, modelPreference: source.modelPreference || 'groq', isArchived: false, accentColor: source.accentColor, slots: JSON.parse(JSON.stringify(slots)), expiresAt: source.expiresAt };
         try { return await this.prisma.chatSession.create({ data }); }
         catch (error) {
@@ -84,7 +85,7 @@ export class SessionService {
         if (!userId || userId === 'guest_user')
             throw new ConversationError(401, 'Verified identity required');
         const sessions = await this.prisma.chatSession.findMany({ where: { userId, isArchived: archived }, orderBy: { updatedAt: 'desc' }, include: { _count: { select: { messages: true } } } });
-        return sessions.map(session => ({ ...session, slots: documentData(session.slots as any) }));
+        return sessions.map(({modelPreference,...session}: any) => ({ ...session, slots: documentData(session.slots as any) }));
     }
     private ownership(userId: string, sessionId: string) { return new ConversationRepository(this.prisma).load(userId, sessionId); }
     async renameSession(userId: string, sessionId: string, title: string) { return new ConversationRepository(this.prisma).updateMetadata(userId,sessionId,{title}); }

@@ -19,3 +19,5 @@ it.each([
 it('rejects active-content checkout URLs', () => {
   expect(() => payment.redirectToCheckout({ checkout_url: 'javascript:alert(1)' })).toThrow('Invalid checkout URL');
 });
+it('reads persisted invoices even when there is no paid-plan entitlement',async()=>{request.mockResolvedValue({invoices:[],pagination:{page:1,total:0,totalPages:0}});expect((await payment.getInvoices()).invoices).toEqual([]);expect(request).toHaveBeenCalledWith('/payment/invoices?page=1&limit=20');});
+it('never links non-HTTPS or embedded-credential invoice URLs',()=>{for(const value of ['javascript:alert(1)','http://example.com/receipt','https://user:password@example.com'])expect(payment.providerDocumentUrl(value)).toBeUndefined();});

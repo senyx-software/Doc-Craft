@@ -36,12 +36,10 @@ def test_analytics_revenue_endpoint():
 
 
 def test_analytics_generations_endpoint():
-    """Verify GET /api/v1/admin/analytics/generations returns document generation stats."""
+    """No Analytics Service exists in this fixture: an outage must not look like empty success."""
     res = client.get("/api/v1/admin/analytics/generations", headers=get_auth_headers())
-    assert res.status_code == 200
-    data = res.json()
-    assert "by_type" in data
-    assert "by_tier" in data
+    assert res.status_code == 503
+    assert res.json()["code"] == "ANALYTICS_UNAVAILABLE"
 
 
 def test_detailed_generations_reflects_real_events_not_fabricated_split():
@@ -119,11 +117,10 @@ def test_detailed_generations_reflects_real_events_not_fabricated_split():
 
 
 def test_analytics_users_endpoint():
-    """Verify GET /api/v1/admin/analytics/users returns user class breakdown."""
+    """Unavailable fixture dependency must return503, never a fabricated empty breakdown."""
     res = client.get("/api/v1/admin/analytics/users", headers=get_auth_headers())
-    assert res.status_code == 200
-    data = res.json()
-    assert "by_status" in data
+    assert res.status_code == 503
+    assert res.json()["code"] == "ANALYTICS_UNAVAILABLE"
 
 
 def test_analytics_traffic_endpoint():

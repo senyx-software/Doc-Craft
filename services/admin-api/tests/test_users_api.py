@@ -9,6 +9,14 @@ client = TestClient(app)
 TOKEN, _TOTP_SECRET = seed_admin_with_totp("users_test_admin@doccraft.app", "Super Admin", ["*"], is_super_admin=True)
 AUTH_HEADERS = {"Authorization": f"Bearer {TOKEN}", "X-Forwarded-For": "127.0.0.1"}
 
+@pytest.fixture(autouse=True)
+def fresh_admin_session():
+    # Collection-time JWTs can expire during a long CI/live-validation run.
+    # Issue a real persisted session for each test; keep production expiry intact.
+    global TOKEN, _TOTP_SECRET, AUTH_HEADERS
+    TOKEN, _TOTP_SECRET = seed_admin_with_totp("users_test_admin@doccraft.app", "Super Admin", ["*"], is_super_admin=True)
+    AUTH_HEADERS = {"Authorization": f"Bearer {TOKEN}", "X-Forwarded-For": "127.0.0.1"}
+
 
 def auth_2fa_headers() -> dict:
     """A fresh code each call — a module-level static one would expire

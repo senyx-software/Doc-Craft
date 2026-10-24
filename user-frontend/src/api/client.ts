@@ -12,7 +12,7 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/v1'
 export function setCookieToken(token: string, days = 7): void {
   if (typeof document === 'undefined') return;
   const expires = new Date(Date.now() + days * 864e5).toUTCString();
-  document.cookie = `doccraft_token=${encodeURIComponent(token)}; expires=${expires}; path=/; SameSite=Lax`;
+  document.cookie = `doccraft_token=${encodeURIComponent(token)}; expires=${expires}; path=/; SameSite=Lax${window.location.protocol==='https:'?'; Secure':''}`;
 }
 
 /** Get token from cookies */
@@ -56,7 +56,7 @@ export function getTokenExpiry(token: string): number | null {
 }
 
 export function isTokenExpired(token: string): boolean {
-  if (token === 'demo_token_for_testing') return false;
+  if (import.meta.env.DEV && token === 'demo_token_for_testing') return false;
   const expiry = getTokenExpiry(token);
   return expiry === null || Date.now() >= expiry - 10000;
 }
@@ -103,6 +103,23 @@ export class ApiRequestError extends Error {
   }
 }
 
+let refreshFlight: Promise<string|null>|undefined;
+/** Refresh credentials stay in a server-set HttpOnly cookie, never localStorage. */
+export function refreshAccessToken():Promise<string|null> {
+  if(refreshFlight)return refreshFlight;
+  const before=getToken();
+  refreshFlight=(async()=>{
+    const response=await fetch(`${BASE_URL}/auth/refresh`,{method:'POST',credentials:'include',
+      headers:{'Content-Type':'application/json'},body:'{}',signal:AbortSignal.timeout(10000)});
+    if(!response.ok){if(response.status===401||response.status===403)return null;throw new Error('Session renewal is unavailable. Please retry.');}
+    const data=await response.json() as {accessToken?:string};
+    if(!data.accessToken)throw new Error('Invalid session renewal response');
+    if(getToken()!==before)return getToken();
+    setToken(data.accessToken);return data.accessToken;
+  })().finally(()=>{refreshFlight=undefined;});
+  return refreshFlight;
+}
+
 interface RequestOptions {
   method?: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
   body?: unknown;
@@ -110,6 +127,7 @@ interface RequestOptions {
   auth?: boolean;
   responseType?: 'json' | 'blob';
   timeoutMs?: number;
+  retryAuth?: boolean;
 }
 
 /**
@@ -129,6 +147,7 @@ export async function apiRequest<T>(
     auth = true,
     responseType = 'json',
     timeoutMs,
+    retryAuth = true,
   } = options;
 
   const url = `${BASE_URL}${endpoint}`;
@@ -145,6 +164,7 @@ export async function apiRequest<T>(
 
   const fetchOptions: RequestInit = {
     method,
+    credentials: 'include',
     headers: requestHeaders,
     ...(timeoutMs ? { signal: AbortSignal.timeout(timeoutMs) } : {}),
   };
@@ -155,6 +175,10 @@ export async function apiRequest<T>(
 
   const response = await fetch(url, fetchOptions);
 
+  if (response.status===401 && auth && retryAuth && getToken()===requestToken) {
+    const renewed=await refreshAccessToken();
+    if(renewed)return apiRequest<T>(endpoint,{...options,retryAuth:false});
+  }
   if (!response.ok) {
     if (response.status === 401 && auth && getToken() === requestToken) {
       clearToken();

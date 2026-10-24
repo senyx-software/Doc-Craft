@@ -61,6 +61,7 @@ export function snapshot(session) {
         w.nextAction={kind:'clarify',field:null,question:`Is ${meta.pendingContact.value} the business phone or the client phone? Please specify the owner.`};
         w.readyToGenerate=false;w.stage='clarifying';
     }
+    if(meta.pendingLanguage){w.nextAction={kind:'clarify',field:meta.pendingLanguage.field,question:meta.pendingLanguage.question};w.readyToGenerate=false;w.stage='clarifying';}
     const expired = session.expiresAt && new Date(session.expiresAt).getTime() < Date.now();
     const lifecycle = expired ? 'EXPIRED' : session.status;
     const latest = latestTurn(meta);
@@ -75,8 +76,8 @@ export function snapshot(session) {
     const canGenerate = ready && confirmed;
     const fieldStates={...w.fieldStates};
     for(const key of [...schema.required,...schema.optional])fieldStates[key]={field:key,rawInput:w.slots[key]??null,normalizedValue:w.slots[key]??null,validationStatus:validField(key,w.slots[key])?'valid':'missing',confirmationStatus:validField(key,w.slots[key])?'confirmed':'unconfirmed',status:validField(key,w.slots[key])?'confirmed':'missing',updatedAt:null,...fieldStates[key]};
-    return { sessionId: session.id, userId: session.userId, revision: meta.revision, canvasLayout:meta.canvasLayout || null, layoutRevision:meta.layoutRevision || 0, ...w, fieldStates, lifecycle, assets,
-        stage: lifecycle === 'ACTIVE' ? interrupted ? 'recovering' : awaitingFinalization?'awaiting_confirmation':w.stage : 'read_only', readOnly: lifecycle !== 'ACTIVE', dataValid, canGenerate, readyToGenerate: ready, pendingTurn, pendingIntent:meta.pendingAction?{kind:'operation',action:meta.pendingAction.kind,...(meta.pendingAction.kind==='item_choice'?{candidateIds:meta.pendingAction.candidateIds,allowYes:meta.pendingAction.confirmTarget===true&&meta.pendingAction.candidateIds.length===1}:{}),question:meta.pendingAction.question}:meta.pendingContact?{kind:'contact_owner',value:meta.pendingContact.value}:meta.pendingIntent||null, operationResults:meta.lastResults||[],finalization:{status:confirmed?'confirmed':awaitingFinalization?'requested':'unconfirmed',fingerprint,...(confirmed?{confirmedAt:meta.finalization.confirmedAt}:{})},
+    return { sessionId: session.id, userId: session.userId, revision: meta.revision, canvasLayout:meta.canvasLayout || null, layoutRevision:meta.layoutRevision || 0, editorContext:meta.editorContext||null,editorClarification:meta.editorClarification||null,pendingLanguage:meta.pendingLanguage||null,canUndo:!!meta.documentHistory?.past?.length,canRedo:!!meta.documentHistory?.future?.length,...w, fieldStates, lifecycle, assets,
+        stage: lifecycle === 'ACTIVE' ? interrupted ? 'recovering' : awaitingFinalization?'awaiting_confirmation':w.stage : 'read_only', readOnly: lifecycle !== 'ACTIVE', dataValid, canGenerate, readyToGenerate: ready, pendingTurn, pendingIntent:meta.pendingLanguage?{kind:'language',field:meta.pendingLanguage.field,question:meta.pendingLanguage.question}:meta.pendingAction?{kind:'operation',action:meta.pendingAction.kind,...(meta.pendingAction.kind==='item_choice'?{candidateIds:meta.pendingAction.candidateIds,allowYes:meta.pendingAction.confirmTarget===true&&meta.pendingAction.candidateIds.length===1}:{}),question:meta.pendingAction.question}:meta.pendingContact?{kind:'contact_owner',value:meta.pendingContact.value}:meta.pendingIntent||null, operationResults:meta.lastResults||[],finalization:{status:confirmed?'confirmed':awaitingFinalization?'requested':'unconfirmed',fingerprint,...(confirmed?{confirmedAt:meta.finalization.confirmedAt}:{})},
         timezone:meta.timezone||'UTC',referenceDate:calendarDate(latest?.[1].startedAt||Date.now(),meta.timezone||'UTC').toISOString().slice(0,10),templateId: session.templateId, accentColor: session.accentColor, title: session.title };
 }
 function numericEvidence(value,text){return amountEvidence(value,text);}
@@ -110,15 +111,38 @@ function itemTargetEvidence(index, items, message) {
 function evidencedItem(item,source,evidence) {
   if(typeof item?.description!=='string'||!item.description.trim())return false;
   if(source.kind!=='model')return true;
-  return numericRoles(item,evidence||source.message) && String(evidence||source.message).toLowerCase().includes(item.description.toLowerCase())&&['quantity','unitPrice','discountRate'].every(key=>item[key]===undefined||numericEvidence(item[key],evidence||source.message));
+  return numericRoles(item,evidence||source.message) && String(evidence||source.message).toLowerCase().includes(item.description.toLowerCase())&&['quantity','unitPrice','discountRate'].every(key=>item[key]===undefined||numericEvidence(item[key],evidence||source.message)||key==='quantity'&&explicitItemOperation(evidence||source.message,{slots:{lineItems:[]}})?.itemOperations?.some(op=>op.item?.quantity===item.quantity&&op.item?.description.toLowerCase()===item.description.toLowerCase()));
 }
 export function applyCandidates(type, raw, proposal, source) {
     const action=metadata(raw).pendingAction;
+    const currentCurrency=currentSlots(raw,metadata(raw)).currency;
+    const pricesRequested=proposal.slots?.lineItems||proposal.itemOperations?.some(op=>op.item?.unitPrice!==undefined);
+    if(pricesRequested&&!source.verifiedConfirmation&&validField('currency',currentCurrency)) {
+        const codes=[...String(source.message).matchAll(/\b(LKR|USD|EUR|GBP|AUD|CAD|NZD|SGD|JPY|CHF|INR)\b/gi)].map(match=>match[1].toUpperCase());
+        const conflicting=codes.find(code=>code!==currentCurrency);
+        const ambiguousDollar=/\bdollars?\b|\$/.test(source.message)&&!['USD','AUD','CAD','NZD','SGD','HKD'].includes(currentCurrency);
+        const symbolConflict=/€/.test(source.message)&&currentCurrency!=='EUR'||/£/.test(source.message)&&currentCurrency!=='GBP';
+        if(conflicting||ambiguousDollar||symbolConflict) {
+            // Persist the actual proposed operation, rather than interpreting
+            // an amount in a different currency or silently relabeling prices.
+            const verified=applyCandidates(type,structuredClone(raw),proposal,{...source,verifiedConfirmation:true});
+            if(verified.results.some(result=>result.outcome==='rejected'||result.outcome==='needs_value'))return {raw,changed:[],results:verified.results.filter(result=>result.outcome==='rejected'||result.outcome==='needs_value')};
+            const next=structuredClone(raw),meta=metadata(next);
+            meta.pendingAction={kind:'item_currency',proposal,source:{id:source.id,kind:source.kind,message:source.message,correction:source.correction},question:`Your document uses ${currentCurrency}, but this item specifies ${conflicting||(/€/.test(source.message)?'EUR':/£/.test(source.message)?'GBP':'dollars')}. Which currency code should I use? Reply ${currentCurrency} to keep it, or another currency code to change the whole document. Existing prices will not be converted.`};
+            delete meta.finalization;next._chat=meta;
+            return {raw:next,changed:[],results:[{field:'currency',outcome:'needs_confirmation'}]};
+        }
+    }
     if(proposal.resolveOperation&&action) {
         if(source.kind!=='user')throw Object.assign(new Error('Only the user can confirm an operation'),{code:'EVIDENCE_REJECTED',statusCode:422});
         const next=structuredClone(raw);delete next._chat.pendingAction;
         if(!proposal.resolveOperation.accept)return {raw:next,changed:[],results:[{field:'conversation',outcome:'cancelled'}]};
         let update=action.proposal;
+        if(action.kind==='item_currency') {
+            const currency=proposal.resolveOperation.currency;
+            if(!validField('currency',currency))return {raw,changed:[],results:[{field:'currency',outcome:'needs_confirmation'}]};
+            update={...update,slots:{...update.slots,currency},evidence:{...update.evidence,currency}};
+        }
         if(action.kind==='discount_mode'){const field=proposal.resolveOperation.discountField;if(!contract.financial.discountFields.includes(field))return {raw,changed:[],results:[{field:'discount',outcome:'needs_confirmation'}]};update={slots:{[field]:action.value}};}
         if(action.kind==='note_date'){const date=proposal.resolveOperation.date;if(!validField('issueDate',date))return {raw,changed:[],results:[{field:action.field,outcome:'needs_confirmation'}]};update={fieldOperations:[{operation:action.operation,field:action.field,value:action.value.replace(action.invalidDate,date)}]};}
         if(action.kind==='item_choice') {
@@ -126,7 +150,7 @@ export function applyCandidates(type, raw, proposal, source) {
             if(!action.candidateIds.includes(id))return {raw,changed:[],results:[{field:'lineItems',outcome:'needs_confirmation'}]};
             update={itemOperations:[{operation:action.operation,id,...(action.item?{item:action.item}:{})}]};
         }
-        return applyCandidates(type,next,update,{...action.source,kind:['item_choice','note_date','discount_mode'].includes(action.kind)?'user':action.source.kind,verifiedConfirmation:true,correction:true,confirmedBy:source.id,now:source.now});
+        return applyCandidates(type,next,update,{...action.source,...(action.kind==='item_currency'?{message:action.source.message+'\n'+source.message}:{}),kind:['item_choice','note_date','discount_mode'].includes(action.kind)?'user':action.source.kind,verifiedConfirmation:true,correction:true,confirmedBy:source.id,now:source.now});
     }
     if(proposal.confirmBeforeApply) {
         if(source.kind!=='model'||typeof proposal.confirmationQuestion!=='string')throw Object.assign(new Error('Invalid pending operation'),{code:'TOOL_SCHEMA_INVALID',statusCode:422});
@@ -252,10 +276,7 @@ export function applyCandidates(type, raw, proposal, source) {
             record(field,'rejected','VALIDATION_FAILED'); continue;
         }
         if (source.kind === 'model' && def.type === 'items') {
-            if(value.some(item=>!numericRoles(item,evidence))) {record(field,'rejected','EVIDENCE_REJECTED');continue;}
-            if (value.some(item => !evidence.toLowerCase().includes(item.description.toLowerCase()))) {record(field,'rejected','EVIDENCE_REJECTED');continue;}
-            const numbers = value.flatMap(item => [item.quantity, item.unitPrice]);
-            if (numbers.some(number => !numericEvidence(number, evidence))) {record(field,'rejected','EVIDENCE_REJECTED');continue;}
+            if(value.some(item=>!evidencedItem(item,source,evidence))) {record(field,'rejected','EVIDENCE_REJECTED');continue;}
         }
         const old = current[field];
         const knownNames=['businessName','clientName'].includes(field)?[old,...(Array.isArray(meta.knownNames)?meta.knownNames:meta.knownNames?.[field]||[])].filter(value=>typeof value==='string'):[];
@@ -415,6 +436,13 @@ export function extractExplicit(message, state) {
     const intent = identifyIntent(message,state);
     const slots = {}, evidence = {}, correctionFields = [], spans = [];
     const base = {slots,evidence,intent,correctionFields};
+    if(state.pendingIntent?.kind==='operation'&&state.pendingIntent.action==='item_currency'&&validField('currency',message.trim().toUpperCase()))return {...base,resolveOperation:{accept:true,currency:message.trim().toUpperCase()},needsProvider:false};
+    // "Invoice for X" alone can name the recipient. Resolve X as the
+    // business only when this same message explicitly identifies a customer.
+    const creation=message.match(/^create\s+(?:an?\s+)?invoice\s+for\s+([^.!;]+)[.!;]\s*/i);
+    if(creation&&/\b(?:customer|client)(?: name)?\s+(?:is|:)\s*\S/i.test(message.slice(creation[0].length))) {
+        slots.businessName=creation[1].trim();evidence.businessName=creation[1].trim();spans.push([0,creation[0].length]);
+    }
     if(intent.kind==='cancel') return {...base,cancelField:true,cancelPending:true};
     const table=extractItemTable(message);
     if(table&&supportsField(state.documentType,'lineItems')&&intent.allowsMutation!==false) {
@@ -462,7 +490,7 @@ export function extractExplicit(message, state) {
     const labels = { businessName: '(?:(?:my|our) )?(?:business|company|agency|store)(?: name)?', clientName: '(?:client|customer|recipient|vendor|supplier)(?: name)?', senderEmail: '(?:(?:my|our|business|sender|company) )?email', clientEmail: '(?:client|customer|recipient) email', senderPhone: '(?:(?:my|our|business|sender|company|contact) )?(?:phone|number)', clientPhone: '(?:client|customer|recipient) (?:phone|number)', senderAddress: '(?:my|our|business|sender|company) address', clientAddress: '(?:client|customer|recipient) address', invoiceNumber: '(?:invoice|quote|receipt|po|document) (?:number|reference)', issueDate: '(?:issue|invoice|payment) date', dueDate: '(?:due|delivery|expiry) date', currency: 'currency', taxRate: 'tax(?: rate)?', discountRate:'discount(?: rate)?',taxStatus:'tax status',locale:'locale',dateFormat:'date format',subject: '(?:subject|project title)', notesAndTerms: '(?:note|notes|terms)',accountDetails:'(?:(?:my|our) )?(?:account|bank|payment) details', paymentTerms:'payment terms',discountFixedAmount:'fixed discount(?: amount)?',paymentMethod: 'payment method', referenceNumber: '(?:transaction )?reference number' };
     const all = Object.values(labels).join('|');
     for (const [key, label] of Object.entries(labels)) {
-        const re = new RegExp(String.raw `(?:^|[,.!;]\s*|\band\s+|(?:change|update|replace|correct|edit|set|add)\s+(?:(?:my|the|our)\s+)?)(?:${label})\s*(?:(?:is|are|to|with|as)\b|:|=)\s*([\s\S]+?)(?=(?:(?:[,;.!\n]\s*(?:and\s+)?|\s+and\s+)(?:(?:change|update|replace|correct|edit|set|add)\s+(?:(?:my|the|our)\s+)?)?(?:${all})\s*(?:(?:is|are|to|with|as)\b|:|=))|(?:(?:[,;.!\n]\s*|\s+and\s+)(?:invoice for|bill for|summari[sz]e|show|generate|explain|tell|help|review|add|change|update|remove|delete|clear|explain|what|why|how)\b)|(?:,?\s+and\s+we )|$)`, 'i');
+        const re = new RegExp(String.raw `(?:^|[,.!;]\s*|\band\s+|(?:change|update|replace|correct|edit|set|add)\s+(?:(?:my|the|our)\s+)?)(?:${label})\s*(?:(?:is|are|to|with|as)\b|:|=)\s*([\s\S]+?)(?=(?:(?:[,;.!\n]\s*(?:and\s+)?|\s+and\s+)(?:(?:change|update|replace|correct|edit|set|add)\s+(?:(?:my|the|our)\s+)?)?(?:${all})\s*(?:(?:is|are|to|with|as)\b|:|=))|(?:(?:[,;.!\n]\s*|\s+and\s+)(?:invoice for|bill for|summari[sz]e|show|generate|explain|tell|help|review|add|change|update|remove|delete|clear|explain|what|why|how)\b)|(?:,?\s+and\s+(?:I|we)\s+(?:sold|supplied|provided)\b)|(?:,?\s+and\s+we )|$)`, 'i');
         const match = message.match(re);
         if (match) {
             if(['senderPhone','clientPhone','senderEmail','clientEmail'].includes(key)){const owner=contactOwner(message,match[1].trim(),state);if(owner&&owner!==contract.fields[key].party)continue;}

@@ -49,3 +49,5 @@ export const contextRetrievalCounter=new client.Counter({name:'doccraft_context_
 export const conversationIntentCounter=new client.Counter({name:"doccraft_conversation_intents_total",help:"Intent decisions and operation outcomes",labelNames:["intent","outcome"],registers:[registry]});
 export const responseDecisionCounter=new client.Counter({name:'doccraft_chat_response_decisions_total',help:'Authoritative response source selection',labelNames:['decision'],registers:[registry]});
 export const chatFailurePhaseCounter=new client.Counter({name:'doccraft_chat_failure_phases_total',help:'Categorized failure phase and recovery policy',labelNames:['phase','retryable'],registers:[registry]});
+export const hybridRequestsCounter=new client.Counter({name:'doccraft_hybrid_requests_total',help:'Deterministic and managed inference routing outcomes',labelNames:['route','outcome','fallback'],registers:[registry]});
+export const hybridLatency=new client.Histogram({name:'doccraft_hybrid_inference_latency_ms',help:'Managed inference gateway latency',labelNames:['route'],buckets:[100,500,1000,3000,10000,30000,60000,120000],registers:[registry]});

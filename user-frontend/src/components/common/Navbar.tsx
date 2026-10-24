@@ -31,6 +31,7 @@ const Navbar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [logoutError,setLogoutError]=useState<string|null>(null);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const profileMenuRef = useRef<HTMLDivElement>(null);
@@ -64,14 +65,13 @@ const Navbar: React.FC = () => {
 
   const confirmLogout = async () => {
     setIsLoggingOut(true);
+    setLogoutError(null);
     try {
       await logout();
       setShowLogoutModal(false);
       navigate('/');
     } catch {
-      // Continue cleanup even on error
-      setShowLogoutModal(false);
-      navigate('/');
+      setLogoutError('Sign-out could not be confirmed. Please retry before leaving this device.');
     } finally {
       setIsLoggingOut(false);
     }
@@ -413,6 +413,7 @@ const Navbar: React.FC = () => {
         onClose={() => setShowLogoutModal(false)}
         onConfirm={confirmLogout}
         isLoading={isLoggingOut}
+        error={logoutError}
       />
     </nav>
   );

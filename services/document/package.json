@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"python -m uvicorn app.main:app --host 0.0.0.0 --port 3013 --reload --reload-dir app --env-file document.env\" \"node puppeteer/start.cjs --development\"",
+    "dev": "concurrently \"node run-python.cjs -m uvicorn app.main:app --host 0.0.0.0 --port 3013 --reload --reload-dir app --env-file document.env\" \"node puppeteer/start.cjs --development\"",
     "build": "tsc",
-    "start": "concurrently \"./.venv/bin/python -m uvicorn app.main:app --host 0.0.0.0 --port 3013 --env-file document.env\" \"node puppeteer/start.cjs\"",
+    "start": "concurrently \"node run-python.cjs -m uvicorn app.main:app --host 0.0.0.0 --port 3013 --env-file document.env\" \"node puppeteer/start.cjs\"",
     "db:generate": "echo no-schema",
     "db:migrate": "echo no-schema",
     "db:migrate:dev": "echo no-schema"

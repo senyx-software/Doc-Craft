@@ -35,7 +35,7 @@ export function recordLoginEvent(userId: string, request: FastifyRequest): void 
       .create({
         data: { userId, ipAddress, userAgent, deviceType, browser, os, country },
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.warn('[auth] recordLoginEvent insert failed:', (err as Error).message);
       });
   } catch (err) {
