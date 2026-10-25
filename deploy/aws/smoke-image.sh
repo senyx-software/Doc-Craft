@@ -113,12 +113,14 @@ case "$IMAGE_NAME" in
     connection="$connection?sslmode=require&sslaccept=strict&sslcert=/ci-ca.crt"
     docker run --rm --network "$network" \
       --mount "type=bind,source=$certificates/ca.crt,target=/ci-ca.crt,readonly" \
+      --env DOCCRAFT_PRIVATE_CA_FILE=/ci-ca.crt \
       --env DATABASE_URL="$connection" --env DIRECT_URL="$connection" \
       --env PG_REQUIRE_TLS=true --env PGSSLROOTCERT=/ci-ca.crt doccraft-ci:migration
     ;;
   python)
     docker run --rm --network "$network" \
       --mount "type=bind,source=$certificates/ca.crt,target=/ci-ca.crt,readonly" \
+      --env DOCCRAFT_PRIVATE_CA_FILE=/ci-ca.crt \
       --env DATABASE_URL="$connection?sslmode=verify-full&sslrootcert=/ci-ca.crt" doccraft-ci:python python -c '
 import io,os
 import cryptography,numpy,pandas,psycopg2,pymupdf

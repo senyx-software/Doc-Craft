@@ -7,7 +7,8 @@ private_ca=${DOCCRAFT_PRIVATE_CA_FILE:-/run/secrets/ca.crt}
 if [ -f "$private_ca" ]; then
   test -s "$public_ca"
   umask 077
-  bundle=$(mktemp /tmp/doccraft-trust-XXXXXX.pem)
+  # BusyBox requires the six X characters at the end of the template.
+  bundle=$(mktemp /tmp/doccraft-trust-XXXXXX)
   cat "$public_ca" "$private_ca" > "$bundle"
   export SSL_CERT_FILE="$bundle" REQUESTS_CA_BUNDLE="$bundle"
 fi
