@@ -8,6 +8,9 @@ on:
         default: false
 permissions:
   contents: read
+defaults:
+  run:
+    shell: bash
 concurrency:
   group: aws-staging
   cancel-in-progress: false
@@ -35,6 +38,7 @@ jobs:
       - name: Validate and save the real AWS Terraform plan
         run: |
           python3 deploy/scripts/install-ci-tools.py terraform
+          export PATH="$GITHUB_WORKSPACE/.local/ci-tools:$PATH"
           terraform -chdir=terraform/aws-staging fmt -check
           terraform -chdir=terraform/aws-staging init -input=false \
             -backend-config=bucket=doccraft-staging-tfstate-506192652462-ap-southeast-2 \
