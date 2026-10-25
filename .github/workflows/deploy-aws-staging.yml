@@ -1,0 +1,206 @@
+name: Deploy AWS staging
+on:
+  push:
+    branches: [eranda-dev]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: aws-staging
+  cancel-in-progress: false
+jobs:
+  checks:
+    if: github.ref == 'refs/heads/eranda-dev' && vars.AWS_STAGING_DEPLOY_ENABLED == 'true'
+    permissions:
+      contents: read
+      packages: write
+    uses: ./.github/workflows/ci.yml
+  images:
+    needs: checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - {service: gateway, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: auth, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: notification, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: payment, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: quota, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: chat, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: pdf, file: Backend.Dockerfile, target: pdf, app: ''}
+          - {service: document, file: Python.Dockerfile, target: runtime, app: ''}
+          - {service: analytics, file: Python.Dockerfile, target: runtime, app: ''}
+          - {service: admin-api, file: Python.Dockerfile, target: runtime, app: ''}
+          - {service: admin-ui, file: Frontend.Dockerfile, target: '', app: admin}
+          - {service: user-ui, file: Frontend.Dockerfile, target: '', app: user-frontend}
+          - {service: migration, file: Backend.Dockerfile, target: migration, app: ''}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with: {persist-credentials: false}
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f
+      - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8
+        id: image
+        with:
+          context: .
+          file: deploy/docker/${{ matrix.file }}
+          target: ${{ matrix.target }}
+          build-args: APP=${{ matrix.app }}
+          platforms: linux/amd64
+          push: true
+          tags: ghcr.io/senyx-software/doccraft-${{ matrix.service }}:aws-staging-${{ github.sha }}
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+          cache-from: type=gha,scope=aws-staging-${{ matrix.service }}
+          cache-to: type=gha,mode=max,scope=aws-staging-${{ matrix.service }}
+          provenance: mode=min
+          sbom: true
+      - name: Scan immutable image and record its digest
+        env:
+          IMAGE: ghcr.io/senyx-software/doccraft-${{ matrix.service }}@${{ steps.image.outputs.digest }}
+          SERVICE: ${{ matrix.service }}
+          TRIVY_USERNAME: ${{ github.actor }}
+          TRIVY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 deploy/scripts/install-ci-tools.py trivy
+          .local/ci-tools/trivy image --exit-code 1 --severity HIGH,CRITICAL "$IMAGE"
+          mkdir -p fragments
+          jq -n --arg name "$SERVICE" --arg image "$IMAGE" '{($name): $image}' > "fragments/$SERVICE.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: aws-staging-image-${{ matrix.service }}
+          path: fragments/*.json
+          retention-days: 14
+          if-no-files-found: error
+  deploy:
+    needs: images
+    environment: aws-staging
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      contents: read
+      packages: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with: {persist-credentials: false}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: aws-staging-image-*
+          path: fragments
+          merge-multiple: true
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        with:
+          role-to-assume: ${{ vars.AWS_STAGING_ROLE_ARN || 'arn:aws:iam::506192652462:role/doccraft-staging-github' }}
+          aws-region: ap-southeast-2
+          allowed-account-ids: '506192652462'
+          role-session-name: doccraft-release-${{ github.run_id }}
+      - name: Start the existing instance and discover its stable address
+        id: instance
+        run: |
+          instance=i-098228a0d829d7eb2
+          state=$(aws ec2 describe-instances --instance-ids "$instance" --query 'Reservations[0].Instances[0].State.Name' --output text)
+          if [[ "$state" == stopping ]]; then
+            aws ec2 wait instance-stopped --instance-ids "$instance"
+            state=stopped
+          fi
+          if [[ "$state" == stopped ]]; then
+            aws ec2 start-instances --instance-ids "$instance" > /dev/null
+          elif [[ "$state" != running && "$state" != pending ]]; then
+            echo "Instance cannot be deployed in state $state" >&2
+            exit 1
+          fi
+          aws ec2 wait instance-running --instance-ids "$instance"
+          aws ec2 wait instance-status-ok --instance-ids "$instance"
+          host=$(aws ec2 describe-addresses --filters Name=tag:Name,Values=doccraft-staging --query 'Addresses' --output json | jq -er 'select(length == 1) | .[0].PublicIp')
+          actual=$(aws ec2 describe-instances --instance-ids "$instance" --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
+          [[ "$host" == "$actual" ]]
+          group=$(aws ec2 describe-security-groups --filters Name=tag:Name,Values=doccraft-staging-deploy Name=vpc-id,Values=vpc-04c23751903b24e3f --query 'SecurityGroups' --output json | jq -er 'select(length == 1) | .[0].GroupId')
+          printf 'host=%s\ngroup=%s\n' "$host" "$group" >> "$GITHUB_OUTPUT"
+      - name: Assemble release and validate required settings
+        env:
+          SSH_KEY: ${{ secrets.AWS_STAGING_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.AWS_STAGING_KNOWN_HOSTS }}
+          CONFIGURATION: ${{ secrets.AWS_STAGING_CONFIG }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY || secrets.AWS_STAGING_RESEND_API_KEY }}
+          ADMIN_EMAIL: ${{ secrets.SUPER_ADMIN_EMAIL || secrets.AWS_STAGING_ADMIN_EMAIL }}
+          ADMIN_PASSWORD: ${{ secrets.SUPER_ADMIN_PASSWORD || secrets.AWS_STAGING_ADMIN_PASSWORD }}
+          APP_SECRETS: ${{ secrets.AWS_STAGING_APP_SECRETS }}
+          ADMIN_CIDRS: ${{ secrets.AWS_STAGING_ADMIN_CIDRS }}
+          PUBLIC_IP: ${{ steps.instance.outputs.host }}
+          SSH_USER: ${{ secrets.AWS_STAGING_SSH_USER || vars.AWS_STAGING_SSH_USER || 'ubuntu' }}
+          ACME_EMAIL: ${{ secrets.ACME_EMAIL }}
+          RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
+          CONFIG_VERSION: ${{ secrets.CONFIG_VERSION }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          LEGACY_STORAGE_PROVIDER: ${{ secrets.LEGACY_STORAGE_PROVIDER }}
+          PADDLE_API_KEY: ${{ secrets.PADDLE_API_KEY }}
+          PADDLE_WEBHOOK_SECRET: ${{ secrets.PADDLE_WEBHOOK_SECRET }}
+          PADDLE_PRO_MONTHLY_PRICE_ID: ${{ secrets.PADDLE_PRO_MONTHLY_PRICE_ID }}
+          PADDLE_PRO_YEARLY_PRICE_ID: ${{ secrets.PADDLE_PRO_YEARLY_PRICE_ID }}
+          PADDLE_MAX_MONTHLY_PRICE_ID: ${{ secrets.PADDLE_MAX_MONTHLY_PRICE_ID }}
+          PADDLE_MAX_YEARLY_PRICE_ID: ${{ secrets.PADDLE_MAX_YEARLY_PRICE_ID }}
+          PAYHERE_MERCHANT_ID: ${{ secrets.PAYHERE_MERCHANT_ID }}
+          PAYHERE_MERCHANT_SECRET: ${{ secrets.PAYHERE_MERCHANT_SECRET }}
+          POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
+          POSTHOG_PERSONAL_API_KEY: ${{ secrets.POSTHOG_PERSONAL_API_KEY }}
+          POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }}
+          POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}
+        run: |
+          umask 077
+          python3 deploy/aws/workflow-files.py
+          git archive --format=tar.gz HEAD deploy scripts shared > "$RUNNER_TEMP/aws-staging/controller.tar.gz"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: aws-staging-release-${{ github.sha }}
+          path: ${{ runner.temp }}/aws-staging/release.json
+          retention-days: 90
+          if-no-files-found: error
+      - name: Open SSH for this runner only
+        id: access
+        env:
+          GROUP: ${{ steps.instance.outputs.group }}
+        run: |
+          cidr="$(curl --fail --silent --show-error https://checkip.amazonaws.com)/32"
+          python3 -c 'import ipaddress,sys; assert ipaddress.ip_network(sys.argv[1]).prefixlen == 32' "$cidr"
+          # Recover rules left by an abruptly terminated earlier run. The workflow
+          # and infrastructure workflow share a non-cancelling concurrency group.
+          aws ec2 describe-security-group-rules --filters "Name=group-id,Values=$GROUP" --output json \
+            | jq -r '.SecurityGroupRules[] | select((.Description // "") | startswith("doccraft-github-")) | .SecurityGroupRuleId' \
+            | while read -r rule; do aws ec2 revoke-security-group-ingress --group-id "$GROUP" --security-group-rule-ids "$rule"; done
+          printf 'cidr=%s\n' "$cidr" >> "$GITHUB_OUTPUT"
+          aws ec2 authorize-security-group-ingress --group-id "$GROUP" --ip-permissions \
+            "$(jq -nc --arg cidr "$cidr" --arg description "doccraft-github-$GITHUB_RUN_ID" '[{IpProtocol:"tcp",FromPort:22,ToPort:22,IpRanges:[{CidrIp:$cidr,Description:$description}]}]')" > /dev/null
+      - name: Install staging controller and deploy the immutable release
+        env:
+          HOST: ${{ steps.instance.outputs.host }}
+          SSH_USER: ${{ secrets.AWS_STAGING_SSH_USER || vars.AWS_STAGING_SSH_USER || 'ubuntu' }}
+          REGISTRY_USER: ${{ github.actor }}
+          REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash deploy/aws/remote-deploy.sh
+      - name: Close runner SSH access
+        if: always() && steps.access.outputs.cidr != ''
+        env:
+          GROUP: ${{ steps.instance.outputs.group }}
+          CIDR: ${{ steps.access.outputs.cidr }}
+        run: aws ec2 revoke-security-group-ingress --group-id "$GROUP" --protocol tcp --port 22 --cidr "$CIDR"
+      - name: Remove private runner files
+        if: always()
+        run: rm -rf "$RUNNER_TEMP/aws-staging"

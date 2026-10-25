@@ -1,0 +1,59 @@
+{
+	email {$ACME_EMAIL}
+	admin off
+	# Browsers usually omit SNI when connecting to a literal IPv4 address.
+	default_sni {$APP_DOMAIN}
+}
+
+(ip_tls) {
+	tls {
+		issuer acme {
+			dir https://acme-v02.api.letsencrypt.org/directory
+			profile shortlived
+			disable_tlsalpn_challenge
+		}
+	}
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+	}
+}
+
+https://{$APP_DOMAIN} {
+	import ip_tls
+	handle /v1/* {
+		reverse_proxy https://gateway:3001 {
+			flush_interval -1
+			transport http {
+				tls_trust_pool file /run/secrets/ca.crt
+			}
+		}
+	}
+	handle /health {
+		reverse_proxy https://gateway:3001 {
+			transport http {
+				tls_trust_pool file /run/secrets/ca.crt
+			}
+		}
+	}
+	handle {
+		reverse_proxy user-ui:8080
+	}
+}
+
+https://{$ADMIN_DOMAIN} {
+	import ip_tls
+	@blocked not remote_ip {$ADMIN_ALLOWED_CIDRS}
+	respond @blocked "Forbidden" 403
+	handle /api/v1/* {
+		reverse_proxy https://admin-api:3018 {
+			transport http {
+				tls_trust_pool file /run/secrets/ca.crt
+			}
+		}
+	}
+	handle {
+		reverse_proxy admin-ui:8080
+	}
+}

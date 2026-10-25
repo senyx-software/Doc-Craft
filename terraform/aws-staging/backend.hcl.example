@@ -1,0 +1,5 @@
+bucket       = "doccraft-staging-tfstate-506192652462-ap-southeast-2"
+key          = "aws-staging/terraform.tfstate"
+region       = "ap-southeast-2"
+encrypt      = true
+use_lockfile = true

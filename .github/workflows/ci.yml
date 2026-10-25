@@ -116,6 +116,11 @@ jobs:
           .local/ci-tools/terraform -chdir=terraform fmt -check -recursive
           .local/ci-tools/terraform -chdir=terraform init -backend=false -input=false
           .local/ci-tools/terraform -chdir=terraform validate
+          for directory in terraform/aws-bootstrap terraform/aws-staging; do
+            .local/ci-tools/terraform -chdir="$directory" init -backend=false -input=false
+            .local/ci-tools/terraform -chdir="$directory" validate
+            .local/ci-tools/terraform -chdir="$directory" test
+          done
           docker compose -f deploy/docker/compose.production.yml config --no-interpolate --no-env-resolution --quiet
       - name: Validation summary
         if: always()
@@ -169,12 +174,21 @@ jobs:
           import json,subprocess,sys
           from pathlib import Path
           failures=[]
-          for image in json.loads(Path('deploy/config/base-images.json').read_text()).values():
+          images = list(json.loads(Path('deploy/config/base-images.json').read_text()).values())
+          images += [s['image'] for s in json.loads(Path('deploy/aws/compose.staging.yml').read_text())['services'].values() if 'image' in s]
+          for image in images:
               result=subprocess.run(['.local/ci-tools/trivy','image','--image-src','remote','--exit-code','1','--severity','HIGH,CRITICAL','--ignore-unfixed',image])
               if result.returncode:failures.append(image)
           if failures:print('Blocked infrastructure images:',*failures,sep='\n')
           sys.exit(bool(failures))
           PY
+      - name: Validate public-IP HTTPS configuration without requesting certificates
+        run: |
+          image=$(python3 -c 'import json; print(json.load(open("deploy/aws/compose.staging.yml"))["services"]["edge"]["image"])')
+          docker run --rm -e APP_DOMAIN=192.0.2.10 -e ADMIN_DOMAIN=192.0.2.10:8443 \
+            -e ACME_EMAIL=ci@example.com -e ADMIN_ALLOWED_CIDRS=192.0.2.20/32 \
+            -v "$PWD/deploy/aws/Caddyfile:/etc/caddy/Caddyfile:ro" \
+            "$image" caddy adapt --config /etc/caddy/Caddyfile > /dev/null
   publish:
     needs: [validate, docker, infrastructure-images]
     if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/v'))

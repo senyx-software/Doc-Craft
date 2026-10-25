@@ -54,7 +54,11 @@ def validate(values):
  for key in ['APP_DOMAIN','ADMIN_DOMAIN','ADMIN_ALLOWED_CIDRS','ACME_EMAIL','CONFIG_VERSION','REGISTRY_PREFIX','POSTGRES_DB','LOCAL_AI_ENABLED','RESEND_FROM_EMAIL']:
   if not values.get(key) or '<' in values[key]:raise ValueError('Required configuration: '+key)
  for key in ['APP_DOMAIN','ADMIN_DOMAIN']:
-  if not re.fullmatch(r'[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)+',values[key]):raise ValueError('Invalid public domain')
+  # HTTPS authorities may use a public IPv4 address and an explicit port (for
+  # example the staging admin UI on IP:8443). Reject paths and URL credentials.
+  if not re.fullmatch(r'[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)+(?::[0-9]{1,5})?',values[key]):raise ValueError('Invalid public HTTPS authority')
+  authority=urlsplit('https://'+values[key])
+  if authority.port is not None and not 1<=authority.port<=65535:raise ValueError('Invalid public HTTPS port')
  if values['APP_DOMAIN']==values['ADMIN_DOMAIN']:raise ValueError('User and admin domains must differ')
  cidrs=values['ADMIN_ALLOWED_CIDRS'].split()
  if not cidrs:raise ValueError('Admin access requires explicit source networks')
@@ -74,7 +78,7 @@ def validate(values):
   if values.get(key):
    url=urlsplit(values[key])
    if url.scheme!='https' or not url.hostname or url.username or url.password or url.fragment:raise ValueError('Production integration URLs require HTTPS without credentials')
-   if key in ('GOOGLE_CALLBACK_URL','PAYMENT_SERVICE_PUBLIC_URL') and url.hostname!=values['APP_DOMAIN']:raise ValueError('Public callbacks must use the authorized application hostname')
+   if key in ('GOOGLE_CALLBACK_URL','PAYMENT_SERVICE_PUBLIC_URL') and url.netloc!=values['APP_DOMAIN']:raise ValueError('Public callbacks must use the authorized application authority')
  # These fields are JSON arrays consumed by the existing admin settings loader.
  for key in ('ALLOWED_ADMIN_IPS','TRUSTED_PROXY_IPS'):
   if key in values and not isinstance(json.loads(values[key]),list):raise ValueError('Expected JSON array: '+key)
