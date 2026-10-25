@@ -8,6 +8,9 @@ on:
         default: false
 permissions:
   contents: read
+defaults:
+  run:
+    shell: bash
 concurrency:
   group: aws-staging
   cancel-in-progress: false
@@ -35,6 +38,7 @@ jobs:
       - name: Initialize bootstrap state and discover an existing GitHub identity provider
         run: |
           python3 deploy/scripts/install-ci-tools.py terraform
+          export PATH="$GITHUB_WORKSPACE/.local/ci-tools:$PATH"
           oidc=$(aws iam list-open-id-connect-providers --query 'OpenIDConnectProviderList[].Arn' --output json \
             | jq -r '.[] | select(endswith("oidc-provider/token.actions.githubusercontent.com"))')
           if aws s3api head-object --bucket "$STATE_BUCKET" --key aws-bootstrap/terraform.tfstate >/dev/null 2>&1; then
