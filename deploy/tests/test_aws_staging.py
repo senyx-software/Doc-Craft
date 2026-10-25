@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "deploy/aws"))
 import staging
 from configure import SERVICES
+from staging_inputs import admin_cidrs, dotenv_literal
 
 
 def load(name, filename):
@@ -36,6 +37,14 @@ def configuration():
 
 
 class AWSStaging(unittest.TestCase):
+    def test_dotenv_quotes_are_accepted_without_evaluating_values(self):
+        self.assertEqual(admin_cidrs("'[\"192.0.2.20/32\"]'"), ["192.0.2.20/32"])
+        self.assertEqual(dotenv_literal("'ubuntu'"), "ubuntu")
+        self.assertEqual(dotenv_literal("'fixture\nprivate-key\n'"), "fixture\nprivate-key\n")
+        self.assertEqual(dotenv_literal("'$(do-not-execute)'"), "$(do-not-execute)")
+        with self.assertRaises(ValueError):
+            admin_cidrs("'[\"0.0.0.0/0\"]'")
+
     def test_edge_image_requires_an_immutable_digest_from_the_staging_registry(self):
         images = {name: "ghcr.io/senyx-software/doccraft-" + name + "@sha256:" + "a" * 64 for name in [*SERVICES, "migration", "edge", "postgres"]}
         release = {"format": 1, "commit": "a" * 40, "schema_epoch": 1, "images": images}
@@ -106,6 +115,10 @@ class AWSStaging(unittest.TestCase):
             settings = (root / "flat-runner/settings.json").read_text()
             self.assertIn("GROQ_API_KEY=private-groq-fixture", settings)
             self.assertNotIn("never-forward-aws-credentials", settings)
+            quoted = {**environment, "SSH_USER": "'ubuntu'", "ADMIN_CIDRS": "'[\"192.0.2.20/32\"]'", "SSH_KEY": "'private-fixture'"}
+            workflow.build(root / "quoted-runner", fragments, quoted)
+            self.assertEqual((root / "quoted-runner/ssh_user").read_text(), "ubuntu\n")
+            self.assertEqual((root / "quoted-runner/key").read_text(), "private-fixture\n")
             images["chat"] = "ghcr.io/other/doccraft-chat@sha256:" + "a" * 64
             (fragments / "images.json").write_text(json.dumps(images))
             with self.assertRaises(ValueError):

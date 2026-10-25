@@ -43,6 +43,7 @@ deploy/secrets/*
 *.tfstate.*
 *.tfplan
 *.tfvars
+*.tfvars.json
 !*.tfvars.example
 crash.log
 # Operator API/SSH credentials must never enter repository history.

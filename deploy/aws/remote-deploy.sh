@@ -2,6 +2,7 @@
 set -euo pipefail
 umask 077
 directory="$RUNNER_TEMP/aws-staging"
+SSH_USER=$(cat "$directory/ssh_user")
 [[ "$GITHUB_SHA" =~ ^[0-9a-f]{40}$ && "$GITHUB_RUN_ID" =~ ^[0-9]+$ ]]
 [[ "$SSH_USER" =~ ^[a-z_][a-z0-9_-]*$ && "$SSH_USER" != root ]]
 [[ "$REGISTRY_USER" =~ ^[a-zA-Z0-9_-]+$ ]]
