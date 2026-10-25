@@ -1,0 +1,54 @@
+name: AWS staging infrastructure
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: Apply the saved Terraform plan to the existing staging server's networking
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: aws-staging
+  cancel-in-progress: false
+jobs:
+  infrastructure:
+    if: github.ref == 'refs/heads/eranda-dev'
+    environment: aws-staging
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      TF_IN_AUTOMATION: 'true'
+      TF_VAR_admin_source_cidrs: ${{ secrets.AWS_STAGING_ADMIN_CIDRS }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with: {persist-credentials: false}
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        with:
+          role-to-assume: ${{ vars.AWS_STAGING_ROLE_ARN || 'arn:aws:iam::506192652462:role/doccraft-staging-github' }}
+          aws-region: ap-southeast-2
+          allowed-account-ids: '506192652462'
+          role-session-name: doccraft-infra-${{ github.run_id }}
+      - name: Validate and save the real AWS Terraform plan
+        run: |
+          python3 deploy/scripts/install-ci-tools.py terraform
+          terraform -chdir=terraform/aws-staging fmt -check
+          terraform -chdir=terraform/aws-staging init -input=false \
+            -backend-config=bucket=doccraft-staging-tfstate-506192652462-ap-southeast-2 \
+            -backend-config=key=aws-staging/terraform.tfstate \
+            -backend-config=region=ap-southeast-2 \
+            -backend-config=encrypt=true -backend-config=use_lockfile=true
+          terraform -chdir=terraform/aws-staging validate
+          terraform -chdir=terraform/aws-staging plan -input=false -lock-timeout=5m -out=staging.tfplan
+          terraform -chdir=terraform/aws-staging show -no-color staging.tfplan >> "$GITHUB_STEP_SUMMARY"
+      - name: Apply the saved plan
+        if: inputs.apply
+        run: |
+          terraform -chdir=terraform/aws-staging apply -input=false staging.tfplan
+          terraform -chdir=terraform/aws-staging output -json >> "$GITHUB_STEP_SUMMARY"
+      - name: Remove the local plan
+        if: always()
+        run: rm -f terraform/aws-staging/staging.tfplan

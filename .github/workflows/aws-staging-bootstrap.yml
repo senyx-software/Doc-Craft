@@ -1,0 +1,79 @@
+name: Bootstrap AWS staging access
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: Create the staging state bucket and GitHub OIDC role
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: aws-staging
+  cancel-in-progress: false
+jobs:
+  bootstrap:
+    if: github.ref == 'refs/heads/eranda-dev'
+    environment: aws-staging
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      TF_IN_AUTOMATION: 'true'
+      TF_VAR_github_oidc_subject: ${{ vars.AWS_STAGING_OIDC_SUBJECT || 'repo:senyx-software/Doc-Craft:environment:aws-staging' }}
+      STATE_BUCKET: doccraft-staging-tfstate-506192652462-ap-southeast-2
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with: {persist-credentials: false}
+      - name: Authenticate for one-time AWS bootstrap
+        uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: ap-southeast-2
+          allowed-account-ids: '506192652462'
+      - name: Initialize bootstrap state and discover an existing GitHub identity provider
+        run: |
+          python3 deploy/scripts/install-ci-tools.py terraform
+          oidc=$(aws iam list-open-id-connect-providers --query 'OpenIDConnectProviderList[].Arn' --output json \
+            | jq -r '.[] | select(endswith("oidc-provider/token.actions.githubusercontent.com"))')
+          if aws s3api head-object --bucket "$STATE_BUCKET" --key aws-bootstrap/terraform.tfstate >/dev/null 2>&1; then
+            python3 -c 'from pathlib import Path; Path("terraform/aws-bootstrap/backend.tf").write_text("terraform {\n  backend \"s3\" {}\n}\n")'
+            terraform -chdir=terraform/aws-bootstrap init -input=false \
+              -backend-config="bucket=$STATE_BUCKET" -backend-config=key=aws-bootstrap/terraform.tfstate \
+              -backend-config=region=ap-southeast-2 -backend-config=encrypt=true -backend-config=use_lockfile=true
+          else
+            terraform -chdir=terraform/aws-bootstrap init -input=false
+          fi
+          # A provider created by this module must remain managed on later runs.
+          if terraform -chdir=terraform/aws-bootstrap state list | rg -q '^aws_iam_openid_connect_provider.github\[0\]$'; then
+            oidc=''
+          fi
+          printf 'TF_VAR_github_oidc_provider_arn=%s\n' "$oidc" >> "$GITHUB_ENV"
+          terraform -chdir=terraform/aws-bootstrap fmt -check
+          terraform -chdir=terraform/aws-bootstrap validate
+      - name: Save bootstrap plan
+        run: |
+          terraform -chdir=terraform/aws-bootstrap plan -input=false -lock-timeout=5m -out=bootstrap.tfplan
+          terraform -chdir=terraform/aws-bootstrap show -no-color bootstrap.tfplan >> "$GITHUB_STEP_SUMMARY"
+      - name: Apply bootstrap and move its state to the new S3 bucket
+        if: inputs.apply
+        run: |
+          terraform -chdir=terraform/aws-bootstrap apply -input=false bootstrap.tfplan
+          if [[ ! -f terraform/aws-bootstrap/backend.tf ]]; then
+            python3 -c 'from pathlib import Path; Path("terraform/aws-bootstrap/backend.tf").write_text("terraform {\n  backend \"s3\" {}\n}\n")'
+            terraform -chdir=terraform/aws-bootstrap init -input=false -migrate-state -force-copy \
+              -backend-config="bucket=$STATE_BUCKET" -backend-config=key=aws-bootstrap/terraform.tfstate \
+              -backend-config=region=ap-southeast-2 -backend-config=encrypt=true -backend-config=use_lockfile=true
+          fi
+          terraform -chdir=terraform/aws-bootstrap output -json >> "$GITHUB_STEP_SUMMARY"
+      - name: Preserve partial local state after a failed first apply
+        if: failure() && inputs.apply
+        run: |
+          if [[ -s terraform/aws-bootstrap/terraform.tfstate ]]; then
+            aws s3 cp terraform/aws-bootstrap/terraform.tfstate \
+              "s3://$STATE_BUCKET/aws-bootstrap/recovery-$GITHUB_RUN_ID.tfstate" --sse AES256 --only-show-errors
+          fi
+      - name: Remove local bootstrap state and plan
+        if: always()
+        run: rm -f terraform/aws-bootstrap/bootstrap.tfplan terraform/aws-bootstrap/terraform.tfstate terraform/aws-bootstrap/terraform.tfstate.backup

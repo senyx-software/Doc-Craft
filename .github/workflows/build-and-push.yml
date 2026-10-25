@@ -1,0 +1,152 @@
+name: Build and publish immutable images
+on:
+  workflow_call:
+permissions:
+  contents: read
+  packages: write
+jobs:
+  images:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - {service: gateway, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: auth, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: notification, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: payment, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: quota, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: chat, file: Backend.Dockerfile, target: runtime, app: ''}
+          - {service: pdf, file: Backend.Dockerfile, target: pdf, app: ''}
+          - {service: document, file: Python.Dockerfile, target: runtime, app: ''}
+          - {service: analytics, file: Python.Dockerfile, target: runtime, app: ''}
+          - {service: admin-api, file: Python.Dockerfile, target: runtime, app: ''}
+          - {service: admin-ui, file: Frontend.Dockerfile, target: '', app: admin}
+          - {service: user-ui, file: Frontend.Dockerfile, target: '', app: user-frontend}
+          - {service: migration, file: Backend.Dockerfile, target: migration, app: ''}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Enforce trusted publish trigger
+        env:
+          REF: ${{ github.ref }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          [[ "$EVENT" == push ]]
+          if [[ "$REF" == refs/tags/* ]]; then
+            [[ "$REF" =~ ^refs/tags/v[0-9]+\.[0-9]+\.[0-9]+$ ]]
+            git merge-base --is-ancestor HEAD refs/remotes/origin/master
+          else
+            [[ "$REF" == refs/heads/master ]]
+          fi
+      - name: Image names and immutable metadata
+        id: names
+        env:
+          OWNER: ${{ github.repository_owner }}
+          SERVICE: ${{ matrix.service }}
+          REF_TYPE: ${{ github.ref_type }}
+          REF_NAME: ${{ github.ref_name }}
+          DOCKERFILE: ${{ matrix.file }}
+          TARGET: ${{ matrix.target }}
+          APP: ${{ matrix.app }}
+        run: |
+          image="ghcr.io/${OWNER,,}/doccraft-$SERVICE"
+          printf 'image=%s\n' "$image" >> "$GITHUB_OUTPUT"
+          case "$DOCKERFILE:$TARGET:$APP" in
+            Backend.Dockerfile:runtime:*) cache=node ;;
+            Backend.Dockerfile:pdf:*) cache=pdf ;;
+            Backend.Dockerfile:migration:*) cache=migration ;;
+            Python.Dockerfile:*) cache=python ;;
+            Frontend.Dockerfile:*:admin) cache=admin ;;
+            Frontend.Dockerfile:*:user-frontend) cache=user ;;
+            *) exit 1 ;;
+          esac
+          printf 'cache=%s\n' "$cache" >> "$GITHUB_OUTPUT"
+          {
+            echo 'tags<<END_TAGS'
+            echo "$image:sha-$GITHUB_SHA"
+            if [[ "$REF_TYPE" == tag ]]; then echo "$image:$REF_NAME"; fi
+            echo END_TAGS
+          } >> "$GITHUB_OUTPUT"
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f
+      - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8
+        id: build
+        with:
+          context: .
+          file: deploy/docker/${{ matrix.file }}
+          target: ${{ matrix.target }}
+          build-args: APP=${{ matrix.app }}
+          push: true
+          tags: ${{ steps.names.outputs.tags }}
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+          provenance: mode=min
+          sbom: true
+          cache-from: |
+            type=gha,scope=ci-${{ steps.names.outputs.cache }}
+            type=gha,scope=publish-${{ matrix.service }}
+          cache-to: type=gha,mode=max,scope=publish-${{ matrix.service }}
+      - name: Verify publication, scan immutable image, record digest
+        env:
+          IMAGE: ${{ steps.names.outputs.image }}
+          DIGEST: ${{ steps.build.outputs.digest }}
+          SERVICE: ${{ matrix.service }}
+        run: |
+          [[ "$DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]]
+          docker buildx imagetools inspect "$IMAGE@$DIGEST" > /dev/null
+          python3 deploy/scripts/install-ci-tools.py trivy
+          .local/ci-tools/trivy image --exit-code 1 --severity HIGH,CRITICAL "$IMAGE@$DIGEST"
+          mkdir -p fragments
+          jq -n --arg service "$SERVICE" --arg image "$IMAGE@$DIGEST" '{($service):$image}' > "fragments/$SERVICE.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: image-${{ matrix.service }}
+          path: fragments/*.json
+          retention-days: 14
+          if-no-files-found: error
+  manifest:
+    needs: images
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with: {persist-credentials: false}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: image-*
+          path: fragments
+          merge-multiple: true
+      - name: Assemble release manifest with exact image set
+        env:
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          python3 - <<'PY'
+          import json,os,sys
+          from pathlib import Path
+          sys.path.insert(0,'deploy/scripts')
+          from controller import release_manifest
+          images={}
+          for path in Path('fragments').glob('*.json'):
+              fragment=json.loads(path.read_text())
+              if set(images)&set(fragment):raise ValueError('Duplicate image fragment')
+              images.update(fragment)
+          policy=json.loads(Path('deploy/release-policy.json').read_text())
+          release={'format':1,'commit':os.environ['GITHUB_SHA'],'schema_epoch':policy['schema_epoch'],'images':images}
+          release_manifest(release,'ghcr.io/'+os.environ['OWNER'].lower()+'/doccraft')
+          Path('release.json').write_text(json.dumps(release,indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: release-manifest
+          path: release.json
+          retention-days: 90
+          if-no-files-found: error
