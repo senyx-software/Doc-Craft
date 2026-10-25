@@ -57,12 +57,12 @@ jobs:
           image="ghcr.io/${OWNER,,}/doccraft-$SERVICE"
           printf 'image=%s\n' "$image" >> "$GITHUB_OUTPUT"
           case "$DOCKERFILE:$TARGET:$APP" in
-            Backend.Dockerfile:runtime:*) cache=node ;;
-            Backend.Dockerfile:pdf:*) cache=pdf ;;
-            Backend.Dockerfile:migration:*) cache=migration ;;
-            Python.Dockerfile:*) cache=python ;;
-            Frontend.Dockerfile:*:admin) cache=admin ;;
-            Frontend.Dockerfile:*:user-frontend) cache=user ;;
+            Backend.Dockerfile:runtime:*) cache='node' ;;
+            Backend.Dockerfile:pdf:*) cache='pdf' ;;
+            Backend.Dockerfile:migration:*) cache='migration' ;;
+            Python.Dockerfile:*) cache='python' ;;
+            Frontend.Dockerfile:*:admin) cache='admin' ;;
+            Frontend.Dockerfile:*:user-frontend) cache='user' ;;
             *) exit 1 ;;
           esac
           printf 'cache=%s\n' "$cache" >> "$GITHUB_OUTPUT"

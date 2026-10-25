@@ -85,6 +85,7 @@ jobs:
           npm ci --ignore-scripts --prefix admin
           npm ci --ignore-scripts --prefix user-frontend
           npm run db:generate
+          python -m pip install --upgrade pip==26.2.2 setuptools==80.10.2
           python -m pip install -c deploy/staging/python.constraints.txt -r services/admin-api/requirements.txt -r services/document/requirements.txt -r services/analytics/requirements.txt pip-audit
       - name: Lint and build all applications
         run: |
@@ -96,7 +97,8 @@ jobs:
           python deploy/scripts/check-build-secrets.py admin/dist user-frontend/dist
       - name: Unit, security and isolated integration tests
         run: |
-          export PUPPETEER_EXECUTABLE_PATH="$(command -v google-chrome)"
+          PUPPETEER_EXECUTABLE_PATH="$(command -v google-chrome)"
+          export PUPPETEER_EXECUTABLE_PATH
           npm run test:chat
           npx vitest run services/quota/src/__tests__
           python -m pytest services/admin-api/tests -q
@@ -107,7 +109,8 @@ jobs:
           python deploy/scripts/ci-pdf.py
       - name: Browser editor and admin workflows (isolated HTTP fixtures)
         run: |
-          export PUPPETEER_EXECUTABLE_PATH="$(command -v google-chrome)"
+          PUPPETEER_EXECUTABLE_PATH="$(command -v google-chrome)"
+          export PUPPETEER_EXECUTABLE_PATH
           node scripts/verify_hybrid_ai_browser.mjs
       - name: Dependency and secret checks
         run: |
@@ -143,13 +146,14 @@ jobs:
       max-parallel: 2
       matrix:
         include:
+          - {name: edge, dockerfile: Edge.Dockerfile, target: runtime, app: ''}
+          - {name: postgres, dockerfile: Postgres.Dockerfile, target: runtime, app: ''}
           - {name: node, dockerfile: Backend.Dockerfile, target: runtime, app: ''}
           - {name: pdf, dockerfile: Backend.Dockerfile, target: pdf, app: ''}
           - {name: migration, dockerfile: Backend.Dockerfile, target: migration, app: ''}
           - {name: python, dockerfile: Python.Dockerfile, target: runtime, app: ''}
           - {name: admin, dockerfile: Frontend.Dockerfile, target: '', app: admin}
           - {name: user, dockerfile: Frontend.Dockerfile, target: '', app: user-frontend}
-          - {name: edge, dockerfile: Edge.Dockerfile, target: runtime, app: ''}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with: {persist-credentials: false}
@@ -157,13 +161,15 @@ jobs:
       - uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8
         with:
           context: .
-          file: ${{ matrix.name == 'edge' && 'deploy/aws/Edge.Dockerfile' || format('deploy/docker/{0}', matrix.dockerfile) }}
+          file: ${{ (matrix.name == 'edge' || matrix.name == 'postgres') && format('deploy/aws/{0}', matrix.dockerfile) || format('deploy/docker/{0}', matrix.dockerfile) }}
           target: ${{ matrix.target }}
           build-args: APP=${{ matrix.app }}
           push: false
           load: true
           tags: doccraft-ci:${{ matrix.name }}
-          cache-from: type=gha,scope=ci-${{ matrix.name }}
+          cache-from: |
+            type=gha,scope=ci-${{ matrix.name }}
+            type=gha,scope=ci-node
           cache-to: type=gha,mode=max,scope=ci-${{ matrix.name }}
       - name: Image vulnerability scan
         env:
@@ -194,9 +200,10 @@ jobs:
           from pathlib import Path
           failures=[]
           pins = json.loads(Path('deploy/config/base-images.json').read_text())
-          # AWS staging replaces upstream Caddy with a separately built/scanned
-          # edge image and disables Ollama. Scan the bases it actually deploys.
-          images = [image for name, image in pins.items() if os.environ['DEPLOYMENT_TARGET'] != 'aws-staging' or name not in ('library/caddy', 'ollama/ollama')]
+          # The Docker matrix scans every patched staging runtime image. These
+          # unchanged images are deployed directly or used to build its helpers.
+          staging_direct = {'library/redis', 'library/golang', 'library/alpine'}
+          images = [image for name, image in pins.items() if os.environ['DEPLOYMENT_TARGET'] != 'aws-staging' or name in staging_direct]
           for image in images:
               result=subprocess.run(['.local/ci-tools/trivy','image','--image-src','remote','--exit-code','1','--severity','HIGH,CRITICAL','--ignore-unfixed',image])
               if result.returncode:failures.append(image)
