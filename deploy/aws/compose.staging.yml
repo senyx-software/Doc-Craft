@@ -6,7 +6,10 @@
     "document": {"mem_limit": "512m"},
     "analytics": {"mem_limit": "256m"},
     "admin-api": {"mem_limit": "512m"},
-    "pdf": {"mem_limit": "768m"},
+    "pdf": {
+      "mem_limit": "768m",
+      "security_opt": ["seccomp:${DOCCRAFT_CONTROL:?}/deploy/aws/chromium-seccomp.json"]
+    },
     "postgres": {"mem_limit": "1024m", "image": "${POSTGRES_IMAGE:?Immutable patched PostgreSQL image required}"},
     "backup": {"image": "${POSTGRES_IMAGE:?Immutable patched PostgreSQL image required}"},
     "payment": {"mem_limit": "256m", "environment": {"PADDLE_SANDBOX": "true", "PAYHERE_SANDBOX": "true"}},

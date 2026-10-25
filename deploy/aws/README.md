@@ -108,6 +108,18 @@ are enabled. The vulnerability review and proposed per-CVE process are described
 in [image-scan-policy.md](image-scan-policy.md); changing the gate requires explicit
 approval after review.
 
+Staging uses its own pinned Alpine Node/Python/PostgreSQL Dockerfiles and patched
+Python tooling. PostgreSQL's gosu helper is rebuilt with patched Go. CI scans the
+final images and requires native Python/Prisma operations against a disposable
+TLS PostgreSQL database plus an actual sandboxed Chromium PDF render.
+
+The renderer stays non-root, drops all capabilities and retains no-new-privileges.
+Its [seccomp profile](chromium-seccomp.json), pinned with provenance in
+[chromium-seccomp-source.json](chromium-seccomp-source.json), comes from
+Microsoft Playwright's documented Docker profile. It permits the namespace
+operations needed by Chromium's sandbox while retaining a syscall allowlist.
+No browser sandbox is disabled and no SYS_ADMIN capability is added.
+
 The installer prepares Docker/Compose and a commit-specific controller checkout.
 It creates fresh credentials only for a new installation, then validates and
 preserves them on subsequent releases. To rotate credentials or change config,

@@ -133,7 +133,7 @@ jobs:
             .local/ci-tools/terraform -chdir="$directory" validate
             .local/ci-tools/terraform -chdir="$directory" test
           done
-          docker compose -f deploy/docker/compose.production.yml config --no-interpolate --no-env-resolution --quiet
+          python deploy/scripts/check-compose.py
       - name: Validation summary
         if: always()
         run: |
@@ -222,7 +222,9 @@ jobs:
           staging_direct = {'library/redis', 'library/golang', 'library/alpine'}
           images = [image for name, image in pins.items() if os.environ['DEPLOYMENT_TARGET'] != 'aws-staging' or name in staging_direct]
           for image in images:
-              result=subprocess.run(['.local/ci-tools/trivy','image','--image-src','remote','--exit-code','1','--severity','HIGH,CRITICAL','--ignore-unfixed',image])
+              command=['.local/ci-tools/trivy','image','--image-src','remote','--exit-code','1','--severity','HIGH,CRITICAL']
+              if os.environ['DEPLOYMENT_TARGET'] != 'aws-staging':command.append('--ignore-unfixed')
+              result=subprocess.run([*command,image])
               if result.returncode:failures.append(image)
           if failures:print('Blocked infrastructure images:',*failures,sep='\n')
           sys.exit(bool(failures))

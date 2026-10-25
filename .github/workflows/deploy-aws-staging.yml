@@ -221,7 +221,8 @@ jobs:
             | while read -r rule; do aws ec2 revoke-security-group-ingress --group-id "$GROUP" --security-group-rule-ids "$rule"; done
           printf 'cidr=%s\n' "$cidr" >> "$GITHUB_OUTPUT"
           aws ec2 authorize-security-group-ingress --group-id "$GROUP" --ip-permissions \
-            "$(jq -nc --arg cidr "$cidr" --arg description "doccraft-github-$GITHUB_RUN_ID" '[{IpProtocol:"tcp",FromPort:22,ToPort:22,IpRanges:[{CidrIp:$cidr,Description:$description}]}]')" > /dev/null
+            "$(jq -nc --arg cidr "$cidr" --arg description "doccraft-github-$GITHUB_RUN_ID" '[{IpProtocol:"tcp",FromPort:22,ToPort:22,IpRanges:[{CidrIp:$cidr,Description:$description}]}]')" \
+            --tag-specifications '[{"ResourceType":"security-group-rule","Tags":[{"Key":"Application","Value":"doccraft"},{"Key":"Environment","Value":"staging"}]}]' > /dev/null
       - name: Install staging controller and deploy the immutable release
         env:
           HOST: ${{ steps.instance.outputs.host }}
