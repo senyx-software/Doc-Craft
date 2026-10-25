@@ -15,6 +15,9 @@ WORKDIR /app
 ENV PYTHONPATH=/app PYTHONUNBUFFERED=1
 RUN useradd -u 1000 -m runtime
 COPY --from=dependencies /usr/local /usr/local
+# Services use the installed dependencies. Remove unused pip and its bootstrap
+# wheel, which carry separate copies of package-manager dependencies.
+RUN python -m pip uninstall --yes pip && rm -rf /usr/local/lib/python3.13/ensurepip
 COPY --chown=runtime:runtime shared /app/shared
 COPY --chown=runtime:runtime services/admin-api/app /app/services/admin-api/app
 COPY --chown=runtime:runtime services/admin-api/migrations /app/services/admin-api/migrations

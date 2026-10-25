@@ -100,11 +100,19 @@ jobs:
           SERVICE: ${{ matrix.service }}
           TRIVY_USERNAME: ${{ github.actor }}
           TRIVY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+          ALLOW_UNFIXED_OS: ${{ vars.AWS_STAGING_ALLOW_UNFIXED_OS || 'false' }}
         run: |
           python3 deploy/scripts/install-ci-tools.py trivy
-          .local/ci-tools/trivy image --exit-code 1 --severity HIGH,CRITICAL "$IMAGE"
+          python3 deploy/aws/scan-image.py "$IMAGE" --report "image-scans/$SERVICE.json" \
+            --allow-unfixed-os "$ALLOW_UNFIXED_OS"
           mkdir -p fragments
           jq -n --arg name "$SERVICE" --arg image "$IMAGE" '{($name): $image}' > "fragments/$SERVICE.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: aws-staging-scan-${{ matrix.service }}
+          path: image-scans/*.json
+          retention-days: 14
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: aws-staging-image-${{ matrix.service }}

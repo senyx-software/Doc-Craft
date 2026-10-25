@@ -27,6 +27,7 @@ ENTRYPOINT ["/usr/local/bin/doccraft-entrypoint"]
 CMD ["node","services/gateway/dist/index.js"]
 
 FROM build AS migration
+RUN rm -rf /usr/local/lib/node_modules/npm /usr/local/lib/node_modules/corepack /usr/local/bin/npm /usr/local/bin/npx /usr/local/bin/corepack
 COPY scripts/staging_migrate_node.mjs /app/scripts/staging_migrate_node.mjs
 COPY deploy/staging/service-entrypoint.sh /usr/local/bin/doccraft-entrypoint
 RUN chmod 755 /usr/local/bin/doccraft-entrypoint

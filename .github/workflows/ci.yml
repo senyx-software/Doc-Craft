@@ -174,9 +174,22 @@ jobs:
       - name: Image vulnerability scan
         env:
           IMAGE_NAME: ${{ matrix.name }}
+          DEPLOYMENT_TARGET: ${{ inputs.deployment_target || 'production' }}
+          ALLOW_UNFIXED_OS: ${{ vars.AWS_STAGING_ALLOW_UNFIXED_OS || 'false' }}
         run: |
           python deploy/scripts/install-ci-tools.py trivy
-          .local/ci-tools/trivy image --exit-code 1 --severity HIGH,CRITICAL "doccraft-ci:$IMAGE_NAME"
+          if [[ "$DEPLOYMENT_TARGET" == aws-staging ]]; then
+            python3 deploy/aws/scan-image.py "doccraft-ci:$IMAGE_NAME" \
+              --report "image-scans/$IMAGE_NAME.json" --allow-unfixed-os "$ALLOW_UNFIXED_OS"
+          else
+            .local/ci-tools/trivy image --exit-code 1 --severity HIGH,CRITICAL "doccraft-ci:$IMAGE_NAME"
+          fi
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always() && inputs.deployment_target == 'aws-staging'
+        with:
+          name: ci-image-scan-${{ matrix.name }}
+          path: image-scans/*.json
+          retention-days: 14
       - name: Validate public-IP HTTPS configuration without requesting certificates
         if: matrix.name == 'edge'
         run: |

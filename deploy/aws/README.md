@@ -103,6 +103,11 @@ and opens SSH only for the runner's public `/32`. Strict SSH uses the instance's
 known host key. IMDSv2 verifies account, region and instance ID before any host
 installation or credential initialization.
 
+Image scans block all HIGH/CRITICAL findings by default. The optional staging OS
+exception, its remaining risks and retained reports are described in
+[image-scan-policy.md](image-scan-policy.md). It remains disabled unless the
+repository variable `AWS_STAGING_ALLOW_UNFIXED_OS` is explicitly set to `true`.
+
 The installer prepares Docker/Compose and a commit-specific controller checkout.
 It creates fresh credentials only for a new installation, then validates and
 preserves them on subsequent releases. To rotate credentials or change config,
