@@ -167,7 +167,9 @@ jobs:
           push: false
           load: true
           tags: doccraft-ci:${{ matrix.name }}
-          cache-from: type=gha,scope=ci-${{ matrix.name }}
+          cache-from: |
+            type=gha,scope=ci-${{ matrix.name }}
+            type=gha,scope=ci-node
           cache-to: type=gha,mode=max,scope=ci-${{ matrix.name }}
       - name: Image vulnerability scan
         env:

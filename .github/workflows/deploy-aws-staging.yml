@@ -50,6 +50,25 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with: {persist-credentials: false}
+      - name: Select the validated image cache
+        id: cache
+        env:
+          FILE: ${{ matrix.file }}
+          TARGET: ${{ matrix.target }}
+          APP: ${{ matrix.app }}
+        run: |
+          case "$FILE:$TARGET:$APP" in
+            Backend.Dockerfile:runtime:*) scope='node' ;;
+            Backend.Dockerfile:pdf:*) scope='pdf' ;;
+            Backend.Dockerfile:migration:*) scope='migration' ;;
+            Python.Dockerfile:*) scope='python' ;;
+            Frontend.Dockerfile:*:admin) scope='admin' ;;
+            Frontend.Dockerfile:*:user-frontend) scope='user' ;;
+            Edge.Dockerfile:*) scope='edge' ;;
+            Postgres.Dockerfile:*) scope='postgres' ;;
+            *) exit 1 ;;
+          esac
+          printf 'scope=%s\n' "$scope" >> "$GITHUB_OUTPUT"
       - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f
       - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9
         with:
@@ -69,7 +88,9 @@ jobs:
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.revision=${{ github.sha }}
-          cache-from: type=gha,scope=aws-staging-${{ matrix.service }}
+          cache-from: |
+            type=gha,scope=ci-${{ steps.cache.outputs.scope }}
+            type=gha,scope=aws-staging-${{ matrix.service }}
           cache-to: type=gha,mode=max,scope=aws-staging-${{ matrix.service }}
           provenance: mode=min
           sbom: true
