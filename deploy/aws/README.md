@@ -1,20 +1,20 @@
 # AWS staging deployment
 
 Target: account `506192652462`, region `ap-southeast-2`, existing Ubuntu 24.04
-instance `i-098228a0d829d7eb2` (`doccraft-staging`, `m7i-flex.large`). The public
-address reported after startup was `3.107.76.247`.
+instance `i-098228a0d829d7eb2` (`doccraft-staging`, `m7i-flex.large`). Its
+Terraform-managed Elastic IP is `54.66.38.201`.
 
-Terraform adds an Elastic IP and a deployment security group to this server.
+Terraform manages the Elastic IP and deployment security group attached to this server.
 It cannot create, replace, resize or terminate the EC2 instance. The Elastic IP
-becomes its permanent public address; assigning it changes the current address.
+is its stable public address across instance stops and starts.
 AWS charges for the running instance, storage and public IPv4 address.
 
 The interfaces use the same IP with different HTTPS ports:
 
 | Interface | Address |
 | --- | --- |
-| User app | `https://<Elastic-IP>` |
-| Admin UI | `https://<Elastic-IP>:8443` |
+| User app | `https://54.66.38.201` |
+| Admin UI | `https://54.66.38.201:8443` |
 
 Caddy 2.11.7, rebuilt with patched Go and HTTP/2 dependencies, requests a public IP certificate from Let's Encrypt using the
 `shortlived` profile and renews it automatically. No domain or DNS setup is needed.

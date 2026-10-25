@@ -1368,7 +1368,7 @@
         }
       ],
       "environment": {
-        "PYTHONPATH": "/app",
+        "PYTHONPATH": "/app:/app/services/admin-api",
         "SSL_CERT_FILE": "/run/secrets/ca.crt",
         "PGSSLROOTCERT": "/run/secrets/ca.crt",
         "ADMIN_RUN_MIGRATIONS": "false",

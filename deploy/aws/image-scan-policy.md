@@ -2,10 +2,12 @@
 
 Every HIGH/CRITICAL image vulnerability and secret remains blocking. The blanket
 unfixed-OS option was rejected and removed. No exception is approved or active;
-production retains its existing security gate. Deployment remains disabled.
+production retains its existing security gate. Staging uses patched, pinned
+Alpine runtimes instead of exempting the affected Debian findings, and deployment
+requires the unchanged strict scans to pass.
 
 The [2026-10-25 report](security-review/2026-10-25/report.md) identifies all 43
-blocking image CVEs, their severities, exploit prerequisites, affected images,
+originally blocking image CVEs, their severities, exploit prerequisites, affected images,
 vendor fixes and recommended mitigations. It also covers eight separate fixable
 Python application/tooling advisories and read-only scans of newer base images.
 
