@@ -16,7 +16,7 @@ The interfaces use the same IP with different HTTPS ports:
 | User app | `https://<Elastic-IP>` |
 | Admin UI | `https://<Elastic-IP>:8443` |
 
-Caddy 2.11.7 requests a public IP certificate from Let's Encrypt using the
+Caddy 2.11.7, rebuilt with patched Go and HTTP/2 dependencies, requests a public IP certificate from Let's Encrypt using the
 `shortlived` profile and renews it automatically. No domain or DNS setup is needed.
 Port 80 must remain reachable for certificate issuance/renewal. Admin port 8443 is
 restricted to the configured operator/VPN CIDRs at both the security group and
@@ -98,7 +98,7 @@ Docker credentials are temporary and removed after deployment.
 
 ## Deployment behavior
 
-Full reusable CI passes before 13 Linux/amd64 images are built, scanned and
+Full reusable CI passes before 14 Linux/amd64 images are built, scanned and
 recorded by digest. Actions starts the instance if necessary, discovers its EIP,
 and opens SSH only for the runner's public `/32`. Strict SSH uses the instance's
 known host key. IMDSv2 verifies account, region and instance ID before any host

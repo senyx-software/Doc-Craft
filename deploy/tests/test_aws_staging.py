@@ -36,6 +36,14 @@ def configuration():
 
 
 class AWSStaging(unittest.TestCase):
+    def test_edge_image_requires_an_immutable_digest_from_the_staging_registry(self):
+        images = {name: "ghcr.io/senyx-software/doccraft-" + name + "@sha256:" + "a" * 64 for name in [*SERVICES, "migration", "edge"]}
+        release = {"format": 1, "commit": "a" * 40, "schema_epoch": 1, "images": images}
+        self.assertEqual(staging.staging_release_manifest(release), release)
+        for image in ("ghcr.io/senyx-software/doccraft-edge:latest", "ghcr.io/other/doccraft-edge@sha256:" + "a" * 64, None):
+            with self.subTest(image=image), self.assertRaises(ValueError):
+                staging.staging_release_manifest({**release, "images": {**images, "edge": image}})
+
     def test_ip_origins_and_ports_preserve_https_sessions(self):
         values = staging.parse(ROOT / "deploy/aws/staging.env.example")
         values.update(APP_DOMAIN="192.0.2.10", ADMIN_DOMAIN="192.0.2.10:8443", ADMIN_ALLOWED_CIDRS="192.0.2.20/32")
@@ -78,7 +86,7 @@ class AWSStaging(unittest.TestCase):
             root = Path(temporary)
             fragments = root / "fragments"
             fragments.mkdir()
-            images = {name: "ghcr.io/senyx-software/doccraft-" + name + "@sha256:" + "a" * 64 for name in [*SERVICES, "migration"]}
+            images = {name: "ghcr.io/senyx-software/doccraft-" + name + "@sha256:" + "a" * 64 for name in [*SERVICES, "migration", "edge"]}
             (fragments / "images.json").write_text(json.dumps(images))
             environment = {"GITHUB_SHA": "a" * 40, "PUBLIC_IP": "192.0.2.10", "ADMIN_CIDRS": '["192.0.2.20/32"]',
                            "CONFIGURATION": (ROOT / "deploy/aws/staging.env.example").read_text(),
@@ -132,7 +140,7 @@ class AWSStaging(unittest.TestCase):
                 standalone = ROOT / ".local/ci-tools/docker-compose"
                 command = [str(standalone)] if standalone.is_file() else ["docker", "compose"] if shutil.which("docker") else None
                 if command:
-                    release = {"images": {name: "ghcr.io/senyx-software/doccraft-" + name + "@sha256:" + "a" * 64 for name in [*SERVICES, "migration"]}}
+                    release = {"images": {name: "ghcr.io/senyx-software/doccraft-" + name + "@sha256:" + "a" * 64 for name in [*SERVICES, "migration", "edge"]}}
                     controller = object.__new__(staging.StagingController)
                     controller.home, controller.control = home, ROOT
                     controller.config = staging.parse(home / "production.env")

@@ -794,7 +794,7 @@
       }
     },
     "postgres": {
-      "image": "postgres:17-bookworm@sha256:3645570cccdfa447589da9f57dd740faa29b30938e861289a5574b6ca6b03826",
+      "image": "postgres:17-bookworm@sha256:858bb5e98eed02eb8cafbcdc007f9a65d1b613972028944a8ec2133ccaf80d27",
       "restart": "unless-stopped",
       "entrypoint": [
         "/bin/sh",
@@ -872,7 +872,7 @@
       }
     },
     "redis": {
-      "image": "redis:7-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+      "image": "redis:7-alpine@sha256:57e4255cc971b1c8d6f8a6ca283ac01bc3ecdd914273ef6bfaede87aaecd6541",
       "restart": "unless-stopped",
       "command": [
         "redis-server",
@@ -1449,7 +1449,7 @@
       }
     },
     "backup": {
-      "image": "postgres:17-bookworm@sha256:3645570cccdfa447589da9f57dd740faa29b30938e861289a5574b6ca6b03826",
+      "image": "postgres:17-bookworm@sha256:858bb5e98eed02eb8cafbcdc007f9a65d1b613972028944a8ec2133ccaf80d27",
       "profiles": [
         "tools"
       ],

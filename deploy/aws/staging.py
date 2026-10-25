@@ -5,6 +5,7 @@ import http.client
 import ipaddress
 import json
 import os
+import re
 from pathlib import Path
 import signal
 import socket
@@ -17,7 +18,7 @@ import urllib.request
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "deploy/scripts"))
 from configure import generate, parse, validate
-from controller import Controller
+from controller import Controller, release_manifest
 
 HOME = Path("/etc/doccraft-aws-staging")
 STATE = Path("/var/lib/doccraft-aws-staging")
@@ -44,6 +45,17 @@ def integration_secrets(text):
             raise ValueError("Unsupported integration credential")
         values[key] = value
     return {key: value for key, value in values.items() if value}
+
+
+def staging_release_manifest(data):
+    if not isinstance(data, dict) or not isinstance(data.get("images"), dict):
+        raise ValueError("Invalid AWS release manifest")
+    edge = data["images"].get("edge")
+    if not isinstance(edge, str) or not re.fullmatch(r"ghcr\.io/senyx-software/doccraft-edge@sha256:[0-9a-f]{64}", edge):
+        raise ValueError("An immutable staging edge image is required")
+    base = {**data, "images": {key: value for key, value in data["images"].items() if key != "edge"}}
+    release_manifest(base, "ghcr.io/senyx-software/doccraft")
+    return {**base, "images": {**base["images"], "edge": edge}}
 
 
 def verify_instance():
@@ -90,6 +102,9 @@ def capacity(control=ROOT, meminfo=Path("/proc/meminfo")):
 
 
 class StagingController(Controller):
+    def validate_release(self, incoming):
+        return staging_release_manifest(incoming)
+
     def __init__(self, home=HOME, state=STATE, control=ROOT):
         verify_instance()
         for path in (home, state, control, home / "aws-staging.json", home / "production.env"):

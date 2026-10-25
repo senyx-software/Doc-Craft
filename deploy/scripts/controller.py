@@ -33,6 +33,7 @@ class Controller:
    mode=directory.stat()
    if mode.st_uid!=0 or mode.st_mode&0o022:raise ValueError('Deployment paths must be root owned and not group/world writable')
   self.config=validate(parse(home/'production.env'));self.log=None
+ def validate_release(self,incoming):return release_manifest(incoming,self.config['REGISTRY_PREFIX'])
  def environment(self,release):
   configuration=release.get('configuration',self.config)
   env={k:v for k,v in os.environ.items() if k in ('PATH','DOCKER_CONFIG')}
@@ -75,7 +76,7 @@ class Controller:
   self.compose(previous,'up','-d','--wait','--wait-timeout','180',*self.application_services(previous));self.health(previous)
   atomic_json(self.state/'current.json',previous)
  def deploy(self,incoming):
-  release=release_manifest(incoming,self.config['REGISTRY_PREFIX']);release['configuration']=self.config.copy();release['deployed_at']=int(time.time())
+  release=self.validate_release(incoming);release['configuration']=self.config.copy();release['deployed_at']=int(time.time())
   current=self.state/'current.json';previous=json.loads(current.read_text()) if current.exists() else None
   if (self.state/'migration-blocked.json').exists():raise ValueError('Previous migration failure needs operator review')
   epoch_file=self.state/'schema-epoch.json'

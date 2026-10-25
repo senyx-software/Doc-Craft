@@ -1,4 +1,4 @@
-FROM node:24-bookworm-slim@sha256:a5f4366e834695d5f363b920c104953a535d3a9864d1bdf74566a0ebe01daee5 AS build
+FROM node:24-bookworm-slim@sha256:55fb5f5a527ea2c5c4a95f963e48ef90aa38c7b346054fdc8ee9957a2b55d205 AS build
 WORKDIR /app
 ENV PUPPETEER_SKIP_DOWNLOAD=true
 RUN apt-get update && apt-get install -y --no-install-recommends openssl ca-certificates && rm -rf /var/lib/apt/lists/*
@@ -10,7 +10,7 @@ RUN for service in auth chat payment quota; do cp -r services/$service/src/gener
 FROM build AS production-deps
 RUN npm prune --omit=dev --ignore-scripts
 
-FROM node:24-bookworm-slim@sha256:a5f4366e834695d5f363b920c104953a535d3a9864d1bdf74566a0ebe01daee5 AS runtime
+FROM node:24-bookworm-slim@sha256:55fb5f5a527ea2c5c4a95f963e48ef90aa38c7b346054fdc8ee9957a2b55d205 AS runtime
 WORKDIR /app
 ENV NODE_ENV=production PUPPETEER_SKIP_DOWNLOAD=true
 RUN apt-get update && apt-get install -y --no-install-recommends openssl ca-certificates && rm -rf /var/lib/apt/lists/*

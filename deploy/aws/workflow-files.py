@@ -9,9 +9,8 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "deploy/scripts"))
-from controller import release_manifest
 sys.path.insert(0, str(ROOT / "deploy/aws"))
-from staging import INTEGRATIONS, PUBLIC_SETTINGS, integration_secrets, staging_config
+from staging import INTEGRATIONS, PUBLIC_SETTINGS, integration_secrets, staging_config, staging_release_manifest
 
 
 def build(directory, fragments, environment):
@@ -24,7 +23,7 @@ def build(directory, fragments, environment):
     release = {"format": 1, "commit": environment["GITHUB_SHA"],
                "schema_epoch": json.loads((ROOT / "deploy/release-policy.json").read_text())["schema_epoch"],
                "images": images}
-    release_manifest(release, "ghcr.io/senyx-software/doccraft")
+    staging_release_manifest(release)
     configuration = environment.get("CONFIGURATION")
     if not configuration:
         if not environment.get("ACME_EMAIL") or not environment.get("RESEND_FROM_EMAIL"):

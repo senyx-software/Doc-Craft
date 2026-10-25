@@ -18,6 +18,8 @@ jobs:
       contents: read
       packages: write
     uses: ./.github/workflows/ci.yml
+    with:
+      deployment_target: aws-staging
   images:
     needs: checks
     runs-on: ubuntu-24.04
@@ -43,6 +45,7 @@ jobs:
           - {service: admin-ui, file: Frontend.Dockerfile, target: '', app: admin}
           - {service: user-ui, file: Frontend.Dockerfile, target: '', app: user-frontend}
           - {service: migration, file: Backend.Dockerfile, target: migration, app: ''}
+          - {service: edge, file: Edge.Dockerfile, target: runtime, app: ''}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with: {persist-credentials: false}
@@ -56,7 +59,7 @@ jobs:
         id: image
         with:
           context: .
-          file: deploy/docker/${{ matrix.file }}
+          file: ${{ matrix.service == 'edge' && 'deploy/aws/Edge.Dockerfile' || format('deploy/docker/{0}', matrix.file) }}
           target: ${{ matrix.target }}
           build-args: APP=${{ matrix.app }}
           platforms: linux/amd64

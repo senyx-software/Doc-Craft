@@ -1,4 +1,4 @@
-FROM python:3.13-slim-bookworm@sha256:a1165e272e578941b84abc79e4ab38a0305cd12803a5c4247979ac7655f4d641 AS dependencies
+FROM python:3.13-slim-bookworm@sha256:e32be0e55814a08977501ca863271d9bd02443710db8f2afaf8372e2c4508530 AS dependencies
 WORKDIR /app
 ENV PYTHONPATH=/app PYTHONUNBUFFERED=1
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/*
@@ -8,7 +8,7 @@ COPY services/admin-api/requirements.txt /tmp/admin.txt
 COPY services/document/requirements.txt /tmp/document.txt
 COPY services/analytics/requirements.txt /tmp/analytics.txt
 RUN sed -i '/^pytest/d' /tmp/admin.txt && pip install --no-cache-dir -c /app/constraints.txt -r /tmp/admin.txt -r /tmp/document.txt -r /tmp/analytics.txt
-FROM python:3.13-slim-bookworm@sha256:a1165e272e578941b84abc79e4ab38a0305cd12803a5c4247979ac7655f4d641 AS runtime
+FROM python:3.13-slim-bookworm@sha256:e32be0e55814a08977501ca863271d9bd02443710db8f2afaf8372e2c4508530 AS runtime
 WORKDIR /app
 ENV PYTHONPATH=/app PYTHONUNBUFFERED=1
 RUN useradd -u 1000 -m runtime
