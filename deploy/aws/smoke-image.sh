@@ -86,6 +86,28 @@ case "$IMAGE_NAME" in
     docker exec --env PGSSLMODE=verify-full --env PGSSLROOTCERT=/ci-input/ca.crt \
       --env PGPASSWORD=ci-only-disposable "$name" psql -h database -U ci -d doccraft_staging_ci -v ON_ERROR_STOP=1 \
       -c "SELECT version(), current_setting('server_encoding'), 'සිංහල'::text, ssl FROM pg_stat_ssl WHERE pid=pg_backend_pid();"
+    docker exec --env PGSSLMODE=verify-full --env PGSSLROOTCERT=/ci-input/ca.crt \
+      --env PGPASSWORD=ci-only-disposable "$name" psql -h database -U ci -d doccraft_staging_ci -v ON_ERROR_STOP=1 \
+      -c "CREATE TABLE deployment_backup_probe (note text); INSERT INTO deployment_backup_probe VALUES ('සිංහල');"
+    printf '%s' 'ci-only-disposable' > "$certificates/password"
+    chmod 444 "$certificates/password"
+    docker run --rm --network "$network" \
+      --mount "type=bind,source=$PWD/deploy/scripts/backup.sh,target=/control/deploy/scripts/backup.sh,readonly" \
+      --mount "type=bind,source=$certificates/password,target=/run/secrets/postgres_migrator_password,readonly" \
+      --mount "type=bind,source=$certificates/ca.crt,target=/run/secrets/ca.crt,readonly" \
+      --env PGHOST=database --env PGPORT=5432 --env PGUSER=ci --env PGDATABASE=doccraft_staging_ci \
+      --entrypoint sh "$database" /control/deploy/scripts/backup.sh > "$certificates/backup.dump"
+    test -s "$certificates/backup.dump"
+    docker exec --env PGSSLMODE=verify-full --env PGSSLROOTCERT=/ci-input/ca.crt \
+      --env PGPASSWORD=ci-only-disposable "$name" createdb -h database -U ci doccraft_staging_restore_ci
+    docker exec -i --env PGSSLMODE=verify-full --env PGSSLROOTCERT=/ci-input/ca.crt \
+      --env PGPASSWORD=ci-only-disposable "$name" pg_restore -h database -U ci \
+      --dbname doccraft_staging_restore_ci --no-owner --no-acl < "$certificates/backup.dump"
+    restored=$(docker exec --env PGSSLMODE=verify-full --env PGSSLROOTCERT=/ci-input/ca.crt \
+      --env PGPASSWORD=ci-only-disposable "$name" psql -h database -U ci -d doccraft_staging_restore_ci \
+      -At -v ON_ERROR_STOP=1 -c 'SELECT note FROM deployment_backup_probe')
+    [[ "$restored" == 'සිංහල' ]]
+    echo 'Actual TLS database backup and restore round trip passed'
     ;;
   migration)
     connection="$connection?sslmode=require&sslaccept=strict&sslcert=/ci-ca.crt"

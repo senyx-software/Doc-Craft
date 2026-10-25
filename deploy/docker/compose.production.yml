@@ -1460,12 +1460,12 @@
       ],
       "secrets": [
         {
-          "source": "backup_connection",
-          "target": "backup_connection"
-        },
-        {
           "source": "ca",
           "target": "ca.crt"
+        },
+        {
+          "source": "postgres_migrator_password",
+          "target": "postgres_migrator_password"
         }
       ],
       "volumes": [
@@ -1482,6 +1482,12 @@
           "max-size": "10m",
           "max-file": "3"
         }
+      },
+      "environment": {
+        "PGHOST": "postgres",
+        "PGPORT": "5432",
+        "PGUSER": "doccraft_migrator",
+        "PGDATABASE": "${POSTGRES_DB:?}"
       }
     }
   },
