@@ -33,7 +33,8 @@
       "Resource": [
         "arn:aws:ec2:ap-southeast-2:506192652462:instance/i-098228a0d829d7eb2",
         "arn:aws:ec2:ap-southeast-2:506192652462:network-interface/eni-04a692c318cf01ebb",
-        "arn:aws:ec2:ap-southeast-2:506192652462:elastic-ip/*"
+        "arn:aws:ec2:ap-southeast-2:506192652462:elastic-ip/*",
+        "arn:aws:ec2:ap-southeast-2:506192652462:security-group/*"
       ]
     },
     {
@@ -88,6 +89,14 @@
       "Effect": "Allow",
       "Action": "ec2:CreateSecurityGroup",
       "Resource": "arn:aws:ec2:ap-southeast-2:506192652462:vpc/vpc-04c23751903b24e3f"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:AuthorizeSecurityGroupEgress"
+      ],
+      "Resource": "arn:aws:ec2:ap-southeast-2:506192652462:security-group-rule/*"
     }
   ]
 }

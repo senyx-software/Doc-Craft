@@ -18,3 +18,10 @@ condition = "AND"
 paths = ['''^docs/.*\.md$''', '''^DOC_CRAFT_FULL_PROJECT_REPORT\.md$''', '''^scripts/system_audit_reports\.py$''']
 regexTarget = "line"
 regexes = ['''FastAPI, pandas/SQLAlchemy reporting''']
+
+[[allowlists]]
+description = "OCI capacity-attempt retry UUIDs are request idempotency identifiers"
+condition = "AND"
+paths = ['''^docs/oracle-deployment/evidence/a1-replacement-execution\.json$''']
+regexTarget = "line"
+regexes = ['''^\s*"retry_token": "[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}",?\s*$''']
