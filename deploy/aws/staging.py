@@ -50,12 +50,15 @@ def integration_secrets(text):
 def staging_release_manifest(data):
     if not isinstance(data, dict) or not isinstance(data.get("images"), dict):
         raise ValueError("Invalid AWS release manifest")
-    edge = data["images"].get("edge")
-    if not isinstance(edge, str) or not re.fullmatch(r"ghcr\.io/senyx-software/doccraft-edge@sha256:[0-9a-f]{64}", edge):
-        raise ValueError("An immutable staging edge image is required")
-    base = {**data, "images": {key: value for key, value in data["images"].items() if key != "edge"}}
+    infrastructure = {}
+    for name in ("edge", "postgres"):
+        image = data["images"].get(name)
+        if not isinstance(image, str) or not re.fullmatch(r"ghcr\.io/senyx-software/doccraft-" + name + r"@sha256:[0-9a-f]{64}", image):
+            raise ValueError("An immutable staging infrastructure image is required")
+        infrastructure[name] = image
+    base = {**data, "images": {key: value for key, value in data["images"].items() if key not in infrastructure}}
     release_manifest(base, "ghcr.io/senyx-software/doccraft")
-    return {**base, "images": {**base["images"], "edge": edge}}
+    return {**base, "images": {**base["images"], **infrastructure}}
 
 
 def verify_instance():

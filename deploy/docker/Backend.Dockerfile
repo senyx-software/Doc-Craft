@@ -1,6 +1,7 @@
 FROM node:24-bookworm-slim@sha256:55fb5f5a527ea2c5c4a95f963e48ef90aa38c7b346054fdc8ee9957a2b55d205 AS build
 WORKDIR /app
 ENV PUPPETEER_SKIP_DOWNLOAD=true
+RUN npm install --global --ignore-scripts npm@12.2.1
 RUN apt-get update && apt-get install -y --no-install-recommends openssl ca-certificates && rm -rf /var/lib/apt/lists/*
 COPY package.json package-lock.json tsconfig.base.json ./
 COPY shared ./shared
@@ -13,6 +14,7 @@ RUN npm prune --omit=dev --ignore-scripts
 FROM node:24-bookworm-slim@sha256:55fb5f5a527ea2c5c4a95f963e48ef90aa38c7b346054fdc8ee9957a2b55d205 AS runtime
 WORKDIR /app
 ENV NODE_ENV=production PUPPETEER_SKIP_DOWNLOAD=true
+RUN rm -rf /usr/local/lib/node_modules/npm /usr/local/lib/node_modules/corepack /usr/local/bin/npm /usr/local/bin/npx /usr/local/bin/corepack
 RUN apt-get update && apt-get install -y --no-install-recommends openssl ca-certificates && rm -rf /var/lib/apt/lists/*
 COPY --from=production-deps --chown=node:node /app /app
 COPY --chown=node:node scripts/staging_migrate_node.mjs /app/scripts/staging_migrate_node.mjs

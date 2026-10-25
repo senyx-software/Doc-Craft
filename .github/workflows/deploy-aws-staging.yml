@@ -46,6 +46,7 @@ jobs:
           - {service: user-ui, file: Frontend.Dockerfile, target: '', app: user-frontend}
           - {service: migration, file: Backend.Dockerfile, target: migration, app: ''}
           - {service: edge, file: Edge.Dockerfile, target: runtime, app: ''}
+          - {service: postgres, file: Postgres.Dockerfile, target: runtime, app: ''}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with: {persist-credentials: false}
@@ -59,7 +60,7 @@ jobs:
         id: image
         with:
           context: .
-          file: ${{ matrix.service == 'edge' && 'deploy/aws/Edge.Dockerfile' || format('deploy/docker/{0}', matrix.file) }}
+          file: ${{ (matrix.service == 'edge' || matrix.service == 'postgres') && format('deploy/aws/{0}', matrix.file) || format('deploy/docker/{0}', matrix.file) }}
           target: ${{ matrix.target }}
           build-args: APP=${{ matrix.app }}
           platforms: linux/amd64
