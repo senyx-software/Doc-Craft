@@ -74,7 +74,9 @@ docker run --detach --name "$name" --network "$network" --network-alias database
       -c ssl_cert_file=/tmp/ci-tls/server.crt -c ssl_key_file=/tmp/ci-tls/server.key' >/dev/null
 ready=false
 for _ in {1..60}; do
-  if docker exec "$name" pg_isready -U ci -d doccraft_staging_ci >/dev/null 2>&1; then ready=true; break; fi
+  # The official entrypoint briefly starts a Unix-socket-only server for init.
+  # Wait for the final TCP listener rather than observing that temporary server.
+  if docker exec "$name" pg_isready -h 127.0.0.1 -U ci -d doccraft_staging_ci >/dev/null 2>&1; then ready=true; break; fi
   sleep 1
 done
 if [[ "$ready" != true ]]; then docker logs "$name"; exit 1; fi
