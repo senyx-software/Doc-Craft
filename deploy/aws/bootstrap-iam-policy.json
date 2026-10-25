@@ -83,6 +83,11 @@
           "aws:ResourceTag/Environment": "staging"
         }
       }
+    },
+    {
+      "Effect": "Allow",
+      "Action": "ec2:CreateSecurityGroup",
+      "Resource": "arn:aws:ec2:ap-southeast-2:506192652462:vpc/vpc-04c23751903b24e3f"
     }
   ]
 }
