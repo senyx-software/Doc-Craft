@@ -1,45 +1,21 @@
-# Staging image scan decision
+# Staging image scan review
 
-The default remains strict: every HIGH or CRITICAL image vulnerability or secret
-blocks deployment. Production CI keeps its existing scan command unchanged.
+Every HIGH/CRITICAL image vulnerability and secret remains blocking. The blanket
+unfixed-OS option was rejected and removed. No exception is approved or active;
+production retains its existing security gate. Deployment remains disabled.
 
-An optional repository variable, `AWS_STAGING_ALLOW_UNFIXED_OS=true`, allows only
-OS-package findings which Trivy marks `affected`, `fix_deferred` or `will_not_fix`
-and for which its vendor data supplies no fixed version. Application packages,
-findings with a fixed version, unknown statuses, secrets and unsupported OS
-versions still block. The setting applies only to the AWS staging pipeline.
+The [2026-10-25 report](security-review/2026-10-25/report.md) identifies all 43
+blocking image CVEs, their severities, exploit prerequisites, affected images,
+vendor fixes and recommended mitigations. It also covers eight separate fixable
+Python application/tooling advisories and read-only scans of newer base images.
 
-The complete vulnerability results are retained as JSON artifacts for 14 days,
-with secret matches removed. The job log and summary distinguish blocking
-findings from accepted unfixed OS findings. This exception accepts known
-unpatched HIGH and CRITICAL vulnerabilities; it does not make the images free of
-vulnerabilities. Keep the variable unset or `false` to retain the strict gate.
+The [machine-readable evidence](security-review/2026-10-25/findings.json) includes
+exact versions, image configuration IDs, CVSS/EPSS information, Debian release
+status and provenance hashes. Compressed full CI and candidate scan reports are
+retained beside it; current CI also uploads redacted scan artifacts for 14 days.
 
-In [CI run 40181376305](https://github.com/senyx-software/Doc-Craft/actions/runs/40181376305)
-on 2026-10-25, the patched images still reported these Debian 12 OS findings:
-
-| Image | HIGH | CRITICAL |
-| --- | ---: | ---: |
-| Node runtime | 58 | 1 |
-| Node migration | 58 | 1 |
-| PDF | 98 | 4 |
-| Python | 61 | 2 |
-| PostgreSQL | 71 | 3 |
-
-All those OS rows had no fixed-version entry. Separate fixable package-manager
-findings in the migration and Python images are being addressed in the images;
-this setting cannot exempt those findings.
-
-Examples of the vendor information behind the OS findings:
-
-- [Debian CVE-2026-78408](https://security-tracker.debian.org/tracker/CVE-2026-78408):
-  the util-linux fix is in unstable; bookworm and trixie remain affected.
-- [Debian CVE-2026-6653](https://security-tracker.debian.org/tracker/CVE-2026-6653):
-  the libxml2 fix is deferred for bookworm and marked no-DSA in trixie.
-- [Debian CVE-2023-45853](https://security-tracker.debian.org/tracker/CVE-2023-45853):
-  Debian explains that the vulnerable MiniZip code is not built into the affected
-  bookworm source package's binaries, despite the source-level finding.
-
-The enforcement code is [scan-image.py](scan-image.py); its tests verify that the
-optional exception cannot admit fixable or application-package findings or
-secrets. No repository variable enabling the exception has been set.
+The [controlled per-CVE proposal](proposals/README.md) and its offline prototype
+are available for review. The draft exception catalog is empty. They are not
+imported or invoked by any scanner or workflow; activating an exception would
+require a completed integration and explicit approval of both the exact catalog
+and implementation. No repository variable can enable a blanket exception.

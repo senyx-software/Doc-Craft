@@ -175,12 +175,11 @@ jobs:
         env:
           IMAGE_NAME: ${{ matrix.name }}
           DEPLOYMENT_TARGET: ${{ inputs.deployment_target || 'production' }}
-          ALLOW_UNFIXED_OS: ${{ vars.AWS_STAGING_ALLOW_UNFIXED_OS || 'false' }}
         run: |
           python deploy/scripts/install-ci-tools.py trivy
           if [[ "$DEPLOYMENT_TARGET" == aws-staging ]]; then
             python3 deploy/aws/scan-image.py "doccraft-ci:$IMAGE_NAME" \
-              --report "image-scans/$IMAGE_NAME.json" --allow-unfixed-os "$ALLOW_UNFIXED_OS"
+              --report "image-scans/$IMAGE_NAME.json"
           else
             .local/ci-tools/trivy image --exit-code 1 --severity HIGH,CRITICAL "doccraft-ci:$IMAGE_NAME"
           fi
