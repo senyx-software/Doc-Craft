@@ -54,6 +54,12 @@ jobs:
         run: |
           terraform -chdir=terraform/aws-staging apply -input=false staging.tfplan
           terraform -chdir=terraform/aws-staging output -json >> "$GITHUB_STEP_SUMMARY"
+      - name: Current staging network outputs
+        if: always()
+        run: |
+          if [[ -f terraform/aws-staging/.terraform/terraform.tfstate ]]; then
+            terraform -chdir=terraform/aws-staging output -json | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
       - name: Remove the local plan
         if: always()
         run: rm -f terraform/aws-staging/staging.tfplan terraform/aws-staging/staging-inputs.auto.tfvars.json
