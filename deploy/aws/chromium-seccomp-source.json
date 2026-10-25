@@ -1,6 +1,13 @@
 {
   "source": "https://raw.githubusercontent.com/microsoft/playwright/8c1b148f3d73120aa90f10119920358062fda177/utils/docker/seccomp_profile.json",
   "commit": "8c1b148f3d73120aa90f10119920358062fda177",
-  "sha256": "cc3e61cabda6bbc1e53e54d27ba4d55a9d3be829b6dd1a596f4a7b31b1cc7849",
-  "license_source": "https://raw.githubusercontent.com/microsoft/playwright/8c1b148f3d73120aa90f10119920358062fda177/LICENSE"
+  "sha256": "1ab4f52cacb4548033e7131287ad67ff8d7159289e03ab047dfbffd442d2876a",
+  "license_source": "https://raw.githubusercontent.com/microsoft/playwright/8c1b148f3d73120aa90f10119920358062fda177/LICENSE",
+  "upstream_sha256": "cc3e61cabda6bbc1e53e54d27ba4d55a9d3be829b6dd1a596f4a7b31b1cc7849",
+  "changes": [
+    {
+      "syscall": "chroot",
+      "reason": "Chromium namespace sandbox chroots inside its new user namespace; retain cap_drop ALL and no-new-privileges. Kernel capability checks still prohibit chroot in the parent namespace."
+    }
+  ]
 }

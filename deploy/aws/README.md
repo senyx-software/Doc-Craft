@@ -116,8 +116,10 @@ TLS PostgreSQL database plus an actual sandboxed Chromium PDF render.
 The renderer stays non-root, drops all capabilities and retains no-new-privileges.
 Its [seccomp profile](chromium-seccomp.json), pinned with provenance in
 [chromium-seccomp-source.json](chromium-seccomp-source.json), comes from
-Microsoft Playwright's documented Docker profile. It permits the namespace
-operations needed by Chromium's sandbox while retaining a syscall allowlist.
+Microsoft Playwright's documented Docker profile. It permits namespace operations
+and additionally allows Chromium to chroot inside its new user namespace while
+retaining a syscall allowlist and kernel capability checks. CI verifies the
+browser's own PID/network namespace and seccomp-BPF sandbox status.
 No browser sandbox is disabled and no SYS_ADMIN capability is added.
 
 The installer prepares Docker/Compose and a commit-specific controller checkout.

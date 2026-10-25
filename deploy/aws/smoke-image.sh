@@ -16,6 +16,13 @@ case "$IMAGE_NAME" in
         import puppeteer from "puppeteer";
         const browser=await puppeteer.launch({headless:true,args:["--disable-dev-shm-usage","--disable-gpu"]});
         try {
+          const status=await browser.newPage();
+          await status.goto("chrome://sandbox");
+          const report=await status.evaluate(()=>document.body.innerText);
+          console.log(report);
+          if(!/PID namespaces\s+Yes/i.test(report) || !/Network namespaces\s+Yes/i.test(report)
+            || !/Seccomp-BPF sandbox\s+Yes/i.test(report)) throw new Error("Chromium sandbox layers are not active");
+          await status.close();
           const page=await browser.newPage();
           await page.setJavaScriptEnabled(false);
           await page.setContent("<!doctype html><h1>Sandboxed staging renderer</h1>");
