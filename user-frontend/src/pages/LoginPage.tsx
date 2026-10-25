@@ -4,6 +4,7 @@ import { Mail, Lock, Eye, EyeOff, User, AlertTriangle } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
 import LoadingSpinner from '../components/ui/Spinner';
 import SplitAuthLayout from '../components/layout/SplitAuthLayout';
+import { postAuthDestination } from '../utils/authRedirect';
 
 // Compact, sharp-cornered field — deliberately not the app's usual
 // fully-rounded `.input-field` pill, per the "Esri login form" reference:
@@ -21,12 +22,7 @@ const LoginPage: React.FC = () => {
   const { login, login2FA, guestLogin, googleAuth, isLoading, error, clearError, isAuthenticated, isInitializing, isGuest } = useAuthStore();
   const navigate = useNavigate();
   const location = useLocation();
-  // Preserve the query string too (e.g. /builder?type=invoice) — using only
-  // .pathname dropped it, so a login triggered by clicking a document-type
-  // card would land back on the bare document-type selector instead of the
-  // specific type the visitor actually clicked.
-  const fromState = (location.state as { from?: { pathname: string; search?: string } } | null)?.from;
-  const from = fromState ? `${fromState.pathname}${fromState.search || ''}` : '/builder';
+  const from = postAuthDestination(location.state);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -70,7 +66,7 @@ const LoginPage: React.FC = () => {
       const errMsg = err instanceof Error ? err.message.toLowerCase() : '';
       if (errMsg.includes('verify') || errMsg.includes('verification')) {
         authApi.resendVerification(email).catch(() => {});
-        navigate(`/verify-email?email=${encodeURIComponent(email)}`);
+        navigate(`/verify-email?email=${encodeURIComponent(email)}`, { state: location.state });
       }
     } finally {
       setIsSigningIn(false);
@@ -97,7 +93,7 @@ const LoginPage: React.FC = () => {
       footer={
         <p className="text-center text-body-sm text-appTextSecondary/70">
           Don't have an account?{' '}
-          <Link to="/register" className="text-brand-400 hover:text-brand-300 font-medium transition-colors">
+          <Link to="/register" state={location.state} className="text-brand-400 hover:text-brand-300 font-medium transition-colors">
             Sign up
           </Link>
         </p>
@@ -121,7 +117,7 @@ const LoginPage: React.FC = () => {
             {error.toLowerCase().includes('verify') && (
               <button
                 type="button"
-                onClick={() => navigate(`/verify-email?email=${encodeURIComponent(email)}`)}
+                onClick={() => navigate(`/verify-email?email=${encodeURIComponent(email)}`, { state: location.state })}
                 className="mt-2 text-xs font-semibold text-brand-400 hover:underline flex items-center gap-1"
               >
                 Go to Email Verification Page &rarr;

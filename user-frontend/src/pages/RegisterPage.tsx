@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, User, Check, AlertCircle } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
 import LoadingSpinner from '../components/ui/Spinner';
 import SplitAuthLayout from '../components/layout/SplitAuthLayout';
 import * as authApi from '../api/auth';
+import { postAuthDestination } from '../utils/authRedirect';
 
 const fieldClass =
   'w-full pl-10 pr-4 py-2.5 bg-appBg border border-brand-400/50 rounded-none text-sm text-appTextPrimary ' +
@@ -13,6 +14,8 @@ const fieldClass =
 const RegisterPage: React.FC = () => {
   const { register, googleAuth, isLoading, error, clearError, isAuthenticated, isGuest } = useAuthStore();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = postAuthDestination(location.state);
 
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -26,15 +29,15 @@ const RegisterPage: React.FC = () => {
   const handleGoogle = async () => {
     setLocalError('');
     const result = await googleAuth();
-    if (result.requires2FA) navigate('/login');
+    if (result.requires2FA) navigate('/login', { state: location.state });
   };
 
   useEffect(() => {
     clearError();
     if (isAuthenticated && !isGuest) {
-      navigate('/builder', { replace: true });
+      navigate(from, { replace: true });
     }
-  }, [clearError, isAuthenticated, isGuest, navigate]);
+  }, [clearError, isAuthenticated, isGuest, navigate, from]);
 
   // UI Password Complexity Checks
   const hasMinLength = password.length >= 8;
@@ -67,13 +70,13 @@ const RegisterPage: React.FC = () => {
     setIsSubmitting(true);
     try {
       await register(email.trim(), password, fullName.trim());
-      navigate(`/verify-email?email=${encodeURIComponent(email.trim())}`);
+      navigate(`/verify-email?email=${encodeURIComponent(email.trim())}`, { state: location.state });
     } catch (err: unknown) {
       setIsSubmitting(false);
       const errMsg = err instanceof Error ? err.message.toLowerCase() : '';
       if (errMsg.includes('already exists') || errMsg.includes('already registered')) {
         authApi.resendVerification(email.trim()).catch(() => {});
-        navigate(`/verify-email?email=${encodeURIComponent(email.trim())}`);
+        navigate(`/verify-email?email=${encodeURIComponent(email.trim())}`, { state: location.state });
       }
     }
   };
@@ -89,7 +92,7 @@ const RegisterPage: React.FC = () => {
       footer={
         <p className="text-center text-body-sm text-appTextSecondary/70">
           Already have an account?{' '}
-          <Link to="/login" className="text-brand-400 hover:text-brand-300 font-medium transition-colors">
+          <Link to="/login" state={location.state} className="text-brand-400 hover:text-brand-300 font-medium transition-colors">
             Sign in
           </Link>
         </p>

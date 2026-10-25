@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { Mail, CheckCircle, AlertTriangle, ArrowLeft, RefreshCw, KeyRound } from 'lucide-react';
 import * as authApi from '../api/auth';
 import LoadingSpinner from '../components/ui/Spinner';
@@ -12,6 +12,7 @@ const fieldClass =
 const VerifyEmailPage: React.FC = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const initialEmail = searchParams.get('email') || '';
   const [email, setEmail] = useState(initialEmail);
@@ -47,7 +48,7 @@ const VerifyEmailPage: React.FC = () => {
 
       // Automatically redirect to login page after 2.5 seconds
       setTimeout(() => {
-        navigate(`/login?email=${encodeURIComponent(email)}`);
+        navigate(`/login?email=${encodeURIComponent(email)}`, { state: location.state });
       }, 2500);
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Verification failed. Please check your code and try again.';
@@ -87,7 +88,7 @@ const VerifyEmailPage: React.FC = () => {
       rightSubheading="Enter the 6-digit verification code sent to your email address."
       footer={
         <p className="text-center text-body-sm text-appTextSecondary/70">
-          <Link to="/login" className="text-brand-400 hover:text-brand-300 font-medium transition-colors flex items-center justify-center gap-1.5">
+          <Link to="/login" state={location.state} className="text-brand-400 hover:text-brand-300 font-medium transition-colors flex items-center justify-center gap-1.5">
             <ArrowLeft size={14} /> Back to Sign In
           </Link>
         </p>

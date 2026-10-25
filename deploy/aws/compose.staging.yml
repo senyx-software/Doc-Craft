@@ -14,7 +14,7 @@
     "backup": {"image": "${POSTGRES_IMAGE:?Immutable patched PostgreSQL image required}"},
     "payment": {"mem_limit": "256m", "environment": {"PADDLE_SANDBOX": "true", "PAYHERE_SANDBOX": "true"}},
     "quota": {"mem_limit": "256m"},
-    "chat": {"mem_limit": "384m"},
+    "chat": {"mem_limit": "384m", "networks": ["backend", "egress"]},
     "verify": {"environment": {"DOCCRAFT_REQUIRE_AI_DISABLED": "true"}},
     "edge": {
       "image": "${EDGE_IMAGE:?Immutable patched edge image required}",

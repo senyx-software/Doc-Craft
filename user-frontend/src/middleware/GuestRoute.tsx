@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 import { getToken, isTokenExpired } from '../api/client';
+import { postAuthDestination } from '../utils/authRedirect';
 
 interface GuestRouteProps {
   children: React.ReactNode;
@@ -23,11 +24,9 @@ const GuestRoute: React.FC<GuestRouteProps> = ({ children }) => {
   const token = getToken();
   const tokenValid = Boolean(token && !isTokenExpired(token));
 
-  // If user is logged in with a valid token, prevent access to login/register and force redirect to /dashboard
+  // Return signed-in users to their document, including its type and draft ID.
   if ((isAuthenticated || tokenValid) && !isGuest) {
-    const from = (location.state as { from?: { pathname: string; search?: string } } | null)?.from;
-    const target = from ? `${from.pathname}${from.search || ''}` : '/builder';
-    return <Navigate to={target} replace />;
+    return <Navigate to={postAuthDestination(location.state)} replace />;
   }
 
   return <>{children}</>;

@@ -1,22 +1,28 @@
 import React from 'react';
 import { X, Download, UserPlus, LogIn } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useQuotaStore } from '../../store/quotaStore';
+import { useChatStore } from '../../store/chatStore';
 
 const GuestDownloadModal: React.FC = () => {
   const { showGuestDownloadModal, setShowGuestDownloadModal } = useQuotaStore();
   const navigate = useNavigate();
+  const location = useLocation();
+  const sessionId = useChatStore((state) => state.sessionId);
+  const from = sessionId
+    ? { pathname: '/builder', search: `?sessionId=${encodeURIComponent(sessionId)}`, hash: location.hash }
+    : location;
 
   if (!showGuestDownloadModal) return null;
 
   const handleRegister = () => {
     setShowGuestDownloadModal(false);
-    navigate('/register');
+    navigate('/register', { state: { from } });
   };
 
   const handleLogin = () => {
     setShowGuestDownloadModal(false);
-    navigate('/login');
+    navigate('/login', { state: { from } });
   };
 
   return (

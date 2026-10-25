@@ -112,6 +112,7 @@ jobs:
           PUPPETEER_EXECUTABLE_PATH="$(command -v google-chrome)"
           export PUPPETEER_EXECUTABLE_PATH
           node scripts/verify_hybrid_ai_browser.mjs
+          node scripts/verify_auth_redirect_browser.mjs
       - name: Dependency and secret checks
         run: |
           python deploy/scripts/check-config-boundaries.py
