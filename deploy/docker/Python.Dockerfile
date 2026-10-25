@@ -7,7 +7,7 @@ COPY deploy/staging/python.constraints.txt /app/constraints.txt
 COPY services/admin-api/requirements.txt /tmp/admin.txt
 COPY services/document/requirements.txt /tmp/document.txt
 COPY services/analytics/requirements.txt /tmp/analytics.txt
-RUN python -m pip install --no-cache-dir --upgrade pip==26.2.2 setuptools==80.10.2 \
+RUN python -m pip install --no-cache-dir --upgrade pip==26.2.2 setuptools==84.1.0 \
     && sed -i '/^pytest/d' /tmp/admin.txt \
     && pip install --no-cache-dir -c /app/constraints.txt -r /tmp/admin.txt -r /tmp/document.txt -r /tmp/analytics.txt
 FROM python:3.13-slim-bookworm@sha256:e32be0e55814a08977501ca863271d9bd02443710db8f2afaf8372e2c4508530 AS runtime

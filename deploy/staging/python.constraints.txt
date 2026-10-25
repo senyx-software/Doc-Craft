@@ -27,7 +27,7 @@ distro==1.9.0
 dnspython==2.9.0
 email-validator==2.3.0
 fastapi==0.143.0
-filelock==4.2.0
+filelock==4.2.1
 greenlet==3.5.6
 h11==0.16.0
 h2==4.4.1
@@ -77,6 +77,7 @@ redis==8.1.0
 requests==2.34.2
 rich==15.0.0
 semver==3.1.0
+setuptools==84.1.0
 six==1.17.0
 sortedcontainers==2.4.0
 starlette==1.7.0

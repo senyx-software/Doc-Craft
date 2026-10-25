@@ -7,6 +7,6 @@ RUN go mod init doccraft-postgres-helper \
     && go get github.com/moby/sys/user@v0.4.1 golang.org/x/sys@v0.49.0 \
     && CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o /gosu github.com/tianon/gosu
 
-FROM postgres:17-bookworm@sha256:858bb5e98eed02eb8cafbcdc007f9a65d1b613972028944a8ec2133ccaf80d27 AS runtime
+FROM postgres:17-alpine3.24@sha256:eee6c6e1b0894fa4fe0075eb054af9fd1cf39a35321c2d4110626cfe506411fb AS runtime
 COPY --from=build /gosu /usr/local/bin/gosu
-RUN gosu --version
+RUN apk upgrade --no-cache && gosu --version

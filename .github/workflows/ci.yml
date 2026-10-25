@@ -34,7 +34,7 @@ jobs:
           --health-cmd "redis-cli ping" --health-interval 5s
           --health-timeout 5s --health-retries 12
       postgres:
-        image: postgres:17-bookworm@sha256:858bb5e98eed02eb8cafbcdc007f9a65d1b613972028944a8ec2133ccaf80d27
+        image: ${{ inputs.deployment_target == 'aws-staging' && 'postgres:17-alpine3.24@sha256:eee6c6e1b0894fa4fe0075eb054af9fd1cf39a35321c2d4110626cfe506411fb' || 'postgres:17-bookworm@sha256:858bb5e98eed02eb8cafbcdc007f9a65d1b613972028944a8ec2133ccaf80d27' }}
         env:
           POSTGRES_USER: ci
           POSTGRES_PASSWORD: ci-only-disposable
@@ -85,7 +85,7 @@ jobs:
           npm ci --ignore-scripts --prefix admin
           npm ci --ignore-scripts --prefix user-frontend
           npm run db:generate
-          python -m pip install --upgrade pip==26.2.2 setuptools==80.10.2
+          python -m pip install --upgrade pip==26.2.2 setuptools==84.1.0
           python -m pip install -c deploy/staging/python.constraints.txt -r services/admin-api/requirements.txt -r services/document/requirements.txt -r services/analytics/requirements.txt pip-audit
       - name: Lint and build all applications
         run: |
@@ -161,7 +161,7 @@ jobs:
       - uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8
         with:
           context: .
-          file: ${{ (matrix.name == 'edge' || matrix.name == 'postgres') && format('deploy/aws/{0}', matrix.dockerfile) || format('deploy/docker/{0}', matrix.dockerfile) }}
+          file: ${{ (matrix.name == 'edge' || matrix.name == 'postgres' || (inputs.deployment_target == 'aws-staging' && (matrix.name == 'node' || matrix.name == 'pdf' || matrix.name == 'migration' || matrix.name == 'python'))) && format('deploy/aws/{0}', matrix.dockerfile) || format('deploy/docker/{0}', matrix.dockerfile) }}
           target: ${{ matrix.target }}
           build-args: APP=${{ matrix.app }}
           push: false
@@ -196,6 +196,11 @@ jobs:
             -e ACME_EMAIL=ci@example.com -e ADMIN_ALLOWED_CIDRS=192.0.2.20/32 \
             -v "$PWD/deploy/aws/Caddyfile:/etc/caddy/Caddyfile:ro" \
             doccraft-ci:edge caddy adapt --config /etc/caddy/Caddyfile > /dev/null
+      - name: Verify staging native drivers and container behavior
+        if: inputs.deployment_target == 'aws-staging'
+        env:
+          IMAGE_NAME: ${{ matrix.name }}
+        run: bash deploy/aws/smoke-image.sh
   infrastructure-images:
     runs-on: ubuntu-24.04
     timeout-minutes: 40
