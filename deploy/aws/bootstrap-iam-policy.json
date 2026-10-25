@@ -2,44 +2,19 @@
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "DiscoverGitHubIdentityProvider",
-      "Effect": "Allow",
-      "Action": "iam:ListOpenIDConnectProviders",
-      "Resource": "*"
-    },
-    {
-      "Sid": "ConfigureGitHubIdentityProvider",
       "Effect": "Allow",
       "Action": [
-        "iam:CreateOpenIDConnectProvider",
-        "iam:GetOpenIDConnectProvider",
-        "iam:ListOpenIDConnectProviderTags",
-        "iam:TagOpenIDConnectProvider",
-        "iam:AddClientIDToOpenIDConnectProvider",
-        "iam:RemoveClientIDFromOpenIDConnectProvider",
-        "iam:UpdateOpenIDConnectProviderThumbprint"
+        "ec2:Describe*",
+        "sts:GetCallerIdentity"
       ],
-      "Resource": "arn:aws:iam::506192652462:oidc-provider/token.actions.githubusercontent.com"
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestedRegion": "ap-southeast-2"
+        }
+      }
     },
     {
-      "Sid": "ConfigureStagingGitHubRole",
-      "Effect": "Allow",
-      "Action": [
-        "iam:CreateRole",
-        "iam:GetRole",
-        "iam:TagRole",
-        "iam:UpdateRole",
-        "iam:UpdateRoleDescription",
-        "iam:UpdateAssumeRolePolicy",
-        "iam:PutRolePolicy",
-        "iam:GetRolePolicy",
-        "iam:ListRolePolicies",
-        "iam:ListAttachedRolePolicies"
-      ],
-      "Resource": "arn:aws:iam::506192652462:role/doccraft-staging-github"
-    },
-    {
-      "Sid": "ManageStagingStateBucket",
       "Effect": "Allow",
       "Action": "s3:*",
       "Resource": [
@@ -48,19 +23,66 @@
       ]
     },
     {
-      "Sid": "ReadSydneyInstanceConfiguration",
       "Effect": "Allow",
-      "Action": "ec2:Describe*",
+      "Action": [
+        "ec2:StartInstances",
+        "ec2:ModifyNetworkInterfaceAttribute",
+        "ec2:AssociateAddress",
+        "ec2:DisassociateAddress"
+      ],
+      "Resource": [
+        "arn:aws:ec2:ap-southeast-2:506192652462:instance/i-098228a0d829d7eb2",
+        "arn:aws:ec2:ap-southeast-2:506192652462:network-interface/eni-04a692c318cf01ebb",
+        "arn:aws:ec2:ap-southeast-2:506192652462:elastic-ip/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:CreateSecurityGroup",
+        "ec2:AllocateAddress"
+      ],
       "Resource": "*",
       "Condition": {
-        "StringEquals": { "aws:RequestedRegion": "ap-southeast-2" }
+        "StringEquals": {
+          "aws:RequestedRegion": "ap-southeast-2",
+          "aws:RequestTag/Application": "doccraft",
+          "aws:RequestTag/Environment": "staging"
+        }
       }
     },
     {
-      "Sid": "VerifyCaller",
       "Effect": "Allow",
-      "Action": "sts:GetCallerIdentity",
-      "Resource": "*"
+      "Action": "ec2:CreateTags",
+      "Resource": "arn:aws:ec2:ap-southeast-2:506192652462:*/*",
+      "Condition": {
+        "StringEquals": {
+          "ec2:CreateAction": [
+            "CreateSecurityGroup",
+            "AllocateAddress",
+            "AuthorizeSecurityGroupIngress",
+            "AuthorizeSecurityGroupEgress"
+          ]
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:AuthorizeSecurityGroupEgress",
+        "ec2:RevokeSecurityGroupIngress",
+        "ec2:RevokeSecurityGroupEgress",
+        "ec2:DeleteSecurityGroup",
+        "ec2:ReleaseAddress"
+      ],
+      "Resource": "arn:aws:ec2:ap-southeast-2:506192652462:*/*",
+      "Condition": {
+        "StringEquals": {
+          "aws:ResourceTag/Application": "doccraft",
+          "aws:ResourceTag/Environment": "staging"
+        }
+      }
     }
   ]
 }

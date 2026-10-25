@@ -1,20 +1,13 @@
 mock_provider "aws" {}
-override_data {
-  target = data.aws_instance.staging
-  values = { network_interface_id = "eni-0123456789abcdef0" }
-}
 
-run "restricted_oidc_trust" {
+run "private_encrypted_versioned_state" {
   command = plan
-  variables { github_oidc_provider_arn = "arn:aws:iam::506192652462:oidc-provider/token.actions.githubusercontent.com" }
   assert {
-    condition     = jsondecode(aws_iam_role.github.assume_role_policy).Statement[0].Condition.StringEquals["token.actions.githubusercontent.com:sub"] == "repo:senyx-software/Doc-Craft:environment:aws-staging"
-    error_message = "Only this repository's staging environment may assume the deployment role."
+    condition     = aws_s3_bucket_versioning.state.versioning_configuration[0].status == "Enabled" && aws_s3_bucket_server_side_encryption_configuration.state.rule != null
+    error_message = "Remote deployment state requires versioning and encryption."
   }
-}
-
-run "wildcard_oidc_rejected" {
-  command = plan
-  variables { github_oidc_subject = "repo:senyx-software/*:environment:aws-staging" }
-  expect_failures = [var.github_oidc_subject]
+  assert {
+    condition     = aws_s3_bucket_public_access_block.state.block_public_acls && aws_s3_bucket_public_access_block.state.block_public_policy && aws_s3_bucket_public_access_block.state.ignore_public_acls && aws_s3_bucket_public_access_block.state.restrict_public_buckets
+    error_message = "Terraform state must remain private."
+  }
 }

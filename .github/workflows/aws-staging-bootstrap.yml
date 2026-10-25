@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       apply:
-        description: Create the staging state bucket and GitHub OIDC role
+        description: Create the private staging Terraform state bucket
         type: boolean
         default: false
 permissions:
@@ -22,12 +22,11 @@ jobs:
     timeout-minutes: 30
     env:
       TF_IN_AUTOMATION: 'true'
-      TF_VAR_github_oidc_subject: ${{ vars.AWS_STAGING_OIDC_SUBJECT || 'repo:senyx-software/Doc-Craft:environment:aws-staging' }}
       STATE_BUCKET: doccraft-staging-tfstate-506192652462-ap-southeast-2
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with: {persist-credentials: false}
-      - name: Authenticate for one-time AWS bootstrap
+      - name: Authenticate to AWS using the deployment IAM user
         uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -35,12 +34,10 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: ap-southeast-2
           allowed-account-ids: '506192652462'
-      - name: Initialize bootstrap state and discover an existing GitHub identity provider
+      - name: Initialize the staging state bucket bootstrap
         run: |
           python3 deploy/scripts/install-ci-tools.py terraform
           export PATH="$GITHUB_WORKSPACE/.local/ci-tools:$PATH"
-          oidc=$(aws iam list-open-id-connect-providers --query 'OpenIDConnectProviderList[].Arn' --output json \
-            | jq -r '.[] | select(endswith("oidc-provider/token.actions.githubusercontent.com"))')
           if aws s3api head-object --bucket "$STATE_BUCKET" --key aws-bootstrap/terraform.tfstate >/dev/null 2>&1; then
             python3 -c 'from pathlib import Path; Path("terraform/aws-bootstrap/backend.tf").write_text("terraform {\n  backend \"s3\" {}\n}\n")'
             terraform -chdir=terraform/aws-bootstrap init -input=false \
@@ -49,11 +46,6 @@ jobs:
           else
             terraform -chdir=terraform/aws-bootstrap init -input=false
           fi
-          # A provider created by this module must remain managed on later runs.
-          if terraform -chdir=terraform/aws-bootstrap state list | rg -q '^aws_iam_openid_connect_provider.github\[0\]$'; then
-            oidc=''
-          fi
-          printf 'TF_VAR_github_oidc_provider_arn=%s\n' "$oidc" >> "$GITHUB_ENV"
           terraform -chdir=terraform/aws-bootstrap fmt -check
           terraform -chdir=terraform/aws-bootstrap validate
       - name: Save bootstrap plan

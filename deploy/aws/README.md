@@ -39,7 +39,7 @@ private service URLs automatically.
 
 | Secret | Purpose |
 | --- | --- |
-| `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` | One-time AWS bootstrap, using an identity allowed to create the S3 state bucket and IAM OIDC role |
+| `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` | Deployment IAM user with the scoped S3/EC2 policy in `bootstrap-iam-policy.json` |
 | `AWS_SESSION_TOKEN` | Only when using temporary AWS credentials |
 | `AWS_STAGING_SSH_KEY` | Contents of `doccraft.pem` |
 | `AWS_STAGING_KNOWN_HOSTS` | Verified host key, keyed by alias `i-098228a0d829d7eb2` so it survives an IP change |
@@ -71,10 +71,9 @@ private TLS and encryption keys are generated on EC2 once. Do not supply a share
    Dispatch button/API. Review and merge those workflow definitions through the
    repository's normal process when needed; use `eranda-dev` as the run ref.
 5. Run **Bootstrap AWS staging access** with `apply=false` and inspect the plan.
-   Run with `apply=true` to create the encrypted, versioned, private state bucket
-   and GitHub OIDC role. Bootstrap discovers an existing GitHub identity provider
-   rather than creating a duplicate. Its state moves into the new S3 bucket after
-   the first apply. The role's default ARN is already configured in the workflows.
+   Run with `apply=true` to create the encrypted, versioned, private state bucket.
+   Its state moves into that S3 bucket after the first apply. IAM resources are
+   not created or changed.
 6. Run **AWS staging infrastructure** with `apply=false`, review the plan, then
    run with `apply=true`. This provisions the EIP and web/admin security rules.
    Both infrastructure workflows share the deployment concurrency group.
@@ -83,18 +82,18 @@ private TLS and encryption keys are generated on EC2 once. Do not supply a share
 8. Run **Deploy AWS staging** on `eranda-dev`. Later pushes to that branch deploy
    automatically while enabled.
 
-Remove the AWS bootstrap access-key secrets after successful bootstrap. Later
-workflows use short-lived OIDC credentials. Optional environment variables:
-`AWS_STAGING_SSH_USER` (defaults to `ubuntu`), `AWS_STAGING_ROLE_ARN` (defaults to
-the generated role) and `AWS_STAGING_OIDC_SUBJECT` (only if immutable OIDC subjects
-are enabled). The default subject exactly matches this repo's `aws-staging`
-environment. Ensure Actions can publish packages and the repository can access
-any existing `ghcr.io/senyx-software/doccraft-*` packages.
+Keep the AWS deployment credentials in GitHub Secrets for future releases. This
+account's Organizations service control policy explicitly denies OIDC discovery,
+so these workflows use the existing IAM user rather than provisioning federation.
+Attach the policy in `bootstrap-iam-policy.json` to `eranda`; it scopes network
+changes to the pinned instance/interface and staging-tagged resources, plus the
+named state bucket. It does not grant IAM management or instance termination.
 
-The role can start only the pinned instance, modify that instance's primary ENI,
-and manage staging-tagged security groups/EIPs. It cannot create/terminate EC2
-instances or modify IAM. The app workflow uses `GITHUB_TOKEN` for GHCR; its remote
-Docker credentials are temporary and removed after deployment.
+The optional `AWS_STAGING_SSH_USER` secret/variable defaults to `ubuntu`. Ensure
+Actions can publish packages and access any existing
+`ghcr.io/senyx-software/doccraft-*` packages. EC2 registry login uses the job's
+short-lived `GITHUB_TOKEN`; its temporary Docker credentials are removed after
+rollout.
 
 ## Deployment behavior
 
@@ -159,7 +158,7 @@ terraform -chdir=terraform/aws-staging plan -var='admin_source_cidrs=["YOUR_PUBL
 terraform -chdir=terraform/aws-staging apply staging.tfplan
 ```
 
-References: [GitHub AWS OIDC](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws),
+References: [AWS credentials action](https://github.com/aws-actions/configure-aws-credentials),
 [Let's Encrypt IP certificates](https://letsencrypt.org/2026/01/15/6day-and-ip-general-availability),
 [Caddy ACME profiles](https://caddyserver.com/docs/caddyfile/directives/tls),
 [EC2 public IP lifecycle](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html),
