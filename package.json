@@ -27,7 +27,7 @@
     "build": "npm run build --workspaces --if-present",
     "db:generate": "npm run db:generate --workspaces --if-present",
     "db:migrate": "npm run db:migrate --workspaces --if-present",
-    "test:chat": "node --test shared/tests && vitest run services/chat/src/services/__tests__ services/chat/src/routes/__tests__ services/chat/src/middleware/__tests__ services/gateway/src/services/__tests__/sseRelay.test.ts services/gateway/src/middleware/__tests__/chat-auth.test.ts user-frontend/src/store/__tests__ user-frontend/src/utils/__tests__ user-frontend/src/api/__tests__ user-frontend/src/components/builder/__tests__"
+    "test:chat": "node --test shared/tests/*.test.mjs && vitest run services/chat/src/services/__tests__ services/chat/src/routes/__tests__ services/chat/src/middleware/__tests__ services/gateway/src/services/__tests__/sseRelay.test.ts services/gateway/src/middleware/__tests__/chat-auth.test.ts user-frontend/src/store/__tests__ user-frontend/src/utils/__tests__ user-frontend/src/api/__tests__ user-frontend/src/components/builder/__tests__"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
